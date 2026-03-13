@@ -50,7 +50,7 @@ Events fire probabilistically on a timer with per-type cooldowns so markets feel
 See [CONTRIBUTING.md](CONTRIBUTING.md) for branch structure, coding standards, and build instructions.
 
 **Authors:**
-- **tison (TheCodingDad)** — core systems (engine, events, futures, serializer)
+- **TisonK (TheCodingDad)** — core systems (engine, events, futures, serializer)
 - **LeGrizzly** — GUI systems (market screen, HUD, futures dialog)
 
 ---
