@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<l10n>
+    <!-- Market Dynamics — English translations -->
+
+    <!-- Events -->
+    <text name="mdm_event_drought"           text="Regional Drought" />
+    <text name="mdm_event_bumper_harvest"    text="Bumper Harvest" />
+    <text name="mdm_event_trade_disruption"  text="Trade Disruption" />
+    <text name="mdm_event_geopolitical"      text="Geopolitical Crisis" />
+
+    <!-- HUD -->
+    <text name="mdm_hud_title"               text="Market Watch" />
+    <text name="mdm_hud_active_events"       text="Active Events" />
+    <text name="mdm_hud_no_events"           text="Markets stable" />
+
+    <!-- Futures -->
+    <text name="mdm_futures_title"           text="Futures Market" />
+    <text name="mdm_futures_create"          text="New Contract" />
+    <text name="mdm_futures_fulfill"         text="Fulfilled" />
+    <text name="mdm_futures_defaulted"       text="Defaulted" />
+    <text name="mdm_futures_active"          text="Active" />
+    <text name="mdm_futures_delivery_label"  text="Delivery" />
+    <text name="mdm_futures_locked_label"    text="Locked Price" />
+    <text name="mdm_futures_quantity_label"  text="Quantity (L)" />
+</l10n>
