@@ -40,6 +40,7 @@ function MarketDynamics:onMissionLoaded(mission)
     self:_registerDefaultEvents()
     self.isActive = true
     BCIntegration.init(self.marketEngine)
+    UPIntegration.init()
     MDMSettingsUI.initGui(self.modDir)
     self._debugHud = MDMDebugHUD.new()  -- TEMP: remove when LeGrizzly's GUI lands
     MDMAdminCommands_register()

@@ -163,6 +163,30 @@ local function cmdBCMode(self, arg)
     end
 end
 
+local function cmdUPMode(self, arg)
+    if not g_MarketDynamics or not g_MarketDynamics.isActive then
+        print("[MDM] System not active")
+        return
+    end
+
+    if not UPIntegration.isAvailable() then
+        print("[MDM] FS25_UsedPlus is not installed — UP mode unavailable")
+        return
+    end
+
+    if arg == "on" or arg == "1" or arg == "true" then
+        UPIntegration.setEnabled(true)
+        print("[MDM] UP mode ON — futures contracts will affect credit score (stubs active)")
+    elseif arg == "off" or arg == "0" or arg == "false" then
+        UPIntegration.setEnabled(false)
+        print("[MDM] UP mode OFF")
+    else
+        local state = UPIntegration.isEnabled() and "ON" or "OFF"
+        print("[MDM] UP mode is currently: " .. state)
+        print("[MDM] Usage: mdmUPMode on | off")
+    end
+end
+
 local function cmdHud()
     if not g_MarketDynamics or not g_MarketDynamics.isActive then
         print("[MDM] System not active")
@@ -189,6 +213,7 @@ function MDMAdminCommands_register()
     addConsoleCommand("mdmPrice",   "MDM: show price for a crop (arg: cropName)",       "cmdMdmPrice",   g_MarketDynamics)
     addConsoleCommand("mdmEvents",  "MDM: list all registered events and status",       "cmdMdmEvents",  g_MarketDynamics)
     addConsoleCommand("mdmBCMode",  "MDM: toggle BetterContracts integration (on/off)", "cmdMdmBCMode",  g_MarketDynamics)
+    addConsoleCommand("mdmUPMode",  "MDM: toggle UsedPlus integration (on/off)",        "cmdMdmUPMode",  g_MarketDynamics)
     addConsoleCommand("mdmHud",     "MDM: toggle debug HUD overlay (TEMP)",             "cmdMdmHud",     g_MarketDynamics)
 
     -- Attach handlers to the coordinator instance so the console can find them
@@ -198,9 +223,10 @@ function MDMAdminCommands_register()
     g_MarketDynamics.cmdMdmPrice   = cmdPrice
     g_MarketDynamics.cmdMdmEvents  = cmdEvents
     g_MarketDynamics.cmdMdmBCMode  = cmdBCMode
+    g_MarketDynamics.cmdMdmUPMode  = cmdUPMode
     g_MarketDynamics.cmdMdmHud     = cmdHud
 
-    MDMLog.info("AdminCommands: registered 7 console commands (mdmStatus / mdmEvent / mdmExpire / mdmPrice / mdmEvents / mdmBCMode / mdmHud)")
+    MDMLog.info("AdminCommands: registered 8 console commands (mdmStatus / mdmEvent / mdmExpire / mdmPrice / mdmEvents / mdmBCMode / mdmUPMode / mdmHud)")
 end
 
 function MDMAdminCommands_remove()
@@ -210,5 +236,6 @@ function MDMAdminCommands_remove()
     removeConsoleCommand("mdmPrice")
     removeConsoleCommand("mdmEvents")
     removeConsoleCommand("mdmBCMode")
+    removeConsoleCommand("mdmUPMode")
     removeConsoleCommand("mdmHud")
 end

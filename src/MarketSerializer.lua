@@ -69,8 +69,9 @@ function MarketSerializer:save(coordinator)
             coordinator.marketEngine.volatilityScale or 1.0)
     end
 
-    -- Save BC integration settings
+    -- Save integration settings
     BCIntegration.save(xmlFile, "marketDynamics.bcIntegration")
+    UPIntegration.save(xmlFile, "marketDynamics.upIntegration")
 
     saveXMLFile(xmlFile)
     delete(xmlFile)
@@ -150,8 +151,9 @@ function MarketSerializer:load(coordinator)
         end
     end
 
-    -- Load BC integration settings
+    -- Load integration settings
     BCIntegration.load(xmlFile, "marketDynamics.bcIntegration")
+    UPIntegration.load(xmlFile, "marketDynamics.upIntegration")
 
     delete(xmlFile)
     MDMLog.info("MarketSerializer: loaded " .. i .. " contracts, " .. j .. " event states")
