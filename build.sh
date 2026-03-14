@@ -35,10 +35,16 @@ done
 rm -f "${OUT_ZIP}"
 
 # Build with zip (preferred) or fall back to Python
+PYTHON_CMD=""
+if command -v python3 &>/dev/null; then PYTHON_CMD="python3"
+elif command -v py &>/dev/null; then PYTHON_CMD="py"
+elif command -v python &>/dev/null; then PYTHON_CMD="python"
+fi
+
 if command -v zip &>/dev/null; then
     zip -r "${OUT_ZIP}" "${EXISTING[@]}"
-else
-    python3 - "${OUT_ZIP}" "${EXISTING[@]}" <<'PYEOF'
+elif [ -n "$PYTHON_CMD" ]; then
+    $PYTHON_CMD - "${OUT_ZIP}" "${EXISTING[@]}" <<'PYEOF'
 import sys, zipfile, os, pathlib
 
 out_zip  = sys.argv[1]
