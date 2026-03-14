@@ -139,16 +139,57 @@ local function cmdEvents()
     print("=============================")
 end
 
+local function cmdBCMode(self, arg)
+    if not g_MarketDynamics or not g_MarketDynamics.isActive then
+        print("[MDM] System not active")
+        return
+    end
+
+    if not BCIntegration.isAvailable() then
+        print("[MDM] BetterContracts is not installed — BC mode unavailable")
+        return
+    end
+
+    if arg == "on" or arg == "1" or arg == "true" then
+        BCIntegration.setEnabled(true)
+        print("[MDM] BC mode ON — supply reactions active, MDM futures UI suppressed")
+    elseif arg == "off" or arg == "0" or arg == "false" then
+        BCIntegration.setEnabled(false)
+        print("[MDM] BC mode OFF — MDM futures system active")
+    else
+        local state = BCIntegration.isEnabled() and "ON" or "OFF"
+        print("[MDM] BC mode is currently: " .. state)
+        print("[MDM] Usage: mdmBCMode on | off")
+    end
+end
+
+local function cmdHud()
+    if not g_MarketDynamics or not g_MarketDynamics.isActive then
+        print("[MDM] System not active")
+        return
+    end
+
+    if g_MDMHud then
+        g_MDMHud = nil
+        print("[MDM] Debug HUD: OFF")
+    else
+        g_MDMHud = g_MarketDynamics._debugHud
+        print("[MDM] Debug HUD: ON")
+    end
+end
+
 -- ---------------------------------------------------------------------------
 -- Registration — called from MarketDynamics lifecycle
 -- ---------------------------------------------------------------------------
 
 function MDMAdminCommands_register()
-    addConsoleCommand("mdmStatus",  "MDM: system health and active events",          "cmdMdmStatus",  g_MarketDynamics)
-    addConsoleCommand("mdmEvent",   "MDM: force-fire event (arg: eventId)",          "cmdMdmEvent",   g_MarketDynamics)
-    addConsoleCommand("mdmExpire",  "MDM: force-expire active event (arg: eventId)", "cmdMdmExpire",  g_MarketDynamics)
-    addConsoleCommand("mdmPrice",   "MDM: show price for a crop (arg: cropName)",    "cmdMdmPrice",   g_MarketDynamics)
-    addConsoleCommand("mdmEvents",  "MDM: list all registered events and status",    "cmdMdmEvents",  g_MarketDynamics)
+    addConsoleCommand("mdmStatus",  "MDM: system health and active events",             "cmdMdmStatus",  g_MarketDynamics)
+    addConsoleCommand("mdmEvent",   "MDM: force-fire event (arg: eventId)",             "cmdMdmEvent",   g_MarketDynamics)
+    addConsoleCommand("mdmExpire",  "MDM: force-expire active event (arg: eventId)",    "cmdMdmExpire",  g_MarketDynamics)
+    addConsoleCommand("mdmPrice",   "MDM: show price for a crop (arg: cropName)",       "cmdMdmPrice",   g_MarketDynamics)
+    addConsoleCommand("mdmEvents",  "MDM: list all registered events and status",       "cmdMdmEvents",  g_MarketDynamics)
+    addConsoleCommand("mdmBCMode",  "MDM: toggle BetterContracts integration (on/off)", "cmdMdmBCMode",  g_MarketDynamics)
+    addConsoleCommand("mdmHud",     "MDM: toggle debug HUD overlay (TEMP)",             "cmdMdmHud",     g_MarketDynamics)
 
     -- Attach handlers to the coordinator instance so the console can find them
     g_MarketDynamics.cmdMdmStatus  = cmdStatus
@@ -156,8 +197,10 @@ function MDMAdminCommands_register()
     g_MarketDynamics.cmdMdmExpire  = cmdExpire
     g_MarketDynamics.cmdMdmPrice   = cmdPrice
     g_MarketDynamics.cmdMdmEvents  = cmdEvents
+    g_MarketDynamics.cmdMdmBCMode  = cmdBCMode
+    g_MarketDynamics.cmdMdmHud     = cmdHud
 
-    MDMLog.info("AdminCommands: registered 5 console commands (mdmStatus / mdmEvent / mdmExpire / mdmPrice / mdmEvents)")
+    MDMLog.info("AdminCommands: registered 7 console commands (mdmStatus / mdmEvent / mdmExpire / mdmPrice / mdmEvents / mdmBCMode / mdmHud)")
 end
 
 function MDMAdminCommands_remove()
@@ -166,4 +209,6 @@ function MDMAdminCommands_remove()
     removeConsoleCommand("mdmExpire")
     removeConsoleCommand("mdmPrice")
     removeConsoleCommand("mdmEvents")
+    removeConsoleCommand("mdmBCMode")
+    removeConsoleCommand("mdmHud")
 end

@@ -56,6 +56,22 @@ function MarketSerializer:save(coordinator)
         end
     end
 
+    -- Save general settings
+    local s = coordinator.settings
+    if s then
+        setXMLBool(xmlFile, "marketDynamics.settings#pricesEnabled", s.pricesEnabled ~= false)
+        setXMLBool(xmlFile, "marketDynamics.settings#debugMode",     s.debugMode     == true)
+    end
+
+    -- Save volatility scale (stored on MarketEngine instance)
+    if coordinator.marketEngine then
+        setXMLFloat(xmlFile, "marketDynamics.settings#volatilityScale",
+            coordinator.marketEngine.volatilityScale or 1.0)
+    end
+
+    -- Save BC integration settings
+    BCIntegration.save(xmlFile, "marketDynamics.bcIntegration")
+
     saveXMLFile(xmlFile)
     delete(xmlFile)
     MDMLog.info("MarketSerializer: saved to " .. path)
@@ -66,7 +82,7 @@ function MarketSerializer:load(coordinator)
     local path = SAVE_PATH_TEMPLATE:format(g_currentMission.missionInfo.savegameDirectory .. "/")
     local xmlFile = loadXMLFile("MDMLoad", path)
 
-    if not xmlFile then
+    if not xmlFile or xmlFile == 0 then
         MDMLog.info("MarketSerializer: no save file found — starting fresh")
         return
     end
@@ -112,6 +128,30 @@ function MarketSerializer:load(coordinator)
         end
         j = j + 1
     end
+
+    -- Load general settings
+    if coordinator.settings then
+        local pricesEnabled = getXMLBool(xmlFile, "marketDynamics.settings#pricesEnabled")
+        if pricesEnabled ~= nil then
+            coordinator.settings.pricesEnabled = pricesEnabled
+        end
+        local debugMode = getXMLBool(xmlFile, "marketDynamics.settings#debugMode")
+        if debugMode ~= nil then
+            coordinator.settings.debugMode = debugMode
+            MDMLog.debugEnabled = debugMode  -- keep Logger in sync
+        end
+    end
+
+    -- Load volatility scale
+    if coordinator.marketEngine then
+        local vScale = getXMLFloat(xmlFile, "marketDynamics.settings#volatilityScale")
+        if vScale and vScale > 0 then
+            coordinator.marketEngine.volatilityScale = vScale
+        end
+    end
+
+    -- Load BC integration settings
+    BCIntegration.load(xmlFile, "marketDynamics.bcIntegration")
 
     delete(xmlFile)
     MDMLog.info("MarketSerializer: loaded " .. i .. " contracts, " .. j .. " event states")
