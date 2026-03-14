@@ -37,9 +37,10 @@ local _pendingRemovals = {}     -- { fillTypeIndex, modId, expiresAt }
 -- Public API
 -- ---------------------------------------------------------------------------
 
--- Returns true if BetterContracts is installed (BC global present).
+-- Returns true if BetterContracts is installed.
+-- Uses g_modManager — reliable across mod env sandboxing.
 function BCIntegration.isAvailable()
-    return BetterContracts ~= nil
+    return g_modManager:getModByName("FS25_BetterContracts") ~= nil
 end
 
 -- Returns true if BC is installed AND the player has enabled BC mode.
@@ -62,7 +63,8 @@ function BCIntegration.init(marketEngine)
         return
     end
 
-    local version = (type(BetterContracts.version) == "string") and BetterContracts.version or "?"
+    local bcMod = g_modManager:getModByName("FS25_BetterContracts")
+    local version = (bcMod and bcMod.version) or "?"
     MDMLog.info("BCIntegration: BetterContracts detected (v" .. version .. ")")
 
     -- Install hook regardless of _enabled so toggling at runtime works without reload.

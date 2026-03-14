@@ -1,21 +1,20 @@
 -- SettingsUI.lua
 -- Adds a dedicated "Market Dynamics" tab to ESC > Settings.
--- Follows the FS25_BetterContracts pattern: load an XML page layout, then
--- inject the tab button and page container into InGameMenuSettingsFrame's
--- subCategoryTabs / subCategoryPages arrays.
+-- All GUI elements are created programmatically (no g_gui:loadGui / XML needed).
+-- g_gui:loadGui requires a proper frame subclass as controller — plain tables
+-- and even bare GuiElement instances cause "missing method" crashes in Gui.lua.
 --
 -- Lifecycle:
 --   1. initHooks()       — at source time: appends to InGameMenuSettingsFrame.onFrameOpen
---   2. MDMSettingsUI.initGui(modDir) — called from MarketDynamics:onMissionLoaded
---                           loads gui/settingsPage.xml via g_gui:loadGui()
---   3. onFrameOpen (first call) — inserts tab, builds settings elements, hooks paging
+--   2. MDMSettingsUI.initGui(modDir) — called from MarketDynamics:onMissionLoaded (marks ready)
+--   3. onFrameOpen (first call) — builds all elements, inserts tab, hooks paging
 --   4. onFrameOpen (subsequent) — refreshes element states from current settings
 --
 -- HOW TO ADD A NEW SETTING:
 --   1. Add a default value to MarketDynamics.settings in MarketDynamics.lua
 --   2. Add save/load in MarketSerializer.lua
---   3. Call _addBinaryOption() or _addMultiTextOption() in addSettingsElements()
---   4. Add a refresh line in updateSettingsUI()
+--   3. Call _addBinary() or _addMulti() in _addSettingsElements()
+--   4. Add a refresh line in _updateSettingsUI()
 --   5. Add a callback handler in the Callback Handlers section below
 --
 -- Author: tison (dev-1)
@@ -53,23 +52,9 @@ end
 
 function MDMSettingsUI.initGui(modDir)
     if _guiLoaded then return end
-
-    local xmlPath = modDir .. "gui/settingsPage.xml"
-    if not fileExists(xmlPath) then
-        MDMLog.error("SettingsUI: settingsPage.xml not found at " .. xmlPath)
-        return
-    end
-
-    -- g_gui:loadGui populates MDMSettingsUI with fields matching the XML ids:
-    --   MDMSettingsUI.mdmTab, MDMSettingsUI.mdmPage, MDMSettingsUI.settingsLayout
-    local result = g_gui:loadGui(xmlPath, "MDMSettingsFrame", MDMSettingsUI)
-    if result == nil then
-        MDMLog.error("SettingsUI: g_gui:loadGui failed for " .. xmlPath)
-        return
-    end
-
+    -- All elements are built programmatically in _insertTab — nothing to load here.
     _guiLoaded = true
-    MDMLog.info("SettingsUI: GUI loaded — tab will be inserted on first settings open")
+    MDMLog.info("SettingsUI: ready — tab will be built on first settings open")
 end
 
 -- ---------------------------------------------------------------------------
@@ -102,62 +87,82 @@ function MDMSettingsUI._insertTab()
         return false
     end
 
-    local mdmPage = MDMSettingsUI.mdmPage
-    local mdmTab  = MDMSettingsUI.mdmTab
-
-    if not mdmPage or not mdmTab then
-        MDMLog.warn("SettingsUI: mdmPage or mdmTab not loaded from XML")
-        return false
-    end
-
-    -- Position: always last tab
+    -- ── Position: always last tab ──────────────────────────────────────────
     local pos = #ps.subCategoryTabs + 1
     MDMSettingsUI.modPageNr = pos
 
-    -- Helper: reparent element and insert at position
+    -- Helper: reparent element and insert at exact position (same as BC's addElementAtPosition)
     local function addAt(element, target, insertPos)
         if element.parent then element.parent:removeElement(element) end
         table.insert(target.elements, insertPos, element)
         element.parent = target
     end
 
-    -- Insert page container and tab button into the frame's structure
+    -- ── Tab button ─────────────────────────────────────────────────────────
+    local mdmTab = ButtonElement.new()
+    mdmTab:loadProfile(g_gui:getProfile("fs25_subCategorySelectorTabbedTab"), true)
+    mdmTab.textUpperCase = false
+    mdmTab:setText("Market Dynamics")
+    mdmTab.target = MDMSettingsUI
+    mdmTab:setCallback("onClickCallback", "onClickMDM")
+    -- onGuiSetupFinished called AFTER adding to parent (needs parent context)
+    addAt(mdmTab, ps.subCategoryBox, pos)
+    mdmTab:onGuiSetupFinished()
+
+    -- ── Page container ─────────────────────────────────────────────────────
+    local mdmPage = GuiElement.new()
+    mdmPage:loadProfile(g_gui:getProfile("fs25_subCategorySelectorTabbedContainer"), true)
+
+    -- ── Scrolling layout (holds all settings rows) ─────────────────────────
+    local settingsLayout = ScrollingLayoutElement.new()
+    settingsLayout:loadProfile(g_gui:getProfile("fs25_settingsLayout"), true)
+    mdmPage:addElement(settingsLayout)
+    settingsLayout:onGuiSetupFinished()
+
+    -- ── Bottom separator (matches vanilla style) ───────────────────────────
+    local sep = BitmapElement.new()
+    sep:loadProfile(g_gui:getProfile("fs25_settingsTooltipSeparator"), true)
+    mdmPage:addElement(sep)
+    sep:onGuiSetupFinished()
+
+    -- onGuiSetupFinished on page AFTER children and AFTER adding to frame
     addAt(mdmPage, ps.subCategoryPages[1].parent, pos)
-    addAt(mdmTab,  ps.subCategoryBox, pos)
+    mdmPage:onGuiSetupFinished()
+
+    -- Store references used by _addSettingsElements and _updateSettingsUI
+    MDMSettingsUI.mdmTab         = mdmTab
+    MDMSettingsUI.mdmPage        = mdmPage
+    MDMSettingsUI.settingsLayout = settingsLayout
+
     ps:updateAbsolutePosition()
 
-    -- Wire targets so the frame can call back into them
+    -- Wire page target for focus/navigation system
     mdmPage:setTarget(ps, mdmPage.target)
-    mdmTab:setTarget(ps, mdmTab.target)
+    -- Note: do NOT call setTarget on mdmTab — it would overwrite our MDMSettingsUI callback target
 
     -- Register in the official arrays (the frame iterates these)
     ps.subCategoryPages[pos] = mdmPage
     ps.subCategoryTabs[pos]  = mdmTab
 
-    -- Build the settings content into settingsLayout
-    MDMSettingsUI._addSettingsElements()
-
-    -- Hook the paging MultiTextOption so our page hides/shows correctly
-    -- when the player clicks between tabs (including vanilla ones)
+    -- CRITICAL: add our page index as a new state in the paging MultiTextOption.
+    -- Without this, the nav arrows only cycle through vanilla states and never reach us.
     if ps.subCategoryPaging then
-        ps.subCategoryPaging.onClickCallback = Utils.appendedFunction(
-            ps.subCategoryPaging.onClickCallback,
-            function(_, state)
-                if mdmPage then
-                    mdmPage:setVisible(state == MDMSettingsUI.modPageNr)
-                end
-            end
-        )
+        ps.subCategoryPaging:addText(pos)
     end
 
-    -- Register header icon/title (used by the frame to render the section banner)
+    -- Re-layout the tab button row so our new button appears
+    ps.subCategoryBox:invalidateLayout()
+
+    -- Build settings content
+    MDMSettingsUI._addSettingsElements()
+
+    -- Register header icon/title
     InGameMenuSettingsFrame.SUB_CATEGORY = InGameMenuSettingsFrame.SUB_CATEGORY or {}
     InGameMenuSettingsFrame.SUB_CATEGORY.MARKET_DYNAMICS = pos
     if InGameMenuSettingsFrame.HEADER_TITLES then
-        InGameMenuSettingsFrame.HEADER_TITLES[pos] = "Market Dynamics"
+        InGameMenuSettingsFrame.HEADER_TITLES[pos] = "mdm_settingstitle"
     end
     if InGameMenuSettingsFrame.HEADER_SLICES then
-        -- Reuse the contracts icon — swap once we have a custom icon asset
         InGameMenuSettingsFrame.HEADER_SLICES[pos] = "gui.icon_ingameMenu_contracts"
     end
 
@@ -170,9 +175,7 @@ function MDMSettingsUI._insertTab()
     FocusManager:loadElementFromCustomValues(mdmTab)
     FocusManager:setGui(currentGui)
 
-    if MDMSettingsUI.settingsLayout then
-        MDMSettingsUI.settingsLayout:invalidateLayout()
-    end
+    settingsLayout:invalidateLayout()
 
     MDMLog.info("SettingsUI: 'Market Dynamics' tab inserted at position " .. pos)
     return true
@@ -240,6 +243,13 @@ end
 function MDMSettingsUI._updateSettingsUI()
     local mdm = g_MarketDynamics
     if not mdm or not mdm.settings then return end
+
+    -- Apply alternating row backgrounds (same as BC's onSettingsFrameOpen).
+    -- Without this, row text colors render incorrectly against the page background.
+    local ps = g_inGameMenu and g_inGameMenu.pageSettings
+    if ps and MDMSettingsUI.settingsLayout then
+        ps:updateAlternatingElements(MDMSettingsUI.settingsLayout)
+    end
 
     if _elem.pricesEnabled then
         _elem.pricesEnabled:setIsChecked(mdm.settings.pricesEnabled ~= false, false, false)
