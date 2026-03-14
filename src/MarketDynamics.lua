@@ -74,11 +74,13 @@ function MarketDynamics:_registerDefaultEvents()
     -- Each event file calls WorldEventSystem:registerEvent on g_MarketDynamics.worldEvents
     -- Registration happens in events/*.lua after this coordinator is created
 
-    -- Trigger deferred registrations (set by event files at source() time)
-    if MarketDynamics.pendingEventRegistrations then
-        for _, reg in ipairs(MarketDynamics.pendingEventRegistrations) do
+    -- Drain deferred registrations pushed by event files at source() time.
+    -- Uses MDM_pendingRegistrations (standalone global) because MarketDynamics
+    -- didn't exist yet when those files were sourced.
+    if MDM_pendingRegistrations then
+        for _, reg in ipairs(MDM_pendingRegistrations) do
             self.worldEvents:registerEvent(reg)
         end
-        MarketDynamics.pendingEventRegistrations = nil
+        MDM_pendingRegistrations = nil
     end
 end

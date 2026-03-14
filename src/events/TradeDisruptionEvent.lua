@@ -42,8 +42,8 @@ local function onExpire(intensity)
     end
 end
 
-MarketDynamics.pendingEventRegistrations = MarketDynamics.pendingEventRegistrations or {}
-table.insert(MarketDynamics.pendingEventRegistrations, {
+MDM_pendingRegistrations = MDM_pendingRegistrations or {}
+table.insert(MDM_pendingRegistrations, {
     id             = EVENT_ID,
     name           = "Trade Disruption",
     probability    = 0.06,

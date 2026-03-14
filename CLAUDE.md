@@ -70,8 +70,9 @@ MarketDynamics (g_MarketDynamics)
 ```
 
 ### Event Registration Pattern
-Events use deferred registration via `MarketDynamics.pendingEventRegistrations` table.
-Events insert into this table at source() time; coordinator processes them in `onMissionLoaded`.
+Events use deferred registration via the `MDM_pendingRegistrations` standalone global.
+Events insert into this table at source() time; coordinator drains it in `onMissionLoaded`.
+(`MarketDynamics` doesn't exist yet when events are sourced — standalone global avoids the nil.)
 
 ### GUI Integration (LeGrizzly / dev-2)
 Coordinator checks for `g_MDMHud` in `draw()` — LeGrizzly's HUD sets this global.

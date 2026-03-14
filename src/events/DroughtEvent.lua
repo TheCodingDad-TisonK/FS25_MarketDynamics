@@ -40,9 +40,10 @@ local function onExpire(intensity)
     end
 end
 
--- Deferred registration (coordinator may not exist yet at source() time)
-MarketDynamics.pendingEventRegistrations = MarketDynamics.pendingEventRegistrations or {}
-table.insert(MarketDynamics.pendingEventRegistrations, {
+-- Deferred registration — MDM_pendingRegistrations is a standalone global so this works
+-- before MarketDynamics.lua is sourced. Coordinator drains it in _registerDefaultEvents().
+MDM_pendingRegistrations = MDM_pendingRegistrations or {}
+table.insert(MDM_pendingRegistrations, {
     id             = EVENT_ID,
     name           = "Regional Drought",
     probability    = 0.08,
