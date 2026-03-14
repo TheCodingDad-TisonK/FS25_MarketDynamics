@@ -47,7 +47,7 @@ local function cmdStatus()
     print("==================")
 end
 
-local function cmdEvent(eventId)
+local function cmdEvent(self, eventId)
     if not eventId or eventId == "" then
         print("[MDM] Usage: mdmEvent <eventId>")
         print("[MDM] Run 'mdmEvents' to see available IDs")
@@ -66,7 +66,7 @@ local function cmdEvent(eventId)
     end
 end
 
-local function cmdExpire(eventId)
+local function cmdExpire(self, eventId)
     if not eventId or eventId == "" then
         print("[MDM] Usage: mdmExpire <eventId>")
         return
@@ -84,7 +84,7 @@ local function cmdExpire(eventId)
     end
 end
 
-local function cmdPrice(cropName)
+local function cmdPrice(self, cropName)
     if not cropName or cropName == "" then
         print("[MDM] Usage: mdmPrice <cropName>  (e.g. mdmPrice wheat)")
         return
