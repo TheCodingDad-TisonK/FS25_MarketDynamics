@@ -8,9 +8,6 @@
     <text name="mdm_event_trade_disruption"  text="Trade Disruption" />
     <text name="mdm_event_geopolitical"      text="Geopolitical Crisis" />
 
-    <!-- Settings UI — global_ prefix makes these accessible from vanilla g_i18n calls -->
-    <text name="global_mdm_settingstitle"    text="Market Dynamics" />
-
     <!-- HUD -->
     <text name="mdm_hud_title"               text="Market Watch" />
     <text name="mdm_hud_active_events"       text="Active Events" />

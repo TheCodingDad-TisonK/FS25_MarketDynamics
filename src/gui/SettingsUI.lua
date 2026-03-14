@@ -156,15 +156,31 @@ function MDMSettingsUI._insertTab()
     -- Build settings content
     MDMSettingsUI._addSettingsElements()
 
-    -- Register header icon/title
+    -- Register header icon/title.
+    -- We use the Game Settings icon (state 1) as our placeholder since its slice
+    -- name is guaranteed valid. The paging callback below overrides the title text
+    -- directly (avoids l10n key dependency on vanilla g_i18n).
     InGameMenuSettingsFrame.SUB_CATEGORY = InGameMenuSettingsFrame.SUB_CATEGORY or {}
     InGameMenuSettingsFrame.SUB_CATEGORY.MARKET_DYNAMICS = pos
     if InGameMenuSettingsFrame.HEADER_TITLES then
-        InGameMenuSettingsFrame.HEADER_TITLES[pos] = "mdm_settingstitle"
+        -- Placeholder key — immediately overridden by the appendedFunction below
+        InGameMenuSettingsFrame.HEADER_TITLES[pos] = "ui_settingsCategoryGeneral"
     end
     if InGameMenuSettingsFrame.HEADER_SLICES then
-        InGameMenuSettingsFrame.HEADER_SLICES[pos] = "gui.icon_ingameMenu_contracts"
+        -- Borrow the Game Settings icon (index 1) — a safe, guaranteed-valid slice
+        InGameMenuSettingsFrame.HEADER_SLICES[pos] = InGameMenuSettingsFrame.HEADER_SLICES[1]
     end
+
+    -- Override the header text directly when our tab is selected, bypassing l10n.
+    -- self = InGameMenuSettingsFrame instance (same pattern as BetterContracts).
+    ps.subCategoryPaging.onClickCallback = Utils.appendedFunction(
+        ps.subCategoryPaging.onClickCallback,
+        function(self, state)
+            if state == MDMSettingsUI.modPageNr and self.categoryHeaderText then
+                self.categoryHeaderText:setText("Market Dynamics")
+            end
+        end
+    )
 
     -- Update FocusManager so keyboard/controller navigation finds our elements
     local currentGui = FocusManager.currentGui
