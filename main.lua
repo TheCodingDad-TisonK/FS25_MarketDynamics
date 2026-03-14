@@ -22,6 +22,9 @@ source(modDirectory .. "src/WorldEventSystem.lua")
 source(modDirectory .. "src/FuturesMarket.lua")
 source(modDirectory .. "src/MarketSerializer.lua")
 
+-- Price hook (installed at source-time, dormant until isActive=true)
+source(modDirectory .. "src/PriceHook.lua")
+
 -- Events
 source(modDirectory .. "src/events/DroughtEvent.lua")
 source(modDirectory .. "src/events/BumperHarvestEvent.lua")
