@@ -229,28 +229,25 @@ function MDMSettingsUI._addSettingsElements()
         "How wildly prices swing. Low=0.5x, Normal=1x, High=1.5x, Extreme=2x"
     )
 
-    -- ── UsedPlus Integration ──────────────────────────────────────────────
+    -- ── Integrations ──────────────────────────────────────────────────────
 
-    MDMSettingsUI._addSection(layout, "UsedPlus Integration")
+    MDMSettingsUI._addSection(layout, "Integrations")
 
-    -- Only functional when FS25_UsedPlus is installed.
-    -- Links futures contract settlements to the UsedPlus credit score system.
-    _elem.upMode = MDMSettingsUI._addBinary(
-        layout, "onMDMUPModeChanged",
-        "Use UsedPlus",
-        "Requires FS25_UsedPlus. Futures contracts affect your credit score and penalty rates."
-    )
-
-    -- ── BetterContracts Integration ───────────────────────────────────────
-
-    MDMSettingsUI._addSection(layout, "BetterContracts Integration")
-
-    -- Only functional when FS25_BetterContracts is installed.
-    -- Enables supply-spike reactions and suppresses the MDM futures UI.
+    -- Requires FS25_BetterContracts. Enables supply-spike reactions and
+    -- suppresses the MDM futures UI in favour of BC's contract system.
     _elem.bcMode = MDMSettingsUI._addBinary(
         layout, "onMDMBCModeChanged",
-        "Use BetterContracts",
+        "BetterContracts",
         "Requires FS25_BetterContracts. Links market reactions to BC contract completions."
+    )
+
+    -- Requires FS25_UsedPlus. Links futures contract settlements to the
+    -- UsedPlus credit score system — fulfil contracts to build credit,
+    -- default to hurt it. Credit score scales your penalty rate.
+    _elem.upMode = MDMSettingsUI._addBinary(
+        layout, "onMDMUPModeChanged",
+        "UsedPlus",
+        "Requires FS25_UsedPlus. Futures contracts affect your credit score and penalty rates."
     )
 
     -- ── Debug ─────────────────────────────────────────────────────────────
