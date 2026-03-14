@@ -113,9 +113,21 @@ gui/
   textures/              ← HUD graphics
 ```
 
-Add your Lua files to `main.lua` source order. GUI files should be sourced after all
-`src/` files but can be before or after `src/MarketDynamics.lua` — the hook is set
-at runtime, not at source time.
+**⚠️ IMPORTANT — FS25 does NOT auto-source `main.lua`.** Only files listed in
+`extraSourceFiles` inside `modDesc.xml` are loaded by the engine.
+
+Add your GUI Lua files to `modDesc.xml` extraSourceFiles **after** all `src/` entries:
+
+```xml
+<!-- GUI (LeGrizzly / dev-2) — loaded after all core src/ files -->
+<sourceFile filename="gui/MyHud.lua" />
+```
+
+GUI files must come after `src/MarketDynamics.lua` in load order — the coordinator
+must exist before any GUI file tries to query it at source time. The `g_MDMHud` hook
+itself is set at runtime so that constraint is relaxed, but it's safest to load last.
+
+Coordinate with tison before pushing `modDesc.xml` changes to avoid merge conflicts.
 
 ---
 
