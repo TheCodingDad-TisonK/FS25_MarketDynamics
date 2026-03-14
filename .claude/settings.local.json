@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(fs25-issues)",
+      "Skill(fs25-deploy)",
+      "Skill(fs25-log)",
+      "Bash(cd:*)",
+      "Bash(gh issue:*)",
+      "Bash(gh search:*)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:api.github.com)",
+      "Bash(find:*)",
+      "Bash(curl:*)"
+    ]
+  }
+}

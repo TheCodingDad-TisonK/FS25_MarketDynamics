@@ -82,7 +82,7 @@ function MarketSerializer:load(coordinator)
     local path = SAVE_PATH_TEMPLATE:format(g_currentMission.missionInfo.savegameDirectory .. "/")
     local xmlFile = loadXMLFile("MDMLoad", path)
 
-    if not xmlFile then
+    if not xmlFile or xmlFile == 0 then
         MDMLog.info("MarketSerializer: no save file found — starting fresh")
         return
     end
