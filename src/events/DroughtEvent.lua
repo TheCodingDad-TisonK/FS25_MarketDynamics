@@ -43,12 +43,14 @@ end
 -- Deferred registration (coordinator may not exist yet at source() time)
 MarketDynamics.pendingEventRegistrations = MarketDynamics.pendingEventRegistrations or {}
 table.insert(MarketDynamics.pendingEventRegistrations, {
-    id           = EVENT_ID,
-    name         = "Regional Drought",
-    probability  = 0.08,   -- ~8% chance per check interval
-    minIntensity = 0.2,
-    maxIntensity = 1.0,
-    cooldownMs   = 30 * 60 * 1000,
-    onFire       = onFire,
-    onExpire     = onExpire,
+    id             = EVENT_ID,
+    name           = "Regional Drought",
+    probability    = 0.08,
+    minIntensity   = 0.2,
+    maxIntensity   = 1.0,
+    cooldownMs     = 30 * 60 * 1000,
+    minDurationMs  = 10 * 60 * 1000,   -- 10–20 in-game minutes
+    maxDurationMs  = 20 * 60 * 1000,
+    onFire         = onFire,
+    onExpire       = onExpire,
 })

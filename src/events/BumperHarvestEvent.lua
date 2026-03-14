@@ -41,12 +41,14 @@ end
 
 MarketDynamics.pendingEventRegistrations = MarketDynamics.pendingEventRegistrations or {}
 table.insert(MarketDynamics.pendingEventRegistrations, {
-    id           = EVENT_ID,
-    name         = "Bumper Harvest",
-    probability  = 0.10,
-    minIntensity = 0.2,
-    maxIntensity = 1.0,
-    cooldownMs   = 25 * 60 * 1000,
-    onFire       = onFire,
-    onExpire     = onExpire,
+    id             = EVENT_ID,
+    name           = "Bumper Harvest",
+    probability    = 0.10,
+    minIntensity   = 0.2,
+    maxIntensity   = 1.0,
+    cooldownMs     = 25 * 60 * 1000,
+    minDurationMs  = 8  * 60 * 1000,   -- 8–15 in-game minutes
+    maxDurationMs  = 15 * 60 * 1000,
+    onFire         = onFire,
+    onExpire       = onExpire,
 })

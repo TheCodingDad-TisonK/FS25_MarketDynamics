@@ -116,9 +116,7 @@ function FuturesMarket:_defaultContract(id)
     local penalty       = unfulfilled * contract.lockedPrice * DEFAULT_PENALTY
 
     local net = partialPayout - penalty
-    if net > 0 then
-        g_currentMission:addMoney(net, contract.farmId, MoneyType.OTHER, true)
-    elseif net < 0 then
+    if net ~= 0 then
         g_currentMission:addMoney(net, contract.farmId, MoneyType.OTHER, true)
     end
 

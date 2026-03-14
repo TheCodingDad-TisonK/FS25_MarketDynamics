@@ -87,7 +87,9 @@ end
 
 function WorldEventSystem:_fireEvent(event, now)
     local intensity = event.minIntensity + math.random() * (event.maxIntensity - event.minIntensity)
-    local duration  = (5 + math.random() * 10) * 60 * 1000  -- 5–15 in-game minutes
+    local minDur    = event.minDurationMs or (5  * 60 * 1000)
+    local maxDur    = event.maxDurationMs or (15 * 60 * 1000)
+    local duration  = minDur + math.random() * (maxDur - minDur)
 
     event.lastFiredAt = now
     self.active[event.id] = { event = event, endsAt = now + duration, intensity = intensity }

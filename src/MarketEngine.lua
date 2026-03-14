@@ -8,7 +8,7 @@
 --
 --   base            — vanilla sell price, snapshotted at init
 --   volatilityFactor— running intraday + daily drift [0.50, 2.00]
---   modifiers       — event modifier stack, each { id, factor, durationMs, remaining }
+--   modifiers       — event modifier stack, each { id, factor } — expired via onExpire callback
 --   current         — effective price returned to the game via PriceHook
 --   history         — last HISTORY_MAX_ENTRIES daily price samples { price, time }
 --
@@ -96,12 +96,12 @@ function MarketEngine:update(dt)
 end
 
 -- Apply a named modifier to a fillType price (called from world event onFire)
--- modifier = { id, fillTypeIndex, factor, durationMs }
+-- modifier = { id, fillTypeIndex, factor }
+-- Expiry is handled by WorldEventSystem calling onExpire → removeModifierById.
 function MarketEngine:addModifier(modifier)
     local entry = self.prices[modifier.fillTypeIndex]
     if not entry then return end
 
-    modifier.remaining = modifier.durationMs
     table.insert(entry.modifiers, modifier)
     self:_recalculate(modifier.fillTypeIndex)
 end
