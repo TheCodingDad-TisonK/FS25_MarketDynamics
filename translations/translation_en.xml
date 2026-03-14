@@ -22,4 +22,7 @@
     <text name="mdm_futures_delivery_label"  text="Delivery" />
     <text name="mdm_futures_locked_label"    text="Locked Price" />
     <text name="mdm_futures_quantity_label"  text="Quantity (L)" />
+
+    <!-- Settings -->
+    <text name="ui_settingsCategoryGeneral"   text="Market Dynamics" />
 </l10n>
