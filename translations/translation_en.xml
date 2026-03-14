@@ -23,6 +23,7 @@
     <text name="mdm_futures_locked_label"    text="Locked Price" />
     <text name="mdm_futures_quantity_label"  text="Quantity (L)" />
 
-    <!-- Settings -->
-    <text name="mdm_settings_mdm_general"  text="Market Dynamics" />
+    <!-- Settings — "global_" prefix uplifts this key into the real g_i18n so
+         vanilla updateSubCategoryPages can resolve it for the header title. -->
+    <text name="global_mdm_settings_mdm_general"  text="Market Dynamics" />
 </l10n>

@@ -40,6 +40,7 @@ function MarketDynamics:onMissionLoaded(mission)
     self:_registerDefaultEvents()
     self.isActive = true
     BCIntegration.init(self.marketEngine)
+    _mdmUpliftL10n()
     MDMSettingsUI.initGui(self.modDir)
     MDMAdminCommands_register()
     MDMLog.info("MarketDynamics: mission loaded, system active")
@@ -98,6 +99,27 @@ function MarketDynamics:_registerDefaultEvents()
         end
         MDM_pendingRegistrations = nil
     end
+end
+
+-- ---------------------------------------------------------------------------
+-- L10n uplift
+-- FS25 sandboxes each mod's g_i18n. Vanilla GUI code (e.g. updateSubCategoryPages)
+-- looks up header title keys in the REAL global g_i18n, so our keys are invisible
+-- to it by default. Escape the sandbox via getmetatable(_G).__index and register
+-- any translation key prefixed with "global_" into the real g_i18n (without the prefix).
+-- ---------------------------------------------------------------------------
+
+local function _mdmUpliftL10n()
+    local gEnv = getmetatable(_G).__index
+    if not gEnv or not gEnv.g_i18n then return end
+    local count = 0
+    for name, value in pairs(g_i18n.texts) do
+        if string.startsWith(name, "global_") then
+            gEnv.g_i18n:setText(name:sub(8), value)
+            count = count + 1
+        end
+    end
+    MDMLog.info("MarketDynamics: uplifted " .. count .. " l10n key(s) to global g_i18n")
 end
 
 -- ---------------------------------------------------------------------------
