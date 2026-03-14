@@ -40,15 +40,18 @@ local function onExpire(intensity)
     end
 end
 
--- Deferred registration (coordinator may not exist yet at source() time)
-MarketDynamics.pendingEventRegistrations = MarketDynamics.pendingEventRegistrations or {}
-table.insert(MarketDynamics.pendingEventRegistrations, {
-    id           = EVENT_ID,
-    name         = "Regional Drought",
-    probability  = 0.08,   -- ~8% chance per check interval
-    minIntensity = 0.2,
-    maxIntensity = 1.0,
-    cooldownMs   = 30 * 60 * 1000,
-    onFire       = onFire,
-    onExpire     = onExpire,
+-- Deferred registration — MDM_pendingRegistrations is a standalone global so this works
+-- before MarketDynamics.lua is sourced. Coordinator drains it in _registerDefaultEvents().
+MDM_pendingRegistrations = MDM_pendingRegistrations or {}
+table.insert(MDM_pendingRegistrations, {
+    id             = EVENT_ID,
+    name           = "Regional Drought",
+    probability    = 0.08,
+    minIntensity   = 0.2,
+    maxIntensity   = 1.0,
+    cooldownMs     = 30 * 60 * 1000,
+    minDurationMs  = 10 * 60 * 1000,   -- 10–20 in-game minutes
+    maxDurationMs  = 20 * 60 * 1000,
+    onFire         = onFire,
+    onExpire       = onExpire,
 })

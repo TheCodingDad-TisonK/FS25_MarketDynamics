@@ -1,24 +1,25 @@
 -- Logger.lua — [MDM] prefixed log helper
+-- Uses Logging.info/warning/error so output appears in log.txt
 
 MDMLog = {}
 
 local PREFIX = "[MDM] "
 
 function MDMLog.info(msg)
-    print(PREFIX .. tostring(msg))
+    Logging.info(PREFIX .. tostring(msg))
 end
 
 function MDMLog.warn(msg)
-    print(PREFIX .. "WARN: " .. tostring(msg))
+    Logging.warning(PREFIX .. tostring(msg))
 end
 
 function MDMLog.error(msg)
-    print(PREFIX .. "ERROR: " .. tostring(msg))
+    Logging.error(PREFIX .. tostring(msg))
 end
 
 function MDMLog.debug(msg)
     if MDMLog.debugEnabled then
-        print(PREFIX .. "DEBUG: " .. tostring(msg))
+        Logging.info(PREFIX .. "DEBUG: " .. tostring(msg))
     end
 end
 

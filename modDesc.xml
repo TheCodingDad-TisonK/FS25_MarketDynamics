@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<modDesc descVersion="84">
+<modDesc descVersion="106">
     <author>TheCodingDad (tison) &amp; LeGrizzly</author>
     <version>0.1.0.0</version>
     <title>
@@ -22,6 +22,8 @@
         <sourceFile filename="src/WorldEventSystem.lua" />
         <sourceFile filename="src/FuturesMarket.lua" />
         <sourceFile filename="src/MarketSerializer.lua" />
+        <sourceFile filename="src/PriceHook.lua" />
+        <sourceFile filename="src/AdminCommands.lua" />
 
         <!-- 3. Events -->
         <sourceFile filename="src/events/DroughtEvent.lua" />

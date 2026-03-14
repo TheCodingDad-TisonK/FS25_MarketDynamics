@@ -2,6 +2,9 @@
 -- Central coordinator. Owns all subsystems, drives the update loop.
 -- Global reference: g_MarketDynamics
 --
+-- NOTE: Lifecycle hooks are installed at the BOTTOM of this file (at source time),
+-- because FS25 only sources files listed in extraSourceFiles — main.lua is ignored.
+--
 -- Author: tison (dev-1)
 
 MarketDynamics = {}
@@ -29,6 +32,7 @@ function MarketDynamics:onMissionLoaded(mission)
     self.marketEngine:init()
     self:_registerDefaultEvents()
     self.isActive = true
+    MDMAdminCommands_register()
     MDMLog.info("MarketDynamics: mission loaded, system active")
 end
 
@@ -62,6 +66,7 @@ end
 
 function MarketDynamics:delete()
     self.isActive = false
+    MDMAdminCommands_remove()
     MDMLog.info("MarketDynamics: deleted")
 end
 
@@ -74,11 +79,66 @@ function MarketDynamics:_registerDefaultEvents()
     -- Each event file calls WorldEventSystem:registerEvent on g_MarketDynamics.worldEvents
     -- Registration happens in events/*.lua after this coordinator is created
 
-    -- Trigger deferred registrations (set by event files at source() time)
-    if MarketDynamics.pendingEventRegistrations then
-        for _, reg in ipairs(MarketDynamics.pendingEventRegistrations) do
+    -- Drain deferred registrations pushed by event files at source() time.
+    -- Uses MDM_pendingRegistrations (standalone global) because MarketDynamics
+    -- didn't exist yet when those files were sourced.
+    if MDM_pendingRegistrations then
+        for _, reg in ipairs(MDM_pendingRegistrations) do
             self.worldEvents:registerEvent(reg)
         end
-        MarketDynamics.pendingEventRegistrations = nil
+        MDM_pendingRegistrations = nil
     end
 end
+
+-- ---------------------------------------------------------------------------
+-- Lifecycle hook installation
+-- Captured at source() time — FS25 does NOT auto-source main.lua.
+-- Only extraSourceFiles entries are loaded; hooks must be installed here.
+-- ---------------------------------------------------------------------------
+
+local _mdmModDir  = g_currentModDirectory
+local _mdmModName = g_currentModName
+local _mdm        = nil
+
+local function _mdmOnLoad(mission)
+    _mdm = MarketDynamics.new(_mdmModDir, _mdmModName)
+    getfenv(0)["g_MarketDynamics"] = _mdm
+end
+
+local function _mdmOnLoadFinished(mission)
+    if _mdm then _mdm:onMissionLoaded(mission) end
+end
+
+local function _mdmOnStartMission(mission)
+    if _mdm then _mdm:onStartMission(mission) end
+end
+
+local function _mdmOnUpdate(mission, dt)
+    if _mdm then _mdm:update(dt) end
+end
+
+local function _mdmOnDraw(mission)
+    if _mdm then _mdm:draw() end
+end
+
+local function _mdmOnSave(mission, xmlFile)
+    if _mdm then _mdm:save(xmlFile) end
+end
+
+local function _mdmOnDelete(mission)
+    if _mdm then
+        _mdm:delete()
+        _mdm = nil
+        getfenv(0)["g_MarketDynamics"] = nil
+    end
+end
+
+Mission00.load                    = Utils.prependedFunction(Mission00.load,                   _mdmOnLoad)
+Mission00.loadMission00Finished   = Utils.appendedFunction(Mission00.loadMission00Finished,   _mdmOnLoadFinished)
+Mission00.onStartMission          = Utils.appendedFunction(Mission00.onStartMission,          _mdmOnStartMission)
+FSBaseMission.update              = Utils.appendedFunction(FSBaseMission.update,              _mdmOnUpdate)
+FSBaseMission.draw                = Utils.appendedFunction(FSBaseMission.draw,                _mdmOnDraw)
+FSCareerMissionInfo.saveToXMLFile = Utils.appendedFunction(FSCareerMissionInfo.saveToXMLFile, _mdmOnSave)
+FSBaseMission.delete              = Utils.appendedFunction(FSBaseMission.delete,              _mdmOnDelete)
+
+MDMLog.info("MarketDynamics: lifecycle hooks installed")

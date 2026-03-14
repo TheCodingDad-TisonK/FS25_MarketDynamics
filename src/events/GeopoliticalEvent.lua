@@ -58,14 +58,16 @@ local function onExpire(intensity)
     end
 end
 
-MarketDynamics.pendingEventRegistrations = MarketDynamics.pendingEventRegistrations or {}
-table.insert(MarketDynamics.pendingEventRegistrations, {
-    id           = EVENT_ID,
-    name         = "Geopolitical Crisis",
-    probability  = 0.04,
-    minIntensity = 0.4,
-    maxIntensity = 1.0,
-    cooldownMs   = 60 * 60 * 1000,
-    onFire       = onFire,
-    onExpire     = onExpire,
+MDM_pendingRegistrations = MDM_pendingRegistrations or {}
+table.insert(MDM_pendingRegistrations, {
+    id             = EVENT_ID,
+    name           = "Geopolitical Crisis",
+    probability    = 0.04,
+    minIntensity   = 0.4,
+    maxIntensity   = 1.0,
+    cooldownMs     = 60 * 60 * 1000,
+    minDurationMs  = 15 * 60 * 1000,   -- 15–25 in-game minutes
+    maxDurationMs  = 25 * 60 * 1000,
+    onFire         = onFire,
+    onExpire       = onExpire,
 })
