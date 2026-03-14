@@ -66,6 +66,45 @@ function WorldEventSystem:getActiveEvents()
     return result
 end
 
+-- Force-fire a registered event at a given intensity (0-1). For admin/testing only.
+-- Returns true on success, false + reason string on failure.
+function WorldEventSystem:forceFireEvent(id, intensity)
+    local event = self.registry[id]
+    if not event then
+        return false, "unknown event id '" .. tostring(id) .. "'"
+    end
+    if self.active[id] then
+        return false, "event '" .. id .. "' is already active"
+    end
+
+    intensity = math.max(0, math.min(1, intensity or 1.0))
+    local now = g_currentMission and g_currentMission.time or 0
+
+    local minDur = event.minDurationMs or (5  * 60 * 1000)
+    local maxDur = event.maxDurationMs or (15 * 60 * 1000)
+    local duration = minDur + math.random() * (maxDur - minDur)
+
+    event.lastFiredAt = now
+    self.active[id] = { event = event, endsAt = now + duration, intensity = intensity }
+
+    MDMLog.info("WorldEventSystem: FORCED '" .. id .. "' intensity=" .. string.format("%.2f", intensity))
+
+    if event.onFire then
+        event.onFire(intensity)
+    end
+
+    return true, nil
+end
+
+-- Force-expire an active event immediately. For admin/testing only.
+function WorldEventSystem:forceExpireEvent(id)
+    if not self.active[id] then
+        return false, "event '" .. tostring(id) .. "' is not active"
+    end
+    self:_expireEvent(id)
+    return true, nil
+end
+
 -- ---------------------------------------------------------------------------
 -- Private
 -- ---------------------------------------------------------------------------

@@ -29,6 +29,7 @@ function MarketDynamics:onMissionLoaded(mission)
     self.marketEngine:init()
     self:_registerDefaultEvents()
     self.isActive = true
+    MDMAdminCommands_register()
     MDMLog.info("MarketDynamics: mission loaded, system active")
 end
 
@@ -62,6 +63,7 @@ end
 
 function MarketDynamics:delete()
     self.isActive = false
+    MDMAdminCommands_remove()
     MDMLog.info("MarketDynamics: deleted")
 end
 

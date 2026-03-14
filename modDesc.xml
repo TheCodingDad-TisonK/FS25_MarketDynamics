@@ -23,6 +23,7 @@
         <sourceFile filename="src/FuturesMarket.lua" />
         <sourceFile filename="src/MarketSerializer.lua" />
         <sourceFile filename="src/PriceHook.lua" />
+        <sourceFile filename="src/AdminCommands.lua" />
 
         <!-- 3. Events -->
         <sourceFile filename="src/events/DroughtEvent.lua" />

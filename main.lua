@@ -25,6 +25,9 @@ source(modDirectory .. "src/MarketSerializer.lua")
 -- Price hook (installed at source-time, dormant until isActive=true)
 source(modDirectory .. "src/PriceHook.lua")
 
+-- Admin/debug console commands
+source(modDirectory .. "src/AdminCommands.lua")
+
 -- Events
 source(modDirectory .. "src/events/DroughtEvent.lua")
 source(modDirectory .. "src/events/BumperHarvestEvent.lua")
