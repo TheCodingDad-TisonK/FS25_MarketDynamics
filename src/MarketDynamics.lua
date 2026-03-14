@@ -40,6 +40,7 @@ function MarketDynamics:onMissionLoaded(mission)
     self:_registerDefaultEvents()
     self.isActive = true
     BCIntegration.init(self.marketEngine)
+    MDMSettingsUI.initGui(self.modDir)
     MDMAdminCommands_register()
     MDMLog.info("MarketDynamics: mission loaded, system active")
 end

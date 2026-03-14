@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<!--
+    MDM Settings Page
+    Loaded via g_gui:loadGui() — registered as a tab in InGameMenuSettingsFrame.
+    Controller: MDMSettingsUI (src/gui/SettingsUI.lua)
+
+    id="mdmTab"         — the tab button inserted into subCategoryBox
+    id="mdmPage"        — the page container inserted into subCategoryPages
+    id="settingsLayout" — the ScrollingLayout we fill programmatically
+-->
+<GUI name="MDMSettings">
+    <GuiElement profile="fs25_menuContainer">
+
+        <!-- Tab button — appears in the settings navigation bar -->
+        <BoxLayout profile="fs25_subCategorySelectorTabbedBox">
+            <Button profile="fs25_subCategorySelectorTabbedTab"
+                    id="mdmTab"
+                    text="Market Dynamics"
+                    onClick="onClickMDM"
+                    textUpperCase="false">
+                <ThreePartBitmap profile="fs25_subCategorySelectorTabbedTabBg" name="background"/>
+            </Button>
+        </BoxLayout>
+
+        <!-- Page container — shown when our tab is selected -->
+        <GuiElement profile="fs25_subCategorySelectorTabbedContainer" id="mdmPage">
+
+            <!-- Settings content is added here programmatically by SettingsUI.lua -->
+            <ScrollingLayout profile="fs25_settingsLayout" id="settingsLayout"/>
+
+            <!-- Separator at the bottom (matches vanilla style) -->
+            <Bitmap profile="fs25_settingsTooltipSeparator" id="mdmSeparator"/>
+
+        </GuiElement>
+
+    </GuiElement>
+</GUI>
