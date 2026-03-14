@@ -163,8 +163,8 @@ function MDMSettingsUI._insertTab()
     InGameMenuSettingsFrame.SUB_CATEGORY = InGameMenuSettingsFrame.SUB_CATEGORY or {}
     InGameMenuSettingsFrame.SUB_CATEGORY.MARKET_DYNAMICS = pos
     if InGameMenuSettingsFrame.HEADER_TITLES then
-        -- Placeholder key — immediately overridden by the appendedFunction below
-        InGameMenuSettingsFrame.HEADER_TITLES[pos] = "ui_settingsCategoryGeneral"
+        -- Our own key. appendedFunction below overrides via setText() as fallback.
+        InGameMenuSettingsFrame.HEADER_TITLES[pos] = "mdm_settingsCategoryGeneral"
     end
     if InGameMenuSettingsFrame.HEADER_SLICES then
         -- Borrow the Game Settings icon (index 1) — a safe, guaranteed-valid slice
