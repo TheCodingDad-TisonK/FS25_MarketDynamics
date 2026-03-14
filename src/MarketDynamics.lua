@@ -41,6 +41,7 @@ function MarketDynamics:onMissionLoaded(mission)
     self.isActive = true
     BCIntegration.init(self.marketEngine)
     MDMSettingsUI.initGui(self.modDir)
+    self._debugHud = MDMDebugHUD.new()  -- TEMP: remove when LeGrizzly's GUI lands
     MDMAdminCommands_register()
     MDMLog.info("MarketDynamics: mission loaded, system active")
 end
@@ -76,6 +77,8 @@ end
 
 function MarketDynamics:delete()
     self.isActive = false
+    g_MDMHud = nil  -- TEMP: clear debug HUD ref
+    self._debugHud = nil
     MDMAdminCommands_remove()
     MDMLog.info("MarketDynamics: deleted")
 end

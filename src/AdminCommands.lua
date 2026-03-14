@@ -163,6 +163,21 @@ local function cmdBCMode(self, arg)
     end
 end
 
+local function cmdHud()
+    if not g_MarketDynamics or not g_MarketDynamics.isActive then
+        print("[MDM] System not active")
+        return
+    end
+
+    if g_MDMHud then
+        g_MDMHud = nil
+        print("[MDM] Debug HUD: OFF")
+    else
+        g_MDMHud = g_MarketDynamics._debugHud
+        print("[MDM] Debug HUD: ON")
+    end
+end
+
 -- ---------------------------------------------------------------------------
 -- Registration — called from MarketDynamics lifecycle
 -- ---------------------------------------------------------------------------
@@ -174,6 +189,7 @@ function MDMAdminCommands_register()
     addConsoleCommand("mdmPrice",   "MDM: show price for a crop (arg: cropName)",       "cmdMdmPrice",   g_MarketDynamics)
     addConsoleCommand("mdmEvents",  "MDM: list all registered events and status",       "cmdMdmEvents",  g_MarketDynamics)
     addConsoleCommand("mdmBCMode",  "MDM: toggle BetterContracts integration (on/off)", "cmdMdmBCMode",  g_MarketDynamics)
+    addConsoleCommand("mdmHud",     "MDM: toggle debug HUD overlay (TEMP)",             "cmdMdmHud",     g_MarketDynamics)
 
     -- Attach handlers to the coordinator instance so the console can find them
     g_MarketDynamics.cmdMdmStatus  = cmdStatus
@@ -182,8 +198,9 @@ function MDMAdminCommands_register()
     g_MarketDynamics.cmdMdmPrice   = cmdPrice
     g_MarketDynamics.cmdMdmEvents  = cmdEvents
     g_MarketDynamics.cmdMdmBCMode  = cmdBCMode
+    g_MarketDynamics.cmdMdmHud     = cmdHud
 
-    MDMLog.info("AdminCommands: registered 6 console commands (mdmStatus / mdmEvent / mdmExpire / mdmPrice / mdmEvents / mdmBCMode)")
+    MDMLog.info("AdminCommands: registered 7 console commands (mdmStatus / mdmEvent / mdmExpire / mdmPrice / mdmEvents / mdmBCMode / mdmHud)")
 end
 
 function MDMAdminCommands_remove()
@@ -193,4 +210,5 @@ function MDMAdminCommands_remove()
     removeConsoleCommand("mdmPrice")
     removeConsoleCommand("mdmEvents")
     removeConsoleCommand("mdmBCMode")
+    removeConsoleCommand("mdmHud")
 end
