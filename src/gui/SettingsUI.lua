@@ -44,6 +44,11 @@ function MDMSettingsUI:onClickMDM()
     local ps = g_inGameMenu and g_inGameMenu.pageSettings
     if not ps or not MDMSettingsUI.modPageNr then return end
     ps.subCategoryPaging:setState(MDMSettingsUI.modPageNr, true)
+    -- Set header text directly after setState — vanilla updateSubCategoryPages
+    -- runs inside setState and may show a missing-key error; this overrides it.
+    if ps.categoryHeaderText then
+        ps.categoryHeaderText:setText("Market Dynamics")
+    end
 end
 
 -- ---------------------------------------------------------------------------
@@ -157,30 +162,17 @@ function MDMSettingsUI._insertTab()
     MDMSettingsUI._addSettingsElements()
 
     -- Register header icon/title.
-    -- We use the Game Settings icon (state 1) as our placeholder since its slice
-    -- name is guaranteed valid. The paging callback below overrides the title text
-    -- directly (avoids l10n key dependency on vanilla g_i18n).
+    -- onClickMDM (above) also calls categoryHeaderText:setText() directly after
+    -- setState, which is the reliable override for l10n lookup failures.
     InGameMenuSettingsFrame.SUB_CATEGORY = InGameMenuSettingsFrame.SUB_CATEGORY or {}
     InGameMenuSettingsFrame.SUB_CATEGORY.MARKET_DYNAMICS = pos
     if InGameMenuSettingsFrame.HEADER_TITLES then
-        -- Our own key. appendedFunction below overrides via setText() as fallback.
-        InGameMenuSettingsFrame.HEADER_TITLES[pos] = "mdm_settingsCategoryGeneral"
+        InGameMenuSettingsFrame.HEADER_TITLES[pos] = "mdm_settings_mdm_general"
     end
     if InGameMenuSettingsFrame.HEADER_SLICES then
         -- Borrow the Game Settings icon (index 1) — a safe, guaranteed-valid slice
         InGameMenuSettingsFrame.HEADER_SLICES[pos] = InGameMenuSettingsFrame.HEADER_SLICES[1]
     end
-
-    -- Override the header text directly when our tab is selected, bypassing l10n.
-    -- self = InGameMenuSettingsFrame instance (same pattern as BetterContracts).
-    ps.subCategoryPaging.onClickCallback = Utils.appendedFunction(
-        ps.subCategoryPaging.onClickCallback,
-        function(self, state)
-            if state == MDMSettingsUI.modPageNr and self.categoryHeaderText then
-                self.categoryHeaderText:setText("Market Dynamics")
-            end
-        end
-    )
 
     -- Update FocusManager so keyboard/controller navigation finds our elements
     local currentGui = FocusManager.currentGui
@@ -265,6 +257,13 @@ function MDMSettingsUI._updateSettingsUI()
     local ps = g_inGameMenu and g_inGameMenu.pageSettings
     if ps and MDMSettingsUI.settingsLayout then
         ps:updateAlternatingElements(MDMSettingsUI.settingsLayout)
+    end
+
+    -- Fix header title if the MDM tab is already active when the frame opens.
+    if ps and ps.categoryHeaderText and ps.subCategoryPaging then
+        if ps.subCategoryPaging:getState() == MDMSettingsUI.modPageNr then
+            ps.categoryHeaderText:setText("Market Dynamics")
+        end
     end
 
     if _elem.pricesEnabled then
