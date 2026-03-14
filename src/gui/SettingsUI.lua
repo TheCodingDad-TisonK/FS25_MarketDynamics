@@ -46,7 +46,6 @@ function MDMSettingsUI:onClickMDM()
     ps.subCategoryPaging:setState(MDMSettingsUI.modPageNr, true)
     -- Set header text directly after setState — vanilla updateSubCategoryPages
     -- runs inside setState and may show a missing-key error; this overrides it.
-    MDMLog.info("SettingsUI: onClickMDM categoryHeaderText=" .. tostring(ps.categoryHeaderText))
     if ps.categoryHeaderText then
         ps.categoryHeaderText:setText("Market Dynamics")
     end
@@ -175,17 +174,14 @@ function MDMSettingsUI._insertTab()
         InGameMenuSettingsFrame.HEADER_SLICES[pos] = InGameMenuSettingsFrame.HEADER_SLICES[1]
     end
 
-    -- Hook paging callback to fix header via global reference (covers nav-arrow navigation
-    -- which doesn't go through onClickMDM). Uses global g_inGameMenu rather than 'self'
-    -- argument so we bypass any target-passing ambiguity.
-    ps.subCategoryPaging.onClickCallback = Utils.appendedFunction(
-        ps.subCategoryPaging.onClickCallback,
-        function(_, state)
-            if state ~= MDMSettingsUI.modPageNr then return end
-            local pageSettings = g_inGameMenu and g_inGameMenu.pageSettings
-            MDMLog.info("SettingsUI: paging callback state=" .. tostring(state) .. " headerText=" .. tostring(pageSettings and pageSettings.categoryHeaderText))
-            if pageSettings and pageSettings.categoryHeaderText then
-                pageSettings.categoryHeaderText:setText("Market Dynamics")
+    -- Patch InGameMenuSettingsFrame.updateSubCategoryPages (the class method) so that
+    -- Q/E keyboard navigation (which calls this method directly, bypassing the paging
+    -- instance callback) also gets the correct header text for our tab.
+    InGameMenuSettingsFrame.updateSubCategoryPages = Utils.appendedFunction(
+        InGameMenuSettingsFrame.updateSubCategoryPages,
+        function(self, state)
+            if state == MDMSettingsUI.modPageNr and self.categoryHeaderText then
+                self.categoryHeaderText:setText("Market Dynamics")
             end
         end
     )
