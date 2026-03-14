@@ -39,6 +39,11 @@ function MarketEngine.new()
     self.intradayTimer = 0
     self.dailyTimer    = 0
 
+    -- Scales both intraday and daily drift magnitudes.
+    -- 0.5 = Low, 1.0 = Normal (default), 1.5 = High, 2.0 = Extreme.
+    -- Written directly by SettingsUI; serialized by MarketSerializer.
+    self.volatilityScale = 1.0
+
     MDMLog.info("MarketEngine initialized")
     return self
 end
@@ -150,8 +155,9 @@ end
 -- Small random walk on volatilityFactor — ±2% per in-game minute.
 -- Recalculates current price for every tracked fillType.
 function MarketEngine:_applyIntradayVolatility()
+    local magnitude = INTRADAY_MAGNITUDE * (self.volatilityScale or 1.0)
     for fillTypeIndex, entry in pairs(self.prices) do
-        local delta    = (math.random() * 2 - 1) * INTRADAY_MAGNITUDE
+        local delta    = (math.random() * 2 - 1) * magnitude
         local newFactor = entry.volatilityFactor * (1 + delta)
         entry.volatilityFactor = math.max(VOLATILITY_MIN, math.min(VOLATILITY_MAX, newFactor))
         self:_recalculate(fillTypeIndex)
@@ -163,12 +169,13 @@ end
 function MarketEngine:_applyDailyShift()
     local now = g_currentMission and g_currentMission.time or 0
 
+    local dailyMagnitude = DAILY_MAGNITUDE * (self.volatilityScale or 1.0)
     for fillTypeIndex, entry in pairs(self.prices) do
         local vf        = entry.volatilityFactor
         -- Mean-reversion: pull vf back toward neutral (1.0) by MEAN_REVERSION_RATE fraction
         local reversion = (1.0 - vf) * MEAN_REVERSION_RATE
         -- Random daily trend
-        local trend     = (math.random() * 2 - 1) * DAILY_MAGNITUDE
+        local trend     = (math.random() * 2 - 1) * dailyMagnitude
         local newFactor = vf + reversion + trend
         entry.volatilityFactor = math.max(VOLATILITY_MIN, math.min(VOLATILITY_MAX, newFactor))
         self:_recalculate(fillTypeIndex)

@@ -32,6 +32,11 @@ if EconomyManager and EconomyManager.getPricePerLiter then
             return price
         end
 
+        -- Respect the "Dynamic Prices" setting (ESC > Settings > General)
+        if g_MarketDynamics.settings and not g_MarketDynamics.settings.pricesEnabled then
+            return price
+        end
+
         local mdmPrice = g_MarketDynamics.marketEngine:getPrice(fillTypeIndex)
         if mdmPrice and mdmPrice > 0 then
             return mdmPrice

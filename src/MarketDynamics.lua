@@ -17,6 +17,13 @@ function MarketDynamics.new(modDir, modName)
     self.modName  = modName
     self.isActive = false
 
+    -- Player-configurable settings (persisted by MarketSerializer, edited via SettingsUI)
+    -- Add new settings here and wire them in MarketSerializer + SettingsUI.
+    self.settings = {
+        pricesEnabled = true,   -- When false, PriceHook passes through to vanilla prices
+        debugMode     = false,  -- MDMLog.debugEnabled mirror (also set directly on MDMLog)
+    }
+
     -- Subsystems
     self.marketEngine  = MarketEngine.new()
     self.worldEvents   = WorldEventSystem.new()
@@ -32,6 +39,7 @@ function MarketDynamics:onMissionLoaded(mission)
     self.marketEngine:init()
     self:_registerDefaultEvents()
     self.isActive = true
+    BCIntegration.init(self.marketEngine)
     MDMAdminCommands_register()
     MDMLog.info("MarketDynamics: mission loaded, system active")
 end
@@ -48,6 +56,7 @@ function MarketDynamics:update(dt)
     self.marketEngine:update(dt)
     self.worldEvents:update(dt)
     self.futuresMarket:checkExpiry()
+    BCIntegration.update()
 end
 
 function MarketDynamics:draw()
