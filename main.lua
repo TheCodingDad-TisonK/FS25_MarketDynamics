@@ -1,96 +1,14 @@
--- FS25_MarketDynamics / main.lua
--- Entry point. Loads all modules in dependency order, then hooks into the game lifecycle.
--- Log prefix: [MDM]  |  Global: g_MarketDynamics
---
--- Authors: TheCodingDad (tison) — core systems
---          LeGrizzly             — GUI systems
+# Build output
+*.zip
 
-local modDirectory = g_currentModDirectory
-local modName      = g_currentModName
+# OS
+.DS_Store
+Thumbs.db
 
--- ---------------------------------------------------------------------------
--- Source all modules
--- (Order mirrors modDesc.xml extraSourceFiles — do not reorder)
--- ---------------------------------------------------------------------------
+# Editor
+.vscode/
+*.swp
+*~
 
--- Utilities
-source(modDirectory .. "src/Logger.lua")
-
--- Core systems
-source(modDirectory .. "src/MarketEngine.lua")
-source(modDirectory .. "src/WorldEventSystem.lua")
-source(modDirectory .. "src/FuturesMarket.lua")
-source(modDirectory .. "src/MarketSerializer.lua")
-
--- Price hook (installed at source-time, dormant until isActive=true)
-source(modDirectory .. "src/PriceHook.lua")
-
--- Admin/debug console commands
-source(modDirectory .. "src/AdminCommands.lua")
-
--- Events
-source(modDirectory .. "src/events/DroughtEvent.lua")
-source(modDirectory .. "src/events/BumperHarvestEvent.lua")
-source(modDirectory .. "src/events/TradeDisruptionEvent.lua")
-source(modDirectory .. "src/events/GeopoliticalEvent.lua")
-
--- Coordinator (depends on everything above)
-source(modDirectory .. "src/MarketDynamics.lua")
-
--- ---------------------------------------------------------------------------
--- Lifecycle hooks
--- ---------------------------------------------------------------------------
-
-local mdm = nil  -- will hold the MarketDynamics instance
-
-local function onLoad(mission)
-    mdm = MarketDynamics.new(modDirectory, modName)
-    getfenv(0)["g_MarketDynamics"] = mdm
-end
-
-local function onLoadFinished(mission)
-    if mdm then
-        mdm:onMissionLoaded(mission)
-    end
-end
-
-local function onStartMission(mission)
-    if mdm then
-        mdm:onStartMission(mission)
-    end
-end
-
-local function onUpdate(mission, dt)
-    if mdm then
-        mdm:update(dt)
-    end
-end
-
-local function onDraw(mission)
-    if mdm then
-        mdm:draw()
-    end
-end
-
-local function onSave(mission, xmlFile)
-    if mdm then
-        mdm:save(xmlFile)
-    end
-end
-
-local function onDelete(mission)
-    if mdm then
-        mdm:delete()
-        mdm = nil
-        getfenv(0)["g_MarketDynamics"] = nil
-    end
-end
-
--- Attach to game hooks
-Mission00.load                  = Utils.prependedFunction(Mission00.load,                  onLoad)
-Mission00.loadMission00Finished = Utils.appendedFunction(Mission00.loadMission00Finished,  onLoadFinished)
-Mission00.onStartMission        = Utils.appendedFunction(Mission00.onStartMission,         onStartMission)
-FSBaseMission.update            = Utils.appendedFunction(FSBaseMission.update,             onUpdate)
-FSBaseMission.draw              = Utils.appendedFunction(FSBaseMission.draw,               onDraw)
-FSCareerMissionInfo.saveToXMLFile = Utils.appendedFunction(FSCareerMissionInfo.saveToXMLFile, onSave)
-FSBaseMission.delete            = Utils.appendedFunction(FSBaseMission.delete,             onDelete)
+# Logs
+*.log

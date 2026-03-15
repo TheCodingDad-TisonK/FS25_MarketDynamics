@@ -161,8 +161,8 @@ function BCIntegration._onMissionFinish(mission, finishState)
     local fillType = g_fillTypeManager:getFillTypeByIndex(fillTypeIndex)
     local name     = fillType and fillType.name or tostring(fillTypeIndex)
     MDMLog.info(string.format(
-        "BCIntegration: supply spike applied to %s (%.0f%% factor, expires in 1h)",
-        name, SUPPLY_SPIKE_FACTOR * 100))
+        "BCIntegration: supply spike applied to %s (-%d%% for 1h)",
+        name, math.floor((1 - SUPPLY_SPIKE_FACTOR) * 100)))
 
     -- Schedule removal after SUPPLY_SPIKE_DURATION
     table.insert(_pendingRemovals, {

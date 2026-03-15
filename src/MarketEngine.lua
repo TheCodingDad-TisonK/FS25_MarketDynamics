@@ -6,11 +6,21 @@
 -- Price model per fillType:
 --   current = base * volatilityFactor * product(eventModifiers)
 --
---   base            — vanilla sell price, snapshotted at init
---   volatilityFactor— running intraday + daily drift [0.50, 2.00]
---   modifiers       — event modifier stack, each { id, factor } — expired via onExpire callback
---   current         — effective price returned to the game via PriceHook
---   history         — last HISTORY_MAX_ENTRIES daily price samples { price, time }
+--   base             — vanilla sell price, snapshotted at init
+--   volatilityFactor — running intraday + daily drift, clamped to [0.50, 2.00]
+--   modifiers        — event modifier stack: { id, fillTypeIndex, factor }
+--                      added by WorldEvent.onFire, removed by WorldEvent.onExpire
+--   current          — effective price returned to the game via PriceHook
+--   history          — last HISTORY_MAX_ENTRIES daily price samples: { price, time }
+--
+-- Public API (called externally):
+--   init()                                 — snapshot base prices from economy
+--   update(dt)                             — advance intraday/daily timers
+--   addModifier(modifier)                  — push an event modifier onto the stack
+--   removeModifierById(fillTypeIndex, id)  — pop a modifier by id
+--   getPrice(fillTypeIndex)                — current effective price (or nil)
+--   getPriceHistory(fillTypeIndex)         — array of { price, time } samples
+--   getPriceChangePercent(fillTypeIndex)   — % change from base (positive = above)
 --
 -- Author: tison (dev-1)
 
@@ -48,9 +58,10 @@ function MarketEngine.new()
     return self
 end
 
--- Called once after mission load — snapshot base prices from the game economy.
--- PriceHook.MDMGetVanillaPrice returns the vanilla price because g_MarketDynamics.isActive
--- is still false at this point, so our hook passes through without modification.
+-- Called once after mission load — snapshots base prices from the vanilla economy.
+-- Safe to call while g_MarketDynamics.isActive is still false: PriceHook's guard
+-- lets vanilla results pass through until isActive = true, so origGetPrice returns
+-- unmodified prices here.
 function MarketEngine:init()
     if not g_fillTypeManager then
         MDMLog.warn("MarketEngine:init() — g_fillTypeManager not available")
@@ -70,11 +81,11 @@ function MarketEngine:init()
             local basePrice = MDMGetVanillaPrice(g_currentMission.economyManager, fillType.index)
             if basePrice and basePrice > 0 then
                 self.prices[fillType.index] = {
-                    base            = basePrice,
-                    volatilityFactor= 1.0,
-                    modifiers       = {},
-                    current         = basePrice,
-                    history         = {},   -- { price, time } newest last
+                    base             = basePrice,
+                    volatilityFactor = 1.0,
+                    modifiers        = {},
+                    current          = basePrice,
+                    history          = {},   -- { price, time } newest-last; max HISTORY_MAX_ENTRIES
                 }
                 count = count + 1
             end
@@ -84,7 +95,8 @@ function MarketEngine:init()
     MDMLog.info("MarketEngine:init() — snapshotted " .. count .. " fill type prices")
 end
 
--- dt in ms (in-game time delta from FSBaseMission.update)
+-- Advance timers and fire intraday/daily volatility ticks.
+-- dt is in-game milliseconds (from FSBaseMission.update).
 function MarketEngine:update(dt)
     self.intradayTimer = self.intradayTimer + dt
     self.dailyTimer    = self.dailyTimer    + dt
@@ -100,7 +112,7 @@ function MarketEngine:update(dt)
     end
 end
 
--- Apply a named modifier to a fillType price (called from world event onFire)
+-- Push an event modifier onto a fillType's modifier stack.
 -- modifier = { id, fillTypeIndex, factor }
 -- Expiry is handled by WorldEventSystem calling onExpire → removeModifierById.
 function MarketEngine:addModifier(modifier)
@@ -111,7 +123,9 @@ function MarketEngine:addModifier(modifier)
     self:_recalculate(modifier.fillTypeIndex)
 end
 
--- Remove a modifier by id (called from world event onExpire)
+-- Remove a modifier by id from a fillType's modifier stack.
+-- Called from world event onExpire callbacks.
+-- Safe to call for an id that doesn't exist (no-op).
 function MarketEngine:removeModifierById(fillTypeIndex, id)
     local entry = self.prices[fillTypeIndex]
     if not entry then return end
@@ -124,7 +138,7 @@ function MarketEngine:removeModifierById(fillTypeIndex, id)
     self:_recalculate(fillTypeIndex)
 end
 
--- Returns the current effective price for a fillType (or nil if unknown).
+-- Returns the current effective price for a fillType, or nil if not tracked.
 -- Called by PriceHook at point of sale.
 function MarketEngine:getPrice(fillTypeIndex)
     local entry = self.prices[fillTypeIndex]
@@ -132,16 +146,16 @@ function MarketEngine:getPrice(fillTypeIndex)
     return nil
 end
 
--- Returns price history for GUI (array of { price, time }, newest last, max 7 entries).
+-- Returns price history array for GUI display.
+-- Format: { { price, time }, ... } newest-last, up to HISTORY_MAX_ENTRIES entries.
 function MarketEngine:getPriceHistory(fillTypeIndex)
     local entry = self.prices[fillTypeIndex]
     if entry then return entry.history end
     return {}
 end
 
--- Returns % change from base for the current effective price.
--- Positive = above base, negative = below base.
--- Used by HUD trend indicators.
+-- Returns the percentage change of the current price relative to the base price.
+-- Positive = above base, negative = below base. Used by HUD trend indicators.
 function MarketEngine:getPriceChangePercent(fillTypeIndex)
     local entry = self.prices[fillTypeIndex]
     if not entry or entry.base <= 0 then return 0 end
@@ -152,7 +166,7 @@ end
 -- Private
 -- ---------------------------------------------------------------------------
 
--- Small random walk on volatilityFactor — ±2% per in-game minute.
+-- Small random walk on volatilityFactor — ±2% per in-game minute (scaled by volatilityScale).
 -- Recalculates current price for every tracked fillType.
 function MarketEngine:_applyIntradayVolatility()
     local magnitude = INTRADAY_MAGNITUDE * (self.volatilityScale or 1.0)
@@ -164,14 +178,14 @@ function MarketEngine:_applyIntradayVolatility()
     end
 end
 
--- Daily shift: mean-reversion toward 1.0 + random trend ±5%.
--- Records a price history sample after recalculation.
+-- Daily shift: mean-reversion toward 1.0 + random trend ±5% (scaled by volatilityScale).
+-- Records a price history snapshot after recalculation.
 function MarketEngine:_applyDailyShift()
-    local now = g_currentMission and g_currentMission.time or 0
-
+    local now            = g_currentMission and g_currentMission.time or 0
     local dailyMagnitude = DAILY_MAGNITUDE * (self.volatilityScale or 1.0)
+
     for fillTypeIndex, entry in pairs(self.prices) do
-        local vf        = entry.volatilityFactor
+        local vf = entry.volatilityFactor
         -- Mean-reversion: pull vf back toward neutral (1.0) by MEAN_REVERSION_RATE fraction
         local reversion = (1.0 - vf) * MEAN_REVERSION_RATE
         -- Random daily trend
@@ -180,7 +194,7 @@ function MarketEngine:_applyDailyShift()
         entry.volatilityFactor = math.max(VOLATILITY_MIN, math.min(VOLATILITY_MAX, newFactor))
         self:_recalculate(fillTypeIndex)
 
-        -- Record daily price snapshot for history
+        -- Record daily price snapshot for GUI history chart
         table.insert(entry.history, { price = entry.current, time = now })
         if #entry.history > HISTORY_MAX_ENTRIES then
             table.remove(entry.history, 1)
@@ -188,7 +202,7 @@ function MarketEngine:_applyDailyShift()
     end
 end
 
--- Recompute current = base * volatilityFactor * product(eventModifiers)
+-- Recompute current = base * volatilityFactor * product(all event modifier factors).
 function MarketEngine:_recalculate(fillTypeIndex)
     local entry = self.prices[fillTypeIndex]
     if not entry then return end

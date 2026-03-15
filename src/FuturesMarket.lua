@@ -1,14 +1,22 @@
 -- FuturesMarket.lua
 -- Handles futures contract creation, tracking, and fulfillment.
 -- Players lock in a price + quantity + delivery date.
--- On delivery date: if fulfilled → bonus; if defaulted → penalty.
+-- On delivery date: if fulfilled → full locked-price payout;
+--                   if defaulted → partial payout minus penalty on unfulfilled portion.
+--
+-- UPIntegration hooks:
+--   onContractCreated   — notified when a new contract is written
+--   onContractFulfilled — notified on full delivery (for credit score up)
+--   onContractDefaulted — notified on default (for credit score down)
+--   getPenaltyModifier  — scales DEFAULT_PENALTY per player credit score
 --
 -- Author: tison (dev-1)
 
 FuturesMarket = {}
 FuturesMarket.__index = FuturesMarket
 
--- Penalty for defaulting on a contract (fraction of contract value)
+-- Base penalty rate for defaulting on a contract (fraction of unfulfilled contract value).
+-- UPIntegration.getPenaltyModifier() may scale this up or down based on credit score.
 local DEFAULT_PENALTY = 0.15
 
 function FuturesMarket.new()
@@ -22,9 +30,9 @@ function FuturesMarket.new()
     return self
 end
 
--- Create a new futures contract
+-- Create a new futures contract.
 -- params = { farmId, fillTypeIndex, fillTypeName, quantity, lockedPrice, deliveryTimeMs }
--- Returns contractId
+-- Returns contractId.
 function FuturesMarket:createContract(params)
     local id = self.nextId
     self.nextId = self.nextId + 1
@@ -36,7 +44,7 @@ function FuturesMarket:createContract(params)
         fillTypeName  = params.fillTypeName,
         quantity      = params.quantity,       -- in liters
         lockedPrice   = params.lockedPrice,    -- per liter at contract creation
-        deliveryTime  = params.deliveryTimeMs, -- absolute game time
+        deliveryTime  = params.deliveryTimeMs, -- absolute game time (ms)
         delivered     = 0,                     -- liters delivered so far
         status        = "active",              -- active | fulfilled | defaulted
     }
@@ -44,11 +52,15 @@ function FuturesMarket:createContract(params)
     self.contracts[id] = contract
     MDMLog.info("FuturesMarket: contract #" .. id .. " created — " .. params.fillTypeName ..
         " x" .. params.quantity .. "L @ " .. params.lockedPrice)
+
+    -- Notify UPIntegration so it can register this as an external deal if UP mode is on.
+    UPIntegration.onContractCreated(id, params.farmId, params)
+
     return id
 end
 
--- Record a delivery toward a contract
--- Returns true if contract is now fulfilled
+-- Record a partial or full delivery toward an active contract.
+-- Returns true if the contract is now fully fulfilled, false otherwise.
 function FuturesMarket:recordDelivery(contractId, liters)
     local contract = self.contracts[contractId]
     if not contract or contract.status ~= "active" then return false end
@@ -62,7 +74,8 @@ function FuturesMarket:recordDelivery(contractId, liters)
     return false
 end
 
--- Check all active contracts for expiry — called from coordinator update
+-- Check all active contracts for delivery deadline expiry.
+-- Called every frame from MarketDynamics:update().
 function FuturesMarket:checkExpiry()
     local now = g_currentMission and g_currentMission.time or 0
 
@@ -77,7 +90,7 @@ function FuturesMarket:checkExpiry()
     end
 end
 
--- Returns all contracts for a given farm (for GUI display)
+-- Returns all contracts belonging to a given farm (for GUI display).
 function FuturesMarket:getContractsForFarm(farmId)
     local result = {}
     for _, contract in pairs(self.contracts) do
@@ -92,34 +105,63 @@ end
 -- Private
 -- ---------------------------------------------------------------------------
 
+-- Pay out the full locked-price value for a fulfilled contract.
+-- Guard against double-pay: recordDelivery() and checkExpiry() can both
+-- reach this function for the same contract on the same frame. The status
+-- check ensures the payout only ever happens once.
 function FuturesMarket:_fulfillContract(id)
     local contract = self.contracts[id]
     if not contract then return end
+    if contract.status ~= "active" then return end  -- already settled; skip
 
     contract.status = "fulfilled"
     local payout = contract.quantity * contract.lockedPrice
 
     g_currentMission:addMoney(payout, contract.farmId, MoneyType.OTHER, true)
     MDMLog.info("FuturesMarket: contract #" .. id .. " FULFILLED — payout $" .. payout)
+
+    -- Notify UPIntegration for credit score reporting.
+    UPIntegration.onContractFulfilled(id, contract.farmId, payout)
 end
 
+-- Settle a defaulted contract: partial payout for delivered portion, minus
+-- a penalty on the unfulfilled portion.
+--
+-- Effective penalty rate = DEFAULT_PENALTY * UPIntegration.getPenaltyModifier()
+--   Excellent credit (750+) → ~10% effective penalty
+--   Normal credit           → ~15% effective penalty  (no UP or unknown score)
+--   Poor credit    (<600)   → ~20% effective penalty
+--
+-- Net payout is floored at 0: the penalty never exceeds the partial payout,
+-- so a default never results in a charge against the player's account.
 function FuturesMarket:_defaultContract(id)
     local contract = self.contracts[id]
     if not contract then return end
+    if contract.status ~= "active" then return end  -- already settled; skip
 
     contract.status = "defaulted"
 
-    -- Partial payout for what was delivered, minus penalty on the unfulfilled portion
-    local delivered     = contract.delivered
-    local unfulfilled   = contract.quantity - delivered
-    local partialPayout = delivered * contract.lockedPrice
-    local penalty       = unfulfilled * contract.lockedPrice * DEFAULT_PENALTY
+    local delivered   = contract.delivered
+    local unfulfilled = contract.quantity - delivered
 
-    local net = partialPayout - penalty
-    if net ~= 0 then
+    local partialPayout = delivered * contract.lockedPrice
+
+    -- Apply credit-score-based penalty scaling from UPIntegration.
+    -- Returns 1.0 (no change) when UP is not active or score is unavailable.
+    local penaltyRate = DEFAULT_PENALTY * UPIntegration.getPenaltyModifier(contract.farmId)
+    local penalty     = unfulfilled * contract.lockedPrice * penaltyRate
+
+    -- Floor net at 0: never drain the player's account for a default.
+    local net = math.max(0, partialPayout - penalty)
+
+    if net > 0 then
         g_currentMission:addMoney(net, contract.farmId, MoneyType.OTHER, true)
     end
 
-    MDMLog.warn("FuturesMarket: contract #" .. id .. " DEFAULTED — partial $" ..
-        partialPayout .. " penalty -$" .. penalty .. " net $" .. net)
+    MDMLog.warn(string.format(
+        "FuturesMarket: contract #%d DEFAULTED — delivered %dL/%dL  partial $%.2f  penalty -$%.2f  net $%.2f",
+        id, delivered, contract.quantity, partialPayout, penalty, net))
+
+    -- Notify UPIntegration for credit score reporting.
+    UPIntegration.onContractDefaulted(id, contract.farmId, penalty)
 end
