@@ -28,6 +28,14 @@ source(modDirectory .. "src/PriceHook.lua")
 -- Admin/debug console commands
 source(modDirectory .. "src/AdminCommands.lua")
 
+-- Integrations (optional, loaded if target mod is detected at runtime)
+source(modDirectory .. "src/BCIntegration.lua")
+source(modDirectory .. "src/UPIntegration.lua")
+
+-- Debug HUD (TEMP: remove when LeGrizzly's GUI lands)
+source(modDirectory .. "src/DebugHUD.lua")
+source(modDirectory .. "src/gui/SettingsUI.lua")
+
 -- Events
 source(modDirectory .. "src/events/DroughtEvent.lua")
 source(modDirectory .. "src/events/BumperHarvestEvent.lua")
