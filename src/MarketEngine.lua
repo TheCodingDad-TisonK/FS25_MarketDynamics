@@ -6,7 +6,7 @@
 -- Price model per fillType:
 --   current = base * volatilityFactor * product(eventModifiers)
 --
---   base             — vanilla sell price, snapshotted at init
+--   base             — vanilla sell price, refreshed daily to track seasons
 --   volatilityFactor — running intraday + daily drift, clamped to [0.50, 2.00]
 --   modifiers        — event modifier stack: { id, fillTypeIndex, factor }
 --                      added by WorldEvent.onFire, removed by WorldEvent.onExpire
@@ -16,6 +16,7 @@
 -- Public API (called externally):
 --   init()                                 — snapshot base prices from economy
 --   update(dt)                             — advance intraday/daily timers
+--   refreshBasePrices()                    — sync base prices with vanilla seasonal curves
 --   addModifier(modifier)                  — push an event modifier onto the stack
 --   removeModifierById(fillTypeIndex, id)  — pop a modifier by id
 --   getPrice(fillTypeIndex)                — current effective price (or nil)
@@ -32,9 +33,10 @@ local INTRADAY_INTERVAL_MS = 60 * 1000       -- every in-game minute
 local DAILY_INTERVAL_MS    = 24 * 60 * 1000  -- every in-game day
 
 -- Volatility parameters
-local INTRADAY_MAGNITUDE   = 0.02   -- ±2% per intraday tick
-local DAILY_MAGNITUDE      = 0.05   -- ±5% per daily shift
-local MEAN_REVERSION_RATE  = 0.15   -- fraction of (1.0 - volatilityFactor) applied per day
+local INTRADAY_MAGNITUDE   = 0.002  -- ±0.2% per intraday tick (dampened)
+local DAILY_MAGNITUDE      = 0.03   -- ±3% per daily shift
+local INTRADAY_REVERSION   = 0.005  -- 0.5% pull toward 1.0 per minute
+local DAILY_REVERSION      = 0.15   -- 15% pull toward 1.0 per day
 local VOLATILITY_MIN       = 0.50   -- hard floor: never less than 50% of base
 local VOLATILITY_MAX       = 2.00   -- hard ceiling: never more than 200% of base
 
@@ -59,40 +61,47 @@ function MarketEngine.new()
 end
 
 -- Called once after mission load — snapshots base prices from the vanilla economy.
--- Safe to call while g_MarketDynamics.isActive is still false: PriceHook's guard
--- lets vanilla results pass through until isActive = true, so origGetPrice returns
--- unmodified prices here.
 function MarketEngine:init()
     if not g_fillTypeManager then
         MDMLog.warn("MarketEngine:init() — g_fillTypeManager not available")
         return
     end
-    if not g_currentMission or not g_currentMission.economyManager then
-        MDMLog.warn("MarketEngine:init() — economyManager not available")
-        return
-    end
+    self:refreshBasePrices(true)
+    MDMLog.info("MarketEngine:init() — initialized fill type prices")
+end
+
+-- Sync base prices with current vanilla seasonal curves.
+-- If isInitial is true, it populates the table; otherwise it just updates 'base'.
+function MarketEngine:refreshBasePrices(isInitial)
+    if not g_currentMission or not g_currentMission.economyManager then return end
 
     local fillTypes = g_fillTypeManager:getFillTypes()
     local count     = 0
 
     for _, fillType in ipairs(fillTypes) do
-        -- Skip UNKNOWN (index 1) and any invalid entries
         if fillType and fillType.index and fillType.index > 1 then
             local basePrice = MDMGetVanillaPrice(g_currentMission.economyManager, fillType.index)
             if basePrice and basePrice > 0 then
-                self.prices[fillType.index] = {
-                    base             = basePrice,
-                    volatilityFactor = 1.0,
-                    modifiers        = {},
-                    current          = basePrice,
-                    history          = {},   -- { price, time } newest-last; max HISTORY_MAX_ENTRIES
-                }
+                if isInitial and not self.prices[fillType.index] then
+                    self.prices[fillType.index] = {
+                        base             = basePrice,
+                        volatilityFactor = 1.0,
+                        modifiers        = {},
+                        current          = basePrice,
+                        history          = {},
+                    }
+                elseif self.prices[fillType.index] then
+                    self.prices[fillType.index].base = basePrice
+                    self:_recalculate(fillType.index)
+                end
                 count = count + 1
             end
         end
     end
 
-    MDMLog.info("MarketEngine:init() — snapshotted " .. count .. " fill type prices")
+    if isInitial then
+        MDMLog.info("MarketEngine: snapshotted " .. count .. " base prices")
+    end
 end
 
 -- Advance timers and fire intraday/daily volatility ticks.
@@ -109,12 +118,11 @@ function MarketEngine:update(dt)
     if self.dailyTimer >= DAILY_INTERVAL_MS then
         self.dailyTimer = 0
         self:_applyDailyShift()
+        self:refreshBasePrices(false) -- Sync with seasonal changes daily
     end
 end
 
 -- Push an event modifier onto a fillType's modifier stack.
--- modifier = { id, fillTypeIndex, factor }
--- Expiry is handled by WorldEventSystem calling onExpire → removeModifierById.
 function MarketEngine:addModifier(modifier)
     local entry = self.prices[modifier.fillTypeIndex]
     if not entry then return end
@@ -124,8 +132,6 @@ function MarketEngine:addModifier(modifier)
 end
 
 -- Remove a modifier by id from a fillType's modifier stack.
--- Called from world event onExpire callbacks.
--- Safe to call for an id that doesn't exist (no-op).
 function MarketEngine:removeModifierById(fillTypeIndex, id)
     local entry = self.prices[fillTypeIndex]
     if not entry then return end
@@ -139,7 +145,6 @@ function MarketEngine:removeModifierById(fillTypeIndex, id)
 end
 
 -- Returns the current effective price for a fillType, or nil if not tracked.
--- Called by PriceHook at point of sale.
 function MarketEngine:getPrice(fillTypeIndex)
     local entry = self.prices[fillTypeIndex]
     if entry then return entry.current end
@@ -147,7 +152,6 @@ function MarketEngine:getPrice(fillTypeIndex)
 end
 
 -- Returns price history array for GUI display.
--- Format: { { price, time }, ... } newest-last, up to HISTORY_MAX_ENTRIES entries.
 function MarketEngine:getPriceHistory(fillTypeIndex)
     local entry = self.prices[fillTypeIndex]
     if entry then return entry.history end
@@ -155,7 +159,6 @@ function MarketEngine:getPriceHistory(fillTypeIndex)
 end
 
 -- Returns the percentage change of the current price relative to the base price.
--- Positive = above base, negative = below base. Used by HUD trend indicators.
 function MarketEngine:getPriceChangePercent(fillTypeIndex)
     local entry = self.prices[fillTypeIndex]
     if not entry or entry.base <= 0 then return 0 end
@@ -166,30 +169,39 @@ end
 -- Private
 -- ---------------------------------------------------------------------------
 
--- Small random walk on volatilityFactor — ±2% per in-game minute (scaled by volatilityScale).
--- Recalculates current price for every tracked fillType.
+-- Small random walk + mean reversion toward 1.0 (dampened).
 function MarketEngine:_applyIntradayVolatility()
-    local magnitude = INTRADAY_MAGNITUDE * (self.volatilityScale or 1.0)
+    local scale     = self.volatilityScale or 1.0
+    local magnitude = INTRADAY_MAGNITUDE * scale
+    local reversion = INTRADAY_REVERSION
+
     for fillTypeIndex, entry in pairs(self.prices) do
-        local delta    = (math.random() * 2 - 1) * magnitude
-        local newFactor = entry.volatilityFactor * (1 + delta)
+        local vf = entry.volatilityFactor
+        -- Pull toward 1.0 (mean reversion)
+        local revDelta  = (1.0 - vf) * reversion
+        -- Random jitter
+        local randDelta = (math.random() * 2 - 1) * magnitude
+        
+        local newFactor = vf + revDelta + randDelta
         entry.volatilityFactor = math.max(VOLATILITY_MIN, math.min(VOLATILITY_MAX, newFactor))
         self:_recalculate(fillTypeIndex)
     end
 end
 
--- Daily shift: mean-reversion toward 1.0 + random trend ±5% (scaled by volatilityScale).
--- Records a price history snapshot after recalculation.
+-- Daily shift: mean-reversion toward 1.0 + random trend (±3% scaled).
 function MarketEngine:_applyDailyShift()
     local now            = g_currentMission and g_currentMission.time or 0
-    local dailyMagnitude = DAILY_MAGNITUDE * (self.volatilityScale or 1.0)
+    local scale          = self.volatilityScale or 1.0
+    local dailyMagnitude = DAILY_MAGNITUDE * scale
+    local dailyReversion = DAILY_REVERSION
 
     for fillTypeIndex, entry in pairs(self.prices) do
         local vf = entry.volatilityFactor
-        -- Mean-reversion: pull vf back toward neutral (1.0) by MEAN_REVERSION_RATE fraction
-        local reversion = (1.0 - vf) * MEAN_REVERSION_RATE
-        -- Random daily trend
+        -- Stronger daily pull toward equilibrium
+        local reversion = (1.0 - vf) * dailyReversion
+        -- Daily market trend
         local trend     = (math.random() * 2 - 1) * dailyMagnitude
+        
         local newFactor = vf + reversion + trend
         entry.volatilityFactor = math.max(VOLATILITY_MIN, math.min(VOLATILITY_MAX, newFactor))
         self:_recalculate(fillTypeIndex)

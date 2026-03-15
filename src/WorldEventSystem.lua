@@ -57,6 +57,26 @@ function WorldEventSystem:registerEvent(event)
     MDMLog.info("WorldEventSystem: registered event '" .. event.id .. "'")
 end
 
+-- Restore an active event from savegame.
+-- Called by MarketSerializer:load() after all events are registered.
+function WorldEventSystem:loadActiveEvent(id, endsAt, intensity)
+    local event = self.registry[id]
+    if not event then
+        MDMLog.warn("WorldEventSystem: cannot restore unknown event '" .. tostring(id) .. "'")
+        return
+    end
+
+    self.active[id] = { event = event, endsAt = endsAt, intensity = intensity }
+    
+    -- Re-trigger onFire to re-apply modifiers to the MarketEngine
+    if event.onFire then
+        event.onFire(intensity)
+    end
+    
+    MDMLog.info("WorldEventSystem: restored active event '" .. id .. "' (ends in " .. 
+        string.format("%.1f", (endsAt - (g_currentMission.time or 0)) / 60000) .. "m)")
+end
+
 -- Advance the event tick timer, expire any events past their endsAt, and
 -- probabilistically roll for new events when CHECK_INTERVAL elapses.
 -- dt is in-game milliseconds.

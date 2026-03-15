@@ -20,7 +20,8 @@
       "Bash(grep:*)",
       "WebFetch(domain:github-production-user-asset-6210df.s3.amazonaws.com)",
       "Bash(gh api:*)",
-      "Bash(gh repo:*)"
+      "Bash(gh repo:*)",
+      "Bash(for repo:*)"
     ]
   }
 }
