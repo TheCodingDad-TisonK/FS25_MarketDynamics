@@ -3,15 +3,14 @@
 --
 -- Save path: <savegameDirectory>/modSettings/FS25_MarketDynamics.xml
 --
--- What is persisted:
---   futures contracts  — all fields needed to reconstruct active/settled contracts
---   event cooldowns    — lastFiredAt per event, so cooldowns survive reload
---   general settings   — pricesEnabled, debugMode
---   volatility scale   — stored on MarketEngine but serialized here
---   integration flags  — BC mode and UP mode (delegated to each integration module)
---
--- Versioning: a #version attribute is written. Currently "1".
--- Future schema changes should increment this and add a migration path in load().
+-- What is persisted (v2):
+--   futures contracts  — active/settled contracts
+--   event cooldowns    — lastFiredAt per event
+--   active events      — currently running events (restored via loadActiveEvent)
+--   market prices      — volatilityFactor per fillType
+--   price history      — daily history samples per fillType
+--   general settings   — pricesEnabled, debugMode, volatilityScale
+--   integration flags  — BC mode and UP mode
 --
 -- Author: tison (dev-1)
 
@@ -26,7 +25,6 @@ function MarketSerializer.new()
 end
 
 -- Persist current market state.
--- coordinator = the MarketDynamics instance (g_MarketDynamics).
 function MarketSerializer:save(coordinator)
     local savegameDir = g_currentMission.missionInfo.savegameDirectory
     if savegameDir == nil or savegameDir == "" then
@@ -42,8 +40,8 @@ function MarketSerializer:save(coordinator)
         return
     end
 
-    -- Schema version stamp — increment if the format ever changes
-    setXMLString(xmlFile, "marketDynamics#version", "1")
+    -- Schema version stamp
+    setXMLString(xmlFile, "marketDynamics#version", "2")
 
     -- ── Futures contracts ────────────────────────────────────────────────
     local contracts = coordinator.futuresMarket and coordinator.futuresMarket.contracts or {}
@@ -62,14 +60,42 @@ function MarketSerializer:save(coordinator)
         i = i + 1
     end
 
-    -- ── World event cooldowns (lastFiredAt per event) ────────────────────
+    -- ── Market Engine (Prices & History) ────────────────────────────────
+    if coordinator.marketEngine then
+        local k = 0
+        for index, entry in pairs(coordinator.marketEngine.prices) do
+            local base = "marketDynamics.prices.price(" .. k .. ")"
+            setXMLInt  (xmlFile, base .. "#index",  index)
+            setXMLFloat(xmlFile, base .. "#factor", entry.volatilityFactor)
+            
+            for m, hist in ipairs(entry.history) do
+                local hBase = base .. ".history(" .. (m-1) .. ")"
+                setXMLFloat(xmlFile, hBase .. "#price", hist.price)
+                setXMLFloat(xmlFile, hBase .. "#time",  hist.time)
+            end
+            k = k + 1
+        end
+    end
+
+    -- ── World Events (Cooldowns & Active) ───────────────────────────────
     if coordinator.worldEvents then
+        -- Cooldowns
         local j = 0
         for id, event in pairs(coordinator.worldEvents.registry) do
             local base = "marketDynamics.events.event(" .. j .. ")"
             setXMLString(xmlFile, base .. "#id",          id)
             setXMLFloat (xmlFile, base .. "#lastFiredAt", event.lastFiredAt)
             j = j + 1
+        end
+
+        -- Active events
+        local a = 0
+        for id, active in pairs(coordinator.worldEvents.active) do
+            local base = "marketDynamics.activeEvents.event(" .. a .. ")"
+            setXMLString(xmlFile, base .. "#id",        id)
+            setXMLFloat (xmlFile, base .. "#endsAt",    active.endsAt)
+            setXMLFloat (xmlFile, base .. "#intensity", active.intensity)
+            a = a + 1
         end
     end
 
@@ -80,13 +106,12 @@ function MarketSerializer:save(coordinator)
         setXMLBool(xmlFile, "marketDynamics.settings#debugMode",     s.debugMode     == true)
     end
 
-    -- ── Volatility scale (lives on MarketEngine but belongs in settings) ─
     if coordinator.marketEngine then
         setXMLFloat(xmlFile, "marketDynamics.settings#volatilityScale",
             coordinator.marketEngine.volatilityScale or 1.0)
     end
 
-    -- ── Integration flags (delegated to each module) ─────────────────────
+    -- ── Integration flags ────────────────────────────────────────────────
     BCIntegration.save(xmlFile, "marketDynamics.bcIntegration")
     UPIntegration.save(xmlFile, "marketDynamics.upIntegration")
 
@@ -95,9 +120,7 @@ function MarketSerializer:save(coordinator)
     MDMLog.info("MarketSerializer: saved to " .. path)
 end
 
--- Load and restore market state from the savegame XML file.
--- No-op (fresh start) if the file does not exist.
--- coordinator = the MarketDynamics instance (g_MarketDynamics).
+-- Load and restore market state.
 function MarketSerializer:load(coordinator)
     local savegameDir = g_currentMission.missionInfo.savegameDirectory
     if savegameDir == nil or savegameDir == "" then
@@ -112,6 +135,8 @@ function MarketSerializer:load(coordinator)
         MDMLog.info("MarketSerializer: no save file found — starting fresh")
         return
     end
+
+    local version = tonumber(getXMLString(xmlFile, "marketDynamics#version") or "1")
 
     -- ── Restore futures contracts ─────────────────────────────────────────
     local i = 0
@@ -134,12 +159,41 @@ function MarketSerializer:load(coordinator)
 
         if coordinator.futuresMarket then
             coordinator.futuresMarket.contracts[id] = contract
-            -- Keep nextId ahead of the highest restored id so new contracts don't collide
             if id >= coordinator.futuresMarket.nextId then
                 coordinator.futuresMarket.nextId = id + 1
             end
         end
         i = i + 1
+    end
+
+    -- ── Restore Market Engine (Prices & History) ──────────────────────────
+    if coordinator.marketEngine and version >= 2 then
+        local k = 0
+        while true do
+            local base  = "marketDynamics.prices.price(" .. k .. ")"
+            local index = getXMLInt(xmlFile, base .. "#index")
+            if not index then break end
+
+            local entry = coordinator.marketEngine.prices[index]
+            if entry then
+                entry.volatilityFactor = getXMLFloat(xmlFile, base .. "#factor") or 1.0
+                
+                -- Restore history
+                entry.history = {}
+                local m = 0
+                while true do
+                    local hBase = base .. ".history(" .. m .. ")"
+                    local p     = getXMLFloat(xmlFile, hBase .. "#price")
+                    if not p then break end
+                    table.insert(entry.history, { price = p, time = getXMLFloat(xmlFile, hBase .. "#time") })
+                    m = m + 1
+                end
+                
+                -- Recalculate 'current' (base price was snapshotted in init())
+                coordinator.marketEngine:_recalculate(index)
+            end
+            k = k + 1
+        end
     end
 
     -- ── Restore event cooldowns ───────────────────────────────────────────
@@ -156,6 +210,21 @@ function MarketSerializer:load(coordinator)
         j = j + 1
     end
 
+    -- ── Restore active events (v2+) ──────────────────────────────────────
+    if coordinator.worldEvents and version >= 2 then
+        local a = 0
+        while true do
+            local base = "marketDynamics.activeEvents.event(" .. a .. ")"
+            local evId = getXMLString(xmlFile, base .. "#id")
+            if not evId then break end
+
+            local endsAt    = getXMLFloat(xmlFile, base .. "#endsAt")
+            local intensity = getXMLFloat(xmlFile, base .. "#intensity")
+            coordinator.worldEvents:loadActiveEvent(evId, endsAt, intensity)
+            a = a + 1
+        end
+    end
+
     -- ── Restore general settings ──────────────────────────────────────────
     if coordinator.settings then
         local pricesEnabled = getXMLBool(xmlFile, "marketDynamics.settings#pricesEnabled")
@@ -166,11 +235,10 @@ function MarketSerializer:load(coordinator)
         local debugMode = getXMLBool(xmlFile, "marketDynamics.settings#debugMode")
         if debugMode ~= nil then
             coordinator.settings.debugMode = debugMode
-            MDMLog.debugEnabled = debugMode  -- keep Logger in sync immediately
+            MDMLog.debugEnabled = debugMode
         end
     end
 
-    -- ── Restore volatility scale ──────────────────────────────────────────
     if coordinator.marketEngine then
         local vScale = getXMLFloat(xmlFile, "marketDynamics.settings#volatilityScale")
         if vScale and vScale > 0 then
@@ -178,10 +246,10 @@ function MarketSerializer:load(coordinator)
         end
     end
 
-    -- ── Integration flags (delegated to each module) ──────────────────────
+    -- ── Integration flags ─────────────────────────────────────────────────
     BCIntegration.load(xmlFile, "marketDynamics.bcIntegration")
     UPIntegration.load(xmlFile, "marketDynamics.upIntegration")
 
     delete(xmlFile)
-    MDMLog.info("MarketSerializer: loaded " .. i .. " contracts, " .. j .. " event states")
+    MDMLog.info("MarketSerializer: restored version " .. version)
 end
