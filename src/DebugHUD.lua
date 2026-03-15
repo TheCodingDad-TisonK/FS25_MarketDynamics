@@ -129,7 +129,7 @@ function MDMDebugHUD:draw()
     end
 
     if #active == 0 then
-        rline(y, FONT_BODY, "  (no active contracts)", C_DIM)
+        y = rline(y, FONT_BODY, "  (no active contracts)", C_DIM)
     else
         local now = g_currentMission and g_currentMission.time or 0
         for _, c in ipairs(active) do

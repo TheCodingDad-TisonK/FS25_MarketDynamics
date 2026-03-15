@@ -11,7 +11,16 @@
       "WebFetch(domain:raw.githubusercontent.com)",
       "WebFetch(domain:api.github.com)",
       "Bash(find:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Read(//c/tmp/**)",
+      "Bash(unzip -p 'C:/Users/tison/Documents/My Games/FarmingSimulator2025/mods/FS25_BetterContracts.zip' src/BetterContracts.lua)",
+      "Bash(unzip:*)",
+      "Bash(xargs grep:*)",
+      "Bash(ls:*)",
+      "Bash(grep:*)",
+      "WebFetch(domain:github-production-user-asset-6210df.s3.amazonaws.com)",
+      "Bash(gh api:*)",
+      "Bash(gh repo:*)"
     ]
   }
 }

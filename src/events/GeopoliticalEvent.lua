@@ -1,6 +1,13 @@
 -- GeopoliticalEvent.lua
 -- Geopolitical instability (conflict, sanctions, policy shock).
--- Spikes energy-adjacent crops (canola/sunflower for bio-fuel) and wheat (staple demand).
+-- Spikes staple crops (food security demand) and energy-adjacent crops
+-- (canola/sunflower as biofuel feedstocks).
+--
+-- Intensity 0-1 maps to:
+--   Staples (wheat, barley):       +15%..+45%  factor = 1.15 + intensity * 0.30
+--   Energy crops (canola, sunflower): +20%..+55%  factor = 1.20 + intensity * 0.35
+--
+-- Duration: 15-25 in-game minutes | Cooldown: 60 in-game minutes | p = 0.04
 --
 -- Author: tison (dev-1)
 
@@ -22,7 +29,6 @@ local function onFire(intensity)
                 id            = EVENT_ID .. "_" .. cropName,
                 fillTypeIndex = fillType.index,
                 factor        = stapleFactor,
-                durationMs    = 20 * 60 * 1000,
             })
         end
     end
@@ -34,18 +40,18 @@ local function onFire(intensity)
                 id            = EVENT_ID .. "_" .. cropName,
                 fillTypeIndex = fillType.index,
                 factor        = energyFactor,
-                durationMs    = 20 * 60 * 1000,
             })
         end
     end
 
     MDMLog.info("GeopoliticalEvent fired — staple " .. string.format("%.2f", stapleFactor) ..
-        " energy " .. string.format("%.2f", energyFactor))
+        "  energy " .. string.format("%.2f", energyFactor))
 end
 
 local function onExpire(intensity)
     if not g_MarketDynamics then return end
 
+    -- Combine both crop lists for a single removal pass
     local allCrops = {}
     for _, c in ipairs(STAPLE_CROPS) do table.insert(allCrops, c) end
     for _, c in ipairs(ENERGY_CROPS)  do table.insert(allCrops, c) end
@@ -66,7 +72,7 @@ table.insert(MDM_pendingRegistrations, {
     minIntensity   = 0.4,
     maxIntensity   = 1.0,
     cooldownMs     = 60 * 60 * 1000,
-    minDurationMs  = 15 * 60 * 1000,   -- 15–25 in-game minutes
+    minDurationMs  = 15 * 60 * 1000,   -- 15-25 in-game minutes
     maxDurationMs  = 25 * 60 * 1000,
     onFire         = onFire,
     onExpire       = onExpire,
