@@ -1,0 +1,147 @@
+## ScrollingAnimation
+
+**Parent**
+
+> [Animation](?version=script&category=6&class=162)
+
+**Functions**
+
+- [isDuplicate](#isduplicate)
+- [isRunning](#isrunning)
+- [load](#load)
+- [new](#new)
+- [registerAnimationClassXMLPaths](#registeranimationclassxmlpaths)
+- [reset](#reset)
+- [setFillType](#setfilltype)
+- [start](#start)
+- [stop](#stop)
+- [update](#update)
+- [updateDuplicate](#updateduplicate)
+
+### isDuplicate
+
+**Description**
+
+**Definition**
+
+> isDuplicate()
+
+**Arguments**
+
+| any | otherAnimation |
+|-----|----------------|
+
+### isRunning
+
+**Description**
+
+**Definition**
+
+> isRunning()
+
+### load
+
+**Description**
+
+**Definition**
+
+> load()
+
+**Arguments**
+
+| any | xmlFile    |
+|-----|------------|
+| any | key        |
+| any | rootNodes  |
+| any | owner      |
+| any | i3dMapping |
+
+### new
+
+**Description**
+
+**Definition**
+
+> new()
+
+**Arguments**
+
+| any | customMt |
+|-----|----------|
+
+### registerAnimationClassXMLPaths
+
+**Description**
+
+**Definition**
+
+> registerAnimationClassXMLPaths()
+
+**Arguments**
+
+| any | schema   |
+|-----|----------|
+| any | basePath |
+
+### reset
+
+**Description**
+
+**Definition**
+
+> reset()
+
+### setFillType
+
+**Description**
+
+**Definition**
+
+> setFillType()
+
+**Arguments**
+
+| any | fillTypeIndex |
+|-----|---------------|
+
+### start
+
+**Description**
+
+**Definition**
+
+> start()
+
+### stop
+
+**Description**
+
+**Definition**
+
+> stop()
+
+### update
+
+**Description**
+
+**Definition**
+
+> update()
+
+**Arguments**
+
+| any | dt |
+|-----|----|
+
+### updateDuplicate
+
+**Description**
+
+**Definition**
+
+> updateDuplicate()
+
+**Arguments**
+
+| any | otherAnimation |
+|-----|----------------|

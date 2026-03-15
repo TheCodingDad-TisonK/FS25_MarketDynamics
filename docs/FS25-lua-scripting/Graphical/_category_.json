@@ -1,0 +1,11 @@
+{
+  "label": "Graphical",
+  "link": {
+    "type": "generated-index",
+    "title": "Graphical Documentation",
+    "description": "2 pages, 17 functions"
+  },
+  "customProps": {
+    "icon": "image"
+  }
+}

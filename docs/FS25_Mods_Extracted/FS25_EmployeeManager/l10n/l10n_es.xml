@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<l10n>
+    <translationContributors>LeGrizzly</translationContributors>
+    <texts>
+        <text name="UNKNOWN" text="Desconocido" />
+        <text name="input_SHOW_EMPLOYEE_MENU" text="Mostrar menú de empleados" />
+        <text name="EM_employee_management" text="Gestión de Empleados" />
+
+        <text name="em_list_new" text="Nuevos" />
+        <text name="em_list_active" text="Activos" />
+        <text name="em_list_owned" text="Contratados" />
+        <text name="em_vehicle_not_assigned" text="Sin vehículo asignado" />
+
+        <text name="em_skill_driving" text="Conducción" />
+        <text name="em_skill_harvesting" text="Cosecha" />
+        <text name="em_skill_technical" text="Técnica" />
+        <text name="em_assigned_vehicle" text="Vehículo Asignado" />
+        <text name="em_assigned_field" text="Campo Asignado" />
+        <text name="em_current_job" text="Trabajo Actual" />
+        <text name="em_status_available" text="Disponible" />
+        <text name="em_status_working" text="Trabajando" />
+        <text name="em_action_hire" text="Contratar" />
+        <text name="em_action_fire" text="Despedir" />
+        <text name="em_action_assign_vehicle" text="Asignar Vehículo" />
+        <text name="em_action_assign_job" text="Asignar Trabajo" />
+
+        <text name="em_current_balance" text="Saldo Actual" />
+        <text name="em_no_employees" text="No hay empleados disponibles." />
+        <text name="em_employee_empty" text="Selecciona un empleado para ver detalles." />
+        <text name="em_employee_status_label" text="Estado" />
+        <text name="em_employee_info_title" text="Información" />
+        <text name="em_employee_skills_title" text="Habilidades" />
+        <text name="em_employee_stats_title" text="Estadísticas" />
+        <text name="em_stat_hours_worked" text="Horas Trabajadas" />
+        <text name="em_stat_current_job" text="Trabajo Actual" />
+        <text name="em_idle" text="Inactivo" />
+        <text name="em_none" text="Ninguno" />
+        <text name="em_unknown" text="Desconocido" />
+        <text name="em_list_fields" text="Campos" />
+        <text name="em_btn_start_workflow" text="Iniciar Flujo" />
+        <text name="em_employee_total_wage" text="Salario Total" />
+        <text name="em_available" text="Disponibles" />
+        <text name="em_hired" text="Contratados" />
+        <text name="em_header_employees" text="Empleados" />
+        <text name="em_btn_hire" text="Contratar" />
+        <text name="em_btn_fire" text="Despedir" />
+        <text name="em_btn_assign" text="Asignar" />
+        <text name="em_dialog_hire_yes_no" text="¿Estás seguro de que quieres contratar a %s?" />
+        <text name="em_dialog_hire_yes_no_btn" text="Contratar Empleado" />
+        <text name="em_dialog_fire_yes_no" text="¿Estás seguro de que quieres despedir a %s?" />
+        <text name="em_dialog_fire_yes_no_btn" text="Despedir Empleado" />
+        <text name="em_employee_id_label" text="ID: %d" />
+        <text name="em_status_hired" text="Contratado" />
+
+        <text name="em_workflow_title" text="Editor de Flujo de Trabajo" />
+        <text name="em_employee_selector" text="Seleccionar Empleado" />
+        <text name="em_field_selector" text="Campo Objetivo" />
+        <text name="em_crop_selector" text="Cultivo Objetivo" />
+        <text name="em_btn_start" text="Iniciar Flujo de Trabajo" />
+        <text name="em_btn_close" text="Cerrar" />
+        <text name="em_menu_instruction" text="Usa los controles para gestionar empleados y flujos de trabajo." />
+        <text name="em_no_selection" text="Sin selección" />
+        <text name="input_EM_OPEN_WORKFLOW" text="Abrir Editor de Flujo de Trabajo" />
+
+        <text name="em_workflow_builder" text="Flujo de Trabajo" />
+        <text name="em_available_tasks" text="Tareas Disponibles" />
+        <text name="em_workflow_queue" text="Cola de Tareas" />
+        <text name="em_error_no_field" text="Por favor, asigna un campo primero." />
+        <text name="em_error_no_vehicle" text="Por favor, asigna un vehículo primero." />
+        <text name="em_error_no_tasks" text="Por favor, añade al menos una tarea a la cola." />
+        <text name="em_error_no_hired" text="No hay empleados contratados. ¡Contrata a alguien primero!" />
+        <text name="em_workflow_started" text="%s inició el flujo de trabajo en el Campo %d: %s" />
+        <text name="em_workflow_start_failed" text="Error al iniciar el flujo para %s (verifica vehículo/equipamiento)." />
+        <text name="em_error_equipment_failed" text="%s: Error de equipamiento para %s. Desconecta herramientas incompatibles o verifica disponibilidad." />
+        <text name="em_workflow_saved" text="Flujo de trabajo guardado para %s." />
+        <text name="em_workflow_scheduled" text="%s programado para iniciar a las %02d:00." />
+        <text name="em_workflow_saved_hint" text="Flujo guardado para %s. Se iniciara automaticamente al comenzar el turno." />
+        <text name="em_shift_label" text="Turno" />
+        <text name="em_shift_to" text="a" />
+        <text name="em_btn_save_start" text="Guardar e Iniciar" />
+        <text name="em_btn_save" text="Guardar" />
+        <text name="em_btn_stop" text="Detener" />
+        <text name="em_workflow_stopped" text="%s detenido. No se iniciara automaticamente." />
+        <text name="em_workflow_queue_complete" text="Todas las tareas completadas para %s. Flujo en pausa." />
+        <text name="em_btn_workflow_editor" text="Editor de Flujo" />
+
+        <text name="em_tab_employees" text="Empleados" />
+        <text name="em_tab_workflows" text="Flujos de Trabajo" />
+        <text name="em_tab_fields" text="Campos" />
+        <text name="em_tab_vehicles" text="Vehículos" />
+        <text name="em_workflow_stub" text="Editor de flujo — próximamente." />
+        <text name="em_fields_stub" text="Gestión de campos — próximamente." />
+        <text name="em_vehicles_stub" text="Gestión de vehículos — próximamente." />
+
+        <text name="em_field_list_title" text="Campos en Propiedad" />
+        <text name="em_field_area" text="Área" />
+        <text name="em_field_crop" text="Cultivo Actual" />
+        <text name="em_field_growth" text="Estado de Crecimiento" />
+        <text name="em_field_condition" text="Condición" />
+        <text name="em_field_assigned_employee" text="Empleado Asignado" />
+        <text name="em_field_empty" text="Aún no posees ningún campo." />
+
+        <text name="em_vehicle_list_title" text="Vehículos en Propiedad" />
+        <text name="em_vehicle_status" text="Estado IA" />
+        <text name="em_vehicle_speed" text="Velocidad" />
+        <text name="em_vehicle_implements" text="Aperos Acoplados" />
+        <text name="em_vehicle_assigned_employee" text="Empleado Asignado" />
+        <text name="em_vehicle_empty" text="Aún no posees ningún vehículo." />
+
+        <text name="em_label_trait" text="Rasgo" />
+        <text name="em_trait_careful" text="Cuidadoso" />
+        <text name="em_trait_reckless" text="Temerario" />
+        <text name="em_trait_fuel_saver" text="Ahorrador de Combustible" />
+        <text name="em_trait_quick_learner" text="Aprendiz Rápido" />
+        <text name="em_trait_hard_worker" text="Trabajador Duro" />
+        <text name="em_trait_frugal" text="Frugal" />
+
+        <text name="em_wage_base" text="Base" />
+        <text name="em_wage_trait" text="Rasgo" />
+        <text name="em_wage_exp" text="Exp" />
+        <text name="em_wage_market" text="Mercado" />
+
+        <text name="em_btn_train" text="Entrenar" />
+        <text name="em_training_title" text="Centro de Entrenamiento" />
+        <text name="em_train_driving" text="Entrenar Conducción" />
+        <text name="em_train_harvesting" text="Entrenar Cosecha" />
+        <text name="em_train_technical" text="Entrenar Técnica" />
+        <text name="em_training_available" text="Disponible" />
+        <text name="em_training_max" text="Nivel MÁX" />
+        <text name="em_training_cooldown" text="Enfriamiento: %d días" />
+        <text name="em_training_wait" text="Próximo entrenamiento en %d días" />
+        <text name="em_training_ready" text="Listo para entrenar" />
+        <text name="em_training_success" text="¡%s mejoró %s al nivel %d!" />
+        <text name="em_training_fail_max_level" text="Habilidad ya en nivel máximo." />
+        <text name="em_training_fail_cooldown" text="Entrenamiento en enfriamiento. Espera unos días." />
+        <text name="em_training_fail_not_enough_money" text="No hay suficiente dinero para el entrenamiento." />
+
+        <text name="em_pool_refresh_in" text="La bolsa se actualiza en %d días" />
+
+        <text name="em_performance_title" text="Rendimiento" />
+        <text name="em_stat_total_wages" text="Salarios Totales Pagados" />
+        <text name="em_stat_tasks_completed" text="Tareas Completadas" />
+        <text name="em_stat_avg_wage" text="Salario Promedio" />
+        <text name="em_stat_efficiency" text="Eficiencia (tareas/h)" />
+
+        <text name="em_stat_pending_wages" text="Salarios Pendientes" />
+        <text name="em_status_unpaid" text="IMPAGADO" />
+        <text name="em_payroll_failed" text="¡No hay suficiente dinero para pagar a los empleados! Dejarán de trabajar." />
+        <text name="em_payroll_success" text="Nómina mensual: %s deducidos" />
+        <text name="em_unpaid_warning" text="Impagado - se niega a trabajar" />
+        <text name="em_payroll_total" text="Total Nómina Mensual" />
+
+        <text name="em_stat_km_driven" text="Distancia Recorrida" />
+        <text name="em_stat_fatigue" text="Fatiga" />
+        <text name="em_status_on_break" text="En Descanso" />
+        <text name="em_status_exhausted" text="Agotado" />
+        <text name="em_status_tired" text="Cansado" />
+        <text name="em_stat_parking" text="Plaza de Aparcamiento" />
+        <text name="em_no_parking" text="No asignado" />
+        <text name="em_status_returning" text="Volviendo al aparcamiento" />
+        <text name="em_status_driving_to_tool" text="Conduciendo hacia la herramienta" />
+        <text name="em_status_attaching_tool" text="Enganchando herramienta" />
+        <text name="em_status_returning_tool" text="Devolviendo herramienta" />
+
+        <text name="em_milestone_apprentice" text="Aprendiz" />
+        <text name="em_milestone_companion" text="Oficial" />
+        <text name="em_milestone_expert" text="Experto" />
+        <text name="em_milestone_master" text="Maestro" />
+        <text name="em_milestone_reached" text="¡%s alcanzó %s nivel %d: %s!" />
+
+        <text name="em_label_traits" text="Rasgos" />
+        <text name="em_wage_milestone" text="Hito" />
+
+        <!-- 3-Column Layout: Section labels -->
+        <text name="em_personal_info_title" text="Información Personal" />
+        <text name="em_personal_age" text="Edad" />
+        <text name="em_personal_nationality" text="Nacionalidad" />
+        <text name="em_personal_bio" text="Biografía" />
+        <text name="em_personal_personality" text="Personalidad" />
+        <text name="em_personal_experience" text="Experiencia" />
+        <text name="em_personal_quote" text="Lema" />
+
+        <!-- Nationalities -->
+        <text name="em_nationality_FR" text="Francés/a" />
+        <text name="em_nationality_DE" text="Alemán/a" />
+        <text name="em_nationality_PL" text="Polaco/a" />
+        <text name="em_nationality_US" text="Estadounidense" />
+        <text name="em_nationality_IT" text="Italiano/a" />
+        <text name="em_nationality_ES" text="Español/a" />
+        <text name="em_nationality_UK" text="Británico/a" />
+        <text name="em_nationality_NL" text="Neerlandés/a" />
+
+        <!-- Defaults -->
+        <text name="em_bio_default" text="Un trabajador fiable con pasión por la agricultura." />
+        <text name="em_personality_default" text="Estable y fiable." />
+        <text name="em_exp_default" text="Experiencia agrícola general." />
+        <text name="em_quote_default" text="El trabajo duro da sus frutos." />
+
+        <!-- Personalities -->
+        <text name="em_personality_methodical" text="Metódico y preciso. Sigue los procedimientos al pie de la letra y rara vez comete errores." />
+        <text name="em_personality_curious" text="Naturalmente curioso y ávido de aprender. Siempre haciendo preguntas y probando nuevas técnicas." />
+        <text name="em_personality_bold" text="Audaz e intrépido. Asume riesgos pero termina el trabajo rápido." />
+        <text name="em_personality_patient" text="Paciente y calmado bajo presión. Nunca se apresura, siempre entrega trabajo de calidad." />
+        <text name="em_personality_dedicated" text="Profundamente dedicado a la granja. Primero en llegar, último en irse." />
+
+        <!-- Experiences -->
+        <text name="em_exp_tractor_veteran" text="Años de experiencia con tractores en diversos tipos de terreno y condiciones climáticas." />
+        <text name="em_exp_harvest_specialist" text="Especializado en operaciones de cosecha, desde el momento oportuno hasta la optimización de la cosechadora." />
+        <text name="em_exp_speed_driver" text="Conocido por la cobertura rápida del campo, a veces a costa de la precisión." />
+        <text name="em_exp_mechanic" text="Sólida formación mecánica. Puede solucionar y mantener la mayoría del equipo agrícola." />
+        <text name="em_exp_crop_expert" text="Amplio conocimiento de ciclos de cultivo, condiciones del suelo y tiempos óptimos de siembra." />
+        <text name="em_exp_newcomer" text="Nuevo en la agricultura pero ansioso por demostrar su valía en el campo." />
+        <text name="em_exp_allrounder" text="Todoterreno. Cómodo con cualquier tarea que se le asigne." />
+
+        <!-- Per-employee bios -->
+        <text name="em_bio_dupont" text="Agricultor de tercera generación de Normandía. Creció rodeado de manzanos y ganado lechero." />
+        <text name="em_bio_lefebvre" text="Graduada en escuela agrícola con honores. Fascinada por las prácticas agrícolas sostenibles." />
+        <text name="em_bio_moreau" text="Expiloto de rally que encontró la paz en el campo. Aún conduce los tractores como coches de carreras." />
+        <text name="em_bio_bernard" text="Ingeniera mecánica que dejó la ciudad por una vida más sencilla. Puede arreglar cualquier cosa con dos llaves." />
+        <text name="em_bio_petit" text="Joven impetuoso recién salido de la autoescuela. Ansioso por demostrar su valía al volante." />
+        <text name="em_bio_roux" text="Paciente y constante. Creció ayudando a sus abuelos en su viñedo de Burdeos." />
+        <text name="em_bio_garnier" text="Cosechador veterano con dos décadas de experiencia. Reconoce cada grano a simple vista." />
+        <text name="em_bio_faure" text="Excontable convertida en agricultora. Gestiona cada franco con precisión quirúrgica." />
+        <text name="em_bio_girard" text="Mecánico autodidacta capaz de reconstruir un motor de tractor con los ojos vendados. Callado pero brillante." />
+        <text name="em_bio_andre" text="Joven agricultora tecnológica. Sueña con llevar la precisión moderna a la agricultura tradicional." />
+        <text name="em_bio_leroy" text="Recién salido de la escuela con estrellas en los ojos. Lo que le falta en habilidad lo compensa con entusiasmo." />
+        <text name="em_bio_simon" text="Hija de un criador famoso. Decidida a forjar su propia reputación en el cultivo." />
+        <text name="em_bio_laurent" text="Tranquilo y sereno. Pasó años gestionando una cooperativa antes de independizarse." />
+        <text name="em_bio_michel" text="El pilar de cada equipo al que se une. Veinte años de experiencia y sigue fuerte." />
+        <text name="em_bio_martinez" text="Cruzó los Pirineos buscando mejores oportunidades. Trae la pasión española a los campos franceses." />
+        <text name="em_bio_dubois" text="La precisión es su segundo nombre. Exinspectora de calidad en una fábrica de equipos agrícolas." />
+        <text name="em_bio_fontaine" text="Aprendiz entusiasta que devora manuales agrícolas. Ya impresionante para su edad." />
+        <text name="em_bio_mercier" text="Espíritu libre que trabaja duro y se divierte igual. No te dejes engañar por la sonrisa." />
+        <text name="em_bio_blanchard" text="Agricultor de la vieja escuela que confía en el instinto sobre la tecnología. Sus campos son siempre impecables." />
+        <text name="em_bio_chevalier" text="Competitiva por naturaleza. Posee el récord regional de velocidad de cosecha desde hace dos años." />
+
+        <!-- Per-employee quotes -->
+        <text name="em_quote_dupont" text="Un buen agricultor lee la tierra como un libro." />
+        <text name="em_quote_lefebvre" text="Cada cosecha enseña algo nuevo." />
+        <text name="em_quote_moreau" text="La velocidad es un talento, no un defecto." />
+        <text name="em_quote_bernard" text="Si está roto, lo arreglo. Si funciona, lo mejoro." />
+        <text name="em_quote_petit" text="¡Dame las llaves y mírame!" />
+        <text name="em_quote_roux" text="La paciencia convierte semillas en cosechas." />
+        <text name="em_quote_garnier" text="Veinte años de polvo en mis botas y no cambiaría nada." />
+        <text name="em_quote_faure" text="Cada semilla es una inversión. Adminístralas sabiamente." />
+        <text name="em_quote_girard" text="Una máquina bien mantenida nunca te falla." />
+        <text name="em_quote_andre" text="La tecnología es el futuro de la agricultura." />
+        <text name="em_quote_leroy" text="Soy nuevo, pero aprendo rápido. Solo mira." />
+        <text name="em_quote_simon" text="Construiré mi propio legado, campo a campo." />
+        <text name="em_quote_laurent" text="Manos firmes hacen una cosecha firme." />
+        <text name="em_quote_michel" text="La experiencia no se puede apresurar. Se gana, temporada tras temporada." />
+        <text name="em_quote_martinez" text="Yo traigo el fuego. El campo pone el resto." />
+        <text name="em_quote_dubois" text="Medir dos veces, arar una vez." />
+        <text name="em_quote_fontaine" text="El conocimiento es el mejor fertilizante." />
+        <text name="em_quote_mercier" text="Trabajar duro, divertirse duro, cosechar más duro." />
+        <text name="em_quote_blanchard" text="La tierra recuerda a quienes la tratan bien." />
+        <text name="em_quote_chevalier" text="Los récords están para romperse." />
+    </texts>
+</l10n>

@@ -1,0 +1,11 @@
+{
+  "label": "Foliage",
+  "link": {
+    "type": "generated-index",
+    "title": "Foliage Documentation",
+    "description": "6 pages"
+  },
+  "customProps": {
+    "icon": "leaf"
+  }
+}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<modDesc descVersion="93">
+    <title>
+        <en>AICost</en>		
+    </title>
+    <description>
+        <de><![CDATA[Helferkosten: Senkt die Helferkosten und optional die Kosten der Verbrauchsgüter (Standard An)]]></de>
+		<en><![CDATA[AICost: Reduces the cost of helpers and optional consumable costs (Default On)]]></en>
+    </description>
+    <author>HappyLooser</author>
+	<version>1.0.0.0</version>
+	<iconFilename>icon_mod.dds</iconFilename>
+	<multiplayer supported="true"/>
+	<extraSourceFiles>
+        <sourceFile filename="AICost.lua" />
+    </extraSourceFiles>	
+</modDesc>

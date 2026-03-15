@@ -1,0 +1,7 @@
+### RainSimWeatherType
+
+**Description**
+
+**Definition**
+
+> RainSimWeatherType()

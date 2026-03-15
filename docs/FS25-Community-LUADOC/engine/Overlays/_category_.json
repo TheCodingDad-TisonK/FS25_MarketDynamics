@@ -1,0 +1,11 @@
+{
+  "label": "Overlays",
+  "link": {
+    "type": "generated-index",
+    "title": "Overlays Documentation",
+    "description": "13 pages"
+  },
+  "customProps": {
+    "icon": "layer-group"
+  }
+}

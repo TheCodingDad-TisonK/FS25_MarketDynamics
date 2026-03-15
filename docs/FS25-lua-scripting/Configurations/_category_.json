@@ -1,0 +1,11 @@
+{
+  "label": "Configurations",
+  "link": {
+    "type": "generated-index",
+    "title": "Configurations Documentation",
+    "description": "11 pages, 121 functions"
+  },
+  "customProps": {
+    "icon": "cogs"
+  }
+}

@@ -1,0 +1,670 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+
+<GUIProfiles>
+    <Presets>
+        <Preset name="afm_colorListRowBackground" value="0.04231 0.04231 0.04231 1" />
+        <Preset name="afm_colorFocusBackgroundGradient" value="0.22323 0.40724 0.00368 1" />
+        <Preset name="afm_colorGreyDark_50" value="0.02956 0.02956 0.02956 0.5" />
+        <Preset name="afmColorGreen" value="0.3763 0.6038 0.0782 1"/>
+        <Preset name="afmColorRed" value="0.8069 0.0097 0.0097 1"/>
+        <Preset name="afmColorYellow" value="1.0000 0.6592 0.0000 1"/>
+        <Preset name="afmColorBlue" value="0.0742 0.4341 0.6939 1"/>
+        <Preset name="afmHeaderText" value="0.1714 0.2122 0.2270 1" />
+    </Presets>
+    <Profile name="afmMenuVehicleLeftColumn" extends="emptyPanel" with="anchorTopLeft">
+        <size value="780px 756px"/>
+    </Profile>
+    <Profile name="afmMenuVehicleRightColumn" extends="emptyPanel" with="anchorTopRight">
+        <size value="580px 756px"/>
+    </Profile>
+    <Profile name="afmMenuFullColumn" extends="emptyPanel" with="anchorTopLeft">
+        <size value="1280px 756px"/>
+    </Profile>
+    <Profile name="afmMenuVehicleList" extends="list" with="anchorTopLeft">
+        <size value="780px 652px"/>
+        <position value="0 -104px"/>
+        <isHorizontalList value="false" />
+        <selectedWithoutFocus value="false" />
+        <selectOnScroll value="true" />
+    </Profile>
+
+    <Profile name="afm_vehicleHeaderBox" extends="emptyPanel" with="anchorTopLeft">
+        <size value="780px 80px" />
+        <position value="20px 0px" />
+    </Profile>
+
+    <Profile name="afm_vehicleHeaderBoxRight" extends="emptyPanel" with="anchorTopLeft">
+        <size value="580px 80px" />
+        <position value="0px 0px" />
+    </Profile>
+
+    <Profile name="afmMenuPlaceableList" extends="list" with="anchorTopLeft">
+        <size value="780px 652px"/>
+        <position value="0 -104px"/>
+        <isHorizontalList value="false" />
+        <selectedWithoutFocus value="false" />
+        <selectOnScroll value="true" />
+    </Profile>
+    <Profile name="afmMenuVehicleListItem" extends="listItem" with="alternating">
+        <size value="780px 50px" />
+        <imageColor value="$preset_afm_colorListRowBackground"/>
+        <imageFocusedColor value="$preset_afm_colorFocusBackgroundGradient"/>
+        <imageSelectedColor value="$preset_afm_colorFocusBackgroundGradient"/>
+        <alternateBackgroundColor value="$preset_afm_colorGreyDark_50" />
+    </Profile>
+    <Profile name="afmMenuPlaceableListItem" extends="listItem" with="alternating">
+        <size value="780px 50px" />
+        <imageColor value="$preset_afm_colorListRowBackground"/>
+        <imageFocusedColor value="$preset_afm_colorFocusBackgroundGradient"/>
+        <imageSelectedColor value="$preset_afm_colorFocusBackgroundGradient"/>
+        <alternateBackgroundColor value="$preset_afm_colorGreyDark_50" />
+    </Profile>
+    <Profile name="afm_multiplayerUsersListItemDotBG" extends="baseReference" with="anchorMiddleLeft">
+        <size value="18px 18px" />
+        <position value="7px 0" />
+        <cornerSize value="0.25" />
+    </Profile>
+    <Profile name="afm_multiplayerUsersListItemDot" extends="baseReference" with="anchorMiddleLeft">
+        <size value="16px 16px" />
+        <position value="8px 0" />
+        <cornerSize value="0.25" />
+    </Profile>
+    <Profile name="afmMenuVehicleItemTitle" extends="fs25_textDarkHighlight">
+        <size value="280px 50px" />
+        <textVerticalAlignment value="middle" />
+        <textAutoWidth value="true" />
+        <position value="30px 0" />
+    </Profile>
+    <Profile name="afmMenuVehicleItemType" extends="fs25_textDarkHighlight">
+        <textUpperCase value="true"/>
+        <size value="50px 50px" />
+        <textVerticalAlignment value="middle" />
+        <textAutoWidth value="true" />
+        <position value="435px 0" />
+        <textSize value="16px"/>
+        <textAlignment value="left"/>
+    </Profile>
+    <Profile name="afmMenuPlaceableItemType" extends="fs25_textDarkHighlight">
+        <textUpperCase value="true"/>
+        <size value="50px 50px" />
+        <textVerticalAlignment value="middle" />
+        <textAutoWidth value="true" />
+        <position value="435px 0" />
+        <textSize value="16px"/>
+        <textAlignment value="left"/>
+    </Profile>
+    <Profile name="afmMenuVehicleItemLocation" extends="fs25_textDarkHighlight" with="anchorMiddleRight">
+        <size value="150px 50px" />
+        <textVerticalAlignment value="middle" />
+        <textAutoWidth value="true" />
+        <position value="-8px 0" />
+    </Profile>
+    <Profile name="afmMenuPlaceableItemTitle" extends="textDefault">
+        <size value="290px 50px" />
+        <textVerticalAlignment value="middle" />
+        <textAutoWidth value="true" />
+        <position value="25px 0" />
+    </Profile>
+    <Profile name="afmMenuPlaceableItemLocation" extends="textDefault" with="anchorMiddleRight">
+        <size value="150px 50px" />
+        <textVerticalAlignment value="middle" />
+        <textAutoWidth value="true" />
+        <position value="-360px 0" />
+    </Profile>
+    <Profile name="afmMenuPlaceableItemValue" extends="textDefault" with="anchorMiddleRight">
+        <size value="150px 50px" />
+        <textVerticalAlignment value="middle" />
+        <textAutoWidth value="true" />
+        <position value="-16px 0" />
+    </Profile>
+
+    <Profile name="afmMenuVehicleItemFarmland" extends="fs25_textDarkHighlight">
+        <size value="280px 50px" />
+        <textVerticalAlignment value="middle" />
+        <textAutoWidth value="true" />
+        <position value="30px 0" />
+    </Profile>
+
+    <Profile name="afmMenuVehicleItemOwner" extends="fs25_textDarkHighlight">
+        <size value="280px 50px" />
+        <textVerticalAlignment value="middle" />
+        <textAutoWidth value="true" />
+        <position value="200px 0" />
+    </Profile>
+
+    <Profile name="afmMenuVehicleItemCrop" extends="fs25_textDarkHighlight">
+        <size value="256px 50px" />
+        <textVerticalAlignment value="middle" />
+        <textAutoWidth value="true" />
+        <position value="428px 0" />
+    </Profile>
+
+    <Profile name="afmMenuVehicleItemCropNone" extends="fs25_textDarkHighlight">
+        <size value="280px 50px" />
+        <textVerticalAlignment value="middle" />
+        <textAutoWidth value="true" />
+        <position value="400px 0" />
+    </Profile>
+
+    <Profile name="afmMenuVehicleItemCropIcon" extends="baseReference">
+        <size value="24px 24px" />
+        <position value="400px 15px" />
+        <imageSliceId value="noSlice" />
+    </Profile>
+
+    <Profile name="afmMenuVehicleItemStage" extends="fs25_textDarkHighlight">
+        <size value="280px 50px" />
+        <textVerticalAlignment value="middle" />
+        <textAutoWidth value="true" />
+        <position value="600px 0" />
+    </Profile>
+
+    <Profile name="afm_MenuVehicleIcon" extends="baseReference" with="anchorTopRight">
+        <position value="-20px 94px" />
+        <size value="200px 200px" />
+        <imageSliceId value="noSlice" />
+        <imageSize value="512 512" />
+        <imageSdfWidth value="0.025" />
+    </Profile>
+    <Profile name="afm_MenuPlaceableIcon" extends="baseReference" with="anchorTopRight">
+        <position value="-20px 94px" />
+        <size value="200px 200px" />
+        <imageSliceId value="noSlice" />
+        <imageSize value="512 512" />
+        <imageSdfWidth value="0.025" />
+    </Profile>
+    <Profile name="afmMenuVehicleDetailList" extends="list" with="anchorTopRight">
+        <size value="580px 452px"/>
+        <isHorizontalList value="false"/>
+        <selectedWithoutFocus value="false" />
+        <position value="0 -103px"/>
+    </Profile>
+    <Profile name="afmMenuVehicleDetailListItem" extends="listItem" with="alternating">
+        <imageColor value="$preset_afm_colorListRowBackground"/>
+        <imageFocusedColor value="$preset_afm_colorFocusBackgroundGradient"/>
+        <imageSelectedColor value="$preset_afm_colorFocusBackgroundGradient"/>
+        <alternateBackgroundColor value="$preset_afm_colorGreyDark_50" />
+        <size value="570px 50px"/>
+    </Profile>
+    <Profile name="afm_textDarkHighlight" extends="fs25_textDefault">
+      <textSelectedColor value="$preset_fs25_colorMainDark" />
+      <textBold value="true" />
+    </Profile>
+    <Profile name="afmMenuVehicleDetailTitle" extends="afm_textDarkHighlight" with="anchorTopLeft">
+        <size value="237px 40px" />
+        <textVerticalAlignment value="middle" />
+        <textAutoWidth value="true" />
+        <position value="8px -6px" />
+        <textUpperCase value="true"/>
+        <textBold value="true"/>
+    </Profile>
+    <Profile name="afmMenuVehicleDetailTitleIcon" extends="afm_textDarkHighlight" with="anchorTopLeft">
+        <size value="209px 40px" />
+        <textVerticalAlignment value="middle" />
+        <textAutoWidth value="true" />
+        <position value="36px -6px" />
+        <textUpperCase value="true"/>
+        <textBold value="true"/>
+    </Profile>
+
+    <Profile name="afmMenuVehicleDetailTitleIconProduct" extends="afm_textDarkHighlight" with="anchorTopLeft">
+        <size value="209px 40px" />
+        <textVerticalAlignment value="middle" />
+        <textAutoWidth value="true" />
+        <position value="36px -6px" />
+        <textUpperCase value="true"/>
+        <textBold value="true"/>
+    </Profile>
+
+    <Profile name="afmMenuVehicleDetailIconNoBar" extends="afm_MenuVehicleDetailItemIcon">
+        <imageSliceId value="noSlice" />
+        <position value="6px 0px" />
+    </Profile>
+
+    <Profile name="afm_icon_cruiseControl" extends="afm_MenuVehicleDetailItemIcon">
+        <imageSliceId value="gui.storeAttribute_maxSpeed" />
+        <position value="6px 0px" />
+    </Profile>
+
+    <Profile name="afm_icon_weight" extends="afm_MenuVehicleDetailItemIcon">
+        <imageSliceId value="gui.storeAttribute_maxLoadCapacity" />
+        <position value="6px 0px" />
+    </Profile>
+
+    <Profile name="afm_icon_time" extends="afm_MenuVehicleDetailItemIcon">
+        <imageSliceId value="gui.storeAttribute_time" />
+        <position value="6px 0px" />
+    </Profile>
+
+    <Profile name="afm_icon_cost" extends="afm_MenuVehicleDetailItemIcon">
+        <imageSliceId value="gui.storeAttribute_maintenanceCost" />
+        <position value="6px 0px" />
+    </Profile>
+
+    <Profile name="afm_icon_animals" extends="afm_MenuVehicleDetailItemIcon">
+        <imageSliceId value="gui.icon_ingameMenu_animals" />
+        <position value="6px 0px" />
+    </Profile>
+
+    <Profile name="afm_icon_workingSpeed" extends="afm_MenuVehicleDetailItemIcon">
+        <imageSliceId value="gui.storeAttribute_maxSpeed" />
+        <position value="6px 0px" />
+    </Profile>
+
+    <Profile name="afm_icon_hours" extends="afm_MenuVehicleDetailItemIcon">
+        <imageSliceId value="gui.storeAttribute_operatingHours" />
+        <position value="6px 0px" />
+    </Profile>
+
+    <Profile name="afm_icon_brand" extends="afm_MenuVehicleDetailItemIcon">
+        <imageSliceId value="gui.storeAttribute_consoleSlots" />
+        <position value="6px 0px" />
+    </Profile>
+
+    <Profile name="afm_icon_plate" extends="afm_MenuVehicleDetailItemIcon">
+        <imageSliceId value="gui.storeAttribute_licensePlate" />
+        <position value="6px 0px" />
+    </Profile>
+
+    <Profile name="afm_icon_width" extends="afm_MenuVehicleDetailItemIcon">
+        <imageSliceId value="gui.storeAttribute_workingWidth" />
+        <position value="6px 0px" />
+    </Profile>
+
+    <Profile name="afm_icon_occupant" extends="afm_MenuVehicleDetailItemIcon">
+        <imageSliceId value="gui.multiplayer_farmManager" />
+        <position value="6px 0px" />
+    </Profile>
+
+    <Profile name="afm_icon_ownership" extends="afm_MenuVehicleDetailItemIcon">
+        <imageSliceId value="gui.multiplayer_serverAdmin" />
+        <position value="6px 0px" />
+    </Profile>
+
+    <Profile name="afm_icon_fillType_diesel" extends="afm_MenuVehicleDetailItemIcon">
+        <imageSliceId value="gui.storeAttribute_fuel" />
+        <position value="6px 4px" />
+    </Profile>
+
+    <Profile name="afm_icon_fillType_electricCharge" extends="afm_MenuVehicleDetailItemIcon">
+        <imageSliceId value="gui.storeAttribute_electricCharge" />
+        <position value="6px 4px" />
+    </Profile>
+
+    <Profile name="afm_icon_capacity" extends="afm_MenuVehicleDetailItemIcon">
+        <imageSliceId value="gui.storeAttribute_capacity" />
+        <position value="6px 4px" />
+    </Profile>
+
+    <Profile name="afm_icon_info" extends="afm_MenuVehicleDetailItemIcon">
+        <imageSliceId value="gui.storeAttribute_info" />
+        <position value="6px 4px" />
+    </Profile>
+
+    <Profile name="afm_icon_info2" extends="afm_MenuVehicleDetailItemIcon">
+        <imageSliceId value="gui.storeAttribute_info" />
+        <position value="6px 0px" />
+    </Profile>
+
+    <Profile name="afm_icon_tireName" extends="afm_MenuVehicleDetailItemIcon">
+        <imageSliceId value="gui.storeAttribute_tireName" />
+        <position value="6px 4px" />
+    </Profile>
+
+    <Profile name="afm_icon_mission" extends="afm_MenuVehicleDetailItemIcon">
+        <imageSliceId value="gui.icon_ingameMenu_contracts" />
+        <position value="6px 4px" />
+    </Profile>
+
+    <Profile name="afm_icon_fillType_methane" extends="afm_MenuVehicleDetailItemIcon">
+        <imageSliceId value="gui.storeAttribute_CNG" />
+        <position value="6px 4px" />
+    </Profile>    
+
+    <Profile name="afm_icon_power" extends="afm_MenuVehicleDetailItemIcon">
+        <imageSliceId value="gui.storeAttribute_power" />
+        <position value="6px 4px" />
+    </Profile>  
+
+    <Profile name="afm_icon_capacity2" extends="afm_MenuVehicleDetailItemIcon">
+        <imageSliceId value="gui.storeAttribute_capacity" />
+        <position value="6px 0px" />
+    </Profile>
+
+    <Profile name="afm_icon_damage" extends="afm_MenuVehicleDetailItemIcon">
+        <imageSliceId value="gui.icon_repair" />
+        <position value="6px 0px" />
+    </Profile>    
+
+    <Profile name="afm_icon_paint" extends="afm_MenuVehicleDetailItemIcon">
+        <imageSliceId value="gui.icon_character_paintBucket" />
+        <position value="6px 0px" />
+    </Profile>    
+
+    <Profile name="afm_icon_dirt" extends="afm_MenuVehicleDetailItemIcon">
+        <imageSliceId value="gui.fieldInfo_warning" />
+        <position value="6px 0px" />
+    </Profile> 
+
+    <Profile name="afm_icon_tool" extends="afm_MenuVehicleDetailItemIcon">
+        <imageSliceId value="gui.ingameMap_tools" />
+        <position value="6px 0px" />
+    </Profile> 
+
+    <Profile name="afm_icon_trailer" extends="afm_MenuVehicleDetailItemIcon">
+        <imageSliceId value="gui.ingameMap_trailer" />
+        <position value="6px 0px" />
+    </Profile>
+
+    <Profile name="afmMenuVehicleDetailLevel" extends="afm_textDarkHighlight" with="anchorTopRight">
+        <size value="200px 40px" />
+        <textMaxWidth value="400px" />
+        <textVerticalAlignment value="middle" />
+        <textAutoWidth value="true" />
+        <position value="-8px 0" />
+    </Profile>
+    <Profile name="afmMenuVehicleDetailTitleNoBar" extends="afmMenuVehicleDetailTitle">
+        <position value="8px -5px"/>
+    </Profile>
+    <Profile name="afmMenuVehicleDetailLevelNoBar" extends="afmMenuVehicleDetailLevel">
+        <position value="-8px -5px"/>
+    </Profile>
+    <Profile name="afmMenuVehicleDetailBarBackground" extends="fs25_animalSmallStatusBarBackground" with="anchorTopRight">
+        <position value="-8px -36px" />
+        <size value="554px 6px" />
+        <imageColor value="$preset_colorLightGrey"/>
+        <startImageColor value="$preset_colorLightGrey" />
+        <endImageColor value="$preset_colorLightGrey" />
+        <imageFocusedColor value="$preset_colorLightGrey" />
+        <imageSelectedColor value="$preset_colorLightGrey" />
+    </Profile>
+    <Profile name="afmMenuVehicleDetailBar" extends="fs25_animalSmallStatusBar" with="anchorTopLeft">
+        <size value="554px 6px" />
+        <imageColor value="$preset_afmColorGreen"/>
+        <startImageColor value="$preset_afmColorGreen" />
+        <endImageColor value="$preset_afmColorGreen" />
+        <imageFocusedColor value="$preset_afmColorGreen"/>
+        <imageSelectedColor value="$preset_afmColorGreen"/>
+    </Profile>
+    <Profile name="afmMenuVehicleDetailBarDanger" extends="afmMenuVehicleDetailBar">
+        <imageColor value="$preset_afmColorRed"/>
+        <startImageColor value="$preset_afmColorRed" />
+        <endImageColor value="$preset_afmColorRed" />
+        <imageFocusedColor value="$preset_afmColorRed"/>
+        <imageSelectedColor value="$preset_afmColorRed"/>
+    </Profile>
+    <Profile name="afmMenuVehicleDetailBarWarning" extends="afmMenuVehicleDetailBar">
+        <imageColor value="$preset_afmColorYellow"/>
+        <startImageColor value="$preset_afmColorYellow" />
+        <endImageColor value="$preset_afmColorYellow" />
+        <imageFocusedColor value="$preset_afmColorYellow"/>
+        <imageSelectedColor value="$preset_afmColorYellow"/>
+    </Profile>
+    <Profile name="afmMenuFieldItemTitle" extends="textDefault">
+        <size value="220px 50px" />
+        <textVerticalAlignment value="middle" />
+        <textAutoWidth value="true" />
+        <position value="25px 0" />
+    </Profile>
+    <Profile name="afmMenuFieldItemOwner" extends="textDefault" with="anchorMiddleRight">
+        <size value="200px 50px" />
+        <textVerticalAlignment value="middle" />
+        <textAutoWidth value="true" />
+        <position value="-750px 0" />
+    </Profile>
+    <Profile name="afmMenuFieldItemLocation" extends="textDefault" with="anchorMiddleRight">
+        <size value="200px 50px" />
+        <textVerticalAlignment value="middle" />
+        <textAutoWidth value="true" />
+        <position value="-450px 0" />
+    </Profile>
+    <Profile name="afmMenuFieldItemCropState" extends="textDefault" with="anchorMiddleRight">
+        <size value="50px 50px" />
+        <textVerticalAlignment value="middle" />
+        <textAutoWidth value="true" />
+        <position value="-16px 0" />
+    </Profile>
+    <Profile name="afmMenuVehicleDescription" extends="textDefault" with="anchorBottomCenter">
+        <size value="600px 50px" />
+        <textVerticalAlignment value="middle" />
+        <textAutoWidth value="true" />
+        <position value="0 -50px" />
+    </Profile>
+    <Profile name="afm_menuNoItems" extends="textDefault" with="anchorTopCenter">
+        <size value="100% 50px" />
+        <textVerticalAlignment value="middle" />
+        <textAutoWidth value="true" />
+        <position value="0 -50px" />
+    </Profile>
+    <Profile name="afmMenuVehicleStatusIconMine" extends="afmMenuVehicleStatusIconParked">
+        <imageUVs value="0 0 0.25 1"/>
+        <position value="-160px 0px" />
+    </Profile>
+    <Profile name="afmMenuVehicleStatusIconRunning" extends="afmMenuVehicleStatusIconParked">
+        <imageUVs value="0.25 0 0.25 1"/>
+        <position value="-125px 0px" />
+    </Profile>
+    <Profile name="afmMenuVehicleStatusIconParked" extends="baseReference" with="anchorMiddleRight">
+        <visible value="true" />
+        <position value="-91px 0px" />
+        <size value="32px 32px" />
+        <imageSliceId value="noSlice" />
+        <imageFilename value="g_AFMExtraIcons" />
+        <imageUVs value="0.5 0 0.25 1"/>
+        <imageSize value="128 32" />
+        <imageSdfWidth value="0.025" />
+    </Profile>
+    <Profile name="afmMenuVehicleStatusIconDriver" extends="baseReference" with="anchorMiddleRight">
+        <visible value="true" />
+        <position value="-60px 0px" />
+        <imageSliceId value="gui.multiplayer_farmManager" />
+        <size value="32px 32px" />
+    </Profile>
+    <Profile name="afmMenuVehicleStatusIconAI" extends="baseReference" with="anchorMiddleRight">
+        <visible value="true" />
+        <position value="-60px 0px" />
+        <imageSliceId value="gui.icon_gps" />
+        <size value="32px 32px" />
+    </Profile>
+    <Profile name="afmMenuInfoSubheader" extends="textDefault" with="anchorTopLeft">
+        <textBold value="false"/>
+        <textSize value="14px"/>
+        <textUpperCase value="true"/>
+        <position value="8px -50px" />
+        <textColor value="$preset_afmHeaderText" />
+    </Profile>
+    <Profile name="afm_menuHeader" extends="textDefault">
+        <textAlignment value="left"/>
+        <textBold value="true"/>
+        <textColor value="$preset_colorHeaderText"/>
+        <textFocusedColor value="$preset_colorWhite"/>
+        <textHighlightedColor value="$preset_colorWhite"/>
+        <textOffset value="8px 0px"/>
+        <textSize value="20px" />
+        <textUpperCase value="true"/>
+        <textVerticalAlignment value="middle"/>
+    </Profile>
+    <Profile name="afm_fieldHeaderBox" extends="emptyPanel" with="anchorTopLeft">
+        <size value="1242px 80px" />
+        <position value="0px 0px" />
+    </Profile>
+    <Profile name="afm_fieldListSliderBox" extends="fs25_listSliderBox" with="anchorTopLeft">
+        <absoluteSizeOffset value="0px 56px" />
+        <position value="1292px -56px" />
+    </Profile>
+    <Profile name="afm_placeableHeaderBox" extends="emptyPanel" with="anchorTopLeft">
+        <size value="1242px 80px" />
+        <position value="0px 0px" />
+    </Profile>
+    <Profile name="afm_placeableListSliderBox" extends="fs25_listSliderBox" with="anchorTopLeft">
+        <absoluteSizeOffset value="0px 56px" />
+        <position value="1292px -56px" />
+    </Profile>
+    <Profile name="afm_vehicleListSliderBox" extends="fs25_listSliderBox" with="anchorTopLeft">
+        <absoluteSizeOffset value="0px 120px" />
+        <position value="797px -110px" />
+    </Profile>
+    <Profile name="afm_vehicleDetailListSliderBox" extends="fs25_listSliderBox" with="anchorTopRight">
+        <absoluteSizeOffset value="0px 330px" />
+        <position value="15px -110px" />
+    </Profile>
+    <Profile name="afm_settingsLayout" extends="baseReference" with="anchorStretchingYStretchingX pivotTopCenter">
+        <size value="100% 100%" />
+        <absoluteSizeOffset value="0px 0px" />
+        <wrapAround value="false" />
+        <fitFlowToElements value="true" />
+        <flowDirection value="vertical" />
+        <imageColor value="$preset_colorTransparent" />
+    </Profile>
+    <Profile name="afm_fieldMenuHeaderIcon" extends="baseReference" with="anchorMiddleCenter">
+        <size value="50px 50px" />
+        <imageSliceId value="noSlice" />
+        <imageFilename value="g_AFMIconField" />
+        <imageColor value="$preset_fs25_colorMainDark" />
+    </Profile>
+    <Profile name="afm_vehicleMenuHeaderIcon" extends="baseReference" with="anchorMiddleCenter">
+        <size value="50px 50px" />
+        <imageSliceId value="noSlice" />
+        <imageFilename value="g_AFMIconVehicle" />
+        <imageColor value="$preset_fs25_colorMainDark" />
+    </Profile>
+    <Profile name="afm_placeableMenuHeaderIcon" extends="baseReference" with="anchorMiddleCenter">
+        <size value="50px 50px" />
+        <imageSliceId value="noSlice" />
+        <imageFilename value="g_AFMIconPlaceable" />
+        <imageColor value="$preset_fs25_colorMainDark" />
+    </Profile>
+    <Profile name="afm_implementMenuHeaderIcon" extends="baseReference" with="anchorMiddleCenter">
+        <size value="50px 50px" />
+        <imageSliceId value="noSlice" />
+        <imageFilename value="g_AFMIconAttach" />
+        <imageColor value="$preset_fs25_colorMainDark" />
+    </Profile>
+
+    <Profile name="afm_vehiclesIngameMap" extends="baseReference">
+        <size value="570px 200px" />
+        <position value="0px 0px" />
+    </Profile>
+
+    <Profile name="afm_menuHeaderPanel" extends="emptyPanel" with="anchorTopStretchingX">
+        <height value="80px" />
+        <absoluteSizeOffset value="0px 0px" />
+        <position value="0px 92px" />
+    </Profile>
+
+    <Profile name="afm_shopItemsDetailsContainer" extends="emptyPanel" with="anchorBottomStretchingX">
+      <height value="225px" />
+      <visible value="false" />
+    </Profile>
+
+    <Profile name="afm_vehiclesHeaderText" extends="fs25_vehiclesHeaderName">
+        <size value="160px 32px" />
+        <textAutoWidth value="true" />
+        <textAlignment value="left"/>
+        <textBold value="true"/>
+        <textColor value="$preset_colorHeaderText"/>
+        <textFocusedColor value="$preset_colorWhite"/>
+        <textHighlightedColor value="$preset_colorWhite"/>
+        <textOffset value="8px 0px"/>
+        <textSize value="20px" />
+        <textUpperCase value="true"/>
+        <textVerticalAlignment value="middle"/>
+    </Profile>
+
+    <Profile name="afm_vehiclesHeaderTextMed" extends="fs25_vehiclesHeaderName">
+        <size value="160px 32px" />
+        <textAutoWidth value="true" />
+        <textAlignment value="left"/>
+        <textBold value="true"/>
+        <textColor value="$preset_colorHeaderText"/>
+        <textFocusedColor value="$preset_colorWhite"/>
+        <textHighlightedColor value="$preset_colorWhite"/>
+        <textOffset value="8px 0px"/>
+        <textSize value="20px" />
+        <textUpperCase value="true"/>
+        <textVerticalAlignment value="middle"/>
+    </Profile>
+
+    <Profile name="afm_vehiclesHeaderTextEnd" extends="fs25_vehiclesHeaderName">
+        <size value="160px 32px" />
+        <textAutoWidth value="true" />
+        <textAlignment value="right"/>
+        <textBold value="true"/>
+        <textColor value="$preset_colorHeaderText"/>
+        <textFocusedColor value="$preset_colorWhite"/>
+        <textHighlightedColor value="$preset_colorWhite"/>
+        <textOffset value="8px 0px"/>
+        <textSize value="20px" />
+        <textUpperCase value="true"/>
+        <textVerticalAlignment value="middle"/>
+    </Profile>
+
+    <Profile name="afm_MenuVehicleDetailItemIcon" with="anchorMiddleLeft">
+        <size value="24px 24px" />
+        <position value="8px 4px" />
+    </Profile>
+
+    <Profile name="afm_MenuVehicleDetailFillIcon" with="anchorMiddleLeft">
+        <size value="24px 24px" />
+        <position value="8px 4px" />
+        <imageSliceId value="noSlice" />
+    </Profile>
+
+    <Profile name="afm_vehiclesDetailsInfoBox" extends="emptyPanel" with="anchorBottomLeft">
+      <size value="588px 55px" />
+      <absoluteSizeOffset value="570px 0px" />
+      <position value="0px -40px" />
+      <numFlows value="1" />
+      <fitFlowToElements value="true" />
+    </Profile>
+
+    <Profile name="afm_itemDetailsFillTypeTemplateBox" extends="emptyPanel" with="anchorBottomStretchingX">
+        <size value="588px 55px" />
+        <position value="0px 0px" />
+    </Profile>
+
+    <Profile name="afm_moneyBox" with="anchorMiddleRight">
+        <size value="570px 20px" />
+        <position value="-40px 7px" />
+        <alignmentX value="right" />
+        <alignmentY value="middle" />
+        <autoValidateLayout value="true" />
+    </Profile>
+
+    <Profile name="afm_moneyBoxBg" extends="baseReference" with="anchorMiddleRight">
+        <size value="210px 16px" />
+        <position value="-15px 0px" />
+        <color value="$preset_fs25_colorMainDark" />
+        <cornerSize value="0.75" />
+    </Profile>
+
+    <Profile name="afm_balance" extends="fs25_textDefault" with="anchorBottomLeft">
+        <position value="15px 20px" />
+        <size value="160px 40px" />
+        <margin value="0 0 5px 0" />
+        <textSize value="16px" />
+        <textUpperCase value="true" />
+        <textAutoWidth value="true" />
+        <textAlignment value="right" />
+    </Profile>
+
+    <Profile name="afm_money" extends="fs25_textDefault">
+        <position value="15px 40px" />
+        <textSize value="16px" />
+        <textBold value="true" />
+        <textAutoWidth value="true" />
+        <textUpperCase value="true" />
+        <textColor value="$preset_fs25_colorMainHighlight" />
+        <format value="accounting" />
+        <formatDecimalPlaces value="0" />
+    </Profile>
+
+    <Profile name="afm_moneyNeg" extends="fs25_shopMoney">
+        <textColor value="$preset_colorDarkRed" />
+    </Profile>
+
+    <Profile name="afm_vehiclesHeaderTextContainer" extends="emptyPanel">
+      <size value="180px 32px" />
+    </Profile>
+
+</GUIProfiles>

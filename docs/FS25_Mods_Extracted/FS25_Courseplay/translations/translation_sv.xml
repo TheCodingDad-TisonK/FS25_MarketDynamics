@@ -1,0 +1,670 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<l10n>
+  <texts>
+    <!--Swedish translation-->
+    <!---->
+    <!--These translations are automatically reformated on a github push.-->
+    <!---->
+    <!---->
+    <!--basic-->
+    <!---->
+    <text name="CP_activated" text="aktiverad"/>
+    <text name="CP_deactivated" text="avaktiverad"/>
+    <text name="CP_automatic" text="bil"/>
+    <text name="CP_unit_meter" text="m"/>
+    <text name="CP_unit_foot" text="ft"/>
+    <text name="CP_copy" text="Kopiera kurs:"/>
+    <text name="CP_infoText" text="Courseplay(%s): För hjälp, buggrapporter eller patch notes, besök: https://github.com/Courseplay/Courseplay_FS25."/>
+    <text name="CP_error_no_course" text="Skapa en kurs innan du påbörjar jobbet."/>
+    <text name="CP_error_could_not_generate_course" text="Kunde inte generera kurs. Vänligen prova andra inställningar."/>
+    <text name="CP_error_field_detection_still_running" text="Fältdetektering pågår fortfarande."/>
+    <text name="CP_error_field_detection_failed" text="Fältdetekteringen misslyckades."/>
+    <text name="CP_error_not_on_field" text="Målet är inte på ett fält."/>
+    <text name="CP_error_unloader_to_far_away_from_field" text="Avlastaren är för långt bort från fältet."/>
+    <text name="CP_error_start_position_to_far_away_from_field" text="Startpositionen är för långt bort från fältet."/>
+    <text name="CP_error_giants_unloader_not_available" text="Giants avlastare inte tillgänglig."/>
+    <text name="CP_error_fieldUnloadPosition_too_far_away_from_field" text="Avlastningsplatsen för fältet ligger för långt bort från fältet."/>
+    <text name="CP_error_no_bunkerSilo_found" text="Ingen silo hittades."/>
+    <text name="CP_error_no_heap_found" text="Ingen hög hittades."/>
+    <text name="CP_error_no_unload_trigger_found" text="Ingen lossningsplats hittades."/>
+    <text name="CP_error_unload_target_to_far_away_from_silo" text="Vald lossningsplats ligger för långt bort från silon."/>
+    <!---->
+    <!--AI job parameters-->
+    <!---->
+    <text name="CP_fieldWorkJobParameters_fieldPosition_title" text="Fältposition:"/>
+    <text name="CP_fieldWorkJobParameters_bunkerSiloPosition_title" text="Siloposition:"/>
+    <text name="CP_fieldWorkJobParameters_parkPosition_title" text="Parkeringsläge:"/>
+    <text name="CP_fieldWorkJobParameters_subTitle_startAt" text="Börja vid:"/>
+    <text name="CP_fieldWorkJobParameters_startAt_title" text="Börja vid:"/>
+    <text name="CP_fieldWorkJobParameters_startAt_tooltip" text="Var ska man börja fältarbetet."/>
+    <text name="CP_fieldWorkJobParameters_startAt_nearest" text="närmaste vägpunkt"/>
+    <text name="CP_fieldWorkJobParameters_startAt_first" text="första vägpunkten"/>
+    <text name="CP_fieldWorkJobParameters_startAt_last" text="sista vägpunkten"/>
+    <text name="CP_fieldWorkJobParameters_startAt_bunkerSilo" text="Bunker silo läge"/>
+    <text name="CP_fieldWorkJobParameters_startAt_siloLoader" text="Silo lastningsläge"/>
+    <text name="CP_fieldWorkJobParameters_startAt_unload" text="lossa skördetröskan"/>
+    <text name="CP_fieldWorkJobParameters_startAt_unload_siloLoader" text="Avlastning Silo lastare"/>
+    <text name="CP_fieldWorkJobParameters_startAt_bales" text="samla in/förpacka balar"/>
+    <text name="CP_fieldWorkJobParameters_subTitle_laneOffset" text="Förskjutning av körfält:"/>
+    <text name="CP_fieldWorkJobParameters_laneOffset_title" text="Förskjutning av körfält:"/>
+    <text name="CP_fieldWorkJobParameters_laneOffset_tooltip" text="Lane-offset om en multitool-bana har skapats eller laddats."/>
+    <text name="CP_fieldWorkJobParameters_laneOffset_center" text="centrum"/>
+    <text name="CP_fieldWorkJobParameters_laneOffset_left" text="vänster(1)"/>
+    <text name="CP_fieldWorkJobParameters_laneOffset_right" text="höger(1)"/>
+    <text name="CP_fieldWorkJobParameters_laneOffset_left_2" text="vänster(2)"/>
+    <text name="CP_fieldWorkJobParameters_laneOffset_right_2" text="höger(2)"/>
+    <!---->
+    <!--AI bale finder job parameters-->
+    <!---->
+    <text name="CP_baleFinderJobParameters_subTitle_baleWrapType" text="Typ av bal:"/>
+    <text name="CP_baleFinderJobParameters_baleWrapType_title" text="Typ av bal:"/>
+    <text name="CP_baleFinderJobParameters_baleWrapType_all_bales" text="alla balar"/>
+    <text name="CP_baleFinderJobParameters_baleWrapType_only_wrapped_bales" text="endast inplastad"/>
+    <text name="CP_baleFinderJobParameters_baleWrapType_only_not_wrapped_bales" text="endast ej inplastad"/>
+    <text name="CP_baleFinder_balesLeftover" text="Bales vänster:"/>
+    <!---->
+    <!--AI combine unloader job parameters-->
+    <!---->
+    <text name="CP_combineUnloaderJobParameters_subTitle_unloadTarget" text="Lasta av:"/>
+    <text name="CP_combineUnloaderJobParameters_unloadTarget_title" text="Lasta av:"/>
+    <text name="CP_combineUnloaderJobParameters_unloadTarget_combine" text="Kombinera"/>
+    <text name="CP_combineUnloaderJobParameters_unloadTarget_siloLoader" text="Lastare"/>
+    <text name="CP_combineUnloaderJobParameters_subTitle_giantsUnloader" text="Giants avlastare:"/>
+    <text name="CP_combineUnloaderJobParameters_useGiantsUnload_title" text="Använd jättelika avlastare:"/>
+    <text name="CP_combineUnloaderJobParameters_unloadingStation_title" text="Station för avlastning:"/>
+    <text name="CP_combineUnloaderJobParameters_subTitle_fieldUnload" text="Avlastning på fältet:"/>
+    <text name="CP_combineUnloaderJobParameters_useFieldUnload_title" text="Använd avlastning på fältet:"/>
+    <text name="CP_combineUnloaderJobParameters_fieldUnloadPosition_title" text="Position för fältavlastning:"/>
+    <text name="CP_combineUnloaderJobParameters_unloadingTipSide_title" text="Släpvagnens tippsida:"/>
+    <!---->
+    <!--AI bunker silo worker job parameters-->
+    <!---->
+    <text name="CP_bunkerSiloJobParameters_subTitle_drivingForwardsIntoSilo" text="Riktning in i silon:"/>
+    <text name="CP_bunkerSiloJobParameters_drivingForwardsIntoSilo_title" text="Riktning in i silon:"/>
+    <text name="CP_bunkerSiloJobParameters_drivingForwardsIntoSilo_forwards" text="Framåt"/>
+    <text name="CP_bunkerSiloJobParameters_drivingForwardsIntoSilo_reverse" text="Omvänd"/>
+    <text name="CP_bunkerSiloJobParameters_subTitle_waitAtParkPosition" text="Väntar på avlastare:"/>
+    <text name="CP_bunkerSiloJobParameters_waitAtParkPosition_title" text="Väntar på avlastare:"/>
+    <text name="CP_bunkerSiloJobParameters_waitAtParkPosition_silo" text="i silo"/>
+    <text name="CP_bunkerSiloJobParameters_waitAtParkPosition_parkPosition" text="vid parkposition"/>
+    <text name="CP_bunkerSiloJobParameters_stopWithCompactedSilo_title" text="Stopp vid 99% komprimering"/>
+    <text name="CP_bunkerSiloJobParameters_subTitle_stopWithCompactedSilo" text="Stopp vid 99% komprimering"/>
+    <text name="CP_bunkerSilo_compactionPercentage" text="Komprimering av silon:"/>
+    <!---->
+    <!--AI silo lader worker job parameters-->
+    <!---->
+    <text name="CP_siloLoaderJobParameters_subTitle_loadPosition" text="Lastposition"/>
+    <text name="CP_siloLoaderJobParameters_loadPosition_title" text="Lastposition"/>
+    <text name="CP_siloLoader_fillLevelProgress" text="Liter kvar:"/>
+    <text name="CP_siloLoaderJobParameters_subTitle_unloading" text="Avlastning vid:"/>
+    <text name="CP_siloLoaderJobParameters_unloadAt_trailer" text="Trailer"/>
+    <text name="CP_siloLoaderJobParameters_unloadAt_unloadTrigger" text="Avlastningsstation"/>
+    <!---->
+    <!--AI jobs-->
+    <!---->
+    <text name="CP_job_fieldWork" text="CP: Fältarbete"/>
+    <text name="CP_job_baleCollect" text="CP: Balsamling/inslagning"/>
+    <text name="CP_job_combineUnload" text="CP: Lossa skördetröskan"/>
+    <text name="CP_job_bunkerSilo" text="CP: Siloarbete"/>
+    <text name="CP_job_siloLoader" text="CP: Lastning av silo"/>
+    <text name="CP_ai_page_generate_course" text="CP: Generera fältarbetskurs"/>
+    <text name="CP_ai_page_open_course_generator" text="CP: Öppna/stänga kursgenerator"/>
+    <!---->
+    <!--AI error messages-->
+    <!---->
+    <text name="CP_ai_messageErrorIsFull" text="AI-arbetaren %s har oväntat avbrutit sitt arbete - tanken är full!"/>
+    <text name="CP_ai_messageError" text="AI-arbetaren %s har slutat arbeta oväntat - lämnade kursen!"/>
+    <text name="CP_ai_messageErrorWrongBaleWrapType" text="AI-arbetaren %s har oväntat avbrutit sitt arbete - inga balar av vald typ hittades!"/>
+    <text name="CP_ai_messageErrorNoPathFound" text="AI-arbetaren %s har oväntat avbrutit sitt arbete - ingen sökväg hittades!"/>
+    <text name="CP_ai_messageErrorGroundUnloadNotSupported" text="AI-arbetaren %s har oväntat avbrutit sitt arbete - avlastning på fältet är inte möjlig!"/>
+    <text name="CP_ai_messageErrorCutterNotSupported" text="AI-arbetaren %s har oväntat avbrutit sitt arbete - det går inte att fästa huvudet!"/>
+    <text name="CP_ai_messageErrorAutomaticCutterAttachNotActive" text="AI-arbetaren %s har oväntat slutat arbeta - automatisk knivkoppling inaktiverad!"/>
+    <text name="CP_ai_messageErrorWrongMissionFruitType" text="AI-arbetaren %s har oväntat slutat arbeta - fel fyllningstyp för valt uppdrag!"/>
+    <text name="CP_ai_messageErrorTooFarFromField" text="Fordonet är för långt bort från fältet."/>
+    <!---->
+    <!--AI fieldwork task descriptions-->
+    <!---->
+    <text name="CP_ai_taskDescriptionAttachHeader" text="Plockar upp huvudet"/>
+    <!---->
+    <!--AI bale finder task descriptions-->
+    <!---->
+    <text name="CP_ai_taskDescriptionCollectsBales" text="Samlar in balar på fältet"/>
+    <text name="CP_ai_taskDescriptionWrapsBales" text="Wrappar balar på fältet"/>
+    <!---->
+    <!--AI combine unloader task descriptions-->
+    <!---->
+    <text name="CP_ai_taskDescriptionUnloadCombine" text="Lastar av skördetröskan"/>
+    <text name="CP_ai_taskDescriptionWaitsForTargetCombine" text="Väntar på kombination"/>
+    <text name="CP_ai_taskDescriptionUnloadSiloLoader" text="Avlastar lastaren"/>
+    <text name="CP_ai_taskDescriptionWaitsForTargetSiloLoader" text="Väntar på lastare"/>
+    <text name="CP_ai_taskDescriptionUnloadingToHeap" text="Lastas av till en hög"/>
+    <text name="CP_ai_taskDescriptionUnloadingToTrailer" text="Lastar av till släpvagn"/>
+    <text name="CP_ai_taskDescriptionUnloadingWithGiants" text="Lastar av med jättelika arbetare"/>
+    <!---->
+    <!--AI silo worker task descriptions-->
+    <!---->
+    <text name="CP_ai_taskDescriptionWorksInTheSilo" text="Arbetar i silon"/>
+    <text name="CP_ai_taskDescriptionWaitsForUnloaders" text="Väntar på avlastare"/>
+    <!---->
+    <!--AI silo loader task descriptions-->
+    <!---->
+    <text name="CP_ai_taskDescriptionWaitsForTrailer" text="Väntar på en trailer"/>
+    <text name="CP_ai_taskDescriptionUnloadingToTrigger" text="Avlastar till en avlastningsutlösare"/>
+    <!---->
+    <!--Hud settings-->
+    <!---->
+    <text name="CP_hud_settings_selectedJob_title" text="TODO: Valt jobb:"/>
+    <!---->
+    <!--Vehicle settings-->
+    <!---->
+    <text name="CP_vehicle_setting_title" text="Fordonsinställningar för (%s)"/>
+    <text name="CP_vehicle_setting_subTitle_vehicle" text="Inställningar för fordon"/>
+    <text name="CP_vehicle_setting_subTitle_basic" text="Grundläggande inställningar"/>
+    <text name="CP_vehicle_setting_subTitle_implement" text="Verktygsinställningar"/>
+    <text name="CP_vehicle_setting_subTitle_combine" text="Kombinera inställningar"/>
+    <text name="CP_vehicle_setting_subTitle_seeder" text="Såmaskinens inställningar"/>
+    <text name="CP_vehicle_setting_subTitle_multitool" text="Inställningar för multiverktyg"/>
+    <text name="CP_vehicle_setting_subTitle_speed" text="Hastigheter"/>
+    <text name="CP_vehicle_setting_subTitle_debug" text="Inställningar för felsökning"/>
+    <text name="CP_vehicle_setting_showCourse_title" text="Visa kurs"/>
+    <text name="CP_vehicle_setting_showCourse_tooltip" text="Visar fordonets aktuella kurs."/>
+    <text name="CP_vehicle_setting_showCourse_startStop" text="Endast start/stopp"/>
+    <text name="CP_vehicle_setting_showCourse_currentWaypoint" text="Aktuella waypoints"/>
+    <text name="CP_vehicle_setting_showCourse_all" text="Alla waypoints"/>
+    <text name="CP_vehicle_setting_openHudWithMouse_title" text="Öppna HUD med musen"/>
+    <text name="CP_vehicle_setting_openHudWithMouse_tooltip" text="När den är avaktiverad kan HUD endast öppnas med tangentbindningen."/>
+    <text name="CP_vehicle_setting_fuelSave_title" text="Spara bränsle"/>
+    <text name="CP_vehicle_setting_fuelSave_tooltip" text="Stänger av fordonet medan du väntar."/>
+    <text name="CP_vehicle_setting_stopAtEnd_title" text="Stopp vid slutet"/>
+    <text name="CP_vehicle_setting_stopAtEnd_tooltip" text="Fordonet stannar vid slutpunkten efter arbetet."/>
+    <text name="CP_vehicle_setting_useJps_title" text="Använd JPS Pathfinder"/>
+    <text name="CP_vehicle_setting_useJps_tooltip" text="Använd jump point search för längre avstånd, vilket resulterar i snabbare pathfinding."/>
+    <text name="CP_vehicle_setting_penaltyFactor_title" text="Pathfinder strafffaktor"/>
+    <text name="CP_vehicle_setting_penaltyFactor_tooltip" text="Ett högre värde tar längre tid, men vägen stannar mer på fältet och utanför frukten."/>
+    <text name="CP_vehicle_setting_allowReversePathfinding_title" text="Tillåt baklängeskörning för pathfinding"/>
+    <text name="CP_vehicle_setting_allowReversePathfinding_tooltip" text="Låt Pathfinder i tillämpliga fall generera kurser som innehåller backning."/>
+    <text name="CP_vehicle_setting_allowPathfinderTurns_title" text="Tillåt användning av pathfinder i svängar"/>
+    <text name="CP_vehicle_setting_allowPathfinderTurns_tooltip" text="Gör det möjligt att använda Pathfinder i svängar, t.ex. för att undvika hinder och frukt."/>
+    <text name="CP_vehicle_setting_loopTurnsOnHeadland_title" text="Slinga på udden"/>
+    <text name="CP_vehicle_setting_loopTurnsOnHeadland_tooltip" text="I stället för att göra en normal sväng på vändtegen kommer fordonet att köra en slinga. Den första vändtegen bör ha runda hörn!"/>
+    <text name="CP_vehicle_setting_foldImplementAtEnd_title" text="Vik verktyg i slutet av kursen"/>
+    <text name="CP_vehicle_setting_foldImplementAtEnd_tooltip" text="Aktiverar/avaktiverar automatisk hopfällning av redskapen i slutet av kursen."/>
+    <text name="CP_vehicle_setting_returnToStart_title" text="Återgå till startpunkten"/>
+    <text name="CP_vehicle_setting_returnToStart_tooltip" text="Återvända till startpunkten efter avslutat fältarbete."/>
+    <text name="CP_vehicle_setting_raiseImplementLate_title" text="Höj verktyg"/>
+    <text name="CP_vehicle_setting_raiseImplementLate_tooltip" text="Höj verktygen tidigt eller sent i början av en tur."/>
+    <text name="CP_vehicle_setting_raiseImplementLate_early" text="tidigt"/>
+    <text name="CP_vehicle_setting_raiseImplementLate_late" text="sen"/>
+    <text name="CP_vehicle_setting_lowerImplementEarly_title" text="Lägre verktyg"/>
+    <text name="CP_vehicle_setting_lowerImplementEarly_tooltip" text="Sänk verktygen tidigt eller sent i slutet av ett varv."/>
+    <text name="CP_vehicle_setting_lowerImplementEarly_early" text="tidigt"/>
+    <text name="CP_vehicle_setting_lowerImplementEarly_late" text="sen"/>
+    <text name="CP_vehicle_setting_turnOnField_title" text="Vänder bara på fältet"/>
+    <text name="CP_vehicle_setting_turnOnField_tooltip" text="Vänder bara på fältet. Inte möjligt med alla verktyg. Om fältet är avstängt kan verktyget inte köras baklänges."/>
+    <text name="CP_vehicle_setting_restartCourseAtEnd_title" text="Restart course at the end"/>
+    <text name="CP_vehicle_setting_restartCourseAtEnd_tooltip" text="Restart the fieldwork course at the 1st waypoint."/>
+    <text name="CP_vehicle_setting_avoidFruit_title" text="Undvik att köra i frukt"/>
+    <text name="CP_vehicle_setting_avoidFruit_tooltip" text="AI kommer att försöka undvika att köra i frukten."/>
+    <text name="CP_vehicle_setting_toolOffsetX_title" text="Verktygsförskjutning horisontellt"/>
+    <text name="CP_vehicle_setting_toolOffsetX_tooltip" text="Verktygsförskjutning horisontellt"/>
+    <text name="CP_vehicle_setting_baleCollectorOffset_title" text="Offset för balupptagning"/>
+    <text name="CP_vehicle_setting_baleCollectorOffset_tooltip" text="Offset för baluppsamlaren"/>
+    <text name="CP_vehicle_setting_combineOffsetX_title" text="Offset vänster/höger"/>
+    <text name="CP_vehicle_setting_combineOffsetX_tooltip" text="Offset för skördarrör höger(+) och vänster(-)"/>
+    <text name="CP_vehicle_setting_combineOffsetZ_title" text="Förskjutning framåt/bakåt"/>
+    <text name="CP_vehicle_setting_combineOffsetZ_tooltip" text="Offset för skördarrör framåt(+) och bakåt(-)"/>
+    <text name="CP_vehicle_setting_fullThreshold_title" text="Tomt när det är över:"/>
+    <text name="CP_vehicle_setting_fullThreshold_tooltip" text="Om avlastarens fyllnadsnivå är högre än detta värde väntar den inte på skördetröskan."/>
+    <text name="CP_vehicle_setting_useAdditiveFillUnit_title" text="Kontrollera för ensileringstillsats"/>
+    <text name="CP_vehicle_setting_useAdditiveFillUnit_tooltip" text="Om aktiv och ensileringstillsats är emtpy, kommer föraren att stanna."/>
+    <text name="CP_vehicle_setting_symmetricLaneChange_title" text="Symmetriskt filbyte"/>
+    <text name="CP_vehicle_setting_symmetricLaneChange_tooltip" text="Symmetriskt filbyte"/>
+    <text name="CP_vehicle_setting_convoyDistance_title" text="Avstånd för konvoj"/>
+    <text name="CP_vehicle_setting_convoyDistance_tooltip" text="Avstånd mellan fordon. Värde: 40 - 400"/>
+    <text name="CP_vehicle_setting_debugActive_title" text="Felsökning av fordon"/>
+    <text name="CP_vehicle_setting_debugActive_tooltip" text="Aktiverar/avaktiverar felsökning för detta fordon."/>
+    <text name="CP_vehicle_setting_refillOnTheField_title" text="Verktyg för påfyllning"/>
+    <text name="CP_vehicle_setting_refillOnTheField_tooltip" text="Verktyget väntar på att fältet ska fyllas på."/>
+    <text name="CP_vehicle_setting_refillOnTheField_waiting" text="Vänta"/>
+    <text name="CP_vehicle_setting_refillOnTheField_active" text="Aktiv"/>
+    <!---->
+    <!--Vehicle bunker silo settings-->
+    <!---->
+    <text name="CP_vehicle_setting_subTitle_bunkerSilo" text="Inställningar för Siloworker"/>
+    <text name="CP_vehicle_setting_bunkerSiloWorkWidth_title" text="Arbetsbredd"/>
+    <text name="CP_vehicle_setting_bunkerSiloWorkWidth_tooltip" text="Arbetsbredd. Värde: 0 - 50"/>
+    <text name="CP_vehicle_setting_levelerHeightOffset_title" text="Skärmhöjd offset"/>
+    <text name="CP_vehicle_setting_levelerHeightOffset_tooltip" text="Höjdförskjutning från skölden till marken. Värde: 0 - 1"/>
+    <text name="CP_vehicle_setting_loadingShovelHeightOffset_title" text="Förskjutning av skopans höjd"/>
+    <text name="CP_vehicle_setting_loadingShovelHeightOffset_tooltip" text="Höjdförskjutning för skopans lastposition. Värde: -1 - 1"/>
+    <!---->
+    <!--Vehicle settings speed-->
+    <!---->
+    <text name="CP_vehicle_setting_fieldWorkSpeed_title" text="Fältarbete"/>
+    <text name="CP_vehicle_setting_fieldWorkSpeed_tooltip" text="Maximal hastighet vid arbete på fältet. Värde: 5 - 50"/>
+    <text name="CP_vehicle_setting_fieldSpeed_title" text="Fält"/>
+    <text name="CP_vehicle_setting_fieldSpeed_tooltip" text="Högsta hastighet under körning på fältet. Värde: 5 - 50"/>
+    <text name="CP_vehicle_setting_turnSpeed_title" text="Vänd"/>
+    <text name="CP_vehicle_setting_turnSpeed_tooltip" text="Maximal hastighet under svängmanövrer. Värde: 2 - 25"/>
+    <text name="CP_vehicle_setting_reverseSpeed_title" text="Omvänd"/>
+    <text name="CP_vehicle_setting_reverseSpeed_tooltip" text="Maximal hastighet vid backning. Värde: 2 - 25"/>
+    <text name="CP_vehicle_setting_bunkerSiloSpeed_title" text="Silo"/>
+    <text name="CP_vehicle_setting_bunkerSiloSpeed_tooltip" text="Maximal hastighet när du kör i en silo. Värde: 2 - 25"/>
+    <!---->
+    <!--Vehicle settings sowing-->
+    <!---->
+    <text name="CP_vehicle_setting_ridgeMarkersAutomatic_title" text="Åsmarkeringar"/>
+    <text name="CP_vehicle_setting_ridgeMarkersAutomatic_tooltip" text="Ridge markers på/av."/>
+    <text name="CP_vehicle_setting_sowingMachineFertilizerEnabled_title" text="Såmaskiner använder gödselmedel"/>
+    <text name="CP_vehicle_setting_sowingMachineFertilizerEnabled_tooltip" text="Aktiverar/avaktiverar användning av gödselmedel för såmaskiner."/>
+    <text name="CP_vehicle_setting_optionalSowingMachineEnabled_title" text="Alternativ för sådd"/>
+    <text name="CP_vehicle_setting_optionalSowingMachineEnabled_tooltip" text="Sätter på eller stänger av maskinens extra såfunktion."/>
+    <!---->
+    <!--Vehicle settings combine-->
+    <!---->
+    <text name="CP_vehicle_setting_automaticCutterAttach_title" text="Automatisk skärfäste"/>
+    <text name="CP_vehicle_setting_automaticCutterAttach_tooltip" text="Möjliggör automatisk koppling av en fräs, som måste kopplas som släpvagn eller på en separat huvudvagn."/>
+    <text name="CP_vehicle_setting_pipeAlwaysUnfold_title" text="Fäll alltid ut röret"/>
+    <text name="CP_vehicle_setting_pipeAlwaysUnfold_tooltip" text="Fäll alltid ut röret när skördetröskan är full och väntar på avlastaren."/>
+    <text name="CP_vehicle_setting_stopForUnload_title" text="Stopp vid avlastning"/>
+    <text name="CP_vehicle_setting_stopForUnload_tooltip" text="Avbryt alltid körningen under avlastning."/>
+    <text name="CP_vehicle_setting_selfUnload_title" text="Kombinera själv lossning"/>
+    <text name="CP_vehicle_setting_selfUnload_tooltip" text="Kombinerar enheter till släpvagn på eller nära fältet för att lasta av. Stödjs inte i multiverktygs- eller konvojläge."/>
+    <text name="CP_vehicle_setting_unloadOnFirstHeadland_title" text="Lasta av på första udden"/>
+    <text name="CP_vehicle_setting_unloadOnFirstHeadland_tooltip" text="Skördetröskan anropar avlastaren på den första vändtegen, även om den måste köra utanför fältet. Om den är avstängd skapar skördetröskan först en ficka innan den anropar en avlastare."/>
+    <text name="CP_vehicle_setting_strawSwath_title" text="Halmsträng"/>
+    <text name="CP_vehicle_setting_strawSwath_tooltip" text="Aktiverar/avaktiverar halmsträng eller avaktiverar den endast på vändtegen."/>
+    <text name="CP_vehicle_setting_pipeOffsetX_title" text="Rörets förskjutning X"/>
+    <text name="CP_vehicle_setting_pipeOffsetX_tooltip" text="Rörets förskjutning X"/>
+    <text name="CP_vehicle_setting_pipeOffsetZ_title" text="Rörets förskjutning Z"/>
+    <text name="CP_vehicle_setting_pipeOffsetZ_tooltip" text="Rörets förskjutning Z"/>
+    <text name="CP_vehicle_setting_callUnloaderPercent_title" text="Ring avlastaren på"/>
+    <text name="CP_vehicle_setting_callUnloaderPercent_tooltip" text="Anropa avlastaren när skördarens fyllnadsnivå är över detta värde."/>
+    <text name="CP_vehicle_setting_strawSwath_onlyCenter" text="Headlands funktionshindrad"/>
+    <!---->
+    <!--Course generator settings-->
+    <!---->
+    <text name="CP_vehicle_courseGeneratorSetting_title" text="Hjälparinställningar för (%s)"/>
+    <text name="CP_vehicle_courseGeneratorSetting_subTitle_basic" text="Grundläggande inställningar"/>
+    <text name="CP_vehicle_courseGeneratorSetting_subTitle_vineField" text="Inställningar för vinstockar"/>
+    <text name="CP_vehicle_courseGeneratorSetting_subTitle_fieldwork" text="Inställningar för fältarbete"/>
+    <text name="CP_vehicle_courseGeneratorSetting_subTitle_headland" text="Inställningar udde"/>
+    <text name="CP_vehicle_courseGeneratorSetting_subTitle_center" text="Inställningscenter"/>
+    <text name="CP_vehicle_courseGeneratorSetting_subTitle_island" text="Inställningar ö"/>
+    <text name="CP_vehicle_courseGeneratorSetting_workWidth_title" text="Arbetsbredd"/>
+    <text name="CP_vehicle_courseGeneratorSetting_workWidth_tooltip" text="Arbetsbredd. Värde: 0 - 55"/>
+    <text name="CP_vehicle_courseGeneratorSetting_numberOfHeadlands_title" text="Antal uddar"/>
+    <text name="CP_vehicle_courseGeneratorSetting_numberOfHeadlands_tooltip" text="Antal vändtegar. Värde: 0 - 40"/>
+    <text name="CP_vehicle_courseGeneratorSetting_headlandOverlapPercent_title" text="Överlappning på udden"/>
+    <text name="CP_vehicle_courseGeneratorSetting_headlandOverlapPercent_tooltip" text="Överlappande spår på vändtegen i procent av arbetsbredden. Värde: 0 - 25"/>
+    <text name="CP_vehicle_courseGeneratorSetting_fieldMargin_title" text="Fältmarginal"/>
+    <text name="CP_vehicle_courseGeneratorSetting_fieldMargin_tooltip" text="Positiva värden minskar fältstorleken, negativa ökar fältstorleken. Värde: -5 - 5,8"/>
+    <text name="CP_vehicle_courseGeneratorSetting_rowsToSkip_title" text="Rader att hoppa över"/>
+    <text name="CP_vehicle_courseGeneratorSetting_rowsToSkip_tooltip" text="Rader som ska hoppas över när man byter till nästa upp/ner-rad. Värde: 0 - 6"/>
+    <text name="CP_vehicle_courseGeneratorSetting_numberOfCircles_title" text="Antal cirklar"/>
+    <text name="CP_vehicle_courseGeneratorSetting_numberOfCircles_tooltip" text="Antal cirklar för racerbana. Värde: 1 - 12"/>
+    <text name="CP_vehicle_courseGeneratorSetting_rowsPerLand_title" text="Rader per land"/>
+    <text name="CP_vehicle_courseGeneratorSetting_rowsPerLand_tooltip" text="När centrumläget är &quot;lands&quot;, finns det så här många rader i varje block. Värde: 0 - 24"/>
+    <text name="CP_vehicle_courseGeneratorSetting_headlandClockwise_title" text="Vändplatsens riktning"/>
+    <text name="CP_vehicle_courseGeneratorSetting_headlandClockwise_tooltip" text="Kör medsols eller motsols på vändtegen."/>
+    <text name="CP_vehicle_courseGeneratorSetting_centerClockwise_title" text="Riktning centrum"/>
+    <text name="CP_vehicle_courseGeneratorSetting_centerClockwise_tooltip" text="Kör fältets mittpunkt medurs eller moturs."/>
+    <text name="CP_vehicle_courseGeneratorSetting_islandHeadlandClockwise_title" text="Öns udde riktning"/>
+    <text name="CP_vehicle_courseGeneratorSetting_islandHeadlandClockwise_tooltip" text="Bypass-öar medurs eller moturs."/>
+    <text name="CP_vehicle_courseGeneratorSetting_headlandClockwise_clockwise" text="medurs"/>
+    <text name="CP_vehicle_courseGeneratorSetting_headlandClockwise_counterclockwise" text="moturs"/>
+    <text name="CP_vehicle_courseGeneratorSetting_centerClockwise_clockwise" text="medurs"/>
+    <text name="CP_vehicle_courseGeneratorSetting_centerClockwise_counterclockwise" text="moturs"/>
+    <text name="CP_vehicle_courseGeneratorSetting_islandHeadlandClockwise_clockwise" text="medurs"/>
+    <text name="CP_vehicle_courseGeneratorSetting_islandHeadlandClockwise_counterclockwise" text="moturs"/>
+    <text name="CP_vehicle_courseGeneratorSetting_centerMode_title" text="Fältcentrum"/>
+    <text name="CP_vehicle_courseGeneratorSetting_centerMode_tooltip" text="Välj hur fältets mittpunkt ska köras. Upp/ned, spiral, landningar eller racerbana."/>
+    <text name="CP_vehicle_courseGeneratorSetting_centerMode_up_down" text="upp/ned"/>
+    <text name="CP_vehicle_courseGeneratorSetting_centerMode_spiral" text="spiral"/>
+    <text name="CP_vehicle_courseGeneratorSetting_centerMode_circular" text="kapplöpningsbana"/>
+    <text name="CP_vehicle_courseGeneratorSetting_centerMode_lands" text="landområden"/>
+    <text name="CP_vehicle_courseGeneratorSetting_spiralFromInside_title" text="Spiral från insidan"/>
+    <text name="CP_vehicle_courseGeneratorSetting_spiralFromInside_tooltip" text="Startar spiralen från insidan."/>
+    <text name="CP_vehicle_courseGeneratorSetting_evenRowWidth_title" text="Jämn radbredd"/>
+    <text name="CP_vehicle_courseGeneratorSetting_evenRowWidth_tooltip" text="Minskar arbetsbredden för att uppnå en jämn fördelning över alla körfält."/>
+    <text name="CP_vehicle_courseGeneratorSetting_sharpenCorners_title" text="Skärpa hörnen på vändtegen"/>
+    <text name="CP_vehicle_courseGeneratorSetting_sharpenCorners_tooltip" text="På icke rundade vändtegar ska du lägga till en vändtegsmanöver där vändtegens riktning ändras plötsligt."/>
+    <text name="CP_vehicle_courseGeneratorSetting_headlandsWithRoundCorners_title" text="Antal runda hörn"/>
+    <text name="CP_vehicle_courseGeneratorSetting_headlandsWithRoundCorners_tooltip" text="Antal uddar med runda hörn, med början på den yttersta udden."/>
+    <text name="CP_vehicle_courseGeneratorSetting_turningRadius_title" text="Hörnradie"/>
+    <text name="CP_vehicle_courseGeneratorSetting_turningRadius_tooltip" text="Radie för runda hörn, baserat på fordonets svängradie. Värde: 5 - 15"/>
+    <text name="CP_vehicle_courseGeneratorSetting_autoRowAngle_title" text="Riktning på raderna"/>
+    <text name="CP_vehicle_courseGeneratorSetting_autoRowAngle_tooltip" text="Riktning för raderna i mitten av fältet."/>
+    <text name="CP_vehicle_courseGeneratorSetting_autoRowAngle_automatic" text="automatisk"/>
+    <text name="CP_vehicle_courseGeneratorSetting_autoRowAngle_manual" text="Manuell"/>
+    <text name="CP_vehicle_courseGeneratorSetting_manualRowAngleDeg_title" text="Centrumradens riktning"/>
+    <text name="CP_vehicle_courseGeneratorSetting_manualRowAngleDeg_tooltip" text="Riktning för mittraderna (0° är norr) vid manuell inställning. Värde: 0 - 175 Steg: 5"/>
+    <text name="CP_vehicle_courseGeneratorSetting_bypassIslands_title" text="Förbifart ö"/>
+    <text name="CP_vehicle_courseGeneratorSetting_bypassIslands_tooltip" text="Förbikoppla öar på fältet eller ignorera dem."/>
+    <text name="CP_vehicle_courseGeneratorSetting_nIslandHeadlands_title" text="Öns uddar"/>
+    <text name="CP_vehicle_courseGeneratorSetting_nIslandHeadlands_tooltip" text="Antal uddar runt öar. Värde: 1 - 10"/>
+    <text name="CP_vehicle_courseGeneratorSetting_startOnHeadland_title" text="Påbörja arbetet med"/>
+    <text name="CP_vehicle_courseGeneratorSetting_startOnHeadland_tooltip" text="Börja arbeta på vändtegen eller i mitten av fältet"/>
+    <text name="CP_vehicle_courseGeneratorSetting_startOnHeadland_on_headland" text="udden"/>
+    <text name="CP_vehicle_courseGeneratorSetting_startOnHeadland_up_down_rows" text="centrum"/>
+    <text name="CP_vehicle_courseGeneratorSetting_multiTools_title" text="Flera verktyg"/>
+    <text name="CP_vehicle_courseGeneratorSetting_multiTools_tooltip" text="Antal fordon på samma bana."/>
+    <text name="CP_vehicle_courseGeneratorSetting_useSameTurnWidth_title" text="Byte av körfält"/>
+    <text name="CP_vehicle_courseGeneratorSetting_useSameTurnWidth_tooltip" text="Ställer in körfälten så att de alltid växlar. Detta leder till liknande svängar. Se hjälpmenyn för mer information."/>
+    <text name="CP_vehicle_courseGeneratorSetting_useBaseLineEdge_title" text="Raderna följer fältkantens kurva"/>
+    <text name="CP_vehicle_courseGeneratorSetting_useBaseLineEdge_tooltip" text="Raderna följer kurvaturen i fältkanten närmast fältmarkeringen."/>
+    <text name="CP_vehicle_courseGeneratorSetting_narrowField_title" text="Smalt område"/>
+    <text name="CP_vehicle_courseGeneratorSetting_narrowField_tooltip" text="Skapar vändtegen endast vid fältets korta kanter."/>
+    <!---->
+    <!--Vine course generator settings-->
+    <!---->
+    <text name="CP_vehicle_vineCourseGeneratorSetting_title" text="Generator för vinrankor"/>
+    <text name="CP_vehicle_vineCourseGeneratorSetting_subTitle_basic" text="Grundläggande inställningar"/>
+    <text name="CP_vehicle_vineCourseGeneratorSetting_vineCenterOffset_title" text="Kursens position"/>
+    <text name="CP_vehicle_vineCourseGeneratorSetting_vineCenterOffset_tooltip" text="Ska kursen köras på eller bredvid vinstocken. Detta beror på verktyget. Mer information finns i hjälpmenyn."/>
+    <text name="CP_vehicle_vineCourseGeneratorSetting_vineCenterOffset_left" text="Vänster sida av vinstocken"/>
+    <text name="CP_vehicle_vineCourseGeneratorSetting_vineCenterOffset_center" text="På vinstocken"/>
+    <text name="CP_vehicle_vineCourseGeneratorSetting_vineCenterOffset_right" text="Höger sida av vinstocken"/>
+    <text name="CP_vehicle_vineCourseGeneratorSetting_vineMultiTools_title" text="Verktyg per kurs"/>
+    <text name="CP_vehicle_vineCourseGeneratorSetting_vineMultiTools_tooltip" text="Hur många verktyg som kan arbeta tillsammans. Mer information finns i hjälpmenyn."/>
+    <text name="CP_vehicle_vineCourseGeneratorSetting_vineRowsToSkip_title" text="Vinrankor att hoppa över"/>
+    <text name="CP_vehicle_vineCourseGeneratorSetting_vineRowsToSkip_tooltip" text="Skip vines ska endast användas när verktyget fungerar på båda vinerna (vänster och höger)."/>
+    <!---->
+    <!--Global settings-->
+    <!---->
+    <text name="CP_global_setting_title" text="Globala inställningar"/>
+    <text name="CP_global_setting_subTitle_general" text="Grundläggande inställningar"/>
+    <text name="CP_global_setting_wageModifier_title" text="Löner för CP-förare"/>
+    <text name="CP_global_setting_wageModifier_tooltip" text="CP-förarens lön i procent av den normala arbetstagarens lön."/>
+    <text name="CP_global_setting_autoRepair_title" text="Automatisk reparation"/>
+    <text name="CP_global_setting_autoRepair_tooltip" text="Cp-drivrutiner reparerar automatiskt, medan du kör."/>
+    <text name="CP_global_setting_autoRepair_off" text="Reparera inte"/>
+    <text name="CP_global_setting_autoRepair_less_than_25" text="&lt; 25%"/>
+    <text name="CP_global_setting_autoRepair_less_than_70" text="&lt; 70 %"/>
+    <text name="CP_global_setting_autoRepair_always" text="Håll den frisk"/>
+    <text name="CP_global_setting_fuelThreshold_title" text="Tröskelvärde för bränsle"/>
+    <text name="CP_global_setting_fuelThreshold_tooltip" text="Föraren kommer att släppas om bränsleprocenten är lägre."/>
+    <text name="CP_global_setting_waitForRefueling_title" text="Väntar på tankning"/>
+    <text name="CP_global_setting_waitForRefueling_tooltip" text="Fordonet väntar tills det har tankats."/>
+    <text name="CP_global_setting_brokenThreshold_title" text="Bruten tröskel"/>
+    <text name="CP_global_setting_brokenThreshold_tooltip" text="Föraren kommer att släppas om fordonet eller ett redskap är mer trasigt. 100% är av."/>
+    <text name="CP_global_setting_stopThreshingDuringRain_title" text="Stoppa skördemaskiner när det regnar"/>
+    <text name="CP_global_setting_stopThreshingDuringRain_tooltip" text="Om inställningen är aktiv väntar alla skördare på att regnet ska upphöra."/>
+    <text name="CP_global_setting_fruitDestruction_title" text="AI Helper fruktförstörelse"/>
+    <text name="CP_global_setting_fruitDestruction_tooltip" text="Aktivera/avaktivera fruktdestruktion för hjälpare."/>
+    <text name="CP_global_setting_fruitDestruction_only_cp" text="Aktiverad för Courseplay-hjälpare"/>
+    <text name="CP_global_setting_fruitDestruction_all_helpers" text="Aktiverad för alla hjälpare"/>
+    <!---->
+    <!--Global settings user settings-->
+    <!---->
+    <text name="CP_global_setting_subTitle_userSettings" text="Användarinställningar"/>
+    <text name="CP_global_setting_expertModeActive_title" text="Expertläge"/>
+    <text name="CP_global_setting_expertModeActive_tooltip" text="Aktiverar/avaktiverar expertläge med ytterligare funktioner."/>
+    <text name="CP_global_setting_controllerHudSelected_title" text="Gamepad-vänlig HUD"/>
+    <text name="CP_global_setting_controllerHudSelected_tooltip" text="Använd HUD, som kan styras med en gamepad."/>
+    <text name="CP_global_setting_showActionEventHelp_title" text="Hjälp med åtgärdsevenemang"/>
+    <text name="CP_global_setting_showActionEventHelp_tooltip" text="Visar hjälptexter för åtgärdshändelser."/>
+    <text name="CP_global_setting_showsAllActiveCourses_title" text="Visa alla aktiva kurser"/>
+    <text name="CP_global_setting_showsAllActiveCourses_tooltip" text="Visar alla aktiva banor på spelkartan."/>
+    <text name="CP_global_setting_drawOntoTheHudMap_title" text="Visa kurser på minimaplanet"/>
+    <text name="CP_global_setting_drawOntoTheHudMap_tooltip" text="Gör det möjligt att rita in banan på minikartan."/>
+    <text name="CP_global_setting_infoTextHudActive_title" text="Visa fönster för informationstexter"/>
+    <text name="CP_global_setting_infoTextHudActive_tooltip" text="Visar ett fönster med informationstext."/>
+    <text name="CP_global_setting_infoTextHudActive_active_hide_without_message" text="Aktiv med meddelande"/>
+    <text name="CP_global_setting_infoTextHudPlayerMouseActive_title" text="Spelarens mushändelse"/>
+    <text name="CP_global_setting_infoTextHudPlayerMouseActive_tooltip" text="Aktiverar/avaktiverar spelarens mushändelse för visning av informationstext utanför ett fordon."/>
+    <text name="CP_global_setting_isHudMoveable_title" text="HUD är flyttbar"/>
+    <text name="CP_global_setting_isHudMoveable_tooltip" text="Aktiverar/avaktiverar möjligheten att flytta hud."/>
+    <text name="CP_global_setting_isInfoTextHudMoveable_title" text="Info text hud är flyttbar"/>
+    <text name="CP_global_setting_isInfoTextHudMoveable_tooltip" text="Aktiverar/avaktiverar möjligheten att flytta informationstexten hud."/>
+    <text name="CP_global_setting_preferCustomFields_title" text="Föredrar anpassade fält"/>
+    <text name="CP_global_setting_preferCustomFields_tooltip" text="Föredrar anpassat fält om det också finns ett vanligt fält på den valda positionen."/>
+    <text name="CP_global_setting_distanceUnit_title" text="Avståndsenhet"/>
+    <text name="CP_global_setting_distanceUnit_tooltip" text="Avståndsenhet meter eller fot."/>
+    <text name="CP_global_setting_distanceUnit_meter" text="meter"/>
+    <text name="CP_global_setting_distanceUnit_imperial" text="Fot"/>
+    <!---->
+    <!--Global settings pathfinder-->
+    <!---->
+    <text name="CP_global_setting_subTitle_pathfinder" text="Inställningar för Pathfinder"/>
+    <text name="CP_global_setting_maxDeltaAngleAtGoalDeg_title" text="Vinkelskillnad vid mål"/>
+    <text name="CP_global_setting_maxDeltaAngleAtGoalDeg_tooltip" text="Maximal vinkelskillnad som tillåts vid målet, större värden är snabbare men mindre exakta."/>
+    <text name="CP_global_setting_deltaAngleRelaxFactorDeg_title" text="Relaxationsfaktor för deltavinkel"/>
+    <text name="CP_global_setting_deltaAngleRelaxFactorDeg_tooltip" text="Faktor för att minska vägvisarens noggrannhet med misslyckade iterationer, större värden är snabbare."/>
+    <!---->
+    <!--Course manager-->
+    <!---->
+    <text name="CP_courseManager_title" text="CourseManager(%s) %s"/>
+    <text name="CP_courseManager_no_current_course" text="ingen kurs"/>
+    <text name="CP_courseManager_temporary_course" text="tillfällig kurs"/>
+    <text name="CP_courseManager_change_mode" text="Ändra läge"/>
+    <text name="CP_courseManager_load_courses" text="Ladda kurs"/>
+    <text name="CP_courseManager_save_courses" text="Spara kurs"/>
+    <text name="CP_courseManager_edit_course" text="Redaktör för öppna kurser"/>
+    <text name="CP_courseManager_clear_current_courses" text="Rensa aktuell kurs"/>
+    <text name="CP_courseManager_create_directory" text="Skapa en ny mapp"/>
+    <text name="CP_courseManager_move_entry" text="Flytta inmatning"/>
+    <text name="CP_courseManager_delete_entry" text="Radera post"/>
+    <text name="CP_courseManager_rename_entry" text="Byt namn på posten"/>
+    <text name="CP_courseManager_copy_entry" text="Kopiera post"/>
+    <text name="CP_courseManager_folder_dialog" text="Mappens namn:"/>
+    <text name="CP_courseManager_course_dialog" text="Kursens namn:"/>
+    <text name="CP_courseManager_deleteWarning" text="Är du säker på att du vill ta bort (%s)?"/>
+    <text name="CP_courseManager_editCourseWarning" text="Kursredigering kan skapa problem för hjälparen. Du bör endast använda det här verktyget när det uppstår problem med den genererade kursen. Kursen sparas automatiskt när redigeraren stängs och ersätter den valda kursen."/>
+    <text name="CP_courseManager_deleteError" text="Mappen är inte tom (%s)!"/>
+    <text name="CP_courseManager_entryExistAlreadyError" text="Filen finns redan i målmappen (%s)!"/>
+    <text name="CP_courseManager_noAccessError" text="Ingen tillgång till mappen (%s)!"/>
+    <text name="CP_courseManager_targetIsNoFolderError" text="Målplatsen är inte en mapp (%s)!"/>
+    <text name="CP_courseManager_targetIsNoCourseError" text="Målpositionen är inte en kurs (%s)!"/>
+    <text name="CP_courseManager_invalidNameError" text="Kursnamnet (%s) är ogiltigt!"/>
+    <text name="CP_courseManager_basicSettings" text="Interaktion mellan kurser"/>
+    <text name="CP_courseManager_advancedSettings" text="Redigera filer"/>
+    <text name="CP_courseManager_activate" text="Aktivera"/>
+    <!---->
+    <!--Course editor-->
+    <!---->
+    <text name="CP_editor_course_title" text="Kursredaktör : %s"/>
+    <text name="CP_editor_custom_field_title" text="Editor för anpassade fält : %s"/>
+    <text name="CP_editor_change_lane_offset" text="Ändra vald körfältsförskjutning(%s)"/>
+    <text name="CP_editor_save_changes" text="Bör ändringarna av %s sparas?"/>
+    <text name="CP_editor_course_basic_delete_title" text="Ta bort waypoints"/>
+    <text name="CP_editor_course_basic_delete_primary_text" text="Raderar den markerade waypointen."/>
+    <text name="CP_editor_course_basic_delete_secondary_text" text="Fortsätter borttagningen av svävande waypoints."/>
+    <text name="CP_editor_course_basic_delete_tertiary_text" text="Raderar alla waypoints fram till den sista waypointen."/>
+    <text name="CP_editor_course_basic_delete_yesNo_deleteToLastWp_title" text="Är du säker på att alla waypoints fram till den sista ska raderas?"/>
+    <text name="CP_editor_course_basic_delete_err" text="För få waypoints kvar."/>
+    <text name="CP_editor_course_basic_title" text="Grundläggande"/>
+    <text name="CP_editor_course_basic_move_title" text="Flyttar en waypoint"/>
+    <text name="CP_editor_course_basic_move_primary_text" text="Dra och släpp en waypoint med musen."/>
+    <text name="CP_editor_course_basic_insert_title" text="Infoga waypoints"/>
+    <text name="CP_editor_course_basic_insert_primary_text" text="Infogar en waypoint efter den markerade waypointen."/>
+    <text name="CP_editor_course_basic_insert_secondary_text" text="Infogar en waypoint före den markerade waypointen."/>
+    <text name="CP_editor_course_basic_insert_err" text="Det är inte tillåtet att infoga mellan vändpunkter."/>
+    <text name="CP_editor_course_advanced_title" text="Avancerad"/>
+    <text name="CP_editor_course_advanced_changeTurn_title" text="Markerar en waypoint som sväng."/>
+    <text name="CP_editor_course_advanced_changeTurn_primary_text" text="Lägger till eller tar bort en vändpunkt. (Den valda waypointen blir startpunkt för vändningen)."/>
+    <text name="CP_editor_course_advanced_changeTurn_err" text="För nära en ny vändpunkt."/>
+    <text name="CP_editor_course_advanced_moveExtended_title" text="Flyttar flera waypoints"/>
+    <text name="CP_editor_course_advanced_moveExtended_primary_text" text="Väljer två waypoints och flyttar dessa med alla waypoints däremellan."/>
+    <text name="CP_editor_course_advanced_moveExtended_secondary_text" text="Återställer de valda waypointsen."/>
+    <text name="CP_editor_course_advanced_curveInsert_title" text="Infogar waypoints som kurva"/>
+    <text name="CP_editor_course_advanced_curveInsert_primary_text" text="Väljer två waypoints och lägger till några waypoints däremellan som en kurva."/>
+    <text name="CP_editor_course_advanced_curveInsert_secondary_text" text="Återställer de valda waypointsen."/>
+    <text name="CP_editor_course_advanced_curveInsert_err" text="Det är inte tillåtet att välja en vändpunkt."/>
+    <!---->
+    <!--Info texts-->
+    <!---->
+    <text name="CP_infoTexts_isStuck" text="Hjälparen har fastnat"/>
+    <text name="CP_infoTexts_blockedByObject" text="Blockerad av ett objekt"/>
+    <text name="CP_infoTexts_shouldRefuel" text="Bör tankas"/>
+    <text name="CP_infoTexts_needsFuel" text="Behöver fyllas på med bränsle"/>
+    <text name="CP_infoTexts_needsRepair" text="Behöver repareras"/>
+    <text name="CP_infoTexts_needsFilling" text="Måste fyllas på"/>
+    <text name="CP_infoTexts_needsUnloading" text="Måste lastas av"/>
+    <text name="CP_infoTexts_workFinished" text="Färdigställt arbete"/>
+    <text name="CP_infoTexts_drivingToCombine" text="Körning för att kombinera"/>
+    <text name="CP_infoTexts_drivingToSelfUnload" text="Körning till släpvagn"/>
+    <text name="CP_infoTexts_waitingForFieldBoundaryDetection" text="Fältdetektering"/>
+    <text name="CP_infoTexts_outOfMoney" text="Slut på pengar"/>
+    <text name="CP_infoTexts_waitForRainToFinish" text="Väntar på att regnet ska ta slut"/>
+    <text name="CP_infoTexts_waitForSnowToClear" text="Väntar på att snön ska försvinna"/>
+    <text name="CP_infoTexts_waitForUnloader" text="Väntar på avlastare"/>
+    <text name="CP_infoTexts_errorStopped" text="Lämnade banan, stannade"/>
+    <text name="CP_infoTexts_wrongBaleWrapType" text="Fel baltyp"/>
+    <text name="CP_infoTexts_errorNoPathFound" text="Ingen sökväg hittades"/>
+    <text name="CP_infoTexts_errorGroundUnloadNotSupported" text="Tippning till marken inte möjlig"/>
+    <text name="CP_infoTexts_errorCutterNotSupported" text="Cutter stöds inte"/>
+    <text name="CP_infoTexts_errorAutomaticCutterAttachNotActive" text="Fästanordning för avbitartång avaktiverad"/>
+    <text name="CP_infoTexts_errorWrongSeason" text="Fel säsong för frukt"/>
+    <text name="CP_infoTexts_errorWrongMissionFruitType" text="Fel frukt för valt uppdrag"/>
+    <text name="CP_infoTexts_errorPalletsAreFull" text="Pallarna är fulla"/>
+    <text name="CP_infoTexts_errorPalletsAreEmpty" text="Inga pallar"/>
+    <text name="CP_infoTexts_errorTooFarFromField" text="Fordonet är för långt bort från fältet."/>
+    <!---->
+    <!--Custom field manager-->
+    <!---->
+    <text name="CP_customFieldManager_hotspotName" text="Anpassat fält"/>
+    <text name="CP_customFieldManager_fieldList" text="Anpassade fält"/>
+    <text name="CP_customFieldManager_confirm_save" text="Vill du spara den inspelade kursen som ett anpassat fält %s?"/>
+    <text name="CP_customFieldManager_confirm_delete" text="Vill du ta bort det anpassade fältet %s?"/>
+    <text name="CP_customFieldManager_delete" text="Ta bort anpassat fält"/>
+    <text name="CP_customFieldManager_rename" text="Byt namn på anpassat fält"/>
+    <text name="CP_customFieldManager_rename_error" text="Det anpassade fältnamnet %s används redan."/>
+    <text name="CP_customFieldManager_edit" text="Redigera anpassat fält"/>
+    <text name="CP_customFieldManager_draw" text="Rita anpassat fält"/>
+    <text name="CP_customFieldManager_draw_header" text="Rita anpassade fältlinjer med högerklick."/>
+    <text name="CP_customFieldManager_draw_sub_header" text="Håll in vänster shift-tangent för en rak linje."/>
+    <text name="CP_customFieldManager_save" text="Spara anpassat fält"/>
+    <text name="CP_controllerGui_startRecording" text="Starta inspelning av anpassade fält"/>
+    <text name="CP_controllerGui_stopRecording" text="Stoppa registrering av anpassade fält"/>
+    <text name="CP_controllerGui_pauseRecording" text="Pausa inspelning av anpassade fält"/>
+    <text name="CP_controllerGui_unpauseRecording" text="Avbryt inspelning av anpassade fält"/>
+    <!---->
+    <!--CP ingame menu-->
+    <!---->
+    <text name="CP_ingameMenu_map_title" text="Karta"/>
+    <!---->
+    <!--Help menu-->
+    <!---->
+    <text name="CP_help_title" text="Kursspel"/>
+    <text name="CP_help_subTitle" text="En modifiering för Farming Simulator 25"/>
+    <text name="CP_help_page_blank" text=""/>
+    <text name="CP_help_page_General_title" text="Allmän information"/>
+    <text name="CP_help_page_GeneralBase_text" text="Med Courseplay kan du generera fältbanor med ytterligare funktioner, t.ex. vändtegar. Det gör det också möjligt att använda balpressar och fodervagnar, som kan skickas på samma bana som en slåttermaskin eller skördetröska sedan tidigare. En annan viktig funktion är uppsamling eller inplastning av balar på fältet. Courseplay kan också arbeta med risfält och vinrankor. Fältarbetskurser kan ställas in i multiverktygsläge, vilket gör det möjligt att använda upp till 5 förare som arbetar i en konvoj på samma fält. Det är också möjligt att låta skördetröskan automatiskt lasta av i en släpvagn på/vid fältet. Anpassade fältgränser kan tilldelas för att Courseplay ska kunna använda dem, t.ex. för en äng som inte känns igen som ett normalt fält. Slutligen har CP ett gränssnitt för AutoDrive, som gör det möjligt att fylla på en såmaskin vid en närliggande silo eller lossa en fodervagn och så vidare. Skördetröskans avlastare kan skapa en hög nära fältet med sin lastade frukt. I Farming Simulator 25 har Courseplay en egen meny, som du kan komma åt via olika knappar på HUD.  För mer information, besök vår GitHub: https://github.com/Courseplay/Courseplay_FS25 . Där kan du få hjälp eller rapportera eventuella problem du har upplevt. Slutligen tackar vi alla översättare och vår community för att ni rapporterar buggar, ger feedback och nya idéer.  Vad är expertläget? När expertläget är avaktiverat har du bara tillgång till vissa inställningar. De andra inställningarna är dolda och inställda på standardvärden, som fungerar i de flesta situationer. På så sätt försöker vi göra det lättare för nya Courseplay-användare att komma igång utan att överväldiga dem med de olika inställningarna."/>
+    <text name="CP_help_page_extendedJobMenu_title" text="Utökad AI-meny"/>
+    <text name="CP_help_page_startJobMenuBase_text" text="Hjälparinställningar finns nu under vår egen nya meny &quot;Hjälparinställningar&quot;. Den fungerar ungefär som den gamla AI-menyn. Välj ett fordon i AI-menyn för att skapa ett jobb, baserat på de bifogade verktygen eller det valda fordonet. Förutom kartan och jobbinställningarna hittar du inställningarna för bangeneratorn och vinbanegeneratorn högst upp. Dessa är endast åtkomliga med ett giltigt verktyg när du skapar ett jobb. För att generera en bana och starta Courseplay-jobben måste du skapa jobbet CP: Fieldwork med ett giltigt verktyg eller fordon. Tips: För att få snabbare åtkomst kan du klicka på &quot;no course&quot; på HUD. Då kommer du till menyn med ett jobb som redan har skapats för fordonet."/>
+    <text name="CP_help_page_startJobMenuFunctions_text" text="För att komma igång med ditt första CP-jobb måste du välja ett fordon och ett eventuellt giltigt redskap som stöds för jobbet. Genom att klicka på &quot;Skapa jobb&quot; kan du sedan välja ett CP-jobb för det valda verktyget eller fordonet."/>
+    <text name="CP_help_page_readyJobMenuBase_text" text="Om du har valt ett CP-jobb måste du placera fältpositionen på ett fält för att generera banan eller använda balsökaren på den. Positionen styr också i stort sett startpunkten för din bana. Om du vill använda Giants-hjälpen för att köra till fältet måste du också ställa in målpositionen nära banans startpunkt. Inställningen för banförskjutning används endast om du vill ha flera hjälpare som arbetar på samma fält. För detta, se den separata sidan i hjälpmenyn nedan. Tips: Om du redan står på banan när du klickar på &quot;ingen bana&quot; för att komma till menyn, är markörerna redan utplacerade."/>
+    <text name="CP_help_page_readyJobMenuFunctions_text" text="När fältpositionen är korrekt placerad på ett fält kommer du att se fältgränsen ritad på kartan. Om du skapar ett CP: Fieldwork-jobb får du tillgång till inställningarna för kursgeneratorn."/>
+    <text name="CP_help_page_JobMenuExtras_text" text="Nu är det möjligt att starta föraren direkt från menyn. Giants helper kommer att köra till målpositionen och därifrån tar CP-jobbet automatiskt över. Alternativt kan du också starta föraren från HUD om du befinner dig nära fältet med fordonet eller använder AutoDrive-modulen för att leverera CP-jobbet nära fältet."/>
+    <text name="CP_help_page_courseGeneratorBasic_title" text="Grunderna i kursgeneratorn"/>
+    <text name="CP_help_page_courseGeneratorBase_text" text="Courseplays kursgenerator är ett sofistikerat verktyg som kan generera fältkurser anpassade för alla möjliga jobb. Den har många inställningar och det kan ta lite tid att bekanta sig med den. Om du är nybörjare på Courseplay bör du förmodligen börja med att spela med antalet vändtegar och sedan ge dig i kast med de mer avancerade inställningarna. När du har ändrat en parameter trycker du på Generate för att se vilken effekt inställningen har. Det bästa sättet att utforska alla möjligheter som generatorn erbjuder är att experimentera med den."/>
+    <text name="CP_help_page_courseGeneratorBaseFunctions_text" text="Grunderna: De första värdena du ser här är riktiga basvärden. - Arbetsbredd: Courseplay identifierar automatiskt arbetsbredden för de flesta verktyg, så du behöver inte oroa dig för detta, men om den automatiska identifieringen misslyckas kan du ställa in den manuellt. Den här inställningen påverkar hela kursen. - Fältmarginal: Positiva värden minskar fältstorleken för att lägga till en buffert runt det bearbetade området om du har hinder nära fältgränsen. Negativa värden förstorar det bearbetade området utanför fältgränsen för att täcka över fältgränser som inte detekteras perfekt. - Antal vändtegar: Det bästa sättet att hålla fordonen på fältet när de vänder i slutet av varje rad är att lägga till vändtegar. Antalet vändtegar multiplicerat med arbetsbredden bör minst motsvara den totala längden på fordonet plus det påhängda verktyget. - Börja arbeta på: Som nämnts i den utökade AI-menyn används fältpositionen för att ställa in start- eller slutpositionen för fältarbetskursen. När du skördar vill du börja arbeta på vändtegen och arbeta dig mot mitten av fältet. Vid plöjning, sådd och kultivering bör man börja i mitten av fältet och arbeta sig mot vändtegen."/>
+    <text name="CP_help_page_courseGeneratorHeadland_text" text="Inställningar för vändtegar visas bara när du har ställt in minst en vändteg. Du får alternativ för var du ska börja, hörninställningar, riktning och överlappning. Vändtegar rekommenderas starkt för att förhindra att verktygen lämnar fältet när du svänger."/>
+    <text name="CP_help_page_courseGeneratorHeadlandFunctions_text" text="- Skärpa hörnen på uddarna: Skärpa hörnen på de vändtegar som inte är rundade. Kommer att tvinga fordonet att svänga på vändtegen när vändtegens krökning är mindre än fordonets svängradie. - Antal runda hörn: Antal vändtegar, räknat från den yttersta, som kommer att ha rundade hörn. Rundade hörn baseras på fordonets svängradie, så för dessa vändtegar kommer fordonet inte att utföra någon svängmanöver i hörnen. - Radie för hörn: Ställer in radien för de runda hörnen. Om du vet att ett efterföljande arbetsverktyg har en minsta radie på 10, kan du ställa in detta värde till 10 för banan. - Vändtegsriktning: medurs eller moturs. Detta kan vara viktigt för skördetröskor och skördare, beroende på vilken sida röret eller transportbandet är på. - Överlappning på vändtegen: Hur mycket ett vändteg överlappar med nästa. Detta för att undvika att missa frukt i vissa fall."/>
+    <text name="CP_help_page_courseGeneratorCenter_text" text="Generatorn har flera olika mönster för att skapa en bana för fältets mitt. Det bästa mönstret bestäms vanligtvis av jobbet och de redskap som väljs. Mönstren skapades baserat på feedback och information från vår community. Det enkla upp-och-ned-mönstret fungerar nästan varje gång för alla redskap. Andra mönster kan förbättra effektiviteten, som att använda Lands-mönstret när du skördar med en skördetröska för att hålla röret borta från frukten och få en snabbare avlastning. För choppers kan racetrack vara ett bättre val för bredare svängar som underlättar arbetet för avlastaren. Spiral är bäst för bogserade skördare med en förskjutning för att hålla verktyget i frukten och traktorn utanför."/>
+    <text name="CP_help_page_courseGeneratorCenterFunctions_text" text="- Fältets mittpunkt: Det finns olika lägen för hur ditt field center-mönster ska se ut. Det klassiska och mest använda är upp/ner. Spiral, Racetrack och Lands har sina egna specifika fördelar jämfört med de andra. Lands har till exempel skördetröskans rör pekande ut ur frukten större delen av tiden för att underlätta lossningen. - Riktning i mitten: För spiral- och landmönstren kan du här ställa in riktningen, på samma sätt som för vändtegsriktningen. - Jämn radbredd: Om mitten av ett fält har en total bredd som inte kan fördelas jämnt över redskapets arbetsbredd kommer den första eller sista raden att vara smalare. Du kan använda den här inställningen för att förhindra detta och göra varje rad lika bred (vilket blir mindre än arbetsbredden). - Radriktning: Automatiken hittar oftast den bästa riktningen, men ibland passar den längsta kanten bättre. Om du inte är nöjd med något av alternativen kan du välja manuell och ställa in riktningen manuellt. - Radvinkel: När radriktningen är inställd på manuell visas den här inställningen och talar om för generatorn vilken riktning raderna ska ha.  Dessa inställningar visas endast för specifika inställningar som du har gjort tidigare: - Rader att hoppa över: Visas när fältcentrum är inställt på &quot;upp/ner&quot;. Detta är ett mycket användbart alternativ för att påskynda arbetet, eftersom fordon kan göra bredare svängar och inte behöver backa när de svänger in på nästa rad. - Rader per land: Visas när fältets mittpunkt är inställd på &quot;land&quot;. Detta har endast betydelse när fältcentrum är inställt på &quot;lands&quot; och talar om för generatorn hur många rader varje land ska ha. Ju fler rader, desto färre landområden kommer att genereras. - Spiral från insidan: Visas när fältets mittpunkt är inställd på &quot;spiral&quot;. - Antal cirklar: Visas när fältets mittpunkt är inställd på &quot;racetrack&quot;."/>
+    <text name="CP_help_page_courseGeneratorCenterExampleUpdown_text" text="upp/ned"/>
+    <text name="CP_help_page_courseGeneratorCenterExampleLands_text" text="landområden"/>
+    <text name="CP_help_page_courseGeneratorCenterExampleSpiral_text" text="spiral"/>
+    <text name="CP_help_page_courseGeneratorCenterExampleRacetrack_text" text="kapplöpningsbana"/>
+    <text name="CP_help_page_courseGeneratorIsland_text" text="Courseplay genererar vändtegar runt öar när ö-förbikoppling är aktiverat, så när banan först möter en ö kommer den att göra minst en hel cirkel runt den. Du kan ställa in antalet vändtegar (och därmed antalet cirklar) runt ön om du behöver mer utrymme för fordon som ska vända vid ön. Tänk på att generatorn kan bestämma sig för att generera färre vändtegar om ön ligger för nära fältgränsen"/>
+    <text name="CP_help_page_courseGeneratorIslandFunctions_text" text="- Förbikoppling av ö: Aktiverar eller inaktiverar förbikopplingen av ön, om en ö hittas. Detta fungerar inte för anpassade fält! - Öns vändtegar: Antalet rundor runt ön kan ställas in oberoende av inställningen för vändtegen. - Öns vändtegsriktning: I vilken riktning föraren kör runt ön, t.ex. för att se till att skördetröskans rör inte ligger i frukten eller för att undvika konstiga riktningsändringar."/>
+    <text name="CP_help_page_courseGeneratorExpert_text" text="Vissa inställningar är bara synliga om du ställer in expertläget till aktivt i de globala Courseplay-inställningarna. Innan du leker med dessa inställningar bör du se till att du vet vad grundinställningarna gör. Vissa expertinställningar fungerar bara korrekt under vissa förhållanden.  - Flera verktyg: Den här inställningen används när du vill att mer än ett fordon ska arbeta på din bana. Eftersom detta blir lite mer komplicerat finns det ett separat hjälpämne för det. - Växla körfält: När det här alternativet är aktivt byter fordonen fil vid varje sväng, så att varje fordons sväng blir lika bred. Se den extra hjälpmenyn &quot;Byta körfält&quot; för mer information. - Fältmarginal: Med denna inställning kan du flytta fältets kant inåt eller utåt från den ursprungliga kanten. - Smalt fält: Skapar vändtegen endast vid fältets två korta kanter. I detta fall är det inte möjligt att hålla fordonet på fältet på de längsta kanterna vid vändtegen. - Överlappning på vändtegen: Som standard överlappar vändtegspassagerna varandra (men aldrig fältkanten) med några procent för att undvika att missa frukt i vissa kantfall. Du kan ändra denna överlappning här. - Använd baslinjekant: Med den här inställningen kan du generera böjda rader uppåt/nedåt som löper parallellt med fältkanten nära fältmarkören. Detta är logiskt när fältkanten inte är rak, eftersom raderna uppåt/nedåt följer kantkurvan. VIKTIGT: Det här är en experimentell inställning som kanske inte fungerar för alla fältformer. Om det inte fungerar, prova en annan inställning."/>
+    <text name="CP_help_page_courseGeneratorHeadland_title" text="Kursgenerator: vändtegen"/>
+    <text name="CP_help_page_courseGeneratorCenter_title" text="Kursgenerator: center"/>
+    <text name="CP_help_page_courseGeneratorIsland_title" text="Kursgenerator: öar"/>
+    <text name="CP_help_page_courseGeneratorExpert_title" text="Kursgenerator: expertinställningar"/>
+    <text name="CP_help_page_courseManager_title" text="Kursansvarig"/>
+    <text name="CP_help_page_courseManagerBase_text" text="Med kurshanteraren kan du spara kurser och ladda den sparade kursen senare igen. Detta är mycket viktigt när du vill att flera arbetare ska köra samma bana i konvoj (multiverktyg). Med den här funktionen kan du också plocka upp den sträng som en skördetröska eller en windrower har lämnat efter sig med en fodervagn eller en balpress.  Sparplatsen för banfilerna är: ..\My Games\FarmingSimulator2025\modSettings\FS25_Courseplay\Courses\Mapname.SampleModMap (eller för vanilj t.ex. MapUS). Kurshanteraren fungerar på ett annat sätt än vad du är van vid i FS19. Kurserna sparas i mappar, som visas till vänster. Det innebär att du behöver minst en mapp att börja spara kurser i.  Mappar kan enkelt skapas genom att trycka på knappen längst ner på skärmen och ange ett namn. Kurser sparas bara lokalt för tillfället."/>
+    <text name="CP_help_page_courseManagerBaseFunctions_text" text="När du har laddat en kurs kan du spara den genom att välja en mapp och sedan klicka på knappen Spara kurs. Då visas ett popup-fönster där du kan ange namnet på din kurs. Namn och plats kan ändras i efterhand. Om du vill ta bort kursen från ditt fordon klickar du på knappen &quot;Clear current course&quot;. För att ladda en kurs måste du först välja mappen, sedan välja kursen och sedan helt enkelt klicka på knappen Load Course. Om du klickar på ändringsläget aktiveras redigeringsläget i kurshanteraren."/>
+    <text name="CP_help_page_courseManagerEdit_text" text="När redigeringsläget är aktivt har du följande alternativ: - Flytta en kurs till en annan katalog. - Ta bort kurser eller kataloger. - Byta namn på kurser eller kataloger."/>
+    <text name="CP_help_page_courseManagerEditFunctions_text" text="För att flytta en kurs: 1) Klicka på knappen Flytta längst ner på skärmen.   2) Klicka på den kurs du vill flytta.   3) Klicka på den katalog som kursen ska flyttas till. För att byta namn behöver du bara klicka på knappen Rename och därefter på katalogen eller kursen. Sedan är det bara att skriva in det nya namnet. För att ta bort en kurs eller katalog klickar du på delete-knappen och därefter på den mapp eller kurs du vill ta bort. Kataloger måste vara tomma för att du ska kunna radera dem."/>
+    <text name="CP_help_page_minihud_title" text="Mini HUD"/>
+    <text name="CP_help_page_minihud_general_title" text="Allmänna funktioner"/>
+    <text name="CP_help_page_minihud_general_text" text="A: Håll vänster musknapp på rubriken för att dra HUD till en position som du vill ha. På höger sida visas den installerade versionen och X:et stänger HUD:en med ett musklick. B: Klicka på ikonen Courseplay för att komma åt de globala inställningarna. C: På denna position visas namnet på ditt fordon. Om du klickar på det kommer du till menyn för fordonsinställningar. D: Dessa symboler är till för att: (1) radera den aktuella banan, (2a) växla hur banan ska visas, (2b) om ingen bana är laddad visas en inspelningsknapp för att spela in en fältgränsbana, (3) starta eller stoppa hjälpen. E: Den här målikonen har olika alternativ beroende på valt läge, den öppnar AI-menyn med jobbet och gör det möjligt att placera markören och göra ytterligare inställningar för jobbet. På vänster sida av ikonen, när ett fältarbete pågår, visas den återstående tiden för kursen. F: Klicka på texten för att växla mellan de tillgängliga lägena för dina aktuella verktyg. G: De inställningar som visas under denna rad beror på det aktuella jobbet. Dessa förklaras med hjälp av följande bilder."/>
+    <text name="CP_help_page_minihud_fieldwork_title" text="Fältarbete"/>
+    <text name="CP_help_page_minihud_fieldwork_text" text="S: Klicka för att välja var arbetet ska påbörjas. Om en multiverktygsbana är laddad kan du välja bana på höger sida. B: Visar namnet på den laddade banan. Om du just har genererat en bana visas &quot;tillfällig bana&quot;. På höger sida visas de aktuella/totala waypointsen när jobbet har startat. C: Om du klickar på texten beräknas arbetsbredden på nytt, eller så kan du ställa in den manuellt till höger genom att klicka på +/- eller med mushjulet över siffran. D: Vissa verktyg behöver en förskjutning åt sidan. Courseplay beräknar den automatiskt när du klickar på texten, eller så kan du ändra den manuellt precis som arbetsbredden. E: Använd symbolen på höger sida för att kopiera den aktuella kursen till urklipp. Namnet på den kopierade kursen visas sedan till vänster. Du kan lägga in den kopierade kursen i ett annat fordon som ännu inte har någon kurs. För att ta bort kursen från urklipp, klicka på symbolen för borttagning."/>
+    <text name="CP_help_page_minihud_combineunload_title" text="Skördetröska avlastare"/>
+    <text name="CP_help_page_minihud_combineunload_text" text="A: Välj vilken typ av fordon som medarbetaren ska lossa. Detta är användbart om du har olika typer, t.ex. en skördetröska och en lastare som ROPA Maus, som arbetar på samma fält. B: Ställ in fyllnadsgraden (40 % - 100 %) som arbetaren ska köra till lossningsplatsen. Klicka på +/- eller använd skrollhjulet över siffran för att ändra. C: Ibland är avlastarens position under röret inte perfekt. Detta kan bero på släpet eller skördarens rör, ibland orsakat av fältets lutning. Du kan korrigera avståndet till skördaren manuellt här. D: Samma sak som ovan, men här kan du justera lossarens position i förhållande till röret framtill eller baktill. E: På samma sätt som vid kopiering av en bana kan du här kopiera markörpositionerna till ett annat fordon."/>
+    <text name="CP_help_page_minihud_balecollect_title" text="Balar samlas in/omlindas"/>
+    <text name="CP_help_page_minihud_balecollect_text" text="A: Kvarvarande balar på fältet. B: Typ av balar som ska samlas in/plastas. C: Förskjutning mellan traktorns mittlinje och lastararmens mittlinje. Du kan behöva justera detta för större traktorer (t.ex. med bredare däck)."/>
+    <text name="CP_help_page_minihud_siloloader_title" text="Silolastare"/>
+    <text name="CP_help_page_minihud_siloloader_text" text="A: Kvarvarande storlek på högen i liter. B: Arbetsbredd, samma som vid fältarbete. C: Courseplay kräver att skopans exakta höjd över marken är korrekt inställd. Eftersom denna höjd kan vara olika för varje verktyg kan du kontrollera och justera den med denna inställning. D: Precis som med avlastaren kan du kopiera markörpositionerna till ett annat fordon."/>
+    <text name="CP_help_page_minihud_siloworker_title" text="Siloarbetare"/>
+    <text name="CP_help_page_minihud_siloworker_text" text="A: På samma sätt som för silolastaren är höjden på nivåvippan avgörande. Du kan justera den här. B: Visar hur komprimeringen fortskrider. Om du klickar på den växlar du mellan alternativet att stoppa föraren när komprimeringen är klar. Om du klickar på den kan du välja att stoppa föraren när komprimeringen är klar. C: Här kan du ändra arbetsbredden vid behov. D: Denna inställning anger att arbetaren ska vänta i silon eller på en vald parkeringsplats när en avlastare närmar sig silon."/>
+    <text name="CP_help_page_customField_title" text="Anpassade fält"/>
+    <text name="CP_help_page_customFieldRecord_text" text="Det finns två sätt att skapa anpassade fält. Det första är att använda HUD:s registreringsfunktion. Tryck först på knappen för banregistrering och kör sedan fältgränsen som du vill registrera. När du är klar trycker du bara på knappen igen så får du frågan om du vill spara den. Start och slut får inte överlappa varandra!"/>
+    <text name="CP_help_page_customFieldDone_text" text="De anpassade fältgränserna kommer att visas i AI-menyn. Genom att klicka på namnet får du möjlighet att antingen ta bort, byta namn på eller redigera det med redigeraren."/>
+    <text name="CP_help_page_customFieldDraw_text" text="Det andra alternativet är att rita det anpassade fältet på kartan i CP AI-menyn. För att starta ritningen klickar du på knappen i det nedre vänstra hörnet eller trycker på motsvarande tangent. Därefter visas en text överst på skärmen. Börja med att klicka på höger musknapp för att ställa in startpositionen. Genom att hålla in shift-tangenten kommer linjen att läggas rakt i 90°-vinklar. Nästa klick skapar linjer till det föregående klicket. När du har ritat en andra linje stängs banan automatiskt. Du kan fortfarande dra fler linjer för att definiera fältet ännu mer. Du behöver inte dra den sista linjen till starten, eftersom den genereras automatiskt rakt till starten."/>
+    <text name="CP_help_page_multiConvoy_title" text="Multiverktyg och Convoy"/>
+    <text name="CP_help_page_multitoolBasic_text" text="Det är möjligt att ha upp till 5 fordon som arbetar tillsammans på samma fält i en grupp (även kallad multi tools-bana). Du kan byta position (lane) för fordonet i gruppen på HUD (vänster-center-höger)."/>
+    <text name="CP_help_page_multitoolFunction_text" text="När en multi tool-bana har laddats måste du välja position (lane) för föraren. Dessa banor har alltid samma namn: vänster(2), vänster(1), mitten, höger(1), höger(2). 2 fordon har vänster(1) och höger(1), 4 har också vänster(2) och höger(2). För 3 eller 5 fordon finns även ett mittalternativ. Om du väljer ett annat körfält uppdateras också kursdisplayen så att den visar den faktiska kursen för det fordonet."/>
+    <text name="CP_help_page_convoyBasic_text" text="Konvojen fungerar endast om fordonen har samma multitoolbana med samma namn laddad. De kommer automatiskt att hålla ett litet avstånd till fordonet framför. Dessutom tillämpas konvojfunktionen även när t.ex. en balpress kör bakom en skördetröska på samma bana."/>
+    <text name="CP_help_page_convoyFunction_text" text="Inställningen för konvojavstånd för fordon ändrar avståndet mellan fordonen. Avståndet för alla fordon med samma kursnamn kommer automatiskt att ställas in på det högsta värdet för alla fordon i konvojen."/>
+    <text name="CP_help_page_wrapCollect_title" text="Förpackning och uppsamling av balar"/>
+    <text name="CP_help_page_wrapCollectBasic_text" text="Inplastning och uppsamling av balar kan göras på två olika sätt. Det första är att ladda samma bana som du använde för din balpress och låta inplastaren eller uppsamlaren köra den banan. Detta kan dock vara knepigt, eftersom vissa balar älskar att rulla eller flyga utanför banan. I det här läget kan vår jobbtyp för inplastning och uppsamling vara till hjälp eftersom den inte behöver någon bana. Med målikonen på HUD:en måste du välja det fält där du vill samla in eller linda in balarna. Efter det kan du starta föraren nära fältet. Du kan också använda AI Map för att skicka honom till ett fält för att påbörja jobbet. Räknaren på HUD:en visar hur många balar som finns kvar på fältet sedan den senaste skanningen. CP kommer endast att skanna fältet efter balar när det verkligen måste av prestandaskäl."/>
+    <text name="CP_help_page_wrapBasic_text" text="Inplastning av balar är mycket enkelt. Ladda en bana på din balpress och starta som vilket annat fältarbete som helst, eller utan en bana, starta det med balinplastning / insamling från HUD eller AI-menyn."/>
+    <text name="CP_help_page_wrapFunction_text" text="När en bana används kör hjälparen med en förinställd förskjutning så att inplastarens pickup befinner sig mitt på banan. Utan en bana skannar Courseplay fältet efter oinplastade balar och använder sökaren för att hitta en väg till den närmaste balen som är bäst att plasta in. Automatisk backning om en bal befinner sig framför fordonet eller om vi är för nära fältgränsen bör förhindra olyckor."/>
+    <text name="CP_help_page_collectBasic_text" text="Att samla in balar fungerar ungefär likadant, med eller utan en bana. När uppsamlaren är full stoppar den arbetet och talar om för användaren att den måste tömmas. Om du har AutoDrive installerat kan du använda det för att köra och lossa baluppsamlaren automatiskt."/>
+    <text name="CP_help_page_symetricLaneChange_title" text="Växling av körfält"/>
+    <text name="CP_help_page_symetricLaneChangeBasic_text" text="Lane switching används på multitool-banor och talar om för hjälparen i vilket körfält han ska köra efter svängen. När körfältsomkopplaren är aktiv byter fordonet sida efter varje sväng. Det här är lite svårt att förstå, så låt oss titta på två exempel."/>
+    <text name="CP_help_page_symetricLaneChangeExampleOff_text" text="Om filbytet är avstängt stannar fordonet på samma sida under hela körningen där det startade. Om fordonet startade i det vänstra körfältet kommer det alltid att ligga kvar i det vänstra körfältet. Detta undviker konflikter med andra förare, men fordon på insidan av svängen (längst till vänster för vänstersvängar, längst till höger för högersvängar) måste göra snävare svängar när de fortsätter på det intilliggande körfältet."/>
+    <text name="CP_help_page_symetricLaneChangeExampleOn_text" text="Om körfältsbytet är aktivt, t.ex. för två fordon, fordon A till vänster och fordon B till höger, byts körfälten efter svängen. Det innebär att A då befinner sig till höger och B till vänster. Fördelen är att alla fordon har samma svängbredd och därmed samma avstånd att köra. För skördetröskor är denna inställning viktig, eftersom den ser till att röret håller sig utanför frukten och inte når in i ett annat körfält. Nackdelen är att fordonen har en chans att kollidera med varandra när de kör mot varandra på närliggande körfält.  Om du tittar på ordningen på körfälten från vänster till höger blir det tydligt: Utan symmetrisk förändring: vänster, höger, vänster, höger - det är nästan som att hoppa över ett körfält. Med symmetrisk förändring: vänster, höger, höger, vänster - från vänster till höger, en bana efter den andra. I exemplet med Combine betyder det att ingen Combine kommer att ha frukt till vänster och höger om sitt körfält."/>
+    <text name="CP_help_page_infoPanel_title" text="Information om panelen"/>
+    <text name="CP_help_page_infoPanelBasic_text" text="Det här är vår infopanel, den kan flyttas runt med muspekaren, precis som vår mini HUD. Förutom namnet och versionen av vår mod, visar den också statusinformation om Courseplay-förarna. När du håller muspekaren över statusmeddelandet visas fordonets namn. Genom att klicka på det kan du hoppa direkt in i fordonet."/>
+    <text name="CP_help_page_infoPanelMsg_text" text="Statusmeddelandena är: - Hjälparen sitter fast - Blockerad av ett föremål - Bör tankas - Behöver tankas - Behöver repareras - Behöver fyllas på - Behöver lossas - Avslutat arbete - Kör till skördetröskan - Kör till släpet - Slut på pengar - Väntar på att regnet ska sluta - Väntar på att snön ska försvinna - Väntar på lossaren - Lämnade banan, stoppad - Fel baltyp - Ingen väg hittad - Tippning till marken inte möjlig - Skäraren stöds inte - Skärarens fastsättning avaktiverad - Fel säsong för frukt - Fel frukt för valt uppdrag - Pallarna är fulla - Inga pallar"/>
+    <text name="CP_help_page_vineWork_title" text="Arbete med vinstockar"/>
+    <text name="CP_help_page_vineWorkConditions_text" text="Att arbeta med vinrankor är lite mer komplicerat än att arbeta på ett vanligt fält. För att få bästa resultat bör alla rankor ligga bredvid varandra inom standardrutnätet. Slutet och början på varje vinranka bör också vara ungefär lika långa. Om vinrankorna står på ett befintligt fält kan du öppna generatorn direkt som vanligt. Om de inte ligger på ett fält måste du gå över till AI-menyn och placera fältmarkören på rankorna."/>
+    <text name="CP_help_page_vineWorkGenerator_text" text="Generatorn för vinrankor har färre alternativ. Beroende på verktyget måste du välja om du vill arbeta på eller bredvid vinrankorna. T.ex. måste standardskördaren köra och arbeta på vinrankan.      Förbeskäraren måste köra till vänster om vinrankorna men arbetar på vinrankan, så du måste välja att arbeta på vinrankan, men köra med en förskjutning.      Sprutor måste köra bredvid vinrankorna och måste hoppa över en rad, eftersom den sprutar till vänster och höger."/>
+    <text name="CP_help_page_vineWorkHarvester_text" text="En vinstockskurs bör genereras på vinstockarna, eftersom den måste köra och arbeta på vinstockarna."/>
+    <text name="CP_help_page_vineWorkPruner_text" text="Förbeskäraren arbetar på vinrankorna, så kursen måste skapas på vinrankorna. Verktyget levereras med en offset för traktorn, så traktorn kör mellan vinrankorna."/>
+    <text name="CP_help_page_vineWorkSprayer_text" text="Sprutan arbetar bredvid vinrankorna, så den måste köra antingen till vänster eller höger om vinrankorna. Eftersom sprutan kan arbeta på vänster och höger vinranka samtidigt kan vi hoppa över en rad."/>
+    <text name="CP_help_page_editor_title" text="Kursredaktör"/>
+    <text name="CP_help_page_editorGeneral_text" text="Kursredigeraren kan användas för att redigera kurser och anpassade fält. De inlästa kurserna sparas/skrivs över automatiskt när editorn stängs.  1) Du kan redigera ett anpassat fält genom att välja det på menysidan ai och klicka på edit custom field. 2) Du kan redigera en kurs i kurshanteraren genom att markera den och klicka på öppna kursredigeraren.     Detta fungerar endast med sparade kurser. Se till att ingen kurs är laddad i fordonet.  Redigering av kurser bör endast göras när kursgeneratorn inte kunde producera en tillräckligt bra kurs. Felaktig redigering kan orsaka problem för föraren, eftersom waypoints har dolda attribut."/>
+    <text name="CP_help_page_editorBasic_text" text="Under den grundläggande kategorin finns: 1) Flyttning av en gripen waypoint. 2) Infoga waypoints framför eller bakom den waypoint som du klickar på.  Radering av waypoints kan göras med den röda raderingsknappen."/>
+    <text name="CP_help_page_editorAdvanced_text" text="Under den avancerade kategorin finns: 1) En pensel för att ställa in svängattributet för en waypoint (endast med en bana och inte ett eget fält). Om du klickar flera gånger på waypointen växlar du mellan &quot;normal&quot; (orange), &quot;svängstart&quot; (grön) och &quot;svängslut&quot; (röd).  2) En pensel för att flytta flera waypoints mellan två valda waypoints. För att göra detta markerar du 2 waypoints med vänster musknapp, och genom att hålla vänster musknapp intryckt kan du sedan flytta alla waypoints däremellan, inklusive de markerade. För att avmarkera waypoints klickar du på höger musknapp.  3) En pensel för att infoga en kurva med waypoints mellan två markerade waypoints. Precis som när du flyttar fler waypoints, markera 2 waypoints, håll sedan vänster musknapp intryckt och flytta musen. Observera: Så snart du släpper musknappen kommer waypoints att ställas in, detta kan inte ångras! (Du kan naturligtvis ta bort dessa waypoints)."/>
+    <text name="CP_help_page_unloader_title" text="Skördetröska lossare"/>
+    <text name="CP_help_page_unloaderGeneral_text" text="Courseplays avlastarläge fungerar med skördetröskor, skördare, hackare och bogserade skördare som körs av Courseplay. Du kan antingen använda en vanlig släpvagn eller en skruvvagn för att lossa en skördetröska. För att tömma släpvagnar kan du använda Giants Helper eller AutoDrive. För att starta avlastaren krävs några saker: - Du måste ha en enda släpvagn eller skruvvagn kopplad. Flera släpvagnar stöds inte. - Använd Target-ikonen på HUD för att välja det fält som ska skördas. Avlastaren kommer att lossa alla Courseplay-drivna skördare som arbetar på det fältet. - Du måste befinna dig på fältet eller inom 20 meter från fältet för att starta avlastaren.  Avlastare har endast ett fåtal inställningar som du kan justera: - Du kan ställa in den fyllnadsnivå vid vilken avlastaren anser sig vara full. Detta för att undvika att vänta på att en skördetröska ska ringa med en nästan full släpvagn. - Du kan använda offseten i HUD för att justera avlastarens position under skördarens rör."/>
+    <text name="CP_help_page_unloaderTrailer_title" text="Använda släpvagnar"/>
+    <text name="CP_help_page_unloaderTrailer_text" text="Om du använder en trailer för att lossa finns det två sätt att transportera din skörd till en silo eller till en försäljningsplats: Giants helper eller AutoDrive. Du kan antingen använda AI-menyn och skapa ett jobb, sedan genom att aktivera Giants helper-funktionen och lossningsmålet längst ner på listan, eller genom att aktivera hjulikonen på HUD. I det senare fallet måste du välja lossningsstation efter att hjulikonen blir blå.  Att tömma en släpvagn med AutoDrive fungerar på samma sätt som att använda en lastvagn, kolla in AutoDrive Tutorials på Internet."/>
+    <text name="CP_help_page_unloaderAuger_title" text="Användning av skruvvagnar"/>
+    <text name="CP_help_page_unloaderAuger_text" text="Skruvvagnar är mycket enkla att använda. Precis som med släpvagnar använder du målsymbolen för att välja det fält där du vill lossa en skördetröska eller skördare. För att starta avlastaren placerar du den igen på fältet eller inom 20 meter från fältet. Om skruvvagnen är full letar den automatiskt efter en släpvagn på eller nära fältet för att lasta över till den. Om släpet är fullt och skruvvagnen fortfarande inte är tom letar den efter ett annat släp att lossa på. Om inget släp finns tillgängligt fortsätter den att lossa skördetröskan."/>
+    <text name="CP_help_page_unloaderFieldUnload_title" text="Lasta av på fältet"/>
+    <text name="CP_help_page_unloaderFieldUnload_text" text="Avlastningspositionen kan väljas med avlastningsmarkeringen. Avlastning på fältet måste vara aktiverad. Positionen måste ligga på samma fält eller nära fältkanten. Om markören pekar på en redan befintlig hög används denna hög för att lossa till. Markörens riktning används för lossningsriktningen. På vissa släpvagnar kan tippsidan bytas mellan bak- och spannmålsluckan."/>
+    <text name="CP_help_page_bunker_title" text="Bunker silo arbetare"/>
+    <text name="CP_help_page_bunkerGeneral_text" text="Courseplay kan komprimera eller fördela agnar i en bunkersilo eller trycka in agnar i en kilsilo. Komprimering är möjlig utan något specialverktyg, med en vals, vikt eller bara fordonet. För distribution finns specialverktyg (t.ex. Fliegl DUO). För kilsilor används en sköld för att trycka in agnarna längst bak i silon."/>
+    <text name="CP_help_page_bunkerBasic_text" text="Om fordonet har en fördelare eller en sköld monterad är Silo-läget förvalt. Med endast en vikt eller en vals monterad växlar du genom startpunkten tills läget visas. Förutom arbetsbredden kan du också välja i vilken riktning föraren ska köra in i silon. Om en sköld är monterad väljs riktningen automatiskt. Använd målsymbolen på HUD för att välja silon på AI-kartan. Den visas med blå linjer och lyser vitt om den är markerad. Parkeringspositionen anges med markören &quot;parkeringsposition&quot; som också kan användas för att köra dit med Giants-hjälparen innan det faktiska arbetet påbörjas."/>
+    <text name="CP_help_page_siloLoader_title" text="Lastning av silo"/>
+    <text name="CP_help_page_siloLoaderGeneral_text" text="Du kan använda detta jobb med en Ropa Maus eller liknande för att plocka upp högar på eller nära fältet och lasta av dem i en Courseplay-losshållare. Dessutom är det möjligt att lasta från en bunkersilo.  Om du låter Courseplay köra direkt till högen fälls den ut i en standardposition för att lasta högen. Om den här positionen inte passar i din miljö kan du stoppa föraren, ändra armens position som vanligt och starta föraren igen. Tänk på att den automatiska avlastningen med CP går i samma riktning som lastaren. Lämna lite utrymme så att lossaren kan köra förbi lastaren vid sidan om."/>
+    <text name="CP_help_page_siloLoaderBasic_text" text="Till att börja med måste laddningsmarkören på AI-menyn ställas in. Markören upptäcker högar eller silos och markerar dem på kartan. Nu är det möjligt att starta hjälpen."/>
+    <text name="CP_help_page_shovelLoader_title" text="Hjullastare/Frontlastare"/>
+    <text name="CP_help_page_shovelLoaderGeneral_text" text="Detta läge möjliggör användning av hjullastare och traktorer med frontlastare.  Med en påmonterad spade kan en hög plockas upp från marken eller lastas från en bunkersilo. Den upplockade fyllnadsnivån kan automatiskt lossas till en närliggande släpvagn eller en utvald lossningsstation, t.ex. en BGA. Spaden flyttas automatiskt till rätt position för lastning, lossning och så vidare. Om läget inte är direkt synligt på HUD:en kan du växla &quot;startposition&quot; tills spadläget visas.  Målikonen på HUD:en kan användas för att öppna AI-kartan och välja mål för lastning och lossning. HUD:en visar också den kvarvarande fyllnadsnivån i högen eller silon medan hjälparen arbetar. Om lastningsmålet är en bunkersilo kan arbetsbredden behöva justeras för att undvika att träffa silons sidoväggar.  Inställningen för höjdförskjutning används för att justera höjden över marken, eftersom inte alla skopor kan beräknas korrekt.  Detta bör kontrolleras om skopan är för låg för lastning och föraren inte kan svänga längre eller om skopan är för hög och fyllnadsnivån inte når ner till marken. Om värdet ändras kommer skopan automatiskt att flyttas till lastningspositionen för att visa effekten av förskjutningen. För att återställa förskjutningen måste du klicka på inställningstexten i HUD. Värdet kan justeras från +1 till -1 i 0,1 setps.  Skopor med ensilagegrip öppnas och stängs automatiskt för lastning och lossning. Skopan för att strimla sockerbetor är också helt funktionell."/>
+    <text name="CP_help_page_shovelLoaderBasic_text" text="För att starta en hjullastarhelikopter måste du ställa in lastnings- och lossningspositionerna genom att klicka på målikonen på HUD. Laddningspositionen fungerar på samma sätt som den från lastarläget. En blå kvadrat kommer att skapas runt högen.  Avlastningspositionen beror på om du vill lossa i en trailer eller i en avlastningsstation. Om du väljer att lossa i släpet måste området där släpet ska parkeras väljas på AI-menyn. Hjälparen kommer att köra till alla parkerade släpvagnar i området. Markörens riktning har ingen egentlig betydelse. Om du vill lasta av på en lossningsstation måste du byta mål och sedan markera avtryckaren med lossningspositionen."/>
+    <text name="CP_help_page_shovelLoaderTrigger_text" text="Att välja en utlösare ser först lite komplicerat ut, men i själva verket är det väldigt enkelt. Varje byggnad kan ha mer än en utlösare, så du måste välja den du vill lossa till. Alla tillgängliga utlösare visas med ett orange kors på AI-kartan. För att välja en placerar du mitten av den runda markören på mitten av korset. Pilens riktning talar om för hjälparen från vilken riktning han ska närma sig utlösaren för lossning. Nu bör ditt val se ut som på bilden."/>
+    <!---->
+    <!--Input bindings-->
+    <!---->
+    <text name="input_CP_DBG_CHANNEL_SELECT_PREVIOUS" text="CP: Välj föregående felsökningskanal"/>
+    <text name="input_CP_DBG_CHANNEL_SELECT_NEXT" text="CP: Välj nästa felsökningskanal"/>
+    <text name="input_CP_DBG_CHANNEL_TOGGLE_CURRENT" text="CP: Ändra aktuell felsökningskanal"/>
+    <text name="input_CP_DBG_CHANNEL_MENU_VISIBILITY" text="CP: Visa/dölj menyn för felsökningskanalen"/>
+    <text name="input_CP_OPEN_CLOSE_VEHICLE_SETTING_DISPLAY" text="CP: Öppna mini-GUI"/>
+    <text name="input_CP_START_STOP" text="CP: Starta/stoppa föraren"/>
+    <text name="input_CP_START_STOP_AT_FIRST_WAYPOINT" text="CP: Starta/stoppa föraren (vid första waypoint)"/>
+    <text name="input_CP_START_STOP_AT_NEAREST_WAYPOINT" text="CP: Starta/stoppa föraren (vid närmaste waypoint)"/>
+    <text name="input_CP_START_STOP_AT_LAST_WAYPOINT" text="CP: Starta/stoppa föraren (vid senaste waypoint)"/>
+    <text name="input_CP_GENERATE_COURSE" text="CP: Generera kurs"/>
+    <text name="input_CP_CHANGE_SELECTED_JOB" text="CP: Ändra aktuellt valt jobb"/>
+    <text name="input_CP_CHANGE_STARTING_POINT" text="CP: Ändra startpunkt"/>
+    <text name="input_CP_CLEAR_COURSE" text="CP: Rensa aktuell laddad kurs"/>
+    <text name="input_CP_CHANGE_COURSE_VISIBILITY" text="CP: Växla kursens synlighet"/>
+    <text name="input_CP_TOGGLE_MOUSE" text="CP: Muspekare på/av"/>
+    <text name="input_CP_OPEN_CLOSE_HUD" text="CP: Öppna/stänga HUD"/>
+    <text name="input_CP_OPEN_VEHICLE_SETTINGS" text="CP: Öppna inställningar för fordon"/>
+    <text name="input_CP_OPEN_GLOBAL_SETTINGS" text="CP: Öppna globala inställningar"/>
+    <text name="input_CP_OPEN_COURSEGENERATOR_SETTINGS" text="CP: Öppna kursgenerator/jobbmeny"/>
+    <text name="input_CP_OPEN_COURSEMANAGER" text="CP: Ansvarig för öppna kurser"/>
+    <text name="input_CP_OPEN_INGAME_MENU" text="CP: Öppna menyn"/>
+  </texts>
+</l10n>

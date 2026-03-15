@@ -1,0 +1,11 @@
+{
+  "label": "Placeables",
+  "link": {
+    "type": "generated-index",
+    "title": "Placeables Documentation",
+    "description": "5 pages, 137 functions"
+  },
+  "customProps": {
+    "icon": "building"
+  }
+}

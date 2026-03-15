@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<employees>
+    <employee firstName="Jean" lastName="Dupont" traits="CAREFUL,HARD_WORKER"
+             age="34" nationality="FR" gender="male"
+             bio="em_bio_dupont" personality="em_personality_methodical"
+             experience="em_exp_tractor_veteran" quote="em_quote_dupont">
+        <skills drivingMin="3" drivingMax="5" harvestingMin="2" harvestingMax="4" technicalMin="1" technicalMax="3"/>
+    </employee>
+    <employee firstName="Marie" lastName="Lefebvre" traits="QUICK_LEARNER,FUEL_SAVER"
+             age="28" nationality="FR" gender="female"
+             bio="em_bio_lefebvre" personality="em_personality_curious"
+             experience="em_exp_harvest_specialist" quote="em_quote_lefebvre">
+        <skills drivingMin="1" drivingMax="3" harvestingMin="4" harvestingMax="6" technicalMin="2" technicalMax="5"/>
+    </employee>
+    <employee firstName="Thomas" lastName="Moreau" traits="RECKLESS,HARD_WORKER"
+             age="25" nationality="FR" gender="male"
+             bio="em_bio_moreau" personality="em_personality_bold"
+             experience="em_exp_speed_driver" quote="em_quote_moreau">
+        <skills drivingMin="4" drivingMax="7" harvestingMin="1" harvestingMax="3" technicalMin="2" technicalMax="4"/>
+    </employee>
+    <employee firstName="Sophie" lastName="Bernard" traits="CAREFUL,FUEL_SAVER"
+             age="31" nationality="FR" gender="female"
+             bio="em_bio_bernard" personality="em_personality_methodical"
+             experience="em_exp_mechanic" quote="em_quote_bernard">
+        <skills drivingMin="2" drivingMax="4" harvestingMin="3" harvestingMax="5" technicalMin="4" technicalMax="6"/>
+    </employee>
+
+    <employee firstName="Lucas" lastName="Petit" traits="RECKLESS,HARD_WORKER"
+             age="22" nationality="FR" gender="male"
+             bio="em_bio_petit" personality="em_personality_bold"
+             experience="em_exp_speed_driver" quote="em_quote_petit">
+        <skills drivingMin="5" drivingMax="7" harvestingMin="1" harvestingMax="3" technicalMin="1" technicalMax="2"/>
+    </employee>
+    <employee firstName="Emma" lastName="Roux" traits="CAREFUL,FUEL_SAVER"
+             age="27" nationality="FR" gender="female"
+             bio="em_bio_roux" personality="em_personality_patient"
+             experience="em_exp_tractor_veteran" quote="em_quote_roux">
+        <skills drivingMin="4" drivingMax="6" harvestingMin="2" harvestingMax="4" technicalMin="1" technicalMax="3"/>
+    </employee>
+
+    <employee firstName="Pierre" lastName="Garnier" traits="HARD_WORKER,QUICK_LEARNER"
+             age="40" nationality="FR" gender="male"
+             bio="em_bio_garnier" personality="em_personality_dedicated"
+             experience="em_exp_harvest_specialist" quote="em_quote_garnier">
+        <skills drivingMin="1" drivingMax="3" harvestingMin="5" harvestingMax="7" technicalMin="1" technicalMax="3"/>
+    </employee>
+    <employee firstName="Camille" lastName="Faure" traits="CAREFUL,FRUGAL"
+             age="33" nationality="FR" gender="female"
+             bio="em_bio_faure" personality="em_personality_patient"
+             experience="em_exp_crop_expert" quote="em_quote_faure">
+        <skills drivingMin="2" drivingMax="4" harvestingMin="4" harvestingMax="6" technicalMin="2" technicalMax="4"/>
+    </employee>
+
+    <employee firstName="Antoine" lastName="Girard" traits="CAREFUL,FUEL_SAVER"
+             age="37" nationality="FR" gender="male"
+             bio="em_bio_girard" personality="em_personality_methodical"
+             experience="em_exp_mechanic" quote="em_quote_girard">
+        <skills drivingMin="1" drivingMax="3" harvestingMin="1" harvestingMax="3" technicalMin="5" technicalMax="7"/>
+    </employee>
+    <employee firstName="Julie" lastName="Andre" traits="QUICK_LEARNER,FRUGAL"
+             age="24" nationality="FR" gender="female"
+             bio="em_bio_andre" personality="em_personality_curious"
+             experience="em_exp_mechanic" quote="em_quote_andre">
+        <skills drivingMin="2" drivingMax="4" harvestingMin="1" harvestingMax="3" technicalMin="4" technicalMax="6"/>
+    </employee>
+
+    <employee firstName="Hugo" lastName="Leroy" traits="QUICK_LEARNER,FRUGAL"
+             age="19" nationality="FR" gender="male"
+             bio="em_bio_leroy" personality="em_personality_curious"
+             experience="em_exp_newcomer" quote="em_quote_leroy">
+        <skills drivingMin="1" drivingMax="2" harvestingMin="1" harvestingMax="2" technicalMin="1" technicalMax="2"/>
+    </employee>
+    <employee firstName="Lea" lastName="Simon" traits="HARD_WORKER,QUICK_LEARNER"
+             age="21" nationality="FR" gender="female"
+             bio="em_bio_simon" personality="em_personality_dedicated"
+             experience="em_exp_newcomer" quote="em_quote_simon">
+        <skills drivingMin="1" drivingMax="3" harvestingMin="1" harvestingMax="3" technicalMin="1" technicalMax="2"/>
+    </employee>
+    <employee firstName="Nathan" lastName="Laurent" traits="FRUGAL,FUEL_SAVER"
+             age="29" nationality="FR" gender="male"
+             bio="em_bio_laurent" personality="em_personality_patient"
+             experience="em_exp_allrounder" quote="em_quote_laurent">
+        <skills drivingMin="1" drivingMax="3" harvestingMin="1" harvestingMax="3" technicalMin="1" technicalMax="3"/>
+    </employee>
+
+    <employee firstName="Isabelle" lastName="Michel" traits="CAREFUL,HARD_WORKER,FUEL_SAVER"
+             age="42" nationality="FR" gender="female"
+             bio="em_bio_michel" personality="em_personality_dedicated"
+             experience="em_exp_allrounder" quote="em_quote_michel">
+        <skills drivingMin="4" drivingMax="6" harvestingMin="4" harvestingMax="6" technicalMin="3" technicalMax="5"/>
+    </employee>
+    <employee firstName="Philippe" lastName="Martinez" traits="RECKLESS,HARD_WORKER"
+             age="35" nationality="ES" gender="male"
+             bio="em_bio_martinez" personality="em_personality_bold"
+             experience="em_exp_speed_driver" quote="em_quote_martinez">
+        <skills drivingMin="5" drivingMax="7" harvestingMin="3" harvestingMax="5" technicalMin="4" technicalMax="6"/>
+    </employee>
+
+    <employee firstName="Claire" lastName="Dubois" traits="FUEL_SAVER,CAREFUL"
+             age="30" nationality="FR" gender="female"
+             bio="em_bio_dubois" personality="em_personality_methodical"
+             experience="em_exp_mechanic" quote="em_quote_dubois">
+        <skills drivingMin="3" drivingMax="5" harvestingMin="1" harvestingMax="3" technicalMin="4" technicalMax="6"/>
+    </employee>
+    <employee firstName="Marc" lastName="Fontaine" traits="QUICK_LEARNER,HARD_WORKER"
+             age="26" nationality="FR" gender="male"
+             bio="em_bio_fontaine" personality="em_personality_curious"
+             experience="em_exp_crop_expert" quote="em_quote_fontaine">
+        <skills drivingMin="1" drivingMax="4" harvestingMin="3" harvestingMax="5" technicalMin="2" technicalMax="4"/>
+    </employee>
+    <employee firstName="Aurelie" lastName="Mercier" traits="RECKLESS,FRUGAL"
+             age="23" nationality="FR" gender="female"
+             bio="em_bio_mercier" personality="em_personality_bold"
+             experience="em_exp_speed_driver" quote="em_quote_mercier">
+        <skills drivingMin="4" drivingMax="6" harvestingMin="2" harvestingMax="5" technicalMin="1" technicalMax="3"/>
+    </employee>
+    <employee firstName="Francois" lastName="Blanchard" traits="CAREFUL,FRUGAL"
+             age="45" nationality="FR" gender="male"
+             bio="em_bio_blanchard" personality="em_personality_patient"
+             experience="em_exp_tractor_veteran" quote="em_quote_blanchard">
+        <skills drivingMin="2" drivingMax="4" harvestingMin="2" harvestingMax="4" technicalMin="3" technicalMax="5"/>
+    </employee>
+    <employee firstName="Elise" lastName="Chevalier" traits="HARD_WORKER,QUICK_LEARNER"
+             age="32" nationality="FR" gender="female"
+             bio="em_bio_chevalier" personality="em_personality_dedicated"
+             experience="em_exp_harvest_specialist" quote="em_quote_chevalier">
+        <skills drivingMin="3" drivingMax="5" harvestingMin="4" harvestingMax="6" technicalMin="1" technicalMax="3"/>
+    </employee>
+</employees>

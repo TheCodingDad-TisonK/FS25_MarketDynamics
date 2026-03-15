@@ -1,0 +1,7 @@
+### InAppPurchaseResponse
+
+**Description**
+
+**Definition**
+
+> InAppPurchaseResponse()

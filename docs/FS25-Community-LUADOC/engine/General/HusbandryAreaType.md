@@ -1,0 +1,7 @@
+### HusbandryAreaType
+
+**Description**
+
+**Definition**
+
+> HusbandryAreaType()

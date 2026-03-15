@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<modDesc descVersion="105">
+    <author>FSG Modding</author>
+    <version>1.0.0.0</version>
+
+    <title>
+        <de>Fortgeschrittener Farm Manager</de>
+        <en>Advanced Farm Manager</en>
+    </title>
+
+    <description>
+        <en><![CDATA[Advanced Farm Manager is a toggle-able GUI that will allow you to quickly manage your vehicles, implements, fields, and placeables.
+            
+- Jump into, park, sell, clean, repair, repaint, and refuel (diesel only) enterable vehicles.
+- Warp near, sell, clean, repair, and repaint implements.  Never lose an implement again.
+- Warp near, tag, and sell placeables.
+- Warp directly to or tag fields (pre-defined only)
+- Pricing for Sales, Repair, and Repainting is the same as any mobile shop.
+- Pricing for cleaning is based on how dirty the vehicle or implement is.
+- Set hotkeys on vehicles using 1-9 keyboard or number pad keys in the menu
+- Set nicknames on enterable, motorized vehicles.
+- Set vehicle switching (tabbing) to be all enterable vehicles, or just hotkey vehicles
+- Parking status for vehicles is saved in single player, but local to your user session on multiplayer (it will only affect your tabbing, and not save between game session)
+
+Key Bindings:
+
+Left_Shift + Key_Slash (/) - Open Menu
+Mouse Button 4             - Open Menu
+Right_Alt + Number Pad 0   - Toggle between limited vehicle switching and all vehicle switching
+Right_Alt + Number Pad 1-9 - Jump to hotkey marked vehicle #
+]]></en>
+        <de><![CDATA[Advanced Farm Manager ist eine umschaltbare grafische Benutzeroberfläche, mit der Sie Ihre Fahrzeuge, Geräte, Felder und platzierbaren Objekte schnell verwalten können.
+            
+- Einsteigen, parken, verkaufen, reinigen, reparieren, neu lackieren und auftanken (nur Diesel) von befahrbaren Fahrzeugen.
+- Warpen Sie in der Nähe von Anbaugeräten, verkaufen, reinigen, reparieren und streichen Sie diese neu.  Verlieren Sie nie wieder ein Arbeitsgerät.
+- Warpen Sie in der Nähe, markieren und verkaufen Sie platzierbare Objekte.
+- Direktes Anfahren oder Markieren von Feldern (nur vordefiniert)
+- Die Preise für Verkauf, Reparatur und Neuanstrich sind die gleichen wie in jedem mobilen Geschäft.
+- Die Preise für die Reinigung richten sich nach dem Verschmutzungsgrad des Fahrzeugs oder Geräts.
+- Legen Sie Hotkeys für Fahrzeuge fest, indem Sie die Tasten 1-9 der Tastatur oder des Nummernblocks im Menü verwenden.
+- Legen Sie Spitznamen für eingebbare, motorisierte Fahrzeuge fest.
+- Einstellen des Fahrzeugwechsels (Tabbing) auf alle eingebbaren Fahrzeuge oder nur auf Hotkey-Fahrzeuge
+- Der Parkstatus für Fahrzeuge wird im Einzelspielermodus gespeichert, im Mehrspielermodus jedoch nur lokal in der Benutzersitzung (dies wirkt sich nur auf das Tabbing aus und wird nicht zwischen den Spielsitzungen gespeichert)
+
+Key Bindings:
+
+Left_Shift + Key_Slash (/) - Open Menu
+Maustaste 4                - Open Menu
+Right_Alt + Number Pad 0   - Umschalten zwischen begrenzter Fahrzeugumschaltung und Umschaltung aller Fahrzeuge
+Right_Alt + Number Pad 1-9 - Sprung zum Hotkey markierten Fahrzeug #
+]]></de>
+    </description>
+
+    <iconFilename>icon_AdvancedFarmManager.dds</iconFilename>
+    <multiplayer supported="true" />
+
+    <extraSourceFiles>
+        <sourceFile filename="scripts/advancedFarmManager.lua" />
+    </extraSourceFiles>
+
+    <l10n filenamePrefix="languages/l10n" />
+
+    <actions>
+        <action name="afm_menu" category="SYSTEM" axisType="HALF" ignoreComboMask="false" />
+        <action name="afm_hot1" category="SYSTEM" axisType="HALF" ignoreComboMask="false" />
+        <action name="afm_hot2" category="SYSTEM" axisType="HALF" ignoreComboMask="false" />
+        <action name="afm_hot3" category="SYSTEM" axisType="HALF" ignoreComboMask="false" />
+        <action name="afm_hot4" category="SYSTEM" axisType="HALF" ignoreComboMask="false" />
+        <action name="afm_hot5" category="SYSTEM" axisType="HALF" ignoreComboMask="false" />
+        <action name="afm_hot6" category="SYSTEM" axisType="HALF" ignoreComboMask="false" />
+        <action name="afm_hot7" category="SYSTEM" axisType="HALF" ignoreComboMask="false" />
+        <action name="afm_hot8" category="SYSTEM" axisType="HALF" ignoreComboMask="false" />
+        <action name="afm_hot9" category="SYSTEM" axisType="HALF" ignoreComboMask="false" />
+        <action name="afm_togg" category="SYSTEM" axisType="HALF" ignoreComboMask="false" />
+    </actions>
+    <inputBinding>
+        <actionBinding action="afm_menu">
+            <binding device="KB_MOUSE_DEFAULT" input="KEY_lshift KEY_slash" />
+            <binding device="KB_MOUSE_DEFAULT" input="MOUSE_BUTTON_X1" axisComponent="+" neutralInput="0" index="3"/>
+        </actionBinding>
+        <actionBinding action="afm_hot1">
+            <binding device="KB_MOUSE_DEFAULT" input="KEY_ralt KEY_KP_1" />
+        </actionBinding>
+        <actionBinding action="afm_hot2">
+            <binding device="KB_MOUSE_DEFAULT" input="KEY_ralt KEY_KP_2" />
+        </actionBinding>
+        <actionBinding action="afm_hot3">
+            <binding device="KB_MOUSE_DEFAULT" input="KEY_ralt KEY_KP_3" />
+        </actionBinding>
+        <actionBinding action="afm_hot4">
+            <binding device="KB_MOUSE_DEFAULT" input="KEY_ralt KEY_KP_4" />
+        </actionBinding>
+        <actionBinding action="afm_hot5">
+            <binding device="KB_MOUSE_DEFAULT" input="KEY_ralt KEY_KP_5" />
+        </actionBinding>
+        <actionBinding action="afm_hot6">
+            <binding device="KB_MOUSE_DEFAULT" input="KEY_ralt KEY_KP_6" />
+        </actionBinding>
+        <actionBinding action="afm_hot7">
+            <binding device="KB_MOUSE_DEFAULT" input="KEY_ralt KEY_KP_7" />
+        </actionBinding>
+        <actionBinding action="afm_hot8">
+            <binding device="KB_MOUSE_DEFAULT" input="KEY_ralt KEY_KP_8" />
+        </actionBinding>
+        <actionBinding action="afm_hot9">
+            <binding device="KB_MOUSE_DEFAULT" input="KEY_ralt KEY_KP_9" />
+        </actionBinding>
+        <actionBinding action="afm_togg">
+            <binding device="KB_MOUSE_DEFAULT" input="KEY_ralt KEY_KP_0" />
+        </actionBinding>
+    </inputBinding>
+
+</modDesc>

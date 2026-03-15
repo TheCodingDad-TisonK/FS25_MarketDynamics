@@ -1,0 +1,7 @@
+### IntersectMode
+
+**Description**
+
+**Definition**
+
+> IntersectMode()

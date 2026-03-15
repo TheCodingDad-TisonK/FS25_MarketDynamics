@@ -1,0 +1,11 @@
+{
+  "label": "Player",
+  "link": {
+    "type": "generated-index",
+    "title": "Player Documentation",
+    "description": "6 pages, 118 functions"
+  },
+  "customProps": {
+    "icon": "user"
+  }
+}

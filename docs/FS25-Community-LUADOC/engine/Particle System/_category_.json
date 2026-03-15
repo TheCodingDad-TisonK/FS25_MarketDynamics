@@ -1,0 +1,11 @@
+{
+  "label": "Particle System",
+  "link": {
+    "type": "generated-index",
+    "title": "Particle System Documentation",
+    "description": "42 pages"
+  },
+  "customProps": {
+    "icon": "wand-magic-sparkles"
+  }
+}

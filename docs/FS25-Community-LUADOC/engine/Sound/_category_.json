@@ -1,0 +1,11 @@
+{
+  "label": "Sound",
+  "link": {
+    "type": "generated-index",
+    "title": "Sound Documentation",
+    "description": "59 pages"
+  },
+  "customProps": {
+    "icon": "volume-up"
+  }
+}

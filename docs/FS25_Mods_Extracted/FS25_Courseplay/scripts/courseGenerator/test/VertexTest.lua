@@ -1,0 +1,66 @@
+require('include')
+
+-- epsilon for assertAlmostEquals
+lu.EPS = 0.01
+function testVertex()
+    local v = Vertex(0, 0)
+    local prev = nil
+    local next = Vertex(1, 1)
+    v:calculateProperties(nil, next)
+    next:calculateProperties(v, nil)
+    lu.assertEquals(v:getDistance(), 0)
+    lu.assertAlmostEquals(v:getEntryHeading(), math.pi / 4)
+    lu.assertAlmostEquals(v:getExitHeading(), math.pi / 4)
+    lu.assertIsNil(v:getEntryEdge())
+    v:getExitEdge():assertAlmostEquals(CourseGenerator.LineSegment(0, 0, 1, 1))
+    lu.assertEquals(v:getSignedRadius(), math.huge)
+
+    v = Vertex(0, 0)
+    prev = Vertex(1, 1)
+    prev:calculateProperties(nil, v)
+    lu.assertEquals(prev:getDistance(), 0)
+    v:calculateProperties(prev, nil)
+    lu.assertAlmostEquals(v:getDistance(), math.sqrt(2))
+    lu.assertAlmostEquals(v:getEntryHeading(), -3 * math.pi / 4)
+    lu.assertAlmostEquals(v:getExitHeading(), -3 * math.pi / 4)
+    lu.assertIsNil(v:getExitEdge())
+    v:getEntryEdge():assertAlmostEquals(CourseGenerator.LineSegment(1, 1, 0, 0))
+    lu.assertEquals(v:getSignedRadius(), math.huge)
+
+    v = Vertex(0, 0)
+    v:calculateProperties(Vertex(-1, 0), Vertex(1, 0))
+    lu.assertAlmostEquals(v:getEntryHeading(), 0)
+    lu.assertAlmostEquals(v:getExitHeading(), 0)
+    v:getEntryEdge():assertAlmostEquals(CourseGenerator.LineSegment(-1, 0, 0, 0))
+    v:getExitEdge():assertAlmostEquals(CourseGenerator.LineSegment(0, 0, 1, 0))
+    lu.assertEquals(v:getSignedRadius(), math.huge)
+
+    v = Vertex(0, 0)
+    v:calculateProperties(Vertex(-1, 0), Vertex(0, 1))
+    lu.assertAlmostEquals(v:getEntryHeading(), 0)
+    lu.assertAlmostEquals(v:getExitHeading(), math.pi / 2)
+
+    v:getEntryEdge():assertAlmostEquals(CourseGenerator.LineSegment(-1, 0, 0, 0))
+    v:getExitEdge():assertAlmostEquals(CourseGenerator.LineSegment(0, 0, 0, 1))
+    lu.assertAlmostEquals(v:getSignedRadius(), 1)
+    v:calculateProperties(Vertex(-1, 0), Vertex(0, -1))
+    lu.assertAlmostEquals(v:getSignedRadius(), -1)
+
+    v = Vertex(0, 0)
+    v:calculateProperties(Vertex(-1, 0), Vertex(1, 1))
+    lu.assertAlmostEquals(v:getEntryHeading(), 0)
+    lu.assertAlmostEquals(v:getExitHeading(), math.pi / 4)
+
+    v:getEntryEdge():assertAlmostEquals(CourseGenerator.LineSegment(-1, 0, 0, 0))
+    v:getExitEdge():assertAlmostEquals(CourseGenerator.LineSegment(0, 0, 1, 1))
+    lu.assertAlmostEquals(v:getSignedRadius(), 3.41)
+    v:calculateProperties(Vertex(-1, 0), Vertex(1, -1))
+    lu.assertAlmostEquals(v:getSignedRadius(), -3.41)
+
+    v = Vertex(0, 0)
+    v:calculateProperties(Vertex(-5, 0), Vertex(5, 5))
+    lu.assertAlmostEquals(v:getSignedRadius(), 17.07)
+    v:calculateProperties(Vertex(-5, 0), Vertex(0, 5))
+    lu.assertAlmostEquals(v:getSignedRadius(), 5)
+end
+os.exit(lu.LuaUnit.run())

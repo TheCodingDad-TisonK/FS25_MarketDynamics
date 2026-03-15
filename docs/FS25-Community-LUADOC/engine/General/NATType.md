@@ -1,0 +1,7 @@
+### NATType
+
+**Description**
+
+**Definition**
+
+> NATType()

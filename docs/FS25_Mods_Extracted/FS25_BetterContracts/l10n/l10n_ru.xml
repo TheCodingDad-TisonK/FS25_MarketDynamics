@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<l10n>
+	<texts>
+		<!-- updates v1.3.0.5 
+		- add onions to text:
+		<text name="bc_genVegetable_tooltip" text="Generate harvest contracts for carrots, beetroot, parsnip, and onions" />
+		-->
+		<!-- updates v1.3.0.3 -->
+		<text name="bc_genSingle" text="Одиночное генерирование" />
+		<text name="bc_genSingle_tooltip" text="Генерировать не более одной миссии за интервал и тип миссии." />
+
+		<!-- updates v1.3.0.0 
+			bc_harvest: text="Harv. %.6s"
+	  		bc_hardMode_tooltip: shortened text
+	  	-->
+		<text name="bc_sow" text="Посеять %.8s" />
+
+		<!-- updates v1.2.0.3 -->
+		<text name="bc_balesTotal" text="Общее количество тюков:" />
+		<text name="bc_balesDone" text="Готовые тюки:" />
+		<!-- updates v1.2.0.0 -->
+		<text name="bc_vehicleBox" text="Выбор транспортного средства" />
+		<!-- updates v1.1.1.3 -->
+		<text name="bc_stayNew" text="Оставатся в списке новых контрактов" />
+		<text name="bc_stayNew_tooltip" text="Не переключайтесь на список АКТИВНЫХ контрактов при принятии нового контракта." />
+		<text name="bc_finishField" text="Завершить контракт на поле" />
+		<text name="bc_finishField_tooltip" text="Разрешить завершить 100% поля после окончания контракта." />
+		<text name="bc_hideMission" text="Скрыть неактивные контракты" />
+		<text name="bc_hideMission_tooltip" text="Скрыть принятые контракты с 0% завершением с правой стороны HUD." />
+		<!-- updates v1.1.1.2 -->
+		<text name="global_bc_name" text="Better Contracts" />
+		<text name="bc_settingsNoPermission" text="У вас нет разрешения на изменение настроек Better Contracts!" />
+		<!-- Keys -->
+		<text name = "input_MENU_EXTRA_3" text = "Better Contracts: Детали вкл./выкл."/>
+		<text name = "input_BC_MTOGGLE" text = "BC: Переключить отображение активных контрактов ферм"/>
+		<text name = "bc_actionFerment" text = "Ферментировать тюк"/>
+		<!-- Gui Buttons -->
+		<text name="bc_hidden" text="Скрыто: %d" />
+		<text name="bc_other" text="Другое" />
+		<text name="bc_new_contracts" text="Новые контракты" />
+		<text name="bc_clear_contracts" text="Очистить контракты" />
+		<text name="bc_detailsOff" text="Детали выкл." />
+		<text name="bc_detailsOn" text="Детали вкл." />
+		
+		<!-- Display texts -->
+		<text name="bc_mowed" text="Скосить:" />
+		<text name="bc_tomow" text="Косить:" />
+		<text name="bc_chaff" text="Скосить %s" />
+		<text name="bc_jobType_chaff" text="Заготовка корма" />
+		<text name="bc_harvest" text="Собр. %.6s" />
+		<text name="bc_leased" text="/Аренд. техника " />
+		<text name="bc_enoughMissions" text="Ваша ферма уже имеет максимальное количество контрактов." />
+		<text name="bc_jobsCompleted" text="Выполненные контракты: %d" />
+		<text name="bc_monthlyLimit" text="Ваша ферма достигла максимального количества контрактов за этот месяц." />
+
+		<!-- Hard mode -->
+		<text name="bc_penalty" text="Штраф" />
+		<text name="bc_warnTimeout" text="Пожалуйста, завершите контракт(ы) %d в течение следующего часа, чтобы избежать штрафов за невыполнение в установленный срок." />
+		<text name="bc_warnCancel" text=" Штраф за невыполнение контракта в установленный срок составит не менее " />
+		<text name="bc_leaseNotEnough" text="Вам нужно выполнить еще %d контрактов для %s с помощью собственного оборудования, прежде чем вы сможете брать машины в аренду." />
+
+		<!-- discount mode -->
+		<text name="bc_maxJobs" text="Вы достигли максимальной скидки на %s." />
+		<text name="bc_discount" text="скидка" />
+		<text name="bc_discValue" text="%s предоставляет вам скидку %d %% на будущую покупку участка." />
+		<text name="bc_owner" text="Владелец:" />
+
+		<!-- npc details box -->
+		<text name="SC_widhei" text="Макс. ширина/длина:" />
+		<text name="SC_worktim" text="Расчётное время:" />
+		<text name="SC_price" text="Цена:" />
+		<text name="SC_profpmin" text="Прибыль/мин:" />
+		<text name="SC_sort" text="Сорт." />
+
+		<text name="SC_field" text="Поле %d / %s" />
+		<text name="SC_fillType" text="Тип груза:" />
+		<text name="SC_worked" text="Выполнено:" />
+		<text name="SC_delivered" text="Доставлено:" />
+		<text name="SC_deliver" text="Требуется доставить:" />
+		<text name="SC_keep" text="Можно оставить:" />
+		<text name="SC_profit" text="Прибыль от урожая:" />
+		<text name="SC_profitSupply" text="Прибыль:" />
+		<text name="SC_usage" text="Израсходуется:" />
+		<text name="SC_cost" text="Стоимость материала:" />
+		<text name="SC_togo" text="Не доставлено:" />
+		<text name="SC_timeleft" text="Осталось времени:" />
+
+		<!-- Sort button help text -->
+		<text name="SC_sortCat" text="Тип работ/№ поля" />
+		<text name="SC_sortRev" text="прибыль" />
+		<text name="SC_sortNpc" text="фермер" />
+		<text name="SC_sortProf" text="Чистая прибыль" />
+		<text name="SC_sortpMin" text="Доход в мин." />
+
+		<!-- progress bars -->
+		<text name="bc_progField" text="Прогресс на поле" />
+		<text name="bc_progDeliver" text="Прогресс доставки" />
+
+		<!-- Settings Page -->
+		<text name="bc_settingsPage_title" text="Настройки контрактов" />
+
+		<text name="bc_baseSettings" text="Базовые настройки" />
+		<text name="bc_rewardMultiplier" text="Цена работ" />
+		<text name="bc_rewardMultiplier_tooltip" text="Скорректируйте предлагаемую выплату за выполнению контрактов." />
+		<text name="bc_rewardMultiplierMow" text="Выплата за скашивание и тюкование" />
+		<text name="bc_rewardMultiplierMow_tooltip" text="Настройка вознаграждения за скашивание и тюкование для предлагаемых контрактов." />
+		<text name="bc_leaseMultiplier" text="Стоимость аренды" />
+		<text name="bc_leaseMultiplier_tooltip" text="Скорректируйте стоимость аренды оборудования для контрактов." />
+		<text name="bc_maxActive" text="Одновременно активные контракты" />
+		<text name="bc_maxActive_tooltip" text="Максимальное количество одновременно активных контрактов." />
+		<text name="bc_toDeliver" text="Доставка по контрактам на сбор урожая" />
+		<text name="bc_toDeliver_tooltip" text="Процент от расчётного общего урожая, который вы должны доставить, чтобы выполнить контракт на сбор урожая." />
+		<text name="bc_toDeliverBale" text="Доставка по контрактам на тюкование" />
+		<text name="bc_toDeliverBale_tooltip" text="Процент от расчётного общего урожая, который вы должны доставить, чтобы выполнить контракт на сбор урожая." />
+		<text name="bc_fieldCompletion" text="Полевые работы завершены" />
+		<text name="bc_fieldCompletion_tooltip" text="Минимальный процент обработанной площади поля, который будет считаться завершенным." />
+		<text name="bc_refreshMP" text="Управляющий контрактами в МП" />
+		<text name="bc_refreshMP_tooltip" text="Кто может удалять/обновлять контракты в сетевой игре." />
+		<text name="bc_ferment" text="Мгновенная ферментация" />
+		<text name="bc_ferment_tooltip" text="Позволяет игроку мгновенно ферментировать обёрнутый тюк травы из меню F1." />
+		<text name="bc_forcePlow" text="Вспашка после сбора корнеплодов" />
+		<text name="bc_forcePlow_tooltip" text="Каждый урожай кукурузы/картофеля/сахарной свёклы требует последующей вспашки." />
+		<text name="bc_debug" text="Режим отладки" />
+		<text name="bc_debug_tooltip" text="Информационные сообщения в журнале, если активировано. Может помочь найти ошибки." />
+
+		<text name="bc_lazyNPCTitle" text="”Ленивые“ фермеры" />
+
+		<text name="bc_lazyNPC" text="Активировать" />
+		<text name="bc_lazyNPC_tooltip" text="Если активировано, NPC-фермеры чаще пропускают работу на своих полях. Таким образом, может быть предложено больше контрактов." />
+		<text name="bc_npcHarvest_tooltip" text="Если активировано, NPC-фермеры вообще не собирают урожай. Может привести к большому количеству работы для вас." />
+		<text name="bc_npcSow_tooltip" text="Если активировано, NPC-фермеры реже выполняют посевные работы и вместо этого предлагают их в качестве контрактов." />
+		<text name="bc_npcPlowCultivate" text="Вспашка и культивация" />
+		<text name="bc_npcPlowCultivate_tooltip" text="Если активировано, NPC-фермеры реже пашут или культивируют землю самостоятельно." />
+		<text name="bc_npcFertilize_tooltip" text="Если активировано, NPC-фермеры реже выполняют работы по удобрению и вместо этого предлагают их в качестве контрактов." />
+		<text name="bc_npcWeed_tooltip" text="Если активировано, NPC-фермеры реже борются с сорняками на своих полях и вместо этого предлагают опрыскивание и прополку в качестве контрактов." />
+
+		<text name="bc_hardModeTitle" text="Более высокая сложность" />
+		<text name="bc_hardMode" text="Активировать" />
+		<text name="bc_hardMode_tooltip" text="Если активировано, все активные контракты должны быть завершены не позднее конца месяца. Расторжение контракта будет стоить штрафа. Аренда контрактного оборудования разблокируется только после выполнения некоторых заданий." />
+		<text name="bc_hardPenalty" text="Штраф" />
+		<text name="bc_hardPenalty_tooltip" text="Сумма штрафа за расторжение контракта (в % от вознаграждения по контракту)." />
+		<text name="bc_hardLease" text="Разблокировать арендованное оборудование" />
+		<text name="bc_hardLease_tooltip" text="Количество успешных заданий для NPC-фермеров, прежде чем они одолжат вам своё оборудование." />
+		<text name="bc_hardExpire" text="Крайний срок" />
+		<text name="bc_hardExpire_tooltip" text="В конце какого периода времени все активные контракты должны быть завершены." />
+		<text name="bc_hardLimit" text="Контрактов в месяц" />
+		<text name="bc_hardLimit_tooltip" text="Максимальное количество контрактов, которые можно принять в течение одного месяца. (-1: без ограничений, 0: без контрактов)" />
+        
+		<text name="bc_discountModeTitle" text="Скидка на покупку поля" />
+		<text name="bc_discountMode" text="Активировано" />
+		<text name="bc_discountMode_tooltip" text="Если активировано, NPC-фермер даёт скидку на покупку участков. Скидка увеличивается с увеличением количества выполненных заданий для этого фермера." />
+		<text name="bc_discPerJob" text="Скидка за выполненный контракт" />
+		<text name="bc_discPerJob_tooltip" text="NPC-фермер увеличивает свою скидку на эти проценты за выполненную работу. Максимальная скидка не может превышать 50%." />
+		<text name="bc_discMaxJobs" text="Количество заданий с эффективными скидками" />
+		<text name="bc_discMaxJobs_tooltip" text="Можно изменить максимальную скидку: скидка за контракт = 11%, количество заданий = 3 -> максимальная скидка = 33%. Внимание: Текущее количество выполненных работ уменьшится на это значение при покупке участков." />
+		
+		<text name="bc_missionGeneration" text="Создание контрактов" />
+		<text name="bc_generationInterval" text="Интервал генерации" />
+		<text name="bc_generationInterval_tooltip" text="Количество внутриигровых 6-минутных интервалов ожидания перед созданием новых контрактов." />
+
+		<text name="bc_genGrain" text="Сбор урожая зерновых" />
+		<text name="bc_genGrain_tooltip" text="Генерирование контрактов на сбор урожая зерна (возможно, включая кукурузу, хлопок)" />
+		<text name="bc_genVegetable" text="Сбор урожая овощей" />
+		<text name="bc_genVegetable_tooltip" text="Генерирование контрактов на сбор урожая моркови, свеклы и пастернака" />
+		<text name="bc_genGreen" text="Сбор урожая зеленых культур" />
+		<text name="bc_genGreen_tooltip" text="Генерирование контрактов на сбор урожая гороха, фасоли и шпината" />
+		<text name="bc_genRoot" text="Сбор корнеплодов" />
+		<text name="bc_genRoot_tooltip" text="Генерирование контрактов на сбор урожая картофеля, сахарной свеклы" />
+		<text name="bc_genTree" text="Транспортные контракты" />
+		<text name="bc_genTree_tooltip" text="Генерирование транспортных контрактов на перевозку брёвен" />
+		<text name="bc_genDead" text="Контракты на сухостой" />
+		<text name="bc_genDead_tooltip" text="Генерирование контрактов на поставку сухостоя" />
+		<text name="bc_genRock" text="Контракты на разрушение горных пород" />
+		<text name="bc_genRock_tooltip" text="Генерирование контрактов на разрушение горных пород" />
+	</texts>
+</l10n>

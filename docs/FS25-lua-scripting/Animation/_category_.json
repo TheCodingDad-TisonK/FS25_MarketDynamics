@@ -1,0 +1,11 @@
+{
+  "label": "Animation",
+  "link": {
+    "type": "generated-index",
+    "title": "Animation Documentation",
+    "description": "6 pages, 70 functions"
+  },
+  "customProps": {
+    "icon": "film"
+  }
+}

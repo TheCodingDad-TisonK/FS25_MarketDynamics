@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+
+<GUI name="AFMGuiField">
+    <GuiElement profile="uiInGameMenuFrame">
+        <!-- Static page header -->
+        <GuiElement profile="afm_menuHeaderPanel">
+            <Bitmap profile="fs25_menuHeaderIconBg">
+              <Bitmap profile="afm_fieldMenuHeaderIcon" id="categoryHeaderIcon" />
+            </Bitmap>
+            <Text profile="fs25_menuHeaderTitle" text="$l10n_afm_fldOverview"/>
+            <RoundCorner profile="afm_moneyBoxBg" id="moneyBoxBg" />
+            <BoxLayout profile="afm_moneyBox" id="moneyBox">
+                <Text profile="afm_balance" text="$l10n_ui_balance:" />
+                <Text profile="afm_money" id="currentBalanceText" />
+            </BoxLayout>
+        </GuiElement>
+
+        <GuiElement profile="afm_settingsLayout" id="mainBox">
+            <GuiElement profile="afmMenuVehicleLeftColumn">
+                <BoxLayout profile="afm_vehicleHeaderBox" id="tableHeaderBox" size="780px 104px">
+                    <GuiElement profile="afm_vehiclesHeaderTextContainer" size="170px 104px">
+                        <Button profile="afm_vehiclesHeaderText" text="$l10n_afm_farmlands" onClick="onClickButtonSortByFarmlands" onCreate="onCreateButtonSortByFarmlands">
+                            <Bitmap profile="fs25_vehiclesHeaderIconSortAscending" name="iconAscending" />
+                            <Bitmap profile="fs25_vehiclesHeaderIconSortDescending" name="iconDescending" />
+                        </Button>
+                    </GuiElement>
+                    <GuiElement profile="afm_vehiclesHeaderTextContainer" size="200px 104px">
+                        <Button profile="afm_vehiclesHeaderTextMed" text="$l10n_afm_owner" onClick="onClickButtonSortByOwner" onCreate="onCreateButtonSortByOwner">
+                            <Bitmap profile="fs25_vehiclesHeaderIconSortAscending" name="iconAscending" />
+                            <Bitmap profile="fs25_vehiclesHeaderIconSortDescending" name="iconDescending" />
+                        </Button>
+                    </GuiElement>
+                    <GuiElement profile="afm_vehiclesHeaderTextContainer" size="200px 104px">
+                        <Button profile="afm_vehiclesHeaderTextMed" text="$l10n_afm_crops" onClick="onClickButtonSortByCrops" onCreate="onCreateButtonSortByCrops">
+                            <Bitmap profile="fs25_vehiclesHeaderIconSortAscending" name="iconAscending" />
+                            <Bitmap profile="fs25_vehiclesHeaderIconSortDescending" name="iconDescending" />
+                        </Button>
+                    </GuiElement>
+                    <GuiElement profile="afm_vehiclesHeaderTextContainer" size="200px 104px">
+                        <Button profile="afm_vehiclesHeaderTextEnd" text="$l10n_afm_cropStage" onClick="onClickButtonSortByCropStage" onCreate="onCreateButtonSortByCropStage">
+                            <Bitmap profile="fs25_vehiclesHeaderIconSortAscending" name="iconAscending" />
+                            <Bitmap profile="fs25_vehiclesHeaderIconSortDescending" name="iconDescending" />
+                        </Button>
+                    </GuiElement>
+                </BoxLayout>
+
+                <SmoothList profile="afmMenuVehicleList" id="fieldsList" focusChangeTop="nil" focusChangeBottom="nil" selectedWithoutFocus="true" onDoubleClick="onButtonWarpField">
+                    <ListItem profile="afmMenuVehicleListItem">
+                        <RoundCorner profile="afm_multiplayerUsersListItemDotBG" name="dotBg" />
+                        <RoundCorner profile="afm_multiplayerUsersListItemDot" name="dot" />
+                        <Text name="farmland" profile="afmMenuVehicleItemFarmland" />
+                        <Text name="owner" profile="afmMenuVehicleItemOwner" />
+                        <Bitmap profile="afmMenuVehicleItemCropIcon" name="cropIcon" visible="false" />
+                        <Text name="crop" profile="afmMenuVehicleItemCrop" />
+                        <Text name="stage" profile="afmMenuVehicleItemStage" />
+                    </ListItem>
+                </SmoothList>
+
+                <ThreePartBitmap profile="afm_vehicleListSliderBox">
+                    <Slider profile="fs25_listSlider" dataElementId="fieldsList" />
+                </ThreePartBitmap>
+            </GuiElement>
+
+            <GuiElement profile="afmMenuVehicleRightColumn" id="pricesColumn">
+                <BoxLayout profile="afm_vehicleHeaderBoxRight" id="tableHeaderBox" size="580px 104px">
+                    <Text profile="afm_menuHeader" size="330px 104px" text="$l10n_ui_information" />
+                </BoxLayout>
+                <Text profile="afmMenuInfoSubheader" id="afmInfoSubVeh" size="330px 50px" text="$l10n_ui_information" />
+                
+                <SmoothList profile="afmMenuVehicleDetailList" id="fieldsDetail">
+                    <ListItem profile="afmMenuVehicleDetailListItem" name="fieldsDetailItem">
+                        <Bitmap profile="afm_MenuVehicleDetailItemIcon" name="itemIcon" visible="false" />
+                        <Bitmap profile="afm_MenuVehicleDetailFillIcon" name="fillIcon" visible="false" />
+                        <Text profile="afmMenuVehicleDetailTitle" name="detailTitle" />
+                        <Text profile="afmMenuVehicleDetailLevel" name="detailLevel" />
+                        <ThreePartBitmap profile="afmMenuVehicleDetailBarBackground" name="detailBarBG" >
+                            <ThreePartBitmap profile="afmMenuVehicleDetailBar" name="detailBar"/>
+                        </ThreePartBitmap>
+                    </ListItem>
+                </SmoothList>
+                
+                <ThreePartBitmap profile="afm_vehicleDetailListSliderBox">
+                    <Slider profile="fs25_listSlider" dataElementId="fieldsDetail" />
+                </ThreePartBitmap>
+
+                <InGameMapPreview profile="afm_vehiclesIngameMap" id="itemDetailsMap" />
+
+            </GuiElement>
+
+        </GuiElement>
+        <GuiElement profile="afm_settingsLayout" id="mainBoxEmpty" visible="false">
+            <Text name="descText" text="$l10n_afm_noPlaceablesFound" profile="afm_menuNoItems" />
+        </GuiElement>
+
+    </GuiElement>
+</GUI>

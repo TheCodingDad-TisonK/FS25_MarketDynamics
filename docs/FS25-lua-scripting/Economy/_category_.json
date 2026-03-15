@@ -1,0 +1,11 @@
+{
+  "label": "Economy",
+  "link": {
+    "type": "generated-index",
+    "title": "Economy Documentation",
+    "description": "2 pages, 35 functions"
+  },
+  "customProps": {
+    "icon": "coins"
+  }
+}

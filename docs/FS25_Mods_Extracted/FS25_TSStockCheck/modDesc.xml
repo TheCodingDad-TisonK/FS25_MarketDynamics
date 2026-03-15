@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<modDesc descVersion="96" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://validation.gdn.giants-software.com/xml/fs25/modDesc.xsd">
+  <author>twproductions</author>	
+  <version>1.0.0.2</version>    
+	<title>
+    <en>Time Saving Stock Check</en>
+  </title>    
+	<description>
+    <en><![CDATA[Time Saving Stock Check
+
+Tired of wondering where all the wheat you have harvested is, its value, when to sell and what you might get for it? You can find out here!
+
+On the main menu just above the prices tab you can see
+  - all the goods you have stored in Silos, Production and Animal Husbandry outputs.
+  - total volume
+  - current price & value
+  - which sell point to sell at
+  - potential best price & value and in which month that might be.
+
+Current value colour changes to
+  - white = nothing special
+  - yellow = current value is over 90% of the best potential value
+  - dark green = current value is over 95% of the best potential value
+  - bright green = current value is over the best potential value
+
+Also the current month is highlighted in bright green to alert you which is the best potential month to sell.
+
+Changelog: 
+v1.0.0.1
+- Fixed main screen table size
+v1.0.0.2
+- Fixed Object Storage duplication of fermenting bales
+
+]]></en>		
+    <de><![CDATA[Zeitsparende Bestandsprüfung
+
+Haben Sie genug davon gehabt, sich zu fragen wo genau all der Weizen, den Sie geerntet haben, ist? Was seinen Wert ist? Wann Sie es verkaufen sollen und was Sie davon verdienen könnten? Erfahren Sie das hier!
+
+Im Hauptmenü direkt über der Registerkarte Preise können Sie sehen
+  - alle Waren, die Sie in Silos, Produktion und Tierstallausgaben gelagert haben.
+  - Gesamtbestand
+  - aktueller Preis u. Wert
+  - an welcher Verkaufsstelle verkauft werden soll
+  - potentiell bester Preis u. Wert und in welchem ​​Monat das sein könnte.
+
+Die Farbe des aktuellen Werts wechselt zu
+  - weiß = nichts besonderes
+  - gelb = aktueller Wert liegt über 90 % des besten potenziellen Werts
+  - dunkelgrün = aktueller Wert liegt über 95 % des bestmöglichen Werts
+  - hellgrün = aktueller Wert liegt über dem bestmöglichen Wert
+
+Außerdem wird der aktuelle Monat hellgrün hervorgehoben, um Sie darauf hinzuweisen, welcher Monat der beste potenzielle Verkaufsmonat ist.
+
+Changelog: 
+v1.0.0.1
+- Die Größe der Hauptbildschirmtabelle wurde korrigiert
+v1.0.0.2
+- Die Duplizierung fermentierender Ballen im Objekt-Lager wurde korrigiert
+
+]]></de>		
+  </description>    
+	<iconFilename>icon_TSStockCheck.dds</iconFilename>
+	<l10n filenamePrefix="languages/l10n" />
+  <multiplayer supported="true"/>	
+	<extraSourceFiles>	
+    <sourceFile filename="TSStockCheck.lua" /> 
+	</extraSourceFiles>
+</modDesc>

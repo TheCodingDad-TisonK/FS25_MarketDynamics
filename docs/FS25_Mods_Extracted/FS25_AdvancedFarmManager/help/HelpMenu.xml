@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpLines>
+    <category title="$l10n_afm_help_title">
+        <page title="$l10n_ui_garageOverview" iconSliceId="AFMHelplineSmall.vehicles">
+            <paragraph>
+                <text text="$l10n_afm_help_page_vehicle_base_text" />
+            </paragraph>
+            <paragraph>
+                <image filename="img/afmHelpLine_vehicles.dds" size="1024 512" uvs="0px 0px 1024px 512px" aspectRatio="0.5"/>
+            </paragraph>
+            <paragraph>
+                <text text="$l10n_afm_help_page_vehicle_detail_text" />
+            </paragraph>
+        </page>
+        <page title="$l10n_afm_toolOverview" iconSliceId="AFMHelplineSmall.tools">
+            <paragraph>
+                <text text="$l10n_afm_help_page_implement_base_text" />
+            </paragraph>
+            <paragraph>
+                <image filename="img/afmHelpLine_implements.dds" size="1024 512" uvs="0px 0px 1024px 512px" aspectRatio="0.5"/>
+            </paragraph>
+        </page>
+        <page title="$l10n_afm_placOverview" iconSliceId="AFMHelplineSmall.placeables">
+            <paragraph>
+                <text text="$l10n_afm_help_page_placeable_base_text" />
+            </paragraph>
+            <paragraph>
+                <image filename="img/afmHelpLine_placeables.dds" size="1024 512" uvs="0px 0px 1024px 512px" aspectRatio="0.5"/>
+            </paragraph>
+        </page>
+        <page title="$l10n_afm_fldOverview" iconSliceId="AFMHelplineSmall.fields">
+            <paragraph>
+                <text text="$l10n_afm_help_page_field_base_text" />
+            </paragraph>
+            <paragraph>
+                <image filename="img/afmHelpLine_fields.dds" size="1024 512" uvs="0px 0px 1024px 512px" aspectRatio="0.5"/>
+            </paragraph>
+        </page>
+    </category>
+</helpLines>

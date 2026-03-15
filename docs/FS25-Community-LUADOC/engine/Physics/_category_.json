@@ -1,0 +1,11 @@
+{
+  "label": "Physics",
+  "link": {
+    "type": "generated-index",
+    "title": "Physics Documentation",
+    "description": "127 pages"
+  },
+  "customProps": {
+    "icon": "atom"
+  }
+}

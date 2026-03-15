@@ -1,0 +1,11 @@
+{
+  "label": "Triggers",
+  "link": {
+    "type": "generated-index",
+    "title": "Triggers Documentation",
+    "description": "7 pages, 46 functions"
+  },
+  "customProps": {
+    "icon": "hand-pointer"
+  }
+}

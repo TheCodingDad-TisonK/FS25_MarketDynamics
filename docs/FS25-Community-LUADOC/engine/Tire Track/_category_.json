@@ -1,0 +1,11 @@
+{
+  "label": "Tire Track",
+  "link": {
+    "type": "generated-index",
+    "title": "Tire Track Documentation",
+    "description": "7 pages"
+  },
+  "customProps": {
+    "icon": "road"
+  }
+}

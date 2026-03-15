@@ -1,0 +1,11 @@
+{
+  "label": "Misc",
+  "link": {
+    "type": "generated-index",
+    "title": "Misc Documentation",
+    "description": "13 pages, 206 functions"
+  },
+  "customProps": {
+    "icon": "ellipsis-h"
+  }
+}

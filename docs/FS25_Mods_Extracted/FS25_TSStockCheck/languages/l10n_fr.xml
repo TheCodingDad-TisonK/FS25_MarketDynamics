@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<l10n>
+    <translationContributors>Gammax37</translationContributors>
+    <texts>
+            <text name="ui_ingameMenuTSStockCheck" text="Time Saving Stock Check"/>
+            <text name="ui_header_icon" text=""/>
+            <text name="ui_header_goods" text="Marchandises"/>
+            <text name="ui_header_storage" text="Entrepôt"/>
+            <text name="ui_header_price" text="Prix"/>
+            <text name="ui_header_trend" text=""/>
+            <text name="ui_header_value" text="Valeur"/>
+            <text name="ui_header_price_at" text="Vendu a"/>
+            <text name="ui_header_bestprice" text="Prix max"/>
+            <text name="ui_header_bestvalue" text="Valeur max"/>
+            <text name="ui_header_bestmonth" text="Mois max"/>
+            <text name="ui_location_btn" text="Montrer le lieu"/>
+            <text name="ui_location_header_name" text="Lieu des %s"/>
+            <text name="ui_location_header_storage" text="Quantité"/>
+            <text name="ui_locationFrame_btnClose" text="Retour"/>
+            <text name="ui_locationFrame_header" text="Lieu de stockage %s"/>
+            <text name="ui_tag_sellpoint" text="Marquer l&apos;endroit"/>
+            <text name="ui_untag_sellpoint" text="Retirer la marque"/>
+            <text name="ui_no_sellpoint" text="Aucun point de vente"/>
+            <text name="ui_text_bales" text="Balles"/>
+            <text name="ui_text_pallets" text="Palettes"/>
+            <text name="ui_text_shippingcontainer" text="Container"/>
+            <text name="ui_allsellpoint_btn" text="Valeur de tous %s"/>
+            <text name="ui_allSellPointFrame_header" text="Valeur de %s %s"/>
+            <text name="ui_show_all_items" text="Afficher tout"/>
+            <text name="ui_hide_all_items" text="Masquer Impossible de vendre"/>
+    </texts>
+</l10n>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<modDesc descVersion="105">
+	<author>AutoDrive Team</author>
+	<title>
+		<en>AutoDrive</en>
+	</title>
+	<description>
+		<en>
+<![CDATA[This mod can be used to create a network of routes for vehicles to drive autonomously. Once setup you can tell a tractor which is standing anywhere close to the network to drive to any point, such as the shop, field 1 or to a sell point.
+Changelog: Necessary adjustments for FS25, color adjustment, conversion of all graphics, new creation of the menus, corrections and optimization of all scripts and routines, adjustment HUD, complete information and release notes: https://github.com/Stephan-S/FS25_AutoDrive
+]]>
+		</en>
+		<de>
+<![CDATA[Dieser Mod erlaubt es ein Netzwerk von Routen aufzuzeichnen, um dann ein Fahrzeug von jedem beliebigen Punkt zu speziell definierten Zielen, wie zum Beispiel der eigenen Farm, Feld 1 oder auch zu jedem Verkaufspunkt fahren zu lassen.
+Changelog: notwendige Anpassungen für den LS25, farbliche Anpassung, Konvertierung aller Grafiken, Neuerstellung der Menüs, Korrekturen und Optimierung aller Skripts und Routinen, Anpassung HUD, vollständige Infos und Release Notes: https://github.com/Stephan-S/FS25_AutoDrive
+]]>
+		</de>
+		<it>
+<![CDATA[Questa mod può essere usata per creare una rete di percorsi per permettere ai veicoli di guidare autonomamente. Una volta effettuata la configurazione puoi dire a un veicolo di guidare tramite la rete verso un qualsiasi punto, come il negozio, il campo 1 o un punto vendita.
+Changelog: Adeguamenti necessari per FS25, adeguamento dei colori, conversione di tutta la grafica, nuova creazione di menu, correzioni e ottimizzazione di tutti gli script e le routine, adeguamento dell'HUD, informazioni complete e note di rilascio: https://github.com/Stephan-S/FS25_AutoDrive
+]]>
+		</it>
+		<fr>
+<![CDATA[Ce mod peut être utilisé pour créer un réseau de routes permettant aux véhicules de conduire de manière autonome. Une fois la configuration effectuée, vous pouvez indiquer à un tracteur situé près du réseau de se rendre à n'importe quel point, tel que le magasin, le champ 1 ou un point de vente.
+Changelog: adaptations nécessaires pour le FS25, adaptation des couleurs, conversion de tous les graphiques, nouvelle création des menus, corrections et optimisation de tous les scripts et routines, adaptation du HUD, infos complètes et release notes : https://github.com/Stephan-S/FS25_AutoDrive
+]]>
+		</fr>
+		<es>
+<![CDATA[Este mod se utiliza para crear una red de rutas y permitir que los vehículos conduzcan de forma autónoma. Una vez configurado, puede ordenar a un tractor, cercano a la red, que conduzca a cualquier meta definida, como la tienda, el campo 1 o un punto de venta.
+Changelog: Ajustes necesarios para FS25, ajuste de color, conversión de todos los gráficos, nueva creación de menús, correcciones y optimización de todos los scripts y rutinas, ajuste del HUD, información completa y notas de la versión: https://github.com/Stephan-S/FS25_AutoDrive
+]]>
+		</es>
+		<ru>
+<![CDATA[Этот мод может быть использован для создания сети маршрутов для транспортных средств для автономного вождения. После настройки вы можете указать трактору, стоящему где-угодно рядом с сетью, проехать в любую точку, например, в магазин, поле №1 или в точку продажи.
+Changelog: Необходимые корректировки для FS25, настройка цвета, преобразование всей графики, новое создание меню, исправления и оптимизация всех скриптов и процедур, настройка HUD, полная информация и примечания к выпуску: https://github.com/Stephan-S/FS25_AutoDrive
+]]>
+		</ru>
+		<zh>
+<![CDATA[这款模组可用于为车辆创建自动驾驶的路线网络。设置完成后，您可以命令靠近路线网络的拖拉机行驶到任何地点，例如商店、1号农田或销售点。
+更新日志：针对 FS25 的必要调整、颜色调整、所有图形的转换、菜单的新建、所有脚本和例程的修正与优化、HUD 调整，完整信息和发布说明请访问：https://github.com/Stephan-S/FS25_AutoDrive
+]]>
+		</zh>
+	</description>
+	<version>3.0.0.8</version>
+	<multiplayer supported="true" />
+	<iconFilename>icon_AutoDrive.dds</iconFilename>
+	<extraSourceFiles>
+		<sourceFile filename="register.lua" />
+	</extraSourceFiles>
+
+	<l10n filenamePrefix="translations/translation" />
+
+	<actions>
+		<action name="ADSilomode"/>
+		<action name="ADPreviousMode"/>
+		<action name="ADRecord"/>
+		<action name="ADRecord_Dual"/>
+		<action name="ADRecord_SubPrio"/>
+		<action name="ADRecord_SubPrioDual"/>
+		<action name="ADRecord_TwoWay"/>
+		<action name="ADRecord_Dual_TwoWay"/>
+		<action name="ADRecord_SubPrio_TwoWay"/>
+		<action name="ADRecord_SubPrioDual_TwoWay"/>
+		<action name="ADEnDisable"/>
+		<action name="ADSelectTarget"/>
+		<action name="ADSelectPreviousTarget"/>
+		<action name="ADSelectTargetUnload"/>
+		<action name="ADSelectPreviousTargetUnload"/>
+		<action name="ADActivateDebug"/>
+		<action name="ADDisplayMapPoints"/>
+		<action name="ADDebugSelectNeighbor"/>
+		<action name="ADDebugCreateConnection"/>
+		<action name="ADDebugToggleConnectionInverted"/>
+		<action name="ADDebugChangeNeighbor"/>
+		<action name="ADDebugPreviousNeighbor"/>
+		<action name="ADDebugCreateMapMarker"/>
+		<action name="ADRenameMapMarker"/>
+		<action name="ADDebugDeleteDestination"/>
+		<action name="ADNameDriver"/>
+		<action name="ADSetDestinationFilter"/>
+		<action name="AD_Speed_up"/>
+		<action name="AD_Speed_down"/>
+		<action name="AD_FieldSpeed_up"/>
+		<action name="AD_FieldSpeed_down"/>
+		<action name="ADToggleHud"/>
+		<action name="ADToggleMouse"/>
+		<action name="ADDebugDeleteWayPoint"/>
+		<action name="AD_routes_manager"/>
+		<action name="ADSelectNextFillType"/>
+		<action name="ADSelectPreviousFillType"/>
+		<action name="ADOpenGUI"/>
+		<action name="ADCallDriver"/>
+		<action name="ADGoToVehicle"/>
+		<action name="ADIncLoopCounter"/>
+		<action name="ADDecLoopCounter"/>
+		<action name="ADSwapTargets"/>
+		<action name="ADStartHelper"/>
+		<action name="ADToggleUsedHelper"/>
+		<action name="AD_open_notification_history"/>
+		<action name="AD_continue"/>
+		<action name="ADParkVehicle"/>
+		<action name="ADSetParkDestination"/>
+		<action name="AD_devAction"/>
+		<action name="ADRefuelVehicle"/>	
+		<action name="ADToggleHudExtension"/>	
+		<action name="ADToggleAutomaticUnloadTarget"/>
+		<action name="ADToggleAutomaticPickupTarget"/>
+		<action name="ADToggleLoadByFillLevel"/>
+		<action name="ADRepairVehicle"/>		
+	</actions>
+
+	<inputBinding>
+		<actionBinding action="ADToggleHud">
+			<binding device="KB_MOUSE_DEFAULT" input="KEY_lalt KEY_KP_0" />
+			<binding device="0_XINPUT_GAMEPAD" input="BUTTON_5 BUTTON_17" />
+		</actionBinding>
+		<actionBinding action="ADOpenGUI">
+			<binding device="KB_MOUSE_DEFAULT" input="KEY_lctrl KEY_lalt KEY_KP_0" />
+			<binding device="0_XINPUT_GAMEPAD" input="BUTTON_5 BUTTON_16" />
+		</actionBinding>
+		<actionBinding action="ADToggleMouse">
+			<binding device="KB_MOUSE_DEFAULT" input="MOUSE_BUTTON_MIDDLE" axisComponent="+" neutralInput="0" index="3" />
+			<binding device="0_XINPUT_GAMEPAD" input="BUTTON_5 BUTTON_6 BUTTON_19" axisComponent="+" neutralInput="0" index="1" />
+		</actionBinding>
+		<actionBinding action="ADEnDisable">
+			<binding device="0_XINPUT_GAMEPAD" input="BUTTON_5 BUTTON_6 BUTTON_17" axisComponent="+" neutralInput="0" index="1" />
+		</actionBinding>
+		<actionBinding action="ADSelectTarget">
+			<binding device="KB_MOUSE_DEFAULT" input="KEY_lctrl KEY_lalt KEY_right" axisComponent="+" neutralInput="0" index="1" />
+			<binding device="0_XINPUT_GAMEPAD" input="BUTTON_5 BUTTON_6 BUTTON_18" axisComponent="+" neutralInput="0" index="1" />
+		</actionBinding>
+		<actionBinding action="ADSelectPreviousTarget">
+			<binding device="KB_MOUSE_DEFAULT" input="KEY_lctrl KEY_lalt KEY_left" axisComponent="+" neutralInput="0" index="1" />
+			<binding device="0_XINPUT_GAMEPAD" input="BUTTON_5 BUTTON_6 BUTTON_20" axisComponent="+" neutralInput="0" index="1" />
+		</actionBinding>
+		<actionBinding action="ADSelectTargetUnload">
+			<binding device="0_XINPUT_GAMEPAD" input="BUTTON_5 BUTTON_6 AXIS_3+" axisComponent="+" neutralInput="0" index="1" />
+		</actionBinding>
+		<actionBinding action="ADSelectPreviousTargetUnload">
+			<binding device="0_XINPUT_GAMEPAD" input="BUTTON_5 BUTTON_6 AXIS_3-" axisComponent="+" neutralInput="0" index="1" />
+		</actionBinding>
+		<actionBinding action="ADActivateDebug">
+			<binding device="0_XINPUT_GAMEPAD" input="BUTTON_5 BUTTON_6 BUTTON_11" axisComponent="+" neutralInput="0" index="1" />
+		</actionBinding>
+		<actionBinding action="ADDebugSelectNeighbor">
+			<binding device="0_XINPUT_GAMEPAD" input="BUTTON_5 BUTTON_6 BUTTON_9" axisComponent="+" neutralInput="0" index="1" />
+		</actionBinding>
+		<actionBinding action="ADDebugChangeNeighbor">
+			<binding device="0_XINPUT_GAMEPAD" input="BUTTON_5 BUTTON_6 AXIS_4-" axisComponent="+" neutralInput="0" index="1" />
+		</actionBinding>
+		<actionBinding action="ADDebugCreateConnection">
+			<binding device="0_XINPUT_GAMEPAD" input="BUTTON_5 BUTTON_6 BUTTON_12" axisComponent="+" neutralInput="0" index="1" />
+		</actionBinding>
+		<actionBinding action="ADSelectNextFillType">
+			<binding device="KB_MOUSE_DEFAULT" input="KEY_lctrl KEY_lalt KEY_o" axisComponent="+" neutralInput="0" index="1" />
+			<binding device="0_XINPUT_GAMEPAD" input="BUTTON_5 BUTTON_6 AXIS_2-" axisComponent="+" neutralInput="0" index="1" />
+		</actionBinding>
+		<actionBinding action="ADSelectPreviousFillType">
+			<binding device="KB_MOUSE_DEFAULT" input="KEY_lctrl KEY_lalt KEY_KP_4" axisComponent="+" neutralInput="0" index="1" />
+			<binding device="0_XINPUT_GAMEPAD" input="BUTTON_5 BUTTON_6 AXIS_2+" axisComponent="+" neutralInput="0" index="1" />
+		</actionBinding>
+		<actionBinding action="ADRecord">
+			<binding device="0_XINPUT_GAMEPAD" input="BUTTON_5 BUTTON_6 BUTTON_3" axisComponent="+" neutralInput="0" index="1" />
+		</actionBinding>
+		<actionBinding action="AD_routes_manager">
+			<binding device="KB_MOUSE_DEFAULT" input="KEY_lctrl KEY_lalt KEY_KP_1" axisComponent="+" neutralInput="0" index="1" />
+		</actionBinding>
+		<actionBinding action="ADSilomode">
+			<binding device="0_XINPUT_GAMEPAD" input="BUTTON_5 BUTTON_6 AXIS_4+" axisComponent="+" neutralInput="0" index="1" />
+		</actionBinding>
+		<actionBinding action="AD_open_notification_history">
+			<binding device="KB_MOUSE_DEFAULT" input="KEY_lctrl KEY_lalt KEY_m" axisComponent="+" neutralInput="0" index="1" />
+		</actionBinding>
+	</inputBinding>
+</modDesc>

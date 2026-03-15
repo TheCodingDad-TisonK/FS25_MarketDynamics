@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<GUI name="easyDevControlsGeneral">
+    <GuiElement profile="edc_container">
+        <GuiElement profile="edc_headerPanel">
+            <Bitmap profile="edc_headerIconBg">
+                <Bitmap profile="edc_headerIcon" id="categoryHeaderIcon" imageSliceId="easyDevControls.icon_general"/>
+            </Bitmap>
+
+            <Text profile="edc_headerTitle" id="categoryHeaderText" text="$l10n_easyDevControls_generalHeader"/>
+            <Button profile="edc_headerInfoButton" id="buttonShowInfo" onClick="onClickShowInfo"/>
+        </GuiElement>
+
+        <BoxLayout profile="edc_boxLayout" id="boxLayout">
+            <!-- Column 1 -->
+            <EasyDevControlsTextInput profile="edc_textInput" name="addMoney" id="textInputAddMoney" onEnterPressed="onEnterPressedCheatMoney" onEscPressed="onTextInputEscPressed" onTextChanged="onTextChangedCheatMoney" enterWhenClickOutside="false">
+                <ThreePartBitmap profile="edc_outlineBg"/>
+                <ThreePartBitmap profile="edc_textInputIconBox">
+                    <Bitmap profile="edc_textInputIcon"/>
+                </ThreePartBitmap>
+                <Text profile="edc_title" text="$l10n_easyDevControls_addMoneyTitle"/>
+            </EasyDevControlsTextInput>
+
+            <EasyDevControlsTextInput profile="edc_textInput" name="removeMoney" id="textInputRemoveMoney" onEnterPressed="onEnterPressedCheatMoney" onEscPressed="onTextInputEscPressed" onTextChanged="onTextChangedCheatMoney" enterWhenClickOutside="false">
+                <ThreePartBitmap profile="edc_outlineBg"/>
+                <ThreePartBitmap profile="edc_textInputIconBox">
+                    <Bitmap profile="edc_textInputIcon"/>
+                </ThreePartBitmap>
+                <Text profile="edc_title" text="$l10n_easyDevControls_removeMoneyTitle"/>
+            </EasyDevControlsTextInput>
+
+            <EasyDevControlsTextInput profile="edc_textInput" name="setMoney" id="textInputSetMoney" onEnterPressed="onEnterPressedCheatMoney" onEscPressed="onTextInputEscPressed" onTextChanged="onTextChangedCheatMoney" enterWhenClickOutside="false">
+                <ThreePartBitmap profile="edc_outlineBg"/>
+                <ThreePartBitmap profile="edc_textInputIconBox">
+                    <Bitmap profile="edc_textInputIcon"/>
+                </ThreePartBitmap>
+                <Text profile="edc_title" text="$l10n_easyDevControls_setMoneyTitle"/>
+            </EasyDevControlsTextInput>
+
+            <BinaryOption profile="edc_binaryOption" id="binaryTimeScale" onClick="onClickSetTimeScale">
+                <Text profile="edc_title" name="ignore" text="$l10n_easyDevControls_extraTimescalesTitle"/>
+            </BinaryOption>
+
+            <GuiElement profile="edc_emptyPanel" debugMargin="true" margin="44px 24px 44px 270px">
+                <!-- Placed inside the empty panel to allow profile changes without needing to invalidate the layout -->
+                <Button profile="edc_buttonStopTime" id="buttonStopTime" onClick="onClickStopTime">
+                    <ThreePartBitmap profile="edc_buttonBg"/>
+                    <ThreePartBitmap profile="edc_outlineBg"/>
+                    <Text profile="edc_title" name="ignore" text="$l10n_easyDevControls_stopTimeTitle"/>
+                </Button>
+            </GuiElement>
+
+            <!-- Column 2 -->
+            <BinaryOption profile="edc_binaryOption" id="binaryHudVisibility" onClick="onClickHudVisibility">
+                <Text profile="edc_title" name="ignore" text="$l10n_easyDevControls_hudVisibilityTitle"/>
+            </BinaryOption>
+
+            <BinaryOption profile="edc_binaryOption" id="binaryToggleHudInput" onClick="onClickHudVisibility">
+                <Text profile="edc_title" name="ignore" text="$l10n_easyDevControls_hudInputTitle"/>
+            </BinaryOption>
+
+            <BinaryOption profile="edc_binaryOption" id="binaryDeleteObjectsKey" onClick="onClickDeleteObjectsKey">
+                <Text profile="edc_title" name="ignore" text="$l10n_easyDevControls_deleteObjectsKeyTitle"/>
+            </BinaryOption>
+
+            <BinaryOption profile="edc_binaryOption" id="binaryShowBaleLocations" onClick="onClickShowObjectLocations">
+                <Text profile="edc_title" name="ignore" text="$l10n_easyDevControls_showBaleLocationsTitle"/>
+            </BinaryOption>
+
+            <BinaryOption profile="edc_binaryOption" id="binaryShowPalletLocations" onClick="onClickShowObjectLocations" margin="44px 24px 44px 270px" debugMargin="true">
+                <Text profile="edc_title" name="ignore" text="$l10n_easyDevControls_showPalletLocationsTitle"/>
+            </BinaryOption>
+
+            <!-- Column 3 -->
+            <MultiTextOption profile="edc_multiTextOption" id="multiTeleport" onClick="onClickTeleport" texts="Map Selection|X/Y|Field">
+                <ThreePartBitmap profile="edc_multiTextOptionBg" name="background">
+                    <ThreePartBitmap profile="edc_outlineBg"/>
+                </ThreePartBitmap>
+                <Text profile="edc_title" name="ignore" id="titleTeleport" text="$l10n_easyDevControls_teleportTitle"/>
+            </MultiTextOption>
+            <EasyDevControlsTextInput profile="edc_textInputClose" id="textInputTeleportXZ" disabled="true" placeholderDefaultText="$l10n_easyDevControls_placeholderEnterCoordinates" onEnterPressed="onTeleportEnterPressed" onEscPressed="onTextInputEscPressed" onTextChanged="onTeleportTextChanged" enterWhenClickOutside="false">
+                <ThreePartBitmap profile="edc_outlineBg"/>
+                <ThreePartBitmap profile="edc_textInputIconBox">
+                    <Bitmap profile="edc_textInputIcon"/>
+                </ThreePartBitmap>
+            </EasyDevControlsTextInput>
+            <Button profile="edc_buttonClose" id="buttonTeleportConfirm" onClick="onClickTeleportConfirm">
+                <ThreePartBitmap profile="edc_buttonBg"/>
+                <ThreePartBitmap profile="edc_outlineBg"/>
+            </Button>
+
+            <Button profile="edc_button" id="buttonFlipVehicles" onClick="onClickFlipVehicles" debugMargin="true" margin="44px 24px 44px 438px">
+                <ThreePartBitmap profile="edc_buttonBg">
+                    <ThreePartBitmap profile="edc_outlineBg"/>
+                </ThreePartBitmap>
+                <Text profile="edc_title" name="ignore" text="$l10n_easyDevControls_flipVehiclesTitle"/>
+            </Button>
+
+            <!-- Column 4 -->
+            <EasyDevControlsTextInput profile="edc_textInput" id="textInputSetFOVAngle" placeholderVisibleOnDisable="true" placeholderDefaultText="Current: 60°" onEnterPressed="onSetFOVAngleEnterPressed" onEscPressed="onTextInputEscPressed" onTextChanged="onSetFOVAngleTextChanged" enterWhenClickOutside="false">
+                <ThreePartBitmap profile="edc_outlineBg"/>
+                <ThreePartBitmap profile="edc_textInputIconBox">
+                    <Bitmap profile="edc_textInputIcon"/>
+                </ThreePartBitmap>
+                <Text profile="edc_title" name="ignore" text="$l10n_easyDevControls_setFOVAngleTitle"/>
+            </EasyDevControlsTextInput>
+            <Button profile="edc_buttonRefresh" text="$l10n_button_reset" id="buttonResetFOVAngle" onClick="onClickResetFOVAngle">
+                <ThreePartBitmap profile="edc_buttonBg"/>
+                <ThreePartBitmap profile="edc_outlineBg"/>
+            </Button>
+
+            <MultiTextOption profile="edc_multiTextOption" id="multiSetQuality" onClick="onClickSetQuality" texts="User Setting" hideButtonOnLimitReached="true" wrap="false">
+                <ThreePartBitmap profile="edc_multiTextOptionBg" name="background">
+                    <ThreePartBitmap profile="edc_outlineBg"/>
+                </ThreePartBitmap>
+                <Text profile="edc_title" name="ignore" text="$l10n_easyDevControls_setQualityTitle"/>
+            </MultiTextOption>
+
+            <MultiTextOption profile="edc_multiTextOption" id="multiShowCollectables" onClick="onClickShowCollectables" texts="Standard" hideButtonOnLimitReached="true" wrap="false">
+                <ThreePartBitmap profile="edc_multiTextOptionBg" name="background">
+                    <ThreePartBitmap profile="edc_outlineBg"/>
+                </ThreePartBitmap>
+                <Text profile="edc_title" name="ignore" text="$l10n_easyDevControls_showCollectablesTitle"/>
+            </MultiTextOption>
+
+            <MultiTextOption profile="edc_multiTextOption" id="multiClearI3DCacheVerbose" texts="$l10n_configuration_valueDefault|$l10n_easyDevControls_verbose" hideButtonOnLimitReached="true" wrap="false">
+                <ThreePartBitmap profile="edc_multiTextOptionBg" name="background">
+                    <ThreePartBitmap profile="edc_outlineBg"/>
+                </ThreePartBitmap>
+                <Text profile="edc_title" name="ignore" text="$l10n_easyDevControls_clearI3DCacheTitle"/>
+            </MultiTextOption>
+            <Button profile="edc_buttonClose" id="buttonClearI3DCache" onClick="onClickClearI3DCache">
+                <ThreePartBitmap profile="edc_buttonBg"/>
+                <ThreePartBitmap profile="edc_outlineBg"/>
+            </Button>
+
+            <Button profile="edc_button" id="buttonReloadStoreItems" onClick="onClickReloadStoreItems">
+                <ThreePartBitmap profile="edc_buttonBg">
+                    <ThreePartBitmap profile="edc_outlineBg"/>
+                </ThreePartBitmap>
+                <Text profile="edc_title" name="ignore" text="$l10n_easyDevControls_reloadStoreItemsTitle"/>
+            </Button>
+
+            <!-- <MultiTextOption profile="edc_multiTextOption" id="multiRefreshSaleSystem" hideButtonOnLimitReached="true" wrap="false">
+                <ThreePartBitmap profile="edc_multiTextOptionBg" name="background">
+                    <ThreePartBitmap profile="edc_outlineBg"/>
+                </ThreePartBitmap>
+                <Text profile="edc_title" name="ignore" text="$l10n_easyDevControls_refreshSaleSystemTitle"/>
+            </MultiTextOption>
+            <Button profile="edc_buttonClose" id="buttonRefreshSaleSystem" onClick="onClickRefreshSaleSystem">
+                <ThreePartBitmap profile="edc_buttonBg">
+                    <ThreePartBitmap profile="edc_outlineBg"/>
+                </ThreePartBitmap>
+            </Button> -->
+        </BoxLayout>
+
+        <ThreePartBitmap profile="edc_infoBoxBg" id="infoBox">
+            <Bitmap profile="edc_infoBoxIconBox">
+                <Bitmap profile="edc_infoBoxIcon" id="infoBoxIcon"/>
+            </Bitmap>
+            <Text profile="edc_infoBoxText" id="infoBoxText"/>
+        </ThreePartBitmap>
+    </GuiElement>
+</GUI>

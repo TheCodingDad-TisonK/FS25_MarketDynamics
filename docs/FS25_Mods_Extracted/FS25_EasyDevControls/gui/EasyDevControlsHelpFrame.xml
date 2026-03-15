@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<GUI name="easyDevControlsHelp">
+    <ThreePartBitmap profile="edc_helpContainerBg">
+        <GuiElement profile="edc_headerPanel" position="0px -56px">
+            <Bitmap profile="edc_headerIconBg">
+                <Bitmap profile="edc_headerIcon" id="categoryHeaderIcon" imageSliceId="easyDevControls.icon_help"/>
+            </Bitmap>
+
+            <Text profile="edc_headerTitle" id="categoryHeaderText" text="Help"/>
+        </GuiElement>
+
+        <Bitmap profile="fs25_subCategoryContainerArrow"/>
+
+        <GuiElement profile="edc_helpContainer">
+
+            <GuiElement profile="edc_helpListContainer">
+                <Bitmap profile="fs25_subCategoryStartClipper" name="startClipper"/>
+                <Bitmap profile="fs25_subCategoryStopClipper" name="endClipper"/>
+
+                <SmoothList profile="edc_helpList" id="listDataElement" wrapAround="true" startClipperElementName="startClipper" endClipperElementName="endClipper">
+                    <ListItem profile="fs25_subCategoryListItem">
+                        <Bitmap profile="edc_helpListItemIcon" name="icon"/>
+                        <Text profile="fs25_helpListItemName" name="title"/>
+                    </ListItem>
+                </SmoothList>
+
+                <ThreePartBitmap profile="fs25_subCategoryListSliderBox">
+                    <Slider profile="fs25_listSlider" dataElementId="listDataElement" focusChangeTop="nil"/>
+                </ThreePartBitmap>
+            </GuiElement>
+        </GuiElement>
+    </ThreePartBitmap>
+
+    <GuiElement profile="edc_helpContentContainer">
+        <GuiElement profile="edc_headerPanel" position="0px 74px">
+            <Bitmap profile="edc_headerIconBg">
+                <Bitmap profile="edc_headerIcon" id="categoryIconElement" imageSliceId="easyDevControls.icon_general"/>
+            </Bitmap>
+
+            <Text profile="edc_headerTitle" id="categoryTitleElement" text="General"/>
+        </GuiElement>
+
+        <GuiElement profile="fs25_helpLinelayoutBox">
+            <Bitmap profile="fs25_helpLineStartClipper" name="topClipper"/>
+            <Bitmap profile="fs25_helpLineStopClipper" name="bottomClipper"/>
+
+            <ScrollingLayout profile="edc_helpCommandItemContentBox" id="contentBoxElement" topClipperElementName="topClipper" bottomClipperElementName="bottomClipper">
+                <BoxLayout profile="edc_helpCommandItem" id="contentItemTemplate">
+                    <Text profile="edc_helpCommandTitle" name="title"/>
+                    <Text profile="edc_helpCommandText" name="text"/>
+                </BoxLayout>
+            </ScrollingLayout>
+        </GuiElement>
+    </GuiElement>
+
+    <ThreePartBitmap profile="fs25_sliderDockedBg">
+        <ThreePartBitmap profile="fs25_sliderDockedBox">
+            <Slider profile="fs25_helpLineSlider" id="statisticsSlider" dataElementId="contentBoxElement"/>
+        </ThreePartBitmap>
+    </ThreePartBitmap>
+</GUI>

@@ -1,0 +1,11 @@
+{
+  "label": "Shallow Water Simulation",
+  "link": {
+    "type": "generated-index",
+    "title": "Shallow Water Simulation Documentation",
+    "description": "29 pages"
+  },
+  "customProps": {
+    "icon": "water"
+  }
+}

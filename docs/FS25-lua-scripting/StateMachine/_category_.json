@@ -1,0 +1,11 @@
+{
+  "label": "State Machine",
+  "link": {
+    "type": "generated-index",
+    "title": "State Machine Documentation",
+    "description": "8 pages, 44 functions"
+  },
+  "customProps": {
+    "icon": "sync-alt"
+  }
+}

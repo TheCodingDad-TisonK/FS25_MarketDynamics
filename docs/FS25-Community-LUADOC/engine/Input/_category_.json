@@ -1,0 +1,11 @@
+{
+  "label": "Input",
+  "link": {
+    "type": "generated-index",
+    "title": "Input Documentation",
+    "description": "7 pages"
+  },
+  "customProps": {
+    "icon": "keyboard"
+  }
+}

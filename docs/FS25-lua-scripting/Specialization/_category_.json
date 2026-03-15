@@ -1,0 +1,11 @@
+{
+  "label": "Specialization",
+  "link": {
+    "type": "generated-index",
+    "title": "Specialization Documentation",
+    "description": "3 pages, 35 functions"
+  },
+  "customProps": {
+    "icon": "star"
+  }
+}

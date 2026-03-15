@@ -1,0 +1,7 @@
+### RigidBodyType
+
+**Description**
+
+**Definition**
+
+> RigidBodyType()

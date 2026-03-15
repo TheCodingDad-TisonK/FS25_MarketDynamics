@@ -1,0 +1,11 @@
+{
+  "label": "Text Rendering",
+  "link": {
+    "type": "generated-index",
+    "title": "Text Rendering Documentation",
+    "description": "19 pages"
+  },
+  "customProps": {
+    "icon": "text-height"
+  }
+}

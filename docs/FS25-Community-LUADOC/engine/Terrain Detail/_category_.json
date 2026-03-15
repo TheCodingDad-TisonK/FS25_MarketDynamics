@@ -1,0 +1,11 @@
+{
+  "label": "Terrain Detail",
+  "link": {
+    "type": "generated-index",
+    "title": "Terrain Detail Documentation",
+    "description": "21 pages"
+  },
+  "customProps": {
+    "icon": "seedling"
+  }
+}

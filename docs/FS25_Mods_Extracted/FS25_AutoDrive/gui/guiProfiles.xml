@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<GUIProfiles>
+    <!-- Common Profiles -->
+    <Profile name="ad_common_dialogContentContainer" extends="fs25_dialogContentContainer">
+        <flowDirection value="vertical" />
+        <elementSpacing value="10px" />
+        <alignmentX value="center" />
+        <position value="4px -10px" />
+        <absoluteSizeOffset value="21px 30px" />
+    </Profile>
+
+    <Profile name="ad_common_hBox" extends="emptyPanel" with="anchorTopCenter">
+        <flowDirection value="horizontal" />
+        <alignmentX value="center"/>
+        <alignmentY value="middle"/>
+        <elementSpacing value="20px"/>
+    </Profile>
+
+    <Profile name="ad_common_dialogTitle" extends="baseReference" with="anchorTopStretchingX">
+        <textBold value="true"/>
+        <textLayoutMode value="resize" />
+        <textMaxNumLines value="1" />
+        <textSize value="24px"/>
+        <textUpperCase value="true"/>
+        <size value="100% 40px"/>
+    </Profile>
+
+    <Profile name="ad_common_dialogTitleLineSeparator" extends="fs25_lineSeparatorTop">
+        <absoluteSizeOffset value="100px 0" />
+    </Profile>
+
+    <Profile name="ad_common_dialogText" extends="baseReference" with="anchorTopStretchingX">
+        <textMaxNumLines value="5" />
+        <textSize value="16px"/>
+    </Profile>
+
+    <Profile name="ad_common_dialogButtonBox" extends="fs25_dialogButtonBox">
+        <absoluteSizeOffset value="0px 0px"/>
+        <position value="0px 0px"/>
+    </Profile>
+
+    <Profile name="ad_common_dialogButtonBoxOutsideContentContainer" extends="ad_common_dialogButtonBox" with="anchorBottomStretchingX">
+        <position value="-6px 32px" />
+        <absoluteSizeOffset value="20px 0" />
+    </Profile>
+
+    <Profile name="ad_common_list" extends="emptyPanel" with="anchorStretchingYStretchingX pivotTopLeft">
+    </Profile>
+
+    <Profile name="ad_common_listItem" extends="baseReference" with="anchorTopStretchingX alternating">
+        <height value="32px"/>
+        <imageColor value="$preset_fs25_colorGrey"/>
+        <imageSelectedColor value="$preset_fs25_colorMainHighlight"/>
+        <alternateBackgroundColor value="$preset_fs25_colorGreyDark_50"/>
+    </Profile>
+
+    <Profile name="ad_common_listItemIcon" extends="baseReference" with="anchorMiddleLeft">
+        <size value="24px 24px"/>
+        <position value="0px 0px" />
+        <imageSliceId value="ad_gui.info_icon" />
+    </Profile>
+
+    <Profile name="ad_common_listItemText" extends="fs25_textDarkHighlight" with="anchorStretchingYLeft">
+        <textBold value="true"/>
+        <textOffset value="40px 0px"/>
+        <absoluteSizeOffset value="80px 0px"/>
+    </Profile>
+
+    <Profile name="ad_common_listSliderBox" extends="fs25_listSliderBox" with="anchorTopRight">
+    </Profile>
+
+    <Profile name="ad_common_listSlider" extends="fs25_listSlider">
+    </Profile>
+
+    <!-- World i3d files, listed here to pass the test runner check. -->
+    <Profile name="autoDriveHudElements">
+        <element filename="drawing/arrow.i3d"/>
+        <element filename="drawing/cross.i3d"/>
+        <element filename="drawing/line.i3d"/>
+        <element filename="drawing/marker.i3d"/>
+        <element filename="drawing/marker_2.i3d"/>
+        <element filename="drawing/marker_3.i3d"/>
+        <element filename="drawing/sphere.i3d"/>
+        <element filename="drawing/sphere_small.i3d"/>
+    </Profile>
+</GUIProfiles>

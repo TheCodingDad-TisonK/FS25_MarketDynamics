@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<texture>
+    <meta>
+        <filename>gui.dds</filename>
+        <size width="1024" height="1024"/>
+    </meta>
+
+    <slices>
+        <slice id="icon_general" uvs="4px 4px 68px 68px"/>
+        <slice id="icon_player" uvs="72px 4px 68px 68px"/>
+        <slice id="icon_objects" uvs="140px 3px 68px 66px"/>
+        <slice id="icon_vehicles" uvs="207px 4px 68px 68px"/>
+        <slice id="icon_placeables" uvs="276px 4px 68px 68px"/>
+        <slice id="icon_farmlands" uvs="344px 4px 68px 68px"/>
+        <slice id="icon_environment" uvs="412px 4px 68px 68px"/>
+        <slice id="icon_permissions" uvs="481px 4px 64px 68px"/>
+        <slice id="icon_help" uvs="548px 3px 68px 68px"/>
+        <slice id="icon_about" uvs="615px 3px 68px 68px"/>
+        <slice id="reset" uvs="4px 72px 68px 68px"/>
+        <slice id="info" uvs="72px 72px 68px 68px"/>
+        <slice id="inGameMenu" uvs="140px 72px 68px 68px"/>
+
+        <slice id="minus" uvs="16px 144px 29px 29px"/>
+        <slice id="plus" uvs="84px 144px 29px 29px"/>
+
+        <slice id="button_curved_flipped" uvs="4px 988px 32px 32px"/>
+        <slice id="button_curved" uvs="40px 988px 32px 32px"/>
+        <slice id="button_curved_left" uvs="76px 988px 10px 32px"/>
+        <slice id="button_curved_middle" uvs="84px 988px 4px 32px"/>
+        <slice id="button_curved_right" uvs="86px 988px 10px 32px"/>
+        <slice id="button_curved_outline_left" uvs="100px 988px 10px 32px"/>
+        <slice id="button_curved_outline_middle" uvs="108px 988px 4px 32px"/>
+        <slice id="button_curved_outline_right" uvs="110px 988px 10px 32px"/>
+
+        <slice id="button_curved_outlineFill_left" uvs="124px 988px 10px 32px"/>
+        <slice id="button_curved_outlineFill_middle" uvs="132px 988px 4px 32px"/>
+        <slice id="button_curved_outlineFill_right" uvs="134px 988px 10px 32px"/>
+    </slices>
+</texture>

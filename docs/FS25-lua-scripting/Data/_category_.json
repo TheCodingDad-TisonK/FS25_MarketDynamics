@@ -1,0 +1,11 @@
+{
+  "label": "Data",
+  "link": {
+    "type": "generated-index",
+    "title": "Data Documentation",
+    "description": "7 pages, 18 functions"
+  },
+  "customProps": {
+    "icon": "database"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "label": "Elements",
+  "link": {
+    "type": "generated-index",
+    "title": "Elements Documentation",
+    "description": "4 pages, 15 functions"
+  },
+  "customProps": {
+    "icon": "th"
+  }
+}

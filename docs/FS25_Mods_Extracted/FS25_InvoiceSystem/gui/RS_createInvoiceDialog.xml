@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<GUI onOpen="onOpen" onClose="onClose" onCreate="onCreate">
+    <GuiElement profile="newLayer" />
+    <Bitmap profile="dialogFullscreenBg" id="dialogBg" />
+
+    <GuiElement profile="RS_createInvoiceDialog" id="dialogElement">
+
+        <GuiElement profile="fs25_dialogContentContainer">
+            <BoxLayout profile="RS_createInvoiceDialogVerticalBox" position="0px -20px">
+                <Text profile="fs25_dialogTitle" text="$l10n_rs_ui_createInvoiceTitle" id="dialogTextElement" />
+
+                <Text profile="RS_createInvoiceDialogLabel" text="$l10n_rs_ui_invoiceSelectFarmer" />
+                <MultiTextOption profile="fs25_multiTextOption" id="farmerOption" />
+
+                <ThreePartBitmap profile="fs25_lineSeparatorBottomSoft" />
+
+                <BoxLayout profile="RS_createInvoiceDialogFieldRow">
+                    <BoxLayout profile="RS_createInvoiceDialogFieldColumn">
+                        <Text profile="RS_createInvoiceDialogLabelSmall" text="$l10n_rs_ui_invoiceFieldNumber" />
+                        <TextInput profile="RS_createInvoiceDialogAmountInputSmall" id="fieldNumberInput" onTextChanged="onFieldNumberChanged" enterWhenClickOutside="false">
+                            <ThreePartBitmap profile="fs25_textInputBg" absoluteSizeOffset="0px 0px"/>
+                            <Bitmap profile="fs25_textInputIconBox" position="0px 0px">
+                                <Bitmap profile="fs25_textInputIcon" />
+                            </Bitmap>
+                        </TextInput>
+                    </BoxLayout>
+
+                    <BoxLayout profile="RS_createInvoiceDialogFieldColumn">
+                        <Text profile="RS_createInvoiceDialogLabelSmall" text="$l10n_rs_ui_invoiceSizeHa" id="sizeLabel" />
+                        <TextInput profile="RS_createInvoiceDialogAmountInputSmall" id="sizeInput" onTextChanged="onSizeChanged" enterWhenClickOutside="false">
+                            <ThreePartBitmap profile="fs25_textInputBg" absoluteSizeOffset="0px 0px"/>
+                            <Bitmap profile="fs25_textInputIconBox" position="0px 0px">
+                                <Bitmap profile="fs25_textInputIcon" />
+                            </Bitmap>
+                        </TextInput>
+                    </BoxLayout>
+                </BoxLayout>
+
+                <ThreePartBitmap profile="fs25_lineSeparatorBottomSoft" />
+
+                <!-- Activity + Unit price in one row (more compact/clear) -->
+                <BoxLayout profile="RS_createInvoiceDialogFieldRow" id="activityUnitPriceRow">
+                    <BoxLayout profile="RS_createInvoiceDialogFieldColumn">
+                        <Text profile="RS_createInvoiceDialogLabelSmall" text="$l10n_rs_ui_invoiceSelectActivity" />
+                        <MultiTextOption profile="RS_createInvoiceDialogHalfOption" id="activityOption" onClick="onActivityChanged" />
+                    </BoxLayout>
+
+                    <BoxLayout profile="RS_createInvoiceDialogFieldColumn">
+                        <Text profile="RS_createInvoiceDialogLabelSmall" text="$l10n_rs_ui_invoicePricePerHa" id="unitPriceLabel" />
+                        <TextInput profile="RS_createInvoiceDialogHalfInput" id="pricePerHaInput" onTextChanged="onUnitPriceChanged" enterWhenClickOutside="false">
+                            <ThreePartBitmap profile="fs25_textInputBg" absoluteSizeOffset="0px 0px"/>
+                            <Bitmap profile="fs25_textInputIconBox" position="0px 0px">
+                                <Bitmap profile="fs25_textInputIcon" />
+                            </Bitmap>
+                        </TextInput>
+                    </BoxLayout>
+                </BoxLayout>
+
+                <!-- Only visible for activity 'Delivering' -->
+                <!-- Simplified product selection: label + dropdown in one compact block -->
+                <BoxLayout profile="RS_createInvoiceDialogFieldRow" id="productRow">
+                    <BoxLayout profile="RS_createInvoiceDialogFieldColumnFull">
+                        <Text profile="RS_createInvoiceDialogLabelSmall" text="$l10n_rs_ui_invoiceSelectProduct" id="productLabel" />
+                        <MultiTextOption profile="RS_createInvoiceDialogFullOption" id="fillTypeOption" onClick="onFillTypeChanged" />
+                    </BoxLayout>
+                </BoxLayout>
+
+                <Text profile="RS_createInvoiceDialogSmallInfo" text="" id="areaInfoText" />
+
+                <Text profile="RS_createInvoiceDialogLabel" text="$l10n_rs_ui_amountNet" />
+                <TextInput profile="RS_createInvoiceDialogAmountInput" id="amountInput" onEnterPressed="onEnterPressed" onTextChanged="onTextChanged" enterWhenClickOutside="false">
+                    <ThreePartBitmap profile="fs25_textInputBg" absoluteSizeOffset="0px 0px"/>
+                    <Bitmap profile="fs25_textInputIconBox" position="0px 0px">
+                        <Bitmap profile="fs25_textInputIcon" />
+                    </Bitmap>
+                </TextInput>
+
+                <BoxLayout profile="RS_createInvoiceDialogSummaryRow" id="summaryRow">
+                    <BoxLayout profile="RS_createInvoiceDialogSummaryColumn">
+                        <Text profile="RS_createInvoiceDialogSummaryLabel" text="$l10n_rs_ui_amountNet" />
+                        <Text profile="RS_createInvoiceDialogSummaryValue" id="netValueText" text="" />
+                    </BoxLayout>
+                    <BoxLayout profile="RS_createInvoiceDialogSummaryColumn">
+                        <Text profile="RS_createInvoiceDialogSummaryLabel" text="$l10n_rs_ui_vat" />
+                        <Text profile="RS_createInvoiceDialogSummaryValue" id="vatValueText" text="" />
+                    </BoxLayout>
+                    <BoxLayout profile="RS_createInvoiceDialogSummaryColumn">
+                        <Text profile="RS_createInvoiceDialogSummaryLabel" text="$l10n_rs_ui_interest" />
+                        <Text profile="RS_createInvoiceDialogSummaryValue" id="interestValueText" text="" />
+                    </BoxLayout>
+                    <BoxLayout profile="RS_createInvoiceDialogSummaryColumn">
+                        <Text profile="RS_createInvoiceDialogSummaryLabel" text="$l10n_rs_ui_amountGross" />
+                        <Text profile="RS_createInvoiceDialogSummaryValue" id="grossValueText" text="" />
+                    </BoxLayout>
+                </BoxLayout>
+
+                <ThreePartBitmap profile="fs25_lineSeparatorBottomSoft" />
+            </BoxLayout>
+        </GuiElement>
+
+        <BoxLayout profile="fs25_dialogButtonBox" id="buttonsPC">
+            <Button profile="buttonOK" text="$l10n_button_ok" onClick="onClickOk" id="okButton" />
+            <Bitmap profile="fs25_dialogButtonBoxSeparator" />
+            <Button profile="buttonBack" text="$l10n_button_back" onClick="onClickBack" id="backButton" />
+        </BoxLayout>
+    </GuiElement>
+
+    <GUIProfiles>
+        <Profile name="RS_createInvoiceDialog" extends="fs25_dialogBg">
+            <size value="650px 700px"/>
+        </Profile>
+
+        <Profile name="RS_createInvoiceDialogVerticalBox" extends="emptyPanel" with="anchorMiddleRight">
+            <size value="520px 570px" />
+            <flowDirection value="vertical" />
+            <useFullVisibility value="false" />
+            <alignmentX value="center" />
+            <elementSpacing value="10px" />
+        </Profile>
+
+        
+        <Profile name="RS_createInvoiceDialogFieldRow" extends="emptyPanel" with="anchorMiddleRight">
+            <size value="460px 72px" />
+            <flowDirection value="horizontal" />
+            <useFullVisibility value="false" />
+            <alignmentX value="center" />
+            <elementSpacing value="20px" />
+        </Profile>
+
+        <Profile name="RS_createInvoiceDialogFieldColumn" extends="emptyPanel">
+            <size value="220px 72px" />
+            <flowDirection value="vertical" />
+            <useFullVisibility value="false" />
+            <elementSpacing value="6px" />
+        </Profile>
+
+        <!-- Full-width column (used for simplified product selection) -->
+        <Profile name="RS_createInvoiceDialogFieldColumnFull" extends="emptyPanel">
+            <size value="460px 72px" />
+            <flowDirection value="vertical" />
+            <useFullVisibility value="false" />
+            <elementSpacing value="6px" />
+        </Profile>
+
+        <Profile name="RS_createInvoiceDialogSummaryRow" extends="emptyPanel" with="anchorMiddleRight">
+            <size value="460px 62px" />
+            <flowDirection value="horizontal" />
+            <useFullVisibility value="false" />
+            <alignmentX value="center" />
+            <elementSpacing value="10px" />
+        </Profile>
+
+        <Profile name="RS_createInvoiceDialogSummaryColumn" extends="emptyPanel">
+            <size value="107px 62px" />
+            <flowDirection value="vertical" />
+            <useFullVisibility value="false" />
+            <elementSpacing value="4px" />
+        </Profile>
+
+        <Profile name="RS_createInvoiceDialogSummaryValue" extends="baseReference">
+            <size value="107px 28px" />
+            <textSize value="18px" />
+            <textAlignment value="center" />
+            <textWrapWidth value="107px" />
+        </Profile>
+
+        <Profile name="RS_createInvoiceDialogSummaryLabel" extends="baseReference">
+            <size value="107px 18px" />
+            <textSize value="14px" />
+            <textAlignment value="center" />
+            <textWrapWidth value="107px" />
+        </Profile>
+
+        <Profile name="RS_createInvoiceDialogLabelSmall" extends="baseReference">
+            <size value="220px 20px" />
+            <textSize value="16px" />
+            <textWrapWidth value="220px" />
+        </Profile>
+
+        <Profile name="RS_createInvoiceDialogAmountInputSmall" extends="fs25_textInput">
+            <size value="220px 31px" />
+            <maxCharacters value="9" />
+        </Profile>
+
+        <!-- Half-width controls used in the compact activity/unit-price row -->
+        <Profile name="RS_createInvoiceDialogHalfOption" extends="fs25_multiTextOption">
+            <size value="220px 31px" />
+        </Profile>
+
+        <!-- Full-width dropdown (used for simplified product selection) -->
+        <Profile name="RS_createInvoiceDialogFullOption" extends="fs25_multiTextOption">
+            <size value="460px 31px" />
+        </Profile>
+
+        <Profile name="RS_createInvoiceDialogHalfInput" extends="fs25_textInput">
+            <size value="220px 31px" />
+            <maxCharacters value="9" />
+        </Profile>
+
+<Profile name="RS_createInvoiceDialogLabel" extends="baseReference">
+            <size value="460px 20px" />
+            <textSize value="16px" />
+            <textWrapWidth value="460px" />
+        </Profile>
+
+        <Profile name="RS_createInvoiceDialogAmountInput" extends="fs25_textInput">
+            <size value="460px 31px" />
+            <maxCharacters value="9" />
+        </Profile>
+
+        <Profile name="RS_createInvoiceDialogSmallInfo" extends="baseReference">
+            <size value="460px 18px" />
+            <textSize value="14px" />
+            <textWrapWidth value="460px" />
+        </Profile>
+    </GUIProfiles>
+</GUI>

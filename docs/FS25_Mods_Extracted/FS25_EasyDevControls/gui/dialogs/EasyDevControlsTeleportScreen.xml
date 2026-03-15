@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<GUI onOpen="onOpen" onClose="onClose" onCreate="onCreate">
+    <Bitmap profile="baseReference" imageColor="0 0 0 1"/>
+    <InGameMap id="ingameMap" profile="ingameMapOverview" cursorId="mapCursor" onClickMap="onClickMap" onDrawPostIngameMapHotspots="onDrawPostIngameMapHotspots"/>
+    <Bitmap profile="ingameMapCursor" id="mapCursor" visible="false"/>
+
+    <Text profile="edc_actionMessageText" id="actionMessage"/>
+
+    <BoxLayout profile="fs25_buttonBox" id="buttonBox">
+        <Button profile="buttonBack" id="buttonBack" onClick="onClickBack" text="$l10n_button_back"/>
+
+        <Text profile="fs25_inputGlyphText" id="mapMoveGlyphText">
+            <Bitmap profile="fs25_buttonBoxSeparator" position="14px 0px"/>
+        </Text>
+        <InputGlyph profile="fs25_inputGlyph" id="mapMoveGlyph"/>
+
+        <Text profile="fs25_inputGlyphText" id="mapZoomGlyphText">
+            <Bitmap profile="fs25_buttonBoxSeparator" position="14px 0px"/>
+        </Text>
+        <InputGlyph profile="fs25_inputGlyph" id="mapZoomGlyph"/>
+
+        <!-- Controller Support -->
+        <Button profile="buttonSelectMap" id="buttonSelect" text="$l10n_button_select">
+            <Bitmap profile="fs25_buttonBoxSeparator" name="separator"/>
+        </Button>
+    </BoxLayout>
+
+    <GUIProfiles>
+        <Profile name="edc_actionMessageText" extends="fs25_textDefault" with="anchorBottomLeft">
+            <textAutoWidth value="true"/>
+            <textSize value="24px"/>
+            <textBold value="true"/>
+            <textOffset value="25px 5px"/>
+            <text2Size value="24px"/>
+            <text2Bold value="true"/>
+            <text2Offset value="24px 4px"/>
+            <text2Color value="$preset_colorBlack"/>
+        </Profile>
+    </GUIProfiles>
+</GUI>

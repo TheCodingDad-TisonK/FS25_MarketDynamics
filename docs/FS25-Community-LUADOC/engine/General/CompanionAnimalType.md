@@ -1,0 +1,7 @@
+### CompanionAnimalType
+
+**Description**
+
+**Definition**
+
+> CompanionAnimalType()

@@ -1,0 +1,7 @@
+### FrameInterpolationMode
+
+**Description**
+
+**Definition**
+
+> FrameInterpolationMode()

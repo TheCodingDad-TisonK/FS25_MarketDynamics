@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<l10n>
+    <translationContributors/>
+    <texts>
+        <text name="input_afm_menu"    text="Fortgeschrittener Farm Manager" />
+        <text name="input_afm_togg"    text="Fahrzeug-Schaltknopf" />
+        <text name="input_afm_hot1"    text="Fahrzeug-Hotkey #1" />
+        <text name="input_afm_hot2"    text="Fahrzeug-Hotkey #2" />
+        <text name="input_afm_hot3"    text="Fahrzeug-Hotkey #3" />
+        <text name="input_afm_hot4"    text="Fahrzeug-Hotkey #4" />
+        <text name="input_afm_hot5"    text="Fahrzeug-Hotkey #5" />
+        <text name="input_afm_hot6"    text="Fahrzeug-Hotkey #6" />
+        <text name="input_afm_hot7"    text="Fahrzeug-Hotkey #7" />
+        <text name="input_afm_hot8"    text="Fahrzeug-Hotkey #8" />
+        <text name="input_afm_hot9"    text="Fahrzeug-Hotkey #9" />
+        <text name="afm_noVehiclesFound" text="Dieser Betrieb besitzt derzeit keine Fahrzeuge." />
+        <text name="afm_noToolsFound" text="Dieser Betrieb besitzt derzeit keine Werkzeuge." />
+        <text name="afm_noPlaceablesFound" text="Dieser Betrieb besitzt derzeit keine platzierbaren Güter." />
+        <text name="afm_sellVehicleConfirm" text="Wollen Sie dieses Fahrzeug wirklich verkaufen für %s?" />
+        <text name="afm_moneyFormat"   text="%d €" />
+        <text name="afm_name"          text="Name" />
+        <text name="afm_incomePerHour" text="Einkommen pro Stunde" />
+        <text name="afm_location"      text="Standort" />
+        <text name="afm_category"      text="Kategorie" />
+        <text name="afm_crop"          text="Zustand der Kulturpflanzen" />
+        <text name="afm_fieldNum"      text="Feld #" />
+        <text name="afm_owner"         text="Eigentümer" />
+        <text name="afm_occupant"      text="Insasse" />
+        <text name="afm_ownership"     text="Eigentümerschaft" />
+        <text name="afm_leasingCost"   text="Mietkosten pro Tag" />
+        <text name="afm_dailyUpkeep"   text="Täglicher Unterhalt" />
+        <text name="afm_prePlaced"     text="Vorplatzierte" />
+        <text name="afm_mapDefault"    text="Karte Standard" />
+        <text name="afm_fillLevel"     text="Füllstand" />
+        <text name="afm_compacted"     text="Verdichtungsgrad" />
+        <text name="afm_fermented"     text="Gärungsgrad" />
+        <text name="afm_capacity"      text="Kapazität" />
+        <text name="afm_sellValue"     text="Wert verkaufen" />
+        <text name="afm_licensePlate"  text="Nummernschild" />
+        <text name="afm_maxCruise"     text="Max Cruise" />
+        <text name="afm_age"           text="Alter" />
+        <text name="afm_power"         text="Motorleistung" />
+        <text name="afm_operatingHours" text="Betriebszeiten" />
+        <text name="afm_powerRequirement" text="Leistungsbedarf" />
+        <text name="afm_maxWorkingSpeed" text="Maximale Arbeitsgeschwindigkeit" />
+        <text name="afm_owned"         text="Eigene" />
+        <text name="afm_leased"        text="Geleast" />
+        <text name="afm_mission"       text="Mission" />
+        <text name="afm_brand"         text="Marke" />
+        <text name="afm_you"           text="Sie" />
+        <text name="afm_con_ai"        text="AI-Helfer" />
+        <text name="afm_con_ad"        text="AutoDrive" />
+        <text name="afm_con_cp"        text="CoursePlay" />
+        <text name="afm_occupied"      text="Das Fahrzeug ist bereits im Einsatz!" />
+        <text name="afm_parked"        text="Geparkt" />
+        <text name="afm_park"          text="Park" />
+        <text name="afm_unpark"        text="Un-Park" />
+        <text name="afm_tool"          text="Werkzeug Nr. %d" />
+        <text name="afm_fill"          text="Füllen Nr. %d" />
+        <text name="afm_warp_tool"     text="Warp an Werkzeug" />
+        <text name="afm_warp_loc"      text="Warp zum Standort" />
+        <text name="afm_placeable"     text="Platzierbar" />
+        <text name="afm_toolOverview"  text="Werkzeuge" />
+        <text name="afm_placOverview"  text="Aufsteller" />
+        <text name="afm_fldOverview"   text="Felder" />
+        <text name="afm_nonSell"       text="Unverkäuflich" />
+        <text name="afm_cleanDialog"   text="Sauber" />
+        <text name="afm_paintDialog"   text="Farbe"/>
+        <text name="afm_repairDialog"  text="Reparatur"/>
+        <text name="afm_refuelDialog"  text="Tanken Sie"/>
+        <text name="afm_constructionState" text="Baufortschritt" />
+        <text name="afm_estBuildTime"  text="Geschätzte Bauzeit" />
+        <text name="afm_estBuildTimeRemaining" text="Verbleibende geschätzte Bauzeit" />
+        <text name="afm_materialsInStorage" text="Materials In Storage" />
+        <text name="afm_totals"        text="Summen" />
+        <text name="afm_farmlands"     text="Ackerland" />
+        <text name="afm_crops"         text="Kulturpflanzen" />
+        <text name="afm_cropStage"     text="Wachstumsphase" />
+        <text name="afm_unknown"       text="Unbekannt" />
+        <text name="afm_none"          text="Keine" />
+        <text name="afm_fieldInfo_expectedYield" text="Erwartete Rendite" />
+        <text name="afm_fieldInfo_yieldPotential" text="Renditepotenzial" />
+        <text name="afm_Foragable"    text="Futtermittel" />
+        <text name="afm_Narrow_Wheels" text="Nur schmal" />
+        <text name="afm_All_Wheels"   text="Alle Reifen und Ketten" />
+        <text name="afm_growth_stage" text="Wachstumsphase" />
+        <text name="afm_wheel_type"   text="Bevorzugte Bereifung" />
+        <text name="afm_cropType"     text="Kulturpflanzenart" />
+        <text name="afm_fieldArea"    text="Feldbereich" />
+        <text name="afm_farmlandArea" text="Ackerland Fläche" />
+        <text name="afm_landValue"    text="Bodenwert" />    
+
+        <text name="afm_locate_center" text="Zentrale" />
+        <text name="afm_locate_n"      text="Norden" />
+        <text name="afm_locate_s"      text="Süd" />
+        <text name="afm_locate_e"      text="Ost" />
+        <text name="afm_locate_w"      text="West" />
+        <text name="afm_locate_nw"     text="Nordwest" />
+        <text name="afm_locate_ne"     text="Nordost" />
+        <text name="afm_locate_sw"     text="Südwest" />
+        <text name="afm_locate_se"     text="Südost" />
+        <text name="afm_hotkeystring"  text="Verwenden Sie die Tasten 1-9, um die Fahrzeug-HotKey-Funktion zu aktivieren oder zu deaktivieren." />
+        <text name="afm_help_title"    text="Fortgeschrittener Farm Manager"/>
+        <text name="afm_help_page_vehicle_base_text" text="
+Dieser Bereich von Advanced Farm Manager hilft Ihnen bei der Verwaltung Ihrer einsatzfähigen Fahrzeuge.  Traktoren, Autos, Lastwagen und andere selbstfahrende Arbeitsgeräte werden hier angezeigt.
+
+In diesem Bereich können Sie Hotkeys für diese Fahrzeuge festlegen, den Parkstatus des Fahrzeugs einstellen und dem Fahrzeug einen Spitznamen zuweisen.
+
+Wenn Sie die Tastenkombination 'Fahrzeug eingeben' (LEERTASTE) verwenden oder auf ein Fahrzeug doppelklicken, wird das Fahrzeug eingegeben, sofern möglich.
+
+Außerdem können Sie Ihre Fahrzeuge verkaufen, zurückgeben, reinigen, reparieren, neu lackieren und auftanken.
+
+Mit der Tastenkombination 'Fahrzeugwechsel' (Standardeinstellung: Linke Alt-Taste + Ziffernblock Null) können Sie per TAB zwischen allen Fahrzeugen und nur den Fahrzeugen umschalten, denen ein Hotkey zugewiesen wurde.
+" />
+        <text name="afm_help_page_vehicle_detail_text" text="
+Zum Festlegen eines Hotkeys verwenden Sie die Zifferntasten 1-9 (Tastatur oder Ziffernblock).  Der aktuelle Hotkey wird links neben dem Fahrzeugnamen angezeigt.  Pro Hotkey kann nur ein Fahrzeug zugewiesen werden.  Um die Zuweisung eines Hotkeys aufzuheben, drücken Sie die entsprechende Nummer erneut.
+
+Fahrzeuge, die in gelber Schrift / mit einem Motorsymbol angezeigt werden, sind derzeit in Betrieb.
+
+Fahrzeuge, die in grauer Schrift / mit einem Symbol für die Feststellbremse angezeigt werden, sind derzeit geparkt.
+
+Fahrzeuge, die in roter Schrift angezeigt werden, haben einen Schadenswert, der die Effizienz des Fahrzeugs beeinträchtigen kann.
+" />
+        <text name="afm_help_page_implement_base_text" text="
+Dieser Bereich von Advanced Farm Manager hilft Ihnen bei der Verwaltung Ihrer Arbeitsgeräte.
+
+Mit der Tastenkombination 'Warp' (LEERTASTE) oder einem Doppelklick auf ein Anbaugerät können Sie sich in die Nähe dieses Anbaugeräts begeben.
+
+In diesem Bereich können Sie Ihre Anbaugeräte verkaufen, zurückgeben, reinigen, reparieren und neu lackieren.
+
+Werkzeuge, die in rotem Text angezeigt werden, haben einen Schadenswert, der sich auf die Effizienz des Werkzeugs auswirken kann.
+" />
+        <text name="afm_help_page_placeable_base_text" text="
+Dieser Bereich des Advanced Farm Manager hilft Ihnen bei der Verwaltung Ihrer placeables.
+
+In diesem Bereich können Sie alle placeables, die Sie besitzen, verkaufen.  Es wird empfohlen, vor dem Verkauf 'ungewöhnlicher' placeables zu speichern, da diese möglicherweise mehr abwerfen, als Sie erwarten.
+
+Mit der Tastenkombination 'Warp' (LEERTASTE) oder einem Doppelklick auf einen Platzhalter können Sie sich in die Nähe dieses Platzhalters begeben.
+
+Der angegebene Ort ist die Kartenregion, in der sich das Platzierungsobjekt befindet.
+" />
+        <text name="afm_help_page_field_base_text" text="
+Dieser Abschnitt von Advanced Farm Manager hilft bei der Visualisierung der Felder auf der Karte.
+
+Mit der Tastenkombination 'Warp' (LEERTASTE) oder einem Doppelklick auf ein Feld können Sie sich in die Nähe dieses Feldes bewegen.
+
+Hier wird der Besitzer des Feldes aufgelistet, und wenn es sich um einen NSC handelt, wird angezeigt, ob ein Vertrag für dieses Feld verfügbar oder in Arbeit ist.
+
+In diesem Bereich findest du auch die Früchte und ihren Status für jedes Feld.  Wenn eine Frucht als '--' aufgeführt ist, ist das Feld derzeit leer.
+
+Der angegebene Ort ist die Kartenregion, in der sich das Feld befindet.
+" />
+        <text name="afm_noAvailVehicle"   text="Es stehen keine HotKey-Fahrzeuge zur Eingabe zur Verfügung" />
+        <text name="afm_toggleNotLimited" text="Fahrzeugumschaltung: Normal" />
+        <text name="afm_toggleLimited"    text="Fahrzeugumschaltung: HotKey" />
+        <text name="afm_contract"         text="Vertrag" />
+        <text name="afm_contract_avail"   text="Vertrag verfügbar, %s" tag="format" />
+        <text name="afm_contract_active"  text="Vertrag aktiv, %s" tag="format" />
+        <text name="afm_refuel_ask"       text="Fahrzeug für %s auftanken?" tag="format" />
+        <text name="afm_refuel"        text="Tanken Sie" />
+        <text name="afm_harvestPotential" text="Erntepotenzial" />
+        <text name="afm_potentialYield"   text="Potenzielle Ausbeute" />
+        <text name="afm_rolling"          text="Rollender" />
+        <text name="afm_lime"             text="Limette" />
+        <text name="afm_sell_animals"     text="Sell Animals" />
+        <text name="afm_sellAnimalsConfirm" text="Möchten Sie alle Tiere in dieser Haltung verkaufen für %s?" />
+        <text name="afm_animalsValue"     text="Tiere Wert" />
+        <text name="afm_year"             text="Jahr" />
+        <text name="afm_years"            text="Jahre" />
+        <text name="afm_month"            text="Monat" />
+        <text name="afm_months"           text="Monate" />
+    </texts>
+</l10n>

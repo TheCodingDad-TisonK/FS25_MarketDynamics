@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--=====================================================================================================
+	BetterContracts l10n translations
+	Changelog:
+	  v1.0.0.0    28.10.2024  1st port to FS25
+	  v1.1.0.0    08.01.2025  UI settings page, discount mode
+	  v1.1.1.2    09.02.2025  compatible FS25_additionalGameSettings
+	  v1.2.0.0    12.05.2025  new vehicle selection dialog
+	  v1.3.0.0    26.09.2025  bc_harvest: text="Ernte %.6s"
+	  						  bc_hardMode_tooltip: shortened text	
+=======================================================================================================-->
+<l10n>
+	<texts>
+		<!-- updates v1.3.0.5 
+		- add onions to text:
+		<text name="bc_genVegetable_tooltip" text="Generate harvest contracts for carrots, beetroot, parsnip, and onions" />
+		-->
+		<!-- updates v1.3.0.3 -->
+		<text name="bc_genSingle" text="Einzelgenerierung" />
+		<text name="bc_genSingle_tooltip" text="Soll pro Interval und Missionstyp nur max eine Mission erzeugt werden?" />
+
+		<!-- updates v1.3.0.0 -->
+		<text name="bc_sow" text="Säe %.8s" />
+
+		<!-- updates v1.2.0.3 -->
+		<text name="bc_balesTotal" text="Erwartete Ballen:" />
+		<text name="bc_balesDone" text="Fertige Ballen:" />
+		<!-- updates v1.2.0.0 -->
+		<text name="bc_vehicleBox" text="Maschinen-Auswahl" />
+		<!-- updates v1.1.1.3 -->
+		<text name="bc_stayNew" text="Liste Neue Verträge" />
+		<text name="bc_stayNew_tooltip" text="Verhindert das Umschalten auf die Liste aktiver Aufträge, wenn ein neuer Auftrag angenommen wird." />
+		<text name="bc_finishField" text="Feldarbeit beenden" />
+		<text name="bc_finishField_tooltip" text="Erlaubt die Fertigbearbeitung des kompletten Feldes, auch wenn der Auftrag schon erfüllt ist." />
+		<text name="bc_hideMission" text="Aufträge ausblenden" />
+		<text name="bc_hideMission_tooltip" text="Blendet alle noch nicht begonnenen Aufträge (Fortschritt 0%) bei der Hud Anzeige aus." />
+		<!-- updates v1.1.1.2 -->
+		<text name="global_bc_name" text="Better Contracts" />
+		<text name="bc_settingsNoPermission" text="Du hast nicht die Berechtigung, die Mod-Einstellungen zu ändern." />
+		<!-- Keys -->
+		<text name = "input_MENU_EXTRA_3" text = "BC: Details an/aus"/>
+		<text name = "input_BC_MTOGGLE" text = "BC: Anzeige aktiver Farm-Verträge an/aus"/>
+		<text name = "bc_actionFerment" text = "Ballen fermentieren"/>
+		<!-- Gui Buttons -->
+		<text name="bc_hidden" text="Ausgeblendet: %d" />
+		<text name="bc_other" text="Sonstige" />
+		<text name="bc_new_contracts" text="Neu" />
+		<text name="bc_clear_contracts" text="Löschen" />
+		<text name="bc_detailsOff" text="BC aus" />
+		<text name="bc_detailsOn" text="BC an" />
+
+		<!-- Display texts --> 
+		<text name="bc_mowed" text="Gemäht:" />
+		<text name="bc_tomow" text="Zu mähen:" />
+		<text name="bc_chaff" text="Häcksle %s" />
+		<text name="bc_jobType_chaff" text="Häckseln" />
+		<text name="bc_harvest" text="Ernte %.6s" />
+		<text name="bc_leased" text="/ Leased " />
+		<text name="bc_enoughMissions" text="Deine Farm hat bereits die maximale Zahl aktiver Lohnaufträge." />
+		<text name="bc_jobsCompleted" text="Anzahl erfolgreicher Jobs: %d" />
+		<text name="bc_monthlyLimit" text="Deine Farm hat die Maximalzahl Aufträge für diesen Monat erreicht." />
+
+		<!-- Hard mode -->
+		<text name="bc_penalty" text="Vertragsstrafe" />
+		<text name="bc_warnTimeout" text="Bitte beenden Sie Ihre %d Aufträge vor 24:00 Uhr, um Vertragsstrafen zu vermeiden." />
+		<text name="bc_warnCancel" text=" Die fällige Vertragsstrafe beträgt mindestens " />
+		<text name="bc_leaseNotEnough" text="Sie müssen noch %d Aufträge für %s mit eigenen Geräten erfüllen, bevor Sie Geräte leihen können." />
+
+		<!-- discount mode -->
+		<text name="bc_maxJobs" text="Du hast den maximalen Rabatt für %s erreicht." />
+		<text name="bc_discount" text="Rabatt" />
+		<text name="bc_owner" text="Besitzer:" />
+		<text name="bc_discValue" text="%s gibt dir %d %% Rabatt für zukünftige Landkäufe." />
+
+		<!-- npc details box -->
+		<text name="SC_widhei" text="Max Breite/ Länge:" />
+		<text name="SC_worktim" text="Zeitschätzung:" />
+		<text name="SC_price" text="Preis:" />
+		<text name="SC_profpmin" text="Profit/min:" />
+		<text name="SC_sort" text="Sort." />
+
+		<text name="SC_field" text="Feld %d / %s" />
+		<text name="SC_fillType" text="Warentyp:" />
+		<text name="SC_worked" text="Feld bearbeitet:" />
+		<text name="SC_delivered" text="Abgeliefert:" />
+		<text name="SC_deliver" text="Zu liefern:" />
+		<text name="SC_keep" text="Eigenanteil:" />
+		<text name="SC_profit" text="Erlös Eigenanteil:" />
+		<text name="SC_profitSupply" text="Profit:" />
+		<text name="SC_usage" text="Verbrauch:" />
+		<text name="SC_cost" text="Materialkosten:" />
+		<text name="SC_togo" text="Fehlt noch:" />
+		<text name="SC_timeleft" text="Restzeit:" />
+
+		<!-- Sort button help text -->
+		<text name="SC_sortCat" text="Missionstyp" />
+		<text name="SC_sortRev" text="Vertragswert" />
+		<text name="SC_sortNpc" text="Auftraggeber" />
+		<text name="SC_sortProf" text="Nettoprofit" />
+		<text name="SC_sortpMin" text="Profit/min" />
+
+		<!-- progress bars -->
+		<text name="bc_progField" text="Fortschritt Feld" />
+		<text name="bc_progDeliver" text="Fortschritt Lieferung" />
+
+		<!-- Settings Page -->
+		<text name="bc_rewardMultiplier" text="Basislohn" />
+		<text name="bc_rewardMultiplier_tooltip" text="Passt die Lohnhöhe für die angebotenen Verträge an." />
+		<text name="bc_rewardMultiplierMow" text="Basislohn Mähen und Ballenpressen" />
+		<text name="bc_rewardMultiplierMow_tooltip" text="Ändert die Lohnhöhe nur für Verträge zum Mähen und Ballen pressen." />
+		<text name="bc_leaseMultiplier" text="Kosten Leihgeräte" />
+		<text name="bc_leaseMultiplier_tooltip" text="Passt die Kosten für bei Verträgen angebotene Leihgeräte an." />
+		<text name="bc_maxActive" text="Gleichzeitig aktive Verträge" />
+		<text name="bc_maxActive_tooltip" text="Maximalzahl der gleichzeitig erlaubten aktiven Verträge. 0 bedeutet: unbegrenzt." />
+		<text name="bc_toDeliver" text="Lieferanteil Ernteverträge" />
+		<text name="bc_toDeliver_tooltip" text="Prozentsatz des theoretisch möglichen Ertrags, der zur Erfüllung eines Erntevertrags abgeliefert werden muss." />
+		<text name="bc_toDeliverBale" text="Lieferanteil Ballenverträge" />
+		<text name="bc_toDeliverBale_tooltip" text="Prozentsatz des theoretisch möglichen Ertrags, der zur Erfüllung eines Vertrags zum Mähen und Ballenpressen abgeliefert werden muss." />
+		<text name="bc_fieldCompletion" text="Feldbearbeitung abgeschlossen" />
+		<text name="bc_fieldCompletion_tooltip" text="Prozentsatz der Feldfläche, ab dem das Feld als komplett bearbeitet zählt." />
+		<text name="bc_refreshMP" text="Berechtigung Vertragsliste" />
+		<text name="bc_refreshMP_tooltip" text="Wer in einem MP-Spiel Verträge löschen/ erzeugen darf" />
+		<text name="bc_ferment" text="Insta-Gären" />
+		<text name="bc_ferment_tooltip" text="Der Spieler kann einen gewickelten Grasballen sofort fertig gären (F1 menu)." />
+		<text name="bc_forcePlow" text="Wurzelfrüchte pflügen" />
+		<text name="bc_forcePlow_tooltip" text="Nach jeder Ernte von Mais/ Kartoffeln/ Rüben muss das Feld gepflügt werden." />
+		<text name="bc_debug" text="Debug Modus" />
+		<text name="bc_debug_tooltip" text="Wenn aktiviert, werden Info Meldungen in die Log-Datei geschrieben. Kann bei der Fehlersuche helfen." />
+
+		<!-- Lazy Farmers not needed any more  - - - - - - - - - - - - - - - - - - - - -
+		<text name="bc_lazyNPCTitle" text="Faule Farmer" />
+		<text name="bc_lazyNPC" text="Aktiviert" />
+		<text name="bc_lazyNPC_tooltip" text="Wenn aktiviert, unterlassen NPC-Farmer häufiger die Arbeit auf ihren Feldern, so dass mehr Verträge angeboten werden können." />
+		<text name="bc_npcHarvest_tooltip" text="Wenn aktiv, werden die NPC-Farmer gar nicht mehr zum Ernten fahren. Könnte also eine Menge Arbeit für dich werden." />
+		<text name="bc_npcSow_tooltip" text="Wenn aktiv, werden die NPC-Farmer seltener Säh-Arbeiten selbst ausführen, und sie dafür als Lohnarbeit anbieten." />
+		<text name="bc_npcPlowCultivate" text="Pflügen und Grubbern" />
+		<text name="bc_npcPlowCultivate_tooltip" text="Wenn aktiv, werden die NPC-Farmer seltener selbst pflügen und grubbern." />
+		<text name="bc_npcFertilize_tooltip" text="Wenn aktiv, werden die NPC-Farmer seltener Dünge-Arbeiten selbst ausführen, und sie dafür als Lohnarbeit anbieten." />
+		<text name="bc_npcWeed_tooltip" text="Wenn aktiv, werden die NPC-Farmer seltener das Unkraut auf ihren Feldern selbst bekämpfen, sondern Jät- und Sprüh-Aufträge als Lohnarbeit anbieten." />
+		-->
+		<text name="bc_hardModeTitle" text="Erhöhte Schwierigkeit" />
+		<text name="bc_hardMode" text="Aktiviert" />
+
+		<text name="bc_hardMode_tooltip" text="Wenn aktiviert, kostet es Konventionalstrafe, einen laufenden Vertrag abzubrechen." />
+		<text name="bc_hardPenalty" text="Vertragsstrafe" />
+		<text name="bc_hardPenalty_tooltip" text="Höhe der Vertragsstrafe für abgebrochene Verträge (in % vom Vertragswert)." />
+		<text name="bc_hardLease" text="Leihgeräte freigeschaltet" />
+		<text name="bc_hardLease_tooltip" text="Anzahl der zu erfüllenden Verträge pro NPC-Farmer, bevor von diesem Farmer Geräte ausgeliehen werden können." />
+		<text name="bc_hardExpire" text="Zeitfenster" />
+		<text name="bc_hardExpire_tooltip" text="Am Ende welcher Periode ein laufender Vertrag spätestens beendet sein muss." />
+		<text name="bc_hardLimit" text="Verträge pro Monat" />
+		<text name="bc_hardLimit_tooltip" text="Anzahl Verträge, die pro Monat maximal angenommen werden können. (-1: no limit, 0: keine Verträge)" />
+
+		<text name="bc_discountModeTitle" text="Nachlass bei Feldkäufen" />
+		<text name="bc_discountMode" text="Aktiviert" />
+		<text name="bc_discountMode_tooltip" text="Wenn aktiviert, gewährt ein NPC Farmer einen Nachlass auf von ihm gekaufte Farmlands, der mit der Anzahl der erfolgreich für ihn erfüllten Verträge steigt." />
+		<text name="bc_discPerJob" text="Nachlass pro erfülltem Vertrag" />
+		<text name="bc_discPerJob_tooltip" text="Pro erfülltem Vertrag erhöht der NPC-Farmer seinen Nachlass für Feldkäufe um diesen Prozentwert. Der maximale Rabatt wird aber 50% nicht übersteigen." />
+		<text name="bc_discMaxJobs" text="Anzahl nachlasswirksamer Jobs" />
+		<text name="bc_discMaxJobs_tooltip" text="Kann den Maximalrabatt verringern, z.B. Nachlass pro Vertrag = 11%, Job-Anzahl = 3 -> Maximalrabatt 33%. Achtung: Bei Feldkauf vermindert sich die aktuelle Zahl nachlasswirksamer Jobs um den hier definierten Wert. " />
+				
+		<text name="bc_missionGeneration" text="Vertragsgenerierung" />
+		<text name="bc_generationInterval" text="Generier-Intervall" />
+		<text name="bc_generationInterval_tooltip" text="Anzahl 6-Minuten-Intervalle, die gewartet wird, bevor neue Verträge generiert werden." />
+
+		<text name="bc_genGrain" text="Getreide-Ernte" />
+		<text name="bc_genGrain_tooltip" text="Erzeugt Ernte-Aufträge für Getreide (inkl. Mais, Baumwolle)" />
+		<text name="bc_genVegetable" text="Gemüse-Ernte" />
+		<text name="bc_genVegetable_tooltip" text="Erzeugt Ernte-Aufträge für Karotten, Rote Beete, Zwiebeln und Pastinaken" />
+		<text name="bc_genGreen" text="Grünzeug-Ernte" />
+		<text name="bc_genGreen_tooltip" text="Erzeugt Ernte-Aufträge für Bohnen, Erbsen und Spinat" />
+		<text name="bc_genRoot" text="Wurzelfrucht-Ernte" />
+		<text name="bc_genRoot_tooltip" text="Erzeugt Ernte-Aufträge für Kartoffeln und Zuckerrüben" />
+		<text name="bc_genTree" text="Holztransport" />
+		<text name="bc_genTree_tooltip" text="Erzeugt Holztransport-Aufträge" />
+		<text name="bc_genDead" text="Totholz" />
+		<text name="bc_genDead_tooltip" text="Erzeugt Totholz-Aufträge" />
+		<text name="bc_genRock" text="Felsen entfernen" />
+		<text name="bc_genRock_tooltip" text="Erzeugt Aufträge zum Felsen entfernen" />
+	</texts>
+</l10n>

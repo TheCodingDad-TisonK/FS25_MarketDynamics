@@ -1,0 +1,11 @@
+{
+  "label": "Errors",
+  "link": {
+    "type": "generated-index",
+    "title": "Errors Documentation",
+    "description": "29 pages, 71 functions"
+  },
+  "customProps": {
+    "icon": "exclamation-triangle"
+  }
+}

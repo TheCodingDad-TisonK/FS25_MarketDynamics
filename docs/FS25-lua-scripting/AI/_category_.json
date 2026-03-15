@@ -1,0 +1,11 @@
+{
+  "label": "AI",
+  "link": {
+    "type": "generated-index",
+    "title": "AI Documentation",
+    "description": "11 pages, 131 functions"
+  },
+  "customProps": {
+    "icon": "robot"
+  }
+}

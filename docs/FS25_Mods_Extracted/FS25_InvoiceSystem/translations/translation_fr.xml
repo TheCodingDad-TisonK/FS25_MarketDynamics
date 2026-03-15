@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<l10n>
+    <texts>
+        <text name="rs_ui_activityCultivating" 				text="Déchaumage"/>
+        <text name="rs_ui_activityDelivering" 				text="Livraison"/>
+        <text name="rs_ui_activityFertilizing" 				text="Fertilisation"/>
+        <text name="rs_ui_activityHarrow" 					text="Hersage"/>
+        <text name="rs_ui_activityHarvest" 					text="Récolte"/>
+        <text name="rs_ui_activityLiming" 					text="Chaulage"/>
+        <text name="rs_ui_activityOther" 					text="Service"/>
+        <text name="rs_ui_activityPlowing" 					text="Labour"/>
+        <text name="rs_ui_activityWoodFelling" 				text="Abattage"/>
+        <text name="rs_ui_amount" 							text="Montant"/>
+        <text name="rs_ui_createInvoice" 					text="Créer une facture"/>
+        <text name="rs_ui_createInvoiceTitle" 				text="Créer une facture"/>
+        <text name="rs_ui_date" 							text="Date"/>
+        <text name="rs_ui_field" 							text="Champ"/>
+        <text name="rs_ui_header_amount" 					text="Montant"/>
+        <text name="rs_ui_inGameMenuTitle" 					text="Système de facturation"/>
+        <text name="rs_ui_invoiceAmount" 					text="Montant (€)"/>
+        <text name="rs_ui_notifyInvoiceReceived" 			text="Nouvelle facture de %s : %s (%s)"/>
+        <text name="rs_ui_invoiceAreaHa" 					text="Surface"/>
+        <text name="rs_ui_invoiceFieldNumber" 				text="Numéro de champ (optionnel)"/>
+        <text name="rs_ui_invoiceParty" 					text="De/À"/>
+        <text name="rs_ui_invoicePer1000LShort" 			text="1000L"/>
+        <text name="rs_ui_invoicePerHaShort" 				text="ha"/>
+        <text name="rs_ui_invoicePerStemShort" 				text="pcs"/>
+        <text name="rs_ui_invoicePricePer1000L" 			text="Prix / 1000 L"/>
+        <text name="rs_ui_invoicePricePerHa" 				text="Prix / ha"/>
+        <text name="rs_ui_invoicePricePerStem" 				text="Prix / tronc"/>
+        <text name="rs_ui_invoiceQuantity1000L" 			text="Quantité"/>
+        <text name="rs_ui_invoiceSectionHeader" 			text="Écritures"/>
+        <text name="rs_ui_invoiceSelectActivity" 			text="Sélectionner une activité"/>
+        <text name="rs_ui_invoiceSelectFarmer" 				text="Sélectionner un agriculteur"/>
+        <text name="rs_ui_invoiceSelectFieldOptional" 		text="Sélectionner un champ (optionnel)"/>
+        <text name="rs_ui_invoiceSelectProduct" 			text="Sélectionner un produit"/>
+        <text name="rs_ui_invoiceSize1000L" 				text="Quantité (x1000L)"/>
+        <text name="rs_ui_invoiceSizeHa" 					text="Surface (ha)"/>
+        <text name="rs_ui_invoiceSizeStem" 					text="Troncs (pcs)"/>
+        <text name="rs_ui_invoiceStems" 					text="Troncs"/>
+        <text name="rs_ui_invoiceSuggested" 				text="Suggestion"/>
+        <text name="rs_ui_invoiceWhatFor" 					text="Pour quoi"/>
+        <text name="rs_ui_invoicesTitle" 					text="Factures"/>
+        <text name="rs_ui_issuer" 							text="De"/>
+        <text name="rs_ui_loanAmount" 						text="Montant"/>
+        <text name="rs_ui_noField" 							text="Aucun champ"/>
+        <text name="rs_ui_noOtherFarms" 					text="Aucune autre ferme disponible"/>
+        <text name="rs_ui_noProducts" 						text="Aucun produit"/>
+        <text name="rs_ui_openInvoicesHeader" 				text="Factures en attente"/>
+        <text name="rs_ui_openInvoicesTab" 					text="Factures"/>
+        <text name="rs_ui_paid" 							text="payée"/>
+        <text name="rs_ui_paidInvoicesHeader" 				text="Factures payées"/>
+        <text name="rs_ui_paidInvoicesTab" 					text="Factures payées"/>
+        <text name="rs_ui_payInvoice" 						text="Payer"/>
+        <text name="rs_ui_recipient" 						text="À"/>
+        <text name="rs_ui_showInvoices" 					text="Factures"/>
+        <text name="rs_ui_unitStems" 						text="Troncs"/>
+        <text name="rs_ui_activitySpraying" 				text="Pulvérisation"/>
+        <text name="rs_ui_activityHackenStriegeln" 			text="Binage / Hersage"/>
+        <text name="rs_ui_activitySeeding" 					text="Semis"/>
+        <text name="rs_ui_activityBalePressing" 			text="Pressage de balles"/>
+        <text name="rs_ui_invoiceEnterBaleCount" 			text="Saisir le nombre de balles"/>
+        <text name="rs_ui_invoicePricePerBale" 				text="Prix / balle"/>
+        <text name="rs_ui_errorChooseFarmer" 				text="Veuillez sélectionner un client valide."/>
+        <text name="rs_ui_errorWrongFarm" 					text="Mauvaise ferme sélectionnée"/>
+        <text name="rs_ui_activityVehicleRent" 				text="Location véhicule/outils"/>
+        <text name="rs_ui_invoicePricePerDay" 				text="Prix / jour"/>
+        <text name="rs_ui_invoiceDays" 						text="Jours"/>
+        <text name="rs_ui_invoicePerDayShort" 				text="Jour"/>
+        <text name="rs_ui_deleteInvoice" 					text="Supprimer"/>
+        <text name="rs_ui_amountGross" 						text="Brut"/>
+        <text name="rs_ui_vat" 								text="TVA"/>
+        <text name="rs_ui_interest" 						text="Intérêts"/>
+        <text name="rs_ui_amountNet" 						text="Net"/>
+        <text name="rs_ui_errorMaxOpenInvoices" 			text="Impossible de créer d'autres factures pour le moment, car il y a déjà trop de factures en attente. Veuillez d'abord faire payer des factures."/>
+        <text name="rs_ui_activityMowing" 					text="Fauche"/>
+        <text name="rs_ui_activityTedding" 					text="Fanage"/>
+        <text name="rs_ui_activityWindrowing" 				text="Andainage"/>
+        <text name="rs_ui_activityWeeding" 					text="Désherbage"/>
+        <text name="rs_ui_activityRolling" 					text="Roulage"/>
+        <text name="rs_ui_activityStonePicking" 			text="Ramassage des pierres"/>
+        <text name="rs_ui_activityMulching" 				text="Broyage"/>
+        <text name="rs_ui_activityBaleWrapping" 			text="Enrubannage"/>
+        <text name="rs_ui_moneyType_invoice_income" 		text="Factures (revenus)"/>
+        <text name="rs_ui_moneyType_invoice_expense" 		text="Factures (dépenses)"/>
+        <text name="finance_rsInvoiceIncome" 				text="Factures (revenus)"/>
+        <text name="finance_rsInvoiceExpense" 				text="Factures (dépenses)"/>
+		<text name="rs_ui_errorAmount" 						text="Veuillez saisir un montant valide." />
+        <!-- Settings menu (Paramètres en jeu) -->
+        <text name="rs_help_title_invoice_settings" 		text="Système de facturation" />
+        <text name="rs_setting_rsVatPercent" 				text="TVA (%)" />
+        <text name="rs_toolTip_rsVatPercent" 				text="Taux de TVA par défaut pour les nouvelles factures." />
+        <text name="rs_setting_rsMaxOpenInvoices" 			text="Max. factures ouvertes" />
+        <text name="rs_toolTip_rsMaxOpenInvoices" 			text="Nombre maximal de factures ouvertes par ferme (pour une synchronisation multijoueur stable)." />
+        <text name="rs_setting_rsInterestPercent"			text="Intérêts (%)" />
+        <text name="rs_toolTip_rsInterestPercent"			text="Taux d'intérêt (par intervalle) pour les factures impayées." />
+        <text name="rs_setting_rsInterestIntervalDays"		text="Intervalle d'intérêts (jours)" />
+        <text name="rs_toolTip_rsInterestIntervalDays"		text="À quelle fréquence (jours de jeu) les intérêts sont calculés." />
+</texts>
+</l10n>

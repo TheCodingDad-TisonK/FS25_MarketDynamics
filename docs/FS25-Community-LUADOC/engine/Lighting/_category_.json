@@ -1,0 +1,11 @@
+{
+  "label": "Lighting",
+  "link": {
+    "type": "generated-index",
+    "title": "Lighting Documentation",
+    "description": "49 pages"
+  },
+  "customProps": {
+    "icon": "lightbulb"
+  }
+}

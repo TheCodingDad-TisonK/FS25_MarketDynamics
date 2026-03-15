@@ -1,0 +1,210 @@
+﻿<GUI onOpen="onOpen" onClose="onClose" onCreate="onCreate">
+	<GuiElement profile="newLayer"/>
+	<Bitmap profile="dialogFullscreenBg" id="dialogBg"/>
+	<GuiElement profile="employment_InfoDialogBg" id="dialogElement">
+		<ThreePartBitmap profile="fs25_dialogBgMiddle"/>
+		<ThreePartBitmap profile="fs25_dialogBgTop"/>
+		<ThreePartBitmap profile="fs25_dialogBgBottom"/>
+		<GuiElement profile="fs25_dialogContentContainer">
+			<Animation profile="fs25_dialogLoading" id="iconLoadingElement"/>
+			
+			<GuiElement profile="fs25_secondaryMenuContainer" id="jobContainer" position="68px 0px">
+
+				<GuiElement profile="employment_businessInfoContainer" id="businessInfoContainer">
+
+					<Text profile="employment_jobTitle" position="0px 50px" id="businessInfoTitle"/>
+					<Bitmap profile="employment_jobInfoBg" position="0px 0px"/>
+					<Text profile="employment_currentJob_title" position="10px 0px" text="$l10n_employment_ui_tolerance"/>
+					<Text profile="employment_currentJob_value" position="-10px 0px" id="businessInfoTolerance"/>
+					<Text profile="employment_currentJob_title" position="10px -30px" text="$l10n_employment_ui_prosperity"/>
+					<Text profile="employment_currentJob_value" position="-10px -30px" id="businessInfoProsperity"/>
+					<Bitmap profile="employment_jobInfoBg" position="0px -60px"/>
+					<Text profile="employment_currentJob_title" position="10px -60px" text="$l10n_employment_ui_firedTitle"/>
+					<Text profile="employment_currentJob_value" position="-10px -60px" id="businessInfoFired"/>
+					
+				</GuiElement>
+				
+				<GuiElement profile="employment_jobListContainer" id="jobListContainer">
+					
+					<Text profile="employment_jobTitle" text="$l10n_employment_ui_availableJobs" position="0px 30px"/>
+					<SmoothList profile="fs25_animalTargetList" id="jobList" startClipperElementName="startClipperTarget" endClipperElementName="endClipperTarget">
+						<ListItem profile="employment_jobListItem" onClick="onClickJobItem">
+							<ThreePartBitmap profile="employment_jobListItemBitmap" name="alternating"/>
+							<Text profile="employment_jobListItemJobTitle" name="name"/>
+							<Text profile="employment_jobListItemSalary" id="jobSalary" name="salary">
+								<Text profile="employment_jobListItemTitle" name="salaryTitle" text="$l10n_employment_ui_salaryTitle"/>
+							</Text>
+							<Text profile="employment_jobListItemEducation" name="education">
+								<Text profile="employment_jobListItemTitle" name="educationTitle" text="$l10n_employment_ui_educationTitle"/>
+							</Text>
+							<Text profile="employment_jobListItemHours" name="hours">
+								<Text profile="employment_jobListItemTitle" name="hoursTitle" text="$l10n_employment_ui_hoursTitle"/>
+							</Text>
+							<Text profile="employment_jobListItemExperience" name="experience">
+								<Text profile="employment_jobListItemTitle" name="experienceTitle" text="$l10n_employment_ui_experienceTitle"/>
+							</Text>
+						</ListItem>
+					</SmoothList>
+					<Bitmap profile="fs25_secondaryMenuStartClipper" name="startClipperTarget"/>
+					<Bitmap profile="fs25_secondaryMenuStopClipper" name="endClipperTarget"/>
+					<ThreePartBitmap profile="fs25_subCategoryListSliderBox" position="20px 0px">
+						<Slider profile="fs25_animalTargetListSlider" id="jobSlider" dataElementId="jobList"/>
+					</ThreePartBitmap>
+				
+				</GuiElement>
+
+				<GuiElement profile="employment_currentJobInfoContainer">
+
+					<GuiElement id="currentJobInfoContainer">
+
+						<Text profile="employment_jobTitle" id="currentJobTitle" text="$l10n_employment_ui_currentJob"/>
+						<Bitmap profile="employment_jobInfoBg" position="0px 0px"/>
+						<Text profile="employment_currentJob_title" position="10px 0px" text="$l10n_employment_ui_jobTitle"/>
+						<Text profile="employment_currentJob_value" position="-10px 0px" id="currentJobJobTitle"/>
+						<Text profile="employment_currentJob_title" position="10px -30px" text="$l10n_employment_ui_salaryTitle"/>
+						<Text profile="employment_currentJob_value" position="-10px -30px" id="currentJobSalary"/>
+						<Bitmap profile="employment_jobInfoBg" position="0px -60px"/>
+						<Text profile="employment_currentJob_title" position="10px -60px" text="$l10n_employment_ui_expectedPayTitle"/>
+						<Text profile="employment_currentJob_value" position="-10px -60px" id="currentJobExpectedPay"/>
+						<Text profile="employment_currentJob_title" position="10px -90px" text="$l10n_employment_ui_hoursTitle"/>
+						<Text profile="employment_currentJob_value" position="-10px -90px" id="currentJobHours"/>
+						<Bitmap profile="employment_jobInfoBg" position="0px -120px"/>
+						<Text profile="employment_currentJob_title" position="10px -120px" text="$l10n_employment_ui_workedHoursTitle"/>
+						<Text profile="employment_currentJob_value" position="-10px -120px" id="currentJobWorkedHours"/>
+						<Text profile="employment_currentJob_title" position="10px -150px" text="$l10n_employment_ui_experienceTitle"/>
+						<Text profile="employment_currentJob_value" position="-10px -150px" id="currentJobExperience"/>
+						<Bitmap profile="employment_jobInfoBg" position="0px -180px"/>
+						<Text profile="employment_currentJob_title" position="10px -180px" text="$l10n_employment_ui_satisfactionTitle"/>
+						<Text profile="employment_currentJob_value" position="-10px -180px" id="currentJobSatisfaction"/>
+
+					</GuiElement>
+
+					<GuiElement id="currentJobInfoContainerNoJob">
+
+						<Text profile="employment_noJobTitle" text="$l10n_employment_ui_notEmployedHere"/>
+
+					</GuiElement>
+					
+				</GuiElement>
+
+			</GuiElement>
+	</GuiElement>
+	<BoxLayout profile="fs25_dialogButtonBox">
+			<Button profile="buttonBack" text="$l10n_button_back" onClick="onClickBack" id="backButton"/>
+			<Button profile="buttonActivate" text="$l10n_employment_ui_apply" onClick="onClickApply" id="applyButton"/>
+			<Button profile="buttonMenuSwitch" text="$l10n_employment_ui_workPartTime" onClick="onClickWorkPartTime" id="workPartTimeButton"/>
+			<Button profile="buttonBuy" text="$l10n_employment_ui_work" onClick="onClickWork" id="workButton"/>
+			<Button profile="buttonCancel" text="$l10n_employment_ui_quit" onClick="onClickQuit" id="quitButton"/>
+		</BoxLayout>
+	</GuiElement>
+	<GUIProfiles>
+		<Profile name="employment_InfoDialogBg" extends="fs25_dialogBg">
+			<height value="860px"/>
+			<width value="860px"/>
+		</Profile>
+
+		<Profile name="employment_jobInfoBg" extends="baseReference" with="anchorMiddleStretchingX">
+			<height value="30px"/>
+			<imageColor value="$preset_fs25_colorGrey"/>
+		</Profile>
+
+		<Profile name="employment_jobTitle" extends="fs25_textDefault" with="anchorTopCenter">
+            <textAutoWidth value="true"/>
+			<textUpperCase value="true"/>
+			<textAlignment value="center"/>
+			<textSize value="28px"/>
+			<textColor value="$preset_fs25_colorMainHighlight"/>
+		</Profile>
+
+		<Profile name="employment_noJobTitle" extends="fs25_textDefault" with="anchorMiddleCenter">
+			<textUpperCase value="true"/>
+			<textAlignment value="center"/>
+			<textSize value="24px"/>
+			<textColor value="$preset_fs25_colorMainHighlight"/>
+		</Profile>
+
+		<Profile name="employment_jobListContainer" extends="emptyPanel" with="anchorBottomStretchingX pivotBottomLeft">
+			<position value="0px 30px"/>
+			<absoluteSizeOffset value="80px 450px"/>
+		</Profile>
+
+		<Profile name="employment_currentJobInfoContainer" extends="emptyPanel" with="anchorMiddleRight">
+			<size value="350px 190px"/>
+			<position value="300px -150px"/>
+		</Profile>
+
+		<Profile name="employment_businessInfoContainer" extends="emptyPanel" with="anchorTopCenter">
+			<size value="350px 190px"/>
+			<position value="125px -90px"/>
+		</Profile>
+		
+		<Profile name="employment_currentJob_title" extends="fs25_textDefault" with="anchorMiddleLeft">
+			<height value="30px"/>
+			<textBold value="true"/>
+			<textColor value="$preset_fs25_colorMainHighlight"/>
+		</Profile>
+
+		<Profile name="employment_currentJob_value" extends="fs25_textDefault" with="anchorMiddleRight">
+			<height value="30px"/>
+			<textBold value="true"/>
+			<textAlignment value="right"/>
+		</Profile>
+
+		<Profile name="employment_jobListItemTitle" extends="fs25_textDefault">
+			<textAutoWidth value="true"/>
+			<position value="-10px 0px"/>
+			<textAlignment value="left"/>
+			<textColor value="$preset_fs25_colorMainHighlight"/>
+			<textHighlightedColor value="$preset_fs25_colorMainDark"/>
+			<textSelectedColor value="$preset_fs25_colorMainDark"/>
+		</Profile>
+
+		<Profile name="employment_jobListItemJobTitle" extends="fs25_textDefault" with="anchorMiddleLeft">
+			<width value="160px"/>
+			<position value="10px 0px"/>
+			<textLayoutMode value="scrolling"/>
+		</Profile>
+
+		<Profile name="employment_jobListItemSalary" extends="fs25_textDefault" with="anchorMiddleRight">
+			<width value="40%"/>
+			<position value="-10px 30px"/>
+			<textAlignment value="right"/>
+		</Profile>
+
+		<Profile name="employment_jobListItemEducation" extends="fs25_textDefault" with="anchorMiddleRight">
+			<width value="50%"/>
+			<position value="-10px 10px"/>
+			<textAlignment value="right"/>
+		</Profile>
+
+		<Profile name="employment_jobListItemHours" extends="fs25_textDefault" with="anchorMiddleRight">
+			<width value="40%"/>
+			<position value="-10px -10px"/>
+			<textAlignment value="right"/>
+		</Profile>
+
+		<Profile name="employment_jobListItemExperience" extends="fs25_textDefault" with="anchorMiddleRight">
+			<width value="40%"/>
+			<position value="-10px -30px"/>
+			<textAlignment value="right"/>
+		</Profile>
+
+		<Profile name="employment_jobListItem" extends="emptyPanel" with="anchorTopStretchingX pivotTopLeft">
+			<height value="90px"/>
+		</Profile>
+
+		<Profile name="employment_jobListItemBitmap" extends="baseReference" with="anchorStretchingYStretchingX">
+			<imageSliceId value="gui.3dShop_button_middle"/>
+			<imageColor value="$preset_fs25_colorGreyListItem"/>
+			<imageSelectedColor value="$preset_fs25_colorMainHighlight"/>
+			<startImageSize value="6px 0"/>
+			<startImageColor value="$preset_fs25_colorGreyListItem"/>
+			<startImageSliceId value="gui.3dShop_button_left"/>
+			<startImageSelectedColor value="$preset_fs25_colorMainHighlight"/>
+			<endImageSize value="6px 0"/>
+			<endImageSliceId value="gui.3dShop_button_right"/>
+			<endImageColor value="$preset_fs25_colorGreyListItem"/>
+			<endImageSelectedColor value="$preset_fs25_colorMainHighlight"/>
+		</Profile>
+	</GUIProfiles>
+</GUI>

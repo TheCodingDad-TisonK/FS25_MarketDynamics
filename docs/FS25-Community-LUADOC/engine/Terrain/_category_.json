@@ -1,0 +1,11 @@
+{
+  "label": "Terrain",
+  "link": {
+    "type": "generated-index",
+    "title": "Terrain Documentation",
+    "description": "8 pages"
+  },
+  "customProps": {
+    "icon": "mountain"
+  }
+}

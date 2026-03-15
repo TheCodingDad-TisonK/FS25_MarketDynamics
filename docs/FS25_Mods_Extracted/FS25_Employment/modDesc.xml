@@ -1,0 +1,157 @@
+<modDesc descVersion="99">
+    <author>Arrow</author>
+    <version>1.0.0.0</version>
+    <title>
+        <en>Employment</en>
+        <de>Beschäftigung</de>
+        <fr>L'Emploi</fr>
+    </title>
+    <description>
+        <en>
+<![CDATA[ Many small farmers are forced to get part-time, or even full-time, jobs to support their farms during adverse economic situations. This mod allows you to get a job in order to earn some extra money while the farm work is slowing down or prices are going down.
+
+Most production buildings are supported. Certain buildings on mod maps and mod placeables may not be supported. If a production is not supported, the option for employment will not be shown, otherwise an input button (Shift+Y) will be prompted when at the appropriate location, typically at the production's player icon, or when in range of the production.
+
+Multiplayer not supported due to how the mod works.
+
+Features:
+
+- Businesses:
+--- 22 unique business types, with more to be added
+--- almost every production point, factory, selling station and buying station across each map is it's own unique company
+--- each company has their characteristics which affect their salaries, and their likelihood of firing/promoting you, or giving you a raise
+--- companies will not hire you back after firing you
+--- relations with your employer can detiorate or improve based on your performance
+
+- Jobs:
+--- 35 unique jobs, with more to be added
+--- each job has its own salary, education/experience requirements, sub-promotions, and monthly working hour requirements
+--- your employer will pay you at the end of each month, based on how many hours you worked
+--- receive overtime pay for working beyond the requirements of your job
+--- climb the ladder to get vastly better paying jobs with less hours, giving you more time to focus on farming while getting more money
+
+- Education:
+--- 5 education types, from high school to doctorate
+--- each education type requires you to study at home for a set amount of time
+--- once you have the studied sufficiently, you can take an exam to achieve the education level
+--- each exam is increasingly difficult for each different education level
+--- failing an exam will prevent you from re-taking the exam for 24 hours
+--- reach the next education level in order to unlock new jobs with vastly better salaries
+
+- Part-Time Work:
+--- some jobs allow you to work part-time
+--- earn small amounts of money with no strings attached
+--- work however many hours you want without risk of being fired
+
+- Experience:
+--- gain experience throughout the years, unlocking new jobs with better salaries and fewer hours ]]>
+        </en>
+        <de>
+<![CDATA[ Viele Kleinbauern sind gezwungen, Teilzeit- oder sogar Vollzeitjobs anzunehmen, um ihre Betriebe in wirtschaftlich schwierigen Zeiten zu unterstützen. Diese Mod ermöglicht es dir, einen Job anzunehmen, um etwas zusätzliches Geld zu verdienen, während die Arbeit auf dem Hof nachlässt oder die Preise sinken.
+
+Multiplayer wird aufgrund der Funktionsweise des Mods nicht unterstützt.
+
+Merkmale:
+
+- Unternehmen:
+--- 22 einzigartige Unternehmenstypen, weitere werden hinzugefügt
+--- fast jeder Produktionspunkt, jede Fabrik, jede Verkaufsstation und jede Einkaufsstation auf jeder Karte ist ein eigenes einzigartiges Unternehmen
+--- jedes Unternehmen hat seine eigenen Charakteristika, die sich auf die Gehälter und die Wahrscheinlichkeit auswirken, dass sie dich entlassen, befördern oder dir eine Gehaltserhöhung geben
+--- Unternehmen stellen dich nicht wieder ein, nachdem sie dich entlassen haben.
+--- die Beziehungen zu deinem Arbeitgeber können sich je nach deiner Leistung verschlechtern oder verbessern
+
+- Berufe:
+--- 35 einzigartige Jobs, weitere werden hinzugefügt
+--- jeder Job hat sein eigenes Gehalt, Anforderungen an Ausbildung/Erfahrung, Unterbeförderungen und monatliche Arbeitsstundenanforderungen
+--- dein Arbeitgeber bezahlt dich am Ende eines jeden Monats, basierend auf der Anzahl deiner Arbeitsstunden
+--- Sie erhalten eine Überstundenvergütung für Arbeiten, die über die Anforderungen Ihrer Stelle hinausgehen
+--- die Karriereleiter zu erklimmen, um weitaus besser bezahlte Jobs mit weniger Arbeitsstunden zu bekommen, so dass Sie mehr Zeit haben, sich auf die Landwirtschaft zu konzentrieren, während Sie mehr Geld bekommen
+
+- Bildung:
+--- 5 Bildungstypen, von der Oberschule bis zum Doktorat
+--- jeder Bildungstyp erfordert, dass man zu Hause eine bestimmte Zeit lang lernt
+--- sobald man ausreichend gelernt hat, kann man eine Prüfung ablegen, um die Bildungsstufe zu erreichen
+--- jede Prüfung ist für jede Bildungsstufe zunehmend schwieriger
+--- Wenn Sie eine Prüfung nicht bestehen, können Sie die Prüfung für 24 Stunden nicht wiederholen.
+--- Erreichen Sie die nächste Ausbildungsstufe, um neue Jobs mit weitaus besseren Gehältern freizuschalten
+
+- Halbtagsarbeit:
+--- einige Jobs erlauben es Ihnen, in Teilzeit zu arbeiten
+--- kleine Geldbeträge zu verdienen, ohne Bedingungen zu stellen
+--- arbeiten Sie so viele Stunden, wie Sie wollen, ohne Gefahr zu laufen, gefeuert zu werden
+
+- Erfahrung:
+--- im Laufe der Jahre Erfahrungen sammeln, die neue Arbeitsplätze mit besseren Gehältern und weniger Arbeitsstunden freischalten ]]>
+        </de>
+        <fr>
+<![CDATA[ De nombreux petits agriculteurs sont contraints de prendre un emploi à temps partiel, voire à temps plein, pour subvenir aux besoins de leur exploitation lorsque la situation économique est défavorable. Ce mod vous permet de trouver un emploi afin de gagner un peu plus d'argent pendant que le travail de la ferme ralentit ou que les prix baissent.
+
+La plupart des bâtiments de production sont pris en charge. Certains bâtiments sur les cartes modifiées et les éléments modifiables peuvent ne pas être pris en charge. Si une production n'est pas prise en charge, l'option d'emploi ne s'affichera pas. Sinon, un bouton de saisie (Maj+Y) s'affichera lorsque vous vous trouverez à l'emplacement approprié, généralement au niveau de l'icône du joueur de la production, ou lorsque vous serez à portée de la production.
+
+Le mode multijoueur n'est pas supporté en raison du fonctionnement du mod.
+
+Caractéristiques :
+
+- Entreprises :
+--- 22 types d'entreprises uniques, avec d'autres à ajouter
+--- Presque chaque point de production, usine, station de vente et station d'achat sur chaque carte est une entreprise unique.
+--- chaque entreprise a ses propres caractéristiques qui affectent leurs salaires, et leur probabilité de vous licencier/promouvoir, ou de vous donner une augmentation.
+--- les entreprises ne vous réembaucheront pas après vous avoir licencié
+--- les relations avec votre employeur peuvent se détériorer ou s'améliorer en fonction de vos performances.
+
+- Les emplois :
+--- 35 emplois uniques, et d'autres à venir
+--- chaque emploi a son propre salaire, ses exigences en matière d'éducation et d'expérience, ses sous-promotions et ses exigences en matière d'heures de travail mensuelles
+--- votre employeur vous paiera à la fin de chaque mois, en fonction du nombre d'heures travaillées
+--- recevoir une rémunération pour les heures supplémentaires effectuées au-delà des exigences de votre travail
+--- gravir les échelons pour obtenir des emplois beaucoup mieux rémunérés avec moins d'heures de travail, ce qui vous laisse plus de temps pour vous consacrer à l'agriculture tout en gagnant plus d'argent.
+
+- L'éducation :
+--- 5 types d'éducation, du lycée au doctorat
+--- chaque type d'éducation nécessite d'étudier à la maison pendant une durée déterminée
+--- Une fois que vous avez suffisamment étudié, vous pouvez passer un examen pour atteindre le niveau d'éducation.
+--- chaque examen est de plus en plus difficile pour chaque niveau d'études différent
+--- si vous échouez à un examen, vous ne pourrez pas le repasser pendant 24 heures
+--- atteindre le niveau d'éducation suivant afin de débloquer de nouveaux emplois avec des salaires bien plus élevés.
+
+- Travail à temps partiel :
+--- certains emplois vous permettent de travailler à temps partiel
+--- gagner de petites sommes d'argent sans conditions particulières
+--- travailler autant d'heures que vous le souhaitez sans risquer d'être licencié
+
+- Expérience :
+--- acquérir de l'expérience au fil des ans, débloquer de nouveaux emplois avec de meilleurs salaires et moins d'heures de travail ]]>
+        </fr>
+    </description>
+    <iconFilename>icon_Employment.dds</iconFilename>
+    <multiplayer supported="false"/>
+    <extraSourceFiles>
+        <sourceFile filename="src/RegisterSpecializations.lua"/>
+        <sourceFile filename="src/ProductionPoint.lua"/>
+        <sourceFile filename="src/EmploymentSystem.lua"/>
+        <sourceFile filename="src/PlayerInputComponent.lua"/>
+        <sourceFile filename="src/FSBaseMission.lua"/>
+        <sourceFile filename="src/FSCareerMissionInfo.lua"/>
+        <sourceFile filename="src/EmploymentDialog.lua"/>
+        <sourceFile filename="src/EducationDialog.lua"/>
+        <sourceFile filename="src/WorkHoursDialog.lua"/>
+        <sourceFile filename="src/PlaceableFarmhouse.lua"/>
+        <sourceFile filename="src/PlaceableFactory.lua"/>
+        <sourceFile filename="src/I18N.lua"/>
+    </extraSourceFiles>
+
+    <inputBinding>
+        <actionBinding action="Employment">
+            <binding device="KB_MOUSE_DEFAULT" input="KEY_lshift KEY_y"/>
+        </actionBinding>
+        <actionBinding action="Education">
+            <binding device="KB_MOUSE_DEFAULT" input="KEY_lshift KEY_u"/>
+        </actionBinding>
+    </inputBinding>
+    <actions>
+        <action name="Employment"/>
+        <action name="Education"/>
+    </actions>
+
+    <l10n filenamePrefix="translations/translation"/>
+</modDesc>

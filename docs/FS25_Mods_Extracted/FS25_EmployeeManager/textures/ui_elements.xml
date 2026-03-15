@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<OverlayConfig>
+    <Overlay name="EM_IconMenu"     filename="images/MenuIcon.dds"         x="0" y="0" width="1024" height="1024" />
+    <Overlay name="EM_IconEmployee" filename="images/EMEmployeeIcon.dds"  x="0" y="0" width="1024" height="1024" />
+    <Overlay name="EM_IconWorkflow" filename="images/EMWorkflowIcon.dds"  x="0" y="0" width="1024" height="1024" />
+    <Overlay name="EM_IconField"    filename="images/EMFieldIcon.dds"     x="0" y="0" width="1024" height="1024" />
+    <Overlay name="EM_IconVehicle"  filename="images/EMVehicleIcon.dds"   x="0" y="0" width="1024" height="1024" />
+</OverlayConfig>

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<l10n>
+    <texts>
+        <text name="input_ContractorMod_NEXTWORKER" text="Switch to next worker" />
+        <text name="input_ContractorMod_PREVWORKER" text="Switch to previous worker" />
+        <text name="input_ContractorMod_WORKER1" text="Switch to worker 1" />
+        <text name="input_ContractorMod_WORKER2" text="Switch to worker 2" />
+        <text name="input_ContractorMod_WORKER3" text="Switch to worker 3" />
+        <text name="input_ContractorMod_WORKER4" text="Switch to worker 4" />
+        <text name="input_ContractorMod_WORKER5" text="Switch to worker 5" />
+        <text name="input_ContractorMod_WORKER6" text="Switch to worker 6" />
+        <text name="input_ContractorMod_WORKER7" text="Switch to worker 7" />
+        <text name="input_ContractorMod_WORKER8" text="Switch to worker 8" />
+        <text name="action_ContractorMod_SWITCH" text="Switch to this worker" />
+        <text name="action_ContractorMod_DEACTIVATE" text="Deactivate this worker" />
+        <text name="action_ContractorMod_ACTIVATE" text="Activate this worker" />
+        <text name="ContractorMod_VEHICLE_NOT_FREE" text="Vehicle is already controlled by another worker" />
+        <text name="ContractorMod_WORKER_STOP" text="The vehicle will stop when leaving it" />
+        <text name="ContractorMod_NO_MORE_PASSENGER" text="No more space for a passenger in this vehicle" />
+        <text name="ContractorMod_WORKER_INACTIVE" text="This worker is currently inactive" />
+    </texts>
+</l10n>

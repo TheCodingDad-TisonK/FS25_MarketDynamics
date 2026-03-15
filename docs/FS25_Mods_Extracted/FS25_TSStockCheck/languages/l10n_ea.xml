@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<l10n>
+	<translationContributors>Ferchu425</translationContributors>
+	<texts>
+            <text name="ui_ingameMenuTSStockCheck" text="Time Saving Stock Check"/>
+            <text name="ui_header_icon" text=""/>
+            <text name="ui_header_goods" text="Productos"/>
+            <text name="ui_header_storage" text="Cantidad"/>
+            <text name="ui_header_price" text="Precio"/>
+            <text name="ui_header_trend" text=""/>
+            <text name="ui_header_value" text="Valor"/>
+            <text name="ui_header_price_at" text="Vender en"/>
+            <text name="ui_header_bestprice" text="Precio Max"/>
+            <text name="ui_header_bestvalue" text="Valor Max"/>
+            <text name="ui_header_bestmonth" text="Mejor Mes"/>
+            <text name="ui_location_btn" text="Mostar %s"/>
+            <text name="ui_location_header_name" text="Ubicacion"/>
+            <text name="ui_location_header_storage" text="Cantidad"/>
+            <text name="ui_locationFrame_btnClose" text="Atras"/>
+            <text name="ui_locationFrame_header" text="Almacenamiento de %s"/>
+            <text name="ui_tag_sellpoint" text="ETIQUETAR SITIO"/>
+            <text name="ui_untag_sellpoint" text="QUITAR E. DE SITIO"/>
+            <text name="ui_no_sellpoint" text="Sin Estacion de Venta"/>
+            <text name="ui_text_bales" text="Pacas"/>
+            <text name="ui_text_pallets" text="Pallets"/>
+            <text name="ui_text_shippingcontainer" text="Contenedor de Envio"/>
+            <text name="ui_allsellpoint_btn" text="Valor en todas las %s"/>
+            <text name="ui_allSellPointFrame_header" text="Valor de %s de %s"/>
+            <text name="ui_show_all_items" text="Mostrar todo"/>
+            <text name="ui_hide_all_items" text="Ocultar No se puede vender"/>
+	</texts>
+</l10n>

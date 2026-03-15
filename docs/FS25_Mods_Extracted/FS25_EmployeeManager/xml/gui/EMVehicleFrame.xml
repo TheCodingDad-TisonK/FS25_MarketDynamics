@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<GUI name="EMVehicle">
+    <GuiElement profile="uiInGameMenuFrame">
+        <GuiElement profile="fs25_menuHeaderPanel">
+            <Bitmap profile="fs25_menuHeaderIconBg">
+                <Bitmap profile="EM_IconVehicle" />
+            </Bitmap>
+            <Text profile="fs25_menuHeaderTitle" text="$l10n_em_tab_vehicles" />
+        </GuiElement>
+
+        <GuiElement profile="emptyPanel" id="mainBox" position="0px -80px">
+
+            <GuiElement profile="emMenuLeftColumn">
+                <Text profile="EM_SectionTitle" position="20px -10px" text="$l10n_em_vehicle_list_title" />
+
+                <SmoothList id="vehicleList" profile="emMenuList" position="10px -40px" width="300px" height="700px"
+                            selectedWithoutFocus="true">
+                    <ListItem profile="emMenuListItem">
+                        <Bitmap profile="fs25_subCategoryListItemIcon" name="icon"/>
+                        <Text profile="emMenuListItemTitle" name="title"/>
+                        <Text profile="emMenuListItemSubtitle" name="subtitle"/>
+                    </ListItem>
+                </SmoothList>
+
+                <ThreePartBitmap profile="emMenuListSliderBox">
+                    <Slider profile="fs25_listSlider" dataElementId="vehicleList" />
+                </ThreePartBitmap>
+            </GuiElement>
+
+            <GuiElement profile="emMenuRightColumn" id="detailPanel">
+                <Text profile="EM_DetailTitle" id="txtVehicleName" position="10px -10px"/>
+
+                <BoxLayout profile="EM_ColBoxV" position="10px -55px" width="390px">
+                    <BoxLayout profile="EM_RowBoxH" width="390px">
+                        <Text profile="EM_RowLabel" text="$l10n_em_vehicle_status" width="160px"/>
+                        <Text profile="EM_RowValue" id="txtAIStatus" width="220px"/>
+                    </BoxLayout>
+                    <BoxLayout profile="EM_RowBoxH" width="390px">
+                        <Text profile="EM_RowLabel" text="$l10n_em_vehicle_speed" width="160px"/>
+                        <Text profile="EM_RowValue" id="txtSpeed" width="220px"/>
+                    </BoxLayout>
+                </BoxLayout>
+
+                <ThreePartBitmap profile="fs25_lineSeparatorTop" position="10px -140px" width="390px"/>
+
+                <Text profile="EM_SectionTitle" position="10px -160px" text="$l10n_em_vehicle_implements"/>
+                <Text profile="EM_RowLabel" id="txtImplements" position="10px -185px" width="390px"/>
+
+                <ThreePartBitmap profile="fs25_lineSeparatorTop" position="10px -220px" width="390px"/>
+
+                <Text profile="EM_SectionTitle" position="10px -240px" text="$l10n_em_vehicle_assigned_employee"/>
+                <Text profile="EM_RowValue" id="txtAssignedEmployee" position="10px -265px" width="390px"/>
+            </GuiElement>
+        </GuiElement>
+
+        <Text profile="EM_EmptyText" id="emptyText" text="$l10n_em_vehicle_empty" visible="false" />
+    </GuiElement>
+</GUI>

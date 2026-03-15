@@ -1,0 +1,7 @@
+### DensityIndexCompareMode
+
+**Description**
+
+**Definition**
+
+> DensityIndexCompareMode()

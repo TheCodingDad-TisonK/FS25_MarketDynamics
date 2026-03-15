@@ -1,0 +1,11 @@
+{
+  "label": "Tasks",
+  "link": {
+    "type": "generated-index",
+    "title": "Tasks Documentation",
+    "description": "7 pages, 59 functions"
+  },
+  "customProps": {
+    "icon": "check-square"
+  }
+}

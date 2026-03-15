@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<GUI name="ingameMenuTSStockCheck">
+	<GuiElement profile="fs25_menuContainer">
+		<GuiElement profile="fs25_menuHeaderPanel">
+			<Bitmap profile="fs25_menuHeaderIconBg">
+				<Bitmap profile="ingameMenuTSStockCheckMenuHeaderIcon"/>
+            </Bitmap>
+			<Text profile="fs25_menuHeaderTitle" id="categoryHeaderText" text="$l10n_ui_ingameMenuTSStockCheck"/>
+			<RoundCorner profile="fs25_shopMoneyBoxBg" id="shopMoneyBoxBg"/>
+			<BoxLayout profile="fs25_shopMoneyBox" id="shopMoneyBox">
+				<Text profile="fs25_shopBalance" text="$l10n_ui_balance:"/>
+				<Text profile="fs25_shopMoney" id="currentBalanceText"/>
+			</BoxLayout>
+		</GuiElement>
+        <GuiElement profile="fs25_statisticsHeaderBox">
+            <!-- Icon -->
+            <Button profile="ingameMenuTSStockCheckHeader" position="0px 0px" text="$l10n_ui_header_icon" handleFocus="false" />
+            <!-- Name -->
+            <Button profile="ingameMenuTSStockCheckHeader" position="20px 0px" text="$l10n_statistic_commodity" id="goodsHeader" onClick="onClickGoodsHeader">
+                <Bitmap profile="fs25_vehiclesHeaderIconSortAscending" position="-10px 0px" id="iconGoodAscending" />
+                <Bitmap profile="fs25_vehiclesHeaderIconSortDescending" position="-10px 0px" id="iconGoodDescending" />
+            </Button>
+            <!-- Stock Level -->
+            <Button profile="ingameMenuTSStockCheckHeaderRight" position="205px 0px" size="155px 32px" text="$l10n_ui_header_storage" handleFocus="false" />
+            <Button profile="ingameMenuTSStockCheckHeaderRight" position="360px 0px" size="100px 32px" text="$l10n_ui_header_price" handleFocus="false" />
+            <Button profile="ingameMenuTSStockCheckHeader" position="460px 0px" size="40px 32px" text="$l10n_ui_header_trend" handleFocus="false" />
+            <Button profile="ingameMenuTSStockCheckHeaderRight" position="500px 0px" size="150px 32px" text="$l10n_ui_header_value" onClick="onClickValueHeader">
+                <Bitmap profile="fs25_vehiclesHeaderIconSortAscending" position="10px 0px" id="iconValueAscending" />
+                <Bitmap profile="fs25_vehiclesHeaderIconSortDescending" position="10px 0px" id="iconValueDescending" />
+            </Button>
+            <Button profile="ingameMenuTSStockCheckHeader" position="675px 0px" size="255px 32px" text="$l10n_ui_stations" handleFocus="false" />
+            <Button profile="ingameMenuTSStockCheckHeaderRight" position="925px 0px" size="155px 32px" text="$l10n_ui_header_bestprice" handleFocus="false" />
+            <Button profile="ingameMenuTSStockCheckHeaderRight" position="1080px 0px" size="150px 32px" text="$l10n_ui_header_bestvalue" onClick="onClickBestValueHeader">
+                <Bitmap profile="fs25_vehiclesHeaderIconSortAscending" position="10px 0px" id="iconBValueAscending" />
+                <Bitmap profile="fs25_vehiclesHeaderIconSortDescending" position="10px 0px" id="iconBValueDescending" />
+            </Button>
+            <Button profile="ingameMenuTSStockCheckHeaderRight" position="1235px 0px" size="150px 32px" text="$l10n_ui_header_bestmonth" onClick="onClickBestMonthHeader">
+                <Bitmap profile="fs25_vehiclesHeaderIconSortAscending" position="10px 0px" id="iconBMonthAscending" />
+                <Bitmap profile="fs25_vehiclesHeaderIconSortDescending" position="10px 0px" id="iconBMonthDescending" />
+            </Button>
+            <ThreePartBitmap profile="fs25_lineSeparatorBottom" position="0px -2dp" />
+        </GuiElement>
+        <SmoothList profile="ingameMenuTSStockCheckList" id="stockCheckTable">
+            <ListItem profile="ingameMenuTSStockCheckListItem">
+                <Bitmap profile="ingameMenuTSStockCheckRowCellImage" name="icon" />
+                <Text profile="ingameMenuTSStockCheckRowCellLeftBright" position="40px 0px" name="good"/>
+                <Text profile="ingameMenuTSStockCheckRowCellRight" position="205px 0px" name="storage"/>
+                <Text profile="ingameMenuTSStockCheckRowCellPrice" position="360px 0px" name="price" />
+                <Bitmap profile="ingameMenuTSStockCheckRowCellArrow" position="465px 0px" name="trend" />
+                <Text profile="ingameMenuTSStockCheckRowCellRight" position="500px 0px" name="value" />
+                <Text profile="ingameMenuTSStockCheckRowCellSellAt" position="675px 0px" name="sellat">
+                    <!-- <Bitmap profile="fs25_pricesPriceListItemIconTrain" name="iconTrain" />
+                    <Bitmap profile="fs25_pricesPriceListItemIconPallet" name="iconPallet" /> -->
+                </Text>
+                <Text profile="ingameMenuTSStockCheckRowCellRight" position="925px 0px" name="bestprice" />
+                <Text profile="ingameMenuTSStockCheckRowCellRight" position="1080px 0px" name="bestvalue" />
+                <Text profile="ingameMenuTSStockCheckRowCellRight" position="1235px 0px" name="bestmonth" />
+            </ListItem>
+        </SmoothList>
+        <ThreePartBitmap profile="ingameMenuTSStockListSliderBox1">
+            <Slider profile="fs25_listSlider"
+                    dataElementId="stockCheckTable" />
+        </ThreePartBitmap>
+        <GuiElement profile="ingameMenuTSStockCheckFooterBox1">
+            <ThreePartBitmap profile="fs25_lineSeparatorTop" position="0px -15dp" />
+            <Text profile="ingameMenuTSStockCheckHeaderBright" position="40px 0px" text="$l10n_ui_total"/>
+            <Text profile="ingameMenuTSStockCheckHeaderRightBright" position="205px 0px" id="totalStorage"/>
+            <Text profile="ingameMenuTSStockCheckHeaderRightBright" position="500px 0px" id="totalValue" />
+            <Text profile="ingameMenuTSStockCheckHeaderRightBright" position="1080px 0px" id="bestTotalValue" />
+        </GuiElement>
+    </GuiElement>
+</GUI>

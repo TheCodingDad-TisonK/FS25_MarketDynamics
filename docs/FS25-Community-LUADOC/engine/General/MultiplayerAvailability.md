@@ -1,0 +1,7 @@
+### MultiplayerAvailability
+
+**Description**
+
+**Definition**
+
+> MultiplayerAvailability()

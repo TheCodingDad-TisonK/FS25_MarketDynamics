@@ -1,0 +1,11 @@
+{
+  "label": "Scenegraph",
+  "link": {
+    "type": "generated-index",
+    "title": "Scenegraph Documentation",
+    "description": "4 pages"
+  },
+  "customProps": {
+    "icon": "sitemap"
+  }
+}

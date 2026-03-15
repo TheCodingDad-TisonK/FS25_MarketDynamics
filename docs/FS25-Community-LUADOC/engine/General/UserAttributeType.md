@@ -1,0 +1,7 @@
+### UserAttributeType
+
+**Description**
+
+**Definition**
+
+> UserAttributeType()

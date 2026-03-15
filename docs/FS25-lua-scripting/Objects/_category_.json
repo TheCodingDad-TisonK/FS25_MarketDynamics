@@ -1,0 +1,11 @@
+{
+  "label": "Objects",
+  "link": {
+    "type": "generated-index",
+    "title": "Objects Documentation",
+    "description": "14 pages, 115 functions"
+  },
+  "customProps": {
+    "icon": "box"
+  }
+}

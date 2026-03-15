@@ -1,0 +1,7 @@
+### AnimalHusbandryFeedingType
+
+**Description**
+
+**Definition**
+
+> AnimalHusbandryFeedingType()

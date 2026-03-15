@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<modDesc descVersion="101">
+<author>Helfer B.</author>
+<version>1.0.0.0</version>
+
+<title>
+    <en>Rearrange Placeables</en>
+    <de>Platzierbare Objekte Verschieben</de>
+</title>
+
+<description>
+    <en><![CDATA[
+This mod allows you to reposition placed objects. It supports movement on all 3 axes (X, Y, Z) as well as rotation on all 3 axes.
+
+Usage:
+Open the build menu, select the object you want to move on the map, and click the “Move” button next to the “Sell” button.
+Three different axis markers will now appear, which can be selected for modification by left-clicking or right-clicking.
+
+Left click: Move on the respective axis.
+Right click: Rotate on the respective axis.
+
+Completing the repositioning: Click on the building or press the Escape key. A prompt will appear asking you to save, including the costs, or to cancel, reset the object.
+]]>
+    </en>
+    <de><![CDATA[
+Mit dieser Mod wird die Möglichkeit geschaffen platzierte Objekte neu zu positionieren. Unterstützt wird die Verschiebung auf allen 3 Achsen X,Y,Z, sowie die Rotation auf allen 3 Achsen.
+
+Verwendung:
+Man öffnet das Baumenü, wählt auf der Karte das zu bewegende Objekt aus und betätigt die Schaltfläche "Bewegen" neben der Verkaufen Schaltfläche.
+Nun erscheinen 3 verschiedene Achsen-Markierungen welche durch einen Links- oder Rechtsklick zur Modifizierung ausgewählt werden können.
+
+Linksklick: Bewegen auf der jeweiligen Achse
+Rechtsklick: Drehung auf der jeweiligen Achse
+
+Abschließende der Neupositionierung: Auf das Gebäude klicken oder die Escape Teste drücken, es erscheint die Abfrage zur Speicherung inkl. der Kosten, oder die Möglichkeit des Abbrechens, also zurücksetzen des Objekts.
+]]>
+    </de>
+</description>
+
+<iconFilename>icon_RearrangePlaceables.dds</iconFilename>
+<multiplayer supported="true" />
+
+<extraSourceFiles>
+    <sourceFile filename="InGameGizmo.lua" />
+</extraSourceFiles>
+
+</modDesc>

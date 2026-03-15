@@ -1,0 +1,11 @@
+{
+  "label": "Missions",
+  "link": {
+    "type": "generated-index",
+    "title": "Missions Documentation",
+    "description": "2 pages, 121 functions"
+  },
+  "customProps": {
+    "icon": "bullseye"
+  }
+}

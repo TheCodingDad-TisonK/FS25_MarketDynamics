@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<ContractorMod>
+    <!--
+    This file is used only when creating new savegame.
+    Following changes can be made here:
+     - You can set from 2 to 8 workers by changing numWorkers value.
+     - Worker name can be changed here for default new game or in the wardrobe screen for each character.
+     - for male character, use playerM/playerM.xml file
+     - for female character, use /playerF/playerF.xml file
+     - Other attributes should better be retrieved from ContractorMod.xml file in savegame directory once configured in wardrobe screen. 
+    If you want to modify some element on a savegame, you can edit similar file in corresponding savegame directory
+    enablePassenger can be set to true to enable passenger mode, then you can enter compatible vehicles as passenger.
+    It is currently disable by default since it's in beta version and not fully tested yet.
+    -->
+    <workers numWorkers="4" enablePassenger="false">
+        <worker name="Alex">
+            <style filename="dataS/character/playerM/playerM.xml">
+                <facegear color="1"/>
+                <onepiece color="1" name="empty"/>
+                <bottom color="5" name="jeans"/>
+                <face color="1" name="head01"/>
+                <top color="1" name="denimJacket"/>
+                <gloves color="1" name="empty"/>
+                <headgear color="1" name="empty"/>
+                <glasses color="1" name="empty"/>
+                <footwear color="1" name="workBoots1"/>
+                <hairStyle color="4" name="hair01"/>
+                <beard color="4" name="stubble_head01"/>
+            </style>
+        </worker>
+        <worker name="Brenda">
+            <style filename="dataS/character/playerF/playerF.xml">
+                <facegear color="1"/>
+                <onepiece color="1" name="empty"/>
+                <bottom color="3" name="equestrian"/>
+                <face color="1" name="head06"/>
+                <top color="13" name="windbreaker"/>
+                <gloves color="1" name="empty"/>
+                <headgear color="1" name="empty"/>
+                <glasses color="1" name="empty"/>
+                <footwear color="8" name="sportSneakers"/>
+                <hairStyle color="19" name="hair16"/>
+                <beard color="19"/>
+            </style>
+        </worker>
+        <worker name="Chris">
+            <style filename="dataS/character/playerM/playerM.xml">
+                <facegear color="1"/>
+                <onepiece color="1" name="empty"/>
+                <bottom color="5" name="jeans"/>
+                <face color="1" name="head04"/>
+                <top color="1" name="caseih"/>
+                <gloves color="1" name="empty"/>
+                <headgear color="1" name="caseih"/>
+                <glasses color="1" name="empty"/>
+                <footwear color="1" name="workBoots1"/>
+                <hairStyle color="18" name="hair04"/>
+                <beard color="18" name="empty"/>
+            </style>
+        </worker>
+        <worker name="David">
+            <style filename="dataS/character/playerM/playerM.xml">
+                <facegear color="1"/>
+                <onepiece color="2" name="mechanic"/>
+                <bottom color="5"/>
+                <face color="1" name="head01"/>
+                <top color="10"/>
+                <gloves color="3" name="empty"/>
+                <headgear color="1" name="empty"/>
+                <glasses color="1" name="classic"/>
+                <footwear color="1" name="workBoots1"/>
+                <hairStyle color="24" name="hair13"/>
+                <beard color="24" name="stubble_head01"/>
+            </style>
+        </worker>
+        <worker name="Ed">
+            <style filename="dataS/character/playerM/playerM.xml">
+                <facegear color="1"/>
+                <onepiece color="1" name="empty"/>
+                <bottom color="1" name="tweedTrousers"/>
+                <face color="1" name="head03"/>
+                <top color="1" name="tweedSportsJacket"/>
+                <gloves color="1" name="empty"/>
+                <headgear color="1" name="empty"/>
+                <glasses color="1" name="reading"/>
+                <footwear color="1" name="chelsea02"/>
+                <hairStyle color="17" name="hair01"/>
+                <beard color="17" name="empty"/>
+            </style>
+        </worker>
+        <worker name="Franck">
+            <style filename="dataS/character/playerM/playerM.xml">
+                <facegear color="1"/>
+                <onepiece color="5" name="empty"/>
+                <bottom color="5" name="jeanShorts"/>
+                <face color="1" name="head04"/>
+                <top color="14" name="tShirt01"/>
+                <gloves color="5" name="empty"/>
+                <headgear color="12" name="empty"/>
+                <glasses color="1" name="empty"/>
+                <footwear color="1" name="sandal03"/>
+                <hairStyle color="18" name="hair06"/>
+                <beard color="18" name="empty"/>
+            </style>
+        </worker>
+        <worker name="Gary">
+            <style filename="dataS/character/playerM/playerM.xml">
+                <facegear color="1"/>
+                <onepiece color="2" name="synthetic"/>
+                <bottom color="5"/>
+                <face color="1" name="head06"/>
+                <top color="10"/>
+                <gloves color="1" name="empty"/>
+                <headgear color="1" name="empty"/>
+                <glasses color="1" name="empty"/>
+                <footwear color="1" name="galoshes"/>
+                <hairStyle color="16" name="hair13"/>
+                <beard color="16" name="walrusTame_head06"/>
+            </style>
+        </worker>
+        <worker name="Henry">
+            <style filename="dataS/character/playerM/playerM.xml">
+                <facegear color="1"/>
+                <onepiece color="2" name="empty"/>
+                <bottom color="2" name="leather"/>
+                <face color="1" name="head02"/>
+                <top color="65" name="zipNeckPullover"/>
+                <gloves color="2" name="empty"/>
+                <headgear color="5" name="empty"/>
+                <glasses color="1" name="empty"/>
+                <footwear color="1" name="workBoots1"/>
+                <hairStyle color="23" name="hair16"/>
+                <beard color="23" name="stubble_head02"/>
+            </style>
+        </worker>
+    </workers>
+    <displaySettings>
+        <!-- 
+          You can change here the position and size of current character name displayed on screen
+          Default values used on FS25: x="0.915" y="0.90" size="0.024"
+        -->
+        <characterName x="0.9828" y="0.915" size="0.024"/>
+        <playerName displayPlayerNames="true"/>
+    </displaySettings>
+    <passengerSeats displayWarning="false">
+        <!-- mods can be added here so they won't be overwritten if ContractorMod is updated -->
+        <Passenger vehiclesName="$moddir$FS22_JohnDeere8r2016/series8R.xml" seatIndex="1" x="0.5494" y="2.3036" z="-1.3561" rx="0" ry="0" rz="0"/>
+    </passengerSeats>
+</ContractorMod>

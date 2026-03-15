@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<map xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <fillTypes>
+    <!-- ADD? 
+        SILAGE_ADDITIVE
+        MINERAL_FEED
+
+        FORAGE, PIGFOOD, DIESEL, ELECTRICCHARGE, METHANE, LIME, FERTILIZER, LIQUIDFERTILIZER, HERBICIDE, SILAGE_ADDITIVE, MINERAL_FEED
+    -->
+
+
+    <fillType name="FORAGE" title="$l10n_fillType_forage">
+        <economy>
+            <factors>
+                <factor period="1" value="1.11"/>
+                <factor period="2" value="0.97"/>
+                <factor period="3" value="0.98"/>
+                <factor period="4" value="0.92"/>
+                <factor period="5" value="0.84"/>
+                <factor period="6" value="0.78"/>
+                <factor period="7" value="0.86"/>
+                <factor period="8" value="0.85"/>
+                <factor period="9" value="1.02"/>
+                <factor period="10" value="1.10"/>
+                <factor period="11" value="1.05"/>
+                <factor period="12" value="1.11"/>
+            </factors>
+        </economy>
+        <image hud="$dataS/menu/hud/fillTypes/hud_fill_forage.png" />
+        <textures   diffuse="$data/fillPlanes/forage_diffuse.png" unitSize="1.5" blendContrast="0.2" noiseScale="0.5" noiseSharpness="0.5" porosityAtZeroRoughness="0.9" porosityAtFullRoughness="1" firmness="0.3" viscosity="0.5"
+                    normal="$data/fillPlanes/forage_normal.png"
+                    height="$data/fillPlanes/forage_height.png"
+                    displacement="$data/fillPlanes/forage_displacement.png" displacementMaxHeight="0.2"
+                    distance="$data/fillPlanes/distance/forageDistance_diffuse.png" />
+    </fillType>
+
+    <fillType name="DIESEL" title="$l10n_fillType_diesel">
+        <economy>
+            <factors>
+                <factor period="1" value="0.98"/>
+                <factor period="2" value="0.91"/>
+                <factor period="3" value="0.92"/>
+                <factor period="4" value="1.01"/>
+                <factor period="5" value="1.03"/>
+                <factor period="6" value="0.96"/>
+                <factor period="7" value="1.09"/>
+                <factor period="8" value="0.97"/>
+                <factor period="9" value="0.97"/>
+                <factor period="10" value="1.13"/>
+                <factor period="11" value="1.12"/>
+                <factor period="12" value="0.98"/>
+            </factors>
+        </economy>
+
+        <image hud="$dataS/menu/hud/fillTypes/hud_fill_diesel.png" />
+    </fillType>
+
+
+    <fillType name="ELECTRICCHARGE" title="$l10n_fillType_electricCharge" showOnPriceTable="true">
+        <economy>
+            <factors>
+                <factor period="1"  value="1.07" />
+                <factor period="2"  value="1.05" />
+                <factor period="3"  value="1.02" />
+                <factor period="4"  value="0.95" />
+                <factor period="5"  value="0.98" />
+                <factor period="6"  value="1.07" />
+                <factor period="7"  value="0.97" />
+                <factor period="8"  value="1.03" />
+                <factor period="9"  value="1.01" />
+                <factor period="10" value="1.03" />
+                <factor period="11" value="1.08" />
+                <factor period="12" value="1.10" />
+            </factors>                
+        </economy>
+        <image hud="$dataS/menu/hud/fillTypes/hud_fill_electricCharge.png" />
+    </fillType>
+
+    <fillType name="METHANE" title="$l10n_fillType_methane" showOnPriceTable="true">
+        <economy>
+            <factors>
+                <factor period="1" value="1.04"/>
+                <factor period="2" value="0.94"/>
+                <factor period="3" value="1.04"/>
+                <factor period="4" value="0.88"/>
+                <factor period="5" value="0.76"/>
+                <factor period="6" value="0.75"/>
+                <factor period="7" value="0.94"/>
+                <factor period="8" value="1.00"/>
+                <factor period="9" value="1.11"/>
+                <factor period="10" value="1.18"/>
+                <factor period="11" value="1.23"/>
+                <factor period="12" value="1.23"/>
+            </factors>
+
+        </economy>        
+        <image hud="$dataS/menu/hud/fillTypes/hud_fill_methane.png" />
+    </fillType>
+
+
+    <fillType name="FERTILIZER" title="$l10n_fillType_fertilizer">
+        <economy>
+            <factors>
+                <factor period="1"  value="0.93" />
+                <factor period="2"  value="0.96" />
+                <factor period="3"  value="1.04" />
+                <factor period="4"  value="1.07" />
+                <factor period="5"  value="1.03" />
+                <factor period="6"  value="1.00" />
+                <factor period="7"  value="0.96" />
+                <factor period="8"  value="0.93" />
+                <factor period="9"  value="0.97" />
+                <factor period="10" value="1.00" />
+                <factor period="11" value="0.92" />
+                <factor period="12" value="0.95" />
+            </factors>
+        </economy>
+        <image hud="$dataS/menu/hud/fillTypes/hud_fill_fertilizer.png" />
+        <pallet filename="$data/objects/bigBagPallet/fertilizer/bigBagPallet_fertilizer.xml" />
+        <textures diffuse="$data/fillPlanes/fertilizer_diffuse.png" unitSize="0.4"
+            blendContrast="0.2" noiseScale="0.5" noiseSharpness="0.5" porosityAtZeroRoughness="0.9"
+            porosityAtFullRoughness="1" normal="$data/fillPlanes/fertilizer_normal.png"
+            height="$data/fillPlanes/fertilizer_height.png"
+            displacement="$data/fillPlanes/fertilizer_displacement.png" displacementMaxHeight="0.2"
+            firmness="0.3" viscosity="0.5"
+            distance="$data/fillPlanes/distance/fertilizerDistance_diffuse.png" />
+    </fillType>
+
+    <fillType name="LIQUIDFERTILIZER" title="$l10n_fillType_liquidFertilizer">
+        <economy>
+            <factors>
+                <factor period="1"  value="0.93" />
+                <factor period="2"  value="0.96" />
+                <factor period="3"  value="1.04" />
+                <factor period="4"  value="1.07" />
+                <factor period="5"  value="1.03" />
+                <factor period="6"  value="1.00" />
+                <factor period="7"  value="0.96" />
+                <factor period="8"  value="0.93" />
+                <factor period="9"  value="0.97" />
+                <factor period="10" value="1.00" />
+                <factor period="11" value="0.92" />
+                <factor period="12" value="0.95" />
+            </factors>
+        </economy>
+        <image hud="$dataS/menu/hud/fillTypes/hud_fill_liquidFertilizer.png" />
+        <pallet filename="$data/objects/pallets/liquidTank/fertilizerTank.xml" />
+    </fillType>
+
+
+    <fillType name="PIGFOOD" title="$l10n_fillType_pigFood" showOnPriceTable="true">
+        <economy>
+            <factors>
+                <factor period="1"  value="1.05" />
+                <factor period="2"  value="1.03" />
+                <factor period="3"  value="1.04" />
+                <factor period="4"  value="1.02" />
+                <factor period="5"  value="1.01" />
+                <factor period="6"  value="0.99" />
+                <factor period="7"  value="0.97" />
+                <factor period="8"  value="0.86" />
+                <factor period="9"  value="0.88" />
+                <factor period="10" value="0.95" />
+                <factor period="11" value="1.01" />
+                <factor period="12" value="1.04" />
+            </factors>                
+        </economy>
+        <pallet     filename     ="$data/objects/bigBagPallet/pigFood/bigBagPallet_pigFood.xml" />
+        <image      hud          ="$dataS/menu/hud/fillTypes/hud_fill_pigFood.png" />
+        <textures   diffuse      ="$data/fillPlanes/pigFood_diffuse.png" unitSize="0.5" blendContrast="0.2" noiseScale="0.5" porosityAtZeroRoughness="0.9" porosityAtFullRoughness="1"
+                    normal       ="$data/fillPlanes/pigFood_normal.png"
+                    height       ="$data/fillPlanes/pigFood_height.png"
+                    displacement ="$data/fillPlanes/pigFood_displacement.png" displacementMaxHeight="0.2" firmness="0.3" viscosity="0.5"
+                    distance     ="$data/fillPlanes/distance/pigFoodDistance_diffuse.png" />
+    </fillType>
+
+    <fillType name="HERBICIDE" title="$l10n_fillType_herbicide">
+        <economy>
+            <factors>
+                <factor period="1" value="1.02"/>
+                <factor period="2" value="0.96"/>
+                <factor period="3" value="1.07"/>
+                <factor period="4" value="1.12"/>
+                <factor period="5" value="1.20"/>
+                <factor period="6" value="1.09"/>
+                <factor period="7" value="1.15"/>
+                <factor period="8" value="1.16"/>
+                <factor period="9" value="1.11"/>
+                <factor period="10" value="0.99"/>
+                <factor period="11" value="0.92"/>
+                <factor period="12" value="0.92"/>
+            </factors>
+        </economy>
+        <image hud="$dataS/menu/hud/fillTypes/hud_fill_herbicide.png" />
+        <pallet filename="$data/objects/pallets/liquidTank/herbicideTank.xml" />
+    </fillType>
+
+        <fillType name="LIME" title="$l10n_fillType_lime">
+            <economy>
+                <factors>
+                    <factor period="1"  value="1.04" />
+                    <factor period="2"  value="1.06" />
+                    <factor period="3"  value="1.05" />
+                    <factor period="4"  value="1.02" />
+                    <factor period="5"  value="0.95" />
+                    <factor period="6"  value="0.91" />
+                    <factor period="7"  value="0.93" />
+                    <factor period="8"  value="1.02" />
+                    <factor period="9"  value="1.00" />
+                    <factor period="10" value="0.98" />
+                    <factor period="11" value="0.92" />
+                    <factor period="12" value="0.96" />
+                </factors>                
+            </economy>
+            <image    hud          ="$dataS/menu/hud/fillTypes/hud_fill_lime.png" />
+            <pallet   filename     ="$data/objects/bigBagPallet/lime/bigBagPallet_lime.xml" />
+            <textures   diffuse      ="$data/fillPlanes/lime_diffuse.png" unitSize="1" blendContrast="0.2" noiseScale="0.5" noiseSharpness="0.5" porosityAtZeroRoughness="0.9" porosityAtFullRoughness="1"
+                        normal       ="$data/fillPlanes/lime_normal.png"
+                        height       ="$data/fillPlanes/lime_height.png"
+                        displacement ="$data/fillPlanes/lime_displacement.png" displacementMaxHeight="0.2" firmness="0.3" viscosity="0.5"
+                        distance     ="$data/fillPlanes/distance/limeDistance_diffuse.png" />
+        </fillType>
+
+        <fillType name="SILAGE_ADDITIVE" title="$l10n_fillType_silageAdditive" showOnPriceTable="true">
+            <economy>
+                <factors>
+                    <factor period="1" value="0.97"/>
+                    <factor period="2" value="0.92"/>
+                    <factor period="3" value="0.96"/>
+                    <factor period="4" value="1.00"/>
+                    <factor period="5" value="1.14"/>
+                    <factor period="6" value="1.11"/>
+                    <factor period="7" value="1.16"/>
+                    <factor period="8" value="1.05"/>
+                    <factor period="9" value="1.05"/>
+                    <factor period="10" value="1.12"/>
+                    <factor period="11" value="0.97"/>
+                    <factor period="12" value="0.97"/>
+                </factors>
+            </economy>
+            <image   hud          ="$dataS/menu/hud/fillTypes/hud_fill_silageAdditive.png" />
+            <pallet  filename     ="$data/objects/pallets/silageAdditive/silageAdditivePallet.xml" />
+        </fillType>
+
+        <fillType name="MINERAL_FEED" title="$l10n_fillType_mineralFeed" showOnPriceTable="true">
+            <economy>
+                <factors>
+                    <factor period="1" value="0.91"/>
+                    <factor period="2" value="1.00"/>
+                    <factor period="3" value="1.09"/>
+                    <factor period="4" value="1.01"/>
+                    <factor period="5" value="0.97"/>
+                    <factor period="6" value="0.91"/>
+                    <factor period="7" value="1.03"/>
+                    <factor period="8" value="1.16"/>
+                    <factor period="9" value="1.08"/>
+                    <factor period="10" value="1.09"/>
+                    <factor period="11" value="1.01"/>
+                    <factor period="12" value="1.01"/>
+                </factors>
+
+
+            </economy>
+            <image    hud          ="$dataS/menu/hud/fillTypes/hud_fill_mineralFeed.png" />
+            <pallet   filename     ="$data/objects/pallets/mineralFeedPallet/mineralFeedPallet.xml" />
+            <textures   diffuse      ="$data/fillPlanes/mineralFeed_diffuse.png" unitSize="0.5" blendContrast="0.2" noiseScale="0.5" noiseSharpness="0.5" porosityAtZeroRoughness="0.9" porosityAtFullRoughness="1"
+                        normal       ="$data/fillPlanes/mineralFeed_normal.png"
+                        height       ="$data/fillPlanes/mineralFeed_height.png"
+                        displacement ="$data/fillPlanes/mineralFeed_displacement.png" displacementMaxHeight="0.2" firmness="0.3" viscosity="0.5"
+                        distance     ="$data/fillPlanes/distance/mineralFeedDistance_diffuse.png" />
+        </fillType>
+        <fillType name="SILAGE" title="$l10n_fillType_silage">
+            <economy>
+
+                <factors>
+                    <factor period="1" value="1.10"/>
+                    <factor period="2" value="1.13"/>
+                    <factor period="3" value="1.05"/>
+                    <factor period="4" value="1.07"/>
+                    <factor period="5" value="0.94"/>
+                    <factor period="6" value="0.82"/>
+                    <factor period="7" value="0.77"/>
+                    <factor period="8" value="0.82"/>
+                    <factor period="9" value="1.00"/>
+                    <factor period="10" value="1.00"/>
+                    <factor period="11" value="1.10"/>
+                    <factor period="12" value="1.10"/>
+                </factors>
+
+
+            </economy>
+            <image    hud                  ="$dataS/menu/hud/fillTypes/hud_fill_silage.png" />
+            <textures   diffuse              ="$data/fillPlanes/silage_diffuse.png" unitSize="1" blendContrast="0.2" noiseScale="0.5" noiseSharpness="0.5" porosityAtZeroRoughness="0.9" porosityAtFullRoughness="1"
+                        normal               ="$data/fillPlanes/silage_normal.png"
+                        height               ="$data/fillPlanes/silage_height.png"
+                        displacement         ="$data/fillPlanes/silage_displacement.png" displacementMaxHeight="0.2" firmness="0.3" viscosity="0.5"
+                        distance             ="$data/fillPlanes/distance/silageDistance_diffuse.png" />
+        </fillType>
+    </fillTypes>
+</map>

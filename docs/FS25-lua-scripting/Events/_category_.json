@@ -1,0 +1,11 @@
+{
+  "label": "Events",
+  "link": {
+    "type": "generated-index",
+    "title": "Events Documentation",
+    "description": "146 pages, 786 functions"
+  },
+  "customProps": {
+    "icon": "calendar-alt"
+  }
+}

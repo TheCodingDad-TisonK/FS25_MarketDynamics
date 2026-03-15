@@ -1,0 +1,11 @@
+{
+  "label": "Shop",
+  "link": {
+    "type": "generated-index",
+    "title": "Shop Documentation",
+    "description": "5 pages, 83 functions"
+  },
+  "customProps": {
+    "icon": "shopping-cart"
+  }
+}

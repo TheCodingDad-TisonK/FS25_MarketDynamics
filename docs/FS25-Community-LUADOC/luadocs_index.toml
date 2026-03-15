@@ -1,0 +1,6493 @@
+# Index of Lua functions for FS25 modding
+
+[clearAnimTrackClip]
+category = "engine.Animation"
+file = "docs/luadocs/engine/Animation/clearAnimTrackClip.md"
+
+[cloneAnimCharacterSet]
+category = "engine.Animation"
+file = "docs/luadocs/engine/Animation/cloneAnimCharacterSet.md"
+
+[conditionalAnimationDebugDraw]
+category = "engine.Animation"
+file = "docs/luadocs/engine/Animation/conditionalAnimationDebugDraw.md"
+
+[conditionalAnimationRegisterParameter]
+category = "engine.Animation"
+file = "docs/luadocs/engine/Animation/conditionalAnimationRegisterParameter.md"
+
+[conditionalAnimationZeroiseTrackTimes]
+category = "engine.Animation"
+file = "docs/luadocs/engine/Animation/conditionalAnimationZeroiseTrackTimes.md"
+
+[createConditionalAnimation]
+category = "engine.Animation"
+file = "docs/luadocs/engine/Animation/createConditionalAnimation.md"
+
+[disableAnimTrack]
+category = "engine.Animation"
+file = "docs/luadocs/engine/Animation/disableAnimTrack.md"
+
+[enableAnimTrack]
+category = "engine.Animation"
+file = "docs/luadocs/engine/Animation/enableAnimTrack.md"
+
+[getAnimCharacterSet]
+category = "engine.Animation"
+file = "docs/luadocs/engine/Animation/getAnimCharacterSet.md"
+
+[getAnimClipDuration]
+category = "engine.Animation"
+file = "docs/luadocs/engine/Animation/getAnimClipDuration.md"
+
+[getAnimClipIndex]
+category = "engine.Animation"
+file = "docs/luadocs/engine/Animation/getAnimClipIndex.md"
+
+[getAnimClipName]
+category = "engine.Animation"
+file = "docs/luadocs/engine/Animation/getAnimClipName.md"
+
+[getAnimNumOfClips]
+category = "engine.Animation"
+file = "docs/luadocs/engine/Animation/getAnimNumOfClips.md"
+
+[getAnimTrackAssignedClip]
+category = "engine.Animation"
+file = "docs/luadocs/engine/Animation/getAnimTrackAssignedClip.md"
+
+[getAnimTrackBlendWeight]
+category = "engine.Animation"
+file = "docs/luadocs/engine/Animation/getAnimTrackBlendWeight.md"
+
+[getAnimTrackTime]
+category = "engine.Animation"
+file = "docs/luadocs/engine/Animation/getAnimTrackTime.md"
+
+[getConditionalAnimationBoolValue]
+category = "engine.Animation"
+file = "docs/luadocs/engine/Animation/getConditionalAnimationBoolValue.md"
+
+[getConditionalAnimationFloatValue]
+category = "engine.Animation"
+file = "docs/luadocs/engine/Animation/getConditionalAnimationFloatValue.md"
+
+[getConditionalAnimationTime]
+category = "engine.Animation"
+file = "docs/luadocs/engine/Animation/getConditionalAnimationTime.md"
+
+[initConditionalAnimation]
+category = "engine.Animation"
+file = "docs/luadocs/engine/Animation/initConditionalAnimation.md"
+
+[isAnimTrackClipAssigned]
+category = "engine.Animation"
+file = "docs/luadocs/engine/Animation/isAnimTrackClipAssigned.md"
+
+[isAnimTrackEnabled]
+category = "engine.Animation"
+file = "docs/luadocs/engine/Animation/isAnimTrackEnabled.md"
+
+[setAnimTrackBlendWeight]
+category = "engine.Animation"
+file = "docs/luadocs/engine/Animation/setAnimTrackBlendWeight.md"
+
+[setAnimTrackLoopState]
+category = "engine.Animation"
+file = "docs/luadocs/engine/Animation/setAnimTrackLoopState.md"
+
+[setAnimTrackSpeedScale]
+category = "engine.Animation"
+file = "docs/luadocs/engine/Animation/setAnimTrackSpeedScale.md"
+
+[setAnimTrackTime]
+category = "engine.Animation"
+file = "docs/luadocs/engine/Animation/setAnimTrackTime.md"
+
+[setConditionalAnimationBoolValue]
+category = "engine.Animation"
+file = "docs/luadocs/engine/Animation/setConditionalAnimationBoolValue.md"
+
+[setConditionalAnimationFloatValue]
+category = "engine.Animation"
+file = "docs/luadocs/engine/Animation/setConditionalAnimationFloatValue.md"
+
+[setConditionalAnimationSpecificParameterIds]
+category = "engine.Animation"
+file = "docs/luadocs/engine/Animation/setConditionalAnimationSpecificParameterIds.md"
+
+[setConditionalAnimationTime]
+category = "engine.Animation"
+file = "docs/luadocs/engine/Animation/setConditionalAnimationTime.md"
+
+[updateConditionalAnimation]
+category = "engine.Animation"
+file = "docs/luadocs/engine/Animation/updateConditionalAnimation.md"
+
+[createCamera]
+category = "engine.Camera"
+file = "docs/luadocs/engine/Camera/createCamera.md"
+
+[getCamera]
+category = "engine.Camera"
+file = "docs/luadocs/engine/Camera/getCamera.md"
+
+[getFarClip]
+category = "engine.Camera"
+file = "docs/luadocs/engine/Camera/getFarClip.md"
+
+[getFovY]
+category = "engine.Camera"
+file = "docs/luadocs/engine/Camera/getFovY.md"
+
+[getIsOrthographic]
+category = "engine.Camera"
+file = "docs/luadocs/engine/Camera/getIsOrthographic.md"
+
+[getNearClip]
+category = "engine.Camera"
+file = "docs/luadocs/engine/Camera/getNearClip.md"
+
+[getOrthographicHeight]
+category = "engine.Camera"
+file = "docs/luadocs/engine/Camera/getOrthographicHeight.md"
+
+[getProjectionOffset]
+category = "engine.Camera"
+file = "docs/luadocs/engine/Camera/getProjectionOffset.md"
+
+[projectToCamera]
+category = "engine.Camera"
+file = "docs/luadocs/engine/Camera/projectToCamera.md"
+
+[setCamera]
+category = "engine.Camera"
+file = "docs/luadocs/engine/Camera/setCamera.md"
+
+[setFarClip]
+category = "engine.Camera"
+file = "docs/luadocs/engine/Camera/setFarClip.md"
+
+[setFovY]
+category = "engine.Camera"
+file = "docs/luadocs/engine/Camera/setFovY.md"
+
+[setIsOrthographic]
+category = "engine.Camera"
+file = "docs/luadocs/engine/Camera/setIsOrthographic.md"
+
+[setNearClip]
+category = "engine.Camera"
+file = "docs/luadocs/engine/Camera/setNearClip.md"
+
+[setOrthographicHeight]
+category = "engine.Camera"
+file = "docs/luadocs/engine/Camera/setOrthographicHeight.md"
+
+[setProjectionOffset]
+category = "engine.Camera"
+file = "docs/luadocs/engine/Camera/setProjectionOffset.md"
+
+[transformToViewSpace]
+category = "engine.Camera"
+file = "docs/luadocs/engine/Camera/transformToViewSpace.md"
+
+[debugEnableSingleStep]
+category = "engine.Debug"
+file = "docs/luadocs/engine/Debug/debugEnableSingleStep.md"
+
+[drawDebugArrow]
+category = "engine.Debug"
+file = "docs/luadocs/engine/Debug/drawDebugArrow.md"
+
+[drawDebugArrowVector]
+category = "engine.Debug"
+file = "docs/luadocs/engine/Debug/drawDebugArrowVector.md"
+
+[drawDebugLine]
+category = "engine.Debug"
+file = "docs/luadocs/engine/Debug/drawDebugLine.md"
+
+[drawDebugLineVector]
+category = "engine.Debug"
+file = "docs/luadocs/engine/Debug/drawDebugLineVector.md"
+
+[drawDebugPoint]
+category = "engine.Debug"
+file = "docs/luadocs/engine/Debug/drawDebugPoint.md"
+
+[drawDebugPointVector]
+category = "engine.Debug"
+file = "docs/luadocs/engine/Debug/drawDebugPointVector.md"
+
+[drawDebugSetDimmingState]
+category = "engine.Debug"
+file = "docs/luadocs/engine/Debug/drawDebugSetDimmingState.md"
+
+[printCallstack]
+category = "engine.Debug"
+file = "docs/luadocs/engine/Debug/printCallstack.md"
+
+[startDebugging]
+category = "engine.Debug"
+file = "docs/luadocs/engine/Debug/startDebugging.md"
+
+[stopDebugging]
+category = "engine.Debug"
+file = "docs/luadocs/engine/Debug/stopDebugging.md"
+
+[entityExists]
+category = "engine.Entity"
+file = "docs/luadocs/engine/Entity/entityExists.md"
+
+[getHasClassId]
+category = "engine.Entity"
+file = "docs/luadocs/engine/Entity/getHasClassId.md"
+
+[getName]
+category = "engine.Entity"
+file = "docs/luadocs/engine/Entity/getName.md"
+
+[setName]
+category = "engine.Entity"
+file = "docs/luadocs/engine/Entity/setName.md"
+
+[fillPlaneAdd]
+category = "engine.Fillplanes"
+file = "docs/luadocs/engine/Fillplanes/fillPlaneAdd.md"
+
+[findPolyline]
+category = "engine.Fillplanes"
+file = "docs/luadocs/engine/Fillplanes/findPolyline.md"
+
+[getFillPlaneHeightAtLocalPos]
+category = "engine.Fillplanes"
+file = "docs/luadocs/engine/Fillplanes/getFillPlaneHeightAtLocalPos.md"
+
+[readFillPlaneFromStream]
+category = "engine.Fillplanes"
+file = "docs/luadocs/engine/Fillplanes/readFillPlaneFromStream.md"
+
+[setFillPlaneMaxPhysicalSurfaceAngle]
+category = "engine.Fillplanes"
+file = "docs/luadocs/engine/Fillplanes/setFillPlaneMaxPhysicalSurfaceAngle.md"
+
+[setPolylineTranslation]
+category = "engine.Fillplanes"
+file = "docs/luadocs/engine/Fillplanes/setPolylineTranslation.md"
+
+[writeFillPlaneToStream]
+category = "engine.Fillplanes"
+file = "docs/luadocs/engine/Fillplanes/writeFillPlaneToStream.md"
+
+[createFoliageBendingRectangle]
+category = "engine.Foliage"
+file = "docs/luadocs/engine/Foliage/createFoliageBendingRectangle.md"
+
+[destroyFoliageBendingObject]
+category = "engine.Foliage"
+file = "docs/luadocs/engine/Foliage/destroyFoliageBendingObject.md"
+
+[getFoliageBendingRectangleAttributes]
+category = "engine.Foliage"
+file = "docs/luadocs/engine/Foliage/getFoliageBendingRectangleAttributes.md"
+
+[setFoliageBendingRectangleAttributes]
+category = "engine.Foliage"
+file = "docs/luadocs/engine/Foliage/setFoliageBendingRectangleAttributes.md"
+
+[setFoliageBendingSystem]
+category = "engine.Foliage"
+file = "docs/luadocs/engine/Foliage/setFoliageBendingSystem.md"
+
+[AnimalHusbandryFeedingType]
+category = "engine.General"
+file = "docs/luadocs/engine/General/AnimalHusbandryFeedingType.md"
+
+[AsyncResult]
+category = "engine.General"
+file = "docs/luadocs/engine/General/AsyncResult.md"
+
+[AtmosphereQuality]
+category = "engine.General"
+file = "docs/luadocs/engine/General/AtmosphereQuality.md"
+
+[AudioSourcePriority]
+category = "engine.General"
+file = "docs/luadocs/engine/General/AudioSourcePriority.md"
+
+[Axis]
+category = "engine.General"
+file = "docs/luadocs/engine/General/Axis.md"
+
+[BrushType]
+category = "engine.General"
+file = "docs/luadocs/engine/General/BrushType.md"
+
+[ClassIds]
+category = "engine.General"
+file = "docs/luadocs/engine/General/ClassIds.md"
+
+[CompanionAnimalType]
+category = "engine.General"
+file = "docs/luadocs/engine/General/CompanionAnimalType.md"
+
+[DebugMode]
+category = "engine.General"
+file = "docs/luadocs/engine/General/DebugMode.md"
+
+[DebugRendering]
+category = "engine.General"
+file = "docs/luadocs/engine/General/DebugRendering.md"
+
+[DensityCoordType]
+category = "engine.General"
+file = "docs/luadocs/engine/General/DensityCoordType.md"
+
+[DensityFilterSupersamplingMode]
+category = "engine.General"
+file = "docs/luadocs/engine/General/DensityFilterSupersamplingMode.md"
+
+[DensityIndexCompareMode]
+category = "engine.General"
+file = "docs/luadocs/engine/General/DensityIndexCompareMode.md"
+
+[DensityRoundingMode]
+category = "engine.General"
+file = "docs/luadocs/engine/General/DensityRoundingMode.md"
+
+[DensityTypeCompareType]
+category = "engine.General"
+file = "docs/luadocs/engine/General/DensityTypeCompareType.md"
+
+[DensityValueCompareType]
+category = "engine.General"
+file = "docs/luadocs/engine/General/DensityValueCompareType.md"
+
+[DLSSQuality]
+category = "engine.General"
+file = "docs/luadocs/engine/General/DLSSQuality.md"
+
+[DRSQuality]
+category = "engine.General"
+file = "docs/luadocs/engine/General/DRSQuality.md"
+
+[FacialAnimationEmotion]
+category = "engine.General"
+file = "docs/luadocs/engine/General/FacialAnimationEmotion.md"
+
+[FidelityFxSR30Quality]
+category = "engine.General"
+file = "docs/luadocs/engine/General/FidelityFxSR30Quality.md"
+
+[FidelityFxSRQuality]
+category = "engine.General"
+file = "docs/luadocs/engine/General/FidelityFxSRQuality.md"
+
+[FileAccess]
+category = "engine.General"
+file = "docs/luadocs/engine/General/FileAccess.md"
+
+[FrameInterpolationMode]
+category = "engine.General"
+file = "docs/luadocs/engine/General/FrameInterpolationMode.md"
+
+[FullscreenMode]
+category = "engine.General"
+file = "docs/luadocs/engine/General/FullscreenMode.md"
+
+[GamepadCategories]
+category = "engine.General"
+file = "docs/luadocs/engine/General/GamepadCategories.md"
+
+[HusbandryAreaType]
+category = "engine.General"
+file = "docs/luadocs/engine/General/HusbandryAreaType.md"
+
+[InAppPurchase]
+category = "engine.General"
+file = "docs/luadocs/engine/General/InAppPurchase.md"
+
+[InAppPurchasePurchaseState]
+category = "engine.General"
+file = "docs/luadocs/engine/General/InAppPurchasePurchaseState.md"
+
+[InAppPurchaseResponse]
+category = "engine.General"
+file = "docs/luadocs/engine/General/InAppPurchaseResponse.md"
+
+[IntersectMode]
+category = "engine.General"
+file = "docs/luadocs/engine/General/IntersectMode.md"
+
+[JointRotateOrder]
+category = "engine.General"
+file = "docs/luadocs/engine/General/JointRotateOrder.md"
+
+[LensFlareQuality]
+category = "engine.General"
+file = "docs/luadocs/engine/General/LensFlareQuality.md"
+
+[LightType]
+category = "engine.General"
+file = "docs/luadocs/engine/General/LightType.md"
+
+[LoadI3DFailedReason]
+category = "engine.General"
+file = "docs/luadocs/engine/General/LoadI3DFailedReason.md"
+
+[MasterServerServerDetailsFailedReason]
+category = "engine.General"
+file = "docs/luadocs/engine/General/MasterServerServerDetailsFailedReason.md"
+
+[MSAA]
+category = "engine.General"
+file = "docs/luadocs/engine/General/MSAA.md"
+
+[MultiplayerAvailability]
+category = "engine.General"
+file = "docs/luadocs/engine/General/MultiplayerAvailability.md"
+
+[NATType]
+category = "engine.General"
+file = "docs/luadocs/engine/General/NATType.md"
+
+[Network]
+category = "engine.General"
+file = "docs/luadocs/engine/General/Network.md"
+
+[NormalMapFormat]
+category = "engine.General"
+file = "docs/luadocs/engine/General/NormalMapFormat.md"
+
+[PhysicsDebugDrawMode]
+category = "engine.General"
+file = "docs/luadocs/engine/General/PhysicsDebugDrawMode.md"
+
+[PlatformId]
+category = "engine.General"
+file = "docs/luadocs/engine/General/PlatformId.md"
+
+[PostProcessAntiAliasing]
+category = "engine.General"
+file = "docs/luadocs/engine/General/PostProcessAntiAliasing.md"
+
+[PresenceModes]
+category = "engine.General"
+file = "docs/luadocs/engine/General/PresenceModes.md"
+
+[printError]
+category = "engine.General"
+file = "docs/luadocs/engine/General/printError.md"
+
+[printWarning]
+category = "engine.General"
+file = "docs/luadocs/engine/General/printWarning.md"
+
+[RainSimWeatherType]
+category = "engine.General"
+file = "docs/luadocs/engine/General/RainSimWeatherType.md"
+
+[RenderText]
+category = "engine.General"
+file = "docs/luadocs/engine/General/RenderText.md"
+
+[ReportUserReason]
+category = "engine.General"
+file = "docs/luadocs/engine/General/ReportUserReason.md"
+
+[Reverb]
+category = "engine.General"
+file = "docs/luadocs/engine/General/Reverb.md"
+
+[RigidBodyType]
+category = "engine.General"
+file = "docs/luadocs/engine/General/RigidBodyType.md"
+
+[Savegame]
+category = "engine.General"
+file = "docs/luadocs/engine/General/Savegame.md"
+
+[SaveGameResolvePolicy]
+category = "engine.General"
+file = "docs/luadocs/engine/General/SaveGameResolvePolicy.md"
+
+[ScreenSpaceReflectionsQuality]
+category = "engine.General"
+file = "docs/luadocs/engine/General/ScreenSpaceReflectionsQuality.md"
+
+[ScreenSpaceShadowsQuality]
+category = "engine.General"
+file = "docs/luadocs/engine/General/ScreenSpaceShadowsQuality.md"
+
+[source]
+category = "engine.General"
+file = "docs/luadocs/engine/General/source.md"
+
+[Store]
+category = "engine.General"
+file = "docs/luadocs/engine/General/Store.md"
+
+[TerrainLoadFlags]
+category = "engine.General"
+file = "docs/luadocs/engine/General/TerrainLoadFlags.md"
+
+[TEXTURE_FILTERING]
+category = "engine.General"
+file = "docs/luadocs/engine/General/TEXTURE_FILTERING.md"
+
+[TextureFormat]
+category = "engine.General"
+file = "docs/luadocs/engine/General/TextureFormat.md"
+
+[UploadState]
+category = "engine.General"
+file = "docs/luadocs/engine/General/UploadState.md"
+
+[UserAttributeType]
+category = "engine.General"
+file = "docs/luadocs/engine/General/UserAttributeType.md"
+
+[ValarPowerMode]
+category = "engine.General"
+file = "docs/luadocs/engine/General/ValarPowerMode.md"
+
+[ValarQuality]
+category = "engine.General"
+file = "docs/luadocs/engine/General/ValarQuality.md"
+
+[VoiceChatConnectionStatus]
+category = "engine.General"
+file = "docs/luadocs/engine/General/VoiceChatConnectionStatus.md"
+
+[VoiceChatRecordingMode]
+category = "engine.General"
+file = "docs/luadocs/engine/General/VoiceChatRecordingMode.md"
+
+[VolumetricFogQuality]
+category = "engine.General"
+file = "docs/luadocs/engine/General/VolumetricFogQuality.md"
+
+[XeSSQuality]
+category = "engine.General"
+file = "docs/luadocs/engine/General/XeSSQuality.md"
+
+[clearEntireSharedI3DFileCache]
+category = "engine.I3D"
+file = "docs/luadocs/engine/I3D/clearEntireSharedI3DFileCache.md"
+
+[getAllSharedI3DFileRequestIds]
+category = "engine.I3D"
+file = "docs/luadocs/engine/I3D/getAllSharedI3DFileRequestIds.md"
+
+[getAllStreamI3DFileRequestIds]
+category = "engine.I3D"
+file = "docs/luadocs/engine/I3D/getAllStreamI3DFileRequestIds.md"
+
+[getNumOfSharedI3DFiles]
+category = "engine.I3D"
+file = "docs/luadocs/engine/I3D/getNumOfSharedI3DFiles.md"
+
+[getSharedI3DFileProgressInfo]
+category = "engine.I3D"
+file = "docs/luadocs/engine/I3D/getSharedI3DFileProgressInfo.md"
+
+[getSharedI3DFileRefCount]
+category = "engine.I3D"
+file = "docs/luadocs/engine/I3D/getSharedI3DFileRefCount.md"
+
+[getStreamI3DFileProgressInfo]
+category = "engine.I3D"
+file = "docs/luadocs/engine/I3D/getStreamI3DFileProgressInfo.md"
+
+[loadI3DFile]
+category = "engine.I3D"
+file = "docs/luadocs/engine/I3D/loadI3DFile.md"
+
+[loadSharedI3DFile]
+category = "engine.I3D"
+file = "docs/luadocs/engine/I3D/loadSharedI3DFile.md"
+
+[pinSharedI3DFileInCache]
+category = "engine.I3D"
+file = "docs/luadocs/engine/I3D/pinSharedI3DFileInCache.md"
+
+[releaseSharedI3DFile]
+category = "engine.I3D"
+file = "docs/luadocs/engine/I3D/releaseSharedI3DFile.md"
+
+[setStreamI3DFileDelay]
+category = "engine.I3D"
+file = "docs/luadocs/engine/I3D/setStreamI3DFileDelay.md"
+
+[setStreamSharedI3DFileDelay]
+category = "engine.I3D"
+file = "docs/luadocs/engine/I3D/setStreamSharedI3DFileDelay.md"
+
+[streamI3DFile]
+category = "engine.I3D"
+file = "docs/luadocs/engine/I3D/streamI3DFile.md"
+
+[streamSharedI3DFile]
+category = "engine.I3D"
+file = "docs/luadocs/engine/I3D/streamSharedI3DFile.md"
+
+[unpinSharedI3DFileInCache]
+category = "engine.I3D"
+file = "docs/luadocs/engine/I3D/unpinSharedI3DFileInCache.md"
+
+[getGamepadButtonLabel]
+category = "engine.Input"
+file = "docs/luadocs/engine/Input/getGamepadButtonLabel.md"
+
+[getGamepadName]
+category = "engine.Input"
+file = "docs/luadocs/engine/Input/getGamepadName.md"
+
+[getHasTouchpad]
+category = "engine.Input"
+file = "docs/luadocs/engine/Input/getHasTouchpad.md"
+
+[getInputAxis]
+category = "engine.Input"
+file = "docs/luadocs/engine/Input/getInputAxis.md"
+
+[getInputButton]
+category = "engine.Input"
+file = "docs/luadocs/engine/Input/getInputButton.md"
+
+[getNumOfGamepads]
+category = "engine.Input"
+file = "docs/luadocs/engine/Input/getNumOfGamepads.md"
+
+[addMergedShadowIgnoreShapes]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/addMergedShadowIgnoreShapes.md"
+
+[clearLightShadowIgnoreShapes]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/clearLightShadowIgnoreShapes.md"
+
+[clearMergedShadowIgnoreShapes]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/clearMergedShadowIgnoreShapes.md"
+
+[createLightSource]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/createLightSource.md"
+
+[getLightCastingShadowMap]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/getLightCastingShadowMap.md"
+
+[getLightConeAngle]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/getLightConeAngle.md"
+
+[getLightConeAngleFromIESProfile]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/getLightConeAngleFromIESProfile.md"
+
+[getLightDropOff]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/getLightDropOff.md"
+
+[getLightIESProfile]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/getLightIESProfile.md"
+
+[getLightRange]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/getLightRange.md"
+
+[getLightScatteringConeAngle]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/getLightScatteringConeAngle.md"
+
+[getLightScatteringDirection]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/getLightScatteringDirection.md"
+
+[getLightScatteringIntensity]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/getLightScatteringIntensity.md"
+
+[getLightShadowExtrusionDistance]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/getLightShadowExtrusionDistance.md"
+
+[getLightShadowPriority]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/getLightShadowPriority.md"
+
+[getLightSoftShadowDepthBiasFactor]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/getLightSoftShadowDepthBiasFactor.md"
+
+[getLightSoftShadowDistance]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/getLightSoftShadowDistance.md"
+
+[getLightSoftShadowSize]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/getLightSoftShadowSize.md"
+
+[getLightType]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/getLightType.md"
+
+[getLightUseLightScattering]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/getLightUseLightScattering.md"
+
+[getMergedShadowSettingsLight]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/getMergedShadowSettingsLight.md"
+
+[hasMergedShadow]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/hasMergedShadow.md"
+
+[isMergedShadowActive]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/isMergedShadowActive.md"
+
+[mergeLightShadows]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/mergeLightShadows.md"
+
+[removeLightShadowIgnoreShapes]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/removeLightShadowIgnoreShapes.md"
+
+[removeMergedShadowIgnoreShapes]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/removeMergedShadowIgnoreShapes.md"
+
+[setLightConeAngle]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/setLightConeAngle.md"
+
+[setLightCullingWorldProperties]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/setLightCullingWorldProperties.md"
+
+[setLightDropOff]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/setLightDropOff.md"
+
+[setLightIESProfile]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/setLightIESProfile.md"
+
+[setLightRange]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/setLightRange.md"
+
+[setLightScatteringColor]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/setLightScatteringColor.md"
+
+[setLightScatteringConeAngle]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/setLightScatteringConeAngle.md"
+
+[setLightScatteringDirection]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/setLightScatteringDirection.md"
+
+[setLightScatteringIntensity]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/setLightScatteringIntensity.md"
+
+[setLightShadowExtrusionDistance]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/setLightShadowExtrusionDistance.md"
+
+[setLightShadowMap]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/setLightShadowMap.md"
+
+[setLightShadowPriority]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/setLightShadowPriority.md"
+
+[setLightSoftShadowDepthBiasFactor]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/setLightSoftShadowDepthBiasFactor.md"
+
+[setLightSoftShadowDistance]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/setLightSoftShadowDistance.md"
+
+[setLightSoftShadowSize]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/setLightSoftShadowSize.md"
+
+[setLightUseLightScattering]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/setLightUseLightScattering.md"
+
+[setMergedShadowActive]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/setMergedShadowActive.md"
+
+[setMergedShadowLightSize]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/setMergedShadowLightSize.md"
+
+[setMergedShadowNearPlaneOffset]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/setMergedShadowNearPlaneOffset.md"
+
+[setMergedShadowSettings]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/setMergedShadowSettings.md"
+
+[setMergedShadowSettingsLight]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/setMergedShadowSettingsLight.md"
+
+[splitLightShadow]
+category = "engine.Lighting"
+file = "docs/luadocs/engine/Lighting/splitLightShadow.md"
+
+[base64Encode]
+category = "engine.Math"
+file = "docs/luadocs/engine/Math/base64Encode.md"
+
+[bitAND]
+category = "engine.Math"
+file = "docs/luadocs/engine/Math/bitAND.md"
+
+[bitHighestSet]
+category = "engine.Math"
+file = "docs/luadocs/engine/Math/bitHighestSet.md"
+
+[bitNOT]
+category = "engine.Math"
+file = "docs/luadocs/engine/Math/bitNOT.md"
+
+[bitOR]
+category = "engine.Math"
+file = "docs/luadocs/engine/Math/bitOR.md"
+
+[bitShiftLeft]
+category = "engine.Math"
+file = "docs/luadocs/engine/Math/bitShiftLeft.md"
+
+[bitShiftRight]
+category = "engine.Math"
+file = "docs/luadocs/engine/Math/bitShiftRight.md"
+
+[bitXOR]
+category = "engine.Math"
+file = "docs/luadocs/engine/Math/bitXOR.md"
+
+[getLevenshteinDistance]
+category = "engine.Math"
+file = "docs/luadocs/engine/Math/getLevenshteinDistance.md"
+
+[mathEulerRotateVector]
+category = "engine.Math"
+file = "docs/luadocs/engine/Math/mathEulerRotateVector.md"
+
+[mathEulerToQuaternion]
+category = "engine.Math"
+file = "docs/luadocs/engine/Math/mathEulerToQuaternion.md"
+
+[mathQuaternionRotateVector]
+category = "engine.Math"
+file = "docs/luadocs/engine/Math/mathQuaternionRotateVector.md"
+
+[mathQuaternionToEuler]
+category = "engine.Math"
+file = "docs/luadocs/engine/Math/mathQuaternionToEuler.md"
+
+[buildNavMeshFromContour]
+category = "engine.NavMesh"
+file = "docs/luadocs/engine/NavMesh/buildNavMeshFromContour.md"
+
+[buildNavMeshFromShapesAndContour]
+category = "engine.NavMesh"
+file = "docs/luadocs/engine/NavMesh/buildNavMeshFromShapesAndContour.md"
+
+[createNavMesh]
+category = "engine.NavMesh"
+file = "docs/luadocs/engine/NavMesh/createNavMesh.md"
+
+[streamAlignWriteToByteBoundary]
+category = "engine.Network"
+file = "docs/luadocs/engine/Network/streamAlignWriteToByteBoundary.md"
+
+[streamGetNumOfUnreadBits]
+category = "engine.Network"
+file = "docs/luadocs/engine/Network/streamGetNumOfUnreadBits.md"
+
+[streamGetReadOffset]
+category = "engine.Network"
+file = "docs/luadocs/engine/Network/streamGetReadOffset.md"
+
+[streamGetWriteOffset]
+category = "engine.Network"
+file = "docs/luadocs/engine/Network/streamGetWriteOffset.md"
+
+[streamReadBool]
+category = "engine.Network"
+file = "docs/luadocs/engine/Network/streamReadBool.md"
+
+[streamReadFloat32]
+category = "engine.Network"
+file = "docs/luadocs/engine/Network/streamReadFloat32.md"
+
+[streamReadInt16]
+category = "engine.Network"
+file = "docs/luadocs/engine/Network/streamReadInt16.md"
+
+[streamReadInt32]
+category = "engine.Network"
+file = "docs/luadocs/engine/Network/streamReadInt32.md"
+
+[streamReadInt8]
+category = "engine.Network"
+file = "docs/luadocs/engine/Network/streamReadInt8.md"
+
+[streamReadIntN]
+category = "engine.Network"
+file = "docs/luadocs/engine/Network/streamReadIntN.md"
+
+[streamReadManualTimestamp]
+category = "engine.Network"
+file = "docs/luadocs/engine/Network/streamReadManualTimestamp.md"
+
+[streamReadString]
+category = "engine.Network"
+file = "docs/luadocs/engine/Network/streamReadString.md"
+
+[streamReadUInt16]
+category = "engine.Network"
+file = "docs/luadocs/engine/Network/streamReadUInt16.md"
+
+[streamReadUInt32]
+category = "engine.Network"
+file = "docs/luadocs/engine/Network/streamReadUInt32.md"
+
+[streamReadUInt8]
+category = "engine.Network"
+file = "docs/luadocs/engine/Network/streamReadUInt8.md"
+
+[streamReadUIntN]
+category = "engine.Network"
+file = "docs/luadocs/engine/Network/streamReadUIntN.md"
+
+[streamSetReadOffset]
+category = "engine.Network"
+file = "docs/luadocs/engine/Network/streamSetReadOffset.md"
+
+[streamSetWriteOffset]
+category = "engine.Network"
+file = "docs/luadocs/engine/Network/streamSetWriteOffset.md"
+
+[streamWriteBool]
+category = "engine.Network"
+file = "docs/luadocs/engine/Network/streamWriteBool.md"
+
+[streamWriteFloat32]
+category = "engine.Network"
+file = "docs/luadocs/engine/Network/streamWriteFloat32.md"
+
+[streamWriteInt16]
+category = "engine.Network"
+file = "docs/luadocs/engine/Network/streamWriteInt16.md"
+
+[streamWriteInt32]
+category = "engine.Network"
+file = "docs/luadocs/engine/Network/streamWriteInt32.md"
+
+[streamWriteInt8]
+category = "engine.Network"
+file = "docs/luadocs/engine/Network/streamWriteInt8.md"
+
+[streamWriteIntN]
+category = "engine.Network"
+file = "docs/luadocs/engine/Network/streamWriteIntN.md"
+
+[streamWriteManualTimestamp]
+category = "engine.Network"
+file = "docs/luadocs/engine/Network/streamWriteManualTimestamp.md"
+
+[streamWriteStream]
+category = "engine.Network"
+file = "docs/luadocs/engine/Network/streamWriteStream.md"
+
+[streamWriteString]
+category = "engine.Network"
+file = "docs/luadocs/engine/Network/streamWriteString.md"
+
+[streamWriteTimestamp]
+category = "engine.Network"
+file = "docs/luadocs/engine/Network/streamWriteTimestamp.md"
+
+[streamWriteUInt16]
+category = "engine.Network"
+file = "docs/luadocs/engine/Network/streamWriteUInt16.md"
+
+[streamWriteUInt32]
+category = "engine.Network"
+file = "docs/luadocs/engine/Network/streamWriteUInt32.md"
+
+[streamWriteUInt8]
+category = "engine.Network"
+file = "docs/luadocs/engine/Network/streamWriteUInt8.md"
+
+[streamWriteUIntN]
+category = "engine.Network"
+file = "docs/luadocs/engine/Network/streamWriteUIntN.md"
+
+[calcDistanceSquaredFrom]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/calcDistanceSquaredFrom.md"
+
+[clone]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/clone.md"
+
+[createTransformGroup]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/createTransformGroup.md"
+
+[getChild]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/getChild.md"
+
+[getChildAt]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/getChildAt.md"
+
+[getChildIndex]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/getChildIndex.md"
+
+[getClipDistance]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/getClipDistance.md"
+
+[getClipDistancesWithLOD]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/getClipDistancesWithLOD.md"
+
+[getEffectiveClipDistancesWithLOD]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/getEffectiveClipDistancesWithLOD.md"
+
+[getEffectiveVisibility]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/getEffectiveVisibility.md"
+
+[getIsLockedGroup]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/getIsLockedGroup.md"
+
+[getIsLODTransformGroup]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/getIsLODTransformGroup.md"
+
+[getLODTransformGroup]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/getLODTransformGroup.md"
+
+[getMinClipDistance]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/getMinClipDistance.md"
+
+[getNumOfChildren]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/getNumOfChildren.md"
+
+[getNumOfUserAttributes]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/getNumOfUserAttributes.md"
+
+[getObjectMask]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/getObjectMask.md"
+
+[getParent]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/getParent.md"
+
+[getQuaternion]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/getQuaternion.md"
+
+[getRootNode]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/getRootNode.md"
+
+[getRotation]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/getRotation.md"
+
+[getRotationVector]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/getRotationVector.md"
+
+[getScale]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/getScale.md"
+
+[getScaleVector]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/getScaleVector.md"
+
+[getTranslation]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/getTranslation.md"
+
+[getTranslationVector]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/getTranslationVector.md"
+
+[getUserAttribute]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/getUserAttribute.md"
+
+[getUserAttributeByIndex]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/getUserAttributeByIndex.md"
+
+[getUserAttributeValueAndType]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/getUserAttributeValueAndType.md"
+
+[getVisibility]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/getVisibility.md"
+
+[getVisibilityConditionDayOfYear]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/getVisibilityConditionDayOfYear.md"
+
+[getVisibilityConditionEntityState]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/getVisibilityConditionEntityState.md"
+
+[getVisibilityConditionMinuteOfDay]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/getVisibilityConditionMinuteOfDay.md"
+
+[getVisibilityConditionRenderInvisible]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/getVisibilityConditionRenderInvisible.md"
+
+[getVisibilityConditionViewerSpacialityMask]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/getVisibilityConditionViewerSpacialityMask.md"
+
+[getVisibilityConditionVisibleShaderParameter]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/getVisibilityConditionVisibleShaderParameter.md"
+
+[getVisibilityConditionWeatherMask]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/getVisibilityConditionWeatherMask.md"
+
+[getWorldQuaternion]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/getWorldQuaternion.md"
+
+[getWorldRotation]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/getWorldRotation.md"
+
+[getWorldRotationVector]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/getWorldRotationVector.md"
+
+[getWorldTranslation]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/getWorldTranslation.md"
+
+[getWorldTranslationVector]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/getWorldTranslationVector.md"
+
+[link]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/link.md"
+
+[localDirectionToLocal]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/localDirectionToLocal.md"
+
+[localDirectionToLocalVector]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/localDirectionToLocalVector.md"
+
+[localDirectionToWorld]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/localDirectionToWorld.md"
+
+[localDirectionToWorldVector]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/localDirectionToWorldVector.md"
+
+[localRotationToLocal]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/localRotationToLocal.md"
+
+[localRotationToLocalVector]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/localRotationToLocalVector.md"
+
+[localRotationToWorld]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/localRotationToWorld.md"
+
+[localRotationToWorldVector]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/localRotationToWorldVector.md"
+
+[localToLocal]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/localToLocal.md"
+
+[localToLocalVector]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/localToLocalVector.md"
+
+[localToWorld]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/localToWorld.md"
+
+[localToWorldVector]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/localToWorldVector.md"
+
+[project]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/project.md"
+
+[removeUserAttribute]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/removeUserAttribute.md"
+
+[rotateAboutLocalAxis]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/rotateAboutLocalAxis.md"
+
+[rotateAboutLocalAxisVector]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/rotateAboutLocalAxisVector.md"
+
+[setClipDistance]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/setClipDistance.md"
+
+[setDirection]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/setDirection.md"
+
+[setDirectionVector]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/setDirectionVector.md"
+
+[setLockedGroup]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/setLockedGroup.md"
+
+[setMinClipDistance]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/setMinClipDistance.md"
+
+[setObjectMask]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/setObjectMask.md"
+
+[setQuaternion]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/setQuaternion.md"
+
+[setRootNode]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/setRootNode.md"
+
+[setRotation]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/setRotation.md"
+
+[setRotationVector]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/setRotationVector.md"
+
+[setScale]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/setScale.md"
+
+[setScaleVector]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/setScaleVector.md"
+
+[setTranslation]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/setTranslation.md"
+
+[setTranslationVector]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/setTranslationVector.md"
+
+[setUserAttribute]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/setUserAttribute.md"
+
+[setVisibility]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/setVisibility.md"
+
+[setVisibilityConditionDayOfYear]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/setVisibilityConditionDayOfYear.md"
+
+[setVisibilityConditionMinuteOfDay]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/setVisibilityConditionMinuteOfDay.md"
+
+[setVisibilityConditionRenderInvisible]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/setVisibilityConditionRenderInvisible.md"
+
+[setVisibilityConditionViewerSpacialityMask]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/setVisibilityConditionViewerSpacialityMask.md"
+
+[setVisibilityConditionVisibleShaderParameter]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/setVisibilityConditionVisibleShaderParameter.md"
+
+[setVisibilityConditionWeatherMask]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/setVisibilityConditionWeatherMask.md"
+
+[setWorldDirection]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/setWorldDirection.md"
+
+[setWorldDirectionVector]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/setWorldDirectionVector.md"
+
+[setWorldQuaternion]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/setWorldQuaternion.md"
+
+[setWorldRotation]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/setWorldRotation.md"
+
+[setWorldRotationVector]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/setWorldRotationVector.md"
+
+[setWorldTranslation]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/setWorldTranslation.md"
+
+[setWorldTranslationVector]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/setWorldTranslationVector.md"
+
+[unlink]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/unlink.md"
+
+[unProject]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/unProject.md"
+
+[worldDirectionToLocal]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/worldDirectionToLocal.md"
+
+[worldDirectionToLocalVector]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/worldDirectionToLocalVector.md"
+
+[worldRotationToLocal]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/worldRotationToLocal.md"
+
+[worldRotationToLocalVector]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/worldRotationToLocalVector.md"
+
+[worldToLocal]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/worldToLocal.md"
+
+[worldToLocalVector]
+category = "engine.Node"
+file = "docs/luadocs/engine/Node/worldToLocalVector.md"
+
+[exportNoteNodes]
+category = "engine.NoteNode"
+file = "docs/luadocs/engine/NoteNode/exportNoteNodes.md"
+
+[getNoteNodeText]
+category = "engine.NoteNode"
+file = "docs/luadocs/engine/NoteNode/getNoteNodeText.md"
+
+[setNoteNodeColor]
+category = "engine.NoteNode"
+file = "docs/luadocs/engine/NoteNode/setNoteNodeColor.md"
+
+[setNoteNodeFixedSize]
+category = "engine.NoteNode"
+file = "docs/luadocs/engine/NoteNode/setNoteNodeFixedSize.md"
+
+[setNoteNodeText]
+category = "engine.NoteNode"
+file = "docs/luadocs/engine/NoteNode/setNoteNodeText.md"
+
+[createImageOverlay]
+category = "engine.Overlays"
+file = "docs/luadocs/engine/Overlays/createImageOverlay.md"
+
+[createImageOverlayWithTexture]
+category = "engine.Overlays"
+file = "docs/luadocs/engine/Overlays/createImageOverlayWithTexture.md"
+
+[getIsOverlayReady]
+category = "engine.Overlays"
+file = "docs/luadocs/engine/Overlays/getIsOverlayReady.md"
+
+[renderOverlay]
+category = "engine.Overlays"
+file = "docs/luadocs/engine/Overlays/renderOverlay.md"
+
+[set2DMaskFromOverlay]
+category = "engine.Overlays"
+file = "docs/luadocs/engine/Overlays/set2DMaskFromOverlay.md"
+
+[set2DMaskFromTexture]
+category = "engine.Overlays"
+file = "docs/luadocs/engine/Overlays/set2DMaskFromTexture.md"
+
+[setOverlayColor]
+category = "engine.Overlays"
+file = "docs/luadocs/engine/Overlays/setOverlayColor.md"
+
+[setOverlayCornerColor]
+category = "engine.Overlays"
+file = "docs/luadocs/engine/Overlays/setOverlayCornerColor.md"
+
+[setOverlayLayer]
+category = "engine.Overlays"
+file = "docs/luadocs/engine/Overlays/setOverlayLayer.md"
+
+[setOverlayRotation]
+category = "engine.Overlays"
+file = "docs/luadocs/engine/Overlays/setOverlayRotation.md"
+
+[setOverlaySignedDistanceFieldWidth]
+category = "engine.Overlays"
+file = "docs/luadocs/engine/Overlays/setOverlaySignedDistanceFieldWidth.md"
+
+[setOverlayUVs]
+category = "engine.Overlays"
+file = "docs/luadocs/engine/Overlays/setOverlayUVs.md"
+
+[getEmitCountScale]
+category = "engine.Particle System"
+file = "docs/luadocs/engine/Particle System/getEmitCountScale.md"
+
+[getEmitStartTime]
+category = "engine.Particle System"
+file = "docs/luadocs/engine/Particle System/getEmitStartTime.md"
+
+[getEmitStopTime]
+category = "engine.Particle System"
+file = "docs/luadocs/engine/Particle System/getEmitStopTime.md"
+
+[getEmitterShape]
+category = "engine.Particle System"
+file = "docs/luadocs/engine/Particle System/getEmitterShape.md"
+
+[getEmitterShapeVelocityScale]
+category = "engine.Particle System"
+file = "docs/luadocs/engine/Particle System/getEmitterShapeVelocityScale.md"
+
+[getMaxNumOfParticles]
+category = "engine.Particle System"
+file = "docs/luadocs/engine/Particle System/getMaxNumOfParticles.md"
+
+[getNumOfParticlesToEmitPerMs]
+category = "engine.Particle System"
+file = "docs/luadocs/engine/Particle System/getNumOfParticlesToEmitPerMs.md"
+
+[getParticleSystemAverageSpeed]
+category = "engine.Particle System"
+file = "docs/luadocs/engine/Particle System/getParticleSystemAverageSpeed.md"
+
+[getParticleSystemDamping]
+category = "engine.Particle System"
+file = "docs/luadocs/engine/Particle System/getParticleSystemDamping.md"
+
+[getParticleSystemLifespan]
+category = "engine.Particle System"
+file = "docs/luadocs/engine/Particle System/getParticleSystemLifespan.md"
+
+[getParticleSystemNormalSpeed]
+category = "engine.Particle System"
+file = "docs/luadocs/engine/Particle System/getParticleSystemNormalSpeed.md"
+
+[getParticleSystemSpeed]
+category = "engine.Particle System"
+file = "docs/luadocs/engine/Particle System/getParticleSystemSpeed.md"
+
+[getParticleSystemSpeedRandom]
+category = "engine.Particle System"
+file = "docs/luadocs/engine/Particle System/getParticleSystemSpeedRandom.md"
+
+[getParticleSystemSpriteScaleX]
+category = "engine.Particle System"
+file = "docs/luadocs/engine/Particle System/getParticleSystemSpriteScaleX.md"
+
+[getParticleSystemSpriteScaleXGain]
+category = "engine.Particle System"
+file = "docs/luadocs/engine/Particle System/getParticleSystemSpriteScaleXGain.md"
+
+[getParticleSystemSpriteScaleY]
+category = "engine.Particle System"
+file = "docs/luadocs/engine/Particle System/getParticleSystemSpriteScaleY.md"
+
+[getParticleSystemSpriteScaleYGain]
+category = "engine.Particle System"
+file = "docs/luadocs/engine/Particle System/getParticleSystemSpriteScaleYGain.md"
+
+[getParticleSystemTangentSpeed]
+category = "engine.Particle System"
+file = "docs/luadocs/engine/Particle System/getParticleSystemTangentSpeed.md"
+
+[resetEmitStartTimer]
+category = "engine.Particle System"
+file = "docs/luadocs/engine/Particle System/resetEmitStartTimer.md"
+
+[resetEmitStopTimer]
+category = "engine.Particle System"
+file = "docs/luadocs/engine/Particle System/resetEmitStopTimer.md"
+
+[resetNumOfEmittedParticles]
+category = "engine.Particle System"
+file = "docs/luadocs/engine/Particle System/resetNumOfEmittedParticles.md"
+
+[setEmitCountScale]
+category = "engine.Particle System"
+file = "docs/luadocs/engine/Particle System/setEmitCountScale.md"
+
+[setEmitStartTime]
+category = "engine.Particle System"
+file = "docs/luadocs/engine/Particle System/setEmitStartTime.md"
+
+[setEmitStopTime]
+category = "engine.Particle System"
+file = "docs/luadocs/engine/Particle System/setEmitStopTime.md"
+
+[setEmitterShape]
+category = "engine.Particle System"
+file = "docs/luadocs/engine/Particle System/setEmitterShape.md"
+
+[setEmitterShapeVelocityScale]
+category = "engine.Particle System"
+file = "docs/luadocs/engine/Particle System/setEmitterShapeVelocityScale.md"
+
+[setEmittingState]
+category = "engine.Particle System"
+file = "docs/luadocs/engine/Particle System/setEmittingState.md"
+
+[setMaxNumOfParticles]
+category = "engine.Particle System"
+file = "docs/luadocs/engine/Particle System/setMaxNumOfParticles.md"
+
+[setNumOfParticlesToEmitPerMs]
+category = "engine.Particle System"
+file = "docs/luadocs/engine/Particle System/setNumOfParticlesToEmitPerMs.md"
+
+[setParticleShape]
+category = "engine.Particle System"
+file = "docs/luadocs/engine/Particle System/setParticleShape.md"
+
+[setParticleSystemDamping]
+category = "engine.Particle System"
+file = "docs/luadocs/engine/Particle System/setParticleSystemDamping.md"
+
+[setParticleSystemLifespan]
+category = "engine.Particle System"
+file = "docs/luadocs/engine/Particle System/setParticleSystemLifespan.md"
+
+[setParticleSystemNormalSpeed]
+category = "engine.Particle System"
+file = "docs/luadocs/engine/Particle System/setParticleSystemNormalSpeed.md"
+
+[setParticleSystemSpeed]
+category = "engine.Particle System"
+file = "docs/luadocs/engine/Particle System/setParticleSystemSpeed.md"
+
+[setParticleSystemSpeedRandom]
+category = "engine.Particle System"
+file = "docs/luadocs/engine/Particle System/setParticleSystemSpeedRandom.md"
+
+[setParticleSystemSpriteScaleX]
+category = "engine.Particle System"
+file = "docs/luadocs/engine/Particle System/setParticleSystemSpriteScaleX.md"
+
+[setParticleSystemSpriteScaleXGain]
+category = "engine.Particle System"
+file = "docs/luadocs/engine/Particle System/setParticleSystemSpriteScaleXGain.md"
+
+[setParticleSystemSpriteScaleY]
+category = "engine.Particle System"
+file = "docs/luadocs/engine/Particle System/setParticleSystemSpriteScaleY.md"
+
+[setParticleSystemSpriteScaleYGain]
+category = "engine.Particle System"
+file = "docs/luadocs/engine/Particle System/setParticleSystemSpriteScaleYGain.md"
+
+[setParticleSystemTangentSpeed]
+category = "engine.Particle System"
+file = "docs/luadocs/engine/Particle System/setParticleSystemTangentSpeed.md"
+
+[setParticleSystemTimeScale]
+category = "engine.Particle System"
+file = "docs/luadocs/engine/Particle System/setParticleSystemTimeScale.md"
+
+[addForce]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/addForce.md"
+
+[addForceVector]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/addForceVector.md"
+
+[addImpulse]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/addImpulse.md"
+
+[addImpulseVector]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/addImpulseVector.md"
+
+[addToPhysics]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/addToPhysics.md"
+
+[addTorque]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/addTorque.md"
+
+[addTorqueImpulse]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/addTorqueImpulse.md"
+
+[addTorqueImpulseVector]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/addTorqueImpulseVector.md"
+
+[addTorqueVector]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/addTorqueVector.md"
+
+[addTrigger]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/addTrigger.md"
+
+[addVehicleLink]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/addVehicleLink.md"
+
+[computeWheelShapeTireForces]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/computeWheelShapeTireForces.md"
+
+[createCCT]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/createCCT.md"
+
+[createWheelShape]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/createWheelShape.md"
+
+[createWheelShapeVector]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/createWheelShapeVector.md"
+
+[getAngularDamping]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/getAngularDamping.md"
+
+[getAngularVelocity]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/getAngularVelocity.md"
+
+[getAngularVelocityVector]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/getAngularVelocityVector.md"
+
+[getCCTCollisionFlags]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/getCCTCollisionFlags.md"
+
+[getCCTHeight]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/getCCTHeight.md"
+
+[getCenterOfMass]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/getCenterOfMass.md"
+
+[getCenterOfMassVector]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/getCenterOfMassVector.md"
+
+[getCollisionFilter]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/getCollisionFilter.md"
+
+[getCollisionFilterGroup]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/getCollisionFilterGroup.md"
+
+[getCollisionFilterMask]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/getCollisionFilterMask.md"
+
+[getDensity]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/getDensity.md"
+
+[getHasCollision]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/getHasCollision.md"
+
+[getHasTrigger]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/getHasTrigger.md"
+
+[getIsAddedToPhysics]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/getIsAddedToPhysics.md"
+
+[getIsCompound]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/getIsCompound.md"
+
+[getIsCompoundChild]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/getIsCompoundChild.md"
+
+[getLinearDamping]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/getLinearDamping.md"
+
+[getLinearVelocity]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/getLinearVelocity.md"
+
+[getLinearVelocityVector]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/getLinearVelocityVector.md"
+
+[getLocalLinearVelocity]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/getLocalLinearVelocity.md"
+
+[getLocalLinearVelocityVector]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/getLocalLinearVelocityVector.md"
+
+[getMass]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/getMass.md"
+
+[getMotorRotationSpeed]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/getMotorRotationSpeed.md"
+
+[getMotorTorque]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/getMotorTorque.md"
+
+[getNumOfTriggers]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/getNumOfTriggers.md"
+
+[getRigidBodyAABB]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/getRigidBodyAABB.md"
+
+[getRigidBodyAABBVector]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/getRigidBodyAABBVector.md"
+
+[getRigidBodyType]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/getRigidBodyType.md"
+
+[getVelocityAtLocalPos]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/getVelocityAtLocalPos.md"
+
+[getVelocityAtLocalPosVector]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/getVelocityAtLocalPosVector.md"
+
+[getVelocityAtWorldPos]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/getVelocityAtWorldPos.md"
+
+[getVelocityAtWorldPosVector]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/getVelocityAtWorldPosVector.md"
+
+[getVolume]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/getVolume.md"
+
+[getWheelShapeAxleSpeed]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/getWheelShapeAxleSpeed.md"
+
+[getWheelShapeContactForce]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/getWheelShapeContactForce.md"
+
+[getWheelShapeContactNormal]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/getWheelShapeContactNormal.md"
+
+[getWheelShapeContactNormalVector]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/getWheelShapeContactNormalVector.md"
+
+[getWheelShapeContactObject]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/getWheelShapeContactObject.md"
+
+[getWheelShapeContactPoint]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/getWheelShapeContactPoint.md"
+
+[getWheelShapeContactPointVector]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/getWheelShapeContactPointVector.md"
+
+[getWheelShapePosition]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/getWheelShapePosition.md"
+
+[getWheelShapePositionVector]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/getWheelShapePositionVector.md"
+
+[getWheelShapeSlip]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/getWheelShapeSlip.md"
+
+[JointConstructor_setActors]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/JointConstructor_setActors.md"
+
+[JointConstructor_setJointTransforms]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/JointConstructor_setJointTransforms.md"
+
+[moveCCT]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/moveCCT.md"
+
+[overlapBox]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/overlapBox.md"
+
+[overlapBoxAsync]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/overlapBoxAsync.md"
+
+[overlapBoxAsyncVector]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/overlapBoxAsyncVector.md"
+
+[overlapBoxVector]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/overlapBoxVector.md"
+
+[overlapConvex]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/overlapConvex.md"
+
+[overlapConvexAsync]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/overlapConvexAsync.md"
+
+[overlapConvexPolyhedron]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/overlapConvexPolyhedron.md"
+
+[overlapConvexPolyhedronAsync]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/overlapConvexPolyhedronAsync.md"
+
+[overlapCylinder]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/overlapCylinder.md"
+
+[overlapCylinderAsync]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/overlapCylinderAsync.md"
+
+[overlapCylinderAsyncVector]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/overlapCylinderAsyncVector.md"
+
+[overlapCylinderVector]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/overlapCylinderVector.md"
+
+[overlapSphere]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/overlapSphere.md"
+
+[overlapSphereAsync]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/overlapSphereAsync.md"
+
+[overlapSphereAsyncVector]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/overlapSphereAsyncVector.md"
+
+[overlapSphereVector]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/overlapSphereVector.md"
+
+[raycastAll]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/raycastAll.md"
+
+[raycastAllAsync]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/raycastAllAsync.md"
+
+[raycastAllAsyncVector]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/raycastAllAsyncVector.md"
+
+[raycastAllVector]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/raycastAllVector.md"
+
+[raycastClosest]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/raycastClosest.md"
+
+[raycastClosestAsync]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/raycastClosestAsync.md"
+
+[raycastClosestAsyncVector]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/raycastClosestAsyncVector.md"
+
+[raycastClosestVector]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/raycastClosestVector.md"
+
+[removeAllDifferentials]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/removeAllDifferentials.md"
+
+[removeAllTriggers]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/removeAllTriggers.md"
+
+[removeCCT]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/removeCCT.md"
+
+[removeFromPhysics]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/removeFromPhysics.md"
+
+[removeTrigger]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/removeTrigger.md"
+
+[setAngularDamping]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/setAngularDamping.md"
+
+[setAngularVelocity]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/setAngularVelocity.md"
+
+[setAngularVelocityVector]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/setAngularVelocityVector.md"
+
+[setCCTHeight]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/setCCTHeight.md"
+
+[setCenterOfMass]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/setCenterOfMass.md"
+
+[setCenterOfMassVector]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/setCenterOfMassVector.md"
+
+[setCollisionFilter]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/setCollisionFilter.md"
+
+[setCollisionFilterGroup]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/setCollisionFilterGroup.md"
+
+[setCollisionFilterMask]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/setCollisionFilterMask.md"
+
+[setFrictionVelocity]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/setFrictionVelocity.md"
+
+[setHasCollision]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/setHasCollision.md"
+
+[setInertiaScale]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/setInertiaScale.md"
+
+[setInertiaScaleVector]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/setInertiaScaleVector.md"
+
+[setIsCompound]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/setIsCompound.md"
+
+[setIsCompoundChild]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/setIsCompoundChild.md"
+
+[setJointAngularDrive]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/setJointAngularDrive.md"
+
+[setJointDrive]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/setJointDrive.md"
+
+[setJointLinearDrive]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/setJointLinearDrive.md"
+
+[setLinearDamping]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/setLinearDamping.md"
+
+[setLinearVelocity]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/setLinearVelocity.md"
+
+[setLinearVelocityVector]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/setLinearVelocityVector.md"
+
+[setMass]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/setMass.md"
+
+[setRigidBodyType]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/setRigidBodyType.md"
+
+[setSolverIterationCount]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/setSolverIterationCount.md"
+
+[setTriggerReportStatics]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/setTriggerReportStatics.md"
+
+[setWheelShapeDirection]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/setWheelShapeDirection.md"
+
+[setWheelShapeDirectionVector]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/setWheelShapeDirectionVector.md"
+
+[setWheelShapeForcePoint]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/setWheelShapeForcePoint.md"
+
+[setWheelShapeForcePointVector]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/setWheelShapeForcePointVector.md"
+
+[setWheelShapeProps]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/setWheelShapeProps.md"
+
+[setWheelShapeSteeringCenter]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/setWheelShapeSteeringCenter.md"
+
+[setWheelShapeSteeringCenterVector]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/setWheelShapeSteeringCenterVector.md"
+
+[setWheelShapeTireFriction]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/setWheelShapeTireFriction.md"
+
+[simulatePhysics]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/simulatePhysics.md"
+
+[simulatePhysicsTimeScale]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/simulatePhysicsTimeScale.md"
+
+[updateDifferential]
+category = "engine.Physics"
+file = "docs/luadocs/engine/Physics/updateDifferential.md"
+
+[PointList2D_get]
+category = "engine.PointList2D"
+file = "docs/luadocs/engine/PointList2D/PointList2D_get.md"
+
+[PointList2D_getAreBoundariesColliding]
+category = "engine.PointList2D"
+file = "docs/luadocs/engine/PointList2D/PointList2D_getAreBoundariesColliding.md"
+
+[PointList2D_getClosestPositionAndDirectionOnBoundary]
+category = "engine.PointList2D"
+file = "docs/luadocs/engine/PointList2D/PointList2D_getClosestPositionAndDirectionOnBoundary.md"
+
+[PointList2D_getClosestPositionOnBoundary]
+category = "engine.PointList2D"
+file = "docs/luadocs/engine/PointList2D/PointList2D_getClosestPositionOnBoundary.md"
+
+[PointList2D_getDistanceToBoundary]
+category = "engine.PointList2D"
+file = "docs/luadocs/engine/PointList2D/PointList2D_getDistanceToBoundary.md"
+
+[PointList2D_getIsPointInsideBoundary]
+category = "engine.PointList2D"
+file = "docs/luadocs/engine/PointList2D/PointList2D_getIsPointInsideBoundary.md"
+
+[PointList2D_getIsSegmentInsideBoundary]
+category = "engine.PointList2D"
+file = "docs/luadocs/engine/PointList2D/PointList2D_getIsSegmentInsideBoundary.md"
+
+[PointList2D_getNumPoints]
+category = "engine.PointList2D"
+file = "docs/luadocs/engine/PointList2D/PointList2D_getNumPoints.md"
+
+[PointList2D_getSegmentBoundaryIntersection]
+category = "engine.PointList2D"
+file = "docs/luadocs/engine/PointList2D/PointList2D_getSegmentBoundaryIntersection.md"
+
+[PointList2D_getSegmentClosestBoundaryIntersection]
+category = "engine.PointList2D"
+file = "docs/luadocs/engine/PointList2D/PointList2D_getSegmentClosestBoundaryIntersection.md"
+
+[PointList2D_getSegmentNumBoundaryIntersections]
+category = "engine.PointList2D"
+file = "docs/luadocs/engine/PointList2D/PointList2D_getSegmentNumBoundaryIntersections.md"
+
+[PointList2D_length]
+category = "engine.PointList2D"
+file = "docs/luadocs/engine/PointList2D/PointList2D_length.md"
+
+[PointList2D_set]
+category = "engine.PointList2D"
+file = "docs/luadocs/engine/PointList2D/PointList2D_set.md"
+
+[setRainAmountMultiplier]
+category = "engine.Precipitation"
+file = "docs/luadocs/engine/Precipitation/setRainAmountMultiplier.md"
+
+[setRainBehindCameraBufferForMirrors]
+category = "engine.Precipitation"
+file = "docs/luadocs/engine/Precipitation/setRainBehindCameraBufferForMirrors.md"
+
+[setRainBounceRandomFactor]
+category = "engine.Precipitation"
+file = "docs/luadocs/engine/Precipitation/setRainBounceRandomFactor.md"
+
+[setRainBounceRestitution]
+category = "engine.Precipitation"
+file = "docs/luadocs/engine/Precipitation/setRainBounceRestitution.md"
+
+[setRainCameraVelocityMultiplier]
+category = "engine.Precipitation"
+file = "docs/luadocs/engine/Precipitation/setRainCameraVelocityMultiplier.md"
+
+[setRainDistributionPower]
+category = "engine.Precipitation"
+file = "docs/luadocs/engine/Precipitation/setRainDistributionPower.md"
+
+[setRainForwardDirection]
+category = "engine.Precipitation"
+file = "docs/luadocs/engine/Precipitation/setRainForwardDirection.md"
+
+[setRainHeightmapCollisionThreshold]
+category = "engine.Precipitation"
+file = "docs/luadocs/engine/Precipitation/setRainHeightmapCollisionThreshold.md"
+
+[setRainMaxBounces]
+category = "engine.Precipitation"
+file = "docs/luadocs/engine/Precipitation/setRainMaxBounces.md"
+
+[setRainMaxDropsMultiplier]
+category = "engine.Precipitation"
+file = "docs/luadocs/engine/Precipitation/setRainMaxDropsMultiplier.md"
+
+[setRainMostConcentratedDistance]
+category = "engine.Precipitation"
+file = "docs/luadocs/engine/Precipitation/setRainMostConcentratedDistance.md"
+
+[setRainRandomOffset]
+category = "engine.Precipitation"
+file = "docs/luadocs/engine/Precipitation/setRainRandomOffset.md"
+
+[setRainShallowWaterSimulation]
+category = "engine.Precipitation"
+file = "docs/luadocs/engine/Precipitation/setRainShallowWaterSimulation.md"
+
+[setRainSpawnBoxParameters]
+category = "engine.Precipitation"
+file = "docs/luadocs/engine/Precipitation/setRainSpawnBoxParameters.md"
+
+[setRainSpawnVelocity]
+category = "engine.Precipitation"
+file = "docs/luadocs/engine/Precipitation/setRainSpawnVelocity.md"
+
+[setRainTurbulenceParameters]
+category = "engine.Precipitation"
+file = "docs/luadocs/engine/Precipitation/setRainTurbulenceParameters.md"
+
+[setRainWeatherType]
+category = "engine.Precipitation"
+file = "docs/luadocs/engine/Precipitation/setRainWeatherType.md"
+
+[setRainWindForce]
+category = "engine.Precipitation"
+file = "docs/luadocs/engine/Precipitation/setRainWindForce.md"
+
+[getMaterialAlbedoColor]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/getMaterialAlbedoColor.md"
+
+[getMaterialCustomMapFilename]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/getMaterialCustomMapFilename.md"
+
+[getMaterialCustomMapIsSRGB]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/getMaterialCustomMapIsSRGB.md"
+
+[getMaterialCustomParameter]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/getMaterialCustomParameter.md"
+
+[getMaterialCustomShaderFilename]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/getMaterialCustomShaderFilename.md"
+
+[getMaterialCustomShaderVariation]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/getMaterialCustomShaderVariation.md"
+
+[getMaterialDiffuseMapFilename]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/getMaterialDiffuseMapFilename.md"
+
+[getMaterialDiffuseMapHasAlpha]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/getMaterialDiffuseMapHasAlpha.md"
+
+[getMaterialEmissiveMapFilename]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/getMaterialEmissiveMapFilename.md"
+
+[getMaterialEmissiveMapHasAlpha]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/getMaterialEmissiveMapHasAlpha.md"
+
+[getMaterialGlossMapFilename]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/getMaterialGlossMapFilename.md"
+
+[getMaterialHasRefractionMap]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/getMaterialHasRefractionMap.md"
+
+[getMaterialIsAlphaBlended]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/getMaterialIsAlphaBlended.md"
+
+[getMaterialIsAlphaTested]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/getMaterialIsAlphaTested.md"
+
+[getMaterialMetalness]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/getMaterialMetalness.md"
+
+[getMaterialNormalMapFilename]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/getMaterialNormalMapFilename.md"
+
+[getMaterialNormalMapFormat]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/getMaterialNormalMapFormat.md"
+
+[getMaterialReflectionMapScaling]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/getMaterialReflectionMapScaling.md"
+
+[getMaterialSmoothness]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/getMaterialSmoothness.md"
+
+[getRainAmountMultiplier]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/getRainAmountMultiplier.md"
+
+[getWetness]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/getWetness.md"
+
+[MaterialCalibrationSolver_getCurrentSRGB]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/MaterialCalibrationSolver_getCurrentSRGB.md"
+
+[MaterialCalibrationSolver_getTargetSRGB]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/MaterialCalibrationSolver_getTargetSRGB.md"
+
+[MaterialCalibrationSolver_isDone]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/MaterialCalibrationSolver_isDone.md"
+
+[MaterialCalibrationSolver_iterate]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/MaterialCalibrationSolver_iterate.md"
+
+[MaterialCalibrationSolver_prepare]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/MaterialCalibrationSolver_prepare.md"
+
+[MaterialCalibrationSolver_reset]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/MaterialCalibrationSolver_reset.md"
+
+[MaterialCalibrationSolver_setChannels]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/MaterialCalibrationSolver_setChannels.md"
+
+[MaterialCalibrationSolver_setCustomParameterChannels]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/MaterialCalibrationSolver_setCustomParameterChannels.md"
+
+[MaterialCalibrationSolver_setCustomParameterChannelValueRange]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/MaterialCalibrationSolver_setCustomParameterChannelValueRange.md"
+
+[MaterialCalibrationSolver_setShape]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/MaterialCalibrationSolver_setShape.md"
+
+[MaterialCalibrationSolver_setValueRangeChannelB]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/MaterialCalibrationSolver_setValueRangeChannelB.md"
+
+[MaterialCalibrationSolver_setValueRangeChannelG]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/MaterialCalibrationSolver_setValueRangeChannelG.md"
+
+[MaterialCalibrationSolver_setValueRangeChannelMetalness]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/MaterialCalibrationSolver_setValueRangeChannelMetalness.md"
+
+[MaterialCalibrationSolver_setValueRangeChannelR]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/MaterialCalibrationSolver_setValueRangeChannelR.md"
+
+[MaterialCalibrationSolver_setValueRangeChannelSmoothness]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/MaterialCalibrationSolver_setValueRangeChannelSmoothness.md"
+
+[setFastShadowUpdate]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/setFastShadowUpdate.md"
+
+[setMaterialCustomMapFromFile]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/setMaterialCustomMapFromFile.md"
+
+[setMaterialCustomParameter]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/setMaterialCustomParameter.md"
+
+[setMaterialCustomShaderVariation]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/setMaterialCustomShaderVariation.md"
+
+[setMaterialDiffuseMapFromFile]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/setMaterialDiffuseMapFromFile.md"
+
+[setMaterialDynamicArrayOfTextureSize]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/setMaterialDynamicArrayOfTextureSize.md"
+
+[setMaterialGlossMapFromFile]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/setMaterialGlossMapFromFile.md"
+
+[setMaterialNormalMapFromFile]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/setMaterialNormalMapFromFile.md"
+
+[setShadowFocusBox]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/setShadowFocusBox.md"
+
+[setWetness]
+category = "engine.Rendering"
+file = "docs/luadocs/engine/Rendering/setWetness.md"
+
+[getShallowWaterSimulationFakeExtraDepth]
+category = "engine.ShallowWaterSimulation"
+file = "docs/luadocs/engine/ShallowWaterSimulation/getShallowWaterSimulationFakeExtraDepth.md"
+
+[getShallowWaterSimulationFoamAccumulationRate]
+category = "engine.ShallowWaterSimulation"
+file = "docs/luadocs/engine/ShallowWaterSimulation/getShallowWaterSimulationFoamAccumulationRate.md"
+
+[getShallowWaterSimulationFoamDecayRate]
+category = "engine.ShallowWaterSimulation"
+file = "docs/luadocs/engine/ShallowWaterSimulation/getShallowWaterSimulationFoamDecayRate.md"
+
+[getShallowWaterSimulationOutputTexture]
+category = "engine.ShallowWaterSimulation"
+file = "docs/luadocs/engine/ShallowWaterSimulation/getShallowWaterSimulationOutputTexture.md"
+
+[getShallowWaterSimulationOutputVelocityUTexture]
+category = "engine.ShallowWaterSimulation"
+file = "docs/luadocs/engine/ShallowWaterSimulation/getShallowWaterSimulationOutputVelocityUTexture.md"
+
+[getShallowWaterSimulationOutputVelocityVTexture]
+category = "engine.ShallowWaterSimulation"
+file = "docs/luadocs/engine/ShallowWaterSimulation/getShallowWaterSimulationOutputVelocityVTexture.md"
+
+[setShallowWaterSimulationFakeExtraDepth]
+category = "engine.ShallowWaterSimulation"
+file = "docs/luadocs/engine/ShallowWaterSimulation/setShallowWaterSimulationFakeExtraDepth.md"
+
+[setShallowWaterSimulationFoamAccumulationRate]
+category = "engine.ShallowWaterSimulation"
+file = "docs/luadocs/engine/ShallowWaterSimulation/setShallowWaterSimulationFoamAccumulationRate.md"
+
+[setShallowWaterSimulationFoamDecayRate]
+category = "engine.ShallowWaterSimulation"
+file = "docs/luadocs/engine/ShallowWaterSimulation/setShallowWaterSimulationFoamDecayRate.md"
+
+[setShallowWaterSimulationGroundHeightTexture]
+category = "engine.ShallowWaterSimulation"
+file = "docs/luadocs/engine/ShallowWaterSimulation/setShallowWaterSimulationGroundHeightTexture.md"
+
+[setShallowWaterSimulationGroundHeightTextureFromTerrain]
+category = "engine.ShallowWaterSimulation"
+file = "docs/luadocs/engine/ShallowWaterSimulation/setShallowWaterSimulationGroundHeightTextureFromTerrain.md"
+
+[setShallowWaterSimulationParameters]
+category = "engine.ShallowWaterSimulation"
+file = "docs/luadocs/engine/ShallowWaterSimulation/setShallowWaterSimulationParameters.md"
+
+[setShallowWaterSimulationPerfectlyMatchedLayerParameters]
+category = "engine.ShallowWaterSimulation"
+file = "docs/luadocs/engine/ShallowWaterSimulation/setShallowWaterSimulationPerfectlyMatchedLayerParameters.md"
+
+[setShallowWaterSimulationPhysicalGridSize]
+category = "engine.ShallowWaterSimulation"
+file = "docs/luadocs/engine/ShallowWaterSimulation/setShallowWaterSimulationPhysicalGridSize.md"
+
+[setShallowWaterSimulationWorldPosition]
+category = "engine.ShallowWaterSimulation"
+file = "docs/luadocs/engine/ShallowWaterSimulation/setShallowWaterSimulationWorldPosition.md"
+
+[shallowWaterSimulationAddWaterPlaneGeometry]
+category = "engine.ShallowWaterSimulation"
+file = "docs/luadocs/engine/ShallowWaterSimulation/shallowWaterSimulationAddWaterPlaneGeometry.md"
+
+[shallowWaterSimulationPaintCustomObstacle]
+category = "engine.ShallowWaterSimulation"
+file = "docs/luadocs/engine/ShallowWaterSimulation/shallowWaterSimulationPaintCustomObstacle.md"
+
+[shallowWaterSimulationPaintCustomObstacleEllipse]
+category = "engine.ShallowWaterSimulation"
+file = "docs/luadocs/engine/ShallowWaterSimulation/shallowWaterSimulationPaintCustomObstacleEllipse.md"
+
+[shallowWaterSimulationPaintDepthCircle]
+category = "engine.ShallowWaterSimulation"
+file = "docs/luadocs/engine/ShallowWaterSimulation/shallowWaterSimulationPaintDepthCircle.md"
+
+[shallowWaterSimulationPaintDepthRect]
+category = "engine.ShallowWaterSimulation"
+file = "docs/luadocs/engine/ShallowWaterSimulation/shallowWaterSimulationPaintDepthRect.md"
+
+[shallowWaterSimulationPaintDepthSource]
+category = "engine.ShallowWaterSimulation"
+file = "docs/luadocs/engine/ShallowWaterSimulation/shallowWaterSimulationPaintDepthSource.md"
+
+[shallowWaterSimulationPaintVelocityCircle]
+category = "engine.ShallowWaterSimulation"
+file = "docs/luadocs/engine/ShallowWaterSimulation/shallowWaterSimulationPaintVelocityCircle.md"
+
+[shallowWaterSimulationPaintVelocityRect]
+category = "engine.ShallowWaterSimulation"
+file = "docs/luadocs/engine/ShallowWaterSimulation/shallowWaterSimulationPaintVelocityRect.md"
+
+[shallowWaterSimulationRemoveWaterPlaneGeometry]
+category = "engine.ShallowWaterSimulation"
+file = "docs/luadocs/engine/ShallowWaterSimulation/shallowWaterSimulationRemoveWaterPlaneGeometry.md"
+
+[shallowWaterSimulationResetSimulation]
+category = "engine.ShallowWaterSimulation"
+file = "docs/luadocs/engine/ShallowWaterSimulation/shallowWaterSimulationResetSimulation.md"
+
+[shallowWaterSimulationSetNumDepthSources]
+category = "engine.ShallowWaterSimulation"
+file = "docs/luadocs/engine/ShallowWaterSimulation/shallowWaterSimulationSetNumDepthSources.md"
+
+[shallowWaterSimulationTranslateSimulation]
+category = "engine.ShallowWaterSimulation"
+file = "docs/luadocs/engine/ShallowWaterSimulation/shallowWaterSimulationTranslateSimulation.md"
+
+[updateShallowWaterSimulation]
+category = "engine.ShallowWaterSimulation"
+file = "docs/luadocs/engine/ShallowWaterSimulation/updateShallowWaterSimulation.md"
+
+[getGeometry]
+category = "engine.Shape"
+file = "docs/luadocs/engine/Shape/getGeometry.md"
+
+[getHasShaderParameter]
+category = "engine.Shape"
+file = "docs/luadocs/engine/Shape/getHasShaderParameter.md"
+
+[getIsNonRenderable]
+category = "engine.Shape"
+file = "docs/luadocs/engine/Shape/getIsNonRenderable.md"
+
+[getMaterial]
+category = "engine.Shape"
+file = "docs/luadocs/engine/Shape/getMaterial.md"
+
+[getMaterialSlotName]
+category = "engine.Shape"
+file = "docs/luadocs/engine/Shape/getMaterialSlotName.md"
+
+[getNumOfMaterials]
+category = "engine.Shape"
+file = "docs/luadocs/engine/Shape/getNumOfMaterials.md"
+
+[getNumOfShapeBones]
+category = "engine.Shape"
+file = "docs/luadocs/engine/Shape/getNumOfShapeBones.md"
+
+[getShaderParameter]
+category = "engine.Shape"
+file = "docs/luadocs/engine/Shape/getShaderParameter.md"
+
+[getShapeBone]
+category = "engine.Shape"
+file = "docs/luadocs/engine/Shape/getShapeBone.md"
+
+[getShapeBoundingSphere]
+category = "engine.Shape"
+file = "docs/luadocs/engine/Shape/getShapeBoundingSphere.md"
+
+[getShapeBuildNavMeshMask]
+category = "engine.Shape"
+file = "docs/luadocs/engine/Shape/getShapeBuildNavMeshMask.md"
+
+[getShapeGeometryBoundingSphere]
+category = "engine.Shape"
+file = "docs/luadocs/engine/Shape/getShapeGeometryBoundingSphere.md"
+
+[getShapeIsCPUMesh]
+category = "engine.Shape"
+file = "docs/luadocs/engine/Shape/getShapeIsCPUMesh.md"
+
+[getShapeIsSkinned]
+category = "engine.Shape"
+file = "docs/luadocs/engine/Shape/getShapeIsSkinned.md"
+
+[getShapeWorldBoundingSphere]
+category = "engine.Shape"
+file = "docs/luadocs/engine/Shape/getShapeWorldBoundingSphere.md"
+
+[getSplitType]
+category = "engine.Shape"
+file = "docs/luadocs/engine/Shape/getSplitType.md"
+
+[invalidateShapeBoundingVolume]
+category = "engine.Shape"
+file = "docs/luadocs/engine/Shape/invalidateShapeBoundingVolume.md"
+
+[setDecalCullingWorldProperties]
+category = "engine.Shape"
+file = "docs/luadocs/engine/Shape/setDecalCullingWorldProperties.md"
+
+[setIsNonRenderable]
+category = "engine.Shape"
+file = "docs/luadocs/engine/Shape/setIsNonRenderable.md"
+
+[setMaterial]
+category = "engine.Shape"
+file = "docs/luadocs/engine/Shape/setMaterial.md"
+
+[setMaterialSlotName]
+category = "engine.Shape"
+file = "docs/luadocs/engine/Shape/setMaterialSlotName.md"
+
+[setReflectionMapScaling]
+category = "engine.Shape"
+file = "docs/luadocs/engine/Shape/setReflectionMapScaling.md"
+
+[setShaderParameter]
+category = "engine.Shape"
+file = "docs/luadocs/engine/Shape/setShaderParameter.md"
+
+[setShaderParameterRecursive]
+category = "engine.Shape"
+file = "docs/luadocs/engine/Shape/setShaderParameterRecursive.md"
+
+[setShapeBones]
+category = "engine.Shape"
+file = "docs/luadocs/engine/Shape/setShapeBones.md"
+
+[setShapeBonesFromShape]
+category = "engine.Shape"
+file = "docs/luadocs/engine/Shape/setShapeBonesFromShape.md"
+
+[setShapeBoundingSphere]
+category = "engine.Shape"
+file = "docs/luadocs/engine/Shape/setShapeBoundingSphere.md"
+
+[setShapeBuildNavMeshMask]
+category = "engine.Shape"
+file = "docs/luadocs/engine/Shape/setShapeBuildNavMeshMask.md"
+
+[setShapeCastShadowmap]
+category = "engine.Shape"
+file = "docs/luadocs/engine/Shape/setShapeCastShadowmap.md"
+
+[setShapeCullingWorldProperties]
+category = "engine.Shape"
+file = "docs/luadocs/engine/Shape/setShapeCullingWorldProperties.md"
+
+[setShapeDecalLayer]
+category = "engine.Shape"
+file = "docs/luadocs/engine/Shape/setShapeDecalLayer.md"
+
+[setShapeGeometryBoundingSphere]
+category = "engine.Shape"
+file = "docs/luadocs/engine/Shape/setShapeGeometryBoundingSphere.md"
+
+[setShapeReceiveShadowmap]
+category = "engine.Shape"
+file = "docs/luadocs/engine/Shape/setShapeReceiveShadowmap.md"
+
+[createAudioSource]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/createAudioSource.md"
+
+[createLoopSynthesisSample]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/createLoopSynthesisSample.md"
+
+[createSample]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/createSample.md"
+
+[createStreamedSample]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/createStreamedSample.md"
+
+[getAudioSourceAutoPlay]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/getAudioSourceAutoPlay.md"
+
+[getAudioSourceInnerRange]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/getAudioSourceInnerRange.md"
+
+[getAudioSourceMaxRetriggerDelay]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/getAudioSourceMaxRetriggerDelay.md"
+
+[getAudioSourceMinRetriggerDelay]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/getAudioSourceMinRetriggerDelay.md"
+
+[getAudioSourcePriority]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/getAudioSourcePriority.md"
+
+[getAudioSourceRandomPlayback]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/getAudioSourceRandomPlayback.md"
+
+[getAudioSourceRange]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/getAudioSourceRange.md"
+
+[getAudioSourceSample]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/getAudioSourceSample.md"
+
+[getAudioSourceSampleElementProbability]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/getAudioSourceSampleElementProbability.md"
+
+[getAudioSourceTickInaudible]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/getAudioSourceTickInaudible.md"
+
+[getCurrentMasterVolume]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/getCurrentMasterVolume.md"
+
+[getInactiveWindowAudioVolume]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/getInactiveWindowAudioVolume.md"
+
+[getMasterVolume]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/getMasterVolume.md"
+
+[getNumOfAudioSourceSampleElements]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/getNumOfAudioSourceSampleElements.md"
+
+[getSampleDuration]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/getSampleDuration.md"
+
+[getSampleLoopSynthesisLoadFactor]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/getSampleLoopSynthesisLoadFactor.md"
+
+[getSampleLoopSynthesisMaxRPM]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/getSampleLoopSynthesisMaxRPM.md"
+
+[getSampleLoopSynthesisMinRPM]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/getSampleLoopSynthesisMinRPM.md"
+
+[getSampleLoopSynthesisRPM]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/getSampleLoopSynthesisRPM.md"
+
+[getSampleLoopSynthesisStartDuration]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/getSampleLoopSynthesisStartDuration.md"
+
+[getSampleLoopSynthesisStopDuration]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/getSampleLoopSynthesisStopDuration.md"
+
+[getSampleLoopSynthesisTargetLoadFactor]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/getSampleLoopSynthesisTargetLoadFactor.md"
+
+[getSampleLoopSynthesisTargetRPM]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/getSampleLoopSynthesisTargetRPM.md"
+
+[getSamplePitch]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/getSamplePitch.md"
+
+[getSamplePlayOffset]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/getSamplePlayOffset.md"
+
+[getSamplePlayTimeLeft]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/getSamplePlayTimeLeft.md"
+
+[getSampleVelocity]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/getSampleVelocity.md"
+
+[getSampleVolume]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/getSampleVolume.md"
+
+[getStreamedSampleVolume]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/getStreamedSampleVolume.md"
+
+[isSamplePlaying]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/isSamplePlaying.md"
+
+[loadSample]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/loadSample.md"
+
+[loadStreamedSample]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/loadStreamedSample.md"
+
+[pauseStreamedSample]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/pauseStreamedSample.md"
+
+[playSample]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/playSample.md"
+
+[playStreamedSample]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/playStreamedSample.md"
+
+[removeAudioSourceSampleElement]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/removeAudioSourceSampleElement.md"
+
+[resumeStreamedSample]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/resumeStreamedSample.md"
+
+[setAudioCullingWorldProperties]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/setAudioCullingWorldProperties.md"
+
+[setAudioSourceAutoPlay]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/setAudioSourceAutoPlay.md"
+
+[setAudioSourceInnerRange]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/setAudioSourceInnerRange.md"
+
+[setAudioSourceMaxRetriggerDelay]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/setAudioSourceMaxRetriggerDelay.md"
+
+[setAudioSourceMinRetriggerDelay]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/setAudioSourceMinRetriggerDelay.md"
+
+[setAudioSourcePriority]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/setAudioSourcePriority.md"
+
+[setAudioSourceRandomPlayback]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/setAudioSourceRandomPlayback.md"
+
+[setAudioSourceRange]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/setAudioSourceRange.md"
+
+[setAudioSourceSampleElementProbability]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/setAudioSourceSampleElementProbability.md"
+
+[setAudioSourceTickInaudible]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/setAudioSourceTickInaudible.md"
+
+[setSamplePitch]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/setSamplePitch.md"
+
+[setSampleVelocity]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/setSampleVelocity.md"
+
+[setSampleVolume]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/setSampleVolume.md"
+
+[setStreamedSampleGroup]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/setStreamedSampleGroup.md"
+
+[setStreamedSampleVolume]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/setStreamedSampleVolume.md"
+
+[stopSample]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/stopSample.md"
+
+[stopStreamedSample]
+category = "engine.Sound"
+file = "docs/luadocs/engine/Sound/stopStreamedSample.md"
+
+[createSplineFromEditPoints]
+category = "engine.Spline"
+file = "docs/luadocs/engine/Spline/createSplineFromEditPoints.md"
+
+[getClosestSplinePosition]
+category = "engine.Spline"
+file = "docs/luadocs/engine/Spline/getClosestSplinePosition.md"
+
+[getClosestSplinePositionVector]
+category = "engine.Spline"
+file = "docs/luadocs/engine/Spline/getClosestSplinePositionVector.md"
+
+[getIsSplineClosed]
+category = "engine.Spline"
+file = "docs/luadocs/engine/Spline/getIsSplineClosed.md"
+
+[getLocalClosestSplinePosition]
+category = "engine.Spline"
+file = "docs/luadocs/engine/Spline/getLocalClosestSplinePosition.md"
+
+[getLocalClosestSplinePositionVector]
+category = "engine.Spline"
+file = "docs/luadocs/engine/Spline/getLocalClosestSplinePositionVector.md"
+
+[getNumSplineAttributes]
+category = "engine.Spline"
+file = "docs/luadocs/engine/Spline/getNumSplineAttributes.md"
+
+[getSplineAttribute]
+category = "engine.Spline"
+file = "docs/luadocs/engine/Spline/getSplineAttribute.md"
+
+[getSplineAttributeAtCV]
+category = "engine.Spline"
+file = "docs/luadocs/engine/Spline/getSplineAttributeAtCV.md"
+
+[getSplineAttributeIndex]
+category = "engine.Spline"
+file = "docs/luadocs/engine/Spline/getSplineAttributeIndex.md"
+
+[getSplineAttributeName]
+category = "engine.Spline"
+file = "docs/luadocs/engine/Spline/getSplineAttributeName.md"
+
+[getSplineCurvature]
+category = "engine.Spline"
+file = "docs/luadocs/engine/Spline/getSplineCurvature.md"
+
+[getSplineCV]
+category = "engine.Spline"
+file = "docs/luadocs/engine/Spline/getSplineCV.md"
+
+[getSplineCVVector]
+category = "engine.Spline"
+file = "docs/luadocs/engine/Spline/getSplineCVVector.md"
+
+[getSplineDirection]
+category = "engine.Spline"
+file = "docs/luadocs/engine/Spline/getSplineDirection.md"
+
+[getSplineDirectionVector]
+category = "engine.Spline"
+file = "docs/luadocs/engine/Spline/getSplineDirectionVector.md"
+
+[getSplineEP]
+category = "engine.Spline"
+file = "docs/luadocs/engine/Spline/getSplineEP.md"
+
+[getSplineEPVector]
+category = "engine.Spline"
+file = "docs/luadocs/engine/Spline/getSplineEPVector.md"
+
+[getSplineLength]
+category = "engine.Spline"
+file = "docs/luadocs/engine/Spline/getSplineLength.md"
+
+[getSplineNumOfCV]
+category = "engine.Spline"
+file = "docs/luadocs/engine/Spline/getSplineNumOfCV.md"
+
+[getSplineOrientation]
+category = "engine.Spline"
+file = "docs/luadocs/engine/Spline/getSplineOrientation.md"
+
+[getSplineOrientationVector]
+category = "engine.Spline"
+file = "docs/luadocs/engine/Spline/getSplineOrientationVector.md"
+
+[getSplinePosition]
+category = "engine.Spline"
+file = "docs/luadocs/engine/Spline/getSplinePosition.md"
+
+[getSplinePositionVector]
+category = "engine.Spline"
+file = "docs/luadocs/engine/Spline/getSplinePositionVector.md"
+
+[getSplinePositionWithDistance]
+category = "engine.Spline"
+file = "docs/luadocs/engine/Spline/getSplinePositionWithDistance.md"
+
+[getSplinePositionWithDistanceVector]
+category = "engine.Spline"
+file = "docs/luadocs/engine/Spline/getSplinePositionWithDistanceVector.md"
+
+[getTimeAtSplineCV]
+category = "engine.Spline"
+file = "docs/luadocs/engine/Spline/getTimeAtSplineCV.md"
+
+[removeSplineAttribute]
+category = "engine.Spline"
+file = "docs/luadocs/engine/Spline/removeSplineAttribute.md"
+
+[setSplineAttributeAtCV]
+category = "engine.Spline"
+file = "docs/luadocs/engine/Spline/setSplineAttributeAtCV.md"
+
+[setSplineCV]
+category = "engine.Spline"
+file = "docs/luadocs/engine/Spline/setSplineCV.md"
+
+[setSplineCVVector]
+category = "engine.Spline"
+file = "docs/luadocs/engine/Spline/setSplineCVVector.md"
+
+[setSplineEP]
+category = "engine.Spline"
+file = "docs/luadocs/engine/Spline/setSplineEP.md"
+
+[setSplineEPVector]
+category = "engine.Spline"
+file = "docs/luadocs/engine/Spline/setSplineEPVector.md"
+
+[unicodeToUtf8]
+category = "engine.String"
+file = "docs/luadocs/engine/String/unicodeToUtf8.md"
+
+[utf8Compare]
+category = "engine.String"
+file = "docs/luadocs/engine/String/utf8Compare.md"
+
+[utf8Strlen]
+category = "engine.String"
+file = "docs/luadocs/engine/String/utf8Strlen.md"
+
+[utf8Substr]
+category = "engine.String"
+file = "docs/luadocs/engine/String/utf8Substr.md"
+
+[utf8ToLower]
+category = "engine.String"
+file = "docs/luadocs/engine/String/utf8ToLower.md"
+
+[utf8ToUnicode]
+category = "engine.String"
+file = "docs/luadocs/engine/String/utf8ToUnicode.md"
+
+[utf8ToUpper]
+category = "engine.String"
+file = "docs/luadocs/engine/String/utf8ToUpper.md"
+
+[getTerrainHeightAtWorldPos]
+category = "engine.Terrain"
+file = "docs/luadocs/engine/Terrain/getTerrainHeightAtWorldPos.md"
+
+[getTerrainHeightmapUnitSize]
+category = "engine.Terrain"
+file = "docs/luadocs/engine/Terrain/getTerrainHeightmapUnitSize.md"
+
+[getTerrainHeightSyncerCellIndicesAtWorldPosition]
+category = "engine.Terrain"
+file = "docs/luadocs/engine/Terrain/getTerrainHeightSyncerCellIndicesAtWorldPosition.md"
+
+[getTerrainNormalAtWorldPos]
+category = "engine.Terrain"
+file = "docs/luadocs/engine/Terrain/getTerrainNormalAtWorldPos.md"
+
+[setEnableTerrainHeightSyncerCellChangedCallback]
+category = "engine.Terrain"
+file = "docs/luadocs/engine/Terrain/setEnableTerrainHeightSyncerCellChangedCallback.md"
+
+[setTerrainHeightAtWorldPos]
+category = "engine.Terrain"
+file = "docs/luadocs/engine/Terrain/setTerrainHeightAtWorldPos.md"
+
+[setTerrainHeightSyncerCellChangedCallback]
+category = "engine.Terrain"
+file = "docs/luadocs/engine/Terrain/setTerrainHeightSyncerCellChangedCallback.md"
+
+[clearTerrainFillLayers]
+category = "engine.Terrain Detail"
+file = "docs/luadocs/engine/Terrain Detail/clearTerrainFillLayers.md"
+
+[finalizeTerrainFillLayers]
+category = "engine.Terrain Detail"
+file = "docs/luadocs/engine/Terrain Detail/finalizeTerrainFillLayers.md"
+
+[getDataPlaneAssociatedTransformGroup]
+category = "engine.Terrain Detail"
+file = "docs/luadocs/engine/Terrain Detail/getDataPlaneAssociatedTransformGroup.md"
+
+[getDensityAtWorldPos]
+category = "engine.Terrain Detail"
+file = "docs/luadocs/engine/Terrain Detail/getDensityAtWorldPos.md"
+
+[getDensityHeightAtWorldPos]
+category = "engine.Terrain Detail"
+file = "docs/luadocs/engine/Terrain Detail/getDensityHeightAtWorldPos.md"
+
+[getDensityMapSize]
+category = "engine.Terrain Detail"
+file = "docs/luadocs/engine/Terrain Detail/getDensityMapSize.md"
+
+[getDensityMapSyncerCellIndicesAtWorldPosition]
+category = "engine.Terrain Detail"
+file = "docs/luadocs/engine/Terrain Detail/getDensityMapSyncerCellIndicesAtWorldPosition.md"
+
+[getDensityNormalAtWorldPos]
+category = "engine.Terrain Detail"
+file = "docs/luadocs/engine/Terrain Detail/getDensityNormalAtWorldPos.md"
+
+[getDensityStatesAtWorldPos]
+category = "engine.Terrain Detail"
+file = "docs/luadocs/engine/Terrain Detail/getDensityStatesAtWorldPos.md"
+
+[getDensityTypeIndexAtWorldPos]
+category = "engine.Terrain Detail"
+file = "docs/luadocs/engine/Terrain Detail/getDensityTypeIndexAtWorldPos.md"
+
+[getFoliageTransformGroupIdByFoliageName]
+category = "engine.Terrain Detail"
+file = "docs/luadocs/engine/Terrain Detail/getFoliageTransformGroupIdByFoliageName.md"
+
+[getTerrainDataPlaneByName]
+category = "engine.Terrain Detail"
+file = "docs/luadocs/engine/Terrain Detail/getTerrainDataPlaneByName.md"
+
+[getTerrainDetailByName]
+category = "engine.Terrain Detail"
+file = "docs/luadocs/engine/Terrain Detail/getTerrainDetailByName.md"
+
+[getTerrainDetailName]
+category = "engine.Terrain Detail"
+file = "docs/luadocs/engine/Terrain Detail/getTerrainDetailName.md"
+
+[getTerrainDetailNumChannels]
+category = "engine.Terrain Detail"
+file = "docs/luadocs/engine/Terrain Detail/getTerrainDetailNumChannels.md"
+
+[getTerrainDetailTypeIndex]
+category = "engine.Terrain Detail"
+file = "docs/luadocs/engine/Terrain Detail/getTerrainDetailTypeIndex.md"
+
+[getTerrainSize]
+category = "engine.Terrain Detail"
+file = "docs/luadocs/engine/Terrain Detail/getTerrainSize.md"
+
+[setDensityMapSyncerCellChangedCallback]
+category = "engine.Terrain Detail"
+file = "docs/luadocs/engine/Terrain Detail/setDensityMapSyncerCellChangedCallback.md"
+
+[setEnableDensityMapSyncerCellChangedCallback]
+category = "engine.Terrain Detail"
+file = "docs/luadocs/engine/Terrain Detail/setEnableDensityMapSyncerCellChangedCallback.md"
+
+[setTerrainFillVisualHeight]
+category = "engine.Terrain Detail"
+file = "docs/luadocs/engine/Terrain Detail/setTerrainFillVisualHeight.md"
+
+[getText3DWidth]
+category = "engine.Text Rendering"
+file = "docs/luadocs/engine/Text Rendering/getText3DWidth.md"
+
+[getTextHeight]
+category = "engine.Text Rendering"
+file = "docs/luadocs/engine/Text Rendering/getTextHeight.md"
+
+[getTextLength]
+category = "engine.Text Rendering"
+file = "docs/luadocs/engine/Text Rendering/getTextLength.md"
+
+[getTextLineLength]
+category = "engine.Text Rendering"
+file = "docs/luadocs/engine/Text Rendering/getTextLineLength.md"
+
+[getTextWidth]
+category = "engine.Text Rendering"
+file = "docs/luadocs/engine/Text Rendering/getTextWidth.md"
+
+[renderText]
+category = "engine.Text Rendering"
+file = "docs/luadocs/engine/Text Rendering/renderText.md"
+
+[setTextAlignment]
+category = "engine.Text Rendering"
+file = "docs/luadocs/engine/Text Rendering/setTextAlignment.md"
+
+[setTextBold]
+category = "engine.Text Rendering"
+file = "docs/luadocs/engine/Text Rendering/setTextBold.md"
+
+[setTextClipArea]
+category = "engine.Text Rendering"
+file = "docs/luadocs/engine/Text Rendering/setTextClipArea.md"
+
+[setTextColor]
+category = "engine.Text Rendering"
+file = "docs/luadocs/engine/Text Rendering/setTextColor.md"
+
+[setTextDepthTestEnabled]
+category = "engine.Text Rendering"
+file = "docs/luadocs/engine/Text Rendering/setTextDepthTestEnabled.md"
+
+[setTextFirstLineIndentation]
+category = "engine.Text Rendering"
+file = "docs/luadocs/engine/Text Rendering/setTextFirstLineIndentation.md"
+
+[setTextLineBounds]
+category = "engine.Text Rendering"
+file = "docs/luadocs/engine/Text Rendering/setTextLineBounds.md"
+
+[setTextLineHeightScale]
+category = "engine.Text Rendering"
+file = "docs/luadocs/engine/Text Rendering/setTextLineHeightScale.md"
+
+[setTextRotation]
+category = "engine.Text Rendering"
+file = "docs/luadocs/engine/Text Rendering/setTextRotation.md"
+
+[setTextVerticalAlignment]
+category = "engine.Text Rendering"
+file = "docs/luadocs/engine/Text Rendering/setTextVerticalAlignment.md"
+
+[setTextWidthScale]
+category = "engine.Text Rendering"
+file = "docs/luadocs/engine/Text Rendering/setTextWidthScale.md"
+
+[setTextWrapWidth]
+category = "engine.Text Rendering"
+file = "docs/luadocs/engine/Text Rendering/setTextWrapWidth.md"
+
+[createTrack]
+category = "engine.Tire Track"
+file = "docs/luadocs/engine/Tire Track/createTrack.md"
+
+[createTyreTrackSystem]
+category = "engine.Tire Track"
+file = "docs/luadocs/engine/Tire Track/createTyreTrackSystem.md"
+
+[cutTrack]
+category = "engine.Tire Track"
+file = "docs/luadocs/engine/Tire Track/cutTrack.md"
+
+[destroyTrack]
+category = "engine.Tire Track"
+file = "docs/luadocs/engine/Tire Track/destroyTrack.md"
+
+[eraseParallelogram]
+category = "engine.Tire Track"
+file = "docs/luadocs/engine/Tire Track/eraseParallelogram.md"
+
+[erasePolygon]
+category = "engine.Tire Track"
+file = "docs/luadocs/engine/Tire Track/erasePolygon.md"
+
+[createXMLFile]
+category = "engine.XML"
+file = "docs/luadocs/engine/XML/createXMLFile.md"
+
+[getXMLAttributeName]
+category = "engine.XML"
+file = "docs/luadocs/engine/XML/getXMLAttributeName.md"
+
+[getXMLBool]
+category = "engine.XML"
+file = "docs/luadocs/engine/XML/getXMLBool.md"
+
+[getXMLElementName]
+category = "engine.XML"
+file = "docs/luadocs/engine/XML/getXMLElementName.md"
+
+[getXMLFilename]
+category = "engine.XML"
+file = "docs/luadocs/engine/XML/getXMLFilename.md"
+
+[getXMLFloat]
+category = "engine.XML"
+file = "docs/luadocs/engine/XML/getXMLFloat.md"
+
+[getXMLInt]
+category = "engine.XML"
+file = "docs/luadocs/engine/XML/getXMLInt.md"
+
+[getXMLLineNum]
+category = "engine.XML"
+file = "docs/luadocs/engine/XML/getXMLLineNum.md"
+
+[getXMLNumOfAttributes]
+category = "engine.XML"
+file = "docs/luadocs/engine/XML/getXMLNumOfAttributes.md"
+
+[getXMLNumOfChildren]
+category = "engine.XML"
+file = "docs/luadocs/engine/XML/getXMLNumOfChildren.md"
+
+[getXMLNumOfElements]
+category = "engine.XML"
+file = "docs/luadocs/engine/XML/getXMLNumOfElements.md"
+
+[getXMLString]
+category = "engine.XML"
+file = "docs/luadocs/engine/XML/getXMLString.md"
+
+[getXMLUInt]
+category = "engine.XML"
+file = "docs/luadocs/engine/XML/getXMLUInt.md"
+
+[hasXMLProperty]
+category = "engine.XML"
+file = "docs/luadocs/engine/XML/hasXMLProperty.md"
+
+[loadXMLFile]
+category = "engine.XML"
+file = "docs/luadocs/engine/XML/loadXMLFile.md"
+
+[loadXMLFileFromMemory]
+category = "engine.XML"
+file = "docs/luadocs/engine/XML/loadXMLFileFromMemory.md"
+
+[removeXMLProperty]
+category = "engine.XML"
+file = "docs/luadocs/engine/XML/removeXMLProperty.md"
+
+[saveXMLFile]
+category = "engine.XML"
+file = "docs/luadocs/engine/XML/saveXMLFile.md"
+
+[saveXMLFileToMemory]
+category = "engine.XML"
+file = "docs/luadocs/engine/XML/saveXMLFileToMemory.md"
+
+[setXMLBool]
+category = "engine.XML"
+file = "docs/luadocs/engine/XML/setXMLBool.md"
+
+[setXMLFloat]
+category = "engine.XML"
+file = "docs/luadocs/engine/XML/setXMLFloat.md"
+
+[setXMLInt]
+category = "engine.XML"
+file = "docs/luadocs/engine/XML/setXMLInt.md"
+
+[setXMLString]
+category = "engine.XML"
+file = "docs/luadocs/engine/XML/setXMLString.md"
+
+[setXMLUInt]
+category = "engine.XML"
+file = "docs/luadocs/engine/XML/setXMLUInt.md"
+
+[Gamepad_Joystick values]
+category = "foundation.Input"
+file = "docs/luadocs/foundation/Input/Gamepad_Joystick values.md"
+
+[Mouse values]
+category = "foundation.Input"
+file = "docs/luadocs/foundation/Input/Mouse values.md"
+
+[printScenegraph]
+category = "foundation.Scenegraph"
+file = "docs/luadocs/foundation/Scenegraph/printScenegraph.md"
+
+[rotate]
+category = "foundation.Scenegraph"
+file = "docs/luadocs/foundation/Scenegraph/rotate.md"
+
+[toggleVisibility]
+category = "foundation.Scenegraph"
+file = "docs/luadocs/foundation/Scenegraph/toggleVisibility.md"
+
+[VehicleBuyingStationActivatable]
+category = "script.Activatables"
+file = "docs/luadocs/script/Activatables/VehicleBuyingStationActivatable.md"
+
+[AICollisionTriggerHandler]
+category = "script.AI"
+file = "docs/luadocs/script/AI/AICollisionTriggerHandler.md"
+
+[AIDriveStrategy]
+category = "script.AI"
+file = "docs/luadocs/script/AI/AIDriveStrategy.md"
+
+[AIDriveStrategyBaler]
+category = "script.AI"
+file = "docs/luadocs/script/AI/AIDriveStrategyBaler.md"
+
+[AIDriveStrategyCombine]
+category = "script.AI"
+file = "docs/luadocs/script/AI/AIDriveStrategyCombine.md"
+
+[AIDriveStrategyConveyor]
+category = "script.AI"
+file = "docs/luadocs/script/AI/AIDriveStrategyConveyor.md"
+
+[AIDriveStrategyFieldCourse]
+category = "script.AI"
+file = "docs/luadocs/script/AI/AIDriveStrategyFieldCourse.md"
+
+[AIDriveStrategyStonePicker]
+category = "script.AI"
+file = "docs/luadocs/script/AI/AIDriveStrategyStonePicker.md"
+
+[AIJobTypeManager]
+category = "script.AI"
+file = "docs/luadocs/script/AI/AIJobTypeManager.md"
+
+[AISystem]
+category = "script.AI"
+file = "docs/luadocs/script/AI/AISystem.md"
+
+[HelperManager]
+category = "script.AI"
+file = "docs/luadocs/script/AI/HelperManager.md"
+
+[NavigationSystem]
+category = "script.AI"
+file = "docs/luadocs/script/AI/NavigationSystem.md"
+
+[Dog]
+category = "script.Animals"
+file = "docs/luadocs/script/Animals/Dog.md"
+
+[DogPetActivatable]
+category = "script.Animals"
+file = "docs/luadocs/script/Animals/DogPetActivatable.md"
+
+[AnimationManager]
+category = "script.Animation"
+file = "docs/luadocs/script/Animation/AnimationManager.md"
+
+[ConditionalAnimation]
+category = "script.Animation"
+file = "docs/luadocs/script/Animation/ConditionalAnimation.md"
+
+[RotationAnimation]
+category = "script.Animation"
+file = "docs/luadocs/script/Animation/RotationAnimation.md"
+
+[ScrollingAnimation]
+category = "script.Animation"
+file = "docs/luadocs/script/Animation/ScrollingAnimation.md"
+
+[ShakeAnimation]
+category = "script.Animation"
+file = "docs/luadocs/script/Animation/ShakeAnimation.md"
+
+[ThreePartOverlay]
+category = "script.Base"
+file = "docs/luadocs/script/Base/ThreePartOverlay.md"
+
+[BoatyardActivatable]
+category = "script.Boatyard"
+file = "docs/luadocs/script/Boatyard/BoatyardActivatable.md"
+
+[ListenerList]
+category = "script.Collections"
+file = "docs/luadocs/script/Collections/ListenerList.md"
+
+[ValueInterpolator]
+category = "script.Collections"
+file = "docs/luadocs/script/Collections/ValueInterpolator.md"
+
+[AttacherJointTopArm]
+category = "script.Components"
+file = "docs/luadocs/script/Components/AttacherJointTopArm.md"
+
+[BeaconLight]
+category = "script.Components"
+file = "docs/luadocs/script/Components/BeaconLight.md"
+
+[RealLight]
+category = "script.Components"
+file = "docs/luadocs/script/Components/RealLight.md"
+
+[SharedLight]
+category = "script.Components"
+file = "docs/luadocs/script/Components/SharedLight.md"
+
+[StaticLight]
+category = "script.Components"
+file = "docs/luadocs/script/Components/StaticLight.md"
+
+[StaticLightCompound]
+category = "script.Components"
+file = "docs/luadocs/script/Components/StaticLightCompound.md"
+
+[ToolConnectionHoseMount]
+category = "script.Components"
+file = "docs/luadocs/script/Components/ToolConnectionHoseMount.md"
+
+[ConfigurationManager]
+category = "script.Configurations"
+file = "docs/luadocs/script/Configurations/ConfigurationManager.md"
+
+[ConfigurationUtil]
+category = "script.Configurations"
+file = "docs/luadocs/script/Configurations/ConfigurationUtil.md"
+
+[PlaceableConfigurationItem]
+category = "script.Configurations"
+file = "docs/luadocs/script/Configurations/PlaceableConfigurationItem.md"
+
+[PlaceableConfigurationItemColor]
+category = "script.Configurations"
+file = "docs/luadocs/script/Configurations/PlaceableConfigurationItemColor.md"
+
+[VehicleConfigurationDataSprayerNodes]
+category = "script.Configurations"
+file = "docs/luadocs/script/Configurations/VehicleConfigurationDataSprayerNodes.md"
+
+[VehicleConfigurationItem]
+category = "script.Configurations"
+file = "docs/luadocs/script/Configurations/VehicleConfigurationItem.md"
+
+[VehicleConfigurationItemColor]
+category = "script.Configurations"
+file = "docs/luadocs/script/Configurations/VehicleConfigurationItemColor.md"
+
+[VehicleConfigurationItemMotor]
+category = "script.Configurations"
+file = "docs/luadocs/script/Configurations/VehicleConfigurationItemMotor.md"
+
+[VehicleConfigurationItemTreeSapling]
+category = "script.Configurations"
+file = "docs/luadocs/script/Configurations/VehicleConfigurationItemTreeSapling.md"
+
+[VehicleConfigurationItemVehicleType]
+category = "script.Configurations"
+file = "docs/luadocs/script/Configurations/VehicleConfigurationItemVehicleType.md"
+
+[VehicleConfigurationItemWheel]
+category = "script.Configurations"
+file = "docs/luadocs/script/Configurations/VehicleConfigurationItemWheel.md"
+
+[Field]
+category = "script.Contracts"
+file = "docs/luadocs/script/Contracts/Field.md"
+
+[FieldManager]
+category = "script.Contracts"
+file = "docs/luadocs/script/Contracts/FieldManager.md"
+
+[PlaceableConfigurationDataObjectChange]
+category = "script.Data"
+file = "docs/luadocs/script/Data/PlaceableConfigurationDataObjectChange.md"
+
+[VehicleConfigurationDataAttacherJoint]
+category = "script.Data"
+file = "docs/luadocs/script/Data/VehicleConfigurationDataAttacherJoint.md"
+
+[VehicleConfigurationDataDependentConfig]
+category = "script.Data"
+file = "docs/luadocs/script/Data/VehicleConfigurationDataDependentConfig.md"
+
+[VehicleConfigurationDataMaterial]
+category = "script.Data"
+file = "docs/luadocs/script/Data/VehicleConfigurationDataMaterial.md"
+
+[VehicleConfigurationDataObjectChange]
+category = "script.Data"
+file = "docs/luadocs/script/Data/VehicleConfigurationDataObjectChange.md"
+
+[VehicleConfigurationDataOverwrites]
+category = "script.Data"
+file = "docs/luadocs/script/Data/VehicleConfigurationDataOverwrites.md"
+
+[VehicleConfigurationDataSize]
+category = "script.Data"
+file = "docs/luadocs/script/Data/VehicleConfigurationDataSize.md"
+
+[DebugBitVectorMap]
+category = "script.Debug"
+file = "docs/luadocs/script/Debug/DebugBitVectorMap.md"
+
+[DebugBox]
+category = "script.Debug"
+file = "docs/luadocs/script/Debug/DebugBox.md"
+
+[DebugCircle]
+category = "script.Debug"
+file = "docs/luadocs/script/Debug/DebugCircle.md"
+
+[DebugCylinder]
+category = "script.Debug"
+file = "docs/luadocs/script/Debug/DebugCylinder.md"
+
+[DebugDensityMap]
+category = "script.Debug"
+file = "docs/luadocs/script/Debug/DebugDensityMap.md"
+
+[DebugElement]
+category = "script.Debug"
+file = "docs/luadocs/script/Debug/DebugElement.md"
+
+[DebugFunction]
+category = "script.Debug"
+file = "docs/luadocs/script/Debug/DebugFunction.md"
+
+[DebugGizmo]
+category = "script.Debug"
+file = "docs/luadocs/script/Debug/DebugGizmo.md"
+
+[DebugInfoTable]
+category = "script.Debug"
+file = "docs/luadocs/script/Debug/DebugInfoTable.md"
+
+[DebugLine]
+category = "script.Debug"
+file = "docs/luadocs/script/Debug/DebugLine.md"
+
+[DebugManager]
+category = "script.Debug"
+file = "docs/luadocs/script/Debug/DebugManager.md"
+
+[DebugPath]
+category = "script.Debug"
+file = "docs/luadocs/script/Debug/DebugPath.md"
+
+[DebugPlane]
+category = "script.Debug"
+file = "docs/luadocs/script/Debug/DebugPlane.md"
+
+[DebugPoint]
+category = "script.Debug"
+file = "docs/luadocs/script/Debug/DebugPoint.md"
+
+[DebugPolygon]
+category = "script.Debug"
+file = "docs/luadocs/script/Debug/DebugPolygon.md"
+
+[DebugShapeOutline]
+category = "script.Debug"
+file = "docs/luadocs/script/Debug/DebugShapeOutline.md"
+
+[DebugSphere]
+category = "script.Debug"
+file = "docs/luadocs/script/Debug/DebugSphere.md"
+
+[DebugSpline]
+category = "script.Debug"
+file = "docs/luadocs/script/Debug/DebugSpline.md"
+
+[DebugText]
+category = "script.Debug"
+file = "docs/luadocs/script/Debug/DebugText.md"
+
+[DebugText3D]
+category = "script.Debug"
+file = "docs/luadocs/script/Debug/DebugText3D.md"
+
+[DebugUtil]
+category = "script.Debug"
+file = "docs/luadocs/script/Debug/DebugUtil.md"
+
+[NoteManager]
+category = "script.Debug"
+file = "docs/luadocs/script/Debug/NoteManager.md"
+
+[Farmland]
+category = "script.Economy"
+file = "docs/luadocs/script/Economy/Farmland.md"
+
+[FarmlandManager]
+category = "script.Economy"
+file = "docs/luadocs/script/Economy/FarmlandManager.md"
+
+[IngameMapPreviewElement]
+category = "script.Elements"
+file = "docs/luadocs/script/Elements/IngameMapPreviewElement.md"
+
+[InputGlyphElementUI]
+category = "script.Elements"
+file = "docs/luadocs/script/Elements/InputGlyphElementUI.md"
+
+[MultiOptionElement]
+category = "script.Elements"
+file = "docs/luadocs/script/Elements/MultiOptionElement.md"
+
+[OptionToggleElement]
+category = "script.Elements"
+file = "docs/luadocs/script/Elements/OptionToggleElement.md"
+
+[AIMessage]
+category = "script.Errors"
+file = "docs/luadocs/script/Errors/AIMessage.md"
+
+[AIMessageErrorBlockedByObject]
+category = "script.Errors"
+file = "docs/luadocs/script/Errors/AIMessageErrorBlockedByObject.md"
+
+[AIMessageErrorCouldNotPrepare]
+category = "script.Errors"
+file = "docs/luadocs/script/Errors/AIMessageErrorCouldNotPrepare.md"
+
+[AIMessageErrorFieldNotOwned]
+category = "script.Errors"
+file = "docs/luadocs/script/Errors/AIMessageErrorFieldNotOwned.md"
+
+[AIMessageErrorFieldNotReady]
+category = "script.Errors"
+file = "docs/luadocs/script/Errors/AIMessageErrorFieldNotReady.md"
+
+[AIMessageErrorGraintankIsFull]
+category = "script.Errors"
+file = "docs/luadocs/script/Errors/AIMessageErrorGraintankIsFull.md"
+
+[AIMessageErrorImplementWrongWay]
+category = "script.Errors"
+file = "docs/luadocs/script/Errors/AIMessageErrorImplementWrongWay.md"
+
+[AIMessageErrorLoadingStationDeleted]
+category = "script.Errors"
+file = "docs/luadocs/script/Errors/AIMessageErrorLoadingStationDeleted.md"
+
+[AIMessageErrorNoFieldFound]
+category = "script.Errors"
+file = "docs/luadocs/script/Errors/AIMessageErrorNoFieldFound.md"
+
+[AIMessageErrorNoPalletsLoaded]
+category = "script.Errors"
+file = "docs/luadocs/script/Errors/AIMessageErrorNoPalletsLoaded.md"
+
+[AIMessageErrorNotReachable]
+category = "script.Errors"
+file = "docs/luadocs/script/Errors/AIMessageErrorNotReachable.md"
+
+[AIMessageErrorNoValidFillTypeLoaded]
+category = "script.Errors"
+file = "docs/luadocs/script/Errors/AIMessageErrorNoValidFillTypeLoaded.md"
+
+[AIMessageErrorNoVineFound]
+category = "script.Errors"
+file = "docs/luadocs/script/Errors/AIMessageErrorNoVineFound.md"
+
+[AIMessageErrorOutOfFill]
+category = "script.Errors"
+file = "docs/luadocs/script/Errors/AIMessageErrorOutOfFill.md"
+
+[AIMessageErrorOutOfFuel]
+category = "script.Errors"
+file = "docs/luadocs/script/Errors/AIMessageErrorOutOfFuel.md"
+
+[AIMessageErrorOutOfMoney]
+category = "script.Errors"
+file = "docs/luadocs/script/Errors/AIMessageErrorOutOfMoney.md"
+
+[AIMessageErrorPalletsFull]
+category = "script.Errors"
+file = "docs/luadocs/script/Errors/AIMessageErrorPalletsFull.md"
+
+[AIMessageErrorThreshingNotAllowed]
+category = "script.Errors"
+file = "docs/luadocs/script/Errors/AIMessageErrorThreshingNotAllowed.md"
+
+[AIMessageErrorUnknown]
+category = "script.Errors"
+file = "docs/luadocs/script/Errors/AIMessageErrorUnknown.md"
+
+[AIMessageErrorUnloadingStationDeleted]
+category = "script.Errors"
+file = "docs/luadocs/script/Errors/AIMessageErrorUnloadingStationDeleted.md"
+
+[AIMessageErrorUnloadingStationFull]
+category = "script.Errors"
+file = "docs/luadocs/script/Errors/AIMessageErrorUnloadingStationFull.md"
+
+[AIMessageErrorVehicleBroken]
+category = "script.Errors"
+file = "docs/luadocs/script/Errors/AIMessageErrorVehicleBroken.md"
+
+[AIMessageErrorVehicleDeleted]
+category = "script.Errors"
+file = "docs/luadocs/script/Errors/AIMessageErrorVehicleDeleted.md"
+
+[AIMessageErrorVineyardNotSupported]
+category = "script.Errors"
+file = "docs/luadocs/script/Errors/AIMessageErrorVineyardNotSupported.md"
+
+[AIMessageErrorWrongSeason]
+category = "script.Errors"
+file = "docs/luadocs/script/Errors/AIMessageErrorWrongSeason.md"
+
+[AIMessageManager]
+category = "script.Errors"
+file = "docs/luadocs/script/Errors/AIMessageManager.md"
+
+[AIMessageSuccessFinishedJob]
+category = "script.Errors"
+file = "docs/luadocs/script/Errors/AIMessageSuccessFinishedJob.md"
+
+[AIMessageSuccessSiloEmpty]
+category = "script.Errors"
+file = "docs/luadocs/script/Errors/AIMessageSuccessSiloEmpty.md"
+
+[AIMessageSuccessStoppedByUser]
+category = "script.Errors"
+file = "docs/luadocs/script/Errors/AIMessageSuccessStoppedByUser.md"
+
+[AdditionalFieldBuyInfoEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/AdditionalFieldBuyInfoEvent.md"
+
+[AIAutomaticSteeringCourseEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/AIAutomaticSteeringCourseEvent.md"
+
+[AIAutomaticSteeringLineEndEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/AIAutomaticSteeringLineEndEvent.md"
+
+[AIAutomaticSteeringRequestEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/AIAutomaticSteeringRequestEvent.md"
+
+[AIAutomaticSteeringStateEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/AIAutomaticSteeringStateEvent.md"
+
+[AIConveyorBeltSetAngleEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/AIConveyorBeltSetAngleEvent.md"
+
+[AIFieldWorkerStateEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/AIFieldWorkerStateEvent.md"
+
+[AIJobSkipTaskEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/AIJobSkipTaskEvent.md"
+
+[AIJobStartEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/AIJobStartEvent.md"
+
+[AIJobStartRequestEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/AIJobStartRequestEvent.md"
+
+[AIJobStopEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/AIJobStopEvent.md"
+
+[AIJobVehicleStateEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/AIJobVehicleStateEvent.md"
+
+[AIModeSelectionSettingsEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/AIModeSelectionSettingsEvent.md"
+
+[AISetModeEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/AISetModeEvent.md"
+
+[AITaskStartEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/AITaskStartEvent.md"
+
+[AITaskStopEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/AITaskStopEvent.md"
+
+[AIVehicleIsBlockedEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/AIVehicleIsBlockedEvent.md"
+
+[AnimatedVehicleStartEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/AnimatedVehicleStartEvent.md"
+
+[AnimatedVehicleStopEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/AnimatedVehicleStopEvent.md"
+
+[AttachableStartDetachEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/AttachableStartDetachEvent.md"
+
+[BaleLoaderStateEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/BaleLoaderStateEvent.md"
+
+[BaleOpenEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/BaleOpenEvent.md"
+
+[BalerAutomaticDropEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/BalerAutomaticDropEvent.md"
+
+[BalerBaleTypeEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/BalerBaleTypeEvent.md"
+
+[BalerCreateBaleEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/BalerCreateBaleEvent.md"
+
+[BalerDropFromPlatformEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/BalerDropFromPlatformEvent.md"
+
+[BalerSetIsUnloadingBaleEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/BalerSetIsUnloadingBaleEvent.md"
+
+[BaleUnpackEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/BaleUnpackEvent.md"
+
+[BaleWrapperAutomaticDropEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/BaleWrapperAutomaticDropEvent.md"
+
+[BaleWrapperDropEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/BaleWrapperDropEvent.md"
+
+[BaleWrapperStateEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/BaleWrapperStateEvent.md"
+
+[BunkerSiloCloseEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/BunkerSiloCloseEvent.md"
+
+[BunkerSiloOpenEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/BunkerSiloOpenEvent.md"
+
+[ChainsawCutEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/ChainsawCutEvent.md"
+
+[CombineStrawEnableEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/CombineStrawEnableEvent.md"
+
+[CraneShovelEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/CraneShovelEvent.md"
+
+[CropSensorStateEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/CropSensorStateEvent.md"
+
+[EnvironmentalScoreEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/EnvironmentalScoreEvent.md"
+
+[ExtendedSowingMachineRateEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/ExtendedSowingMachineRateEvent.md"
+
+[ExtendedSprayerAmountEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/ExtendedSprayerAmountEvent.md"
+
+[ExtendedSprayerDefaultFruitTypeEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/ExtendedSprayerDefaultFruitTypeEvent.md"
+
+[FarmlandStatisticsEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/FarmlandStatisticsEvent.md"
+
+[FarmlandStatisticsResetEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/FarmlandStatisticsResetEvent.md"
+
+[FenceDeleteSegmentEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/FenceDeleteSegmentEvent.md"
+
+[FenceNewSegmentEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/FenceNewSegmentEvent.md"
+
+[FenceRequestDeleteSegmentEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/FenceRequestDeleteSegmentEvent.md"
+
+[FenceSegmentEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/FenceSegmentEvent.md"
+
+[FerryStartEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/FerryStartEvent.md"
+
+[FillUnitUnloadedEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/FillUnitUnloadedEvent.md"
+
+[FillUnitUnloadEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/FillUnitUnloadEvent.md"
+
+[FoldableSetFoldDirectionEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/FoldableSetFoldDirectionEvent.md"
+
+[HandsPickUpFailedEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/HandsPickUpFailedEvent.md"
+
+[HandToolSetHolderEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/HandToolSetHolderEvent.md"
+
+[HonkEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/HonkEvent.md"
+
+[InlineBaleOpenEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/InlineBaleOpenEvent.md"
+
+[InlineWrapperPushOffEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/InlineWrapperPushOffEvent.md"
+
+[JumpEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/JumpEvent.md"
+
+[LiftableAxleEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/LiftableAxleEvent.md"
+
+[LocomotiveStateEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/LocomotiveStateEvent.md"
+
+[MixerWagonBaleNotAcceptedEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/MixerWagonBaleNotAcceptedEvent.md"
+
+[MountableSetMountTypeEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/MountableSetMountTypeEvent.md"
+
+[MowerToggleWindrowDropEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/MowerToggleWindrowDropEvent.md"
+
+[PickupSetStateEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/PickupSetStateEvent.md"
+
+[PlaceableFenceAddSegmentEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/PlaceableFenceAddSegmentEvent.md"
+
+[PlaceableLightsStateEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/PlaceableLightsStateEvent.md"
+
+[PlaceableObjectStorageErrorEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/PlaceableObjectStorageErrorEvent.md"
+
+[PlaceableObjectStorageStoreEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/PlaceableObjectStorageStoreEvent.md"
+
+[PlaceableObjectStorageUnloadEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/PlaceableObjectStorageUnloadEvent.md"
+
+[PlaceableRiceFieldEffectStateEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/PlaceableRiceFieldEffectStateEvent.md"
+
+[PlaceableRiceFieldFieldAnswerEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/PlaceableRiceFieldFieldAnswerEvent.md"
+
+[PlaceableRiceFieldFieldEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/PlaceableRiceFieldFieldEvent.md"
+
+[PlaceableRiceFieldRemoveFieldEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/PlaceableRiceFieldRemoveFieldEvent.md"
+
+[PlaceableRiceFieldSetTargetHeightEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/PlaceableRiceFieldSetTargetHeightEvent.md"
+
+[PlaceableRiceFieldStateEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/PlaceableRiceFieldStateEvent.md"
+
+[PlaceableTrainSystemRentEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/PlaceableTrainSystemRentEvent.md"
+
+[PlaceableTrainSystemSellEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/PlaceableTrainSystemSellEvent.md"
+
+[PlantLimitToFieldEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/PlantLimitToFieldEvent.md"
+
+[PlayerHoldHandToolEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/PlayerHoldHandToolEvent.md"
+
+[PlayerSetFarmAnswerEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/PlayerSetFarmAnswerEvent.md"
+
+[PlowLimitToFieldEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/PlowLimitToFieldEvent.md"
+
+[PlowPackerStateEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/PlowPackerStateEvent.md"
+
+[PlowRotationCenterEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/PlowRotationCenterEvent.md"
+
+[PlowRotationEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/PlowRotationEvent.md"
+
+[PrecisionFarmingSettingsEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/PrecisionFarmingSettingsEvent.md"
+
+[PrecisionFarmingSettingsInitialEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/PrecisionFarmingSettingsInitialEvent.md"
+
+[ProductionPointOutputModeEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/ProductionPointOutputModeEvent.md"
+
+[ProductionPointProductionStateEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/ProductionPointProductionStateEvent.md"
+
+[ProductionPointProductionStatusEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/ProductionPointProductionStatusEvent.md"
+
+[PurchaseSoilMapsEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/PurchaseSoilMapsEvent.md"
+
+[ReceivingHopperSetCreateBoxesEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/ReceivingHopperSetCreateBoxesEvent.md"
+
+[RequestEnvironmentalScoreEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/RequestEnvironmentalScoreEvent.md"
+
+[RequestFarmlandStatisticsEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/RequestFarmlandStatisticsEvent.md"
+
+[RequestFieldBuyInfoEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/RequestFieldBuyInfoEvent.md"
+
+[ResetYieldMapEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/ResetYieldMapEvent.md"
+
+[ReverseDrivingSetStateEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/ReverseDrivingSetStateEvent.md"
+
+[RidgeMarkerSetStateEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/RidgeMarkerSetStateEvent.md"
+
+[SetCoverStateEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/SetCoverStateEvent.md"
+
+[SetCrabSteeringEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/SetCrabSteeringEvent.md"
+
+[SetCruiseControlSpeedEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/SetCruiseControlSpeedEvent.md"
+
+[SetCruiseControlStateEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/SetCruiseControlStateEvent.md"
+
+[SetDischargeStateEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/SetDischargeStateEvent.md"
+
+[SetFillUnitCapacityEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/SetFillUnitCapacityEvent.md"
+
+[SetFillUnitIsFillingEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/SetFillUnitIsFillingEvent.md"
+
+[SetPipeDischargeToGroundEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/SetPipeDischargeToGroundEvent.md"
+
+[SetPipeStateEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/SetPipeStateEvent.md"
+
+[SetSeedIndexEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/SetSeedIndexEvent.md"
+
+[SetTurnedOnEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/SetTurnedOnEvent.md"
+
+[SetWorkModeEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/SetWorkModeEvent.md"
+
+[SoilSamplerSendEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/SoilSamplerSendEvent.md"
+
+[SoilSamplerStartEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/SoilSamplerStartEvent.md"
+
+[SprayerDoubledAmountEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/SprayerDoubledAmountEvent.md"
+
+[TensionBeltsEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/TensionBeltsEvent.md"
+
+[TensionBeltsRefreshEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/TensionBeltsRefreshEvent.md"
+
+[TrailerToggleManualDoorEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/TrailerToggleManualDoorEvent.md"
+
+[TrailerToggleManualTipEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/TrailerToggleManualTipEvent.md"
+
+[TrailerToggleTipSideEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/TrailerToggleTipSideEvent.md"
+
+[TramlineMapInitialEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/TramlineMapInitialEvent.md"
+
+[TramlineMapSetEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/TramlineMapSetEvent.md"
+
+[TreePlanterCreateTreeEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/TreePlanterCreateTreeEvent.md"
+
+[TreePlanterLoadPalletEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/TreePlanterLoadPalletEvent.md"
+
+[TreePlanterTreeTypeEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/TreePlanterTreeTypeEvent.md"
+
+[VariableWorkWidthStateEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/VariableWorkWidthStateEvent.md"
+
+[VehicleAttachEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/VehicleAttachEvent.md"
+
+[VehicleAttachRequestEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/VehicleAttachRequestEvent.md"
+
+[VehicleBrokenEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/VehicleBrokenEvent.md"
+
+[VehicleDetachEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/VehicleDetachEvent.md"
+
+[VehicleEnterRequestEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/VehicleEnterRequestEvent.md"
+
+[VehicleEnterResponseEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/VehicleEnterResponseEvent.md"
+
+[VehicleLeaveEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/VehicleLeaveEvent.md"
+
+[VehicleLowerImplementEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/VehicleLowerImplementEvent.md"
+
+[VehiclePlayerStyleChangedEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/VehiclePlayerStyleChangedEvent.md"
+
+[VehicleSetBeaconLightEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/VehicleSetBeaconLightEvent.md"
+
+[VehicleSetIsReconfiguratingEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/VehicleSetIsReconfiguratingEvent.md"
+
+[VehicleSetLightEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/VehicleSetLightEvent.md"
+
+[VehicleSettingsChangeEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/VehicleSettingsChangeEvent.md"
+
+[VehicleSetTurnLightEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/VehicleSetTurnLightEvent.md"
+
+[WashingStationEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/WashingStationEvent.md"
+
+[WaterTrailerSetIsFillingEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/WaterTrailerSetIsFillingEvent.md"
+
+[WearableRepaintEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/WearableRepaintEvent.md"
+
+[WearableRepairEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/WearableRepairEvent.md"
+
+[WoodHarvesterCutLengthEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/WoodHarvesterCutLengthEvent.md"
+
+[WoodHarvesterCutTreeEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/WoodHarvesterCutTreeEvent.md"
+
+[WoodHarvesterDropTreeEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/WoodHarvesterDropTreeEvent.md"
+
+[WoodHarvesterHeaderTiltEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/WoodHarvesterHeaderTiltEvent.md"
+
+[WoodHarvesterOnCutTreeEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/WoodHarvesterOnCutTreeEvent.md"
+
+[WoodHarvesterOnDelimbTreeEvent]
+category = "script.Events"
+file = "docs/luadocs/script/Events/WoodHarvesterOnDelimbTreeEvent.md"
+
+[AIModeHUDExtension]
+category = "script.Extensions"
+file = "docs/luadocs/script/Extensions/AIModeHUDExtension.md"
+
+[BaleCounterHUDExtension]
+category = "script.Extensions"
+file = "docs/luadocs/script/Extensions/BaleCounterHUDExtension.md"
+
+[BalerStationaryHUDExtension]
+category = "script.Extensions"
+file = "docs/luadocs/script/Extensions/BalerStationaryHUDExtension.md"
+
+[CrabSteeringHUDExtension]
+category = "script.Extensions"
+file = "docs/luadocs/script/Extensions/CrabSteeringHUDExtension.md"
+
+[CruiseControlHUDExtension]
+category = "script.Extensions"
+file = "docs/luadocs/script/Extensions/CruiseControlHUDExtension.md"
+
+[MixerWagonHUDExtension]
+category = "script.Extensions"
+file = "docs/luadocs/script/Extensions/MixerWagonHUDExtension.md"
+
+[WorkModeHUDExtension]
+category = "script.Extensions"
+file = "docs/luadocs/script/Extensions/WorkModeHUDExtension.md"
+
+[YarderTowerHUDExtension]
+category = "script.Extensions"
+file = "docs/luadocs/script/Extensions/YarderTowerHUDExtension.md"
+
+[Farm]
+category = "script.Farms"
+file = "docs/luadocs/script/Farms/Farm.md"
+
+[FarmManager]
+category = "script.Farms"
+file = "docs/luadocs/script/Farms/FarmManager.md"
+
+[FerryActivatable]
+category = "script.Ferry"
+file = "docs/luadocs/script/Ferry/FerryActivatable.md"
+
+[AbstractFieldMission]
+category = "script.Field"
+file = "docs/luadocs/script/Field/AbstractFieldMission.md"
+
+[FieldState]
+category = "script.Field"
+file = "docs/luadocs/script/Field/FieldState.md"
+
+[PlowMission]
+category = "script.Field"
+file = "docs/luadocs/script/Field/PlowMission.md"
+
+[SowMission]
+category = "script.Field"
+file = "docs/luadocs/script/Field/SowMission.md"
+
+[StonePickMission]
+category = "script.Field"
+file = "docs/luadocs/script/Field/StonePickMission.md"
+
+[FillTypeDesc]
+category = "script.FillTypes"
+file = "docs/luadocs/script/FillTypes/FillTypeDesc.md"
+
+[FillTypeManager]
+category = "script.FillTypes"
+file = "docs/luadocs/script/FillTypes/FillTypeManager.md"
+
+[FruitTypeDesc]
+category = "script.Fruits"
+file = "docs/luadocs/script/Fruits/FruitTypeDesc.md"
+
+[FruitTypeManager]
+category = "script.Fruits"
+file = "docs/luadocs/script/Fruits/FruitTypeManager.md"
+
+[PlayerStyle]
+category = "script.Graphical"
+file = "docs/luadocs/script/Graphical/PlayerStyle.md"
+
+[PlayerStyleConfig]
+category = "script.Graphical"
+file = "docs/luadocs/script/Graphical/PlayerStyleConfig.md"
+
+[HumanGraphicsComponent]
+category = "script.Graphics"
+file = "docs/luadocs/script/Graphics/HumanGraphicsComponent.md"
+
+[HumanGraphicsComponentState]
+category = "script.Graphics"
+file = "docs/luadocs/script/Graphics/HumanGraphicsComponentState.md"
+
+[HumanModel]
+category = "script.Graphics"
+file = "docs/luadocs/script/Graphics/HumanModel.md"
+
+[HumanSounds]
+category = "script.Graphics"
+file = "docs/luadocs/script/Graphics/HumanSounds.md"
+
+[AnimalScreen]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/AnimalScreen.md"
+
+[AnimationElement]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/AnimationElement.md"
+
+[BinaryOptionElement]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/BinaryOptionElement.md"
+
+[BitmapElement]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/BitmapElement.md"
+
+[BoxLayoutElement]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/BoxLayoutElement.md"
+
+[BreadcrumbsElement]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/BreadcrumbsElement.md"
+
+[ButtonElement]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/ButtonElement.md"
+
+[ButtonOverlay]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/ButtonOverlay.md"
+
+[CheckedOptionElement]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/CheckedOptionElement.md"
+
+[ClearElement]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/ClearElement.md"
+
+[ColorPickButtonElement]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/ColorPickButtonElement.md"
+
+[ColorPickerDialog]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/ColorPickerDialog.md"
+
+[DialogElement]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/DialogElement.md"
+
+[DynamicFadedBitmapElement]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/DynamicFadedBitmapElement.md"
+
+[FocusManager]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/FocusManager.md"
+
+[FrameElement]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/FrameElement.md"
+
+[FrameReferenceElement]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/FrameReferenceElement.md"
+
+[GlyphButtonOverlay]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/GlyphButtonOverlay.md"
+
+[GuiDataSource]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/GuiDataSource.md"
+
+[GuiElement]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/GuiElement.md"
+
+[GuiMixin]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/GuiMixin.md"
+
+[GuiOverlay]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/GuiOverlay.md"
+
+[GuiProfile]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/GuiProfile.md"
+
+[GuiSoundPlayer]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/GuiSoundPlayer.md"
+
+[GuiTopDownCamera]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/GuiTopDownCamera.md"
+
+[GuiTopDownCursor]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/GuiTopDownCursor.md"
+
+[GuiUtils]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/GuiUtils.md"
+
+[HUDDisplayElement]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/HUDDisplayElement.md"
+
+[HUDElement]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/HUDElement.md"
+
+[HUDFrameElement]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/HUDFrameElement.md"
+
+[HUDPopupMessageMobile]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/HUDPopupMessageMobile.md"
+
+[HUDSliderElement]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/HUDSliderElement.md"
+
+[HUDTextDisplay]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/HUDTextDisplay.md"
+
+[IndexChangeSubjectMixin]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/IndexChangeSubjectMixin.md"
+
+[IndexStateElement]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/IndexStateElement.md"
+
+[InfoDialog]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/InfoDialog.md"
+
+[InfoDisplay]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/InfoDisplay.md"
+
+[InfoDisplayBox]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/InfoDisplayBox.md"
+
+[InfoDisplayKeyValueBox]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/InfoDisplayKeyValueBox.md"
+
+[InfoDisplayKeyValueBoxMobile]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/InfoDisplayKeyValueBoxMobile.md"
+
+[IngameMap]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/IngameMap.md"
+
+[IngameMapElement]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/IngameMapElement.md"
+
+[IngameMapMobile]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/IngameMapMobile.md"
+
+[InGameMenu]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/InGameMenu.md"
+
+[InGameMenuAnimalsFrame]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/InGameMenuAnimalsFrame.md"
+
+[InGameMenuStatisticsFrame]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/InGameMenuStatisticsFrame.md"
+
+[InputGlyphElement]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/InputGlyphElement.md"
+
+[ListItemElement]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/ListItemElement.md"
+
+[MainScreen]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/MainScreen.md"
+
+[MapOverlayGenerator]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/MapOverlayGenerator.md"
+
+[MultiOptionDialog]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/MultiOptionDialog.md"
+
+[MultiTextOptionElement]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/MultiTextOptionElement.md"
+
+[MultiValueTween]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/MultiValueTween.md"
+
+[NavigationMarker]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/NavigationMarker.md"
+
+[OptionSliderElement]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/OptionSliderElement.md"
+
+[Overlay]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/Overlay.md"
+
+[OverlayManager]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/OverlayManager.md"
+
+[PagingElement]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/PagingElement.md"
+
+[PictureElement]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/PictureElement.md"
+
+[PlatformIconElement]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/PlatformIconElement.md"
+
+[PlaySampleMixin]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/PlaySampleMixin.md"
+
+[RenderElement]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/RenderElement.md"
+
+[RoundCornerElement]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/RoundCornerElement.md"
+
+[RoundStatusBar]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/RoundStatusBar.md"
+
+[SafeFrameElement]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/SafeFrameElement.md"
+
+[ScreenElement]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/ScreenElement.md"
+
+[ScrollingLayoutElement]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/ScrollingLayoutElement.md"
+
+[SettingsModel]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/SettingsModel.md"
+
+[ShopCategoriesFrame]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/ShopCategoriesFrame.md"
+
+[ShopItemsFrame]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/ShopItemsFrame.md"
+
+[SliderElement]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/SliderElement.md"
+
+[StatusBar]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/StatusBar.md"
+
+[TabbedMenu]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/TabbedMenu.md"
+
+[TabbedMenuFrameElement]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/TabbedMenuFrameElement.md"
+
+[TabbedMenuWithDetails]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/TabbedMenuWithDetails.md"
+
+[TableHeaderElement]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/TableHeaderElement.md"
+
+[TerrainLayerElement]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/TerrainLayerElement.md"
+
+[TextBackdropElement]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/TextBackdropElement.md"
+
+[TextElement]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/TextElement.md"
+
+[TextInputElement]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/TextInputElement.md"
+
+[ThreePartBitmapElement]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/ThreePartBitmapElement.md"
+
+[TimerElement]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/TimerElement.md"
+
+[ToggleButtonElement]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/ToggleButtonElement.md"
+
+[TourDialog]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/TourDialog.md"
+
+[Tween]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/Tween.md"
+
+[TweenSequence]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/TweenSequence.md"
+
+[VariableWorkWidthHUDExtension]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/VariableWorkWidthHUDExtension.md"
+
+[VideoElement]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/VideoElement.md"
+
+[WardrobeScreen]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/WardrobeScreen.md"
+
+[YesNoDialog]
+category = "script.GUI"
+file = "docs/luadocs/script/GUI/YesNoDialog.md"
+
+[GuidedTourManager]
+category = "script.GuidedTour"
+file = "docs/luadocs/script/GuidedTour/GuidedTourManager.md"
+
+[HandTool]
+category = "script.Handtools"
+file = "docs/luadocs/script/Handtools/HandTool.md"
+
+[HandToolChainsaw]
+category = "script.Handtools"
+file = "docs/luadocs/script/Handtools/HandToolChainsaw.md"
+
+[HandToolFlashlight]
+category = "script.Handtools"
+file = "docs/luadocs/script/Handtools/HandToolFlashlight.md"
+
+[HandToolHands]
+category = "script.Handtools"
+file = "docs/luadocs/script/Handtools/HandToolHands.md"
+
+[HandToolHolder]
+category = "script.Handtools"
+file = "docs/luadocs/script/Handtools/HandToolHolder.md"
+
+[HandToolHolderActivatable]
+category = "script.Handtools"
+file = "docs/luadocs/script/Handtools/HandToolHolderActivatable.md"
+
+[HandToolHorseBrush]
+category = "script.Handtools"
+file = "docs/luadocs/script/Handtools/HandToolHorseBrush.md"
+
+[HandToolHPWLance]
+category = "script.Handtools"
+file = "docs/luadocs/script/Handtools/HandToolHPWLance.md"
+
+[HandToolLoadingData]
+category = "script.Handtools"
+file = "docs/luadocs/script/Handtools/HandToolLoadingData.md"
+
+[HandToolMotorized]
+category = "script.Handtools"
+file = "docs/luadocs/script/Handtools/HandToolMotorized.md"
+
+[HandToolSprayCan]
+category = "script.Handtools"
+file = "docs/luadocs/script/Handtools/HandToolSprayCan.md"
+
+[HandToolStorable]
+category = "script.Handtools"
+file = "docs/luadocs/script/Handtools/HandToolStorable.md"
+
+[HandToolSystem]
+category = "script.Handtools"
+file = "docs/luadocs/script/Handtools/HandToolSystem.md"
+
+[HandToolTethered]
+category = "script.Handtools"
+file = "docs/luadocs/script/Handtools/HandToolTethered.md"
+
+[HandToolUtil]
+category = "script.Handtools"
+file = "docs/luadocs/script/Handtools/HandToolUtil.md"
+
+[PlayerTargeter]
+category = "script.Handtools"
+file = "docs/luadocs/script/Handtools/PlayerTargeter.md"
+
+[ContextActionDisplay]
+category = "script.Hud"
+file = "docs/luadocs/script/Hud/ContextActionDisplay.md"
+
+[ExtendedCombineHUDExtension]
+category = "script.Hud"
+file = "docs/luadocs/script/Hud/ExtendedCombineHUDExtension.md"
+
+[ExtendedSowingMachineHUDExtension]
+category = "script.Hud"
+file = "docs/luadocs/script/Hud/ExtendedSowingMachineHUDExtension.md"
+
+[ExtendedSprayerHUDExtension]
+category = "script.Hud"
+file = "docs/luadocs/script/Hud/ExtendedSprayerHUDExtension.md"
+
+[HUDTextButtonElement]
+category = "script.Hud"
+file = "docs/luadocs/script/Hud/HUDTextButtonElement.md"
+
+[IngameMessage]
+category = "script.Hud"
+file = "docs/luadocs/script/Hud/IngameMessage.md"
+
+[I3DManager]
+category = "script.I3d"
+file = "docs/luadocs/script/I3d/I3DManager.md"
+
+[InputBinding]
+category = "script.Input"
+file = "docs/luadocs/script/Input/InputBinding.md"
+
+[WildlifeInstanceSimple]
+category = "script.Instances"
+file = "docs/luadocs/script/Instances/WildlifeInstanceSimple.md"
+
+[AIJob]
+category = "script.Jobs"
+file = "docs/luadocs/script/Jobs/AIJob.md"
+
+[AIJobConveyor]
+category = "script.Jobs"
+file = "docs/luadocs/script/Jobs/AIJobConveyor.md"
+
+[AIJobDeliver]
+category = "script.Jobs"
+file = "docs/luadocs/script/Jobs/AIJobDeliver.md"
+
+[AIJobFieldWork]
+category = "script.Jobs"
+file = "docs/luadocs/script/Jobs/AIJobFieldWork.md"
+
+[AIJobGoTo]
+category = "script.Jobs"
+file = "docs/luadocs/script/Jobs/AIJobGoTo.md"
+
+[AIJobLoadAndDeliver]
+category = "script.Jobs"
+file = "docs/luadocs/script/Jobs/AIJobLoadAndDeliver.md"
+
+[CharacterLine]
+category = "script.Materials"
+file = "docs/luadocs/script/Materials/CharacterLine.md"
+
+[FontMaterial]
+category = "script.Materials"
+file = "docs/luadocs/script/Materials/FontMaterial.md"
+
+[MaterialManager]
+category = "script.Materials"
+file = "docs/luadocs/script/Materials/MaterialManager.md"
+
+[MaterialUtil]
+category = "script.Materials"
+file = "docs/luadocs/script/Materials/MaterialUtil.md"
+
+[MotionPathEffectManager]
+category = "script.Materials"
+file = "docs/luadocs/script/Materials/MotionPathEffectManager.md"
+
+[ParticleSystemManager]
+category = "script.Materials"
+file = "docs/luadocs/script/Materials/ParticleSystemManager.md"
+
+[AbstractManager]
+category = "script.Misc"
+file = "docs/luadocs/script/Misc/AbstractManager.md"
+
+[BaleManager]
+category = "script.Misc"
+file = "docs/luadocs/script/Misc/BaleManager.md"
+
+[BezierCurve]
+category = "script.Misc"
+file = "docs/luadocs/script/Misc/BezierCurve.md"
+
+[Color]
+category = "script.Misc"
+file = "docs/luadocs/script/Misc/Color.md"
+
+[ConnectionHoseManager]
+category = "script.Misc"
+file = "docs/luadocs/script/Misc/ConnectionHoseManager.md"
+
+[ConsumableManager]
+category = "script.Misc"
+file = "docs/luadocs/script/Misc/ConsumableManager.md"
+
+[Logging]
+category = "script.Misc"
+file = "docs/luadocs/script/Misc/Logging.md"
+
+[ProductionChainManager]
+category = "script.Misc"
+file = "docs/luadocs/script/Misc/ProductionChainManager.md"
+
+[SplitShapeManager]
+category = "script.Misc"
+file = "docs/luadocs/script/Misc/SplitShapeManager.md"
+
+[SprayTypeManager]
+category = "script.Misc"
+file = "docs/luadocs/script/Misc/SprayTypeManager.md"
+
+[TensionBeltManager]
+category = "script.Misc"
+file = "docs/luadocs/script/Misc/TensionBeltManager.md"
+
+[ToolTypeManager]
+category = "script.Misc"
+file = "docs/luadocs/script/Misc/ToolTypeManager.md"
+
+[TreePlantManager]
+category = "script.Misc"
+file = "docs/luadocs/script/Misc/TreePlantManager.md"
+
+[AbstractMission]
+category = "script.Missions"
+file = "docs/luadocs/script/Missions/AbstractMission.md"
+
+[MissionManager]
+category = "script.Missions"
+file = "docs/luadocs/script/Missions/MissionManager.md"
+
+[PlayerLocalNetworkComponent]
+category = "script.Networking"
+file = "docs/luadocs/script/Networking/PlayerLocalNetworkComponent.md"
+
+[PlayerNetworkComponent]
+category = "script.Networking"
+file = "docs/luadocs/script/Networking/PlayerNetworkComponent.md"
+
+[PlayerPositionalInterpolator]
+category = "script.Networking"
+file = "docs/luadocs/script/Networking/PlayerPositionalInterpolator.md"
+
+[PlayerRemoteNetworkComponent]
+category = "script.Networking"
+file = "docs/luadocs/script/Networking/PlayerRemoteNetworkComponent.md"
+
+[PlayerServerNetworkComponent]
+category = "script.Networking"
+file = "docs/luadocs/script/Networking/PlayerServerNetworkComponent.md"
+
+[AnimatedMapObject]
+category = "script.Objects"
+file = "docs/luadocs/script/Objects/AnimatedMapObject.md"
+
+[AnimatedObject]
+category = "script.Objects"
+file = "docs/luadocs/script/Objects/AnimatedObject.md"
+
+[Basketball]
+category = "script.Objects"
+file = "docs/luadocs/script/Objects/Basketball.md"
+
+[BunkerSilo]
+category = "script.Objects"
+file = "docs/luadocs/script/Objects/BunkerSilo.md"
+
+[DogBall]
+category = "script.Objects"
+file = "docs/luadocs/script/Objects/DogBall.md"
+
+[HelpIcons]
+category = "script.Objects"
+file = "docs/luadocs/script/Objects/HelpIcons.md"
+
+[InlineBaleSingle]
+category = "script.Objects"
+file = "docs/luadocs/script/Objects/InlineBaleSingle.md"
+
+[NightlightFlicker]
+category = "script.Objects"
+file = "docs/luadocs/script/Objects/NightlightFlicker.md"
+
+[PackedBale]
+category = "script.Objects"
+file = "docs/luadocs/script/Objects/PackedBale.md"
+
+[Rotator]
+category = "script.Objects"
+file = "docs/luadocs/script/Objects/Rotator.md"
+
+[SimParticleSystem]
+category = "script.Objects"
+file = "docs/luadocs/script/Objects/SimParticleSystem.md"
+
+[SunAdmirer]
+category = "script.Objects"
+file = "docs/luadocs/script/Objects/SunAdmirer.md"
+
+[TourIconsMobile]
+category = "script.Objects"
+file = "docs/luadocs/script/Objects/TourIconsMobile.md"
+
+[VehicleSellingPoint]
+category = "script.Objects"
+file = "docs/luadocs/script/Objects/VehicleSellingPoint.md"
+
+[AIParameter]
+category = "script.Parameters"
+file = "docs/luadocs/script/Parameters/AIParameter.md"
+
+[AIParameterFillType]
+category = "script.Parameters"
+file = "docs/luadocs/script/Parameters/AIParameterFillType.md"
+
+[AIParameterGroup]
+category = "script.Parameters"
+file = "docs/luadocs/script/Parameters/AIParameterGroup.md"
+
+[AIParameterLoadingStation]
+category = "script.Parameters"
+file = "docs/luadocs/script/Parameters/AIParameterLoadingStation.md"
+
+[AIParameterLooping]
+category = "script.Parameters"
+file = "docs/luadocs/script/Parameters/AIParameterLooping.md"
+
+[AIParameterPosition]
+category = "script.Parameters"
+file = "docs/luadocs/script/Parameters/AIParameterPosition.md"
+
+[AIParameterPositionAngle]
+category = "script.Parameters"
+file = "docs/luadocs/script/Parameters/AIParameterPositionAngle.md"
+
+[AIParameterUnloadingStation]
+category = "script.Parameters"
+file = "docs/luadocs/script/Parameters/AIParameterUnloadingStation.md"
+
+[AIParameterVehicle]
+category = "script.Parameters"
+file = "docs/luadocs/script/Parameters/AIParameterVehicle.md"
+
+[BeehiveSystem]
+category = "script.Placeables"
+file = "docs/luadocs/script/Placeables/BeehiveSystem.md"
+
+[Placeable]
+category = "script.Placeables"
+file = "docs/luadocs/script/Placeables/Placeable.md"
+
+[PlaceableHandToolHolders]
+category = "script.Placeables"
+file = "docs/luadocs/script/Placeables/PlaceableHandToolHolders.md"
+
+[PlaceableLoadingData]
+category = "script.Placeables"
+file = "docs/luadocs/script/Placeables/PlaceableLoadingData.md"
+
+[PlaceableSystem]
+category = "script.Placeables"
+file = "docs/luadocs/script/Placeables/PlaceableSystem.md"
+
+[PalletSpawner]
+category = "script.Placement"
+file = "docs/luadocs/script/Placement/PalletSpawner.md"
+
+[PlacementGrid2D]
+category = "script.Placement"
+file = "docs/luadocs/script/Placement/PlacementGrid2D.md"
+
+[PlayerCamera]
+category = "script.Player"
+file = "docs/luadocs/script/Player/PlayerCamera.md"
+
+[PlayerCCT]
+category = "script.Player"
+file = "docs/luadocs/script/Player/PlayerCCT.md"
+
+[PlayerInputComponent]
+category = "script.Player"
+file = "docs/luadocs/script/Player/PlayerInputComponent.md"
+
+[PlayerMover]
+category = "script.Player"
+file = "docs/luadocs/script/Player/PlayerMover.md"
+
+[PlayerSystem]
+category = "script.Player"
+file = "docs/luadocs/script/Player/PlayerSystem.md"
+
+[RollercoasterActivatable]
+category = "script.Rollercoaster"
+file = "docs/luadocs/script/Rollercoaster/RollercoasterActivatable.md"
+
+[ShipSystem]
+category = "script.Ship"
+file = "docs/luadocs/script/Ship/ShipSystem.md"
+
+[BrandManager]
+category = "script.Shop"
+file = "docs/luadocs/script/Shop/BrandManager.md"
+
+[BuyHandToolData]
+category = "script.Shop"
+file = "docs/luadocs/script/Shop/BuyHandToolData.md"
+
+[BuyPlaceableData]
+category = "script.Shop"
+file = "docs/luadocs/script/Shop/BuyPlaceableData.md"
+
+[BuyVehicleData]
+category = "script.Shop"
+file = "docs/luadocs/script/Shop/BuyVehicleData.md"
+
+[StoreManager]
+category = "script.Shop"
+file = "docs/luadocs/script/Shop/StoreManager.md"
+
+[ServerSoundManager]
+category = "script.Sounds"
+file = "docs/luadocs/script/Sounds/ServerSoundManager.md"
+
+[SoundManager]
+category = "script.Sounds"
+file = "docs/luadocs/script/Sounds/SoundManager.md"
+
+[SoundMixer]
+category = "script.Sounds"
+file = "docs/luadocs/script/Sounds/SoundMixer.md"
+
+[SpecializationManager]
+category = "script.Specialization"
+file = "docs/luadocs/script/Specialization/SpecializationManager.md"
+
+[SpecializationUtil]
+category = "script.Specialization"
+file = "docs/luadocs/script/Specialization/SpecializationUtil.md"
+
+[TypeManager]
+category = "script.Specialization"
+file = "docs/luadocs/script/Specialization/TypeManager.md"
+
+[AIAutomaticSteering]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/AIAutomaticSteering.md"
+
+[AIConveyorBelt]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/AIConveyorBelt.md"
+
+[AIDischargeable]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/AIDischargeable.md"
+
+[AIDrivable]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/AIDrivable.md"
+
+[AIFieldWorker]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/AIFieldWorker.md"
+
+[AIImplement]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/AIImplement.md"
+
+[AIJobVehicle]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/AIJobVehicle.md"
+
+[AIModeSelection]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/AIModeSelection.md"
+
+[AIVehicle]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/AIVehicle.md"
+
+[AIVehicleObstacle]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/AIVehicleObstacle.md"
+
+[AnimatedVehicle]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/AnimatedVehicle.md"
+
+[ArticulatedAxis]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/ArticulatedAxis.md"
+
+[Attachable]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/Attachable.md"
+
+[AttacherJointControl]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/AttacherJointControl.md"
+
+[AttacherJoints]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/AttacherJoints.md"
+
+[AutoLoadable]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/AutoLoadable.md"
+
+[AutoLoader]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/AutoLoader.md"
+
+[AutoLoaderBales]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/AutoLoaderBales.md"
+
+[BaleGrab]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/BaleGrab.md"
+
+[BaleLoader]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/BaleLoader.md"
+
+[Baler]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/Baler.md"
+
+[BaleWrapper]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/BaleWrapper.md"
+
+[BaseMaterial]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/BaseMaterial.md"
+
+[BigBag]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/BigBag.md"
+
+[BunkerSiloCompacter]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/BunkerSiloCompacter.md"
+
+[BunkerSiloInteractor]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/BunkerSiloInteractor.md"
+
+[CCTDrivable]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/CCTDrivable.md"
+
+[ChainRollers]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/ChainRollers.md"
+
+[Combine]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/Combine.md"
+
+[ConnectionHoses]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/ConnectionHoses.md"
+
+[ConveyorBelt]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/ConveyorBelt.md"
+
+[Cover]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/Cover.md"
+
+[CrabSteering]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/CrabSteering.md"
+
+[Crawlers]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/Crawlers.md"
+
+[CropRowAdjustedNodes]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/CropRowAdjustedNodes.md"
+
+[CropSensor]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/CropSensor.md"
+
+[Cultivator]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/Cultivator.md"
+
+[Cutter]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/Cutter.md"
+
+[Cylindered]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/Cylindered.md"
+
+[CylinderedFoldable]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/CylinderedFoldable.md"
+
+[Dashboard]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/Dashboard.md"
+
+[Dischargeable]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/Dischargeable.md"
+
+[Drivable]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/Drivable.md"
+
+[DynamicallyLoadedParts]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/DynamicallyLoadedParts.md"
+
+[DynamicMountAttacher]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/DynamicMountAttacher.md"
+
+[Enterable]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/Enterable.md"
+
+[ExtendedCombine]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/ExtendedCombine.md"
+
+[ExtendedMotorized]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/ExtendedMotorized.md"
+
+[ExtendedMower]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/ExtendedMower.md"
+
+[ExtendedSowingMachine]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/ExtendedSowingMachine.md"
+
+[ExtendedSprayer]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/ExtendedSprayer.md"
+
+[ExtendedSprayerEffects]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/ExtendedSprayerEffects.md"
+
+[ExtendedWearable]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/ExtendedWearable.md"
+
+[FertilizingCultivator]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/FertilizingCultivator.md"
+
+[FertilizingSowingMachine]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/FertilizingSowingMachine.md"
+
+[FillTriggerVehicle]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/FillTriggerVehicle.md"
+
+[FillUnit]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/FillUnit.md"
+
+[FillVolume]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/FillVolume.md"
+
+[Foldable]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/Foldable.md"
+
+[FoliageBending]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/FoliageBending.md"
+
+[ForageWagon]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/ForageWagon.md"
+
+[FrontloaderAttacher]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/FrontloaderAttacher.md"
+
+[FruitPreparer]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/FruitPreparer.md"
+
+[GroundAdjustedNodes]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/GroundAdjustedNodes.md"
+
+[GroundReference]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/GroundReference.md"
+
+[HeadlandAnimation]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/HeadlandAnimation.md"
+
+[Honk]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/Honk.md"
+
+[HookLiftContainer]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/HookLiftContainer.md"
+
+[HookLiftTrailer]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/HookLiftTrailer.md"
+
+[HydraulicHammer]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/HydraulicHammer.md"
+
+[IKChains]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/IKChains.md"
+
+[InlineWrapper]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/InlineWrapper.md"
+
+[JigglingParts]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/JigglingParts.md"
+
+[Leveler]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/Leveler.md"
+
+[LicensePlates]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/LicensePlates.md"
+
+[Lights]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/Lights.md"
+
+[LivestockTrailer]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/LivestockTrailer.md"
+
+[Locomotive]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/Locomotive.md"
+
+[ManureBarrel]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/ManureBarrel.md"
+
+[ManureSensor]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/ManureSensor.md"
+
+[MixerWagon]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/MixerWagon.md"
+
+[Motorbike]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/Motorbike.md"
+
+[Motorized]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/Motorized.md"
+
+[Mountable]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/Mountable.md"
+
+[Mower]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/Mower.md"
+
+[Mulcher]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/Mulcher.md"
+
+[MultipleItemPurchase]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/MultipleItemPurchase.md"
+
+[Pallet]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/Pallet.md"
+
+[Pickup]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/Pickup.md"
+
+[Pipe]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/Pipe.md"
+
+[PlaceableAI]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableAI.md"
+
+[PlaceableAnimalLoadingTrigger]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableAnimalLoadingTrigger.md"
+
+[PlaceableAnimatedObjects]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableAnimatedObjects.md"
+
+[PlaceableBeehive]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableBeehive.md"
+
+[PlaceableBeehivePalletSpawner]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableBeehivePalletSpawner.md"
+
+[PlaceableBoatyard]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableBoatyard.md"
+
+[PlaceableBunkerSilo]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableBunkerSilo.md"
+
+[PlaceableBuyable]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableBuyable.md"
+
+[PlaceableBuyingStation]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableBuyingStation.md"
+
+[PlaceableCartridgePlayer]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableCartridgePlayer.md"
+
+[PlaceableChargingStation]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableChargingStation.md"
+
+[PlaceableClearAreas]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableClearAreas.md"
+
+[PlaceableConstructible]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableConstructible.md"
+
+[PlaceableDeletedNodes]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableDeletedNodes.md"
+
+[PlaceableDestructible]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableDestructible.md"
+
+[PlaceableDoghouse]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableDoghouse.md"
+
+[PlaceableDynamicallyLoadedParts]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableDynamicallyLoadedParts.md"
+
+[PlaceableFactory]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableFactory.md"
+
+[PlaceableFarmhouse]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableFarmhouse.md"
+
+[PlaceableFence]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableFence.md"
+
+[PlaceableFoliageAreas]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableFoliageAreas.md"
+
+[PlaceableGreenhouse]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableGreenhouse.md"
+
+[PlaceableHeapSpawner]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableHeapSpawner.md"
+
+[PlaceableHotspots]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableHotspots.md"
+
+[PlaceableHusbandry]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableHusbandry.md"
+
+[PlaceableHusbandryAnimals]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableHusbandryAnimals.md"
+
+[PlaceableHusbandryFeedingRobot]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableHusbandryFeedingRobot.md"
+
+[PlaceableHusbandryFence]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableHusbandryFence.md"
+
+[PlaceableHusbandryFood]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableHusbandryFood.md"
+
+[PlaceableHusbandryLiquidManure]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableHusbandryLiquidManure.md"
+
+[PlaceableHusbandryMeadow]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableHusbandryMeadow.md"
+
+[PlaceableHusbandryMilk]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableHusbandryMilk.md"
+
+[PlaceableHusbandryPallets]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableHusbandryPallets.md"
+
+[PlaceableHusbandryStraw]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableHusbandryStraw.md"
+
+[PlaceableHusbandryWater]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableHusbandryWater.md"
+
+[PlaceableIncomePerHour]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableIncomePerHour.md"
+
+[PlaceableIndoorAreas]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableIndoorAreas.md"
+
+[PlaceableInfoTrigger]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableInfoTrigger.md"
+
+[PlaceableLadders]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableLadders.md"
+
+[PlaceableLeveling]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableLeveling.md"
+
+[PlaceableLights]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableLights.md"
+
+[PlaceableManureHeap]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableManureHeap.md"
+
+[PlaceableMultiBunkerSilo]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableMultiBunkerSilo.md"
+
+[PlaceableNewFence]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableNewFence.md"
+
+[PlaceableNPCSpot]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableNPCSpot.md"
+
+[PlaceableObjectStorage]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableObjectStorage.md"
+
+[PlaceablePalletBuyingStation]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceablePalletBuyingStation.md"
+
+[PlaceablePlacement]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceablePlacement.md"
+
+[PlaceablePointOfInterest]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceablePointOfInterest.md"
+
+[PlaceableProductionPoint]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableProductionPoint.md"
+
+[PlaceableRiceField]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableRiceField.md"
+
+[PlaceableRiceFieldActivatable]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableRiceFieldActivatable.md"
+
+[PlaceableRollercoaster]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableRollercoaster.md"
+
+[PlaceableSellingStation]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableSellingStation.md"
+
+[PlaceableShallowWaterSimulation]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableShallowWaterSimulation.md"
+
+[PlaceableSilo]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableSilo.md"
+
+[PlaceableSiloExtension]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableSiloExtension.md"
+
+[PlaceableSolarPanels]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableSolarPanels.md"
+
+[PlaceableTipOcclusionAreas]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableTipOcclusionAreas.md"
+
+[PlaceableTrainSystem]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableTrainSystem.md"
+
+[PlaceableTriggerMarkers]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableTriggerMarkers.md"
+
+[PlaceableVehicle]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableVehicle.md"
+
+[PlaceableVehicleBuyingStation]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableVehicleBuyingStation.md"
+
+[PlaceableVine]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableVine.md"
+
+[PlaceableWardrobe]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableWardrobe.md"
+
+[PlaceableWashingStation]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableWashingStation.md"
+
+[PlaceableWeatherStation]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableWeatherStation.md"
+
+[PlaceableWeighingStation]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableWeighingStation.md"
+
+[PlaceableWindTurbine]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableWindTurbine.md"
+
+[PlaceableWorkshop]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlaceableWorkshop.md"
+
+[Plow]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/Plow.md"
+
+[PlowPacker]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PlowPacker.md"
+
+[PowerConsumer]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PowerConsumer.md"
+
+[PowerTakeOffs]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PowerTakeOffs.md"
+
+[PrecisionFarmingStatistic]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/PrecisionFarmingStatistic.md"
+
+[ProtectedBundleVehicle]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/ProtectedBundleVehicle.md"
+
+[RandomlyMovingParts]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/RandomlyMovingParts.md"
+
+[ReceivingHopper]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/ReceivingHopper.md"
+
+[ReverseDriving]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/ReverseDriving.md"
+
+[Rideable]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/Rideable.md"
+
+[RidgeMarker]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/RidgeMarker.md"
+
+[Roller]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/Roller.md"
+
+[Ropes]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/Ropes.md"
+
+[RTKStation]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/RTKStation.md"
+
+[SaltSpreader]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/SaltSpreader.md"
+
+[SeedTreater]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/SeedTreater.md"
+
+[SemiTrailerFront]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/SemiTrailerFront.md"
+
+[Shovel]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/Shovel.md"
+
+[SlopeCompensation]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/SlopeCompensation.md"
+
+[SmartAttachActivatable]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/SmartAttachActivatable.md"
+
+[SoilSampler]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/SoilSampler.md"
+
+[SowingMachine]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/SowingMachine.md"
+
+[SpeedRotatingParts]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/SpeedRotatingParts.md"
+
+[SplineVehicle]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/SplineVehicle.md"
+
+[Sprayer]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/Sprayer.md"
+
+[StonePicker]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/StonePicker.md"
+
+[StrawBlower]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/StrawBlower.md"
+
+[StumpCutter]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/StumpCutter.md"
+
+[SupportVehicle]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/SupportVehicle.md"
+
+[Suspensions]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/Suspensions.md"
+
+[Tedder]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/Tedder.md"
+
+[TensionBeltObject]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/TensionBeltObject.md"
+
+[TensionBelts]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/TensionBelts.md"
+
+[TestAreas]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/TestAreas.md"
+
+[TipOccluder]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/TipOccluder.md"
+
+[TireTracks]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/TireTracks.md"
+
+[Trailer]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/Trailer.md"
+
+[TreePlanter]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/TreePlanter.md"
+
+[TreeSaplingPallet]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/TreeSaplingPallet.md"
+
+[TreeSaw]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/TreeSaw.md"
+
+[TurnOnVehicle]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/TurnOnVehicle.md"
+
+[VariableWorkWidth]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/VariableWorkWidth.md"
+
+[VehicleSettings]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/VehicleSettings.md"
+
+[VineCutter]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/VineCutter.md"
+
+[VinePrepruner]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/VinePrepruner.md"
+
+[Washable]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/Washable.md"
+
+[WaterTrailer]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/WaterTrailer.md"
+
+[Wearable]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/Wearable.md"
+
+[Weeder]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/Weeder.md"
+
+[WeedSpotSpray]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/WeedSpotSpray.md"
+
+[Wheels]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/Wheels.md"
+
+[WindBending]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/WindBending.md"
+
+[Windrower]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/Windrower.md"
+
+[Wipers]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/Wipers.md"
+
+[WoodCrusher]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/WoodCrusher.md"
+
+[WoodHarvester]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/WoodHarvester.md"
+
+[WorkArea]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/WorkArea.md"
+
+[WorkMode]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/WorkMode.md"
+
+[WorkParticles]
+category = "script.Specializations"
+file = "docs/luadocs/script/Specializations/WorkParticles.md"
+
+[PlayerOnFootStateMachine]
+category = "script.StateMachine"
+file = "docs/luadocs/script/StateMachine/PlayerOnFootStateMachine.md"
+
+[PlayerStateCrouch]
+category = "script.StateMachine"
+file = "docs/luadocs/script/StateMachine/PlayerStateCrouch.md"
+
+[PlayerStateFall]
+category = "script.StateMachine"
+file = "docs/luadocs/script/StateMachine/PlayerStateFall.md"
+
+[PlayerStateIdle]
+category = "script.StateMachine"
+file = "docs/luadocs/script/StateMachine/PlayerStateIdle.md"
+
+[PlayerStateJump]
+category = "script.StateMachine"
+file = "docs/luadocs/script/StateMachine/PlayerStateJump.md"
+
+[PlayerStateMachine]
+category = "script.StateMachine"
+file = "docs/luadocs/script/StateMachine/PlayerStateMachine.md"
+
+[PlayerStateSwim]
+category = "script.StateMachine"
+file = "docs/luadocs/script/StateMachine/PlayerStateSwim.md"
+
+[PlayerStateWalk]
+category = "script.StateMachine"
+file = "docs/luadocs/script/StateMachine/PlayerStateWalk.md"
+
+[AITask]
+category = "script.Tasks"
+file = "docs/luadocs/script/Tasks/AITask.md"
+
+[AITaskConveyor]
+category = "script.Tasks"
+file = "docs/luadocs/script/Tasks/AITaskConveyor.md"
+
+[AITaskDischarge]
+category = "script.Tasks"
+file = "docs/luadocs/script/Tasks/AITaskDischarge.md"
+
+[AITaskDriveTo]
+category = "script.Tasks"
+file = "docs/luadocs/script/Tasks/AITaskDriveTo.md"
+
+[AITaskFieldWork]
+category = "script.Tasks"
+file = "docs/luadocs/script/Tasks/AITaskFieldWork.md"
+
+[AITaskLoading]
+category = "script.Tasks"
+file = "docs/luadocs/script/Tasks/AITaskLoading.md"
+
+[AITaskWaitForFilling]
+category = "script.Tasks"
+file = "docs/luadocs/script/Tasks/AITaskWaitForFilling.md"
+
+[AnimalLoadingTrigger]
+category = "script.Triggers"
+file = "docs/luadocs/script/Triggers/AnimalLoadingTrigger.md"
+
+[BasketTrigger]
+category = "script.Triggers"
+file = "docs/luadocs/script/Triggers/BasketTrigger.md"
+
+[FillTrigger]
+category = "script.Triggers"
+file = "docs/luadocs/script/Triggers/FillTrigger.md"
+
+[LadderTrigger]
+category = "script.Triggers"
+file = "docs/luadocs/script/Triggers/LadderTrigger.md"
+
+[LoanTrigger]
+category = "script.Triggers"
+file = "docs/luadocs/script/Triggers/LoanTrigger.md"
+
+[ShopTrigger]
+category = "script.Triggers"
+file = "docs/luadocs/script/Triggers/ShopTrigger.md"
+
+[TransportMissionTrigger]
+category = "script.Triggers"
+file = "docs/luadocs/script/Triggers/TransportMissionTrigger.md"
+
+[BaseStateMachineState]
+category = "script.Utils"
+file = "docs/luadocs/script/Utils/BaseStateMachineState.md"
+
+[BitmapUtil]
+category = "script.Utils"
+file = "docs/luadocs/script/Utils/BitmapUtil.md"
+
+[BlurUtil]
+category = "script.Utils"
+file = "docs/luadocs/script/Utils/BlurUtil.md"
+
+[DataGrid]
+category = "script.Utils"
+file = "docs/luadocs/script/Utils/DataGrid.md"
+
+[DynamicDataGrid]
+category = "script.Utils"
+file = "docs/luadocs/script/Utils/DynamicDataGrid.md"
+
+[Fence]
+category = "script.Utils"
+file = "docs/luadocs/script/Utils/Fence.md"
+
+[FenceGate]
+category = "script.Utils"
+file = "docs/luadocs/script/Utils/FenceGate.md"
+
+[FenceSegment]
+category = "script.Utils"
+file = "docs/luadocs/script/Utils/FenceSegment.md"
+
+[MapDataGrid]
+category = "script.Utils"
+file = "docs/luadocs/script/Utils/MapDataGrid.md"
+
+[MathUtil]
+category = "script.Utils"
+file = "docs/luadocs/script/Utils/MathUtil.md"
+
+[ObjectChangeUtil]
+category = "script.Utils"
+file = "docs/luadocs/script/Utils/ObjectChangeUtil.md"
+
+[ObjectPool]
+category = "script.Utils"
+file = "docs/luadocs/script/Utils/ObjectPool.md"
+
+[StateMachine]
+category = "script.Utils"
+file = "docs/luadocs/script/Utils/StateMachine.md"
+
+[StoreItemUtil]
+category = "script.Utils"
+file = "docs/luadocs/script/Utils/StoreItemUtil.md"
+
+[TargetedFunction]
+category = "script.Utils"
+file = "docs/luadocs/script/Utils/TargetedFunction.md"
+
+[AIVehicleUtil]
+category = "script.Vehicles"
+file = "docs/luadocs/script/Vehicles/AIVehicleUtil.md"
+
+[AnimationValueBool]
+category = "script.Vehicles"
+file = "docs/luadocs/script/Vehicles/AnimationValueBool.md"
+
+[AnimationValueFloat]
+category = "script.Vehicles"
+file = "docs/luadocs/script/Vehicles/AnimationValueFloat.md"
+
+[DashboardValueType]
+category = "script.Vehicles"
+file = "docs/luadocs/script/Vehicles/DashboardValueType.md"
+
+[HandToolHolders]
+category = "script.Vehicles"
+file = "docs/luadocs/script/Vehicles/HandToolHolders.md"
+
+[LicensePlate]
+category = "script.Vehicles"
+file = "docs/luadocs/script/Vehicles/LicensePlate.md"
+
+[LicensePlateManager]
+category = "script.Vehicles"
+file = "docs/luadocs/script/Vehicles/LicensePlateManager.md"
+
+[Vehicle]
+category = "script.Vehicles"
+file = "docs/luadocs/script/Vehicles/Vehicle.md"
+
+[VehicleActionController]
+category = "script.Vehicles"
+file = "docs/luadocs/script/Vehicles/VehicleActionController.md"
+
+[VehicleActionControllerAction]
+category = "script.Vehicles"
+file = "docs/luadocs/script/Vehicles/VehicleActionControllerAction.md"
+
+[VehicleCamera]
+category = "script.Vehicles"
+file = "docs/luadocs/script/Vehicles/VehicleCamera.md"
+
+[VehicleCharacter]
+category = "script.Vehicles"
+file = "docs/luadocs/script/Vehicles/VehicleCharacter.md"
+
+[VehicleLoadingData]
+category = "script.Vehicles"
+file = "docs/luadocs/script/Vehicles/VehicleLoadingData.md"
+
+[VehicleMaterial]
+category = "script.Vehicles"
+file = "docs/luadocs/script/Vehicles/VehicleMaterial.md"
+
+[VehicleMaterialManager]
+category = "script.Vehicles"
+file = "docs/luadocs/script/Vehicles/VehicleMaterialManager.md"
+
+[VehicleMotor]
+category = "script.Vehicles"
+file = "docs/luadocs/script/Vehicles/VehicleMotor.md"
+
+[VehicleSystem]
+category = "script.Vehicles"
+file = "docs/luadocs/script/Vehicles/VehicleSystem.md"
+
+[VehicleTeleportEvent]
+category = "script.Vehicles"
+file = "docs/luadocs/script/Vehicles/VehicleTeleportEvent.md"
+
+[WheelsUtil]
+category = "script.Vehicles"
+file = "docs/luadocs/script/Vehicles/WheelsUtil.md"
+
+[WorkAreaTypeManager]
+category = "script.Vehicles"
+file = "docs/luadocs/script/Vehicles/WorkAreaTypeManager.md"
+
+[Twister]
+category = "script.Weather"
+file = "docs/luadocs/script/Weather/Twister.md"
+
+[Wheel]
+category = "script.Wheels"
+file = "docs/luadocs/script/Wheels/Wheel.md"
+
+[WheelAxle]
+category = "script.Wheels"
+file = "docs/luadocs/script/Wheels/WheelAxle.md"
+
+[WheelChock]
+category = "script.Wheels"
+file = "docs/luadocs/script/Wheels/WheelChock.md"
+
+[WheelDebug]
+category = "script.Wheels"
+file = "docs/luadocs/script/Wheels/WheelDebug.md"
+
+[WheelDestruction]
+category = "script.Wheels"
+file = "docs/luadocs/script/Wheels/WheelDestruction.md"
+
+[WheelEffects]
+category = "script.Wheels"
+file = "docs/luadocs/script/Wheels/WheelEffects.md"
+
+[WheelManager]
+category = "script.Wheels"
+file = "docs/luadocs/script/Wheels/WheelManager.md"
+
+[WheelPhysics]
+category = "script.Wheels"
+file = "docs/luadocs/script/Wheels/WheelPhysics.md"
+
+[WheelSteering]
+category = "script.Wheels"
+file = "docs/luadocs/script/Wheels/WheelSteering.md"
+
+[WheelVisual]
+category = "script.Wheels"
+file = "docs/luadocs/script/Wheels/WheelVisual.md"
+
+[WheelVisualPart]
+category = "script.Wheels"
+file = "docs/luadocs/script/Wheels/WheelVisualPart.md"
+
+[WheelVisualPartConnector]
+category = "script.Wheels"
+file = "docs/luadocs/script/Wheels/WheelVisualPartConnector.md"
+
+[WheelVisualPartTire]
+category = "script.Wheels"
+file = "docs/luadocs/script/Wheels/WheelVisualPartTire.md"
+
+[WheelXMLObject]
+category = "script.Wheels"
+file = "docs/luadocs/script/Wheels/WheelXMLObject.md"

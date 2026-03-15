@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<l10n>
+	<translationContributors>nagor</translationContributors>
+	<texts>
+            <text name="ui_ingameMenuTSStockCheck" text="Проверка запасов, экономящая время"/>
+            <text name="ui_header_icon" text=""/>
+            <text name="ui_header_goods" text="Товары"/>
+            <text name="ui_header_storage" text="На складе"/>
+            <text name="ui_header_price" text="Цена"/>
+            <text name="ui_header_trend" text=""/>
+            <text name="ui_header_value" text="Стоимость"/>
+            <text name="ui_header_price_at" text="При продаже в"/>
+            <text name="ui_header_bestprice" text="Максимальная
+цена"/>
+            <text name="ui_header_bestvalue" text="Максимальная
+стоимость"/>
+            <text name="ui_header_bestmonth" text="Лучшая цена в"/>
+            <text name="ui_location_btn" text="Показать %s"/>
+            <text name="ui_location_header_name" text="Хранилище"/>
+            <text name="ui_location_header_storage" text="Объём"/>
+            <text name="ui_locationFrame_btnClose" text="Закрыть"/>
+            <text name="ui_locationFrame_header" text="Места хранения для %s"/>
+            <text name="ui_tag_sellpoint" text="ПОСТАВИТЬ МЕТКУ"/>
+            <text name="ui_untag_sellpoint" text="УБРАТЬ МЕТКУ"/>
+            <text name="ui_no_sellpoint" text="Нет точки продажи"/>
+            <text name="ui_text_bales" text="тюки"/>
+            <text name="ui_text_pallets" text="поддоны"/>
+            <text name="ui_text_shippingcontainer" text="Грузовой контейнер"/>
+            <text name="ui_allsellpoint_btn" text="Стоимость в точках %s"/>
+            <text name="ui_allSellPointFrame_header" text="Стоимость %s %s"/>
+            <text name="ui_show_all_items" text="Показать все"/>
+            <text name="ui_hide_all_items" text="Скрыть Не могу продать"/>
+	</texts>
+</l10n>

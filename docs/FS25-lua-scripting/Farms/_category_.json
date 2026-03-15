@@ -1,0 +1,11 @@
+{
+  "label": "Farms",
+  "link": {
+    "type": "generated-index",
+    "title": "Farms Documentation",
+    "description": "2 pages, 59 functions"
+  },
+  "customProps": {
+    "icon": "tractor"
+  }
+}

@@ -1,0 +1,7 @@
+### DensityValueCompareType
+
+**Description**
+
+**Definition**
+
+> DensityValueCompareType()

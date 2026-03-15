@@ -1,0 +1,11 @@
+{
+  "label": "Collections",
+  "link": {
+    "type": "generated-index",
+    "title": "Collections Documentation",
+    "description": "2 pages, 14 functions"
+  },
+  "customProps": {
+    "icon": "layer-group"
+  }
+}

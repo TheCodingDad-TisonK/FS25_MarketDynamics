@@ -1,0 +1,11 @@
+{
+  "label": "Animals",
+  "link": {
+    "type": "generated-index",
+    "title": "Animals Documentation",
+    "description": "2 pages, 38 functions"
+  },
+  "customProps": {
+    "icon": "paw"
+  }
+}

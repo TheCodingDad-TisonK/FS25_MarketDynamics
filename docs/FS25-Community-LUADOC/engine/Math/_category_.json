@@ -1,0 +1,11 @@
+{
+  "label": "Math",
+  "link": {
+    "type": "generated-index",
+    "title": "Math Documentation",
+    "description": "14 pages"
+  },
+  "customProps": {
+    "icon": "calculator"
+  }
+}

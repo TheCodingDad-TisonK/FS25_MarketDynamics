@@ -1,0 +1,11 @@
+{
+  "label": "Camera",
+  "link": {
+    "type": "generated-index",
+    "title": "Camera Documentation",
+    "description": "18 pages"
+  },
+  "customProps": {
+    "icon": "camera"
+  }
+}

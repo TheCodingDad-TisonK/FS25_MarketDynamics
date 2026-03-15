@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<GUIProfiles>
+  <Profile name="CC_MenuHeaderIcon" extends="baseReference" with="anchorMiddleCenter">
+    <imageSliceId value="gui.icon_ingameMenu_contracts" />
+    <imageColor value="$preset_fs25_colorMainDark" />
+  </Profile>
+
+  <!-- Field information -->
+  <Profile name="CC_FieldIDHeading" extends="baseReference" with="anchorTopLeft">
+    <textBold value="true" />
+    <textSize value="28px" />
+    <textAlignment value="left" />
+    <textColor value="$preset_fs25_colorMainLight" />
+  </Profile>
+  <Profile name="CC_FieldLabel" extends="baseReference" with="anchorTopLeft">
+    <textBold value="true" />
+    <textSize value="16px" />
+    <textAlignment value="left" />
+    <textColor value="$preset_fs25_colorMainLight" />
+  </Profile>
+  <Profile name="CC_FieldValue" extends="baseReference" with="anchorTopRight">
+    <textBold value="false" />
+    <textSize value="16px" />
+    <textAlignment value="right" />
+    <textColor value="$preset_fs25_colorMainLight" />
+  </Profile>
+
+  <!-- Icons -->
+  <Profile name="CC_IconInfo" extends="CC_IconInfoWrapper">
+    <imageSliceId value="gui.storeAttribute_info" />
+    <position value="6px 0px" />
+  </Profile>
+
+  <Profile name="CC_IconInfoWrapper" with="anchorMiddleLeft">
+    <size value="24px 24px" />
+    <position value="8px 4px" />
+  </Profile>
+
+  <Profile name="CC_ContractListBg" extends="fs25_secondaryMenuContainerBg">
+    <position value="-30px 10px"/>
+  </Profile>
+
+  <Profile name="CC_ContractContent" extends="emptyPanel" value="anchorStretchingYStretchingX">
+    <width value="500px"/>
+    <position value="460px -40px"/>
+  </Profile>
+
+  <Profile name="CC_ContractVerticalSeperator" extends="fs25_pricesSeparator" with="anchorTopRight">
+    <position value="0.03 0.0"/>
+    <size value="1px 0.70"/>
+  </Profile>
+
+  <!-- Contract specific content -->
+  <Profile name="CC_ContractTitle" extends="fs25_contractsContractTitle">
+    <textSize value="28px"/>
+    <textBold value="true"/>
+    <textColor value="$preset_fs25_colorMainHighlight"/>
+    <position value="0px -30px"/>
+    <textAlignment value="left"/>
+  </Profile>
+
+  <Profile name="CC_ContractTagline" extends="fs25_textDefault" with="anchorTopLeft">
+    <textSize value="18px"/>
+    <textColor value="$preset_fs25_colorMainDefault"/>
+    <position value="0px -10px"/>
+    <textAlignment value="left"/>
+    <textUpperCase value="true"/>
+  </Profile>
+
+  <Profile name="CC_ContractTaglineRight" extends="fs25_textDefault" with="anchorTopRight">
+    <textSize value="18px"/>
+    <textColor value="$preset_fs25_colorMainDefault"/>
+    <textAlignment value="right"/>
+  </Profile>
+
+  <Profile name="CC_ContractOwner" extends="fs25_textGrey" with="anchorTopLeft">
+    <textSize value="18px"/>
+    <textBold value="false"/>
+    <textColor value="$preset_fs25_colorMainDefault"/>
+    <textAlignment value="left"/>
+  </Profile>
+
+  <Profile name="CC_ContractStatus" extends="fs25_textDefault" with="anchorTopRight">
+    <textSize value="24px"/>
+    <textBold value="false"/>
+    <textColor value="$preset_fs25_colorMainDefault"/>
+    <textAlignment value="right"/>
+    <textUpperCase value="true"/>
+  </Profile>
+
+  <Profile name="CC_ContractReward" extends="fs25_textDefault" with="anchorTopLeft">
+    <textSize value="20px"/>
+    <textBold value="true"/>
+    <textUpperCase value="true"/>
+    <textColor value="$preset_fs25_colorMainHighlighted"/>
+    <textAlignment value="right"/>
+  </Profile>
+
+  <Profile name="CC_ContractFooter" extends="fs25_textDefault" with="anchorTopLeft">
+    <textSize value="16px" />
+    <textBold value="true" />
+    <textColor value="$preset_colorWhite_50" />
+  </Profile>
+
+  <Profile name="CC_ContractFooterRight" extends="CC_ContractFooter" with="anchorTopRight">
+    <textSize value="20px" />
+    <textBold value="true" />
+    <textAlignment value="right" />
+    <textColor value="$preset_fs25_colorMainHighlight" />
+  </Profile>
+
+  <!-- Typestyles -->
+  <Profile name="CC_ContractH6" extends="fs25_textDefault" with="anchorTopLeft">
+    <textSize value="14px"/>
+    <textBold value="true"/>
+    <textUpperCase value="true"/>
+    <textColor value="$preset_fs25_colorMainDefault"/>
+    <textAlignment value="left"/>
+  </Profile>
+
+  <Profile name="CC_ContractBody" extends="fs25_textGrey" with="anchorTopLeft">
+    <textMaxNumLines value="4"/>
+    <textVerticalAlignment value="top"/>
+  </Profile>
+
+  <Profile name="CC_ContractH6Right" extends="CC_ContractH6" with="anchorTopRight"/>
+
+  <Profile name="CC_ContractBodyRight" extends="CC_ContractBody" with="anchorTopRight"/>
+
+  <!-- Input -->
+  <Profile name="CC_ContractInputLabel" extends="baseReference" with="anchorStretchingYLeft">
+    <textBold value="true" />
+    <textAlignment value="left" />
+    <textColor value="$preset_fs25_colorMainLight" />
+    <size value="350px 20px"/>
+    <textSize value="16px"/>
+    <textWrapWidth value="350px"/>
+  </Profile>
+
+  <Profile name="CC_Input" extends="fs25_textInput">
+    <size value="100% 44px"/>
+    <maxCharacters value="9"/>
+  </Profile>
+  <Profile name="CC_InputTextArea" extends="CC_Input">
+    <size value="100% 44px"/>
+    <maxCharacters value="200"/>
+    <textAlignment value="left"/>
+  </Profile>
+
+  <Profile name="CC_ContractContractorName" extends="fs25_textDefault" with="anchorTopLeft">
+    <textSize value="16px"/>
+    <textBold value="false"/>
+    <textUpperCase value="false"/>
+    <textAlignment value="left"/>
+    <position value="0px -70px"/>
+  </Profile>
+
+  <Profile name="CC_ContractList" extends="emptyPanel" value="anchorStretchingYStretchingX">
+    <showHighlights value="true"/>
+    <listItemSpacing value="-20px"/>
+  </Profile>
+
+
+  <Profile name="CC_FilterSwitcher" extends="fs25_subCategorySelector" with="anchorTopLeft" />
+
+  <Profile name="CC_HeaderLeft" extends="fs25_statisticsHeaderText" with="anchorTopLeft" />
+
+  <Profile name="CC_ContractListItem" extends="fs25_subCategoryListItem">
+    <width value="400px"/>
+  </Profile>
+
+  <Profile name="CC_ContractDetailTableLabel" extends="fs25_textDefault" with="anchorTopCenter">
+    <size value="280px 30px"/>
+    <textBold value="false"/>
+    <textUpperCase value="false"/>
+    <textMaxWidth value="190px"/>
+  </Profile>
+
+  <Profile name="CC_ContractDetailTableValue" extends="fs25_textDefault" with="anchorTopRight">
+    <size value="180px 30px"/>
+    <textMaxWidth value="190px"/>
+    <textUpperCase value="false"/>
+    <textAlignment value="right"/>
+    <textBold value="true"/>
+  </Profile>
+
+  <Profile name="CC_ContractListSlider" extends="fs25_listSliderBox" with="anchorTopRight" />
+
+  <Profile name="CC_ContractListItemTitle" extends="fs25_subCategoryListItemName">
+    <width value="200px"/>
+    <position value="94px -18px"/>
+  </Profile>
+
+  <Profile name="CC_ContractListItemReward" extends="CC_ContractListItemTitle">
+    <width value="200px"/>
+    <position value="94px -48px"/>
+    <textSize value="24px"/>
+    <textBold value="false"/>
+    <textColor value="$preset_fs25_colorMainHighlight"/>
+  </Profile>
+
+  <Profile name="CC_ContractDetailContainer" extends="baseReference">
+    <width value="1140px"/>
+    <position value="-150px 0px"/>
+  </Profile>
+
+  <Profile name="CC_ContractDetailColumnLeft" extends="baseReference" with="anchorBottomLeft">
+    <width value="500px"/>
+    <position value="200px 0px"/>
+  </Profile>
+
+  <Profile name="CC_ContractDetailColumnRight" extends="baseReference" with="anchorBottomRight">
+    <width value="700px"/>
+    <position value="0px 0px"/>
+  </Profile>
+
+  <Profile name="CC_ContractDetailItem" extends="baseReference" with="anchorTopStretchingX alternating">
+    <width value="300px"/>
+    <height value="32px"/>
+  </Profile>
+
+  <Profile name="CC_ContractDetailItemAlt" extends="CC_ContractDetailItem" with="anchorTopStretchingX alternating">
+    <backgroundColor value="$preset_fs25_colorGreyDark_50" />
+  </Profile>
+
+  <Profile name="CC_ContractDetailItemBg" extends="baseReference" with="anchorTopCenter">
+    <size value="312px 32px"/>
+    <imageColor value="$preset_fs25_colorGreyLight_20"/>
+  </Profile>
+
+  <Profile name="CC_ContractDetailItemBgAlt" extends="baseReference" with="anchorTopCenter">
+    <size value="312px 32px"/>
+    <imageColor value="$preset_fs25_colorGrey_20"/>
+  </Profile>
+</GUIProfiles>

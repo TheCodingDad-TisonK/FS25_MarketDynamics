@@ -1,0 +1,7 @@
+### AsyncResult
+
+**Description**
+
+**Definition**
+
+> AsyncResult()

@@ -1,0 +1,11 @@
+{
+  "label": "Jobs",
+  "link": {
+    "type": "generated-index",
+    "title": "Jobs Documentation",
+    "description": "6 pages, 115 functions"
+  },
+  "customProps": {
+    "icon": "briefcase"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "label": "Rendering",
+  "link": {
+    "type": "generated-index",
+    "title": "Rendering Documentation",
+    "description": "47 pages"
+  },
+  "customProps": {
+    "icon": "paint-brush"
+  }
+}

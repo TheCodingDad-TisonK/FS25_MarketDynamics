@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<i3D name="unload.i3d" version="1.6" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://i3d.giants.ch/schema/i3d-1.6.xsd">
+  <Asset>
+    <Export program="GIANTS Editor 64bit" version="10.0.5"/>
+  </Asset>
+
+  <Files>
+    <File fileId="2" filename="colorShader.xml"/>
+    <File fileId="1" filename="normal.png"/>
+    <File fileId="3" filename="unload.png"/>
+  </Files>
+
+
+  <Materials>
+    <Material name="diamond" materialId="61" customShaderId="2">
+      <Emissivemap fileId="1"/>
+    </Material>
+    <Material name="line" materialId="62">
+      <Emissivemap fileId="1"/>
+    </Material>
+    <Material name="Sign" materialId="63" specularColor="0.247059 1 0.247059">
+      <Texture fileId="3"/>
+    </Material>
+  </Materials>
+
+
+  <Shapes externalShapesFile="unload.i3d.shapes">
+  </Shapes>
+
+  <Scene>
+    <Shape name="Waypoint" shapeId="1" clipDistance="175" nodeId="69" castsShadows="true" receiveShadows="true" materialIds="61">
+      <Shape name="Line" shapeId="2" clipDistance="100" nodeId="70" castsShadows="true" receiveShadows="true" materialIds="62"/>
+      <TransformGroup name="WaitSign" nodeId="71">
+        <Shape name="Front" shapeId="3" nodeId="72" castsShadows="true" receiveShadows="true" materialIds="63"/>
+        <Shape name="Back" shapeId="4" nodeId="73" castsShadows="true" receiveShadows="true" materialIds="63"/>
+      </TransformGroup>
+    </Shape>
+  </Scene>
+
+</i3D>

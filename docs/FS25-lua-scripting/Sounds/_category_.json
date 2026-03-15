@@ -1,0 +1,11 @@
+{
+  "label": "Sounds",
+  "link": {
+    "type": "generated-index",
+    "title": "Sounds Documentation",
+    "description": "3 pages, 68 functions"
+  },
+  "customProps": {
+    "icon": "volume-up"
+  }
+}

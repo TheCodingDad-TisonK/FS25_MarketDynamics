@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<GUI onOpen="onOpen" onClose="onClose" onCreate="onCreate">
+  <GuiElement profile="newLayer" />
+  <Bitmap profile="dialogFullscreenBg" id="dialogBg" />
+  <GuiElement profile="fs25_sellDialogBg" id="dialogElement">
+    <ThreePartBitmap profile="fs25_dialogBgMiddleSmall" />
+    <ThreePartBitmap profile="fs25_dialogBgTopSmall" />
+    <ThreePartBitmap profile="fs25_dialogBgBottom" />
+    <GuiElement profile="fs25_dialogContentContainer">
+      <Text profile="fs25_dialogHeaderText" id="headerText" text="$l10n_ui_sellItem" />
+      <Bitmap profile="fs25_sellDialogImage" id="dialogImageElement" />
+      <Text profile="fs25_sellDialogName" id="dialogItemNameElement" />
+      <Text profile="fs25_sellDialogPrice" id="dialogItemPriceElement" />
+    </GuiElement>
+    <BoxLayout profile="fs25_dialogButtonBox">
+      <Button profile="buttonYes" id="yesButton" text="$l10n_button_yes" onClick="onYes" />
+      <Bitmap profile="fs25_dialogButtonBoxSeparator" />
+      <Button profile="buttonNo" id="noButton" text="$l10n_button_no" onClick="onNo" />
+    </BoxLayout>
+  </GuiElement>
+  <GUIProfiles>
+    <Profile name="fs25_sellDialogBg" extends="fs25_dialogBg">
+      <size value="400px 560px" />
+      <Variant name="mobile">
+        <size value="700px 600px" />
+      </Variant>
+    </Profile>
+    <Profile name="fs25_sellDialogImage" extends="baseReference" with="anchorTopCenter">
+      <size value="310px 310px" />
+      <position value="0px -60px" />
+      <imageSliceId value="noSlice" />
+    </Profile>
+    <Profile name="fs25_sellDialogName" extends="fs25_textDefault" with="anchorBottomCenter">
+      <size value="290px 42px" />
+      <position value="0px 55px" />
+      <textSize value="20px" />
+      <textMaxNumLines value="2" />
+      <textAlignment value="center" />
+      <textColor value="$preset_colorWhite_50" />
+      <textSelectedColor value="$preset_fs25_colorMainHighlight" />
+    </Profile>
+    <Profile name="fs25_sellDialogPrice" extends="fs25_textDefault" with="anchorBottomCenter">
+      <size value="220px 28px" />
+      <position value="0px 20px" />
+      <textSize value="26px" />
+      <textAlignment value="center" />
+    </Profile>
+  </GUIProfiles>
+</GUI>

@@ -1,0 +1,11 @@
+{
+  "label": "General",
+  "link": {
+    "type": "generated-index",
+    "title": "General Documentation",
+    "description": "69 pages"
+  },
+  "customProps": {
+    "icon": "book"
+  }
+}

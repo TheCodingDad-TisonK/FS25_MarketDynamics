@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<GUI onOpen="onOpen" onClose="onClose" onCreate="onCreate">
+    <GuiElement profile="newLayer"/>
+    <Bitmap profile="dialogFullscreenBg" id="dialogBg"/>
+
+    <GuiElement profile="edc_dynamicListDialogBg" id="dialogElement">
+        <ThreePartBitmap profile="fs25_dialogBgTopSmall"/>
+        <ThreePartBitmap profile="fs25_dialogBgMiddleSmall"/>
+        <ThreePartBitmap profile="fs25_dialogBgBottom"/>
+
+        <Bitmap profile="edc_dynamicListDialogHeaderBox">
+            <Text profile="edc_dynamicListDialogHeaderText" text="" id="dialogHeaderElement" />
+        </Bitmap>
+
+        <Bitmap profile="edc_dynamicListDialogContentBox" position="-6px 36px" id="noInfoElement">
+            <Text profile="edc_dynamicListDialogEmptyText" text="$l10n_easyDevControls_noInformationMessage" id="noInfoTextElement"/>
+        </Bitmap>
+
+        <GuiElement profile="edc_dynamicListDialogContentBox" id="contentBoxElement">
+            <Bitmap profile="edc_dynamicListDialogTopClipper" name="topClipper" visible="false" position="0px 2px"/>
+            <Bitmap profile="edc_dynamicListDialogBottomClipper" name="bottomClipper" visible="false" position="0px -2px"/>
+
+            <ScrollingLayout profile="edc_dynamicListDialogScrollingLayout" id="scrollingLayoutElement" topClipperElementName="topClipper" bottomClipperElementName="bottomClipper">
+                <BoxLayout profile="edc_dynamicListDialogItem" id="scrollingLayoutItem">
+                    <Text profile="edc_dynamicListDialogTitle" name="title" visible="false"/>
+                    <Text profile="edc_dynamicListDialogText"  name="text" />
+                </BoxLayout>
+            </ScrollingLayout>
+
+            <ThreePartBitmap profile="fs25_listSliderBox" position="33px -2px" size="12px 670px">
+                <Slider profile="fs25_listSlider" size="6px 664px" dataElementId="scrollingLayoutElement" handleFocus="false"/>
+            </ThreePartBitmap>
+        </GuiElement>
+
+        <BoxLayout profile="fs25_dialogButtonBox">
+            <Button profile="buttonNo" text="$l10n_button_back" onClick="onClickBack" id="backButton"/>
+            <Bitmap profile="fs25_dialogButtonBoxSeparator" id="buttonBoxSeparator" visible="false"/>
+            <Button profile="buttonDelete" text="$l10n_easyDevControls_buttonClear" onClick="onClickClear" id="clearButton" visible="false" disabled="true"/>
+        </BoxLayout>
+    </GuiElement>
+
+    <GUIProfiles>
+        <Profile name="edc_dynamicListDialogBg" extends="baseReference" with="edc_pivotMiddleCenter">
+            <size value="1500px 800px"/>
+            <debugEnabled value="false"/>
+        </Profile>
+
+        <Profile name="edc_dynamicListDialogHeaderBox" extends="baseReference" with="anchorStretchingYStretchingX pivotTopLeft">
+            <size value="95% 60px"/>
+            <position value="12px 60px"/>
+            <alignmentX value="Left"/>
+            <alignmentY value="middle"/>
+            <imageColor value="$preset_edc_colourTransparent"/>
+        </Profile>
+
+        <Profile name="edc_dynamicListDialogHeaderText" extends="edc_textDefault" with="anchorStretchingYStretchingX edc_pivotMiddleLeft">
+            <size value="100% 30px"/>
+            <textSize value="28px"/>
+            <textOffset value="0 0"/>
+            <textUpperCase value="true"/>
+            <textLayoutMode value="scrolling"/>
+            <textScrollOnFocusOnly value="false"/>
+        </Profile>
+
+        <Profile name="edc_dynamicListDialogContentBox" extends="emptyPanel" with="anchorStretchingYStretchingX edc_pivotMiddleCenter">
+            <size value="100% 700px"/>
+            <position value="-22px 36px"/>
+        </Profile>
+
+        <Profile name="edc_dynamicListDialogScrollingLayout" extends="baseReference" with="anchorMiddleCenter">
+            <size value="1400px 688px"/>
+            <position value="0px 0px"/>
+            <imageColor value="$preset_edc_colourTransparent"/>
+            <autoValidateLayout value="true"/>
+            <flowDirection value="vertical"/>
+        </Profile>
+
+        <Profile name="edc_dynamicListDialogItem" extends="baseReference">
+            <size value="100% 50px"/>
+            <imageColor value="$preset_edc_colourTransparent"/>
+            <margin value="0px 10px 0px 10px"/>
+            <flowDirection value="vertical"/>
+            <alignmentX value="left" />
+            <alignmentY value="top" />
+        </Profile>
+
+        <Profile name="edc_dynamicListDialogTitle" extends="edc_textDefault">
+            <size value="99% 30px"/>
+            <textVerticalAlignment value="top"/>
+            <textSize value="19px"/>
+            <textOffset value="10px -5px"/>
+            <textBold value="true"/>
+            <textMaxWidth value="1400px"/>
+            <!-- <textLayoutMode value="scrolling"/>
+            <textScrollOnFocusOnly value="false"/> -->
+        </Profile>
+
+        <Profile name="edc_dynamicListDialogText" extends="edc_textDefault" >
+            <size value="99% 18px"/>
+            <textVerticalAlignment value="top"/>
+            <textSize value="17px"/>
+            <textOffset value="10px -5px"/>
+            <textBold value="false"/>
+            <textMaxWidth value="1380px"/>
+            <textMaxNumLines value="1000"/>
+            <textColor value="$preset_edc_colourWhite_50"/>
+        </Profile>
+
+        <Profile name="edc_dynamicListDialogEmptyText" extends="edc_textDefault" with="edc_anchorMiddleCenter">
+            <textSize value="24px" />
+            <textAlignment value="center" />
+            <textAutoWidth value="true" />
+            <textMaxNumLines value="4" />
+            <textMaxWidth value="580px" />
+        </Profile>
+
+        <Profile name="edc_dynamicListDialogTopClipper" extends="baseReference" with="anchorStretchingYStretchingX pivotTopCenter">
+            <size value="100% 82px"/>
+            <imageRotation value="180"/>
+            <imageSliceId value="gui.divider_1"/>
+        </Profile>
+
+        <Profile name="edc_dynamicListDialogBottomClipper" extends="edc_dynamicListDialogTopClipper" with="pivotBottomCenter">
+            <imageRotation value="0"/>
+        </Profile>
+    </GUIProfiles>
+</GUI>

@@ -1,0 +1,796 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<GUIProfiles>
+    <!-- In past games some mods have incorrectly overwritten the base game Traits and Presets so safer to make my own based on original and how I want the menu to remain. -->
+    <Traits>
+        <Trait name="edc_debugging">
+            <debugEnabled value="true"/>
+        </Trait>
+        <Trait name="edc_anchorTopLeft">
+            <anchors value="0 0 1 1"/>
+            <pivot value="0 1"/>
+        </Trait>
+        <Trait name="edc_anchorTopCenter">
+            <anchors value="0.5 0.5 1 1"/>
+            <pivot value="0.5 1"/>
+        </Trait>
+        <Trait name="edc_anchorTopRight">
+            <anchors value="1 1 1 1"/>
+            <pivot value="1 1"/>
+        </Trait>
+        <Trait name="edc_anchorTopStretchingX">
+            <anchors value="0 1 1 1"/>
+            <pivot value="0.5 1"/>
+        </Trait>
+        <Trait name="edc_anchorMiddleLeft">
+            <anchors value="0 0 0.5 0.5"/>
+            <pivot value="0 0.5"/>
+        </Trait>
+        <Trait name="edc_anchorMiddleCenter">
+            <anchors value="0.5 0.5 0.5 0.5"/>
+            <pivot value="0.5 0.5"/>
+        </Trait>
+        <Trait name="edc_anchorMiddleRight">
+            <anchors value="1 1 0.5 0.5"/>
+            <pivot value="1 0.5"/>
+        </Trait>
+        <Trait name="edc_anchorMiddleStretchingX">
+            <anchors value="0 1 0.5 0.5"/>
+            <pivot value="0.5 0.5"/>
+        </Trait>
+        <Trait name="edc_anchorBottomLeft">
+            <anchors value="0 0 0 0"/>
+            <pivot value="0 0"/>
+        </Trait>
+        <Trait name="edc_anchorBottomCenter">
+            <anchors value="0.5 0.5 0 0"/>
+            <pivot value="0.5 0"/>
+        </Trait>
+        <Trait name="edc_anchorBottomStretchingX">
+            <anchors value="0 1 0 0"/>
+            <pivot value="0.5 0"/>
+        </Trait>
+        <Trait name="edc_anchorStretchingYLeft">
+            <anchors value="0 0 0 1"/>
+            <pivot value="0 0.5"/>
+        </Trait>
+        <Trait name="edc_anchorStretchingYCenter">
+            <anchors value="0.5 0.5 0 1"/>
+            <pivot value="0.5 0.5"/>
+        </Trait>
+        <Trait name="edc_anchorStretchingYRight">
+            <anchors value="1 1 0 1"/>
+            <pivot value="1 0.5"/>
+        </Trait>
+        <Trait name="edc_anchorStretchingYStretchingX">
+            <anchors value="0 1 0 1"/>
+            <pivot value="0.5 0.5"/>
+        </Trait>
+        <Trait name="edc_pivotTopLeft">
+            <pivot value="0 1"/>
+        </Trait>
+        <Trait name="edc_pivotTopCenter">
+            <pivot value="0.5 1"/>
+        </Trait>
+        <Trait name="edc_pivotMiddleLeft">
+            <pivot value="0 0.5"/>
+        </Trait>
+        <Trait name="edc_pivotMiddleCenter">
+            <pivot value="0.5 0.5"/>
+        </Trait>
+        <Trait name="edc_pivotMiddleRight">
+            <pivot value="1 0.5"/>
+        </Trait>
+        <Trait name="edc_pivotBottomLeft">
+            <pivot value="0 0"/>
+        </Trait>
+        <Trait name="edc_pivotBottomCenter">
+            <pivot value="0.5 0"/>
+        </Trait>
+        <Trait name="edc_pivotBottomRight">
+            <pivot value="1 0"/>
+        </Trait>
+    </Traits>
+
+    <Presets>
+        <Preset name="edc_colourTransparent" value="0 0 0 0"/>
+        <Preset name="edc_colourWhite" value="1 1 1 1"/>
+        <Preset name="edc_colourWhite_50" value="1 1 1 0.5"/>
+        <Preset name="edc_colourRed_80" value="1 0 0 0.8"/>
+        <Preset name="edc_colourGrey" value="0.04231 0.04231 0.04231 1"/>
+        <Preset name="edc_colourGreyLight" value="0.20156 0.20156 0.20156 1"/>
+        <Preset name="edc_colourGreyLight_50" value="0.20156 0.20156 0.20156 0.5"/>
+        <Preset name="edc_colourGreyText" value="0.25415 0.25415 0.25415 1"/>
+        <Preset name="edc_colourGreyListItem" value="0.02732 0.02732 0.02732 1"/>
+        <Preset name="edc_colourDisabled" value="0.3 0.3 0.3 1"/>
+        <Preset name="edc_colourBinaryOptionSlider" value="0.39216 0.47059 0.09412 1"/>
+        <Preset name="edc_colourMainLight" value="0.89627 0.92158 0.81485 1"/>
+        <Preset name="edc_colourMainLight_20" value="0.89627 0.92158 0.81485 0.2"/>
+        <Preset name="edc_colourMainLight_40" value="0.89627 0.92158 0.81485 0.4"/>
+        <Preset name="edc_colourMainLight_80" value="0.89627 0.92158 0.81485 0.8"/>
+        <Preset name="edc_colourMainDark" value="0.00439 0.00478 0.00368 1"/>
+        <Preset name="edc_colourMainHighlight" value="0.22323 0.40724 0.00368 1"/>
+    </Presets>
+
+    <Profile name="edc_textDefault" extends="baseReference">
+        <size value="250px 20px"/>
+        <textSize value="15px"/>
+        <textAlignment value="left"/>
+        <textColor value="$preset_edc_colourMainLight"/>
+        <textDisabledColor value="$preset_edc_colourDisabled"/>
+    </Profile>
+
+    <Profile name="edc_outlineBg" extends="baseReference" with="edc_pivotMiddleLeft">
+        <size value="316px 36px"/>
+        <imageColor value="$preset_edc_colourGrey"/>
+        <imageFocusedColor value="$preset_edc_colourMainHighlight"/>
+        <imageHighlightedColor value="$preset_edc_colourMainHighlight"/>
+        <imageDisabledColor value="$preset_edc_colourMainDark"/>
+        <imageSliceId value="easyDevControls.button_curved_outline_middle"/>
+        <startImageSize value="10px 0"/>
+        <startImageColor value="$preset_edc_colourGrey"/>
+        <startImageFocusedColor value="$preset_edc_colourMainHighlight"/>
+        <startImageHighlightedColor value="$preset_edc_colourMainHighlight"/>
+        <startImageDisabledColor value="$preset_edc_colourMainDark"/>
+        <startImageSliceId value="easyDevControls.button_curved_outline_left"/>
+        <endImageSize value="10px 0"/>
+        <endImageColor value="$preset_edc_colourGrey"/>
+        <endImageFocusedColor value="$preset_edc_colourMainHighlight"/>
+        <endImageHighlightedColor value="$preset_edc_colourMainHighlight"/>
+        <endImageDisabledColor value="$preset_edc_colourMainDark"/>
+        <endImageSliceId value="easyDevControls.button_curved_outline_right"/>
+    </Profile>
+
+    <Profile name="edc_container" extends="emptyPanel" with="edc_anchorStretchingYCenter edc_pivotBottomCenter">
+        <width value="1624px"/>
+        <position value="0px 80px"/>
+        <absoluteSizeOffset value="0px 250px"/>
+    </Profile>
+
+    <Profile name="edc_headerPanel" extends="emptyPanel" with="edc_anchorTopStretchingX">
+        <height value="80px"/>
+        <position value="0px 92px"/>
+        <absoluteSizeOffset value="56px 0px"/>
+    </Profile>
+
+    <Profile name="edc_headerIconBg" extends="baseReference" with="edc_anchorMiddleLeft">
+        <size value="66px 66px"/>
+        <position value="15px 0px"/>
+        <imageSliceId value="gui.heading_iconBackground"/>
+    </Profile>
+
+    <Profile name="edc_headerIcon" extends="baseReference" with="edc_anchorMiddleCenter">
+        <size value="50px 50px"/>
+        <imageSliceId value="easyDevControls.icon_general"/>
+        <imageColor value="$preset_edc_colourMainDark"/>
+    </Profile>
+
+    <Profile name="edc_headerTitle" extends="edc_textDefault" with="edc_anchorMiddleLeft">
+        <size value="1324px 70px"/>
+        <position value="100px 0px"/>
+        <textSize value="40px"/>
+        <textUpperCase value="true"/>
+        <textLayoutMode value="scrolling"/>
+        <textScrollOnFocusOnly value="false"/>
+    </Profile>
+
+    <Profile name="edc_headerInfoButton" extends="emptyPanel" with="edc_anchorMiddleRight">
+        <size value="44px 44px"/>
+        <position value="-12px 0px"/>
+        <fitToContent value="false"/>
+        <fitExtraWidth value="0px"/>
+        <handleFocus value="false"/>
+        <iconSize value="38px 38px"/>
+        <iconSliceId value="easyDevControls.info"/>
+        <focusOnHighlight value="false"/>
+        <iconTextOffset value="0 0"/>
+        <iconColor value="$preset_edc_colourMainLight"/>
+        <iconFocusedColor value="$preset_edc_colourMainHighlight"/>
+        <iconHighlightedColor value="$preset_edc_colourMainLight"/>
+    </Profile>
+
+    <Profile name="edc_boxLayout" extends="emptyPanel" with="edc_anchorTopLeft">
+        <position value="0px -32px"/>
+        <size value="1624px 672px"/>
+        <fitFlowToElements value="true"/>
+        <flowDirection value="vertical" />
+        <numFlows value="4"/>
+        <wrapAround value="true"/>
+    </Profile>
+
+    <Profile name="edc_title" extends="baseReference" with="edc_anchorMiddleLeft">
+        <size value="210px 18px"/>
+        <position value="10px 32px"/>
+        <textSize value="18px"/>
+        <textAlignment value="left"/>
+        <textMaxWidth value="295px"/>
+        <textMinSize value="10px"/>
+        <textMaxNumLines value="1"/>
+        <textAutoWidth value="true"/>
+        <textLayoutMode value="resize"/> <!-- Allow for longer languages, scrolling does not work on disable so looks strange when stopped half way. -->
+        <textAutoWidth value="true"/>
+        <textColor value="$preset_edc_colourMainLight"/>
+    </Profile>
+
+    <Profile name="edc_textInput" extends="edc_textDefault" with="edc_pivotMiddleLeft">
+        <size value="316px 36px"/>
+        <margin value="44px 24px 44px 24px"/>
+        <handleFocus value="true"/>
+        <maxInputTextWidth value="250px"/>
+        <textAlignment value="center"/>
+        <maxCharacters value="11"/>
+        <applyProfanityFilter value="false"/>
+        <cursorFilename value="g_baseUIFilename"/>
+        <cursorSliceId value="gui.colorPreset"/>
+        <cursorSize value="1px 16px"/>
+        <cursorOffset value="1px -2px"/>
+        <cursorColor value="$preset_edc_colourWhite"/>
+        <imageSliceId value="noSlice"/>
+        <imageColor value="0 0 0 0"/>
+        <imageHighlightedColor value="0 0 0 0"/>
+        <imageFocusedColor value="0 0 0 0"/>
+        <imageSelectedColor value="0 0 0 0"/>
+        <imageDisabledColor value="0 0 0 0"/>
+        <!-- Placeholder when there is no text present or being entered -->
+        <placeholderDefaultProfile value="edc_placeholderText"/>
+        <placeholderDefaultText value="$l10n_easyDevControls_placeholderEnterAmount"/>
+        <placeholderClassName value="TextElement"/>
+    </Profile>
+
+    <Profile name="edc_textInputClose" extends="edc_textInput">
+        <margin value="44px -18px 44px 24px"/>
+    </Profile>
+
+    <Profile name="edc_textInputIconBox" extends="baseReference" with="edc_anchorMiddleCenter">
+        <size value="100% 99%"/>
+        <imageSliceId value="gui.empty"/>
+        <imageColor value="$preset_edc_colourGrey"/>
+        <imageFocusedColor value="$preset_edc_colourMainHighlight"/>
+        <imageHighlightedColor value="$preset_edc_colourMainHighlight"/>
+        <imageDisabledColor value="$preset_edc_colourMainDark"/>
+        <startImageSize value="31px 0"/>
+        <startImageSliceId value="easyDevControls.button_curved_flipped"/>
+        <startImageColor value="$preset_edc_colourGrey"/>
+        <startImageFocusedColor value="$preset_edc_colourMainHighlight"/>
+        <startImageHighlightedColor value="$preset_edc_colourMainHighlight"/>
+        <startImageDisabledColor value="$preset_edc_colourMainDark"/>
+        <endImageSize value="31px 0"/>
+        <endImageSliceId value="easyDevControls.button_curved"/>
+        <endImageColor value="$preset_edc_colourGrey"/>
+        <endImageFocusedColor value="$preset_edc_colourMainHighlight"/>
+        <endImageHighlightedColor value="$preset_edc_colourMainHighlight"/>
+        <endImageDisabledColor value="$preset_edc_colourMainDark"/>
+    </Profile>
+
+    <Profile name="edc_textInputIcon" extends="baseReference" with="edc_anchorMiddleRight">
+        <size value="12px 12px"/>
+        <position value="-9px 0px"/>
+        <imageSliceId value="gui.icon_pen"/>
+        <imageColor value="$preset_edc_colourMainLight_40"/>
+        <imageFocusedColor value="$preset_edc_colourMainDark"/>
+        <imageHighlightedColor value="$preset_edc_colourMainDark"/>
+        <imageDisabledColor value="$preset_edc_colourMainLight_20"/>
+    </Profile>
+
+    <Profile name="edc_binaryOption" extends="baseReference" with="edc_anchorBottomCenter">
+        <size value="316px 36px"/>
+        <margin value="44px 24px 44px 24px"/>
+        <autoAddDefaultElements value="true"/>
+        <defaultProfileBgThreePart value="edc_binaryOptionBg"/>
+        <defaultProfileButtonLeft value="edc_binaryOptionLeft"/>
+        <defaultProfileButtonRight value="edc_binaryOptionRight"/>
+        <defaultProfileSliderThreePart value="edc_binaryOptionSlider"/>
+    </Profile>
+
+    <Profile name="edc_binaryOptionClose" extends="edc_binaryOption">
+        <margin value="44px -18px 44px 24px"/>
+    </Profile>
+
+    <Profile name="edc_binaryOptionLeft" extends="emptyPanel" with="edc_anchorStretchingYLeft">
+        <size value="50% 100%"/>
+        <position value="10px 0px"/>
+        <absoluteSizeOffset value="20px 0px"/>
+        <textSize value="16px"/>
+        <textMaxNumLines value="1"/>
+        <textUpperCase value="true"/>
+        <textAlignment value="center"/>
+        <textLayoutMode value="scrolling"/>
+        <textColor value="$preset_edc_colourMainLight_80"/>
+        <textSelectedColor value="$preset_edc_colourMainDark"/>
+        <textDisabledColor value="$preset_edc_colourMainLight_20"/>
+    </Profile>
+
+    <Profile name="edc_binaryOptionRight" extends="edc_binaryOptionLeft" with="edc_anchorStretchingYRight">
+        <position value="-10px 0px"/>
+    </Profile>
+
+    <Profile name="edc_binaryOptionBg" extends="baseReference" with="edc_anchorStretchingYStretchingX">
+        <imageSliceId value="easyDevControls.button_curved_middle"/>
+        <imageColor value="$preset_edc_colourGrey"/>
+        <startImageSize value="10px 0"/>
+        <startImageSliceId value="easyDevControls.button_curved_left"/>
+        <startImageColor value="$preset_edc_colourGrey"/>
+        <endImageSize value="10px 0"/>
+        <endImageSliceId value="easyDevControls.button_curved_right"/>
+        <endImageColor value="$preset_edc_colourGrey"/>
+    </Profile>
+
+    <Profile name="edc_binaryOptionSlider" extends="baseReference" with="edc_anchorStretchingYLeft">
+        <size value="50% 100%"/>
+        <imageSliceId value="easyDevControls.button_curved_middle"/>
+        <imageColor value="$preset_edc_colourBinaryOptionSlider"/>
+        <imageFocusedColor value="$preset_edc_colourMainHighlight"/>
+        <imageHighlightedColor value="$preset_edc_colourMainHighlight"/>
+        <imageDisabledColor value="$preset_edc_colourMainDark"/>
+        <startImageSize value="10px 0"/>
+        <startImageSliceId value="easyDevControls.button_curved_left"/>
+        <startImageColor value="$preset_edc_colourBinaryOptionSlider"/>
+        <startImageFocusedColor value="$preset_edc_colourMainHighlight"/>
+        <startImageHighlightedColor value="$preset_edc_colourMainHighlight"/>
+        <startImageDisabledColor value="$preset_edc_colourMainDark"/>
+        <endImageSize value="10px 0"/>
+        <endImageSliceId value="easyDevControls.button_curved_right"/>
+        <endImageColor value="$preset_edc_colourBinaryOptionSlider"/>
+        <endImageFocusedColor value="$preset_edc_colourMainHighlight"/>
+        <endImageHighlightedColor value="$preset_edc_colourMainHighlight"/>
+        <endImageDisabledColor value="$preset_edc_colourMainDark"/>
+    </Profile>
+
+    <Profile name="edc_multiTextOption" extends="baseReference">
+        <size value="316px 36px"/>
+        <margin value="44px 24px 44px 24px"/>
+        <hideButtonOnLimitReached value="false"/>
+        <wrap value="true"/>
+        <autoAddDefaultElements value="true"/>
+        <defaultProfileButtonLeft value="edc_multiTextOptionLeft"/>
+        <defaultProfileButtonRight value="edc_multiTextOptionRight"/>
+        <defaultProfileText value="edc_multiTextOptionText"/>
+    </Profile>
+
+    <Profile name="edc_multiTextOptionClose" extends="edc_multiTextOption">
+        <margin value="44px -18px 44px 24px"/>
+    </Profile>
+
+    <Profile name="edc_multiTextOptionLimited" extends="edc_multiTextOption">
+        <hideButtonOnLimitReached value="true"/>
+        <wrap value="false"/>
+    </Profile>
+
+    <Profile name="edc_multiTextOptionLimitedClose" extends="edc_multiTextOptionLimited">
+        <margin value="44px -18px 44px 24px"/>
+    </Profile>
+
+    <Profile name="edc_multiTextOptionLeft" extends="buttonBase" with="edc_anchorStretchingYLeft">
+        <size value="40px 100%"/>
+        <clickSound value="NONE"/>
+        <sendActionOnRelease value="false"/>
+        <iconRotation value="180"/>
+        <iconSize value="7px 8px"/>
+        <iconTextOffset value="-7px 0px"/>
+        <iconSliceId value="gui.3dShop_arrow"/>
+        <iconColor value="$preset_edc_colourMainLight_40"/>
+        <iconHighlightedColor value="$preset_edc_colourMainHighlight"/>
+        <iconFocusedColor value="$preset_edc_colourMainHighlight"/>
+        <iconPressedColor value="$preset_edc_colourMainLight"/>
+        <iconDisabledColor value="$preset_edc_colourMainLight_20"/>
+        <imageSliceId value="noSlice"/>
+        <imageColor value="0 0 0 0"/>
+        <imageHighlightedColor value="0 0 0 0"/>
+        <imageFocusedColor value="0 0 0 0"/>
+        <imageSelectedColor value="0 0 0 0"/>
+        <imageDisabledColor value="0 0 0 0"/>
+    </Profile>
+
+    <Profile name="edc_multiTextOptionRight" extends="edc_multiTextOptionLeft" with="edc_anchorStretchingYRight">
+        <iconRotation value="0"/>
+        <iconTextOffset value="7px 0px"/>
+    </Profile>
+
+    <Profile name="edc_multiTextOptionText" extends="edc_textDefault" with="edc_anchorStretchingYStretchingX">
+        <size value="100% 100%"/>
+        <absoluteSizeOffset value="50px 0px"/>
+        <textSize value="16px"/>
+        <textMaxNumLines value="1"/>
+        <textUpperCase value="true"/>
+        <textAlignment value="center"/>
+        <textLayoutMode value="scrolling"/>
+        <textScrollOnFocusOnly value="true"/>
+        <textColor value="$preset_edc_colourMainLight"/>
+        <textDisabledColor value="$preset_edc_colourMainLight_20"/>
+    </Profile>
+
+    <Profile name="edc_multiTextOptionBg" extends="edc_binaryOptionBg">
+        <imageDisabledColor value="$preset_edc_colourMainDark"/>
+        <startImageDisabledColor value="$preset_edc_colourMainDark"/>
+        <endImageDisabledColor value="$preset_edc_colourMainDark"/>
+    </Profile>
+
+    <Profile name="edc_emptyPanel" extends="emptyPanel" with="edc_anchorMiddleRight">
+        <size value="316px 36px"/>
+        <margin value="44px 24px 44px 24px"/>
+    </Profile>
+
+    <Profile name="edc_button" extends="emptyPanel" with="edc_anchorMiddleRight">
+        <size value="316px 36px"/>
+        <margin value="44px 24px 44px 24px"/>
+        <iconSize value="22px 22px"/>
+        <iconTextOffset value="0px -1px"/>
+        <iconSliceId value="gui.tick"/>
+        <iconColor value="$preset_edc_colourMainLight_80"/>
+        <iconFocusedColor value="$preset_edc_colourMainHighlight"/>
+        <iconHighlightedColor value="$preset_edc_colourMainHighlight"/>
+        <iconPressedColor value="$preset_edc_colourMainLight_80"/>
+        <iconDisabledColor value="$preset_edc_colourMainLight_20"/>
+        <textSize value="16px"/>
+        <textBold value="true"/>
+        <textUpperCase value="true"/>
+        <textAlignment value="center"/>
+        <textColor value="$preset_edc_colourMainLight_80"/>
+        <textFocusedColor value="$preset_edc_colourMainHighlight"/>
+        <textHighlightedColor value="$preset_edc_colourMainHighlight"/>
+        <textDisabledColor value="$preset_edc_colourMainLight_20"/>
+        <textPressedColor value="$preset_edc_colourMainLight_80"/>
+        <textFocusedColor value="$preset_edc_colourMainDark"/>
+    </Profile>
+
+    <Profile name="edc_buttonClose" extends="edc_button">
+        <margin value="44px -18px 44px 24px"/>
+    </Profile>
+
+    <Profile name="edc_buttonStopTime" extends="edc_button">
+        <iconSliceId value="gui.pause"/>
+        <margin value="44px 24px 44px 270px"/>
+    </Profile>
+
+    <Profile name="edc_buttonStartTime" extends="edc_buttonStopTime">
+        <iconSliceId value="gui.play"/>
+    </Profile>
+
+    <Profile name="edc_buttonRefresh" extends="edc_buttonClose">
+        <iconSliceId value="easyDevControls.reset"/>
+        <iconTextOffset value="-10px -1px"/>
+    </Profile>
+
+    <Profile name="edc_buttonNoIcon" extends="emptyPanel" with="edc_anchorMiddleRight">
+        <size value="316px 36px"/>
+        <margin value="44px 24px 44px 24px"/>
+        <textSize value="16px"/>
+        <textBold value="true"/>
+        <textUpperCase value="true"/>
+        <textAlignment value="center"/>
+        <textVerticalAlignment value="middle"/>
+        <textColor value="$preset_edc_colourMainLight_80"/>
+        <textFocusedColor value="$preset_edc_colourMainHighlight"/>
+        <textHighlightedColor value="$preset_edc_colourMainHighlight"/>
+        <textDisabledColor value="$preset_edc_colourMainLight_20"/>
+        <textPressedColor value="$preset_edc_colourMainLight_80"/>
+        <textFocusedColor value="$preset_edc_colourMainDark"/>
+    </Profile>
+
+    <Profile name="edc_buttonNoIconClose" extends="edc_buttonNoIcon">
+        <margin value="44px -18px 44px 24px"/>
+    </Profile>
+
+    <Profile name="edc_buttonBg" extends="edc_multiTextOptionBg"/>
+
+    <Profile name="edc_buttonOutline" extends="edc_outlineBg" with="edc_anchorStretchingYStretchingX">
+        <size value="100% 100%"/>
+    </Profile>
+
+    <Profile name="edc_buttonAddRemoveLeft" extends="edc_button">
+        <size value="157px 36px"/>
+        <margin value="44px -18px 44px 0px"/>
+        <iconSliceId value="easyDevControls.minus"/>
+    </Profile>
+
+    <Profile name="edc_buttonAddRemoveRight" extends="edc_buttonAddRemoveLeft">
+        <margin value="203px -36px 44px 24px"/>
+        <iconSliceId value="easyDevControls.plus"/>
+    </Profile>
+
+    <Profile name="edc_colourButtonClose" extends="emptyPanel" with="edc_anchorMiddleRight">
+        <size value="316px 36px"/>
+        <margin value="44px -18px 44px 24px"/>
+    </Profile>
+
+    <Profile name="edc_colourButtonPicked" extends="edc_binaryOptionBg">
+        <size value="90% 90%"/>
+        <imageColor value="0 0 0"/>
+        <startImageColor value="0 0 0"/>
+        <endImageColor value="0 0 0"/>
+    </Profile>
+
+    <Profile name="edc_colourButtonIcon" extends="edc_textInputIcon">
+        <size value="16px 16px"/>
+        <position value="-6px 0px"/>
+        <imageSliceId value="gui.icon_character_paintBucket"/>
+    </Profile>
+
+    <Profile name="edc_infoBoxBg" extends="baseReference" with="edc_anchorBottomStretchingX">
+        <size value="98% 60px"/>
+        <position value="0px 18px"/>
+        <absoluteSizeOffset value="56px 0px"/>
+        <imageColor value="$preset_edc_colourGrey"/>
+        <imageSliceId value="easyDevControls.button_curved_outline_middle"/>
+        <startImageSize value="16px 0"/>
+        <startImageColor value="$preset_edc_colourGrey"/>
+        <startImageSliceId value="easyDevControls.button_curved_outline_left"/>
+        <endImageSize value="16px 0"/>
+        <endImageColor value="$preset_edc_colourGrey"/>
+        <endImageSliceId value="easyDevControls.button_curved_outline_right"/>
+    </Profile>
+
+    <Profile name="edc_infoBoxIconBox" extends="baseReference" with="edc_anchorMiddleLeft">
+        <width value="60px"/>
+        <imageUVRotation value="180"/>
+        <imageColor value="$preset_edc_colourGrey"/>
+        <imageSliceId value="easyDevControls.button_curved"/>
+    </Profile>
+
+    <Profile name="edc_infoBoxIcon" extends="baseReference" with="edc_anchorMiddleCenter">
+        <size value="28px 28px"/>
+        <imageSliceId value="gui.exclamationCircle"/>
+        <imageColor value="$preset_edc_colourMainLight_40"/>
+    </Profile>
+
+    <Profile name="edc_infoBoxText" extends="baseReference" with="edc_anchorMiddleLeft">
+        <size value="98% 50%"/>
+        <absoluteSizeOffset value="56px 0px"/>
+        <position value="74px 0px"/>
+        <textSize value="16px"/>
+        <textAlignment value="left"/>
+        <textLayoutMode value="scrolling"/>
+        <textScrollOnFocusOnly value="false"/>
+        <textColor value="$preset_edc_colourMainLight"/>
+        <textDisabledColor value="$preset_edc_colourMainLight"/>
+    </Profile>
+
+    <Profile name="edc_placeholderText" extends="edc_multiTextOptionText">
+        <textUpperCase value="false"/>
+        <textColor value="$preset_edc_colourMainLight_20"/>
+        <textDisabledColor value="$preset_edc_colourMainLight_20"/>
+    </Profile>
+
+    <Profile name="edc_optionLeft" extends="buttonBase" with="edc_anchorStretchingYLeft">
+        <size value="40px 100%"/>
+        <position value="-40px 0px"/>
+        <clickSound value="NONE"/>
+        <sendActionOnRelease value="false"/>
+        <iconRotation value="180"/>
+        <iconSize value="7px 8px"/>
+        <iconTextOffset value="-7px 0px"/>
+        <iconSliceId value="gui.3dShop_arrow"/>
+        <iconColor value="$preset_edc_colourMainLight_40"/>
+        <iconHighlightedColor value="$preset_edc_colourMainHighlight"/>
+        <iconFocusedColor value="$preset_edc_colourMainHighlight"/>
+        <iconPressedColor value="$preset_edc_colourMainHighlight"/>
+        <iconDisabledColor value="$preset_edc_colourMainLight_20"/>
+        <imageSliceId value="noSlice"/>
+        <imageColor value="0 0 0 0"/>
+        <imageHighlightedColor value="0 0 0 0"/>
+        <imageFocusedColor value="0 0 0 0"/>
+        <imageSelectedColor value="0 0 0 0"/>
+        <imageDisabledColor value="0 0 0 0"/>
+    </Profile>
+
+    <Profile name="edc_optionRight" extends="edc_optionLeft" with="edc_anchorStretchingYRight">
+        <position value="40px 0px"/>
+        <iconRotation value="0"/>
+        <iconTextOffset value="7px 0px"/>
+    </Profile>
+
+    <Profile name="edc_optionSlider" extends="edc_multiTextOption">
+        <size value="236px 36px"/>
+        <margin value="84px 24px 4px 24px"/>
+        <wrap value="false"/>
+        <sliderOffset value="-4px"/>
+        <useFillingBar value="false"/>
+        <updateTextPosition value="true"/>
+        <hideLeftRightButtons value="false"/>
+        <defaultProfileText value="edc_optionSliderText"/>
+        <defaultProfileSlider value="edc_optionSliderThumb"/>
+        <defaultProfileFillingBar value="edc_optionSliderFillingBar"/>
+        <defaultProfileButtonLeft value="edc_optionLeft"/>
+        <defaultProfileButtonRight value="edc_optionRight"/>
+    </Profile>
+
+    <Profile name="edc_optionSliderClose" extends="edc_optionSlider">
+        <margin value="84px -18px 4px 24px"/>
+    </Profile>
+
+    <Profile name="edc_optionSliderBg" extends="edc_textInputIconBox">
+        <width value="316px"/>
+        <imageColor value="$preset_edc_colourGrey"/>
+        <imageFocusedColor value="$preset_edc_colourGrey"/>
+        <imageHighlightedColor value="$preset_edc_colourGrey"/>
+        <imageDisabledColor value="$preset_edc_colourMainDark"/>
+        <startImageColor value="$preset_edc_colourGrey"/>
+        <startImageFocusedColor value="$preset_edc_colourGrey"/>
+        <startImageHighlightedColor value="$preset_edc_colourGrey"/>
+        <startImageDisabledColor value="$preset_edc_colourMainDark"/>
+        <endImageColor value="$preset_edc_colourGrey"/>
+        <endImageFocusedColor value="$preset_edc_colourGrey"/>
+        <endImageHighlightedColor value="$preset_edc_colourGrey"/>
+        <endImageDisabledColor value="$preset_edc_colourMainDark"/>
+    </Profile>
+
+    <Profile name="edc_optionSliderThumb" extends="baseReference" with="anchorMiddleLeft">
+        <size value="60px 20px"/>
+        <cornerSize value="0"/>
+        <imageColor value="$preset_edc_colourBinaryOptionSlider"/>
+        <imageHighlightedColor value="$preset_edc_colourMainHighlight"/>
+        <imageFocusedColor value="$preset_edc_colourMainHighlight"/>
+        <imagePressedColor value="$preset_edc_colourMainLight"/>
+        <imageDisabledColor value="$preset_edc_colourMainDark"/>
+    </Profile>
+
+    <Profile name="edc_optionSliderText" extends="edc_multiTextOptionText">
+        <position value="0px 0px"/>
+        <textUpperCase value="false"/>
+        <textColor value="$preset_edc_colourMainDark"/>
+        <textSelectedColor value="$preset_edc_colourMainDark"/>
+        <textDisabledColor value="$preset_edc_colourMainLight_20"/>
+    </Profile>
+
+    <Profile name="edc_optionSliderFillingBarBg" extends="baseReference" with="edc_anchorMiddleStretchingX edc_pivotMiddleLeft">
+        <height value="6px"/>
+        <imageSliceId value="gui.progressbar_middle"/>
+        <imageColor value="$preset_edc_colourMainLight_40"/>
+        <startImageSize value="5px 0"/>
+        <startImageSliceId value="gui.progressbar_left"/>
+        <startImageColor value="$preset_edc_colourMainLight_40"/>
+        <endImageSize value="5px 0"/>
+        <endImageSliceId value="gui.progressbar_right"/>
+        <endImageColor value="$preset_edc_colourMainLight_40"/>
+    </Profile>
+
+    <Profile name="edc_optionSliderFillingBar" extends="baseReference" with="edc_anchorMiddleStretchingX edc_pivotMiddleLeft">
+        <height value="6px"/>
+        <imageSliceId value="gui.progressbar_middle"/>
+        <imageColor value="$preset_edc_colourMainLight_40"/>
+        <imageDisabledColor value="$preset_edc_colourMainDark"/>
+        <startImageSize value="5px 0"/>
+        <startImageSliceId value="gui.progressbar_left"/>
+        <startImageColor value="$preset_edc_colourMainLight_40"/>
+        <startImageDisabledColor value="$preset_edc_colourMainDark"/>
+        <endImageSize value="5px 0"/>
+        <endImageSliceId value="gui.progressbar_right"/>
+        <endImageColor value="$preset_edc_colourMainLight_40"/>
+        <endImageDisabledColor value="$preset_edc_colourMainDark"/>
+    </Profile>
+
+    <Profile name="edc_permissionsLayout" extends="baseReference" with="edc_anchorStretchingYStretchingX edc_pivotTopCenter">
+        <size value="1506px 672px"/>
+        <position value="0px -32px"/>
+        <!-- <wrapAround value="false"/> -->
+        <fitFlowToElements value="true"/>
+        <flowDirection value="vertical"/>
+        <imageColor value="$preset_edc_colourTransparent"/>
+    </Profile>
+
+    <Profile name="edc_permissionsTitleContainer" extends="baseReference" with="edc_anchorTopStretchingX">
+        <size value="100% 80px"/>
+        <imageColor value="$preset_edc_colourTransparent"/>
+    </Profile>
+
+    <Profile name="edc_permissionsIconBg" extends="edc_headerIconBg" with="edc_anchorMiddleLeft">
+        <size value="38px 38px"/>
+        <position value="0px 0px"/>
+        <handleFocus value="false"/>
+    </Profile>
+
+    <Profile name="edc_permissionsIcon" extends="edc_headerIcon" with="edc_anchorMiddleCenter">
+        <size value="32px 32px"/>
+        <imageSliceId value="easyDevControls.icon_general"/>
+        <imageColor value="$preset_edc_colourMainDark"/>
+        <handleFocus value="false"/>
+    </Profile>
+
+    <Profile name="edc_permissionsHeader" extends="edc_textDefault" with="edc_anchorMiddleLeft">
+        <width value="324px"/>
+        <position value="56px 0px"/>
+        <textSize value="30px"/>
+        <textBold value="true"/>
+        <textMaxWidth value="360px"/>
+        <textUpperCase value="true"/>
+        <textVerticalAlignment value="center"/>
+        <textLayoutMode value="scrolling"/>
+        <textScrollOnFocusOnly value="false"/>
+        <handleFocus value="false"/>
+    </Profile>
+
+    <Profile name="edc_permissionsMultiTextOptionContainer" extends="baseReference" with="anchorTopLeft">
+        <size value="815px 50px"/>
+    </Profile>
+
+    <Profile name="edc_permissionsMultiTextOption" extends="fs25_multiTextOption" with="anchorMiddleRight">
+        <size value="350px 36px"/>
+        <position value="-10px 0px"/>
+        <focusOnHighlight value="true"/>
+        <!-- <wrap value="false"/>  -->
+        <!-- <hideButtonOnLimitReached value="true"/> -->
+    </Profile>
+
+    <Profile name="edc_permissionsMultiTextOptionTitle" extends="edc_textDefault" with="edc_anchorStretchingYLeft">
+        <width value="420px"/>
+        <position value="20px 0px"/>
+        <textSize value="16px"/>
+        <textBold value="true"/>
+    </Profile>
+
+    <Profile name="edc_permissionsMultiTextOptionTooltip" extends="edc_textDefault" with="anchorMiddleRight">
+        <width value="600px"/>
+        <position value="660px 0px"/>
+        <textMaxNumLines value="5"/>
+        <textColor value="$preset_edc_colourTransparent"/>
+        <textFocusedColor value="$preset_edc_colourGreyText"/>
+        <textHighlightedColor value="$preset_edc_colourGreyText"/>
+        <textDisabledColor value="$preset_edc_colourTransparent"/>
+    </Profile>
+
+    <Profile name="edc_permissionsTooltipSeparator" extends="baseReference" with="edc_anchorStretchingYLeft edc_pivotTopLeft">
+        <size value="1dp 672px"/>
+        <position value="895px -32px"/>
+        <imageColor value="$preset_edc_colourGreyLight_50"/>
+    </Profile>
+
+    <Profile name="edc_helpContainer" extends="fs25_subCategoryContainer">
+        <width value="440px"/>
+    </Profile>
+
+    <Profile name="edc_helpContainerBg" extends="fs25_subCategoryContainerBg">
+        <width value="493px"/>
+    </Profile>
+
+    <Profile name="edc_helpListContainer" extends="emptyPanel" with="edc_anchorStretchingYLeft edc_pivotTopLeft">
+        <absoluteSizeOffset value="52px 335px"/>
+        <position value="23px -210px"/>
+    </Profile>
+
+    <Profile name="edc_helpList" extends="emptyPanel" value="edc_anchorStretchingYStretchingX">
+        <showHighlights value="true"/>
+        <listItemSpacing value="-20px"/>
+    </Profile>
+
+    <Profile name="edc_helpListItemIcon" extends="baseReference" with="edc_anchorMiddleLeft">
+        <size value="58px 58px"/>
+        <position value="20px 7px"/>
+        <imageSliceId value="noSlice"/>
+    </Profile>
+
+    <Profile name="edc_helpContentContainer" extends="baseReference" with="anchorStretchingYCenter pivotBottomCenter">
+        <width value="1282px"/>
+        <position value="226px 40px"/>
+        <absoluteSizeOffset value="0px 222px"/>
+    </Profile>
+
+    <Profile name="edc_helpCommandItemContentBox" extends="emptyPanel" with="edc_anchorStretchingYStretchingX">
+        <flowDirection value="vertical"/>
+    </Profile>
+
+    <Profile name="edc_helpCommandItem" extends="emptyPanel">
+        <size value="1154px 200px"/>
+        <margin value="0px 0px 0px 30px"/>
+        <flowDirection value="vertical"/>
+        <alignmentX value="left"/>
+        <alignmentY value="top"/>
+    </Profile>
+
+    <Profile name="edc_helpCommandTitle" extends="edc_textDefault">
+        <size value="1054px 30px"/>
+        <textVerticalAlignment value="center"/>
+        <textSize value="20px"/>
+        <textBold value="true"/>
+        <textMaxWidth value="1054px"/>
+        <textColor value="$preset_edc_colourMainLight"/>
+    </Profile>
+
+    <Profile name="edc_helpCommandText" extends="edc_textDefault">
+        <size value="1154px 18px"/>
+        <textVerticalAlignment value="top"/>
+        <textSize value="18px"/>
+        <textBold value="false"/>
+        <textMaxWidth value="1154px"/>
+        <textMaxNumLines value="100"/>
+        <textColor value="$preset_edc_colourGreyText"/>
+    </Profile>
+</GUIProfiles>

@@ -1,0 +1,7 @@
+### BrushType
+
+**Description**
+
+**Definition**
+
+> BrushType()

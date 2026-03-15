@@ -1,0 +1,11 @@
+{
+  "label": "Vehicles",
+  "link": {
+    "type": "generated-index",
+    "title": "Vehicles Documentation",
+    "description": "20 pages, 601 functions"
+  },
+  "customProps": {
+    "icon": "car"
+  }
+}

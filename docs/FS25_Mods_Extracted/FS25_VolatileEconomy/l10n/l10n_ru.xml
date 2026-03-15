@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<l10n>
+    <elements>
+        <e k="mod_volatileEconomy_title"       v="Волатильная экономика"/>
+        <e k="mod_volatileEconomy_event_title" v="Рыночное событие"/>
+        <e k="mod_volatileEconomy_days"        v="дн."/>
+        <e k="mod_volatileEconomy_prices_up"   v="Цены растут"/>
+        <e k="mod_volatileEconomy_prices_down" v="Цены падают"/>
+    </elements>
+</l10n>

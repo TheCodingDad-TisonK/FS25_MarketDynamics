@@ -1,0 +1,11 @@
+{
+  "label": "Debug",
+  "link": {
+    "type": "generated-index",
+    "title": "Debug Documentation",
+    "description": "12 pages"
+  },
+  "customProps": {
+    "icon": "bug"
+  }
+}

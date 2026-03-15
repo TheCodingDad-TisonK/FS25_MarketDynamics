@@ -1,0 +1,11 @@
+{
+  "label": "Entity",
+  "link": {
+    "type": "generated-index",
+    "title": "Entity Documentation",
+    "description": "5 pages"
+  },
+  "customProps": {
+    "icon": "cube"
+  }
+}

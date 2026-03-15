@@ -1,0 +1,11 @@
+{
+  "label": "String",
+  "link": {
+    "type": "generated-index",
+    "title": "String Documentation",
+    "description": "8 pages"
+  },
+  "customProps": {
+    "icon": "font"
+  }
+}

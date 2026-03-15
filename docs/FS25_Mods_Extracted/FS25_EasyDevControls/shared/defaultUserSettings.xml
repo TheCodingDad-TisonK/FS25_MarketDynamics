@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<easyDevControls revision="3">
+    <!--
+        Offline / Multiplayer Host
+            - These setting will only be applied on first load when no save game information is available.
+            - These settings will be used when using the RESET option on each page.
+
+        Multiplier Client:
+            - These settings will be applied when joining any server
+            - The permissions set by the server EDC administrators will always take priority on each server!
+
+        Notes:
+            - When 'isSaved' is 'true' the current command setting will be saved to the save game files.
+              * 'playerNoClip' cannot be saved in SP or MP and will always start disabled to avoid possible game breaking issues.
+              * 'deleteObjectsKey' cannot be saved in SP or MP however setting ' boolValue="true" ' will start every SP game with this command enabled.
+              * 'superStrength' will not be saved in MP regardless of the 'isSaved' setting below to avoid conflicts and possible game breaking issues.
+			  
+        Setting Options:
+			- jumpDelayIndex  = 1 (0 seconds), 2 (0.5 seconds), 3 (1 seconds), 4 (1.5 seconds), 5 (2 seconds).
+			- jumpHeightIndex = 1 (1x), 2 (1.1x), 3 (1.2x), 4 (1.3x), 5 (1.4x), 6 (1.5x), 7 (1.6x), 8 (1.7x), 9 (1.8x), 10 (1.9x), 11 (2x).
+			- runSpeedIndex   = 1 (2x), 2 (3x), 3 (4x), 4 (5x), 5 (6x), 6 (7x), 7 (8x), 8 (9x), 9 (10x), 10 (11x), 11 (12x), 12 (13x), 13 (14x), 14 (15x), 15 (16x).
+
+        Important:
+            - There is no requirement to modify this file on dedicated servers and doing so may lead to undesirable results.
+    -->
+
+    <settings>
+        <!-- Base (Show / Hide Input Bindings) -->
+        <setting name="openMenuKeyVisible" boolValue="false" isSaved="true"/>
+        <setting name="hudVisibilityKeyVisible" boolValue="false" isSaved="true"/>
+        <setting name="runSpeedKeyVisible" boolValue="false" isSaved="true"/>
+        <setting name="superStrengthKeyVisible" boolValue="false" isSaved="true"/>
+
+        <!-- GUI -->
+        <setting name="toggleMenuMode" boolValue="true" isSaved="false"/>
+
+        <!-- General Page -->
+        <setting name="extraTimeScales" boolValue="false" isSaved="true"/>
+        <setting name="hudVisibilityKey" boolValue="true" isSaved="true"/>
+        <setting name="deleteObjectsKey" boolValue="false" isSaved="false"/>
+        <setting name="showBaleLocations" boolValue="false" isSaved="true"/>
+        <setting name="showPalletLocations" boolValue="false" isSaved="true"/>
+
+        <!-- Player Page -->
+        <setting name="superStrength" boolValue="false" isSaved="false"/>
+        <setting name="superStrengthKey" boolValue="true" isSaved="true"/>
+        <setting name="jumpDelayIndex" intValue="1" isSaved="true"/>
+        <setting name="jumpHeightIndex" intValue="1" isSaved="true"/>
+        <setting name="runSpeedIndex" intValue="3" isSaved="true"/>
+        <setting name="runSpeedState" boolValue="false" isSaved="true"/>
+        <setting name="runSpeedKey" boolValue="true" isSaved="true"/>
+        <setting name="playerNoClip" boolValue="false" isSaved="false"/>
+    </settings>
+
+	<!-- Dedicated servers only, this can be changed from the permissions screen when using 3rd party hosting. -->
+    <permissions adminPassword="USE_SERVER_PASSWORD"/>
+</easyDevControls>

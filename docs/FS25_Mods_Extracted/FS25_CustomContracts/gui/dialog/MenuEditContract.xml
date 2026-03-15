@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<GUI name="menuEditContract" onOpen="onOpen" onClose="onClose" onCreate="onCreate">
+  <GuiElement profile="newLayer" />
+  <Bitmap profile="dialogFullscreenBg" id="dialogBg" />
+  <GuiElement profile="dialogBg" id="dialogElement" size="900px 800px">
+    <ThreePartBitmap profile="fs25_dialogBgMiddle" />
+    <ThreePartBitmap profile="fs25_dialogBgTop" />
+    <ThreePartBitmap profile="fs25_dialogBgBottom" />
+
+    <GuiElement profile="fs25_dialogContentContainer">
+      <Text profile="dialogTitle" text="$l10n_cc_dialog_edit_title" position="0px -30px"/>
+
+      <BoxLayout flowDirection="vertical" position="15px -100px">
+        <BoxLayout flowDirection="vertical" size="435px 400px" elementSpacing="5px" extends="emptyPanel" with="anchorTopLeft">
+
+          <!-- Field -->
+          <Text text="$l10n_cc_dialog_edit_input_field" profile="CC_ContractInputLabel"/>
+          <MultiTextOption id="fieldSelector" profile="fs25_multiTextOption" size="100% 44px" onClick="onFieldSelectChange">
+            <Text profile="fs25_multiTextOptionText" name="text" />
+          </MultiTextOption>
+
+          <!-- Work type -->
+          <Text text="$l10n_cc_dialog_edit_input_worktype" profile="CC_ContractInputLabel" />
+          <MultiTextOption id="workTypeSelector" profile="fs25_multiTextOption" size="100% 44px" onClick="onWorkTypeSelectChange">
+            <Text profile="fs25_multiTextOptionText" name="text" />
+          </MultiTextOption>
+
+          <!-- Reward -->
+          <Text text="$l10n_cc_dialog_edit_input_reward" profile="CC_ContractInputLabel"/>
+          <TextInput profile="CC_Input" id="rewardInput" onEnterPressed="onEnterPressed" onTextChanged="onTextChanged" enterWhenClickOutside="false">
+            <ThreePartBitmap profile="fs25_textInputBg" absoluteSizeOffset="0px 0px"/>
+          </TextInput>
+
+          <!-- Description -->
+          <Text text="$l10n_cc_dialog_edit_input_description" profile="CC_ContractInputLabel" />
+          <TextInput profile="CC_InputTextArea" id="descriptionInput" onEnterPressed="onEnterPressed" onTextChanged="onTextChanged" enterWhenClickOutside="false">
+            <ThreePartBitmap profile="fs25_textInputBg" absoluteSizeOffset="0px 0px"/>
+          </TextInput>
+
+          <!-- Start date -->
+          <Text text="$l10n_cc_dialog_edit_input_startdate" profile="CC_ContractInputLabel" />
+          <MultiTextOption id="startDateSelector" profile="fs25_multiTextOption" size="100% 44px" onClick="onStartDateSelectChange">
+            <Text profile="fs25_multiTextOptionText" name="text" />
+          </MultiTextOption>
+
+
+          <!-- Due date -->
+          <Text text="$l10n_cc_dialog_edit_input_duedate" profile="CC_ContractInputLabel" />
+          <MultiTextOption id="dueDateSelector" profile="fs25_multiTextOption" size="100% 44px" onClick="onDueDateSelectChange">
+            <Text profile="fs25_multiTextOptionText" name="text" />
+          </MultiTextOption>
+
+
+        </BoxLayout>
+      </BoxLayout>
+    </GuiElement>
+
+    <BoxLayout profile="fs25_dialogButtonBox">
+      <Button profile="buttonBack" text="$l10n_cc_dialog_edit_btn_cancel" onClick="onCancel" />
+      <Button profile="buttonOK" text="$l10n_cc_dialog_edit_btn_edit" onClick="onConfirm" />
+    </BoxLayout>
+  </GuiElement>
+
+  <GUIProfiles>
+
+  </GUIProfiles>
+</GUI>

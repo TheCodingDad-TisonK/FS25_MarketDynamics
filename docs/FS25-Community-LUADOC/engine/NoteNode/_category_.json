@@ -1,0 +1,11 @@
+{
+  "label": "Note Node",
+  "link": {
+    "type": "generated-index",
+    "title": "Note Node Documentation",
+    "description": "6 pages"
+  },
+  "customProps": {
+    "icon": "sticky-note"
+  }
+}

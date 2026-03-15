@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<GUI onOpen="onOpen" onClose="onClose" onCreate="onCreate">
+    <GuiElement profile="newLayer" />
+    <Bitmap profile="dialogFullscreenBg" id="dialogBg" />
+    <GuiElement profile="allSellPointFrame" id="dialogElement">        
+        <ThreePartBitmap profile="fs25_dialogBgMiddle" />
+        <ThreePartBitmap profile="fs25_dialogBgTop" />
+        <ThreePartBitmap profile="fs25_dialogBgBottom" />
+        <GuiElement profile="fs25_dialogContentContainer">
+            <Animation profile="fs25_dialogLoading" id="iconLoadingElement" />
+            <Text profile="dialogTitle" text="" id="allDialogTitleElement" position="0px -30px" />
+            <Bitmap profile="ingameMenuTSStockCheckAllSellPointHeaderBox" id="tableHeaderBox">
+                <Text profile="ingameMenuTSStockCheckHeader" position="0px 2px" size="300px 32px" text="$l10n_ui_stations"/>
+                <!-- <Text profile="ingameMenuTSStockCheckHeader" position="300px 0px" size="100px 32px" text="$l10n_ui_distance"/> -->
+                <Text profile="ingameMenuTSStockCheckHeaderRight" position="400px 2px" size="100px 32px" text="$l10n_ui_header_price"/>
+                <Text profile="ingameMenuTSStockCheckHeaderRight" position="500px 2px" size="40px 32px" text="$l10n_ui_header_trend"/>
+                <Text profile="ingameMenuTSStockCheckHeaderRight" position="540px 2px" size="155px 32px" text="$l10n_ui_header_value"/>
+                <ThreePartBitmap profile="fs25_lineSeparatorBottom" position="0px 2px" />
+            </Bitmap>
+            <SmoothList profile="ingameMenuTSStockCheckAllSellPointList" id="TSStockCheckAllSellpointTable" focusInit="onOpen">
+                <ListItem profile="ingameMenuTSStockCheckAllSellPointListItem" >
+                    <Text profile="ingameMenuTSStockCheckRowCellLocationSellAt" position="10px 0px" name="alllocation">
+                        <!-- <Bitmap profile="fs25_pricesPriceListItemIconTrain" name="iconTrain" />
+                        <Bitmap profile="fs25_pricesPriceListItemIconPallet" name="iconPallet" /> -->
+                    </Text>
+                    <Text profile="ingameMenuTSStockCheckRowCellLeft" position="300px 0px" name="alldistance" />
+                    <Text profile="ingameMenuTSStockCheckRowCellPrice" position="400px 0px" name="allprice" />
+                    <Bitmap profile="ingameMenuTSStockCheckRowCellArrow" position="505px 0px" name="alltrend"/>
+                    <Text profile="ingameMenuTSStockCheckRowCellRight" position="540px 0px" name="allvalue" />
+                </ListItem>
+            </SmoothList>
+            <ThreePartBitmap profile="ingameMenuTSStockAllSellPointListSliderBox">
+                <Slider profile="fs25_listSlider" dataElementId="TSStockCheckAllSellpointTable" />
+            </ThreePartBitmap>
+        </GuiElement>
+        <BoxLayout profile="fs25_dialogButtonBox">
+            <Button profile="buttonOK" id="dialogButtonTag" text="$l10n_action_tag" onClick="onTagLocation" />
+            <Button profile="buttonBack" text="$l10n_ui_locationFrame_btnClose" onClick="onClickBack" />
+        </BoxLayout>
+    </GuiElement>
+</GUI>

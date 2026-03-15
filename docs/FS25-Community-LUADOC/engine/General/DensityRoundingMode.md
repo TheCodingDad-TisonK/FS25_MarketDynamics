@@ -1,0 +1,7 @@
+### DensityRoundingMode
+
+**Description**
+
+**Definition**
+
+> DensityRoundingMode()

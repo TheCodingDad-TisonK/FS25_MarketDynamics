@@ -1,0 +1,11 @@
+{
+  "label": "Extensions",
+  "link": {
+    "type": "generated-index",
+    "title": "Extensions Documentation",
+    "description": "8 pages, 8 functions"
+  },
+  "customProps": {
+    "icon": "plug"
+  }
+}

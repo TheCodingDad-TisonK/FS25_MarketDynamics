@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<modDesc descVersion="106">
+    <author>LeGrizzly</author>
+    <version>0.0.7-build-1</version>
+    <title>
+        <en><![CDATA[Advanced Employee Manager]]></en>
+        <fr><![CDATA[Gestion Avancée Des Employés]]></fr>
+        <it><![CDATA[Gestore Dipendenti Avanzato]]></it>
+        <de><![CDATA[Erweiterter Mitarbeiter-Manager]]></de>
+        <pl><![CDATA[Zaawansowany Menedżer Pracowników]]></pl>
+        <es><![CDATA[Gestor de Empleados Avanzado]]></es>
+    </title>
+    <description>
+        <en><![CDATA[Bring a new level of depth to your farm's workforce. Hire and manage employees with unique skills to optimize your operations.]]></en>
+        <fr><![CDATA[Apportez un nouveau niveau de profondeur à votre main-d'œuvre agricole. Embauchez et gérez des employés dotés de compétences uniques pour optimiser vos opérations.]]></fr>
+        <it><![CDATA[Porta un nuovo livello di profondità alla forza lavoro della tua fattoria. Assumi e gestisci dipendenti con abilità uniche per ottimizzare le tue operazioni.]]></it>
+        <de><![CDATA[Bringen Sie eine neue Ebene der Tiefe in Ihre landwirtschaftliche Belegschaft. Stellen Sie Mitarbeiter mit einzigartigen Fähigkeiten ein und verwalten Sie sie, um Ihre Betriebe zu optimieren.]]></de>
+        <pl><![CDATA[Wprowadź nowy poziom głębi do siły roboczej na swojej farmie. Zatrudniaj i zarządzaj pracownikami o unikalnych umiejętnościach, aby zoptymalizować swoje działania.]]></pl>
+        <es><![CDATA[Aporta un nuevo nivel de profundidad a la fuerza laboral de tu granja. Contrata y gestiona empleados con habilidades únicas para optimizar tus operaciones.]]></es>
+    </description>
+    <dependencies>
+        <dependency optional="true">FS25_DBAPI</dependency>
+    </dependencies>
+    <iconFilename>images/icon_employee.dds</iconFilename>
+    <multiplayer supported="true" />
+    <extraSourceFiles>
+        <sourceFile filename="scripts/main.lua" />
+    </extraSourceFiles>
+    <l10n filenamePrefix="l10n/l10n" />
+</modDesc>

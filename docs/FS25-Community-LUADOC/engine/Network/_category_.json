@@ -1,0 +1,11 @@
+{
+  "label": "Network",
+  "link": {
+    "type": "generated-index",
+    "title": "Network Documentation",
+    "description": "33 pages"
+  },
+  "customProps": {
+    "icon": "network-wired"
+  }
+}

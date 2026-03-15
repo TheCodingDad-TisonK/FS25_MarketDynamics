@@ -1,0 +1,11 @@
+{
+  "label": "Precipitation",
+  "link": {
+    "type": "generated-index",
+    "title": "Precipitation Documentation",
+    "description": "19 pages"
+  },
+  "customProps": {
+    "icon": "cloud-rain"
+  }
+}

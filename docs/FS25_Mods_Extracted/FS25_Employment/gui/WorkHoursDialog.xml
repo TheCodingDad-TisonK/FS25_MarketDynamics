@@ -1,0 +1,24 @@
+<GUI onOpen="onOpen" onClose="onClose" onCreate="onCreate">
+	<GuiElement profile="newLayer"/>
+	<Bitmap profile="dialogFullscreenBg" id="dialogBg"/>
+	<GuiElement profile="fs25_workDialogBg" id="dialogElement">
+		<ThreePartBitmap profile="fs25_dialogBgMiddleSmall"/>
+		<ThreePartBitmap profile="fs25_dialogBgTopSmall"/>
+		<ThreePartBitmap profile="fs25_dialogBgBottom"/>
+		<GuiElement profile="fs25_dialogContentContainer">
+			<Text profile="fs25_dialogTitle" id="dialogTitleElement" position="0px -40px" text="$l10n_employment_ui_chooseHours"/>
+			<Text profile="fs25_dialogText" id="dialogTextElement" position="0px -80px"/>
+			<OptionSlider profile="fs25_optionSlider" id="targetTimeElement" onClick="onClickTargetTime" position="0px 40px" focusInit="onOpen"/>
+		</GuiElement>
+		<BoxLayout profile="fs25_dialogButtonBox">
+			<Button profile="buttonOK" text="$l10n_employment_ui_work" onClick="onClickYes" id="yesButton"/>
+			<Bitmap profile="fs25_dialogButtonBoxSeparator"/>
+			<Button profile="buttonBack" text="$l10n_button_cancel" onClick="onClickNo" id="noButton"/>
+		</BoxLayout>
+	</GuiElement>
+	<GUIProfiles>
+		<Profile name="fs25_workDialogBg" extends="fs25_dialogBg">
+			<size value="550px 300px"/>
+		</Profile>
+	</GUIProfiles>
+</GUI>

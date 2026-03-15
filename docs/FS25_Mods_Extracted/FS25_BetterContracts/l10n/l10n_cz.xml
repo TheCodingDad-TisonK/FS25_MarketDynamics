@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--=====================================================================================================
+	BetterContracts l10n translations
+	Changelog:
+	  v1.0.0.0    28.10.2024  1st port to FS25
+	  v1.1.0.0    08.01.2025  UI settings page, discount mode
+	  v1.1.1.2    09.02.2025  compatible FS25_additionalGameSettings
+=======================================================================================================-->
+<l10n>
+	<texts>
+		<!-- updates v1.3.0.5 
+		- add onions to text:
+		<text name="bc_genVegetable_tooltip" text="Generate harvest contracts for carrots, beetroot, parsnip, and onions" />
+		-->
+		<!-- updates v1.3.0.3 -->
+		<text name="bc_genSingle" text="Single Generation" />
+		<text name="bc_genSingle_tooltip" text="Generate only max 1 mission per interval and mission type." />
+
+		<!-- updates v1.3.0.0 
+			bc_harvest: text="Harv. %.6s"
+	  		bc_hardMode_tooltip: shortened text
+	  	-->
+		<text name="bc_sow" text="Sow %.8s" />
+
+		<!-- updates v1.2.0.3 -->
+		<text name="bc_balesTotal" text="Bales expected:" />
+		<text name="bc_balesDone" text="Already baled:" />
+		<!-- updates v1.2.0.0 -->
+		<text name="bc_vehicleBox" text="Výběr vozidla" />
+		<!-- updates v1.1.1.3 -->
+		<text name="bc_stayNew" text="Zůstat na seznamu NOVÝCH zakázek" />
+		<text name="bc_stayNew_tooltip" text="Nepřepínejte na seznam AKTIVNÍ zakázky, když je přijata nová zakázka." />
+		<text name="bc_finishField" text="Kompletní zakázky na poli" />
+		<text name="bc_finishField_tooltip" text="Umožňuje dokončit 100 % pole po skončení zakázky." />
+		<text name="bc_hideMission" text="Skrýt neaktivní zakázky" />
+		<text name="bc_hideMission_tooltip" text="Skrýt přijaté zakázky s dokončením 0 % z pravé strany HUD." />
+		
+		<!-- updates v1.1.1.2 -->
+		<text name="global_bc_name" text="BETTER CONTRACTS" />
+		<text name="bc_settingsNoPermission" text="Nemáte oprávnění měnit nastavení Better Contracts!" />
+		<!-- Keys -->
+		<text name = "input_MENU_EXTRA_3" text = "Vylepšené zakázky: Detaily zap/vyp"/>
+		<text name = "input_BC_MTOGGLE" text = "BC: Přepnout zobrazení aktivních zakázek farmy"/>
+		<text name = "bc_actionFerment" text = "Kvašené balíky"/>
+		<!-- Gui Buttons -->
+		<text name="bc_hidden" text="Skryté: %d" />
+		<text name="bc_other" text="Další" />
+		<text name="bc_new_contracts" text="Nové zakázky" />
+		<text name="bc_clear_contracts" text="Smazat zakázky" />
+		<text name="bc_detailsOff" text="BC vyp." />
+		<text name="bc_detailsOn" text="BC zap." />
+
+		<!-- Hard mode -->
+		<text name="bc_penalty" text="Pokuta" />
+		<text name="bc_warnTimeout" text="Dokončete prosím své %d zakázky během příští hodiny, abyste předešli smluvním pokutám." />
+		<text name="bc_warnCancel" text=" Smluvní pokuta bude minimálně " />
+		<text name="bc_leaseNotEnough" text="Než si budete moci půjčit stroje, musíte dokončit %d dalších úloh za %s s vlastním vybavením." />
+
+		<!-- discount mode -->
+		<text name="bc_maxJobs" text="Dosáhli jste maximální slevy pro %s." />
+		<text name="bc_discount" text="sleva" />
+		<text name="bc_discValue" text="%s vám poskytne %d %% slevu na budoucí nákupy polí." />
+		<text name="bc_owner" text="Vlastník:" />
+
+		<!-- Display texts -->
+		<text name="bc_mowed" text="Posekáno:" />
+		<text name="bc_tomow" text="K posekání:" />
+		<text name="bc_chaff" text="Řezání %s" />
+		<text name="bc_jobType_chaff" text="Řezanka" />
+		<text name="bc_harvest" text="Skliz. %.6s" />
+		<text name="bc_leased" text="/ Nájem " />
+		<text name="bc_enoughMissions" text="Vaše farma již má maximální počet zakázek." />
+		<text name="bc_jobsCompleted" text="Dokončené zakázky: %d" />
+		<text name="bc_monthlyLimit" text="Vaše farma dosáhla maximálního počtu zakázek pro tento měsíc." />
+		
+		<!-- npc details box -->		
+		<text name="SC_widhei" text="Max šířka/délka:" />
+		<text name="SC_worktim" text="Předpokládaný čas:" />
+		<text name="SC_price" text="Cena:" />
+		<text name="SC_profpmin" text="Zisk/min:" />
+		<text name="SC_sort" text="Řazení:" />
+
+		<text name="SC_field" text="Pole %d / %s" />
+		<text name="SC_fillType" text="Typ zboží:" />
+		<text name="SC_worked" text="Obdělaná oblast:" />
+		<text name="SC_delivered" text="Doručeno:" />
+		<text name="SC_deliver" text="Třeba doručit:" />
+		<text name="SC_keep" text="Lze ponechat:" />
+		<text name="SC_profit" text="Zisk ze sklizně:" />
+		<text name="SC_profitSupply" text="Zisk:" />
+		<text name="SC_usage" text="Využití:" />
+		<text name="SC_cost" text="Náklady na materiál:" />
+		<text name="SC_togo" text="Zbývá:" />
+		<text name="SC_timeleft" text="Zvývající čas:" />
+
+		<!-- Sort button help text -->
+		<text name="SC_sortCat" text="Typ mise" />
+		<text name="SC_sortRev" text="Příjem" />
+		<text name="SC_sortNpc" text="Farmář" />
+		<text name="SC_sortProf" text="Čistý zisk" />
+		<text name="SC_sortpMin" text="Zisk za minutu" />
+
+		<!-- progress bars -->
+		<text name="bc_progField" text="Pokrok na poli" />
+		<text name="bc_progDeliver" text="Pokrok doručení" />
+
+		<!-- Settings Page -->
+		<text name="bc_rewardMultiplier" text="Odměna" />
+		<text name="bc_rewardMultiplier_tooltip" text="Upravte odměny za nabízené zakázky." />
+		<text name="bc_rewardMultiplierMow" text="Odměna za sekání a lisování" />
+		<text name="bc_rewardMultiplierMow_tooltip" text="Upravte odměny za sekání a lisování balíků podle nabízených zakázek." />
+		<text name="bc_leaseMultiplier" text="Náklady na pronájem" />
+		<text name="bc_leaseMultiplier_tooltip" text="Upravte náklady na zapůjčení vybavení pro zakázky." />
+		<text name="bc_maxActive" text="Souběžně aktivní zakázky" />
+		<text name="bc_maxActive_tooltip" text="Maximální počet současně aktivních zakázek." />
+		<text name="bc_toDeliver" text="Procenta doručení ze sklizně" />
+		<text name="bc_toDeliver_tooltip" text="Procento odhadovaného celkového výnosu, které musíte dodat, abyste dokončili smlouvu o sklizni." />
+		<text name="bc_toDeliverBale" text="Doručení pro zakázky na balíkování" />
+		<text name="bc_toDeliverBale_tooltip" text="Procento odhadovaného celkového výnosu, které musíte dodat, abyste dokončili smlouvu o sklizni." />
+		<text name="bc_fieldCompletion" text="Dokončení práce v terénu" />
+		<text name="bc_fieldCompletion_tooltip" text="Min. procento obdělané plochy, které se započítává jako dokončená práce v terénu." />
+		
+		<text name="bc_refreshMP" text="Seznam práv pro zakázky" />
+		<text name="bc_refreshMP_tooltip" text="Kdo může mazat/obnovovat smlouvy ve hře MP." />
+		<text name="bc_ferment" text="Okamžitá fermentace" />
+		<text name="bc_ferment_tooltip" text="Umožňuje hráči okamžitě fermentovat zabalený balík trávy z nabídky F1." />
+		<text name="bc_forcePlow" text="Vyorávání po kořenových plodinách" />
+		<text name="bc_forcePlow_tooltip" text="Každá sklizeň kukuřice/brambor/cukrové řepy vyžaduje následnou orbu." />
+		<text name="bc_debug" text="Vývojářský mód" />
+		<text name="bc_debug_tooltip" text="Vytiskne informační zprávy do protokolu, pokud je aktivní. Může pomoci najít chyby." />
+
+		<text name="bc_lazyNPCTitle" text="Líní farmáři" />
+
+		<text name="bc_lazyNPC" text="Aktivováno" />
+		<text name="bc_lazyNPC_tooltip" text="Pokud je aktivní, farmáři NPC častěji přeskakují práci na svých polích. Lze tedy nabídnout více zakázek." />
+		<text name="bc_npcHarvest_tooltip" text="Pokud jsou aktivní, NPC farmáři vůbec nesklízejí. Mohlo by to pro vás znamenat spoustu práce." />
+		<text name="bc_npcSow_tooltip" text="Pokud je aktivní, zemědělci NPC provádějí secí práce méně často a místo toho je nabízejí jako zakázky." />
+		<text name="bc_npcPlowCultivate" text="Orba a kultivace" />
+		<text name="bc_npcPlowCultivate_tooltip" text="Pokud je aktivní, zemědělci NPC méně často orají nebo kultivují sami." />
+		<text name="bc_npcFertilize_tooltip" text="Pokud je aktivní, NPC farmář provádí hnojení méně často a místo toho je nabízí jako zakázky." />
+		<text name="bc_npcWeed_tooltip" text="Pokud je aktivní, farmáři NPC bojují s plevelem na svých polích méně často a místo toho nabízejí postřikové a plecí zakázky." />
+
+		<text name="bc_hardModeTitle" text="Vysoká obtížnost" />
+		<text name="bc_hardMode" text="Aktivováno" />
+		<text name="bc_hardMode_tooltip" text="Pokud je aktivní, všechny aktivní smlouvy musí být dokončeny nejpozději do konce měsíce. Zrušení smlouvy bude stát pokutu. Vypůjčení smluvního vybavení se odemkne až po dokončení některých úloh." />
+		<text name="bc_hardPenalty" text="Pokuta" />
+		<text name="bc_hardPenalty_tooltip" text="Výše pokuty za zrušenou smlouvu (v % smluvní odměny)." />
+		<text name="bc_hardLease" text="Odemknout zapůjčení vybavení" />
+		<text name="bc_hardLease_tooltip" text="Počet úspěšných prací pro NPC farmáře, než vám půjčí své vybavení." />
+		<text name="bc_hardExpire" text="Uzávěrka" />
+		<text name="bc_hardExpire_tooltip" text="Na konci kterého časového období musí být dokončeny všechny aktivní zakázky." />
+		<text name="bc_hardLimit" text="Zakázky za měsíc" />
+		<text name="bc_hardLimit_tooltip" text="Maximální počet zakázek, které lze přijmout během jednoho měsíce. (-1: bez omezení, 0: žádné smlouvy)" />
+
+		<text name="bc_discountModeTitle" text="Sleva na nákup polí" />
+		<text name="bc_discountMode" text="Aktivováno" />
+		<text name="bc_discountMode_tooltip" text="Pokud je aktivní, NPC farmář poskytuje slevu na nákupy zemědělské půdy. Sleva se zvyšuje s počtem dokončených zakázek pro tohoto farmáře." />
+		<text name="bc_discPerJob" text="Sleva za dokončenou zakázku" />
+		<text name="bc_discPerJob_tooltip" text="NPC farmář zvyšuje svou slevu o tuto částku za dokončenou práci. Maximální sleva nesmí přesáhnout 50 %." />
+		<text name="bc_discMaxJobs" text="Počet zakázek se slevou" />
+		<text name="bc_discMaxJobs_tooltip" text="Může snížit maximální slevu, např. sleva na smlouvu = 11 %, počet smluv = 3 -> max. sleva = 33 %. Upozornění: Aktuální počet dokončených úloh se při nákupu zemědělské půdy sníží o tuto hodnotu." />
+
+		<text name="bc_missionGeneration" text="Generování zakázek" />
+		<text name="bc_generationInterval" text="Interval generování" />
+		<text name="bc_generationInterval_tooltip" text="Počet šestiminutových intervalů ve hře, po kterých se čeká na vygenerování nových zakázek." />
+
+		<text name="bc_genGrain" text="Sklizeň obilí" />
+		<text name="bc_genGrain_tooltip" text="Vytváření zakázek na sklizeň obilí (případně kukuřice, bavlny)." />
+		<text name="bc_genVegetable" text="Sklizeň zeleniny" />
+		<text name="bc_genVegetable_tooltip" text="Vytváření zakázek na sklizeň mrkve, červené řepy a pastináku." />
+		<text name="bc_genGreen" text="Sklizeň luskovin" />
+		<text name="bc_genGreen_tooltip" text="Vytváření zakázek o sklizni hrachu, fazolí a špenátu." />
+		<text name="bc_genRoot" text="Sklizeň kořenových plodin" />
+		<text name="bc_genRoot_tooltip" text="Vytváření zakázek na sklizeň brambor, cukrové řepy." />
+		<text name="bc_genTree" text="Zakázky na přepravu stromů" />
+		<text name="bc_genTree_tooltip" text="Vytváření zakázek na přepravu stromů" />
+		<text name="bc_genDead" text="Zakázky na suché stromy" />
+		<text name="bc_genDead_tooltip" text="Vytváření zakázek na suché stromy" />
+		<text name="bc_genRock" text="Zakázky na odstraňování kamenů" />
+		<text name="bc_genRock_tooltip" text="Vytváření zakázek na odstraňování kamenů" />
+	</texts>
+</l10n>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<GUI name="menuCustomContracts">
+  <GuiElement profile="fs25_menuContainer">
+    <GuiElement profile="fs25_menuHeaderPanel">
+      <Bitmap profile="fs25_menuHeaderIconBg">
+        <Bitmap profile="CC_MenuHeaderIcon" id="categoryHeaderIcon"/>
+      </Bitmap>
+      <Text profile="fs25_menuHeaderTitle" id="categoryHeaderText"/>
+      <RoundCorner profile="fs25_shopMoneyBoxBg" id="shopMoneyBoxBg"/>
+      <BoxLayout profile="fs25_shopMoneyBox" id="shopMoneyBox">
+        <Text profile="fs25_shopBalance" text="$l10n_cc_current_balance"/>
+        <Text profile="fs25_shopMoney" id="currentBalanceText"/>
+      </BoxLayout>
+    </GuiElement>
+    <BoxLayout profile="fs25_subCategorySelectorTabbedBox" id="subCategoryBox">
+      <Button profile="fs25_subCategorySelectorTabbedTab" id="subCategoryTabs[1]" text="$l10n_cc_header_contracts" onClick="onClickPolicies">
+        <ThreePartBitmap profile="fs25_subCategorySelectorTabbedTabBg" name="background"/>
+      </Button>
+      <Button profile="fs25_subCategorySelectorTabbedTab" id="subCategoryTabs[2]" text="$l10n_cc_header_invoices" onClick="onClickSchemes">
+        <ThreePartBitmap profile="fs25_subCategorySelectorTabbedTabBg" name="background"/>
+      </Button>
+    </BoxLayout>
+    <ThreePartBitmap profile="fs25_lineSeparatorTopHighlighted" position="0px -57px"/>
+    <MultiTextOption profile="fs25_subCategorySelectorTabbed" id="subCategoryPaging" position="0px -10px" onClick="updateSubCategoryPages"/>
+    <GuiElement profile="fs25_subCategorySelectorTabbedContainer" id="subCategoryPages[1]">
+      <GuiElement position="0px -20px">
+
+        <ThreePartBitmap profile="fs25_primaryMenuContainerBg">
+          <Bitmap profile="fs25_menuContainerArrow"/>
+          <GuiElement profile="fs25_subCategoryContainer">
+            <MultiTextOption profile="CC_FilterSwitcher" id="contractDisplaySwitcherContract" onClick="onSwitchDisplay" size="380px 32px" position="20px -40px"/>
+            <BoxLayout profile="fs25_subCategorySelectorBox">
+              <RoundCorner profile="fs25_subCategorySelectorDot"/>
+              <RoundCorner profile="fs25_subCategorySelectorDot"/>
+              <RoundCorner profile="fs25_subCategorySelectorDot"/>
+            </BoxLayout>
+            <GuiElement profile="fs25_subCategoryListContainer" id="contractsContainer">
+              <Bitmap profile="fs25_subCategoryStartClipper" name="startClipper"/>
+              <Bitmap profile="fs25_subCategoryStopClipper" name="endClipper"/>
+
+              <SmoothList id="contractsTable" profile="CC_ContractList" startClipperElementName="startClipper" endClipperElementName="endClipper">
+                <ListItem profile="fs25_subCategoryListItem">
+                  <Bitmap profile="fs25_subCategoryListItemIcon" name="farmIcon"/>
+                  <Text profile="CC_ContractListItemTitle" name="field"/>
+                  <Text profile="CC_ContractListItemReward" name="reward"/>
+                </ListItem>
+              </SmoothList>
+
+              <ThreePartBitmap profile="fs25_subCategoryListSliderBox">
+                <Slider profile="fs25_listSlider" dataElementId="contractsTable" />
+              </ThreePartBitmap>
+            </GuiElement>
+          </GuiElement>
+        </ThreePartBitmap>
+
+        <GuiElement id="noContractsContainer">
+          <Text profile="CC_HeaderLeft" text="$l10n_ui_noShopItems" position="0px -150px" width="350px" />
+          <ThreePartBitmap profile="fs25_contractsContentSeparator"/>
+        </GuiElement>
+
+        <Text id="noSelectedContractText" profile="CC_HeaderLeft" text="$l10n_cc_contract_empty" position="460px -230px" width="500px" />
+        <GuiElement id="contractsInfoContainer" width="1087px" position="460px -40px">
+
+          <Text profile="CC_ContractTagline" id="contractId" position="0px -10px"/>
+          <Text profile="CC_ContractTitle" id="contractWorkType" position="0px -30px"/>
+          <Text profile="CC_ContractOwner" id="contractFarmName" position="0px -70px"/>
+          <Text profile="CC_ContractTaglineRight" id="contractStatusLabel" position="0px -20px"/>
+          <Text profile="CC_ContractStatus" id="contractStatusValue" position="0px -60px"/>
+
+          <Text profile="CC_ContractH6" text="$l10n_cc_contract_start_date_label" position="300px -30px"/>
+          <Text profile="CC_ContractTagline" id="contractStartDateValue" position="300px -50px"/>
+
+          <Text profile="CC_ContractH6" text="$l10n_cc_contract_due_date_label" position="500px -30px"/>
+          <Text profile="CC_ContractTagline" id="contractDueDateValue" position="500px -50px"/>
+
+          <ThreePartBitmap profile="fs25_lineSeparatorTop" position="0px -120px"/>
+
+          <Text profile="CC_ContractH6" position="0px -150px" text="$l10n_cc_contract_info_title"/>
+          <Text profile="CC_ContractBody" position="0px -180px" id="contractDescriptionValue"/>
+
+
+          <Text profile="CC_ContractH6Right" position="-150px -150px" with="anchorTopRight" text="$l10n_cc_contract_notes_title"/>
+          <Text profile="CC_ContractBodyRight" position="-150px -180px" with="anchorTopRight" id="contractNotesValue"/>
+
+          <Text profile="CC_ContractBody" width="800px" position="0px -560px" text="$l10n_cc_contract_disclaimer"/>
+
+          <ThreePartBitmap profile="fs25_lineSeparatorTop" position="0px -600px"/>
+          <Text profile="CC_ContractFooter" position="0px -620px" text="$l10n_cc_contract_total_reward"/>
+          <Text profile="CC_ContractFooterRight" position="0px -620px" id="contractRewardValue"/>
+        </GuiElement>
+
+      </GuiElement>
+
+    </GuiElement>
+  </GuiElement>
+  <GuiElement profile="fs25_subCategorySelectorTabbedContainer" id="subCategoryPages[2]">
+
+    <GuiElement position="0px -20px">
+      <Text text="$l10n_cc_header_invoices" position="0px 20px"/>
+    </GuiElement>
+  </GuiElement>
+</GUI>

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<GUI name="easyDevControlsPermissions">
+    <GuiElement profile="edc_container">
+        <GuiElement profile="edc_headerPanel">
+            <Bitmap profile="edc_headerIconBg">
+                <Bitmap profile="edc_headerIcon" id="categoryHeaderIcon" imageSliceId="easyDevControls.icon_permissions"/>
+            </Bitmap>
+
+            <Text profile="edc_headerTitle" id="categoryHeaderText" text="Permissions"/>
+            <Button profile="edc_headerInfoButton" id="buttonShowInfo" onClick="onClickShowInfo"/>
+        </GuiElement>
+
+        <ScrollingLayout profile="edc_permissionsLayout" id="permissionsScrollingLayout">
+            <GuiElement profile="edc_permissionsTitleContainer" name="sectionHeader" id="permissionsCategoryTemplate">
+                <Bitmap profile="edc_permissionsIconBg">
+                    <Bitmap profile="edc_permissionsIcon" name="icon"/>
+                </Bitmap>
+                <Text profile="edc_permissionsHeader" text="Template" name="title"/>
+            </GuiElement>
+
+            <Bitmap profile="edc_permissionsMultiTextOptionContainer" id="permissionsMultiTextOptionTemplate">
+                <MultiTextOption profile="edc_permissionsMultiTextOption" onClick="onClickPermission" name="multiTextOption">
+                    <Text profile="edc_permissionsMultiTextOptionTooltip" name="toolTip" text="Template"/>
+                </MultiTextOption>
+                <Text profile="edc_permissionsMultiTextOptionTitle" name="title" text="Template"/>
+            </Bitmap>
+        </ScrollingLayout>
+
+        <Bitmap profile="edc_permissionsTooltipSeparator"/>
+
+        <ThreePartBitmap profile="edc_infoBoxBg" id="infoBox">
+            <Bitmap profile="edc_infoBoxIconBox">
+                <Bitmap profile="edc_infoBoxIcon" id="infoBoxIcon"/>
+            </Bitmap>
+            <Text profile="edc_infoBoxText" id="infoBoxText"/>
+        </ThreePartBitmap>
+    </GuiElement>
+
+    <ThreePartBitmap profile="fs25_sliderDockedBg">
+        <ThreePartBitmap profile="fs25_sliderDockedBox">
+            <Slider profile="fs25_multiplayerSliderDocked" id="permissionsSlider" dataElementId="permissionsScrollingLayout" handleFocus="false"/>
+        </ThreePartBitmap>
+    </ThreePartBitmap>
+</GUI>

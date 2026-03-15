@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<GUI name="easyDevControlsPlaceables">
+    <GuiElement profile="edc_container" debugEnabled="false">
+        <GuiElement profile="edc_headerPanel">
+            <Bitmap profile="edc_headerIconBg">
+                <Bitmap profile="edc_headerIcon" id="categoryHeaderIcon" imageSliceId="easyDevControls.icon_placeables"/>
+            </Bitmap>
+
+            <Text profile="edc_headerTitle" id="categoryHeaderText" text="$l10n_easyDevControls_placeablesHeader"/>
+            <Button profile="edc_headerInfoButton" id="buttonShowInfo" onClick="onClickShowInfo"/>
+        </GuiElement>
+
+        <BoxLayout profile="edc_boxLayout" id="boxLayout" debugEnabled="false">
+            <!-- Column 1 -->
+            <MultiTextOption profile="edc_multiTextOption" id="multiSetProductionPoint" onClick="onClickSetProductionPoint">
+                <ThreePartBitmap profile="edc_multiTextOptionBg" name="background">
+                    <ThreePartBitmap profile="edc_outlineBg"/>
+                </ThreePartBitmap>
+                <Text profile="edc_title" name="ignore" text="$l10n_easyDevControls_productionPointTitle"/>
+            </MultiTextOption>
+            <Button profile="edc_buttonNoIconClose" text="$l10n_easyDevControls_setOwnerTitle" name="productionPointOwner" id="buttonSetProductionPointOwner" onClick="onClickSetProductionPointData">
+                <ThreePartBitmap profile="edc_buttonBg"/>
+                <ThreePartBitmap profile="edc_outlineBg"/>
+            </Button>
+            <Button profile="edc_buttonNoIconClose" text="$l10n_easyDevControls_setStateTitle" name="productionPointState" id="buttonSetProductionPointState" onClick="onClickSetProductionPointData">
+                <ThreePartBitmap profile="edc_buttonBg"/>
+                <ThreePartBitmap profile="edc_outlineBg"/>
+            </Button>
+            <Button profile="edc_buttonNoIconClose" text="$l10n_easyDevControls_outputModeTitle" name="productionPointOutputMode" id="buttonSetProductionPointOutput" onClick="onClickSetProductionPointData">
+                <ThreePartBitmap profile="edc_buttonBg"/>
+                <ThreePartBitmap profile="edc_outlineBg"/>
+            </Button>
+            <Button profile="edc_buttonNoIconClose" text="$l10n_easyDevControls_fillLevelTitle" name="productionPointFillLevel" id="buttonSetProductionPointFillLevel" onClick="onClickSetProductionPointData">
+                <ThreePartBitmap profile="edc_buttonBg"/>
+                <ThreePartBitmap profile="edc_outlineBg"/>
+            </Button>
+
+            <Button profile="edc_button" id="buttonProductionPointsList" onClick="onClickProductionPointsList">
+                <ThreePartBitmap profile="edc_buttonBg"/>
+                <ThreePartBitmap profile="edc_outlineBg"/>
+                <Text profile="edc_title" name="ignore" text="$l10n_easyDevControls_productionPointListTitle"/>
+            </Button>
+
+            <Button profile="edc_button" id="buttonAutoDeliverMapping" onClick="onClickAutoDeliverMapping" margin="44px 24px 44px 275px" debugMargin="true">
+                <ThreePartBitmap profile="edc_buttonBg"/>
+                <ThreePartBitmap profile="edc_outlineBg"/>
+                <Text profile="edc_title" name="ignore" text="$l10n_easyDevControls_deliveryMappingTitle"/>
+            </Button>
+
+            <!-- Column 2 -->
+            <MultiOption profile="edc_multiTextOption" id="multiOptionTipToTriggerFillType" onClick="onClickTipToTriggerFillType">
+                <ThreePartBitmap profile="edc_multiTextOptionBg" name="background">
+                    <ThreePartBitmap profile="edc_outlineBg"/>
+                </ThreePartBitmap>
+                <Text profile="edc_title" name="ignore" text="$l10n_easyDevControls_tipToTriggerTitle"/>
+            </MultiOption>
+            <MultiTextOption profile="edc_multiTextOptionClose" id="multiTipToTriggerState" onClick="onClickTipToTriggerState">
+                <ThreePartBitmap profile="edc_multiTextOptionBg" name="background">
+                    <ThreePartBitmap profile="edc_outlineBg"/>
+                </ThreePartBitmap>
+            </MultiTextOption>
+            <EasyDevControlsTextInput profile="edc_textInputClose" id="textInputTipToTriggerAmount" placeholderVisibleOnDisable="true" placeholderDefaultText="$l10n_easyDevControls_maximum" onEnterPressed="onTipToTriggerAmountEnterPressed" onEscPressed="onTextInputEscPressed" onTextChanged="onTextInputTextChanged" enterWhenClickOutside="true">
+                <ThreePartBitmap profile="edc_outlineBg"/>
+                <ThreePartBitmap profile="edc_textInputIconBox">
+                    <Bitmap profile="edc_textInputIcon"/>
+                </ThreePartBitmap>
+            </EasyDevControlsTextInput>
+            <Button profile="edc_buttonClose" id="buttonConfirmTipToTrigger" onClick="onClickConfirmTipToTrigger" margin="44px -18px 44px 485px" debugMargin="true">
+                <ThreePartBitmap profile="edc_buttonBg"/>
+                <ThreePartBitmap profile="edc_outlineBg"/>
+            </Button>
+
+            <!-- Column 3 -->
+            <Button profile="edc_button" name="reloadPlaceable" id="buttonConfirmReloadPlaceable" onClick="onClickReloadPlaceables">
+                <ThreePartBitmap profile="edc_buttonBg"/>
+                <ThreePartBitmap profile="edc_outlineBg"/>
+                <Text profile="edc_title" name="ignore" text="Reload ..." id="buttonConfirmReloadPlaceableTitle"/>
+            </Button>
+
+            <Button profile="edc_button" name="reloadAllPlaceables" id="buttonConfirmReloadAllPlaceables" onClick="onClickReloadPlaceables">
+                <ThreePartBitmap profile="edc_buttonBg"/>
+                <ThreePartBitmap profile="edc_outlineBg"/>
+                <Text profile="edc_title" name="ignore" text="$l10n_easyDevControls_reloadAllPlaceablesTitle"/>
+            </Button>
+
+            <Button profile="edc_button" name="PLACEABLE" id="buttonConfirmRemoveAllPlaceables" onClick="onClickRemovePlaceables">
+                <ThreePartBitmap profile="edc_buttonBg"/>
+                <ThreePartBitmap profile="edc_outlineBg"/>
+                <Text profile="edc_title" name="ignore" text="$l10n_easyDevControls_removeAllPlaceablesTitle"/>
+            </Button>
+
+            <Button profile="edc_button" name="MAP_PLACEABLE" id="buttonConfirmRemoveAllMapPlaceables" onClick="onClickRemovePlaceables" margin="44px 24px 44px 355px" debugMargin="true">
+                <ThreePartBitmap profile="edc_buttonBg"/>
+                <ThreePartBitmap profile="edc_outlineBg"/>
+                <Text profile="edc_title" name="ignore" text="$l10n_easyDevControls_removeAllMapPlaceablesTitle"/>
+            </Button>
+
+            <!-- Column 4 -->
+            <BinaryOption profile="edc_binaryOption" id="binaryProductionPointsDebug" onClick="onClickProductionPointsDebug">
+                <Text profile="edc_title" name="ignore" text="$l10n_easyDevControls_productionPointDebugTitle"/>
+            </BinaryOption>
+
+            <BinaryOption profile="edc_binaryOption" id="binaryShowPlaceableTestAreas" onClick="onClickShowPlaceableTestAreas">
+                <Text profile="edc_title" name="ignore" text="$l10n_easyDevControls_showTestAreasTitle"/>
+            </BinaryOption>
+
+            <BinaryOption profile="edc_binaryOption" id="binaryShowPlacementCollisions" onClick="onClickShowPlacementCollisions">
+                <Text profile="edc_title" name="ignore" text="$l10n_easyDevControls_showPlacementCollisionsTitle"/>
+            </BinaryOption>
+        </BoxLayout>
+
+        <ThreePartBitmap profile="edc_infoBoxBg">
+            <Bitmap profile="edc_infoBoxIconBox">
+                <Bitmap profile="edc_infoBoxIcon" id="infoBoxIcon"/>
+            </Bitmap>
+            <Text profile="edc_infoBoxText" id="infoBoxText"/>
+        </ThreePartBitmap>
+    </GuiElement>
+</GUI>

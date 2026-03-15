@@ -1,0 +1,7 @@
+### PlatformId
+
+**Description**
+
+**Definition**
+
+> PlatformId()

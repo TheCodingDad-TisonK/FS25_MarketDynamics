@@ -1,0 +1,7 @@
+### GamepadCategories
+
+**Description**
+
+**Definition**
+
+> GamepadCategories()

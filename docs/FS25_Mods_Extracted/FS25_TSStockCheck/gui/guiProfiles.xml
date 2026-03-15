@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<GUIProfiles>
+    <Presets>
+        <Preset name="colorMainUI"    value="0.0227 0.5346 0.8519 1.0"/>
+        <Preset name="colorWhite" value="1 1 1 1"/>
+        <Preset name="colorGrayHeader" value="0.4 0.4 0.4 1"/>
+        <Preset name="colorListHeaderBackground" value="0 0 0 0.35" />
+    </Presets>
+
+    <Profile name="ingameMenuTSStockCheckMenuHeaderIcon" extends="baseReference" with="anchorMiddleCenter">
+        <size value="50px 50px" />
+        <imageSliceId value="gui.icon_ingameMenu_prices" />
+        <imageColor value="$preset_fs25_colorMainDark" />
+    </Profile>
+    <Profile name="ingameMenuTSStockCheckHeader" extends="baseReference">
+        <size value="155px 32px" />
+        <imageColor value="0 0 0 0" />
+        <textFocusedColor value="$preset_fs25_colorMainHighlight" />
+        <textHighlightedColor value="$preset_fs25_colorMainHighlight" />
+        <textSize value="16px" />
+        <textBold value="true" />
+        <textUpperCase value="true" />
+        <textColor value="$preset_colorWhite_50" />
+        <textAlignment value="left" />
+        <textDisabledColor value="$preset_colorDisabled" />
+    </Profile>
+    <Profile name="ingameMenuTSStockCheckHeaderBright" extends="ingameMenuTSStockCheckHeader">
+        <textColor value="$preset_colorWhite" />
+    </Profile>
+    <Profile name="ingameMenuTSStockCheckHeaderText" extends="baseReference">
+        <textOffset value="0px 0px" />
+        <textAutoWidth value="true" />
+        <textAlignment value="left" />
+        <imageColor value="0 0 0 0" />
+        <textFocusedColor value="$preset_fs25_colorMainHighlight" />
+        <textHighlightedColor value="$preset_fs25_colorMainHighlight" />
+        <textSize value="16px" />
+        <textBold value="true" />
+        <textUpperCase value="true" />
+        <textColor value="$preset_colorWhite_50" />
+        <textDisabledColor value="$preset_colorDisabled" />
+    </Profile>
+    <Profile name="ingameMenuTSStockCheckHeaderRight" extends="baseReference">
+        <size value="155px 32px" />
+        <imageColor value="0 0 0 0" />
+        <textFocusedColor value="$preset_fs25_colorMainHighlight" />
+        <textHighlightedColor value="$preset_fs25_colorMainHighlight" />
+        <textSize value="16px" />
+        <textBold value="true" />
+        <textUpperCase value="true" />
+        <textColor value="$preset_colorWhite_50" />
+        <textAlignment value="right" />
+        <textDisabledColor value="$preset_colorDisabled" />
+    </Profile>
+    <Profile name="ingameMenuTSStockCheckHeaderRightBright" extends="ingameMenuTSStockCheckHeaderRight">
+        <textColor value="$preset_colorWhite" />
+    </Profile>
+
+    <Profile name="ingameMenuTSStockCheckHeaderIcon" extends="emptyPanel">
+        <size value="32px 32px" />
+    </Profile>
+
+    <Profile name="ingameMenuTSStockCheckList" extends="emptyPanel" with="anchorStretchingYLeft pivotTopLeft">
+        <position value="0px -40px" />
+        <absoluteSizeOffset value="0px 80px" />
+    </Profile>
+    <Profile name="ingameMenuTSStockCheckListItem" extends="baseReference" with="anchorTopStretchingX alternating">
+        <height value="32px"/>
+        <imageColor value="$preset_fs25_colorGrey" />
+        <imageSelectedColor value="$preset_fs25_colorMainHighlight" />
+        <alternateBackgroundColor value="$preset_fs25_colorGreyDark_50" />
+    </Profile> 
+    <Profile name="ingameMenuTSStockCheckRowCellImage" extends="baseReference" with="anchorMiddleLeft">
+        <size value="24px 24px" />
+        <position value="8px 0" />
+        <imageSliceId value="noSlice" />
+    </Profile>
+    <Profile name="ingameMenuTSStockCheckRowCellLeft" extends="baseReference" with="anchorStretchingYLeft">
+        <size value="155px 32px" />
+        <textBold value="false" />
+        <textSize value="15px" />
+        <textAlignment value="left" />
+        <textColor value="$preset_fs25_colorMainLight" />
+        <textSelectedColor value="$preset_fs25_colorMainDark" />
+        <textDisabledColor value="$preset_colorDisabled" />
+    </Profile>
+    <Profile name="ingameMenuTSStockCheckRowCellLeftBright" extends="baseReference" with="anchorStretchingYLeft">
+        <size value="155px 32px" />
+        <textBold value="true" />
+        <textSize value="15px" />
+        <textAlignment value="left" />
+        <textColor value="$preset_fs25_colorMainLight" />
+        <textSelectedColor value="$preset_fs25_colorMainDark" />
+        <textDisabledColor value="$preset_colorDisabled" />
+    </Profile>
+    <Profile name="ingameMenuTSStockCheckRowCellRight" extends="ingameMenuTSStockCheckRowCellLeft">
+        <textAlignment value="right" />
+    </Profile>
+    <Profile name="ingameMenuTSStockCheckRowCellPrice" extends="ingameMenuTSStockCheckRowCellRight" >
+        <size value="100px 32px" />
+    </Profile>
+    <Profile name="ingameMenuTSStockCheckRowCellSellAt" extends="ingameMenuTSStockCheckRowCellLeft">
+        <size value="255px 32px" />
+        <textAutoWidth value="true" />
+        <textMaxWidth value="255px" />
+        <textLayoutMode value="scrolling" />
+    </Profile>
+    <Profile name="ingameMenuTSStockCheckRowCellLocationSellAt" extends="ingameMenuTSStockCheckRowCellLeftBright">
+        <size value="300px 32px" />
+        <textAutoWidth value="true" />
+        <textMaxWidth value="300px" />
+        <textLayoutMode value="scrolling" />
+    </Profile>
+    <Profile name="ingameMenuTSStockCheckRowCellArrow" extends="baseReference" with="anchorMiddleLeft">
+        <size value="18px 18px" />
+        <imageSliceId value="gui.priceTrend" />
+        <imageColor value="$preset_colorTransparent" />
+    </Profile>
+    <Profile name="ingameMenuTSStockCheckRowCellArrowClimbing" extends="ingameMenuTSStockCheckRowCellArrow">
+        <imageColor value="$preset_colorGreen" />
+        <imageRotation value="0" />
+    </Profile>
+    <Profile name="ingameMenuTSStockCheckRowCellArrowFalling" extends="ingameMenuTSStockCheckRowCellArrow">
+        <imageColor value="$preset_colorRed" />
+        <imageInvertY value="true" />
+    </Profile>
+    <Profile name="ingameMenuTSStockCheckRowCellArrowGreatDemand" extends="ingameMenuTSStockCheckRowCellArrow">
+        <imageColor value="$preset_colorBlue" />
+        <imageSelectedColor value="$preset_colorWhite" />
+        <imageRotation value="90" />
+    </Profile>
+    <Profile name="ingameMenuTSStockListSliderBox" extends="fs25_listSliderBox" with="anchorTopRight">
+        <position value="28px -40px" />
+    </Profile>
+    <Profile name="ingameMenuTSStockListSliderBox1" extends="fs25_listSliderBox" with="anchorTopStretchingX pivotTopRight">
+        <position value="28px -40px" />
+        <absoluteSizeOffset value="0px 80px" />
+    </Profile>
+    <Profile name="ingameMenuTSStockAllSellPointListSliderBox" extends="ingameMenuTSStockListSliderBox" with="anchorTopRight">
+        <position value="-15px -100px" />
+        <size value="6px 600px"/>
+    </Profile>
+    <Profile name="ingameMenuTSStockLocationListSliderBox" extends="ingameMenuTSStockListSliderBox" with="anchorTopRight">
+        <position value="-15px -100px" />
+        <size value="6px 600px"/>
+    </Profile>
+
+    <Profile name="ingameMenuTSStockCheckFooterBox" extends="fs25_statisticsHeaderBox" with="anchorTopStretchingX">
+        <position value="0px -800px"/>
+    </Profile>
+    <Profile name="ingameMenuTSStockCheckFooterBox1" extends="baseReference" with="anchorBottomStretchingX">
+        <size value="100% 50px"/>
+    </Profile>
+
+
+    <Profile name="ingameMenuTSStockLocationCheckRowCell" extends="ingameMenuTSStockCheckRowCellLeft">
+        <size value="400px 32px"/>
+        <textVerticalAlignment value="top"/>
+    </Profile>
+    <Profile name="ingameMenuTSStockLocationCheckRowCell1" extends="ingameMenuTSStockCheckRowCellLeft">
+        <size value="400px 32px"/>
+        <textVerticalAlignment value="middle"/>
+    </Profile>
+    <Profile name="ingameMenuTSStockLocationCheckRowCellExtra" extends="ingameMenuTSStockCheckRowCellLeft">
+        <textSize value="13px"/>
+        <size value="400px 32px"/>
+        <textAlignment value="left"/>
+        <textVerticalAlignment value="bottom"/>
+    </Profile>
+
+
+
+
+
+
+
+    <Profile name="ingameMenuTSStockCheckRowCell" extends="baseReference">
+        <textSize value="18px"/>
+        <textBold value="false"/>
+        <textUpperCase value="false"/>
+        <textColor value="$preset_colorWhite"/>
+        <textAlignment value="left"/>
+        <textVerticalAlignment value="middle"/>
+    </Profile>
+
+    <Profile name="ingameMenuTSStockCheckTotalRight" extends="baseReference">
+        <textSize value="18px"/>
+        <textBold value="true"/>
+        <textUpperCase value="false"/>
+        <textColor value="$preset_colorWhite"/>
+        <textAlignment value="right"/>
+        <textVerticalAlignment value="middle"/>
+    </Profile>
+    <Profile name="ingameMenuTSStockLocationCheckRowCellRight" extends="baseReference">
+        <textSize value="18px"/>
+        <textBold value="false"/>
+        <textUpperCase value="false"/>
+        <textColor value="$preset_colorWhite"/>
+        <textAlignment value="right"/>
+        <textVerticalAlignment value="middle"/>
+    </Profile>
+    <Profile name="ingameMenuTSStockCheckHeaderCell" extends="ingameMenuFrameHeaderText" with="anchorMiddleLeft">
+        <textSize value="20px"/>
+        <textBold value="false"/>
+        <textUpperCase value="false"/>
+        <textColor value="$preset_colorWhite"/>
+        <textAlignment value="left"/>
+        <textVerticalAlignment value="middle"/>
+    </Profile>
+    <Profile name="ingameMenuTSStockCheckHeaderCellSort"  extends="emptyPanel" with="anchorMiddleLeft">
+        <textSize value="16px"/>
+        <textBold value="true"/>
+        <textUpperCase value="true"/>
+        <textColor value="$preset_colorWhite_50"/>
+        <textAlignment value="left"/>
+    </Profile>
+    
+    <Profile name="ingameMenuTSStockCheckHeaderCellRight" extends="ingameMenuFrameHeaderText" with="anchorMiddleLeft">
+        <textSize value="16px"/>
+        <textBold value="true"/>
+        <textUpperCase value="true"/>
+        <textColor value="$preset_colorWhite_50"/>
+        <textAlignment value="right"/>
+    </Profile>
+    <Profile name="ingameMenuTSStockCheckHeaderCellRightSort" extends="wideButton" with="anchorMiddleLeft">
+        <textSize value="16px"/>
+        <textBold value="true"/>
+        <textUpperCase value="true"/>
+        <textColor value="$preset_colorWhite_50"/>
+        <textAlignment value="right"/>
+        <!-- <Value name="allowSortingAsc" value="true"/>
+        <Value name="allowSortingDesc" value="true"/>
+        <Value name="iconSize" value="0"/> -->
+        <size value="1400px 104px"/>
+        <alignmentX value="left"/>
+        <alignmentY value="bottom"/>
+    </Profile>
+    <Profile name="ingameMenuTSStockCheckRowBackground" extends="emptyPanel" with="anchorBottomLeft"> 
+    
+    </Profile>
+    <Profile name="ingameMenuTSStockCheckHeaderBox" extends="emptyPanel" with="anchorTopLeft">
+        <size value="1400px 50px"/>
+        <alignmentX value="left"/>
+        <alignmentY value="middle"/>
+        <imageColor value="$preset_colorListHeaderBackground"/>
+        <flowDirection value="horizontal"/>
+        <wrapAround value="true"/>
+        <lateralFlowSize value="200px"/>
+        <fitToElements value="false"/>
+        <autoValidateLayout value="true"/>
+        <hasFrame value="false"/>    
+    </Profile>
+    <Profile name="ingameMenuTSStockCheckLocationHeaderBox" extends="ingameMenuTSStockCheckHeaderBox">
+        <size value="555px 50px"/>  
+        <position value="20px -50px"/>  
+    </Profile>
+    <Profile name="ingameMenuTSStockCheckLocationList" extends="ingameMenuTSStockCheckList">
+        <size value="555px 600px"/>  
+        <position value="20px -100px"/>  
+    </Profile>
+    <Profile name="ingameMenuTSStockCheckLocationListItem" extends="ingameMenuTSStockCheckListItem">
+        <height value="40px"/>
+    </Profile> 
+    
+    <Profile name="ingameMenuTSStockCheckAllSellPointHeaderBox" extends="ingameMenuTSStockCheckHeaderBox">
+        <size value="705px 50px"/>  
+        <position value="20px -50px"/>  
+    </Profile>
+    <Profile name="ingameMenuTSStockCheckAllSellPointList" extends="ingameMenuTSStockCheckList">
+        <size value="705px 600px"/>  
+        <position value="20px -100px"/>  
+    </Profile>
+    <Profile name="ingameMenuTSStockCheckAllSellPointListItem" extends="ingameMenuTSStockCheckListItem">
+        <height value="32px"/>
+    </Profile> 
+
+
+    <Profile name="verticalListSliderRightDockedSeed" extends="verticalListSliderRightDocked" with="anchorTopCenter">
+        <size value="12px 756px" />
+        <position value="240px -150px" />
+    </Profile>
+    <Profile name="locationFrame" extends="fs25_dialogBg">
+        <size value="630px 800px"/>
+    </Profile>
+    <Profile name="allSellPointFrame" extends="fs25_dialogBg">
+        <size value="780px 800px"/>
+    </Profile>
+    <Profile name="ingameMenuTSStockCheckHeaderSortAscending" extends="baseReference" with="anchorMiddleLeft">
+        <position value="48px 0px"/>
+        <imageColor value="$preset_colorWhite"/>
+        <imageUVs value="678px 390px 36px 36px"/>
+        <visible value="false"/>
+        <imageRotation value="-180"/>
+        <size value="12px 12px"/>
+        <imageSize value="18px 18px"/>
+    </Profile>
+    <Profile name="ingameMenuTSStockCheckHeaderSortDescending" extends="ingameMenuTSStockCheckHeaderSortAscending">
+        <position value="48px 0px"/>
+        <imageRotation value="0"/>
+    </Profile>
+
+</GUIProfiles>

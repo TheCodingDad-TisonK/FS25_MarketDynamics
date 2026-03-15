@@ -1,0 +1,11 @@
+{
+  "label": "GUI",
+  "link": {
+    "type": "generated-index",
+    "title": "GUI Documentation",
+    "description": "91 pages, 1195 functions"
+  },
+  "customProps": {
+    "icon": "desktop"
+  }
+}

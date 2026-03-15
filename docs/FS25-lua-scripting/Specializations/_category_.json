@@ -1,0 +1,11 @@
+{
+  "label": "Specializations",
+  "link": {
+    "type": "generated-index",
+    "title": "Specializations Documentation",
+    "description": "219 pages, 5545 functions"
+  },
+  "customProps": {
+    "icon": "star"
+  }
+}

@@ -1,0 +1,25 @@
+### shallowWaterSimulationPaintCustomObstacle
+
+**Description**
+
+> Paints a custom solid obstacle in the shape of a rotated rectangle into the simulation. You have to set the number of
+> active obstacles with shallowWaterSimulationSetNumCustomObstacles first.
+
+**Definition**
+
+> shallowWaterSimulationPaintCustomObstacle(entityId shallowWaterSimulation, integer obstacleIndex, float x, float z,
+> float width, float height, float angle, float velocityX, float velocityY, float yPosition)
+
+**Arguments**
+
+| entityId | shallowWaterSimulation | id of the shallow water simulation                                                                                                                                                                                                                                                                                                                                          |
+|----------|------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| integer  | obstacleIndex          | index of the obstacle, starting at 0                                                                                                                                                                                                                                                                                                                                        |
+| float    | x                      | x position of the rectangle center (world coordinates)                                                                                                                                                                                                                                                                                                                      |
+| float    | z                      | z position of the rectangle center (world coordinates)                                                                                                                                                                                                                                                                                                                      |
+| float    | width                  | width (x scale) of the rectangle (world size)                                                                                                                                                                                                                                                                                                                               |
+| float    | height                 | height (z scale) of the rectangle (world size)                                                                                                                                                                                                                                                                                                                              |
+| float    | angle                  | rotation angle of the rectangle (counter clock wise, in radians).                                                                                                                                                                                                                                                                                                           |
+| float    | velocityX              | x velocity component of the obstacle (0 for a static, non-moving obstacle)                                                                                                                                                                                                                                                                                                  |
+| float    | velocityY              | z velocity component of the obstacle (0 for a static, non-moving obstacle)                                                                                                                                                                                                                                                                                                  |
+| float    | yPosition              | y position of the obstacle in world coords (where the obstacle begins, not necessarily the center of whatever object you use to represent the obstacle. in the simulation the obstacle is two dimensional). makes it so the obstacle only applies when it touches below the water surface. so for a wavey surface, waves can flow under the obstacle if they go low enough. |

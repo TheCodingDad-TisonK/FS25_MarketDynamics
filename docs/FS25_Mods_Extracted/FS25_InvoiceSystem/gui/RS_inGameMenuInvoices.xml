@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<GUI name="InGameMenuInvoices">
+	<GuiElement profile="fs25_menuContainer">
+		<GuiElement profile="fs25_menuHeaderPanel">
+			<Text profile="RS_headerText" text="$l10n_rs_ui_invoicesTitle"/>
+			<RoundCorner profile="RS_modeBoxBg"/>
+			<BoxLayout profile="RS_modeBox">
+				<Text profile="fs25_shopBalance" text="$l10n_rs_ui_openInvoicesHeader" id="modeText"/>
+			</BoxLayout>
+		</GuiElement>
+
+
+		<GuiElement profile="fs25_statisticsHeaderBox">
+			<Text profile="RS_rowCell" position="0px 0px" size="180px 20px" text="$l10n_rs_ui_date" name="colDate" />
+			<Text profile="RS_rowCell" position="180px 0px" size="300px 20px" text="$l10n_rs_ui_invoiceParty" name="colText" />
+			<Text profile="RS_rowCell" position="480px 0px" size="320px 20px" text="$l10n_rs_ui_invoiceWhatFor" name="colWhat" />
+			<Text profile="RS_rowCell" position="800px 0px" size="150px 20px" text="$l10n_rs_ui_amountNet" name="colNet" />
+			<Text profile="RS_rowCell" position="950px 0px" size="130px 20px" text="$l10n_rs_ui_vat" name="colVat" />
+			<Text profile="RS_rowCell" position="1080px 0px" size="130px 20px" text="$l10n_rs_ui_interest" name="colInterest" />
+			<Text profile="RS_rowCell" position="1210px 0px" size="156px 20px" text="$l10n_rs_ui_amountGross" name="colGross" />
+			<ThreePartBitmap profile="fs25_lineSeparatorBottom" position="0px -2dp" />
+		</GuiElement>
+		
+		<GuiElement profile="RS_invoiceListContainer">
+			<SmoothList profile="RS_list" id="invoiceTable" listSectionHeader="section" onSelectionChanged="onListSelectionChanged">
+				<ListItem profile="RS_listItem" name="row" >
+					<Text profile="RS_rowCell" position="0px 0px" size="180px 20px" name="colDate" />
+					<Text profile="RS_rowCell" position="180px 0px" size="300px 20px" name="colText" />
+					<Text profile="RS_rowCell" position="480px 0px" size="320px 20px" name="colWhat" />
+					<Text profile="RS_rowCell" position="800px 0px" size="150px 20px" name="colNet" />
+					<Text profile="RS_rowCell" position="950px 0px" size="130px 20px" name="colVat" />
+					<Text profile="RS_rowCell" position="1080px 0px" size="130px 20px" name="colInterest" />
+					<Text profile="RS_rowCell" position="1210px 0px" size="156px 20px" name="colGross" />
+				</ListItem>
+				<ListItem profile="fs25_subCategoryListSectionHeader" name="section">
+					<Text profile="fs25_subCategoryListSectionHeaderTitle" name="title" />
+				</ListItem>
+			</SmoothList>
+			<ThreePartBitmap profile="RS_ingameMenuSlider">
+				<Slider profile="fs25_listSlider" dataElementId="invoiceTable"/>
+			</ThreePartBitmap>
+		</GuiElement>
+	</GuiElement>
+	
+	<GUIProfiles>
+		<Profile name="RS_headerText" extends="fs25_textDefault">
+			<size value="600px 64px" />
+			<position value="0px 0px" />
+			<textSize value="31px"/>
+			<textBold value="false"/>
+			<textUpperCase value="true"/>
+			<textDisabledColor value="$preset_colorDisabled"/>
+		</Profile>
+		
+		<Profile name="RS_modeBoxBg" extends="fs25_shopMoneyBoxBg">
+			<size value="520px 64px" />
+		</Profile>
+
+		<Profile name="RS_modeBox" extends="fs25_shopMoneyBox">
+			<size value="470px 64px" />
+		</Profile>
+
+		<!-- Invoice list area: use a fixed height so it stops earlier above the bottom of the page -->
+		<Profile name="RS_invoiceListContainer" extends="emptyPanel" with="anchorTopLeft pivotTopLeft">
+			<position value="0px -40px" />
+			<size value="1366px 650px" />
+		</Profile>
+
+		<Profile name="RS_list" extends="emptyPanel" with="anchorTopLeft pivotTopLeft">
+			<position value="0px 0px" />
+			<size value="1360px 100%" />
+		</Profile>
+
+		<Profile name="RS_listItem" extends="baseReference" with="anchorTopStretchingX alternating">
+			<height value="32px"/>
+			<imageColor value="$preset_fs25_colorGrey" />
+			<imageSelectedColor value="$preset_fs25_colorMainHighlight" />
+			<alternateBackgroundColor value="$preset_fs25_colorGreyDark_50" />
+		</Profile>
+
+		<Profile name="RS_ingameMenuSlider" extends="fs25_listSliderBox" with="anchorTopLeft">
+			<position value="1360px 0px" />
+			<size value="6px 100%"/>
+		</Profile>
+
+		<Profile name="RS_rowCell" extends="fs25_textDarkHighlight" with="anchorStretchingYLeft">
+			<textSize value="16px" />
+			<textBold value="true" />
+			<textUpperCase value="false" />
+			<textAlignment value="center" />
+		</Profile>
+	</GUIProfiles>
+</GUI>

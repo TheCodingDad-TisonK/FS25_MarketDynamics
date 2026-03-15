@@ -1,0 +1,11 @@
+{
+  "label": "Hud",
+  "link": {
+    "type": "generated-index",
+    "title": "Hud Documentation",
+    "description": "6 pages, 25 functions"
+  },
+  "customProps": {
+    "icon": "mobile-alt"
+  }
+}

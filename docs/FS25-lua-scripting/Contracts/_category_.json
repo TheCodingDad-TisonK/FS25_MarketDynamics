@@ -1,0 +1,11 @@
+{
+  "label": "Contracts",
+  "link": {
+    "type": "generated-index",
+    "title": "Contracts Documentation",
+    "description": "2 pages, 10 functions"
+  },
+  "customProps": {
+    "icon": "file-contract"
+  }
+}

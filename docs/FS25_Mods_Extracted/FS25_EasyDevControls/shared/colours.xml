@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<colours>
+    <annotation>Copyright (C) GtX | Andy, 2019</annotation>
+
+    <!-- FI Colours -->
+    <colour title="Farming Innovations %s" params="$l10n_ui_colorGreen" name="FARMING_INNOVATIONS_GREEN" value="0.0000 0.2051 0.0685"/>
+    <colour title="Farming Innovations %s" params="$l10n_ui_colorOrange" name="FARMING_INNOVATIONS_ORANGE" value="1.0000 0.1413 0.0000"/>
+
+    <!-- Standard Bale Colours -->
+    <colour title="$l10n_ui_colorWhite" name="SHARED_WRAP_WHITE" value="0.85 0.85 0.85"/>
+    <colour title="$l10n_ui_colorBlack" name="SHARED_WRAP_BLACK" value="0.05 0.05 0.05"/>
+    <colour title="$l10n_ui_colorPink" name="SHARED_WRAP_PINK" value="0.6662 0.3839 0.5481"/>
+    <colour title="$l10n_ui_colorGreen" name="SHARED_WRAP_GREEN" value="0.391 0.521 0.366"/>
+    <colour title="$l10n_ui_colorBlue" name="SHARED_WRAP_BLUE" value="0.1845 0.5520 0.5972"/>
+
+    <!-- Extended Bale Wrap Colours -->
+    <colour title="$l10n_ui_colorSilver" name="SHARED_SILVER" value="0.5271 0.5271 0.5271"/>
+    <colour title="$l10n_ui_colorGreyLight" name="SHARED_GREYLIGHT" value="0.2940 0.2940 0.2940"/>
+    <colour title="$l10n_ui_colorGrey" name="SHARED_GREY" value="0.1290 0.1290 0.1290"/>
+    <colour title="$l10n_ui_colorGreyDark" name="SHARED_GREYDARK" value="0.0690 0.0690 0.0690"/>
+    <colour title="$l10n_ui_colorBlackOnyx" name="SHARED_BLACKONYX" value="0.0278 0.0254 0.0231"/>
+    <colour title="$l10n_ui_colorBlackJet" name="SHARED_BLACKJET" value="0.01 0.01 0.01"/>
+    <colour title="John Deere %s" params="$l10n_ui_colorYellow" name="JOHNDEERE_YELLOW1" value="1.0000 0.7231 0.0000"/>
+    <colour title="JCB %s" params="$l10n_ui_colorYellow" name="JCB_YELLOW1" value="0.9658 0.4368 0.0143"/>
+    <colour title="Challenger %s" params="$l10n_ui_colorYellow" name="CHALLENGER_YELLOW1" value="0.9386 0.4678 0.0123"/>
+    <colour title="Schouten %s" params="$l10n_ui_colorOrange" name="SCHOUTEN_ORANGE1" value="0.909 0.099 0.012"/>
+    <colour title="Holaras %s" params="$l10n_ui_colorOrange" name="HOLARAS_ORANGE" value="0.7372 0.1963 0.0004"/>
+    <colour title="Fendt %s" params="$l10n_ui_colorRed" name="FENDT_RED1" value="0.5200 0.0420 0.0270"/>
+    <colour title="Case IH %s" params="$l10n_ui_colorRed" name="CASEIH_RED1" value="0.3760 0.0180 0.0190"/>
+    <colour title="Massey Ferguson %s" params="$l10n_ui_colorRed" name="MASSEYFERGUSON_RED" value="0.7835 0.0034 0.0030"/>
+    <colour title="Hardi %s" params="$l10n_ui_colorRed" name="HARDI_RED" value="0.3663 0.0395 0.0395"/>
+    <colour title="$l10n_ui_colorAzul" name="NEWHOLLAND_BLUE2" value="0.3158 0.4259 0.7227"/>
+    <colour title="Rabe %s" params="$l10n_ui_colorBlue" name="RABE_BLUE1" value="0.0844 0.2384 0.6172"/>
+    <colour title="Lemken %s" params="$l10n_ui_colorBlue" name="LEMKEN_BLUE1" value="0.0000 0.2348 0.7969"/>
+    <colour title="New Holland %s" params="$l10n_ui_colorBlue" name="NEWHOLLAND_BLUE1" value="0.0000 0.1166 0.4098"/>
+    <colour title="Boeckmann %s" params="$l10n_ui_colorBlue" name="BOECKMANN_BLUE1" value="0.0212 0.0612 0.1170"/>
+    <colour title="Goldhofer %s" params="$l10n_ui_colorBlue" name="GOLDHOFER_BLUE" value="0.0000 0.0446 0.1870"/>
+    <colour title="$l10n_ui_colorBlueNavy" name="SHARED_BLUENAVY" value="0.004 0.003 0.031"/>
+    <colour title="%s 1" params="$l10n_ui_colorPurple" name="LIZARD_PURPLE1" value="0.0908 0.0040 0.1301"/>
+    <colour title="%s 2" params="$l10n_ui_colorPurple" name="CUSTOM_PURPLE1" value="0.5149 0.2918 0.7758"/>
+    <colour title="%s 3" params="$l10n_ui_colorPurple" name="CUSTOM_PURPLE2" value="0.3231 0.0252 0.3515"/>
+    <colour title="Valtra %s" params="$l10n_ui_colorGreen" name="VALTRA_GREEN2" value="0.4709 0.7817 0.0783"/>
+    <colour title="Deutz Fahr %s" params="$l10n_ui_colorGreen" name="DEUTZ_GREEN4" value="0.1701 0.5295 0.0546"/>
+    <colour title="John Deere %s" params="$l10n_ui_colorGreen" name="JOHNDEERE_GREEN1" value="0.0395 0.2015 0.0242"/>
+    <colour title="Fendt %s 1" params="$l10n_ui_colorGreen" name="FENDT_NEWGREEN1" value="0.0519 0.1922 0.0196"/>
+    <colour title="Fendt %s 2" params="$l10n_ui_colorGreen" name="FENDT_OLDGREEN1" value="0.0781 0.2233 0.0478"/>
+    <colour title="Kotte %s" params="$l10n_ui_colorGreen" name="KOTTE_GREEN2" value="0.0096 0.0564 0.0284"/>
+    <colour title="Claas %s" params="$l10n_ui_colorGreen" name="CLAAS_GREEN1" value="0.2384 0.3186 0.0116"/>
+    <colour title="Claas %s" params="$l10n_ui_colorRed" name="CLAAS_RED1" value="0.5310 0.0357 0.0112"/>
+    <colour title="$l10n_ui_colorGreenOlive" name="LIZARD_OLIVE1" value="0.0529 0.0865 0.0242"/>
+    <colour title="$l10n_ui_colorBeige" name="LIZARD_ECRU1" value="0.9473 0.8228 0.5089"/>
+    <colour title="%s 1" params="$l10n_ui_colorBrown" name="CUSTOM_BEIGE" value="0.3813 0.1981 0.1046"/>
+    <colour title="%s 2" params="$l10n_ui_colorBrown" name="SHARED_BROWN" value="0.168 0.068 0.030"/>
+    <colour title="$l10n_ui_colorRedCrimson" name="SHARED_REDCRIMSON" value="0.105 0.009 0.006"/>
+    <colour title="%s 1" params="$l10n_ui_colorPink" name="LIZARD_PINK1" value="0.8879 0.0545 0.3005"/>
+    <colour title="%s 2" params="$l10n_ui_colorPink" name="GOLDHOFER_PINK1" value="1.0000 0.2195 0.6524"/>
+    <colour title="%s 3" params="$l10n_ui_colorPink" name="HOLMER_PINK" value="0.5924 0.1871 0.3723"/>
+</colours>

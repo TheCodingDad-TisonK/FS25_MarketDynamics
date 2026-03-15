@@ -1,0 +1,11 @@
+{
+  "label": "XML",
+  "link": {
+    "type": "generated-index",
+    "title": "XML Documentation",
+    "description": "25 pages"
+  },
+  "customProps": {
+    "icon": "file-code"
+  }
+}

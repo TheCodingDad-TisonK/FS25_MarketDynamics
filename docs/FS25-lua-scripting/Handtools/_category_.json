@@ -1,0 +1,11 @@
+{
+  "label": "Handtools",
+  "link": {
+    "type": "generated-index",
+    "title": "Handtools Documentation",
+    "description": "16 pages, 301 functions"
+  },
+  "customProps": {
+    "icon": "hammer"
+  }
+}

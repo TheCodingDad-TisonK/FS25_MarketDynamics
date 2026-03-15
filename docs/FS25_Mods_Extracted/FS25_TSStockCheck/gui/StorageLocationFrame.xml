@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<GUI onOpen="onOpen" onClose="onClose" onCreate="onCreate">
+    <GuiElement profile="newLayer" />
+    <Bitmap profile="dialogFullscreenBg" id="dialogBg" />
+    <GuiElement profile="locationFrame" id="dialogElement">        
+        <ThreePartBitmap profile="fs25_dialogBgMiddle" />
+        <ThreePartBitmap profile="fs25_dialogBgTop" />
+        <ThreePartBitmap profile="fs25_dialogBgBottom" />
+        <GuiElement profile="fs25_dialogContentContainer">
+            <Animation profile="fs25_dialogLoading" id="iconLoadingElement" />
+            <Text profile="dialogTitle" text="" id="dialogTitleElement" position="0px -30px" />
+            <Bitmap profile="ingameMenuTSStockCheckLocationHeaderBox" id="tableHeaderBox">
+                <Text profile="ingameMenuTSStockCheckHeader" position="0px 2px" size="400px 32px" text="$l10n_category_storages"/>
+                <Text profile="ingameMenuTSStockCheckHeaderRight" position="400px 2px" size="155px 32px" text="$l10n_ui_header_storage"/>
+                <ThreePartBitmap profile="fs25_lineSeparatorBottom" position="0px 2px" />
+            </Bitmap>
+            <SmoothList profile="ingameMenuTSStockCheckLocationList" id="TSStockCheckLocationTable" focusInit="onOpen">
+                <ListItem profile="ingameMenuTSStockCheckLocationListItem" name="TSStockCheckLocationRowTemplate" >
+                    <Text profile="ingameMenuTSStockLocationCheckRowCell" name="location" />
+                    <Text profile="ingameMenuTSStockCheckRowCellRight" position="400px 0px" name="storage" />
+                    <Text profile="ingameMenuTSStockLocationCheckRowCellExtra" position="0px 5px" name="extratext" />
+                </ListItem>
+            </SmoothList>
+            <ThreePartBitmap profile="ingameMenuTSStockLocationListSliderBox">
+                <Slider profile="fs25_listSlider" dataElementId="TSStockCheckLocationTable" />
+            </ThreePartBitmap>  
+        </GuiElement>
+        <BoxLayout profile="fs25_dialogButtonBox">
+            <Button profile="buttonOK" id="dialogButtonTag" text="$l10n_action_tag" onClick="onTagLocation" />
+            <Button profile="buttonBack" text="$l10n_ui_locationFrame_btnClose" onClick="onClickBack" />
+        </BoxLayout>
+    </GuiElement>
+</GUI>

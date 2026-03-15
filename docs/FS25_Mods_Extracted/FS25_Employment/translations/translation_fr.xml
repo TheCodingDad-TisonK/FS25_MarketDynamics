@@ -1,0 +1,161 @@
+<l10n>
+    <texts>
+
+		<text name="employment_ui_apply" text="Appliquer"/>
+		<text name="employment_ui_workPartTime" text="Travail (temps partiel)"/>
+		<text name="employment_ui_quit" text="Démissionner"/>
+		
+        <text name="input_Employment" text="L'emploi"/>
+        <text name="input_Education" text="L'éducation"/>
+        <text name="employment_ui_salaryTitle" text="Salaire:"/>
+        <text name="employment_ui_expectedPayTitle" text="Rémunération prévue:"/>
+        <text name="employment_ui_educationTitle" text="Éducation:"/>
+        <text name="employment_ui_hoursTitle" text="Heures mensuelles:"/>
+        <text name="employment_ui_workedHoursTitle" text="Heures travaillées:"/>
+        <text name="employment_ui_experienceTitle" text="Expérience:"/>
+        <text name="employment_ui_satisfactionTitle" text="Satisfaction des employeurs:"/>
+        <text name="employment_ui_jobTitle" text="Titre:"/>
+        <text name="employment_ui_tolerance" text="Générosité:"/>
+        <text name="employment_ui_prosperity" text="Prospérité:"/>
+        <text name="employment_ui_firedTitle" text="Viré:"/>
+        <text name="employment_ui_years" text="années"/>
+        <text name="employment_ui_year" text="année"/>
+        <text name="employment_ui_hours" text="heures"/>
+        <text name="employment_ui_hour" text="heure"/>
+        <text name="employment_ui_yes" text="Oui"/>
+        <text name="employment_ui_no" text="Non"/>
+        <text name="employment_ui_employmentIncome" text="Revenu de l'emploi"/>
+        <text name="finance_employmentIncome" text="Revenu de l'emploi"/>
+        <text name="employment_ui_work" text="Travail"/>
+        <text name="employment_ui_study" text="Étude"/>
+        <text name="employment_ui_test" text="Passer un examen"/>
+        <text name="employment_ui_chooseHours" text="Choisir les heures"/>
+        <text name="employment_ui_availableJobs" text="Emplois disponibles"/>
+        <text name="employment_ui_currentJob" text="Emploi actuel"/>
+        <text name="employment_ui_notEmployedHere" text="N'est pas employé ici"/>
+        <text name="employment_ui_confirmApply" text="Êtes-vous sûr de vouloir postuler pour le poste de %s?" tag="format"/>
+        <text name="employment_ui_confirmQuit" text="Êtes-vous sûr de vouloir quitter votre emploi ?"/>
+        <text name="employment_ui_confirm" text="Confirmer"/>
+		<text name="employment_ui_fired" text="Vous avez été licencié de votre poste de %s chez le %s" tag="format"/>
+        <text name="employment_ui_raise" text="Votre employeur vous a accordé une augmentation de %.2f%%" tag="format"/>
+        <text name="employment_ui_subpromotion" text="Votre employeur vous a promu %s %s avec une augmentation de %.2f%%" tag="format"/>
+        <text name="employment_ui_promotion" text="Votre employeur vous a promu %s avec une augmentation de %.2f%%" tag="format"/>
+        <text name="employment_ui_exam_pass" text="Vous avez réussi l'examen !"/>
+        <text name="employment_ui_exam_fail" text="Vous avez échoué à l'examen."/>
+		
+		
+        <text name="employment_ui_factor_extremelyLow" text="Extrêmement faible"/>
+        <text name="employment_ui_factor_veryLow" text="Très faible"/>
+        <text name="employment_ui_factor_low" text="Faible"/>
+        <text name="employment_ui_factor_average" text="Moyenne"/>
+        <text name="employment_ui_factor_high" text="Haut"/>
+        <text name="employment_ui_factor_veryHigh" text="Très élevé"/>
+        <text name="employment_ui_factor_extremelyHigh" text="Extrêmement élevé"/>
+		
+		
+        <text name="employment_ui_difficulty_almostImpossible" text="presque impossible"/>
+        <text name="employment_ui_difficulty_extremelyHard" text="extrêmement dur"/>
+        <text name="employment_ui_difficulty_veryHard" text="très dur"/>
+        <text name="employment_ui_difficulty_hard" text="dur"/>
+        <text name="employment_ui_difficulty_average" text="moyenne"/>
+        <text name="employment_ui_difficulty_easy" text="facile"/>
+        <text name="employment_ui_difficulty_veryEasy" text="très facile"/>
+        <text name="employment_ui_difficulty_extremelyEasy" text="extrêmement facile"/>
+		
+		
+		
+		<!-- BUSINESS NAMES -->
+		
+		
+
+		<text name="employment_business_tailor" text="Tailleur"/>
+		<text name="employment_business_ropery" text="Roperie"/>
+		<text name="employment_business_dairy" text="Produits laitiers"/>
+		<text name="employment_business_sawmill" text="Scierie"/>
+		<text name="employment_business_grain_mill" text="Moulin à grains"/>
+		<text name="employment_business_paper_mill" text="Usine de papier"/>
+		<text name="employment_business_canned_goods_factory" text="Usine de conserves"/>
+		<text name="employment_business_toy_maker" text="Fabricant de jouets"/>
+		<text name="employment_business_carpenter" text="Charpentier"/>
+		<text name="employment_business_cement_factory" text="Cimenterie"/>
+		<text name="employment_business_restaurant" text="Restaurant"/>
+		<text name="employment_business_cooper" text="Coopérateur"/>
+		<text name="employment_business_bakery" text="Boulangerie"/>
+		<text name="employment_business_dredger" text="Drague"/>
+		<text name="employment_business_oil_plant" text="Usine de production d'huile"/>
+		<text name="employment_business_petrol_station" text="Station-service"/>
+		<text name="employment_business_livestock_trader" text="Négociant en bétail"/>
+		<text name="employment_business_biogas_plant" text="Usine de biogaz"/>
+		<text name="employment_business_warehouse" text="Entrepôt"/>
+		<text name="employment_business_potato_processing_plant" text="Usine de transformation de pommes de terre"/>
+		<text name="employment_business_supermarket" text="Supermarché"/>
+		<text name="employment_business_sugar_mill" text="Moulin à sucre"/>
+		
+		
+
+		<!-- JOB NAMES -->
+
+		
+		<text name="employment_job_cleaner" text="Nettoyeur"/>
+		<text name="employment_job_intern" text="Stagiaire"/>
+		<text name="employment_job_cashier" text="Caissier"/>
+		<text name="employment_job_tailor" text="Tailleur"/>
+		<text name="employment_job_factory_worker" text="Ouvrier d'usine"/>
+		<text name="employment_job_factory_supervisor" text="Superviseur d'usine"/>
+		<text name="employment_job_labourer" text="Ouvrier"/>
+		<text name="employment_job_carpenter" text="Charpentier"/>
+		<text name="employment_job_waiter" text="Serveur"/>
+		<text name="employment_job_doorman" text="Portier"/>
+		<text name="employment_job_chef" text="Chef de cuisine"/>
+		<text name="employment_job_manager" text="Gestionnaire"/>
+		<text name="employment_job_executive" text="Cadre"/>
+		<text name="employment_job_cooper" text="Coopérateur"/>
+		<text name="employment_job_baker" text="Boulanger"/>
+		<text name="employment_job_dredger" text="Drague"/>
+		<text name="employment_job_surveyor" text="Géomètre"/>
+		<text name="employment_job_miller" text="Miller"/>
+		<text name="employment_job_mill_supervisor" text="Superviseur de l'usine"/>
+		<text name="employment_job_oil_processor" text="Processeur d'huile"/>
+		<text name="employment_job_oil_plant_supervisor" text="Superviseur de l'usine d'huile"/>
+		<text name="employment_job_roper" text="Roper"/>
+		<text name="employment_job_warehouse_operative" text="Opérateur d'entrepôt"/>
+		<text name="employment_job_refueler" text="Ravitailleur"/>
+		<text name="employment_job_herdsman" text="Gardien de troupeau"/>
+		<text name="employment_job_feedman" text="Alimentateur"/>
+		<text name="employment_job_livestock_trader" text="Négociant en bétail"/>
+		<text name="employment_job_plant_engineer" text="Ingénieur d'usine"/>
+		<text name="employment_job_plant_biochemist" text="Biochimiste des plantes"/>
+		<text name="employment_job_site_leader" text="Chef de chantier"/>
+		<text name="employment_job_safety_officer" text="Responsable de la sécurité"/>
+		<text name="employment_job_warehouse_supervisor" text="Superviseur d'entrepôt"/>
+		<text name="employment_job_on_site_engineer" text="Ingénieur sur site"/>
+		<text name="employment_job_logistics_manager" text="Responsable de la logistique"/>
+		<text name="employment_job_toy_maker" text="Fabricant de jouets"/>
+		
+		
+
+		<!-- SUB-PROMOTION NAMES -->
+
+		
+		<text name="employment_subpromotion_senior" text="Senior"/>
+		<text name="employment_subpromotion_head" text="Tête"/>
+		<text name="employment_subpromotion_lead" text="Plomb"/>
+		<text name="employment_subpromotion_junior" text="Junior"/>
+		<text name="employment_subpromotion_chief" text="Chef"/>
+
+
+
+		<!-- EDUCATION NAMES -->
+
+
+
+		<text name="employment_education_none" text="Aucun"/>
+		<text name="employment_education_high_school" text="École secondaire"/>
+		<text name="employment_education_college" text="Collège"/>
+		<text name="employment_education_foundation_degree" text="Diplôme de base"/>
+		<text name="employment_education_bachelor_degree" text="Diplôme de licence"/>
+		<text name="employment_education_master_degree" text="Diplôme de master"/>
+		<text name="employment_education_doctorate" text="Doctorat"/>
+		
+    </texts>
+</l10n>

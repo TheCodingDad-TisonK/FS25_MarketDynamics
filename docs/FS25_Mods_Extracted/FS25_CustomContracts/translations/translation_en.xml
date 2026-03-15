@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<l10n>
+  <texts>
+    <text name="cc_header_contracts" text="Contracts"/>
+    <text name="cc_header_invoices" text="Invoices"/>
+    <text name="cc_current_balance" text="Current Balance:"/>
+    <text name="cc_new" text="New"/>
+    <text name="cc_active" text="Active"/>
+    <text name="cc_owned" text="Owned"/>
+    <text name="cc_contract_id_label" text="Contract #%d"/>
+    <text name="cc_contract_owner_label" text="Owned by: %s"/>
+    <text name="cc_contract_status_label" text="Accepted by:"/>
+    <text name="cc_contract_status_label_default" text="Current status:"/>
+    <text name="cc_contract_list_field_label" text="Field %d"/>
+    <text name="cc_contract_description" text="%s on Field %d (%.2f ha)"/>
+    <text name="cc_contract_empty" text="No contract selected"/>
+    <text name="cc_contract_start_date_label" text="Start:"/>
+    <text name="cc_contract_due_date_label" text="Due:"/>
+    <text name="cc_contract_total_reward" text="Total reward"/>
+    <text name="cc_status_open" text="Open"/>
+    <text name="cc_status_accepted" text="Accepted"/>
+    <text name="cc_status_completed" text="Completed"/>
+    <text name="cc_status_cancelled" text="Cancelled"/>
+    <text name="cc_status_expired" text="Expired"/>
+    <text name="cc_contract_info_title" text="General information"/>
+    <text name="cc_contract_notes_title" text="Notes"/>
+    <text name="cc_contract_disclaimer" text="By accepting this contract, you agree to complete the listed work as described. Payment is made upon completion."/>
+    <text name="cc_btn_create_contract" text="Create contract"/>
+    <text name="cc_btn_accept_contract" text="Accept contract"/>
+    <text name="cc_btn_complete_contract" text="Complete contract"/>
+    <text name="cc_btn_cancel_contract" text="Cancel contract"/>
+    <text name="cc_btn_delete_contract" text="Delete contract"/>
+    <text name="cc_btn_reopen_contract" text="Reopen contract"/>
+    <text name="cc_btn_edit_contract" text="Edit contract"/>
+    <text name="cc_dialog_create_yes_no" text="Complete contract for Field %d and receive €%s?"/>
+    <text name="cc_dialog_create_yes_no_btn" text="Complete Contract"/>
+    <text name="cc_dialog_accept_yes_no" text="Accept contract for Field %d (%s) for €%s?"/>
+    <text name="cc_dialog_accept_yes_no_btn" text="Accept Contract"/>
+    <text name="cc_dialog_complete_yes_no" text="Complete contract for Field %d and receive €%s?"/>
+    <text name="cc_dialog_complete_yes_no_btn" text="Complete Contract"/>
+    <text name="cc_dialog_cancel_yes_no" text="Cancel contract for Field %d?"/>
+    <text name="cc_dialog_cancel_yes_no_btn" text="Cancel Contract"/>
+    <text name="cc_dialog_delete_yes_no" text="Delete contract for Field %d?"/>
+    <text name="cc_dialog_delete_yes_no_btn" text="Delete Contract"/>
+    <text name="cc_dialog_reopen_yes_no" text="Reopen contract for Field %d?"/>
+    <text name="cc_dialog_reopen_yes_no_btn" text="Reopen Contract"/>
+    <text name="cc_dialog_create_validation_fields" text="Please fill all fields"/>
+    <text name="cc_dialog_create_validation_fields_due_date" text="Please select start and due date"/>
+    <text name="cc_dialog_create_validation_fields_start_date" text="Due date cannot be before start date"/>
+    <text name="cc_dialog_edit_title" text="Edit Contract"/>
+    <text name="cc_dialog_edit_input_field" text="Field ID"/>
+    <text name="cc_dialog_edit_input_worktype" text="Work Type"/>
+    <text name="cc_dialog_edit_input_reward" text="Reward (€)"/>
+    <text name="cc_dialog_edit_input_description" text="Description (optional)"/>
+    <text name="cc_dialog_edit_input_startdate" text="Start date"/>
+    <text name="cc_dialog_edit_input_duedate" text="Due date"/>
+    <text name="cc_dialog_edit_btn_cancel" text="Cancel"/>
+    <text name="cc_dialog_edit_btn_edit" text="Edit"/>
+    <text name="cc_dialog_create_title" text="Create Contract"/>
+    <text name="cc_dialog_create_input_field" text="Field ID"/>
+    <text name="cc_dialog_create_input_worktype" text="Work Type"/>
+    <text name="cc_dialog_create_input_reward" text="Reward (€)"/>
+    <text name="cc_dialog_create_input_description" text="Description (optional)"/>
+    <text name="cc_dialog_create_input_startdate" text="Start date"/>
+    <text name="cc_dialog_create_input_duedate" text="Due date"/>
+    <text name="cc_dialog_create_btn_cancel" text="Cancel"/>
+    <text name="cc_dialog_create_btn_create" text="Create"/>
+  </texts>
+</l10n>

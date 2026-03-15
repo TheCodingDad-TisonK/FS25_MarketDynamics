@@ -1,0 +1,7 @@
+### XeSSQuality
+
+**Description**
+
+**Definition**
+
+> XeSSQuality()

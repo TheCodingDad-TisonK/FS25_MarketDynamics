@@ -1,0 +1,11 @@
+{
+  "label": "Nav Mesh",
+  "link": {
+    "type": "generated-index",
+    "title": "Nav Mesh Documentation",
+    "description": "4 pages"
+  },
+  "customProps": {
+    "icon": "map"
+  }
+}

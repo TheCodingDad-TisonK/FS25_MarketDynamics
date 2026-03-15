@@ -1,0 +1,11 @@
+{
+  "label": "Fruits",
+  "link": {
+    "type": "generated-index",
+    "title": "Fruits Documentation",
+    "description": "2 pages, 69 functions"
+  },
+  "customProps": {
+    "icon": "apple-alt"
+  }
+}

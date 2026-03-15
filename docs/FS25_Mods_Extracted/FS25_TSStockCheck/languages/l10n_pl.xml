@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<l10n>
+    <translationContributors>Ziuta</translationContributors>
+    <texts>
+            <text name="ui_ingameMenuTSStockCheck" text="Szybki przegląd rynku"/>
+            <text name="ui_header_icon" text=""/>
+            <text name="ui_header_goods" text="Towar"/>
+            <text name="ui_header_storage" text="W magazynie"/>
+            <text name="ui_header_price" text="Cena"/>
+            <text name="ui_header_trend" text=""/>
+            <text name="ui_header_value" text="Wartość"/>
+            <text name="ui_header_price_at" text="Sprzedasz w"/>
+            <text name="ui_header_bestprice" text="Naj. cena"/>
+            <text name="ui_header_bestvalue" text="Naj. wartość"/>
+            <text name="ui_header_bestmonth" text="Naj. miesiąc"/>
+            <text name="ui_location_btn" text="Pokaż %s"/>
+            <text name="ui_location_header_name" text="Lokacja"/>
+            <text name="ui_location_header_storage" text="W magazynie"/>
+            <text name="ui_locationFrame_btnClose" text="Wstecz"/>
+            <text name="ui_locationFrame_header" text="Lokacja magazynu dla %s"/>
+            <text name="ui_tag_sellpoint" text="OZNACZ MIEJSCE"/>
+            <text name="ui_untag_sellpoint" text="ODZNACZ MIEJSCE"/>
+            <text name="ui_no_sellpoint" text="Brak punktów sprzedaży"/>
+            <text name="ui_text_bales" text="Bele"/>
+            <text name="ui_text_pallets" text="Palety"/>
+            <text name="ui_text_shippingcontainer" text="Kontener wysyłkowy"/>
+            <text name="ui_allsellpoint_btn" text="Wartość we wszystkich %s"/>
+            <text name="ui_allSellPointFrame_header" text="Wartość %s %s"/>
+            <text name="ui_show_all_items" text="Pokaż wszystko"/>
+            <text name="ui_hide_all_items" text="Ukryj Nie mogę sprzedać"/>
+    </texts>
+</l10n>

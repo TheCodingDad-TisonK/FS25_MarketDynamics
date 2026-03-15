@@ -1,0 +1,7 @@
+### FacialAnimationEmotion
+
+**Description**
+
+**Definition**
+
+> FacialAnimationEmotion()

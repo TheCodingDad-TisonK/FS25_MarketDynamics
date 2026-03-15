@@ -1,0 +1,11 @@
+{
+  "label": "I3D",
+  "link": {
+    "type": "generated-index",
+    "title": "I3D Documentation",
+    "description": "17 pages"
+  },
+  "customProps": {
+    "icon": "cube"
+  }
+}

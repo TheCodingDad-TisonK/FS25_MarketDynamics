@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<GUI name="easyDevControlsEnvironment">
+    <GuiElement profile="edc_container" debugEnabled="false">
+        <GuiElement profile="edc_headerPanel">
+            <Bitmap profile="edc_headerIconBg">
+                <Bitmap profile="edc_headerIcon" id="categoryHeaderIcon" imageSliceId="easyDevControls.icon_environment"/>
+            </Bitmap>
+
+            <Text profile="edc_headerTitle" id="categoryHeaderText" text="$l10n_easyDevControls_environmentHeader"/>
+            <Button profile="edc_headerInfoButton" id="buttonShowInfo" onClick="onClickShowInfo"/>
+        </GuiElement>
+
+        <BoxLayout profile="edc_boxLayout" id="boxLayout" debugEnabled="false">
+            <!-- Column 1 -->
+            <MultiTextOption profile="edc_multiTextOption" id="multiSetMonth" texts="$l10n_ui_month1|$l10n_ui_month2|$l10n_ui_month3|$l10n_ui_month4|$l10n_ui_month5|$l10n_ui_month6|$l10n_ui_month7|$l10n_ui_month8|$l10n_ui_month9|$l10n_ui_month10|$l10n_ui_month11|$l10n_ui_month12">
+                <ThreePartBitmap profile="edc_multiTextOptionBg" name="background">
+                    <ThreePartBitmap profile="edc_outlineBg"/>
+                </ThreePartBitmap>
+                <Text profile="edc_title" name="ignore" text="$l10n_easyDevControls_setTimeTitle"/>
+            </MultiTextOption>
+            <MultiTextOption profile="edc_multiTextOptionClose" id="multiSetDay">
+                <ThreePartBitmap profile="edc_multiTextOptionBg" name="background">
+                    <ThreePartBitmap profile="edc_outlineBg"/>
+                </ThreePartBitmap>
+            </MultiTextOption>
+            <OptionSlider profile="edc_optionSliderClose" id="optionSliderSetHour" texts="00:00|01:00|02:00|03:00|04:00|05:00|06:00|07:00|08:00|09:00|10:00|11:00|12:00|13:00|14:00|15:00|16:00|17:00|18:00|19:00|20:00|21:00|22:00|23:00">
+                <ThreePartBitmap profile="edc_optionSliderBg" name="ignore">
+                    <ThreePartBitmap profile="edc_outlineBg"/>
+                </ThreePartBitmap>
+            </OptionSlider>
+            <Button profile="edc_buttonClose" id="buttonConfirmTime" onClick="onClickConfirmTime">
+                <ThreePartBitmap profile="edc_buttonBg"/>
+                <ThreePartBitmap profile="edc_outlineBg"/>
+            </Button>
+
+            <Button profile="edc_button" name="environmentReload" id="buttonEnvironmentReloadData" onClick="onClickConfirmReloadData">
+                <ThreePartBitmap profile="edc_buttonBg"/>
+                <ThreePartBitmap profile="edc_outlineBg"/>
+                <Text profile="edc_title" name="ignore" text="$l10n_easyDevControls_reloadedEnvironmentDataTitle"/>
+            </Button>
+
+            <Button profile="edc_button" name="weatherReload" id="buttonWeatherReloadData" onClick="onClickConfirmReloadData" margin="44px 24px 44px 300px" debugMargin="true">
+                <ThreePartBitmap profile="edc_buttonBg"/>
+                <ThreePartBitmap profile="edc_outlineBg"/>
+                <Text profile="edc_title" name="ignore" text="$l10n_easyDevControls_reloadedWeatherDataTitle"/>
+            </Button>
+
+            <!-- Column 2 -->
+            <MultiTextOption profile="edc_multiTextOption" id="multiWeatherSetAdd" onClick="onClickWeatherSetAdd">
+                <ThreePartBitmap profile="edc_multiTextOptionBg" name="background">
+                    <ThreePartBitmap profile="edc_outlineBg"/>
+                </ThreePartBitmap>
+                <Text profile="edc_title" name="ignore" text="Weather Set / Add" id="textWeatherSetAdd"/>
+            </MultiTextOption>
+            <MultiTextOption profile="edc_multiTextOptionClose" id="multiWeatherType" onClick="onClickWeatherType">
+                <ThreePartBitmap profile="edc_multiTextOptionBg" name="background">
+                    <ThreePartBitmap profile="edc_outlineBg"/>
+                </ThreePartBitmap>
+            </MultiTextOption>
+            <MultiTextOption profile="edc_multiTextOptionClose" id="multiWeatherVariation">
+                <ThreePartBitmap profile="edc_multiTextOptionBg" name="background">
+                    <ThreePartBitmap profile="edc_outlineBg"/>
+                </ThreePartBitmap>
+            </MultiTextOption>
+            <Button profile="edc_buttonNoIconClose" text="$l10n_easyDevControls_info" id="buttonVariationInfo" onClick="onClickVariationInfo">
+                <ThreePartBitmap profile="edc_buttonBg"/>
+                <ThreePartBitmap profile="edc_outlineBg"/>
+            </Button>
+            <Button profile="edc_buttonClose" id="buttonConfirmWeather" onClick="onClickConfirmWeather">
+                <ThreePartBitmap profile="edc_buttonBg"/>
+                <ThreePartBitmap profile="edc_outlineBg"/>
+            </Button>
+
+            <OptionSlider profile="edc_optionSlider" id="optionSliderRemoveTireTracksRadius" onClick="onClickRemoveTireTracksRadius">
+                <ThreePartBitmap profile="edc_optionSliderBg" name="ignore">
+                    <ThreePartBitmap profile="edc_outlineBg"/>
+                </ThreePartBitmap>
+                <Text profile="edc_title" name="ignore" text="$l10n_easyDevControls_removeTireTracksTitle" position="-30px 32px"/>
+            </OptionSlider>
+            <Button profile="edc_buttonClose" id="buttonRemoveTireTracks" onClick="onClickRemoveTireTracks" margin="44px -18px 44px 300px" debugMargin="true">
+                <ThreePartBitmap profile="edc_buttonBg"/>
+                <ThreePartBitmap profile="edc_outlineBg"/>
+            </Button>
+
+            <!-- Column 3 -->
+            <Button profile="edc_button" name="ADD_SNOW" id="buttonAddSnow" onClick="onClickAddRemoveSnow">
+                <ThreePartBitmap profile="edc_buttonBg"/>
+                <ThreePartBitmap profile="edc_outlineBg"/>
+                <Text profile="edc_title" name="ignore" text="$l10n_easyDevControls_addSnowTitle"/>
+            </Button>
+
+            <Button profile="edc_button" name="REMOVE_SNOW" id="buttonRemoveSnow" onClick="onClickAddRemoveSnow">
+                <ThreePartBitmap profile="edc_buttonBg"/>
+                <ThreePartBitmap profile="edc_outlineBg"/>
+                <Text profile="edc_title" name="ignore" text="$l10n_easyDevControls_removeSnowTitle"/>
+            </Button>
+
+            <EasyDevControlsTextInput profile="edc_textInput" id="textInputSetSnow" onEnterPressed="onSetSnowEnterPressed" onEscPressed="onTextInputEscPressed" onTextChanged="onSetSnowTextChanged" enterWhenClickOutside="false">
+                <ThreePartBitmap profile="edc_outlineBg"/>
+                <ThreePartBitmap profile="edc_textInputIconBox">
+                    <Bitmap profile="edc_textInputIcon"/>
+                </ThreePartBitmap>
+                <Text profile="edc_title" text="$l10n_easyDevControls_setSnowTitle"/>
+            </EasyDevControlsTextInput>
+
+            <OptionSlider profile="edc_optionSlider" id="optionSliderAddSaltRadius">
+                <ThreePartBitmap profile="edc_optionSliderBg" name="ignore">
+                    <ThreePartBitmap profile="edc_outlineBg"/>
+                </ThreePartBitmap>
+                <Text profile="edc_title" name="ignore" text="$l10n_easyDevControls_addSaltTitle" position="-30px 32px"/>
+            </OptionSlider>
+            <Button profile="edc_buttonClose" id="buttonConfirmAddSalt" onClick="onClickConfirmAddSalt" margin="44px -18px 44px 300px" debugMargin="true">
+                <ThreePartBitmap profile="edc_buttonBg"/>
+                <ThreePartBitmap profile="edc_outlineBg"/>
+            </Button>
+
+            <!-- Column 4 -->
+            <BinaryOption profile="edc_binaryOption" id="binaryRandomWindWaving" onClick="onClickRandomWindWaving">
+                <Text profile="edc_title" name="ignore" text="$l10n_easyDevControls_randomWindWavingTitle"/>
+            </BinaryOption>
+
+            <BinaryOption profile="edc_binaryOption" id="binaryWeatherDebug" onClick="onClickWeatherDebug">
+                <Text profile="edc_title" name="ignore" text="$l10n_easyDevControls_weatherDebugTitle"/>
+            </BinaryOption>
+
+            <BinaryOption profile="edc_binaryOption" id="binarySeasonalShaderDebug" onClick="onClickSeasonalShaderDebug">
+                <Text profile="edc_title" name="ignore" text="$l10n_easyDevControls_seasonalShaderDebugTitle"/>
+            </BinaryOption>
+
+            <BinaryOption profile="edc_binaryOption" id="binaryEnvironmentMaskDebug" onClick="onClickEnvironmentMaskDebug">
+                <Text profile="edc_title" name="ignore" text="$l10n_easyDevControls_environmentMaskDebugTitle"/>
+            </BinaryOption>
+
+            <BinaryOption profile="edc_binaryOption" id="binaryTireTrackDebug" onClick="onClickTireTrackDebug">
+                <Text profile="edc_title" name="ignore" text="$l10n_easyDevControls_tireTrackDebugTitle"/>
+            </BinaryOption>
+        </BoxLayout>
+
+        <ThreePartBitmap profile="edc_infoBoxBg">
+            <Bitmap profile="edc_infoBoxIconBox">
+                <Bitmap profile="edc_infoBoxIcon" id="infoBoxIcon"/>
+            </Bitmap>
+            <Text profile="edc_infoBoxText" id="infoBoxText"/>
+        </ThreePartBitmap>
+    </GuiElement>
+</GUI>

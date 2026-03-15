@@ -1,0 +1,11 @@
+{
+  "label": "Materials",
+  "link": {
+    "type": "generated-index",
+    "title": "Materials Documentation",
+    "description": "6 pages, 76 functions"
+  },
+  "customProps": {
+    "icon": "palette"
+  }
+}

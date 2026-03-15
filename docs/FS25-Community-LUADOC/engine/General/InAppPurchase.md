@@ -1,0 +1,7 @@
+### InAppPurchase
+
+**Description**
+
+**Definition**
+
+> InAppPurchase()

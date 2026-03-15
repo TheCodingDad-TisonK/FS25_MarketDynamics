@@ -1,0 +1,11 @@
+{
+  "label": "Placement",
+  "link": {
+    "type": "generated-index",
+    "title": "Placement Documentation",
+    "description": "2 pages, 21 functions"
+  },
+  "customProps": {
+    "icon": "map-marker-alt"
+  }
+}

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<GUI onOpen="onDialogOpen" onClose="onDialogClose" onCreate="onCreate">
+    <GuiElement profile="newLayer" />
+    <Bitmap profile="dialogFullscreenBg" id="dialogBg" />
+    <GuiElement profile="dialogBg" id="dialogElement" size="680px 480px">
+        <ThreePartBitmap profile="fs25_dialogBgMiddle" />
+        <ThreePartBitmap profile="fs25_dialogBgTop" />
+        <ThreePartBitmap profile="fs25_dialogBgBottom" />
+
+        <GuiElement profile="fs25_dialogContentContainer">
+            <Text profile="fs25_dialogTitle" position="0px -10px" text="$l10n_em_training_title"/>
+
+            <Text profile="EM_InfoTitle" id="txtEmployeeName" position="0px -50px"/>
+
+            <BoxLayout profile="EM_ColBoxV" position="-280px -90px" width="560px">
+                <BoxLayout profile="EM_RowBoxH" width="560px" id="rowDriving">
+                    <Text profile="EM_SkillLabel" text="$l10n_em_skill_driving" width="120px"/>
+                    <Text profile="EM_SkillStars" id="txtDrivingLevel" width="160px"/>
+                    <Text profile="EM_InfoValue" id="txtDrivingCost" width="120px"/>
+                    <Text profile="EM_InfoLabel" id="txtDrivingStatus" width="160px"/>
+                </BoxLayout>
+
+                <BoxLayout profile="EM_RowBoxH" width="560px" id="rowHarvesting">
+                    <Text profile="EM_SkillLabel" text="$l10n_em_skill_harvesting" width="120px"/>
+                    <Text profile="EM_SkillStars" id="txtHarvestingLevel" width="160px"/>
+                    <Text profile="EM_InfoValue" id="txtHarvestingCost" width="120px"/>
+                    <Text profile="EM_InfoLabel" id="txtHarvestingStatus" width="160px"/>
+                </BoxLayout>
+
+                <BoxLayout profile="EM_RowBoxH" width="560px" id="rowTechnical">
+                    <Text profile="EM_SkillLabel" text="$l10n_em_skill_technical" width="120px"/>
+                    <Text profile="EM_SkillStars" id="txtTechnicalLevel" width="160px"/>
+                    <Text profile="EM_InfoValue" id="txtTechnicalCost" width="120px"/>
+                    <Text profile="EM_InfoLabel" id="txtTechnicalStatus" width="160px"/>
+                </BoxLayout>
+            </BoxLayout>
+
+            <Text profile="EM_InfoLabel" id="txtCooldownInfo" position="0px -250px"/>
+        </GuiElement>
+
+        <BoxLayout profile="fs25_dialogButtonBox">
+            <Button profile="buttonActivate" id="btnTrainDriving" onClick="onTrainDriving" text="$l10n_em_train_driving"/>
+            <Button profile="buttonActivate" id="btnTrainHarvesting" onClick="onTrainHarvesting" text="$l10n_em_train_harvesting"/>
+            <Button profile="buttonActivate" id="btnTrainTechnical" onClick="onTrainTechnical" text="$l10n_em_train_technical"/>
+            <Button profile="buttonOK" onClick="onClickBack" text="$l10n_em_btn_close"/>
+        </BoxLayout>
+    </GuiElement>
+</GUI>

@@ -1,0 +1,95 @@
+﻿<GUI onOpen="onOpen" onClose="onClose" onCreate="onCreate">
+	<GuiElement profile="newLayer"/>
+	<Bitmap profile="dialogFullscreenBg" id="dialogBg"/>
+	<GuiElement profile="educationInfoBg" id="dialogElement">
+		<ThreePartBitmap profile="fs25_dialogBgMiddle"/>
+		<ThreePartBitmap profile="fs25_dialogBgTop"/>
+		<ThreePartBitmap profile="fs25_dialogBgBottom"/>
+		<GuiElement profile="fs25_dialogContentContainer">
+			<Animation profile="fs25_dialogLoading" id="iconLoadingElement"/>
+			
+			<GuiElement profile="fs25_secondaryMenuContainer" position="68px 0px">
+
+				<GuiElement profile="education_progressBox" id="progressBox">
+					<Text profile="education_title" text="$l10n_input_Education"/>
+					<Text profile="education_progressBoxStartValue" id="progressStartText"/>
+					<Text profile="education_progressBoxEndValue" id="progressEndText"/>
+					<ThreePartBitmap profile="education_progressBarBg" id="progressBarBg">
+						<ThreePartBitmap profile="education_progressBar" id="progressBar"/>
+					</ThreePartBitmap>
+					<Text profile="education_baseText" id="examResultText" isVisible="false"/>
+				</GuiElement>
+
+			</GuiElement>
+	</GuiElement>
+	<BoxLayout profile="fs25_dialogButtonBox">
+			<Button profile="buttonBack" text="$l10n_button_back" onClick="onClickBack" id="backButton"/>
+			<Button profile="buttonBuy" text="$l10n_employment_ui_study" onClick="onClickStudy" id="studyButton"/>
+			<Button profile="buttonActivate" text="$l10n_employment_ui_test" onClick="onClickExam" id="examButton"/>
+		</BoxLayout>
+	</GuiElement>
+	<GUIProfiles>
+		<Profile name="educationInfoBg" extends="fs25_dialogBg">
+			<height value="500px"/>
+			<width value="750px"/>
+		</Profile>
+
+		<Profile name="education_progressBox" extends="emptyPanel" with="anchorMiddleCenter">
+			<size value="500px 250px"/>
+			<position value="60px -40px"/>
+		</Profile>
+		
+		<Profile name="education_progressBoxStartValue" extends="fs25_textDefault" with="anchorTopLeft">
+			<textAutoWidth value="true"/>
+			<position value="0px 0px"/>
+			<textBold value="true"/>
+			<textAlignment value="right"/>
+			<textColor value="$preset_fs25_colorMainHighlight"/>
+		</Profile>
+		
+		<Profile name="education_progressBoxEndValue" extends="fs25_textDefault" with="anchorTopRight">
+			<textAutoWidth value="true"/>
+			<position value="0px 0px"/>
+			<textBold value="true"/>
+			<textAlignment value="right"/>
+			<textColor value="$preset_fs25_colorMainHighlight"/>
+		</Profile>
+		
+		<Profile name="education_baseText" extends="fs25_textDefault" with="anchorBottomCenter">
+			<textAutoWidth value="true"/>
+			<position value="-10px 50px"/>
+			<textBold value="true"/>
+			<textColor value="$preset_fs25_colorMainHighlight"/>
+		</Profile>
+		
+		<Profile name="education_title" extends="fs25_textDefault" with="anchorTopCenter">
+			<textAutoWidth value="true"/>
+			<position value="0px 60px"/>
+			<textBold value="true"/>
+			<textSize value="28px"/>
+			<textColor value="$preset_fs25_colorMainHighlight"/>
+		</Profile>
+		
+		<Profile name="education_progressBarBg" extends="emptyPanel" with="anchorTopCenter">
+			<size value="500px 33px"/>
+			<position value="0px -40px"/>
+			<imageColor value="$preset_fs25_colorGrey"/>
+			<imageSliceId value="gui.contracts_progressbar_background_middle"/>
+			<startImageSize value="8px 0"/>
+			<startImageSliceId value="gui.contracts_progressbar_background_left"/>
+			<endImageSize value="8px 0"/>
+			<endImageSliceId value="gui.contracts_progressbar_background_right"/>
+		</Profile>
+		
+		<Profile name="education_progressBar" extends="baseReference" with="anchorMiddleLeft">
+			<size value="492px 25px"/>
+			<position value="4px 0px"/>
+			<imageColor value="$preset_fs25_colorMainHighlight"/>
+			<imageSliceId value="gui.button_middle"/>
+			<startImageSize value="0px 0"/>
+			<startImageSliceId value="gui.button_left"/>
+			<endImageSize value="0px 0"/>
+			<endImageSliceId value="gui.button_right"/>
+		</Profile>
+	</GUIProfiles>
+</GUI>

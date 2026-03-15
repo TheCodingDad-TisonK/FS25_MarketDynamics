@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+	All the vehicle settings can be setup here.
+	For documentation look up the CpSettingUtil.lua.
+-->
+
+<Settings prefixText="CP_vehicle_setting_">
+	<SettingSubTitle title="basic">
+		<!-- Show waypoints -->
+		<Setting classType="AIParameterSettingList" name="showCourse" onChangeCallback="onCpShowCourseSettingChanged" default="1" isUserSetting="true">
+			<Values>
+				<Value name="SHOW_COURSE_DEACTIVATED">0</Value>
+				<Value name="SHOW_COURSE_START_STOP">1</Value>
+				<Value name="SHOW_COURSE_AROUND_CURRENT_WP">3</Value>
+				<Value name="SHOW_COURSE_ALL">2</Value>
+			</Values>
+			<Texts>
+				<Text prefix="false">CP_deactivated</Text>
+				<Text>startStop</Text>
+				<Text>currentWaypoint</Text>
+				<Text>all</Text>
+			</Texts>
+		</Setting>
+		<!--Open hud with mouse-->
+		<Setting classType="AIParameterBooleanSetting" name="openHudWithMouse" defaultBool="true" onChangeCallback="cpUpdateMouseAction"/>
+
+		<!--Open hud with mouse-->
+		<Setting classType="AIParameterBooleanSetting" name="fuelSave" defaultBool="true" isExpertModeOnly="true"/>
+		<!--Restart course at end-->
+		<Setting classType="AIParameterBooleanSetting" name="restartCourseAtEnd" defaultBool="false" isExpertModeOnly="true"/>
+		<!--Turn on Field-->
+		<Setting classType="AIParameterBooleanSetting" name="turnOnField" defaultBool="true" isVisible="areCourseSettingsVisible"/>
+		<!--Avoid Fruit-->
+		<Setting classType="AIParameterBooleanSetting" name="avoidFruit" defaultBool="true" isExpertModeOnly="true"/>
+		<Setting classType="AIParameterBooleanSetting" name="useJps" defaultBool="true" isExpertModeOnly="true"/>
+		<Setting classType="AIParameterSettingList" name="penaltyFactor" min="1" max="10" incremental="0.1" default="1" />
+		<!--Pathfinder Reverse-->
+		<Setting classType="AIParameterBooleanSetting" name="allowReversePathfinding" defaultBool="true" isExpertModeOnly="true" isVisible="areCourseSettingsVisible"/>
+		<Setting classType="AIParameterBooleanSetting" name="allowPathfinderTurns" defaultBool="false" isExpertModeOnly="true" isVisible="areCourseSettingsVisible"/>
+		<!--Loop turns on headland-->
+		<Setting classType="AIParameterBooleanSetting" name="loopTurnsOnHeadland" defaultBool="false" isExpertModeOnly="true" isVisible="areCourseSettingsVisible"/>
+	</SettingSubTitle>
+
+	<SettingSubTitle title="implement">
+		<!--Fold at End-->
+		<Setting classType="AIParameterBooleanSetting" name="foldImplementAtEnd" defaultBool="true" isExpertModeOnly="true" isVisible="areCourseSettingsVisible"/>
+		<!--Return to Start-->
+		<Setting classType="AIParameterBooleanSetting" name="returnToStart" defaultBool="false" isExpertModeOnly="true" isVisible="areCourseSettingsVisable"/>
+		<!--Raise Implement-->
+		<Setting classType="AIParameterBooleanSetting" name="raiseImplementLate" vehicleConfiguration="raiseLate" isVisible="areCourseSettingsVisible">
+			<Texts>
+				<Text>early</Text>
+				<Text>late</Text>
+			</Texts>
+		</Setting>
+		<!--Lower Implement-->
+		<Setting classType="AIParameterBooleanSetting" name="lowerImplementEarly" vehicleConfiguration="lowerEarly" isVisible="areCourseSettingsVisible">
+			<Texts>
+				<Text>late</Text>
+				<Text>early</Text>
+			</Texts>
+		</Setting>
+		<!--Tool Offset X-->
+		<Setting classType="AIParameterSettingList" name="toolOffsetX" min="-10" max="10" incremental="0.1" default="0" unit="2"
+				 onChangeCallback="cpShowWorkWidth" setDefault="setAutomaticWorkWidthAndOffset" isVisible="isToolOffsetVisible"
+				 isDisabled = "isToolOffsetDisabled" vehicleConfiguration="toolOffsetX"/>
+		<!--Bale finder Offset X-->
+		<Setting classType="AIParameterSettingList" name="baleCollectorOffset" min="-10" max="10" incremental="0.1" default="0" unit="2"
+				 onChangeCallback="cpShowBaleCollectorOffset" isVisible = "isBaleCollectorOffsetVisible" 
+				 setDefault="setAutomaticBaleCollectorOffset" vehicleConfiguration="baleCollectorOffset"/>
+		<!--Combine Offset X-->
+		<Setting classType="AIParameterSettingList" name="combineOffsetX" min="-10" max="10" incremental="0.1" default="0" unit="2"
+				 onChangeCallback="cpShowWorkWidth" isVisible="areCombineUnloaderSettingsVisible"/>
+		<!--Combine Offset Z-->
+		<Setting classType="AIParameterSettingList" name="combineOffsetZ" min="-10" max="10" incremental="0.1" default="0" unit="2"
+				 onChangeCallback="cpShowWorkWidth" isVisible="areCombineUnloaderSettingsVisible" />
+		<!-- Full threshold -->
+		<Setting classType="AIParameterSettingList" name="fullThreshold" min="40" max="100" incremental="5" default="85" unit="4" isVisible="areCombineUnloaderSettingsVisible"/>
+		<!--Silage additives needed?-->
+		<Setting classType="AIParameterBooleanSetting" name="useAdditiveFillUnit" defaultBool="false" isVisible="isAdditiveFillUnitSettingVisible" isExpertModeOnly="true"/>
+		<Setting classType="AIParameterSettingList" name="refillOnTheField" isVisible="isRefillOnTheFieldSettingVisible" default="0">
+			<Values>
+				<Value name="REFILL_ON_FIELD_DISABLED">0</Value>
+				<Value name="REFILL_ON_FIELD_WAITING">1</Value>
+				<!-- <Value name="REFILL_ON_FIELD_ACTIVE">2</Value> -->
+			</Values>
+			<Texts>
+				<Text prefix="false">CP_deactivated</Text>
+				<Text>waiting</Text>
+				<Text>active</Text>
+			</Texts>
+		</Setting>
+	</SettingSubTitle>
+
+	<SettingSubTitle title="bunkerSilo" isVisible="areBunkerSiloSettingsVisible">
+		<Setting classType="AIParameterSettingList" name="bunkerSiloWorkWidth" min="3" max="50" incremental="0.1" unit="2" setDefault="setAutomaticBunkerSiloWorkWidth" onChangeCallback="cpShowWorkWidth"/>
+		<Setting classType="AIParameterSettingList" name="loadingShovelHeightOffset" min="-1" max="1" incremental="0.05" default="0" unit="2" precision="3"
+				isVisible="isLoadingShovelOffsetSettingVisible" isDisabled="isLoadingShovelOffsetSettingDisabled" 
+				onChangeCallback="onCpLoadingShovelOffsetSettingChanged" vehicleConfiguration="loadingShovelOffset"/>
+		<Setting classType="AIParameterSettingList" name="levelerHeightOffset" min="0" max="0.5" incremental="0.05" default="0" unit="2" precision="3" 
+				isVisible="isLevelerHeightOffsetSettingVisible" isDisabled="isLevelerHeightOffsetSettingDisabled" />
+	</SettingSubTitle>
+
+	<SettingSubTitle title="combine" isVisible="areCombineSettingsVisible">
+		<!--Automatic header unloading-->
+		<Setting classType="AIParameterBooleanSetting" name="automaticCutterAttach" defaultBool="false"/>
+		<!--Stop for unload-->
+		<Setting classType="AIParameterBooleanSetting" name="stopForUnload"/>
+		<!--Selfunload-->
+		<Setting classType="AIParameterBooleanSetting" name="selfUnload"/>
+		<!--Unload on first Headland-->
+		<Setting classType="AIParameterBooleanSetting" name="unloadOnFirstHeadland" defaultBool="false" isExpertModeOnly="true"/>
+		<!--UnloadLevel-->
+		<Setting classType="AIParameterSettingList" name="callUnloaderPercent" min="60" max="90" incremental="5" default ="80" unit="4" isExpertModeOnly="false"/>
+		<!--Strawswath-->
+		<Setting classType="AIParameterSettingList" name="strawSwath" default="2">
+			<Values>
+				<Value name="STRAW_SWATH_OFF">1</Value>
+				<Value name="STRAW_SWATH_ON">2</Value>
+				<Value name="STRAW_SWATH_ONLY_CENTER">3</Value>
+			</Values>
+			<Texts>
+				<Text prefix="false">CP_deactivated</Text>
+				<Text prefix="false">CP_activated</Text>
+				<Text>onlyCenter</Text>
+			</Texts>
+		</Setting>
+		<Setting classType="AIParameterSettingList" name="pipeOffsetX" min="-100" max="100" incremental="0.1" default="0" unit="2" precision="3"
+				 isVisible="isPipeOffsetSettingsVisible" title="CP_deactivated"/>
+		<Setting classType="AIParameterSettingList" name="pipeOffsetZ" min="-100" max="100" incremental="0.1" default="0" unit="2" precision="3"
+				 isVisible="isPipeOffsetSettingsVisible" title="CP_deactivated"/>
+	</SettingSubTitle>
+
+	<SettingSubTitle title="seeder" isVisible="areSowingMachineSettingsVisible">
+		<!--Ridgemarker-->	
+		<Setting classType="AIParameterBooleanSetting" name="ridgeMarkersAutomatic" defaultBool="false" isVisible="isRidgeMarkerSettingVisible" isExpertModeOnly="true"/>
+		<!--Fertilizer-->
+		<Setting classType="AIParameterBooleanSetting" name="sowingMachineFertilizerEnabled" defaultBool="true" isVisible="isSowingMachineFertilizerSettingVisible"/>
+		<!--Optional sowing machine-->
+		<Setting classType="AIParameterBooleanSetting" name="optionalSowingMachineEnabled" defaultBool="false" isVisible="isOptionalSowingMachineSettingVisible" isDisabled="isOptionalSowingMachineSettingDisabled"/>
+	</SettingSubTitle>
+	
+	<SettingSubTitle title="multitool" isVisible="hasMultiToolCourse">
+		<!--Convoy Distance-->
+		<Setting classType="AIParameterSettingList" name="convoyDistance" min="40" max="400" default ="75" unit="2" isExpertModeOnly="true"/>
+	</SettingSubTitle>
+
+	<SettingSubTitle title="speed" isExpertModeOnly="true">
+		<!--Fieldwork Speed-->
+		<Setting classType="AIParameterSettingList" name="fieldWorkSpeed" min="5" max="50" default="25" unit="1" isExpertModeOnly="true" generateValuesFunction="generateSpeedSettingValuesAndTexts"/>
+		<!--Field Speed-->
+		<Setting classType="AIParameterSettingList" name="fieldSpeed" min="5" max="50" default="20" unit="1" isExpertModeOnly="true" generateValuesFunction="generateSpeedSettingValuesAndTexts"/>
+		<!--Turn Speed-->
+		<Setting classType="AIParameterSettingList" name="turnSpeed" min="2" max="25" default="8" unit="1" isExpertModeOnly="true"/>
+		<!--Reverse Speed-->
+		<Setting classType="AIParameterSettingList" name="reverseSpeed" min="2" max="25" default="5" unit="1" isExpertModeOnly="true"/>
+		<!--Bunker silo speed-->
+		<Setting classType="AIParameterSettingList" name="bunkerSiloSpeed" min="2" max="25" default="15" unit="1" isExpertModeOnly="true"/>
+	</SettingSubTitle>
+
+	<SettingSubTitle title="debug">
+		<!--Debug active -->
+		<Setting classType="AIParameterBooleanSetting" name="debugActive"/>
+	</SettingSubTitle>
+</Settings>

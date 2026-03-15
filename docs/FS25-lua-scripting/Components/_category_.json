@@ -1,0 +1,11 @@
+{
+  "label": "Components",
+  "link": {
+    "type": "generated-index",
+    "title": "Components Documentation",
+    "description": "7 pages, 87 functions"
+  },
+  "customProps": {
+    "icon": "puzzle-piece"
+  }
+}
