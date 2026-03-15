@@ -17,7 +17,12 @@ end
 -- Save current market state
 -- coordinator = MarketDynamics instance
 function MarketSerializer:save(coordinator)
-    local path = SAVE_PATH_TEMPLATE:format(g_currentMission.missionInfo.savegameDirectory .. "/")
+    local savegameDir = g_currentMission.missionInfo.savegameDirectory
+    if savegameDir == nil or savegameDir == "" then
+        MDMLog.warning("MarketSerializer: no savegame directory — cannot save")
+        return
+    end
+    local path = SAVE_PATH_TEMPLATE:format(savegameDir .. "/")
     local xmlFile = createXMLFile("MDMSave", path, "marketDynamics")
 
     if not xmlFile then
@@ -80,7 +85,12 @@ end
 
 -- Load and restore market state
 function MarketSerializer:load(coordinator)
-    local path = SAVE_PATH_TEMPLATE:format(g_currentMission.missionInfo.savegameDirectory .. "/")
+    local savegameDir = g_currentMission.missionInfo.savegameDirectory
+    if savegameDir == nil or savegameDir == "" then
+        MDMLog.info("MarketSerializer: no savegame directory yet — starting fresh")
+        return
+    end
+    local path = SAVE_PATH_TEMPLATE:format(savegameDir .. "/")
     local xmlFile = loadXMLFile("MDMLoad", path)
 
     if not xmlFile or xmlFile == 0 then
