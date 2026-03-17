@@ -28,18 +28,11 @@ end
 function MarketSerializer:save(coordinator)
     local savegameDir = g_currentMission.missionInfo.savegameDirectory
     if savegameDir == nil or savegameDir == "" then
-<<<<<<< HEAD
         MDMLog.warn("MarketSerializer: no savegame directory — cannot save")
         return
     end
 
     local path    = SAVE_PATH_TEMPLATE:format(savegameDir .. "/")
-=======
-        MDMLog.warning("MarketSerializer: no savegame directory — cannot save")
-        return
-    end
-    local path = SAVE_PATH_TEMPLATE:format(savegameDir .. "/")
->>>>>>> dd58d3478e0389a83c5d177b110ebe5a7e5c440d
     local xmlFile = createXMLFile("MDMSave", path, "marketDynamics")
 
     if not xmlFile then
@@ -134,12 +127,8 @@ function MarketSerializer:load(coordinator)
         MDMLog.info("MarketSerializer: no savegame directory yet — starting fresh")
         return
     end
-<<<<<<< HEAD
 
     local path    = SAVE_PATH_TEMPLATE:format(savegameDir .. "/")
-=======
-    local path = SAVE_PATH_TEMPLATE:format(savegameDir .. "/")
->>>>>>> dd58d3478e0389a83c5d177b110ebe5a7e5c440d
     local xmlFile = loadXMLFile("MDMLoad", path)
 
     if not xmlFile or xmlFile == 0 then
