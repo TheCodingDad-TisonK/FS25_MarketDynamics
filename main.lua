@@ -36,6 +36,10 @@ source(modDirectory .. "src/UPIntegration.lua")
 source(modDirectory .. "src/DebugHUD.lua")
 source(modDirectory .. "src/gui/SettingsUI.lua")
 
+-- GUI screens (LeGrizzly / dev-2)
+source(modDirectory .. "src/gui/MarketScreenGraph.lua")
+source(modDirectory .. "src/gui/MarketScreen.lua")
+
 -- Events
 source(modDirectory .. "src/events/DroughtEvent.lua")
 source(modDirectory .. "src/events/BumperHarvestEvent.lua")
