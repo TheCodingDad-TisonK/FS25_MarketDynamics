@@ -1,7 +1,0 @@
-### MSAA
-
-**Description**
-
-**Definition**
-
-> MSAA()

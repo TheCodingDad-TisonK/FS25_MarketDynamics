@@ -1,7 +1,0 @@
-### MasterServerServerDetailsFailedReason
-
-**Description**
-
-**Definition**
-
-> MasterServerServerDetailsFailedReason()

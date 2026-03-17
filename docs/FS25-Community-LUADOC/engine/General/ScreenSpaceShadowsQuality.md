@@ -1,7 +1,0 @@
-### ScreenSpaceShadowsQuality
-
-**Description**
-
-**Definition**
-
-> ScreenSpaceShadowsQuality()

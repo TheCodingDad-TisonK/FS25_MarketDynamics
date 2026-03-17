@@ -1,7 +1,0 @@
-### ReportUserReason
-
-**Description**
-
-**Definition**
-
-> ReportUserReason()

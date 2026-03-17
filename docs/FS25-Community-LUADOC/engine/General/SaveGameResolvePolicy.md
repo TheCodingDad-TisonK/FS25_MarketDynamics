@@ -1,7 +1,0 @@
-### SaveGameResolvePolicy
-
-**Description**
-
-**Definition**
-
-> SaveGameResolvePolicy()

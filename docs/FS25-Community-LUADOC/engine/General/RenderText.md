@@ -1,7 +1,0 @@
-### RenderText
-
-**Description**
-
-**Definition**
-
-> RenderText()

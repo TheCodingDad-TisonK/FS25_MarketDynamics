@@ -1,7 +1,0 @@
-### AsyncResult
-
-**Description**
-
-**Definition**
-
-> AsyncResult()

@@ -1,7 +1,0 @@
-### ValarQuality
-
-**Description**
-
-**Definition**
-
-> ValarQuality()

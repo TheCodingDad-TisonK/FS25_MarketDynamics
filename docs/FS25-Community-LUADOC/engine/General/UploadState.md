@@ -1,7 +1,0 @@
-### UploadState
-
-**Description**
-
-**Definition**
-
-> UploadState()

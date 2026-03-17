@@ -1,7 +1,0 @@
-### DensityCoordType
-
-**Description**
-
-**Definition**
-
-> DensityCoordType()

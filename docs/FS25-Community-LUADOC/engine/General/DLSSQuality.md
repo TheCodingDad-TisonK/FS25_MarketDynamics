@@ -1,7 +1,0 @@
-### DLSSQuality
-
-**Description**
-
-**Definition**
-
-> DLSSQuality()

@@ -1,7 +1,0 @@
-### DebugRendering
-
-**Description**
-
-**Definition**
-
-> DebugRendering()

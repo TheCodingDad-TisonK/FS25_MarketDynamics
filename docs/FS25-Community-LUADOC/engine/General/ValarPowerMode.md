@@ -1,7 +1,0 @@
-### ValarPowerMode
-
-**Description**
-
-**Definition**
-
-> ValarPowerMode()

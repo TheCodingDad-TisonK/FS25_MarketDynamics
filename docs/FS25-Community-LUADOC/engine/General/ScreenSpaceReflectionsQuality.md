@@ -1,7 +1,0 @@
-### ScreenSpaceReflectionsQuality
-
-**Description**
-
-**Definition**
-
-> ScreenSpaceReflectionsQuality()

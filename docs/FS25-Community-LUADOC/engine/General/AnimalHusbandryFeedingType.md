@@ -1,7 +1,0 @@
-### AnimalHusbandryFeedingType
-
-**Description**
-
-**Definition**
-
-> AnimalHusbandryFeedingType()

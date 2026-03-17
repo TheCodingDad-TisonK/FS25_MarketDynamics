@@ -1,7 +1,0 @@
-### DensityTypeCompareType
-
-**Description**
-
-**Definition**
-
-> DensityTypeCompareType()

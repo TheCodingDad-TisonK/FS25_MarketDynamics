@@ -1,7 +1,0 @@
-### VoiceChatRecordingMode
-
-**Description**
-
-**Definition**
-
-> VoiceChatRecordingMode()

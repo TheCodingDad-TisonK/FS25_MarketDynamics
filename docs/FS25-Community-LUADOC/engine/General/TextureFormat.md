@@ -1,7 +1,0 @@
-### TextureFormat
-
-**Description**
-
-**Definition**
-
-> TextureFormat()

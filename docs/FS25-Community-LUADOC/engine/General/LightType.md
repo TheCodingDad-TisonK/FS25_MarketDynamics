@@ -1,7 +1,0 @@
-### LightType
-
-**Description**
-
-**Definition**
-
-> LightType()

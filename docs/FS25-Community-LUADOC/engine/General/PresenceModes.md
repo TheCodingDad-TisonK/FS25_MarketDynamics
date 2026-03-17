@@ -1,7 +1,0 @@
-### PresenceModes
-
-**Description**
-
-**Definition**
-
-> PresenceModes()

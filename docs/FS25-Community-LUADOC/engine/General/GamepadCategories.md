@@ -1,7 +1,0 @@
-### GamepadCategories
-
-**Description**
-
-**Definition**
-
-> GamepadCategories()

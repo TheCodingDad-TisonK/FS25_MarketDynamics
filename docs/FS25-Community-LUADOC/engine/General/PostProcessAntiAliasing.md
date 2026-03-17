@@ -1,7 +1,0 @@
-### PostProcessAntiAliasing
-
-**Description**
-
-**Definition**
-
-> PostProcessAntiAliasing()

@@ -1,7 +1,0 @@
-### DebugMode
-
-**Description**
-
-**Definition**
-
-> DebugMode()

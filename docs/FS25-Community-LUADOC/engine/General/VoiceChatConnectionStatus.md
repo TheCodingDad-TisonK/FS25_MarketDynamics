@@ -1,7 +1,0 @@
-### VoiceChatConnectionStatus
-
-**Description**
-
-**Definition**
-
-> VoiceChatConnectionStatus()

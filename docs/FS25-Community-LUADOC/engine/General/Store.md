@@ -1,7 +1,0 @@
-### Store
-
-**Description**
-
-**Definition**
-
-> Store()

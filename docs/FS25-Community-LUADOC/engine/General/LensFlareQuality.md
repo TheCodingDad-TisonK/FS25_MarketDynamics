@@ -1,7 +1,0 @@
-### LensFlareQuality
-
-**Description**
-
-**Definition**
-
-> LensFlareQuality()

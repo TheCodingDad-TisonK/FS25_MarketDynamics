@@ -1,7 +1,0 @@
-### JointRotateOrder
-
-**Description**
-
-**Definition**
-
-> JointRotateOrder()

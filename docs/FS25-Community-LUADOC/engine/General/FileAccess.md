@@ -1,7 +1,0 @@
-### FileAccess
-
-**Description**
-
-**Definition**
-
-> FileAccess()

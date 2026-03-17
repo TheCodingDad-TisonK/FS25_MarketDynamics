@@ -1,7 +1,0 @@
-### InAppPurchasePurchaseState
-
-**Description**
-
-**Definition**
-
-> InAppPurchasePurchaseState()

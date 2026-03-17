@@ -1,7 +1,0 @@
-### Axis
-
-**Description**
-
-**Definition**
-
-> Axis()

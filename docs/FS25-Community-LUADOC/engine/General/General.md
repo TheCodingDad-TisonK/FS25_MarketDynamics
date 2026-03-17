@@ -1,7 +1,0 @@
-### AgentState
-
-**Description**
-
-**Definition**
-
-> AgentState()

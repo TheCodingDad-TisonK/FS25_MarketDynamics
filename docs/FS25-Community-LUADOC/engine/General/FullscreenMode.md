@@ -1,7 +1,0 @@
-### FullscreenMode
-
-**Description**
-
-**Definition**
-
-> FullscreenMode()

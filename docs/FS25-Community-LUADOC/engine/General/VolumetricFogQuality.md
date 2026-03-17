@@ -1,7 +1,0 @@
-### VolumetricFogQuality
-
-**Description**
-
-**Definition**
-
-> VolumetricFogQuality()

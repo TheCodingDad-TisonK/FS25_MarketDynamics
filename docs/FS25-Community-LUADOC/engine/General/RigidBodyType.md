@@ -1,7 +1,0 @@
-### RigidBodyType
-
-**Description**
-
-**Definition**
-
-> RigidBodyType()

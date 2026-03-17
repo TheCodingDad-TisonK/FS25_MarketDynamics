@@ -1,7 +1,0 @@
-### PhysicsDebugDrawMode
-
-**Description**
-
-**Definition**
-
-> PhysicsDebugDrawMode()

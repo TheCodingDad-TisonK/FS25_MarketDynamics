@@ -1,7 +1,0 @@
-### Savegame
-
-**Description**
-
-**Definition**
-
-> Savegame()

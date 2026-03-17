@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<l10n>
-    <translationContributors/>
-    <texts>
-        <text name="garage_used_equipment_title" text="Recherches d'équipements d'occasion"/>
-		<text name="garage_used_equipment_ttl_format" text="%s jours restants"/>
-    </texts>
-</l10n>

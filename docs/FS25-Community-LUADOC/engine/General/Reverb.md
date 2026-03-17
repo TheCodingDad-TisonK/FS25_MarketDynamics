@@ -1,7 +1,0 @@
-### Reverb
-
-**Description**
-
-**Definition**
-
-> Reverb()

@@ -1,7 +1,0 @@
-### NormalMapFormat
-
-**Description**
-
-**Definition**
-
-> NormalMapFormat()

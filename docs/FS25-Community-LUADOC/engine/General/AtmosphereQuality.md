@@ -1,7 +1,0 @@
-### AtmosphereQuality
-
-**Description**
-
-**Definition**
-
-> AtmosphereQuality()

@@ -1,7 +1,0 @@
-### FidelityFxSRQuality
-
-**Description**
-
-**Definition**
-
-> FidelityFxSRQuality()

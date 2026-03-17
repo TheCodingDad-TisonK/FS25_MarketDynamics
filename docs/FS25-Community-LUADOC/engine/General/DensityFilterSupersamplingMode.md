@@ -1,7 +1,0 @@
-### DensityFilterSupersamplingMode
-
-**Description**
-
-**Definition**
-
-> DensityFilterSupersamplingMode()
