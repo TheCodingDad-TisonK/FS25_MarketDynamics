@@ -7,9 +7,18 @@
 <GUI name="menuMarketDynamics">
   <GuiElement profile="fs25_menuContainer">
 
-    <!-- Header bar with title -->
-    <GuiElement profile="fs25_menuHeaderPanel" position="0px 90px" width="800px" height="90px" debugEnabled="false">
+    <!-- Header bar with icon, title, and money box -->
+    <GuiElement profile="fs25_menuHeaderPanel" position="-200px 90px" width="800px">
+      <Bitmap profile="fs25_menuHeaderIconBg">
+        <Bitmap profile="MDM_IconMenu"/>
+      </Bitmap>
       <Text profile="fs25_menuHeaderTitle" id="categoryHeaderText" text="$l10n_mdm_screen_title"/>
+
+      <RoundCorner profile="fs25_shopMoneyBoxBg" id="shopMoneyBoxBg" position="380px 0px" />
+      <BoxLayout profile="fs25_shopMoneyBox" id="shopMoneyBox" position="350px 0px">
+        <Text profile="fs25_shopBalance" text="$l10n_mdm_screen_balance"/>
+        <Text profile="fs25_shopMoney" id="currentBalanceText"/>
+      </BoxLayout>
     </GuiElement>
 
     <!-- Two-column layout container -->
@@ -125,6 +134,13 @@
 
   <!-- Inline profiles -->
   <GUIProfiles>
+    <!-- Menu icon for header -->
+    <Profile name="MDM_IconMenu" extends="baseReference" with="anchorMiddleCenter">
+      <size value="50px 50px"/>
+      <imageSliceId value="noSlice"/>
+      <imageFilename value="g_MDMIconMenu"/>
+      <imageColor value="$preset_fs25_colorMainDark"/>
+    </Profile>
     <!-- Section header -->
     <Profile name="mdm_sectionHeader" extends="fs25_textDefault" with="anchorTopLeft">
       <textSize value="18px"/>

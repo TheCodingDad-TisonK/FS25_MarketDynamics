@@ -51,6 +51,7 @@
         <text name="mdm_screen_at_risk"          text="AT RISK" />
         <text name="mdm_screen_hint_bar"         text="ESC: Close  |  Q/E: Tabs  |  Up/Down: Navigate" />
         <text name="mdm_screen_timeline"         text="Session Timeline" />
+        <text name="mdm_screen_balance"          text="Solde :" />
 
         <!-- Futures -->
         <text name="mdm_futures_title"           text="Futures Market" />

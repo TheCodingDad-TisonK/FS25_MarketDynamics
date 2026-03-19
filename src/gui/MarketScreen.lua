@@ -1,126 +1,17 @@
--- MarketScreen.lua
--- Full-screen market overview: commodity list, price detail, events, contracts.
--- Extends ScreenElement — loaded via g_gui:loadGui() with XML layout.
---
--- Layout:
---   Left panel:  SmoothList of all tracked commodities (click to select)
---   Right panel:  3 tabs — Prices / Events / Contracts
---     Prices:    Detail card + bar chart (MDMMarketScreenGraph)
---     Events:    SmoothList of active world events
---     Contracts: SmoothList of futures contracts for current farm
---
--- Author: LeGrizzly (dev-2)
-
 MDMMarketScreen = {}
 
 MDMMarketScreen.CLASS_NAME = "MDMMarketScreen"
 MDMMarketScreen.MENU_PAGE_NAME = "menuMarketDynamics"
 MDMMarketScreen.XML_FILENAME = "xml/gui/MarketScreen.xml"
 
-MDMMarketScreen.MENU_ICON_PATH = "images/MenuIcon.dds"
-
--- Debugging dump support (one-shot, opt-in)
-MDMMarketScreen.MDM_DEBUG_DUMP = true
-MDMMarketScreen._debugDumpDone = false
-
-local MDMDebug = {}
-
-local function _truncateString(s, max)
-    if type(s) ~= "string" then return tostring(s) end
-    max = max or 200
-    if #s > max then return string.sub(s, 1, max) .. "...(truncated)" end
-    return s
-end
-
-function MDMDebug.dumpTable(obj, opts)
-    opts = opts or {}
-    local maxDepth = opts.maxDepth or 3
-    local maxString = opts.maxString or 200
-    local visited = {}
-    local parts = {}
-
-    local function _dump(o, depth)
-        if type(o) == "table" then
-            if visited[o] then
-                parts[#parts+1] = "<cycle>"
-                return
-            end
-            if depth > maxDepth then
-                parts[#parts+1] = "<maxDepth>"
-                return
-            end
-            visited[o] = true
-            parts[#parts+1] = "{"
-            local first = true
-            for k, v in pairs(o) do
-                if not first then parts[#parts+1] = "," end
-                first = false
-                parts[#parts+1] = "[" .. tostring(k) .. "]="
-                _dump(v, depth + 1)
-            end
-            parts[#parts+1] = "}"
-        elseif type(o) == "string" then
-            parts[#parts+1] = '"' .. _truncateString(o, maxString) .. '"'
-        else
-            parts[#parts+1] = tostring(o)
-        end
-    end
-
-    _dump(obj, 1)
-    return table.concat(parts)
-end
-
-function MDMDebug.logMarketScreenState(screen)
-    if screen == nil then return end
-    MDMLog.info("MDM DEBUG: MarketScreen state dump start")
-
-    local function safeLog(label, val, opts)
-        if type(val) == "table" then
-            local cnt = 0
-            for _ in pairs(val) do cnt = cnt + 1 end
-            MDMLog.info(string.format("MDM DEBUG: %s count=%d", label, cnt))
-            local sample = nil
-            for _, v in pairs(val) do sample = v break end
-            if sample ~= nil then
-                MDMLog.info("MDM DEBUG: " .. label .. " sample: " .. MDMDebug.dumpTable(sample, opts or {maxDepth=2}))
-            end
-        else
-            MDMLog.info("MDM DEBUG: " .. label .. " = " .. tostring(val))
-        end
-    end
-
-    safeLog("commodities", screen.commodities, {maxDepth=2})
-    safeLog("eventData", screen.eventData, {maxDepth=2})
-    safeLog("contractData", screen.contractData, {maxDepth=2})
-
-    if g_inGameMenu then
-        local pe = g_inGameMenu.pagingElement
-        if pe and type(pe.elements) == "table" then
-            MDMLog.info("MDM DEBUG: inGameMenu.pagingElement.elementsCount=" .. tostring(#pe.elements))
-        else
-            MDMLog.info("MDM DEBUG: inGameMenu.pagingElement=" .. tostring(pe))
-        end
-        if g_inGameMenu.pageFrames and type(g_inGameMenu.pageFrames) == "table" then
-            local cnt = 0
-            for _ in pairs(g_inGameMenu.pageFrames) do cnt = cnt + 1 end
-            MDMLog.info("MDM DEBUG: g_inGameMenu.pageFrames count=" .. cnt)
-        end
-    else
-        MDMLog.info("MDM DEBUG: g_inGameMenu is nil")
-    end
-
-    MDMLog.info("MDM DEBUG: _pendingRegistration=" .. tostring(_pendingRegistration) .. ", _pendingModDir=" .. tostring(_pendingModDir))
-    MDMLog.info("MDM DEBUG: MarketScreen state dump end")
-end
+MDMMarketScreen.MENU_ICON_PATH = "images/menuIcon.dds"
 
 MDMMarketScreen._mt = Class(MDMMarketScreen, TabbedMenuFrameElement)
 
--- Tab indices
 local TAB_PRICES    = 1
 local TAB_EVENTS    = 2
 local TAB_CONTRACTS = 3
 
--- Data refresh throttle (ms)
 local REFRESH_INTERVAL = 1000
 
 -- ---------------------------------------------------------------------------
@@ -134,10 +25,10 @@ function MDMMarketScreen.new()
     self.className  = "MDMMarketScreen"
 
     self.activeTab         = TAB_PRICES
-    self.commodities       = {}   -- { {idx, name, title, current, base, changePct}, ... }
+    self.commodities       = {}
     self.selectedCropIndex = 1
-    self.eventData         = {}   -- { {id, name, intensity, endsAt}, ... }
-    self.contractData      = {}   -- { contract table from FuturesMarket, ... }
+    self.eventData         = {}
+    self.contractData      = {}
     self.refreshTimer      = 0
     self.returnScreenName  = ""
     self.menuButtonInfo    = {}
@@ -148,7 +39,6 @@ end
 function MDMMarketScreen:initialize()
     MDMLog.info("MarketScreen: initializing")
 
-    -- Call superclass initialize (will trigger onGuiSetupFinished)
     MDMMarketScreen:superClass().initialize(self)
 end
 
@@ -157,13 +47,10 @@ end
 -- ---------------------------------------------------------------------------
 
 function MDMMarketScreen.register(modDir)
-    -- Attempt a one-shot registration using the robust flow; if systems aren't ready, defer.
     if MDMMarketScreen._performRegistration(modDir) then
-        -- Registered synchronously
         return
     end
 
-    -- Defer registration until g_gui and g_inGameMenu are available
     _pendingRegistration = true
     _pendingModDir = modDir
     MDMLog.info("MarketScreen: deferred registration until GUI/InGameMenu ready")
@@ -198,7 +85,6 @@ function MDMMarketScreen:onGuiSetupFinished()
 
     print("MarketScreen: onGuiSetupFinished called")
 
-    -- Resolve XML elements by id
     self.commodityList   = self:getDescendantById("commodityList")
     self.eventList       = self:getDescendantById("eventList")
     self.contractList    = self:getDescendantById("contractList")
@@ -207,16 +93,13 @@ function MDMMarketScreen:onGuiSetupFinished()
     self.eventsContent   = self:getDescendantById("eventsContent")
     self.contractsContent = self:getDescendantById("contractsContent")
 
-    -- Header text
     self.categoryHeaderText = self:getDescendantById("categoryHeaderText")
 
-    -- Commodity list headers
     self.commoditiesHeader = self:getDescendantById("commoditiesHeader")
     self.colHeaderCrop = self:getDescendantById("colHeaderCrop")
     self.colHeaderPrice = self:getDescendantById("colHeaderPrice")
     self.colHeaderChange = self:getDescendantById("colHeaderChange")
 
-    -- Price detail elements
     self.detailCropName    = self:getDescendantById("detailCropName")
     self.detailCurrentPrice = self:getDescendantById("detailCurrentPrice")
     self.detailBasePrice   = self:getDescendantById("detailBasePrice")
@@ -224,22 +107,22 @@ function MDMMarketScreen:onGuiSetupFinished()
     self.detailVolatility  = self:getDescendantById("detailVolatility")
     self.detailModifiers   = self:getDescendantById("detailModifiers")
 
-    -- Graph
+    self.currentBalanceText = self:getDescendantById("currentBalanceText")
+    self.shopMoneyBox   = self:getDescendantById("shopMoneyBox")
+    self.shopMoneyBoxBg = self:getDescendantById("shopMoneyBoxBg")
+
     self.graphArea = self:getDescendantById("graphArea")
     self.graphTitle = self:getDescendantById("graphTitle")
     self.graphHint = self:getDescendantById("graphHint")
 
-    -- Events content
     self.eventsHeader = self:getDescendantById("eventsHeader")
     self.noEventsText = self:getDescendantById("noEventsText")
 
-    -- Contracts content
     self.contractsHeader = self:getDescendantById("contractsHeader")
     self.contractsColCrop = self:getDescendantById("contractsColCrop")
     self.noContractsText = self:getDescendantById("noContractsText")
     self.newContractHint = self:getDescendantById("newContractHint")
 
-    -- Wire SmoothList data source callbacks
     if self.commodityList then
         self.commodityList.dataSource = self
         self.commodityList.delegate   = self
@@ -253,7 +136,6 @@ function MDMMarketScreen:onGuiSetupFinished()
         self.contractList.delegate   = self
     end
 
-    -- Ensure critical text elements have a fallback to avoid "Missing 'key'" displays
     local function _setTextSafe(el, key, fallback)
         if el == nil then return end
         local ok, txt = pcall(function() return g_i18n and g_i18n:getText(key) end)
@@ -267,6 +149,7 @@ function MDMMarketScreen:onGuiSetupFinished()
     end
 
     _setTextSafe(self.categoryHeaderText, "mdm_screen_title", "Market Dynamics")
+    _setTextSafe(self.currentBalanceText, nil, "")
     _setTextSafe(self.commoditiesHeader, "mdm_screen_commodities", "COMMODITIES")
     _setTextSafe(self.colHeaderCrop, "mdm_screen_col_crop", "Crop")
     _setTextSafe(self.colHeaderPrice, "mdm_screen_col_price", "Price")
@@ -284,14 +167,7 @@ end
 function MDMMarketScreen:onOpen()
     MDMMarketScreen:superClass().onOpen(self)
 
-    -- One-shot debug dump of in-memory data and paging state
-    if MDMMarketScreen.MDM_DEBUG_DUMP and not MDMMarketScreen._debugDumpDone then
-        if MDMDebug and type(MDMDebug.logMarketScreenState) == "function" then
-            MDMDebug.logMarketScreenState(self)
-        end
-        MDMMarketScreen._debugDumpDone = true
-    end
-
+    self:onMoneyChange()
     self:rebuildAllData()
     self:setActiveTab(TAB_PRICES)
     self:reloadAllLists()
@@ -305,6 +181,33 @@ function MDMMarketScreen:onClose()
     MDMMarketScreen:superClass().onClose(self)
 end
 
+function MDMMarketScreen:onMoneyChange()
+    if g_localPlayer == nil or g_farmManager == nil then return end
+    local farm = g_farmManager:getFarmById(g_localPlayer.farmId)
+    if farm == nil then return end
+
+    local isNegative = farm.money <= -1
+    local profileName = "fs25_shopMoney"
+
+    if ShopMenu and ShopMenu.GUI_PROFILE then
+        profileName = isNegative
+            and ShopMenu.GUI_PROFILE.SHOP_MONEY_NEGATIVE
+            or  ShopMenu.GUI_PROFILE.SHOP_MONEY
+    elseif isNegative then
+        profileName = "fs25_shopMoneyNegative"
+    end
+
+    if self.currentBalanceText then
+        self.currentBalanceText:applyProfile(profileName, nil, true)
+        self.currentBalanceText:setText(g_i18n:formatMoney(farm.money, 0, true, false))
+    end
+
+    if self.shopMoneyBox ~= nil and self.shopMoneyBoxBg ~= nil then
+        self.shopMoneyBox:invalidateLayout()
+        self.shopMoneyBoxBg:setSize(self.shopMoneyBox.flowSizes[1] + 60 * g_pixelSizeScaledX)
+    end
+end
+
 function MDMMarketScreen:update(dt)
     MDMMarketScreen:superClass().update(self, dt)
 
@@ -313,6 +216,7 @@ function MDMMarketScreen:update(dt)
         self.refreshTimer = 0
         self:rebuildAllData()
         self:reloadAllLists()
+        self:onMoneyChange()
 
         if self.activeTab == TAB_PRICES then
             self:refreshPricesDetail()
@@ -320,23 +224,19 @@ function MDMMarketScreen:update(dt)
     end
 end
 
--- One-shot debug flag for graph area dimensions
 MDMMarketScreen._graphAreaLogDone = false
 
 function MDMMarketScreen:draw()
     MDMMarketScreen:superClass().draw(self)
 
-    -- Render line chart overlay in prices tab
     if self.activeTab == TAB_PRICES and self.graphArea then
         local pos = self.graphArea.absPosition
         local sz  = self.graphArea.absSize
 
-        -- Guard: need valid position and size arrays with numeric entries
         if not pos or not sz or not pos[1] or not pos[2] or not sz[1] or not sz[2] then
             return
         end
 
-        -- One-shot log of graphArea dimensions (use concat, not format — Logging.info double-formats %)
         if not MDMMarketScreen._graphAreaLogDone then
             MDMLog.info("MarketScreen: graphArea pos=(" .. tostring(pos[1]) .. ", " .. tostring(pos[2]) .. ") size=(" .. tostring(sz[1]) .. ", " .. tostring(sz[2]) .. ")")
             MDMMarketScreen._graphAreaLogDone = true
@@ -345,7 +245,6 @@ function MDMMarketScreen:draw()
         local crop = self.commodities[self.selectedCropIndex]
         local fillIdx = crop and crop.idx or nil
 
-        -- Per-commodity chart if selected and has data, else aggregated fallback
         local sampleCount = 0
         if fillIdx then
             sampleCount = MDMMarketScreenGraph.getSampleCount(fillIdx)
@@ -355,7 +254,6 @@ function MDMMarketScreen:draw()
         end
 
         if sampleCount >= 2 then
-            -- Ring buffer has enough data — draw live chart
             if self.graphHint then
                 self.graphHint:setVisible(false)
             end
@@ -366,7 +264,6 @@ function MDMMarketScreen:draw()
                 MDMMarketScreenGraph.drawAggregatedMedian(pos[1], pos[2], sz[1], sz[2])
             end
         elseif fillIdx and g_MarketDynamics and g_MarketDynamics.marketEngine then
-            -- Fallback: use daily history from MarketEngine
             local history = g_MarketDynamics.marketEngine:getPriceHistory(fillIdx)
             if history and #history >= 2 then
                 if self.graphHint then
@@ -402,7 +299,6 @@ function MDMMarketScreen:onClickBack()
     self:changeScreen(nil)
 end
 
--- Keyboard: Q/E to switch tabs
 function MDMMarketScreen:inputEvent(action, value, eventUsed)
     eventUsed = MDMMarketScreen:superClass().inputEvent(self, action, value, eventUsed)
     if eventUsed then return true end
@@ -527,10 +423,8 @@ function MDMMarketScreen:_buildCommodityData()
         end
     end
 
-    -- Sort alphabetically by title
     table.sort(self.commodities, function(a, b) return a.title < b.title end)
 
-    -- Clamp selected index
     if self.selectedCropIndex > #self.commodities then
         self.selectedCropIndex = math.max(1, #self.commodities)
     end
@@ -546,7 +440,6 @@ function MDMMarketScreen:_buildEventData()
         table.insert(self.eventData, ev)
     end
 
-    -- Show/hide empty state hint
     if self.noEventsText then
         self.noEventsText:setVisible(#self.eventData == 0)
     end
@@ -566,7 +459,6 @@ function MDMMarketScreen:_buildContractData()
         table.insert(self.contractData, c)
     end
 
-    -- Show/hide empty state hint
     if self.noContractsText then
         self.noContractsText:setVisible(#self.contractData == 0)
     end
@@ -610,7 +502,6 @@ function MDMMarketScreen:_populateCommodityCell(index, cell)
         local sign = data.changePct >= 0 and "+" or ""
         changeEl:setText(string.format("%s%.1f%%", sign, data.changePct))
 
-        -- Color: green for positive, red for negative
         if data.changePct > 0.5 then
             changeEl:setTextColor(0.20, 0.72, 0.35, 1.0)
         elseif data.changePct < -0.5 then
@@ -644,7 +535,6 @@ function MDMMarketScreen:_populateEventCell(index, cell)
         end
         intensityEl:setText(label)
 
-        -- Color intensity text
         if data.intensity >= 0.7 then
             intensityEl:setTextColor(0.85, 0.22, 0.22, 1.0)
         elseif data.intensity >= 0.4 then
@@ -708,7 +598,6 @@ function MDMMarketScreen:_populateContractCell(index, cell)
     if statusEl then
         local status = data.status or "active"
         if status == "active" then
-            -- Check if at risk (< 25% time left, < 50% delivered)
             local now = g_currentMission and g_currentMission.time or 0
             local totalDuration = data.deliveryTime - (data.deliveryTime - 86400000) -- approximate
             local remaining = math.max(0, data.deliveryTime - now)
@@ -765,7 +654,6 @@ function MDMMarketScreen:refreshPricesDetail()
             g_i18n:getText("mdm_screen_change") .. ": " ..
             string.format("%s%.1f%%", sign, crop.changePct)
         )
-        -- Color the change text
         if crop.changePct > 0.5 then
             self.detailChange:setTextColor(0.20, 0.72, 0.35, 1.0)
         elseif crop.changePct < -0.5 then
@@ -787,7 +675,6 @@ function MDMMarketScreen:refreshPricesDetail()
         )
     end
 
-    -- Update graph title with selected commodity name
     local graphTitle = self:getDescendantById("graphTitle")
     if graphTitle then
         graphTitle:setText(crop.title .. " — " .. g_i18n:getText("mdm_screen_session_trend"))
@@ -799,13 +686,11 @@ end
 -- Wired at source() time. MarketScreen manages its own registration.
 -- ---------------------------------------------------------------------------
 
--- Pending registration state (one-shot deferred registration when GUI/menu ready)
 local _modDir = g_currentModDirectory
 local _pendingRegistration = false
 local _pendingModDir = nil
 
 local function _onMissionLoaded(mission)
-    -- Try immediate registration; if systems aren't ready, mark pending
     MDMMarketScreen.register(_modDir)
 end
 
@@ -814,18 +699,16 @@ function MDMMarketScreen._performRegistration(modDir)
         return false
     end
 
-    -- Prevent duplicate registration: if page already present, do nothing
     if g_inGameMenu[MDMMarketScreen.MENU_PAGE_NAME] ~= nil then
         MDMLog.info("MarketScreen: page already registered, skipping")
         return true
     end
 
     local screen = MDMMarketScreen.new()
-    -- Load GUI and expose as an InGameMenu page
+
     MDMLog.info("MarketScreen: loading GUI '" .. tostring(modDir .. MDMMarketScreen.XML_FILENAME) .. "'")
     g_gui:loadGui(modDir .. MDMMarketScreen.XML_FILENAME, MDMMarketScreen.CLASS_NAME, screen, true)
 
-    -- Apply robust fallback localization to ensure GUI texts are visible even if XML tokens didn't expand
     local function _applyGuiLocalization(scr)
         if scr == nil then return end
         local function _setById(id, key, fallback)
@@ -855,10 +738,10 @@ function MDMMarketScreen._performRegistration(modDir)
         _setById("noEventsText", "mdm_screen_no_events", "No events")
         _setById("noContractsText", "mdm_screen_no_contracts", "No contracts")
         _setById("graphTitle", "mdm_screen_session_trend", "Session Timeline")
-        -- Events/Contracts headers
+
         _setById("eventsHeader", "mdm_screen_events_hdr", "ACTIVE EVENTS")
         _setById("contractsHeader", "mdm_screen_contracts_hdr", "FUTURES CONTRACTS")
-        -- Contracts column headers (fallback literals if no localization)
+
         _setById("contractsColCrop", "mdm_screen_col_crop", "Crop")
         _setById("contractsColQty", nil, "Qty")
         _setById("contractsColLocked", nil, "Locked")
@@ -866,7 +749,6 @@ function MDMMarketScreen._performRegistration(modDir)
         _setById("contractsColDeadline", nil, "Deadline")
         _setById("contractsColStatus", nil, "Status")
 
-        -- Detail fields
         _setById("detailCropName", "mdm_screen_select_crop", "Select a commodity")
         _setById("detailCurrentPrice", nil, "")
         _setById("detailBasePrice", nil, "")
@@ -876,13 +758,11 @@ function MDMMarketScreen._performRegistration(modDir)
         return
     end
 
-    -- Execute localization fallback now that GUI has been loaded
     local okLoc, errLoc = pcall(_applyGuiLocalization, screen)
     if not okLoc then
         MDMLog.error("MarketScreen: applyGuiLocalization failed: " .. tostring(errLoc))
     end
 
-    -- Try to attach into inGameMenu similarly to EmployeeManager:addIngameMenuPage
     local inGameMenu = g_gui.screenControllers[InGameMenu] or g_inGameMenu
     if inGameMenu ~= nil and inGameMenu.pagingElement ~= nil and inGameMenu.pagingElement.elements ~= nil then
         -- Ensure controlIDs cleared for this page name (prevents conflicts)
@@ -894,7 +774,6 @@ function MDMMarketScreen._performRegistration(modDir)
 
         inGameMenu[MDMMarketScreen.MENU_PAGE_NAME] = screen
 
-        -- Avoid adding the same element multiple times into pagingElement
         local alreadyAdded = false
         for _, el in ipairs(inGameMenu.pagingElement.elements) do
             if el == inGameMenu[MDMMarketScreen.MENU_PAGE_NAME] then
@@ -908,7 +787,6 @@ function MDMMarketScreen._performRegistration(modDir)
             MDMLog.info("MarketScreen: pagingElement already contains the page, not adding")
         end
 
-        -- Expose controls safely
         if type(inGameMenu.exposeControlsAsFields) == "function" then
             local ok, err = pcall(inGameMenu.exposeControlsAsFields, inGameMenu, MDMMarketScreen.MENU_PAGE_NAME)
             if not ok then
@@ -920,7 +798,6 @@ function MDMMarketScreen._performRegistration(modDir)
             MDMLog.info("MarketScreen: exposeControlsAsFields not present")
         end
 
-        -- Update layout mapping so the new page is placed correctly (safe)
         if type(inGameMenu.pagingElement.updateAbsolutePosition) == "function" then
             pcall(inGameMenu.pagingElement.updateAbsolutePosition, inGameMenu.pagingElement)
         end
@@ -956,7 +833,6 @@ function MDMMarketScreen._performRegistration(modDir)
             pcall(inGameMenu.rebuildTabList, inGameMenu)
         end
 
-        -- Call initialize AFTER full registration (matches EmployeeManager flow)
         if type(screen.initialize) == "function" then
             local ok, err = pcall(screen.initialize, screen)
             if not ok then
@@ -991,7 +867,6 @@ end
 
 local function _onUpdate(mission, dt)
     MDMMarketScreenGraph.update(dt)
-    -- One-shot deferred registration attempt (if register was deferred)
     MDMMarketScreen._attemptDeferredRegister(dt)
 end
 

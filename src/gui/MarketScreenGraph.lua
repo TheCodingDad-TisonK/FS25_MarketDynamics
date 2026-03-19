@@ -1,43 +1,26 @@
--- MarketScreenGraph.lua
--- Ring-buffer price sampler + line-chart renderer for the Market Screen.
--- Samples every in-game minute; renders a smooth curve via drawFilledRect/drawLine2D.
---
--- Uses native FS25 draw primitives (proven pattern from SafeFrameElement, IngameMessage):
---   drawFilledRect(x, y, width, height, r, g, b, a)
---   drawLine2D(x1, y1, x2, y2, thickness, r, g, b, a)
---
--- Usage:
---   MDMMarketScreenGraph.update(dt)          — sample prices
---   MDMMarketScreenGraph.draw(idx, x,y,w,h)  — render line chart for one commodity
---   MDMMarketScreenGraph.drawAggregatedMedian(x,y,w,h) — fallback aggregated view
---
--- Author: LeGrizzly (dev-2)
-
 MDMMarketScreenGraph = {}
 
 -- ---------------------------------------------------------------------------
 -- Constants
 -- ---------------------------------------------------------------------------
 
-local SAMPLE_INTERVAL_MS = 20000  -- 10 real seconds
-local MAX_SAMPLES        = 60     -- ring buffer size per commodity
+local SAMPLE_INTERVAL_MS = 20000
+local MAX_SAMPLES        = 40
 
--- Colors (r, g, b, a)
 local COLOR_BG        = {0.05, 0.05, 0.08, 0.85}
 local COLOR_GRID      = {0.25, 0.25, 0.30, 0.40}
-local COLOR_LINE      = {0.20, 0.78, 0.85, 1.00}  -- cyan line
-local COLOR_AREA      = {0.0, 0.0, 0.0, 0.0}  -- translucent fill under curve
-local COLOR_DOT       = {1.00, 1.00, 1.00, 0.90}  -- white dots at data points
+local COLOR_LINE      = {0.20, 0.78, 0.85, 1.00}
+local COLOR_AREA      = {0.0, 0.0, 0.0, 0.0}
+local COLOR_DOT       = {1.00, 1.00, 1.00, 0.90}
 local COLOR_LABEL     = {0.80, 0.80, 0.80, 0.90}
 
-local GRID_LINES      = 6   -- horizontal grid lines
-local LINE_THICKNESS  = 3   -- pixels for the curve line
+local GRID_LINES      = 6
+local LINE_THICKNESS  = 3
 
 -- ---------------------------------------------------------------------------
 -- State
 -- ---------------------------------------------------------------------------
 
--- { [fillTypeIndex] = { samples = {price, price, ...}, head = int, count = int } }
 local _buffers     = {}
 local _sampleTimer = 0
 
@@ -50,7 +33,6 @@ function MDMMarketScreenGraph.reset()
     _sampleTimer = 0
 end
 
--- Called every frame from the mission update hook.
 function MDMMarketScreenGraph.update(dt)
     if not g_MarketDynamics or not g_MarketDynamics.isActive then return end
 
@@ -66,7 +48,7 @@ function MDMMarketScreenGraph.update(dt)
         if not buf then
             buf = { samples = {}, head = 0, count = 0 }
             _buffers[fillTypeIndex] = buf
-            -- Seed with current price so graph has data immediately
+
             buf.head = 1
             buf.samples[1] = entry.current
             buf.count = 1
@@ -84,14 +66,12 @@ function MDMMarketScreenGraph.update(dt)
     end
 end
 
--- Returns number of samples for a given fillType.
 function MDMMarketScreenGraph.getSampleCount(fillTypeIndex)
     local buf = _buffers[fillTypeIndex]
     if not buf then return 0 end
     return buf.count
 end
 
--- Returns the max sample count across all buffers.
 function MDMMarketScreenGraph.getGlobalSampleCount()
     local maxCount = 0
     for _, buf in pairs(_buffers) do
@@ -216,10 +196,10 @@ function MDMMarketScreenGraph._drawLineChart(series, gx, gy, gw, gh)
     local yMax = maxP + padding
     local yRange = yMax - yMin
 
-    -- 1. Background
+    -- Background
     drawFilledRect(gx, gy, gw, gh, COLOR_BG[1], COLOR_BG[2], COLOR_BG[3], COLOR_BG[4])
 
-    -- 2. Grid lines + Y-axis labels
+    -- Grid lines + Y-axis labels
     local gridLineH = gh / 200  -- thin line
     for i = 0, GRID_LINES do
         local frac = i / GRID_LINES
@@ -246,7 +226,7 @@ function MDMMarketScreenGraph._drawLineChart(series, gx, gy, gw, gh)
     end
     setTextAlignment(RenderText.ALIGN_LEFT)
 
-    -- 3. Compute screen positions for each data point
+    -- Compute screen positions for each data point
     local points = {}
     for i = 1, n do
         points[i] = {
@@ -255,7 +235,7 @@ function MDMMarketScreenGraph._drawLineChart(series, gx, gy, gw, gh)
         }
     end
 
-    -- 4. Area fill: thin vertical bars from baseline to each point
+    -- Area fill: thin vertical bars from baseline to each point
     local sliceW = math.max(gw / (n - 1), 0.001)
     for i = 1, n do
         local barH = points[i].y - gy
@@ -265,15 +245,15 @@ function MDMMarketScreenGraph._drawLineChart(series, gx, gy, gw, gh)
         end
     end
 
-    -- 5. Line segments (drawLine2D)
+    -- Line segments (drawLine2D)
     local thick = math.max(LINE_THICKNESS / g_screenHeight, 0.002)
     for i = 1, n - 1 do
         drawLine2D(points[i].x, points[i].y, points[i+1].x, points[i+1].y,
                 thick, COLOR_LINE[1], COLOR_LINE[2], COLOR_LINE[3], COLOR_LINE[4])
     end
 
-    -- 6. Data point dots (circle approximation)
-    local dotR = thick * 2.5
+    -- Data point dots (circle approximation)
+    local dotR = thick * 1.8
     for i = 1, n do
         _drawFilledCircle(points[i].x, points[i].y, dotR,
                         COLOR_DOT[1], COLOR_DOT[2], COLOR_DOT[3], COLOR_DOT[4])
