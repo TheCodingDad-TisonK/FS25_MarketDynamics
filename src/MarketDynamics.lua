@@ -17,10 +17,6 @@
 --   FSCareerMissionInfo.saveToXMLFile — persist state
 --   FSBaseMission.delete        — cleanup
 --
--- NOTE: FS25 only sources files listed in modDesc.xml extraSourceFiles.
--- main.lua is NOT in that list and is NOT sourced by the game. Hooks must
--- live here; do not add them to main.lua.
---
 -- Author: tison (dev-1)
 
 MarketDynamics = {}

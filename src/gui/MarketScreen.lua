@@ -83,8 +83,6 @@ end
 function MDMMarketScreen:onGuiSetupFinished()
     MDMMarketScreen:superClass().onGuiSetupFinished(self)
 
-    print("MarketScreen: onGuiSetupFinished called")
-
     self.commodityList   = self:getDescendantById("commodityList")
     self.eventList       = self:getDescendantById("eventList")
     self.contractList    = self:getDescendantById("contractList")
@@ -449,9 +447,9 @@ function MDMMarketScreen:_buildContractData()
     self.contractData = {}
 
     if not g_MarketDynamics or not g_MarketDynamics.futuresMarket then return end
-    if not g_currentMission or not g_currentMission.player then return end
+    if not g_localPlayer then return end
 
-    local farmId = g_currentMission.player.farmId
+    local farmId = g_localPlayer.farmId
     if not farmId then return end
 
     local contracts = g_MarketDynamics.futuresMarket:getContractsForFarm(farmId)

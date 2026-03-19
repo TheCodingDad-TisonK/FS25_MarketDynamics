@@ -5,10 +5,13 @@
         <!-- Market Dynamics — English translations -->
 
         <!-- Events -->
-        <text name="mdm_event_drought"           text="Regional Drought" />
-        <text name="mdm_event_bumper_harvest"    text="Bumper Harvest" />
-        <text name="mdm_event_trade_disruption"  text="Trade Disruption" />
-        <text name="mdm_event_geopolitical"      text="Geopolitical Crisis" />
+        <text name="mdm_event_drought"              text="Regional Drought" />
+        <text name="mdm_event_bumper_harvest"       text="Bumper Harvest" />
+        <text name="mdm_event_trade_disruption"     text="Trade Disruption" />
+        <text name="mdm_event_geopolitical"         text="Geopolitical Crisis" />
+        <text name="mdm_event_biofuel_initiative"   text="Biofuel Initiative" />
+        <text name="mdm_event_livestock_boom"       text="Livestock Feed Boom" />
+        <text name="mdm_event_pest_outbreak"        text="Root Crop Blight" />
 
         <!-- HUD Overlay -->
         <text name="mdm_hud_title"               text="Market Watch" />

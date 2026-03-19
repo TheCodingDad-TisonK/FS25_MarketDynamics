@@ -17,5 +17,7 @@
         <sourceFile filename="main.lua" />
     </extraSourceFiles>
 
+    <inputBinding filename="xml/inputBinding.xml" />
+
     <l10n filenamePrefix="translations/translation" />
 </modDesc>

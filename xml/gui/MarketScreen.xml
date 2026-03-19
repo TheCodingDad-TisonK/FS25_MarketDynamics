@@ -52,6 +52,9 @@
               </ListItem>
             </SmoothList>
 
+            <Bitmap profile="fs25_secondaryMenuStartClipper" name="leftStartClipper"/>
+            <Bitmap profile="fs25_secondaryMenuStopClipper" name="leftEndClipper"/>
+
             <ThreePartBitmap profile="fs25_subCategoryListSliderBox">
               <Slider profile="fs25_listSlider" dataElementId="commodityList"/>
             </ThreePartBitmap>
