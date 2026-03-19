@@ -6,9 +6,11 @@
         <en>Market Dynamics</en>
     </title>
     <description>
-        <en>Real-world inspired dynamic crop pricing. Prices fluctuate daily and intraday based on global events, weather, and supply/demand. Includes a futures contract system — lock in prices months in advance and hedge your harvest like a real commodity trader.</en>
+        <en>Real-world inspired dynamic crop pricing. Prices fluctuate daily and intraday based on global events, weather, and supply/demand. Includes a futures contract system — lock in prices months in advance and hedge your harvest like a real farmer.</en>
     </description>
-    <iconFilename>icon.dds</iconFilename>
+
+    <iconFilename>images/icon.dds</iconFilename>
+
     <multiplayer supported="false" />
 
     <extraSourceFiles>
@@ -16,9 +18,4 @@
     </extraSourceFiles>
 
     <l10n filenamePrefix="translations/translation" />
-
-    <dependencies>
-        <dependency optional="true">FS25_BetterContracts</dependency>
-        <dependency optional="true">FS25_UsedPlus</dependency>
-    </dependencies>
 </modDesc>
