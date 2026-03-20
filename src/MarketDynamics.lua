@@ -65,6 +65,7 @@ end
 -- Called when the player's savegame session actually starts (load saved data here)
 function MarketDynamics:onStartMission(mission)
     self.serializer:load(self)
+    UPIntegration.reregisterActiveContracts(self.futuresMarket.contracts)
     MDMLog.info("MarketDynamics: savegame data loaded")
 end
 

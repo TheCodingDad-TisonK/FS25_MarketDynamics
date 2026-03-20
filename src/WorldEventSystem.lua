@@ -67,11 +67,15 @@ function WorldEventSystem:loadActiveEvent(id, endsAt, intensity)
     end
 
     self.active[id] = { event = event, endsAt = endsAt, intensity = intensity }
-    
+
     -- Re-trigger onFire to re-apply modifiers to the MarketEngine
     if event.onFire then
         event.onFire(intensity)
     end
+
+    -- Re-apply UP market modifier with remaining duration.
+    local now = g_currentMission and g_currentMission.time or 0
+    UPIntegration.onWorldEventFired(id, intensity, math.max(0, endsAt - now))
     
     MDMLog.info("WorldEventSystem: restored active event '" .. id .. "' (ends in " .. 
         string.format("%.1f", (endsAt - (g_currentMission.time or 0)) / 60000) .. "m)")
@@ -190,6 +194,8 @@ function WorldEventSystem:_fireEvent(event, now)
     if event.onFire then
         event.onFire(intensity)
     end
+
+    UPIntegration.onWorldEventFired(event.id, intensity, duration)
 end
 
 -- Expire an active event: call onExpire, remove from active table.
@@ -204,5 +210,6 @@ function WorldEventSystem:_expireEvent(id)
         event.onExpire(active.intensity)
     end
 
+    UPIntegration.onWorldEventExpired(id)
     self.active[id] = nil
 end
