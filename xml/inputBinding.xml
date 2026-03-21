@@ -8,4 +8,7 @@
     <actionBinding action="MDM_MARKET_SCREEN">
         <binding device="KB_MOUSE_DEFAULT" input="KEY_F10" axisComponent="+" index="0" />
     </actionBinding>
+    <actionBinding action="MDM_CREATE_CONTRACT">
+        <binding device="KB_MOUSE_DEFAULT" input="KEY_n" axisComponent="+" index="0" />
+    </actionBinding>
 </inputBinding>

@@ -121,6 +121,42 @@ function MDMMarketScreen:onGuiSetupFinished()
     self.noContractsText = self:getDescendantById("noContractsText")
     self.newContractHint = self:getDescendantById("newContractHint")
 
+    -- Contract dialog elements
+    self.contractDialog    = self:getDescendantById("contractDialog")
+    self.dialogCropList    = self:getDescendantById("dialogCropList")
+    self.dialogNoCropsText = self:getDescendantById("dialogNoCropsText")
+    self.dialogBcBlocked   = self:getDescendantById("dialogBcBlocked")
+    self.dialogSignal      = self:getDescendantById("dialogSignal")
+    self.dialogConfirmBtn  = self:getDescendantById("dialogConfirmBtn")
+    self.qtyBtn500         = self:getDescendantById("qtyBtn500")
+    self.qtyBtn1000        = self:getDescendantById("qtyBtn1000")
+    self.qtyBtn5000        = self:getDescendantById("qtyBtn5000")
+    self.qtyBtn10000       = self:getDescendantById("qtyBtn10000")
+    self.qtyBtn25000       = self:getDescendantById("qtyBtn25000")
+    self.qtyBtn50000       = self:getDescendantById("qtyBtn50000")
+    self.delBtn30          = self:getDescendantById("delBtn30")
+    self.delBtn60          = self:getDescendantById("delBtn60")
+    self.delBtn90          = self:getDescendantById("delBtn90")
+    self.delBtn120         = self:getDescendantById("delBtn120")
+    self.sumCrop           = self:getDescendantById("sumCrop")
+    self.sumQty            = self:getDescendantById("sumQty")
+    self.sumLocked         = self:getDescendantById("sumLocked")
+    self.sumTotal          = self:getDescendantById("sumTotal")
+    self.sumDeadline       = self:getDescendantById("sumDeadline")
+    self.sumPenalty        = self:getDescendantById("sumPenalty")
+
+    -- Dialog state
+    self.dialogOpen            = false
+    self.dialogSelectedCropIdx = 1
+    self.dialogQty             = 5000
+    self.dialogDeliveryDays    = 30
+    self._contractActionEventId = nil
+
+    if self.dialogCropList then
+        self.dialogCropList.dataSource = self
+        self.dialogCropList.delegate   = self
+    end
+
     if self.commodityList then
         self.commodityList.dataSource = self
         self.commodityList.delegate   = self
@@ -173,10 +209,42 @@ function MDMMarketScreen:onOpen()
     if self.selectedCropIndex > 0 and #self.commodities > 0 then
         self:refreshPricesDetail()
     end
+
+    -- Register contract dialog keyboard shortcut while screen is open
+    if InputAction.MDM_CREATE_CONTRACT then
+        local _, evId = g_inputBinding:registerActionEvent(
+            InputAction.MDM_CREATE_CONTRACT, self, MDMMarketScreen.onContractActionEvent,
+            false, true, false, true)
+        if evId then
+            self._contractActionEventId = evId
+            g_inputBinding:setActionEventTextVisibility(evId, false)
+        end
+    end
 end
 
 function MDMMarketScreen:onClose()
+    self:closeContractDialog()
+
+    if self._contractActionEventId then
+        g_inputBinding:removeActionEvent(self._contractActionEventId)
+        self._contractActionEventId = nil
+    end
+
     MDMMarketScreen:superClass().onClose(self)
+end
+
+-- Called by registered action event (key N)
+function MDMMarketScreen:onContractActionEvent()
+    if self.dialogOpen then
+        self:closeContractDialog()
+    else
+        self:openContractDialog()
+    end
+end
+
+-- Called by the "New Contract [N]" button in the contracts tab
+function MDMMarketScreen:onNewContractClick()
+    self:openContractDialog()
 end
 
 function MDMMarketScreen:onMoneyChange()
@@ -301,6 +369,21 @@ function MDMMarketScreen:inputEvent(action, value, eventUsed)
     eventUsed = MDMMarketScreen:superClass().inputEvent(self, action, value, eventUsed)
     if eventUsed then return true end
 
+    -- While the dialog is open: Escape closes, Enter confirms, everything else blocked
+    if self.dialogOpen then
+        if value > 0 then
+            if action == InputAction.MENU_CANCEL then
+                self:closeContractDialog()
+                return true
+            end
+            if action == InputAction.MENU_ACCEPT then
+                self:onDialogConfirm()
+                return true
+            end
+        end
+        return true  -- absorb tab-switch, back, etc.
+    end
+
     if action == InputAction.MENU_PAGE_PREV and value > 0 then
         local newTab = self.activeTab - 1
         if newTab < TAB_PRICES then newTab = TAB_CONTRACTS end
@@ -328,6 +411,8 @@ function MDMMarketScreen:getNumberOfItemsInSection(list, section)
         return #self.eventData
     elseif list == self.contractList then
         return #self.contractData
+    elseif list == self.dialogCropList then
+        return #self.commodities
     end
     return 0
 end
@@ -339,6 +424,8 @@ function MDMMarketScreen:populateCellForItemInSection(list, section, index, cell
         self:_populateEventCell(index, cell)
     elseif list == self.contractList then
         self:_populateContractCell(index, cell)
+    elseif list == self.dialogCropList then
+        self:_populateDialogCropCell(index, cell)
     end
 end
 
@@ -350,6 +437,10 @@ function MDMMarketScreen:onListSelectionChanged(list, section, index)
     if list == self.commodityList and index > 0 then
         self.selectedCropIndex = index
         self:refreshPricesDetail()
+    elseif list == self.dialogCropList and index > 0 then
+        self.dialogSelectedCropIdx = index
+        self:_updateDialogSummary()
+        if self.dialogCropList then self.dialogCropList:reloadData() end
     end
 end
 
@@ -479,8 +570,278 @@ function MDMMarketScreen:reloadAllLists()
 end
 
 -- ---------------------------------------------------------------------------
+-- Contract Dialog — Open / Close / Update
+-- ---------------------------------------------------------------------------
+
+function MDMMarketScreen:openContractDialog()
+    -- BetterContracts mode: futures UI is suppressed
+    local bcBlocked = BCIntegration and BCIntegration.isEnabled()
+
+    if self.contractDialog then
+        self.contractDialog:setVisible(true)
+    end
+
+    -- Show BC-blocked message and hide everything else
+    if self.dialogBcBlocked then
+        self.dialogBcBlocked:setVisible(bcBlocked)
+    end
+    if self.dialogSignal then
+        self.dialogSignal:setVisible(not bcBlocked)
+    end
+    if self.dialogConfirmBtn then
+        self.dialogConfirmBtn:setDisabled(bcBlocked)
+    end
+
+    if bcBlocked then
+        self.dialogOpen = true
+        return
+    end
+
+    -- Pre-select the crop highlighted in the prices list
+    self.dialogSelectedCropIdx = math.max(1, self.selectedCropIndex)
+    self.dialogQty             = 5000
+    self.dialogDeliveryDays    = 30
+    self.dialogOpen            = true
+
+    -- Show/hide empty hint
+    local hasCrops = #self.commodities > 0
+    if self.dialogNoCropsText then
+        self.dialogNoCropsText:setVisible(not hasCrops)
+    end
+
+    if self.dialogCropList then
+        self.dialogCropList:reloadData()
+        if hasCrops then
+            self.dialogCropList:setSelectedIndex(self.dialogSelectedCropIdx)
+        end
+    end
+
+    self:_updateDialogSummary()
+    self:_updateDialogButtonStates()
+end
+
+function MDMMarketScreen:closeContractDialog()
+    self.dialogOpen = false
+    if self.contractDialog then
+        self.contractDialog:setVisible(false)
+    end
+end
+
+-- Highlight active qty/delivery buttons with green text; unselected stays light grey
+function MDMMarketScreen:_updateDialogButtonStates()
+    local SEL   = {0.0, 0.83, 0.49, 1.0}   -- MDM green
+    local UNSEL = {0.75, 0.75, 0.75, 1.0}  -- muted grey
+
+    local qtyMap = {
+        [500] = self.qtyBtn500,   [1000]  = self.qtyBtn1000,
+        [5000] = self.qtyBtn5000, [10000] = self.qtyBtn10000,
+        [25000] = self.qtyBtn25000, [50000] = self.qtyBtn50000,
+    }
+    for qty, btn in pairs(qtyMap) do
+        if btn then
+            local c = (qty == self.dialogQty) and SEL or UNSEL
+            btn:setTextColor(c[1], c[2], c[3], c[4])
+        end
+    end
+
+    local delMap = {
+        [30] = self.delBtn30, [60]  = self.delBtn60,
+        [90] = self.delBtn90, [120] = self.delBtn120,
+    }
+    for days, btn in pairs(delMap) do
+        if btn then
+            local c = (days == self.dialogDeliveryDays) and SEL or UNSEL
+            btn:setTextColor(c[1], c[2], c[3], c[4])
+        end
+    end
+end
+
+-- Live-update the summary panel as selections change
+function MDMMarketScreen:_updateDialogSummary()
+    local crop = self.commodities[self.dialogSelectedCropIdx]
+
+    if not crop then
+        local blank = "—"
+        if self.sumCrop     then self.sumCrop:setText(blank) end
+        if self.sumQty      then self.sumQty:setText(blank) end
+        if self.sumLocked   then self.sumLocked:setText(blank) end
+        if self.sumTotal    then self.sumTotal:setText(blank) end
+        if self.sumDeadline then self.sumDeadline:setText(blank) end
+        if self.sumPenalty  then self.sumPenalty:setText("") end
+        if self.dialogSignal then self.dialogSignal:setText("") end
+        return
+    end
+
+    local lockedPrice = crop.current
+    local totalValue  = math.floor(lockedPrice * self.dialogQty)
+
+    if self.sumCrop then
+        self.sumCrop:setText("Crop:         " .. crop.title)
+    end
+    if self.sumQty then
+        self.sumQty:setText("Quantity:     " .. self:_fmtNum(self.dialogQty) .. " L")
+    end
+    if self.sumLocked then
+        self.sumLocked:setText(string.format("Locked price: $%.2f / L", lockedPrice))
+    end
+    if self.sumTotal then
+        self.sumTotal:setText("Total:  $" .. self:_fmtNum(totalValue))
+    end
+    if self.sumDeadline then
+        self.sumDeadline:setText("Deliver in:   " .. self.dialogDeliveryDays .. " days")
+    end
+    if self.sumPenalty then
+        self.sumPenalty:setText("Default penalty: 15% on unfulfilled qty")
+    end
+
+    -- Price signal: compare current price to base
+    if self.dialogSignal and crop.base and crop.base > 0 then
+        local pct = ((lockedPrice - crop.base) / crop.base) * 100
+        if pct > 5 then
+            self.dialogSignal:setText(string.format(
+                "▲  %.1f%% above base — good time to lock in", pct))
+            self.dialogSignal:setTextColor(0.20, 0.72, 0.35, 1.0)
+        elseif pct < -5 then
+            self.dialogSignal:setText(string.format(
+                "▼  %.1f%% below base — consider waiting", math.abs(pct)))
+            self.dialogSignal:setTextColor(0.85, 0.30, 0.22, 1.0)
+        else
+            self.dialogSignal:setText(string.format(
+                "◆  Near baseline (%.1f%%) — neutral", pct))
+            self.dialogSignal:setTextColor(0.90, 0.72, 0.15, 1.0)
+        end
+    end
+end
+
+-- Format a number with comma thousands separator  e.g. 25000 → "25,000"
+function MDMMarketScreen:_fmtNum(n)
+    local s = tostring(math.floor(n))
+    local result, count = "", 0
+    for i = #s, 1, -1 do
+        if count > 0 and count % 3 == 0 then result = "," .. result end
+        result = s:sub(i, i) .. result
+        count  = count + 1
+    end
+    return result
+end
+
+-- ---------------------------------------------------------------------------
+-- Contract Dialog — Button Callbacks
+-- ---------------------------------------------------------------------------
+
+function MDMMarketScreen:onDialogCropClick()
+    -- selection is handled by onListSelectionChanged
+end
+
+function MDMMarketScreen:onDialogQtyClick(element)
+    local map = {
+        [self.qtyBtn500]   = 500,   [self.qtyBtn1000]  = 1000,
+        [self.qtyBtn5000]  = 5000,  [self.qtyBtn10000] = 10000,
+        [self.qtyBtn25000] = 25000, [self.qtyBtn50000] = 50000,
+    }
+    local qty = map[element]
+    if qty then
+        self.dialogQty = qty
+        self:_updateDialogSummary()
+        self:_updateDialogButtonStates()
+    end
+end
+
+function MDMMarketScreen:onDialogDeliveryClick(element)
+    local map = {
+        [self.delBtn30] = 30, [self.delBtn60]  = 60,
+        [self.delBtn90] = 90, [self.delBtn120] = 120,
+    }
+    local days = map[element]
+    if days then
+        self.dialogDeliveryDays = days
+        self:_updateDialogSummary()
+        self:_updateDialogButtonStates()
+    end
+end
+
+function MDMMarketScreen:onDialogCancel()
+    self:closeContractDialog()
+end
+
+function MDMMarketScreen:onDialogConfirm()
+    if BCIntegration and BCIntegration.isEnabled() then
+        self:closeContractDialog()
+        return
+    end
+
+    local crop = self.commodities[self.dialogSelectedCropIdx]
+    if not crop then
+        MDMLog.warn("MarketScreen: contract confirm — no crop selected")
+        return
+    end
+    if not g_MarketDynamics or not g_MarketDynamics.futuresMarket then
+        MDMLog.warn("MarketScreen: contract confirm — futures market unavailable")
+        return
+    end
+    if not g_localPlayer then return end
+    local farmId = g_localPlayer.farmId
+    if not farmId then return end
+
+    local now            = g_currentMission and g_currentMission.time or 0
+    local deliveryTimeMs = now + (self.dialogDeliveryDays * 24 * 60 * 60000)
+
+    g_MarketDynamics.futuresMarket:createContract({
+        farmId         = farmId,
+        fillTypeIndex  = crop.idx,
+        fillTypeName   = crop.title,
+        quantity       = self.dialogQty,
+        lockedPrice    = crop.current,
+        deliveryTimeMs = deliveryTimeMs,
+    })
+
+    MDMLog.info(string.format(
+        "MarketScreen: contract — %s  %sL @ $%.2f  delivery in %dd",
+        crop.title, self:_fmtNum(self.dialogQty), crop.current, self.dialogDeliveryDays))
+
+    self:closeContractDialog()
+    self:setActiveTab(TAB_CONTRACTS)
+    self:_buildContractData()
+    self:reloadAllLists()
+end
+
+-- ---------------------------------------------------------------------------
 -- Cell Population
 -- ---------------------------------------------------------------------------
+
+function MDMMarketScreen:_populateDialogCropCell(index, cell)
+    local data = self.commodities[index]
+    if not data then return end
+
+    local isSelected = (index == self.dialogSelectedCropIdx)
+
+    local nameEl  = cell:getDescendantByName("dlgName")
+    local priceEl = cell:getDescendantByName("dlgPrice")
+    local chgEl   = cell:getDescendantByName("dlgChg")
+
+    if nameEl then
+        nameEl:setText((isSelected and "• " or "  ") .. data.title)
+        if isSelected then
+            nameEl:setTextColor(0.0, 0.83, 0.49, 1.0)
+        else
+            nameEl:setTextColor(0.85, 0.85, 0.85, 1.0)
+        end
+    end
+    if priceEl then
+        priceEl:setText(string.format("$%.2f", data.current))
+    end
+    if chgEl then
+        local sign = data.changePct >= 0 and "+" or ""
+        chgEl:setText(string.format("%s%.1f%%", sign, data.changePct))
+        if data.changePct > 0.5 then
+            chgEl:setTextColor(0.20, 0.72, 0.35, 1.0)
+        elseif data.changePct < -0.5 then
+            chgEl:setTextColor(0.85, 0.22, 0.22, 1.0)
+        else
+            chgEl:setTextColor(0.65, 0.65, 0.65, 1.0)
+        end
+    end
+end
 
 function MDMMarketScreen:_populateCommodityCell(index, cell)
     local data = self.commodities[index]
@@ -740,12 +1101,16 @@ function MDMMarketScreen._performRegistration(modDir)
         _setById("eventsHeader", "mdm_screen_events_hdr", "ACTIVE EVENTS")
         _setById("contractsHeader", "mdm_screen_contracts_hdr", "FUTURES CONTRACTS")
 
-        _setById("contractsColCrop", "mdm_screen_col_crop", "Crop")
-        _setById("contractsColQty", nil, "Qty")
-        _setById("contractsColLocked", nil, "Locked")
-        _setById("contractsColDelivered", nil, "Delivered")
-        _setById("contractsColDeadline", nil, "Deadline")
-        _setById("contractsColStatus", nil, "Status")
+        _setById("contractsColCrop",      "mdm_screen_col_crop",      "Crop")
+        _setById("contractsColQty",       "mdm_screen_col_qty",       "Qty")
+        _setById("contractsColLocked",    "mdm_screen_col_locked",    "Locked")
+        _setById("contractsColDelivered", "mdm_screen_col_delivered", "Delivered")
+        _setById("contractsColDeadline",  "mdm_screen_col_deadline",  "Deadline")
+        _setById("contractsColStatus",    "mdm_screen_col_status",    "Status")
+        _setById("newContractHint",       "mdm_screen_new_contract_btn", "New Contract  [N]")
+        _setById("dialogTitleText",       "mdm_futures_new_title",    "New Futures Contract")
+        _setById("dialogBcBlocked",       "mdm_dialog_bc_blocked",    "Futures disabled")
+        _setById("dialogNoCropsText",     "mdm_dialog_no_crops",      "No market data available yet.")
 
         _setById("detailCropName", "mdm_screen_select_crop", "Select a commodity")
         _setById("detailCurrentPrice", nil, "")

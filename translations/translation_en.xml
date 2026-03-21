@@ -79,6 +79,14 @@
         <text name="mdm_futures_created"         text="Contract Created!" />
         <text name="mdm_futures_no_contracts"    text="No contracts yet" />
 
+        <!-- Contract creation dialog -->
+        <text name="mdm_dialog_summary"       text="Contract Summary" />
+        <text name="mdm_dialog_qty_label"     text="Quantity" />
+        <text name="mdm_dialog_delivery_label" text="Delivery Window" />
+        <text name="mdm_dialog_bc_blocked"    text="Futures disabled — BetterContracts mode active" />
+        <text name="mdm_dialog_no_crops"      text="No market data available yet." />
+        <text name="mdm_screen_new_contract_btn" text="New Contract  [N]" />
+
         <!-- Settings -->
         <text name="mdm_settings_mdm_general"  text="Market Dynamics" />
     </texts>

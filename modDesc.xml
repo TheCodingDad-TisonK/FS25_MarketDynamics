@@ -18,7 +18,8 @@
     </extraSourceFiles>
 
     <actions>
-        <action name="MDM_MARKET_SCREEN" axisType="HALF_AXIS" />
+        <action name="MDM_MARKET_SCREEN"     axisType="HALF_AXIS" />
+        <action name="MDM_CREATE_CONTRACT"   axisType="HALF_AXIS" />
     </actions>
 
     <inputBinding filename="xml/inputBinding.xml" />

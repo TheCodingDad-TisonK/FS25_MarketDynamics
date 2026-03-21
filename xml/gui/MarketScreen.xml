@@ -135,10 +135,82 @@
           <Bitmap profile="fs25_secondaryMenuStartClipper" name="ctStartClipper"/>
           <Bitmap profile="fs25_secondaryMenuStopClipper" name="ctEndClipper"/>
           <Text profile="mdm_emptyHint" id="noContractsText" text="$l10n_mdm_screen_no_contracts"/>
-          <Text profile="mdm_hintText" id="newContractHint" text="$l10n_mdm_screen_new_contract"/>
+          <Button profile="mdm_newContractBtn" id="newContractHint" onClick="onNewContractClick" text="$l10n_mdm_screen_new_contract_btn" position="700px -550px"/>
         </GuiElement>
-      </GuiElement>
 
+        <!-- ═══════════════════════════════════════════════════════════════════
+             Contract creation dialog overlay (hidden until N / button click)
+             ═══════════════════════════════════════════════════════════════════ -->
+        <GuiElement id="contractDialog" position="0px 0px" width="1000px" height="760px" visible="false">
+
+          <!-- Dark backdrop -->
+          <Bitmap profile="mdm_dialogOverlay" position="0px 0px" width="1000px" height="760px"/>
+
+          <!-- ── Dialog panel ── -->
+          <GuiElement position="20px -55px" width="960px" height="660px">
+
+            <!-- Title -->
+            <Text profile="mdm_dialogTitle" id="dialogTitleText" text="$l10n_mdm_futures_new_title" position="0px -12px"/>
+
+            <!-- ──────────── LEFT column: crop list ──────────── -->
+            <Text profile="mdm_dialogLabel" text="$l10n_mdm_futures_crop_label" position="0px -55px"/>
+            <GuiElement position="0px -80px" width="420px" height="380px">
+              <SmoothList id="dialogCropList" profile="mdm_smoothList"
+                          startClipperElementName="dlgClipStart"
+                          endClipperElementName="dlgClipEnd">
+                <ListItem profile="mdm_commodityItem" onClick="onDialogCropClick">
+                  <Bitmap profile="mdm_commodityItemBg" name="alternating"/>
+                  <Text profile="mdm_dlgCropName"  name="dlgName"/>
+                  <Text profile="mdm_dlgCropPrice" name="dlgPrice"/>
+                  <Text profile="mdm_dlgCropChg"   name="dlgChg"/>
+                </ListItem>
+              </SmoothList>
+              <Bitmap profile="fs25_secondaryMenuStartClipper" name="dlgClipStart"/>
+              <Bitmap profile="fs25_secondaryMenuStopClipper"  name="dlgClipEnd"/>
+            </GuiElement>
+            <Text profile="mdm_emptyHint" id="dialogNoCropsText" text="$l10n_mdm_dialog_no_crops" position="0px -260px"/>
+
+            <!-- ──────────── RIGHT column ──────────── -->
+
+            <!-- Quantity presets -->
+            <Text profile="mdm_dialogLabel" text="$l10n_mdm_dialog_qty_label" position="455px -55px"/>
+            <Button profile="mdm_dialogOptBtn" id="qtyBtn500"   text="500 L"    onClick="onDialogQtyClick" position="455px -82px"/>
+            <Button profile="mdm_dialogOptBtn" id="qtyBtn1000"  text="1,000 L"  onClick="onDialogQtyClick" position="613px -82px"/>
+            <Button profile="mdm_dialogOptBtn" id="qtyBtn5000"  text="5,000 L"  onClick="onDialogQtyClick" position="771px -82px"/>
+            <Button profile="mdm_dialogOptBtn" id="qtyBtn10000" text="10,000 L" onClick="onDialogQtyClick" position="455px -128px"/>
+            <Button profile="mdm_dialogOptBtn" id="qtyBtn25000" text="25,000 L" onClick="onDialogQtyClick" position="613px -128px"/>
+            <Button profile="mdm_dialogOptBtn" id="qtyBtn50000" text="50,000 L" onClick="onDialogQtyClick" position="771px -128px"/>
+
+            <!-- Delivery window -->
+            <Text profile="mdm_dialogLabel" text="$l10n_mdm_dialog_delivery_label" position="455px -180px"/>
+            <Button profile="mdm_dialogOptBtn" id="delBtn30"  text="30 Days"  onClick="onDialogDeliveryClick" position="455px -207px"/>
+            <Button profile="mdm_dialogOptBtn" id="delBtn60"  text="60 Days"  onClick="onDialogDeliveryClick" position="613px -207px"/>
+            <Button profile="mdm_dialogOptBtn" id="delBtn90"  text="90 Days"  onClick="onDialogDeliveryClick" position="455px -253px"/>
+            <Button profile="mdm_dialogOptBtn" id="delBtn120" text="120 Days" onClick="onDialogDeliveryClick" position="613px -253px"/>
+
+            <!-- Summary box -->
+            <Text profile="mdm_dialogSummaryHdr" text="$l10n_mdm_dialog_summary" position="455px -316px"/>
+            <Text profile="mdm_dialogSummaryRow" id="sumCrop"     position="455px -345px"/>
+            <Text profile="mdm_dialogSummaryRow" id="sumQty"      position="455px -368px"/>
+            <Text profile="mdm_dialogSummaryRow" id="sumLocked"   position="455px -391px"/>
+            <Text profile="mdm_dialogSummaryBig" id="sumTotal"    position="455px -420px"/>
+            <Text profile="mdm_dialogSummaryRow" id="sumDeadline" position="455px -455px"/>
+            <Text profile="mdm_dialogSummarySmall" id="sumPenalty" position="455px -480px"/>
+
+            <!-- Price signal -->
+            <Text profile="mdm_dialogSignal" id="dialogSignal" position="455px -520px"/>
+
+            <!-- BC-mode blocked message -->
+            <Text profile="mdm_dialogBcBlocked" id="dialogBcBlocked" text="$l10n_mdm_dialog_bc_blocked" position="455px -520px" visible="false"/>
+
+            <!-- Action buttons -->
+            <Button profile="mdm_dialogCancelBtn"  id="dialogCancelBtn"  text="$l10n_mdm_futures_cancel"  onClick="onDialogCancel"  position="455px -610px"/>
+            <Button profile="mdm_dialogConfirmBtn" id="dialogConfirmBtn" text="$l10n_mdm_futures_confirm" onClick="onDialogConfirm" position="710px -610px"/>
+
+          </GuiElement>
+        </GuiElement>
+
+      </GuiElement>
     </GuiElement>
   </GuiElement>
 
@@ -223,6 +295,119 @@
     <Profile name="mdm_detailRowSmall" extends="fs25_textDefault" with="anchorTopLeft">
       <textSize value="12px"/>
       <textColor value="$preset_colorWhite_50"/>
+    </Profile>
+
+    <!-- New Contract button (bottom of contracts tab) -->
+    <Profile name="mdm_newContractBtn" extends="fs25_buttonText" with="anchorBottomRight">
+      <size value="230px 40px"/>
+      <textSize value="14px"/>
+      <textBold value="true"/>
+      <textAlignment value="center"/>
+    </Profile>
+
+    <!-- ── Contract dialog profiles ── -->
+
+    <!-- Semi-transparent dark backdrop -->
+    <Profile name="mdm_dialogOverlay" extends="baseReference" with="anchorTopLeft">
+      <imageColor value="0.04 0.06 0.08 0.88"/>
+    </Profile>
+
+    <!-- Dialog title -->
+    <Profile name="mdm_dialogTitle" extends="fs25_textDefault" with="anchorTopLeft">
+      <textSize value="22px"/>
+      <textBold value="true"/>
+      <textColor value="$preset_fs25_colorMainHighlight"/>
+    </Profile>
+
+    <!-- Section label above input groups -->
+    <Profile name="mdm_dialogLabel" extends="fs25_textDefault" with="anchorTopLeft">
+      <textSize value="12px"/>
+      <textBold value="true"/>
+      <textUpperCase value="true"/>
+      <textColor value="$preset_colorWhite_50"/>
+    </Profile>
+
+    <!-- Option button (qty / delivery presets) -->
+    <Profile name="mdm_dialogOptBtn" extends="fs25_buttonText" with="anchorTopLeft">
+      <size value="148px 38px"/>
+      <textSize value="13px"/>
+      <textAlignment value="center"/>
+    </Profile>
+
+    <!-- Crop list items inside the dialog -->
+    <Profile name="mdm_dlgCropName" extends="fs25_textDefault" with="anchorStretchingYLeft">
+      <size value="210px 32px"/>
+      <position value="10px 0"/>
+      <textSize value="14px"/>
+      <textAlignment value="left"/>
+      <textColor value="$preset_fs25_colorMainLight"/>
+      <textSelectedColor value="$preset_fs25_colorMainDark"/>
+    </Profile>
+    <Profile name="mdm_dlgCropPrice" extends="mdm_dlgCropName">
+      <size value="100px 32px"/>
+      <position value="230px 0"/>
+      <textAlignment value="right"/>
+    </Profile>
+    <Profile name="mdm_dlgCropChg" extends="mdm_dlgCropName">
+      <size value="80px 32px"/>
+      <position value="335px 0"/>
+      <textAlignment value="right"/>
+    </Profile>
+
+    <!-- Summary section header -->
+    <Profile name="mdm_dialogSummaryHdr" extends="fs25_textDefault" with="anchorTopLeft">
+      <textSize value="13px"/>
+      <textBold value="true"/>
+      <textUpperCase value="true"/>
+      <textColor value="$preset_colorWhite_50"/>
+    </Profile>
+
+    <!-- Summary body rows -->
+    <Profile name="mdm_dialogSummaryRow" extends="fs25_textDefault" with="anchorTopLeft">
+      <textSize value="14px"/>
+      <textColor value="$preset_colorWhite"/>
+    </Profile>
+
+    <!-- Total value — bigger + highlighted -->
+    <Profile name="mdm_dialogSummaryBig" extends="fs25_textDefault" with="anchorTopLeft">
+      <textSize value="20px"/>
+      <textBold value="true"/>
+      <textColor value="$preset_fs25_colorMainHighlight"/>
+    </Profile>
+
+    <!-- Penalty note (small, muted) -->
+    <Profile name="mdm_dialogSummarySmall" extends="fs25_textDefault" with="anchorTopLeft">
+      <textSize value="12px"/>
+      <textColor value="$preset_colorWhite_50"/>
+    </Profile>
+
+    <!-- Price signal (color set dynamically by Lua) -->
+    <Profile name="mdm_dialogSignal" extends="fs25_textDefault" with="anchorTopLeft">
+      <textSize value="14px"/>
+      <textBold value="true"/>
+    </Profile>
+
+    <!-- BC mode blocked message -->
+    <Profile name="mdm_dialogBcBlocked" extends="fs25_textDefault" with="anchorMiddleCenter">
+      <textSize value="16px"/>
+      <textBold value="true"/>
+      <textAlignment value="center"/>
+      <textColor value="0.95 0.75 0.10 1.0"/>
+    </Profile>
+
+    <!-- Cancel button -->
+    <Profile name="mdm_dialogCancelBtn" extends="fs25_buttonText" with="anchorTopLeft">
+      <size value="240px 44px"/>
+      <textSize value="15px"/>
+      <textAlignment value="center"/>
+    </Profile>
+
+    <!-- Confirm button (same size but bold) -->
+    <Profile name="mdm_dialogConfirmBtn" extends="fs25_buttonText" with="anchorTopLeft">
+      <size value="240px 44px"/>
+      <textSize value="15px"/>
+      <textBold value="true"/>
+      <textAlignment value="center"/>
     </Profile>
 
     <!-- Tab button -->
