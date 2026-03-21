@@ -90,6 +90,25 @@ function FuturesMarket:checkExpiry()
     end
 end
 
+-- Called from the SellingStation delivery hook on every accepted crop sale.
+-- Routes liters to all active contracts matching this farm + fillType, oldest first.
+-- Excess liters (beyond what contracts need) are silently ignored — normal selling.
+function FuturesMarket:onCropDelivered(farmId, fillTypeIndex, liters)
+    local remaining = liters
+    for id, contract in pairs(self.contracts) do
+        if remaining <= 0 then break end
+        if contract.status == "active"
+            and contract.farmId == farmId
+            and contract.fillTypeIndex == fillTypeIndex then
+
+            local needed   = contract.quantity - contract.delivered
+            local applying = math.min(remaining, needed)
+            self:recordDelivery(id, applying)
+            remaining = remaining - applying
+        end
+    end
+end
+
 -- Returns all contracts belonging to a given farm (for GUI display).
 function FuturesMarket:getContractsForFarm(farmId)
     local result = {}
