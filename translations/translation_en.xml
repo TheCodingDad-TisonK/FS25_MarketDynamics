@@ -23,12 +23,17 @@
 
         <!-- Market Screen -->
         <text name="mdm_screen_title"            text="Market Dynamics" />
-        <text name="mdm_screen_col_crop"         text="Crop" />
+        <text name="mdm_screen_col_crop"          text="Crop" />
         <text name="mdm_screen_col_base"         text="Base" />
         <text name="mdm_screen_col_current"      text="Current" />
         <text name="mdm_screen_col_change"       text="Change" />
         <text name="mdm_screen_col_day"          text="Day" />
         <text name="mdm_screen_col_price"        text="Price" />
+        <text name="mdm_screen_col_qty"          text="Qty" />
+        <text name="mdm_screen_col_locked"       text="Locked" />
+        <text name="mdm_screen_col_delivered"    text="Delivered" />
+        <text name="mdm_screen_col_deadline"     text="Deadline" />
+        <text name="mdm_screen_col_status"       text="Status" />
         <text name="mdm_screen_no_data"          text="No price data available" />
         <text name="mdm_screen_no_history"       text="No history recorded yet" />
         <text name="mdm_screen_close_hint"       text="Press ESC to close" />

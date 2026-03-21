@@ -98,6 +98,14 @@ function MarketSerializer:save(coordinator)
             setXMLString(xmlFile, base .. "#id",        id)
             setXMLFloat (xmlFile, base .. "#endsAt",    active.endsAt)
             setXMLFloat (xmlFile, base .. "#intensity", active.intensity)
+            -- Persist per-event extra state (e.g. which crops were affected)
+            local desc = coordinator.worldEvents.registry[id]
+            if desc and desc.getExtraData then
+                local extra = desc.getExtraData()
+                if extra and extra ~= "" then
+                    setXMLString(xmlFile, base .. "#extraData", extra)
+                end
+            end
             a = a + 1
         end
     end
@@ -222,9 +230,10 @@ function MarketSerializer:load(coordinator)
             local evId = getXMLString(xmlFile, base .. "#id")
             if not evId then break end
 
-            local endsAt    = getXMLFloat(xmlFile, base .. "#endsAt")
-            local intensity = getXMLFloat(xmlFile, base .. "#intensity")
-            coordinator.worldEvents:loadActiveEvent(evId, endsAt, intensity)
+            local endsAt    = getXMLFloat (xmlFile, base .. "#endsAt")
+            local intensity = getXMLFloat (xmlFile, base .. "#intensity")
+            local extraData = getXMLString(xmlFile, base .. "#extraData") or ""
+            coordinator.worldEvents:loadActiveEvent(evId, endsAt, intensity, extraData)
             a = a + 1
         end
     end

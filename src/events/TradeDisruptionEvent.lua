@@ -58,9 +58,33 @@ local function onExpire(intensity)
     _affectedCrops = {}
 end
 
+-- Restore from saved state.  Called by WorldEventSystem:loadActiveEvent() instead of
+-- onFire so the affected-crop set is deterministically restored rather than re-rolled.
+local function onLoad(intensity, extraData)
+    if not g_MarketDynamics then return end
+
+    _affectedCrops = {}
+    local factor = 1.05 + intensity * 0.20
+
+    for cropName in (extraData or ""):gmatch("[^,]+") do
+        local fillType = g_fillTypeManager:getFillTypeByName(cropName:upper())
+        if fillType then
+            g_MarketDynamics.marketEngine:addModifier({
+                id            = EVENT_ID .. "_" .. cropName,
+                fillTypeIndex = fillType.index,
+                factor        = factor,
+            })
+            _affectedCrops[#_affectedCrops + 1] = cropName
+        end
+    end
+
+    MDMLog.info("TradeDisruptionEvent restored — " .. #_affectedCrops .. " crops from save")
+end
+
 MDM_pendingRegistrations = MDM_pendingRegistrations or {}
 table.insert(MDM_pendingRegistrations, {
     id             = EVENT_ID,
+    nameKey        = "mdm_event_trade_disruption",
     name           = "Trade Disruption",
     probability    = 0.06,
     minIntensity   = 0.3,
@@ -70,4 +94,6 @@ table.insert(MDM_pendingRegistrations, {
     maxDurationMs  = 12 * 60 * 1000,
     onFire         = onFire,
     onExpire       = onExpire,
+    onLoad         = onLoad,
+    getExtraData   = function() return table.concat(_affectedCrops, ",") end,
 })

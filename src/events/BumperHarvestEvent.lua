@@ -46,6 +46,7 @@ end
 MDM_pendingRegistrations = MDM_pendingRegistrations or {}
 table.insert(MDM_pendingRegistrations, {
     id             = EVENT_ID,
+    nameKey        = "mdm_event_bumper_harvest",
     name           = "Bumper Harvest",
     probability    = 0.10,
     minIntensity   = 0.2,

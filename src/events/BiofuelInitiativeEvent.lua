@@ -48,6 +48,7 @@ end
 MDM_pendingRegistrations = MDM_pendingRegistrations or {}
 table.insert(MDM_pendingRegistrations, {
     id             = EVENT_ID,
+    nameKey        = "mdm_event_biofuel_initiative",
     name           = "Biofuel Initiative",
     probability    = 0.03,
     minIntensity   = 0.5,

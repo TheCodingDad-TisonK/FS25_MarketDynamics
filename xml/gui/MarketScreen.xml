@@ -63,10 +63,17 @@
       </ThreePartBitmap>
 
       <!-- RIGHT COLUMN: Price detail + graph -->
-      <GuiElement id="rightPanel" position="500px 100px" width="1000px" height="700px">
+      <GuiElement id="rightPanel" position="500px 100px" width="1000px" height="760px">
+
+        <!-- Tab bar -->
+        <GuiElement id="tabBar" position="0px 0px" width="1000px" height="50px">
+          <Button profile="mdm_tabButton" id="tabButtonPrices"    onClick="onClickTabPrices"    text="$l10n_mdm_screen_tab_prices"    position="0px 0px"/>
+          <Button profile="mdm_tabButton" id="tabButtonEvents"    onClick="onClickTabEvents"    text="$l10n_mdm_screen_tab_events"    position="200px 0px"/>
+          <Button profile="mdm_tabButton" id="tabButtonContracts" onClick="onClickTabContracts" text="$l10n_mdm_screen_tab_contracts" position="400px 0px"/>
+        </GuiElement>
 
         <!-- PRICES content (visible by default) -->
-        <GuiElement id="pricesContent" position="0px 0px" width="1000px" height="700px" debugEnabled="false">
+        <GuiElement id="pricesContent" position="0px -55px" width="1000px" height="700px" debugEnabled="false">
           <!-- Compact detail: crop name + key stats -->
           <Text profile="mdm_detailCropName" id="detailCropName" position="0px -10px" size="580px 30px"/>
           <Text profile="mdm_detailRowInline" id="detailCurrentPrice" text="" position="0px -45px" size="190px 20px"/>
@@ -84,7 +91,7 @@
         </GuiElement>
 
         <!-- Events content (hidden by default, toggled via tabs) -->
-        <GuiElement id="eventsContent" position="0px 0px" width="1000px" height="600px" visible="false" debugEnabled="false">
+        <GuiElement id="eventsContent" position="0px -55px" width="1000px" height="600px" visible="false" debugEnabled="false">
           <Text profile="mdm_sectionHeader" id="eventsHeader" text="$l10n_mdm_screen_events_hdr" position="0px -10px"/>
           <SmoothList id="eventList" profile="mdm_smoothList" position="0px -50px" width="1000px" height="500px"
                       startClipperElementName="evStartClipper"
@@ -102,15 +109,15 @@
         </GuiElement>
 
         <!-- Contracts content (hidden by default) -->
-        <GuiElement id="contractsContent" position="0px 0px" width="1000px" height="600px" visible="false" debugEnabled="false">
+        <GuiElement id="contractsContent" position="0px -55px" width="1000px" height="600px" visible="false" debugEnabled="false">
           <Text profile="mdm_sectionHeader" id="contractsHeader" text="$l10n_mdm_screen_contracts_hdr" position="0px -10px"/>
           <GuiElement profile="mdm_listHeaderRow" position="0px -40px">
-            <Text profile="mdm_colHeaderLeft" id="contractsColCrop" text="$l10n_mdm_screen_col_crop" position="10px 0"/>
-            <Text profile="mdm_colHeaderRight" id="contractsColQty" text="Qty" position="140px 0"/>
-            <Text profile="mdm_colHeaderRight" id="contractsColLocked" text="Locked" position="240px 0"/>
-            <Text profile="mdm_colHeaderRight" id="contractsColDelivered" text="Delivered" position="330px 0"/>
-            <Text profile="mdm_colHeaderRight" id="contractsColDeadline" text="Deadline" position="430px 0"/>
-            <Text profile="mdm_colHeaderRight" id="contractsColStatus" text="Status" position="530px 0"/>
+            <Text profile="mdm_colHeaderLeft" id="contractsColCrop"      text="$l10n_mdm_screen_col_crop"      position="10px 0"/>
+            <Text profile="mdm_colHeaderRight" id="contractsColQty"      text="$l10n_mdm_screen_col_qty"       position="140px 0"/>
+            <Text profile="mdm_colHeaderRight" id="contractsColLocked"   text="$l10n_mdm_screen_col_locked"    position="240px 0"/>
+            <Text profile="mdm_colHeaderRight" id="contractsColDelivered" text="$l10n_mdm_screen_col_delivered" position="330px 0"/>
+            <Text profile="mdm_colHeaderRight" id="contractsColDeadline" text="$l10n_mdm_screen_col_deadline"  position="430px 0"/>
+            <Text profile="mdm_colHeaderRight" id="contractsColStatus"   text="$l10n_mdm_screen_col_status"    position="530px 0"/>
           </GuiElement>
           <SmoothList id="contractList" profile="mdm_smoothList" position="0px -75px" width="1000px" height="450px"
                       startClipperElementName="ctStartClipper"
@@ -216,6 +223,15 @@
     <Profile name="mdm_detailRowSmall" extends="fs25_textDefault" with="anchorTopLeft">
       <textSize value="12px"/>
       <textColor value="$preset_colorWhite_50"/>
+    </Profile>
+
+    <!-- Tab button -->
+    <Profile name="mdm_tabButton" extends="fs25_buttonText" with="anchorTopLeft">
+      <size value="180px 40px"/>
+      <textSize value="14px"/>
+      <textBold value="true"/>
+      <textUpperCase value="true"/>
+      <textAlignment value="center"/>
     </Profile>
 
     <!-- Hints -->

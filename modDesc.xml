@@ -17,6 +17,10 @@
         <sourceFile filename="main.lua" />
     </extraSourceFiles>
 
+    <actions>
+        <action name="MDM_MARKET_SCREEN" axisType="HALF_AXIS" />
+    </actions>
+
     <inputBinding filename="xml/inputBinding.xml" />
 
     <l10n filenamePrefix="translations/translation" />

@@ -59,7 +59,10 @@ end
 
 -- Restore an active event from savegame.
 -- Called by MarketSerializer:load() after all events are registered.
-function WorldEventSystem:loadActiveEvent(id, endsAt, intensity)
+-- extraData is an optional string persisted by the event's getExtraData() callback;
+-- if the event defines onLoad, that is called instead of onFire so per-event state
+-- (e.g. which crops were affected) can be deterministically restored.
+function WorldEventSystem:loadActiveEvent(id, endsAt, intensity, extraData)
     local event = self.registry[id]
     if not event then
         MDMLog.warn("WorldEventSystem: cannot restore unknown event '" .. tostring(id) .. "'")
@@ -68,8 +71,10 @@ function WorldEventSystem:loadActiveEvent(id, endsAt, intensity)
 
     self.active[id] = { event = event, endsAt = endsAt, intensity = intensity }
 
-    -- Re-trigger onFire to re-apply modifiers to the MarketEngine
-    if event.onFire then
+    -- Prefer onLoad (deterministic restore) over onFire (which may re-roll random state)
+    if event.onLoad then
+        event.onLoad(intensity, extraData or "")
+    elseif event.onFire then
         event.onFire(intensity)
     end
 
@@ -107,9 +112,15 @@ end
 function WorldEventSystem:getActiveEvents()
     local result = {}
     for id, active in pairs(self.active) do
+        local desc    = self.registry[id]
+        local rawName = desc and desc.name or id
+        local name    = rawName
+        if desc and desc.nameKey and g_i18n then
+            name = g_i18n:getText(desc.nameKey) or rawName
+        end
         table.insert(result, {
             id        = id,
-            name      = self.registry[id] and self.registry[id].name or id,
+            name      = name,
             intensity = active.intensity,
             endsAt    = active.endsAt,
         })

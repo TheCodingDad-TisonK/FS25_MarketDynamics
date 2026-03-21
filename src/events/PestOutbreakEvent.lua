@@ -48,6 +48,7 @@ end
 MDM_pendingRegistrations = MDM_pendingRegistrations or {}
 table.insert(MDM_pendingRegistrations, {
     id             = EVENT_ID,
+    nameKey        = "mdm_event_pest_outbreak",
     name           = "Root Crop Blight",
     probability    = 0.05,
     minIntensity   = 0.3,
