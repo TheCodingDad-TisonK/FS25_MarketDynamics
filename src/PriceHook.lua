@@ -52,30 +52,31 @@ end
 -- ---------------------------------------------------------------------------
 
 if SellingStation and SellingStation.getEffectiveFillTypePrice then
-    local origSSGetPrice = SellingStation.getEffectiveFillTypePrice
+    SellingStation.getEffectiveFillTypePrice = Utils.overwrittenFunction(
+        SellingStation.getEffectiveFillTypePrice,
+        function(self, superFunc, fillTypeIndex)
+            local price = superFunc(self, fillTypeIndex)
+            if type(price) ~= "number" or price <= 0 then return price end
 
-    SellingStation.getEffectiveFillTypePrice = function(self, fillTypeIndex)
-        local price = origSSGetPrice(self, fillTypeIndex)
-        if type(price) ~= "number" or price <= 0 then return price end
+            -- Dormant until MDM is fully initialized
+            if not g_MarketDynamics or not g_MarketDynamics.isActive then
+                return price
+            end
 
-        -- Dormant until MDM is fully initialized
-        if not g_MarketDynamics or not g_MarketDynamics.isActive then
+            -- Respect the "Dynamic Prices" setting (ESC > Settings > Market Dynamics)
+            if g_MarketDynamics.settings and not g_MarketDynamics.settings.pricesEnabled then
+                return price
+            end
+
+            local mdmPrice = g_MarketDynamics.marketEngine:getPrice(fillTypeIndex)
+            if mdmPrice and mdmPrice > 0 then
+                return mdmPrice
+            end
+
+            -- Fallback: fillType not tracked by MDM (e.g. added by another mod)
             return price
         end
-
-        -- Respect the "Dynamic Prices" setting (ESC > Settings > Market Dynamics)
-        if g_MarketDynamics.settings and not g_MarketDynamics.settings.pricesEnabled then
-            return price
-        end
-
-        local mdmPrice = g_MarketDynamics.marketEngine:getPrice(fillTypeIndex)
-        if mdmPrice and mdmPrice > 0 then
-            return mdmPrice
-        end
-
-        -- Fallback: fillType not tracked by MDM (e.g. added by another mod)
-        return price
-    end
+    )
 
     MDMLog.info("PriceHook: SellingStation.getEffectiveFillTypePrice hooked")
 else
@@ -87,22 +88,23 @@ end
 -- ---------------------------------------------------------------------------
 
 if SellingStation and SellingStation.sellFillType then
-    local origSellFillType = SellingStation.sellFillType
+    SellingStation.sellFillType = Utils.overwrittenFunction(
+        SellingStation.sellFillType,
+        function(self, superFunc, farmId, fillDelta, fillTypeIndex, toolType, extraAttributes)
+            local accepted = superFunc(self, farmId, fillDelta, fillTypeIndex, toolType, extraAttributes)
 
-    SellingStation.sellFillType = function(self, farmId, fillDelta, fillTypeIndex, toolType, extraAttributes)
-        local accepted = origSellFillType(self, farmId, fillDelta, fillTypeIndex, toolType, extraAttributes)
+            -- Only track on server; only when MDM is active with a futures market
+            if accepted and accepted > 0
+                and g_currentMission and g_currentMission.isServer
+                and g_MarketDynamics and g_MarketDynamics.isActive
+                and g_MarketDynamics.futuresMarket then
 
-        -- Only track on server; only when MDM is active with a futures market
-        if accepted and accepted > 0
-            and g_currentMission and g_currentMission.isServer
-            and g_MarketDynamics and g_MarketDynamics.isActive
-            and g_MarketDynamics.futuresMarket then
+                g_MarketDynamics.futuresMarket:onCropDelivered(farmId, fillTypeIndex, accepted)
+            end
 
-            g_MarketDynamics.futuresMarket:onCropDelivered(farmId, fillTypeIndex, accepted)
+            return accepted
         end
-
-        return accepted
-    end
+    )
 
     MDMLog.info("PriceHook: SellingStation.sellFillType hooked for futures tracking")
 else
