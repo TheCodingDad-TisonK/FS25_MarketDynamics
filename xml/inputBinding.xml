@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--
+    MDM input action definitions.
+    MDM_MARKET_SCREEN — toggle the Market Dynamics screen (InGameMenu page).
+    Default binding: F10 (KB/Mouse). Players can rebind via game controls menu.
+-->
+<inputBinding>
+    <actionBinding action="MDM_MARKET_SCREEN">
+        <binding device="KB_MOUSE_DEFAULT" input="KEY_F10" axisComponent="+" index="0" />
+    </actionBinding>
+</inputBinding>

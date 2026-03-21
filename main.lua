@@ -8,6 +8,24 @@
 local modDirectory = g_currentModDirectory
 local modName      = g_currentModName
 
+-- Menu icon global (resolved by XML imageFilename via hook below)
+g_MDMIconMenu = Utils.getFilename("images/menuIcon.dds", g_currentModDirectory)
+
+-- Resolve mod icon globals in XML imageFilename attributes (EmployeeManager pattern)
+local MDM_ICON_GLOBALS = {
+    g_MDMIconMenu = true,
+}
+
+local function mdmResolveFilename(self, superFunc)
+    local filename = superFunc(self)
+    if MDM_ICON_GLOBALS[filename] then
+        return _G[filename]
+    end
+    return filename
+end
+
+GuiOverlay.resolveFilename = Utils.overwrittenFunction(GuiOverlay.resolveFilename, mdmResolveFilename)
+
 -- ---------------------------------------------------------------------------
 -- Source all modules
 -- (Order mirrors modDesc.xml extraSourceFiles — do not reorder)
@@ -35,6 +53,10 @@ source(modDirectory .. "src/UPIntegration.lua")
 -- Debug HUD (TEMP: remove when LeGrizzly's GUI lands)
 source(modDirectory .. "src/DebugHUD.lua")
 source(modDirectory .. "src/gui/SettingsUI.lua")
+
+-- GUI screens (LeGrizzly / dev-2)
+source(modDirectory .. "src/gui/MarketScreenGraph.lua")
+source(modDirectory .. "src/gui/MarketScreen.lua")
 
 -- Events
 source(modDirectory .. "src/events/DroughtEvent.lua")

@@ -113,6 +113,7 @@ function FuturesMarket:_fulfillContract(id)
     local contract = self.contracts[id]
     if not contract then return end
     if contract.status ~= "active" then return end  -- already settled; skip
+    if g_currentMission and g_currentMission.isClient and not g_currentMission.isServer then return end
 
     contract.status = "fulfilled"
     local payout = contract.quantity * contract.lockedPrice
@@ -138,6 +139,7 @@ function FuturesMarket:_defaultContract(id)
     local contract = self.contracts[id]
     if not contract then return end
     if contract.status ~= "active" then return end  -- already settled; skip
+    if g_currentMission and g_currentMission.isClient and not g_currentMission.isServer then return end
 
     contract.status = "defaulted"
 

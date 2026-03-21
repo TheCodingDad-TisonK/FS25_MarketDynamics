@@ -57,6 +57,9 @@ function MarketSerializer:save(coordinator)
         setXMLFloat (xmlFile, base .. "#deliveryTime",  contract.deliveryTime)
         setXMLFloat (xmlFile, base .. "#delivered",     contract.delivered)
         setXMLString(xmlFile, base .. "#status",        contract.status)
+        if contract.upDealId then
+            setXMLInt(xmlFile, base .. "#upDealId", contract.upDealId)
+        end
         i = i + 1
     end
 
@@ -155,6 +158,7 @@ function MarketSerializer:load(coordinator)
             deliveryTime  = getXMLFloat (xmlFile, base .. "#deliveryTime"),
             delivered     = getXMLFloat (xmlFile, base .. "#delivered"),
             status        = getXMLString(xmlFile, base .. "#status"),
+            upDealId      = getXMLInt  (xmlFile, base .. "#upDealId"),
         }
 
         if coordinator.futuresMarket then

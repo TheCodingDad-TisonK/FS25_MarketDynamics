@@ -195,6 +195,74 @@ local function cmdUPMode(self, arg)
     end
 end
 
+local function cmdUPTest(self, outcome)
+    if not g_MarketDynamics or not g_MarketDynamics.isActive then
+        print("[MDM] System not active")
+        return
+    end
+
+    if not UPIntegration.isAvailable() then
+        print("[MDM] FS25_UsedPlus is not installed — cannot test")
+        return
+    end
+
+    if not UPIntegration.isEnabled() then
+        print("[MDM] UP mode is OFF — run 'mdmUPMode on' first")
+        return
+    end
+
+    outcome = outcome or "fulfill"
+    if outcome ~= "fulfill" and outcome ~= "default" then
+        print("[MDM] Usage: mdmUPTest [fulfill|default]")
+        return
+    end
+
+    -- Create a synthetic contract directly (bypasses UI, uses farmId 1)
+    local farmId = g_currentMission and g_currentMission.player and
+        g_currentMission.player.farmId or 1
+
+    -- Diagnostics: confirm what's visible in our mod's environment
+    print("[MDM] UPTest: UsedPlusAPI type = " .. type(UsedPlusAPI))
+    -- Cross-mod global visibility probe: if g_rvbMenu is readable here, FS25 globals
+    -- are shared across mods and rawset(_G,...) should work. If nil, sandbox is real.
+    print("[MDM] UPTest: g_rvbMenu visible = " .. tostring(g_rvbMenu ~= nil))
+    print("[MDM] UPTest: rawget(_G,'UsedPlusAPI') = " .. tostring(rawget(_G, "UsedPlusAPI") ~= nil))
+    if type(UsedPlusAPI) == "table" then
+        print("[MDM] UPTest: UsedPlusAPI.isReady = " .. tostring(UsedPlusAPI.isReady and UsedPlusAPI.isReady()))
+        print("[MDM] UPTest: registerExternalDeal = " .. type(UsedPlusAPI.registerExternalDeal))
+    end
+
+    print("[MDM] UPTest: creating test futures contract (wheat, 10000L, farmId=" .. farmId .. ")")
+
+    local contractId = g_MarketDynamics.futuresMarket:createContract({
+        farmId        = farmId,
+        fillTypeIndex = 1,
+        fillTypeName  = "Wheat",
+        quantity      = 10000,
+        lockedPrice   = 1.50,
+        deliveryTimeMs = (g_currentMission and g_currentMission.time or 0) + 60000,
+    })
+
+    print("[MDM] UPTest: contract #" .. contractId .. " created — settling as: " .. outcome)
+
+    if outcome == "fulfill" then
+        g_MarketDynamics.futuresMarket.contracts[contractId].delivered = 10000
+        g_MarketDynamics.futuresMarket:_fulfillContract(contractId)
+        print("[MDM] UPTest: fulfilled — check log for UPIntegration deal report")
+    else
+        g_MarketDynamics.futuresMarket:_defaultContract(contractId)
+        print("[MDM] UPTest: defaulted — check log for UPIntegration default report")
+    end
+
+    -- Show credit score after settlement
+    local score = UPIntegration.getCreditScore(farmId)
+    if score then
+        print("[MDM] UPTest: credit score for farm " .. farmId .. " = " .. score)
+    else
+        print("[MDM] UPTest: credit score unavailable (not server or UP not responding)")
+    end
+end
+
 local function cmdHud(self)
     if not g_MarketDynamics or not g_MarketDynamics.isActive then
         print("[MDM] System not active")
@@ -224,6 +292,7 @@ function MDMAdminCommands_register()
     g_MarketDynamics.cmdMdmEvents  = cmdEvents
     g_MarketDynamics.cmdMdmBCMode  = cmdBCMode
     g_MarketDynamics.cmdMdmUPMode  = cmdUPMode
+    g_MarketDynamics.cmdMdmUPTest  = cmdUPTest
     g_MarketDynamics.cmdMdmHud     = cmdHud
 
     addConsoleCommand("mdmStatus",  "MDM: system health and active events",             "cmdMdmStatus",  g_MarketDynamics)
@@ -233,9 +302,10 @@ function MDMAdminCommands_register()
     addConsoleCommand("mdmEvents",  "MDM: list all registered events and status",       "cmdMdmEvents",  g_MarketDynamics)
     addConsoleCommand("mdmBCMode",  "MDM: toggle BetterContracts integration (on/off)", "cmdMdmBCMode",  g_MarketDynamics)
     addConsoleCommand("mdmUPMode",  "MDM: toggle UsedPlus integration (on/off)",        "cmdMdmUPMode",  g_MarketDynamics)
+    addConsoleCommand("mdmUPTest",  "MDM: test UP contract lifecycle (fulfill|default)", "cmdMdmUPTest",  g_MarketDynamics)
     addConsoleCommand("mdmHud",     "MDM: toggle debug HUD overlay (TEMP)",             "cmdMdmHud",     g_MarketDynamics)
 
-    MDMLog.info("AdminCommands: registered 8 console commands")
+    MDMLog.info("AdminCommands: registered 9 console commands")
 end
 
 function MDMAdminCommands_remove()
@@ -246,5 +316,6 @@ function MDMAdminCommands_remove()
     removeConsoleCommand("mdmEvents")
     removeConsoleCommand("mdmBCMode")
     removeConsoleCommand("mdmUPMode")
+    removeConsoleCommand("mdmUPTest")
     removeConsoleCommand("mdmHud")
 end
