@@ -22,6 +22,11 @@
         <text name="mdm_screen_col_change" text="Mengubah"/>
         <text name="mdm_screen_col_day" text="Hari"/>
         <text name="mdm_screen_col_price" text="Harga"/>
+        <text name="mdm_screen_col_qty" text="Jumlah"/>
+        <text name="mdm_screen_col_locked" text="Terkunci"/>
+        <text name="mdm_screen_col_delivered" text="Terkirim"/>
+        <text name="mdm_screen_col_deadline" text="Tenggat waktu"/>
+        <text name="mdm_screen_col_status" text="Status"/>
         <text name="mdm_screen_no_data" text="Tidak ada data harga yang tersedia"/>
         <text name="mdm_screen_no_history" text="Belum ada sejarah yang tercatat"/>
         <text name="mdm_screen_close_hint" text="Tekan ESC untuk menutup"/>

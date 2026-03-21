@@ -22,6 +22,11 @@
         <text name="mdm_screen_col_change" text="Wijziging"/>
         <text name="mdm_screen_col_day" text="Dag"/>
         <text name="mdm_screen_col_price" text="Prijs"/>
+        <text name="mdm_screen_col_qty" text="Aantal"/>
+        <text name="mdm_screen_col_locked" text="Vergrendeld"/>
+        <text name="mdm_screen_col_delivered" text="Afgeleverd"/>
+        <text name="mdm_screen_col_deadline" text="Termijn"/>
+        <text name="mdm_screen_col_status" text="Status"/>
         <text name="mdm_screen_no_data" text="Geen prijsgegevens beschikbaar"/>
         <text name="mdm_screen_no_history" text="Er is nog geen geschiedenis vastgelegd"/>
         <text name="mdm_screen_close_hint" text="Druk op ESC om te sluiten"/>

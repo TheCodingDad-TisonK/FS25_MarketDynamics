@@ -22,6 +22,11 @@
         <text name="mdm_screen_col_change" text="Cambiar"/>
         <text name="mdm_screen_col_day" text="Día"/>
         <text name="mdm_screen_col_price" text="Precio"/>
+        <text name="mdm_screen_col_qty" text="Cantidad"/>
+        <text name="mdm_screen_col_locked" text="bloqueado"/>
+        <text name="mdm_screen_col_delivered" text="Entregado"/>
+        <text name="mdm_screen_col_deadline" text="Fecha límite"/>
+        <text name="mdm_screen_col_status" text="Estado"/>
         <text name="mdm_screen_no_data" text="No hay datos de precios disponibles"/>
         <text name="mdm_screen_no_history" text="Aún no se ha registrado ningún historial"/>
         <text name="mdm_screen_close_hint" text="Presione ESC para cerrar"/>
