@@ -11,11 +11,11 @@
 --   during gameplay.  Hooking EconomyManager.getPricePerLiter therefore has no
 --   effect on prices the player actually sees at a selling station.
 --
--- Price hook (SellingStation.getPricePerLiter):
+-- Price hook (SellingStation.getEffectiveFillTypePrice):
 --   Dormant until g_MarketDynamics.isActive = true.
 --   If coordinator.settings.pricesEnabled = false, passes through to vanilla.
 --
--- Delivery hook (SellingStation.addFillLevelToStation):
+-- Delivery hook (SellingStation.sellFillType):
 --   On every accepted crop delivery, notifies FuturesMarket so partial/full
 --   contract fulfillment is tracked without a separate polling loop.
 --   Server-only; no-op on pure clients.
@@ -51,11 +51,11 @@ end
 -- SellingStation price hook
 -- ---------------------------------------------------------------------------
 
-if SellingStation and SellingStation.getPricePerLiter then
-    local origSSGetPrice = SellingStation.getPricePerLiter
+if SellingStation and SellingStation.getEffectiveFillTypePrice then
+    local origSSGetPrice = SellingStation.getEffectiveFillTypePrice
 
-    SellingStation.getPricePerLiter = function(self, fillTypeIndex, noDynamic)
-        local price = origSSGetPrice(self, fillTypeIndex, noDynamic)
+    SellingStation.getEffectiveFillTypePrice = function(self, fillTypeIndex)
+        local price = origSSGetPrice(self, fillTypeIndex)
         if type(price) ~= "number" or price <= 0 then return price end
 
         -- Dormant until MDM is fully initialized
@@ -77,20 +77,20 @@ if SellingStation and SellingStation.getPricePerLiter then
         return price
     end
 
-    MDMLog.info("PriceHook: SellingStation.getPricePerLiter hooked")
+    MDMLog.info("PriceHook: SellingStation.getEffectiveFillTypePrice hooked")
 else
-    MDMLog.warn("PriceHook: SellingStation.getPricePerLiter not found — price hook disabled")
+    MDMLog.warn("PriceHook: SellingStation.getEffectiveFillTypePrice not found — price hook disabled")
 end
 
 -- ---------------------------------------------------------------------------
 -- SellingStation delivery hook (futures contract tracking)
 -- ---------------------------------------------------------------------------
 
-if SellingStation and SellingStation.addFillLevelToStation then
-    local origAddFill = SellingStation.addFillLevelToStation
+if SellingStation and SellingStation.sellFillType then
+    local origSellFillType = SellingStation.sellFillType
 
-    SellingStation.addFillLevelToStation = function(self, farmId, fillTypeIndex, delta, vehicle, unloadTrigger)
-        local accepted = origAddFill(self, farmId, fillTypeIndex, delta, vehicle, unloadTrigger)
+    SellingStation.sellFillType = function(self, farmId, fillDelta, fillTypeIndex, toolType, extraAttributes)
+        local accepted = origSellFillType(self, farmId, fillDelta, fillTypeIndex, toolType, extraAttributes)
 
         -- Only track on server; only when MDM is active with a futures market
         if accepted and accepted > 0
@@ -104,9 +104,9 @@ if SellingStation and SellingStation.addFillLevelToStation then
         return accepted
     end
 
-    MDMLog.info("PriceHook: SellingStation.addFillLevelToStation hooked for futures tracking")
+    MDMLog.info("PriceHook: SellingStation.sellFillType hooked for futures tracking")
 else
-    MDMLog.warn("PriceHook: SellingStation.addFillLevelToStation not found — futures delivery tracking disabled")
+    MDMLog.warn("PriceHook: SellingStation.sellFillType not found — futures delivery tracking disabled")
 end
 
 -- ---------------------------------------------------------------------------
