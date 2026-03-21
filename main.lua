@@ -79,6 +79,9 @@ local mdm = nil  -- will hold the MarketDynamics instance
 local function onLoad(mission)
     mdm = MarketDynamics.new(modDirectory, modName)
     getfenv(0)["g_MarketDynamics"] = mdm
+    if g_currentMission then
+        g_currentMission.MarketDynamics = mdm
+    end
 end
 
 local function onLoadFinished(mission)
@@ -116,6 +119,9 @@ local function onDelete(mission)
         mdm:delete()
         mdm = nil
         getfenv(0)["g_MarketDynamics"] = nil
+        if g_currentMission then
+            g_currentMission.MarketDynamics = nil
+        end
     end
 end
 
