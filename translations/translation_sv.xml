@@ -69,6 +69,12 @@
         <text name="mdm_futures_bc_disabled" text="Futures inaktiverad — BetterContracts-läget aktivt"/>
         <text name="mdm_futures_created" text="Kontrakt skapat!"/>
         <text name="mdm_futures_no_contracts" text="Inga kontrakt ännu"/>
+        <text name="mdm_dialog_summary" text="Kontraktssammanfattning"/>
+        <text name="mdm_dialog_qty_label" text="Kvantitet"/>
+        <text name="mdm_dialog_delivery_label" text="Leveransfönster"/>
+        <text name="mdm_dialog_bc_blocked" text="Futures inaktiverad — BetterContracts-läget aktivt"/>
+        <text name="mdm_dialog_no_crops" text="Ingen marknadsdata tillgänglig ännu."/>
+        <text name="mdm_screen_new_contract_btn" text="Nytt kontrakt [N]"/>
         <text name="mdm_settings_mdm_general" text="Marknadsdynamik"/>
 
     </texts>

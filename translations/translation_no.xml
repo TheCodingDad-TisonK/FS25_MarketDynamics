@@ -69,6 +69,12 @@
         <text name="mdm_futures_bc_disabled" text="Futures deaktivert — BetterContracts-modus aktiv"/>
         <text name="mdm_futures_created" text="Kontrakt opprettet!"/>
         <text name="mdm_futures_no_contracts" text="Ingen kontrakter ennå"/>
+        <text name="mdm_dialog_summary" text="Kontraktsammendrag"/>
+        <text name="mdm_dialog_qty_label" text="Mengde"/>
+        <text name="mdm_dialog_delivery_label" text="Leveringsvindu"/>
+        <text name="mdm_dialog_bc_blocked" text="Futures deaktivert — BetterContracts-modus aktiv"/>
+        <text name="mdm_dialog_no_crops" text="Ingen markedsdata tilgjengelig ennå."/>
+        <text name="mdm_screen_new_contract_btn" text="Ny kontrakt [N]"/>
         <text name="mdm_settings_mdm_general" text="Markedsdynamikk"/>
 
     </texts>

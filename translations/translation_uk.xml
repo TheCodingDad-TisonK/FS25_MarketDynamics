@@ -69,6 +69,12 @@
         <text name="mdm_futures_bc_disabled" text="Ф'ючерси вимкнено — активний режим BetterContracts"/>
         <text name="mdm_futures_created" text="Контракт створено!"/>
         <text name="mdm_futures_no_contracts" text="Контрактів ще немає"/>
+        <text name="mdm_dialog_summary" text="Резюме контракту"/>
+        <text name="mdm_dialog_qty_label" text="Кількість"/>
+        <text name="mdm_dialog_delivery_label" text="Вікно доставки"/>
+        <text name="mdm_dialog_bc_blocked" text="Ф'ючерси вимкнено — активний режим BetterContracts"/>
+        <text name="mdm_dialog_no_crops" text="Ринкові дані ще відсутні."/>
+        <text name="mdm_screen_new_contract_btn" text="Новий контракт [N]"/>
         <text name="mdm_settings_mdm_general" text="Динаміка ринку"/>
 
     </texts>

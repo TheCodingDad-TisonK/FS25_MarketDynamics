@@ -69,6 +69,12 @@
         <text name="mdm_futures_bc_disabled" text="Futures dezactivate — modul BetterContracts activ"/>
         <text name="mdm_futures_created" text="Contract creat!"/>
         <text name="mdm_futures_no_contracts" text="Încă nu există contracte"/>
+        <text name="mdm_dialog_summary" text="Rezumatul contractului"/>
+        <text name="mdm_dialog_qty_label" text="Cantitate"/>
+        <text name="mdm_dialog_delivery_label" text="Fereastra de livrare"/>
+        <text name="mdm_dialog_bc_blocked" text="Futures dezactivate — modul BetterContracts activ"/>
+        <text name="mdm_dialog_no_crops" text="Nu sunt disponibile date de piață încă."/>
+        <text name="mdm_screen_new_contract_btn" text="Contract nou [N]"/>
         <text name="mdm_settings_mdm_general" text="Dinamica pieței"/>
 
     </texts>

@@ -69,6 +69,12 @@
         <text name="mdm_futures_bc_disabled" text="선물 비활성화 — BetterContracts 모드 활성화"/>
         <text name="mdm_futures_created" text="계약이 생성되었습니다!"/>
         <text name="mdm_futures_no_contracts" text="아직 계약이 없습니다"/>
+        <text name="mdm_dialog_summary" text="계약 요약"/>
+        <text name="mdm_dialog_qty_label" text="수량"/>
+        <text name="mdm_dialog_delivery_label" text="배송 기간"/>
+        <text name="mdm_dialog_bc_blocked" text="선물 비활성화 — BetterContracts 모드 활성화"/>
+        <text name="mdm_dialog_no_crops" text="아직 시장 데이터가 없습니다."/>
+        <text name="mdm_screen_new_contract_btn" text="신규 계약 [N]"/>
         <text name="mdm_settings_mdm_general" text="시장 역학"/>
 
     </texts>

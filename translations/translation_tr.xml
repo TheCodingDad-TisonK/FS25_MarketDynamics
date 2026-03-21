@@ -69,6 +69,12 @@
         <text name="mdm_futures_bc_disabled" text="Vadeli işlemler devre dışı bırakıldı — BetterContracts modu etkin"/>
         <text name="mdm_futures_created" text="Sözleşme Oluşturuldu!"/>
         <text name="mdm_futures_no_contracts" text="Henüz sözleşme yok"/>
+        <text name="mdm_dialog_summary" text="Sözleşme Özeti"/>
+        <text name="mdm_dialog_qty_label" text="Miktar"/>
+        <text name="mdm_dialog_delivery_label" text="Teslimat Aralığı"/>
+        <text name="mdm_dialog_bc_blocked" text="Vadeli işlemler devre dışı bırakıldı — BetterContracts modu etkin"/>
+        <text name="mdm_dialog_no_crops" text="Henüz piyasa verisi mevcut değil."/>
+        <text name="mdm_screen_new_contract_btn" text="Yeni Sözleşme [N]"/>
         <text name="mdm_settings_mdm_general" text="Pazar Dinamikleri"/>
 
     </texts>

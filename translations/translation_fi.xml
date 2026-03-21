@@ -69,6 +69,12 @@
         <text name="mdm_futures_bc_disabled" text="Futuurit pois käytöstä — BetterContracts-tila aktiivinen"/>
         <text name="mdm_futures_created" text="Sopimus tehty!"/>
         <text name="mdm_futures_no_contracts" text="Ei vielä sopimuksia"/>
+        <text name="mdm_dialog_summary" text="Sopimuksen yhteenveto"/>
+        <text name="mdm_dialog_qty_label" text="Määrä"/>
+        <text name="mdm_dialog_delivery_label" text="Toimitusikkuna"/>
+        <text name="mdm_dialog_bc_blocked" text="Futuurit pois käytöstä — BetterContracts-tila aktiivinen"/>
+        <text name="mdm_dialog_no_crops" text="Markkinatietoja ei ole vielä saatavilla."/>
+        <text name="mdm_screen_new_contract_btn" text="Uusi sopimus [N]"/>
         <text name="mdm_settings_mdm_general" text="Markkinadynamiikka"/>
 
     </texts>

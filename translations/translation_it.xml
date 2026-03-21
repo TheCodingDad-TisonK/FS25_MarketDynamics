@@ -69,6 +69,12 @@
         <text name="mdm_futures_bc_disabled" text="Futures disabilitati: modalità BetterContracts attiva"/>
         <text name="mdm_futures_created" text="Contratto creato!"/>
         <text name="mdm_futures_no_contracts" text="Nessun contratto ancora"/>
+        <text name="mdm_dialog_summary" text="Riepilogo del contratto"/>
+        <text name="mdm_dialog_qty_label" text="Quantità"/>
+        <text name="mdm_dialog_delivery_label" text="Finestra di consegna"/>
+        <text name="mdm_dialog_bc_blocked" text="Futures disabilitati: modalità BetterContracts attiva"/>
+        <text name="mdm_dialog_no_crops" text="Nessun dato di mercato ancora disponibile."/>
+        <text name="mdm_screen_new_contract_btn" text="Nuovo contratto [N]"/>
         <text name="mdm_settings_mdm_general" text="Dinamiche di mercato"/>
 
     </texts>

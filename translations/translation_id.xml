@@ -69,6 +69,12 @@
         <text name="mdm_futures_bc_disabled" text="Kontrak berjangka dinonaktifkan — Mode BetterContracts aktif"/>
         <text name="mdm_futures_created" text="Kontrak Dibuat!"/>
         <text name="mdm_futures_no_contracts" text="Belum ada kontrak"/>
+        <text name="mdm_dialog_summary" text="Ringkasan Kontrak"/>
+        <text name="mdm_dialog_qty_label" text="Kuantitas"/>
+        <text name="mdm_dialog_delivery_label" text="Jendela Pengiriman"/>
+        <text name="mdm_dialog_bc_blocked" text="Kontrak berjangka dinonaktifkan — Mode BetterContracts aktif"/>
+        <text name="mdm_dialog_no_crops" text="Belum ada data pasar yang tersedia."/>
+        <text name="mdm_screen_new_contract_btn" text="Kontrak Baru [N]"/>
         <text name="mdm_settings_mdm_general" text="Dinamika Pasar"/>
 
     </texts>

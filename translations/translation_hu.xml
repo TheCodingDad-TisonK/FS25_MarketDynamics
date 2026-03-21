@@ -69,6 +69,12 @@
         <text name="mdm_futures_bc_disabled" text="Futures letiltva — BetterContracts mód aktív"/>
         <text name="mdm_futures_created" text="Szerződés létrejött!"/>
         <text name="mdm_futures_no_contracts" text="Még nincsenek szerződések"/>
+        <text name="mdm_dialog_summary" text="Szerződés összefoglalója"/>
+        <text name="mdm_dialog_qty_label" text="Mennyiség"/>
+        <text name="mdm_dialog_delivery_label" text="Szállítási ablak"/>
+        <text name="mdm_dialog_bc_blocked" text="Futures letiltva — BetterContracts mód aktív"/>
+        <text name="mdm_dialog_no_crops" text="Még nem állnak rendelkezésre piaci adatok."/>
+        <text name="mdm_screen_new_contract_btn" text="Új szerződés [N]"/>
         <text name="mdm_settings_mdm_general" text="Piaci dinamika"/>
 
     </texts>

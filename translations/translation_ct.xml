@@ -69,6 +69,12 @@
         <text name="mdm_futures_bc_disabled" text="期貨已停用 — BetterContracts 模式已激活"/>
         <text name="mdm_futures_created" text="合約已創建！"/>
         <text name="mdm_futures_no_contracts" text="還沒有合約"/>
+        <text name="mdm_dialog_summary" text="合約概要"/>
+        <text name="mdm_dialog_qty_label" text="數量"/>
+        <text name="mdm_dialog_delivery_label" text="交貨窗口"/>
+        <text name="mdm_dialog_bc_blocked" text="期貨已停用 — BetterContracts 模式已激活"/>
+        <text name="mdm_dialog_no_crops" text="尚無可用的市場數據。"/>
+        <text name="mdm_screen_new_contract_btn" text="新合約[N]"/>
         <text name="mdm_settings_mdm_general" text="市場動態"/>
 
     </texts>

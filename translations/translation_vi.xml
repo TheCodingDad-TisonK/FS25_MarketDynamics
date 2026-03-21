@@ -69,6 +69,12 @@
         <text name="mdm_futures_bc_disabled" text="Hợp đồng tương lai bị vô hiệu hóa - Chế độ BetterContracts đang hoạt động"/>
         <text name="mdm_futures_created" text="Hợp đồng đã được tạo!"/>
         <text name="mdm_futures_no_contracts" text="Chưa có hợp đồng"/>
+        <text name="mdm_dialog_summary" text="Tóm tắt hợp đồng"/>
+        <text name="mdm_dialog_qty_label" text="Số lượng"/>
+        <text name="mdm_dialog_delivery_label" text="Cửa sổ giao hàng"/>
+        <text name="mdm_dialog_bc_blocked" text="Hợp đồng tương lai bị vô hiệu hóa - Chế độ BetterContracts đang hoạt động"/>
+        <text name="mdm_dialog_no_crops" text="Chưa có dữ liệu thị trường."/>
+        <text name="mdm_screen_new_contract_btn" text="Hợp đồng mới [N]"/>
         <text name="mdm_settings_mdm_general" text="Động lực thị trường"/>
 
     </texts>

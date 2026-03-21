@@ -69,6 +69,12 @@
         <text name="mdm_futures_bc_disabled" text="先物無効 — BetterContracts モード有効"/>
         <text name="mdm_futures_created" text="契約書が作成されました!"/>
         <text name="mdm_futures_no_contracts" text="まだ契約はありません"/>
+        <text name="mdm_dialog_summary" text="契約概要"/>
+        <text name="mdm_dialog_qty_label" text="量"/>
+        <text name="mdm_dialog_delivery_label" text="配送期間"/>
+        <text name="mdm_dialog_bc_blocked" text="先物無効 — BetterContracts モード有効"/>
+        <text name="mdm_dialog_no_crops" text="市場データはまだありません。"/>
+        <text name="mdm_screen_new_contract_btn" text="新規契約[N]"/>
         <text name="mdm_settings_mdm_general" text="市場動向"/>
 
     </texts>
