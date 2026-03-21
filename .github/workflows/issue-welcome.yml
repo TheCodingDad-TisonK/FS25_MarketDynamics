@@ -1,0 +1,87 @@
+name: Issue — Welcome & Label
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  welcome:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+
+    steps:
+      - name: Create labels if missing
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const labels = [
+              { name: 'waiting-on-author', color: 'e4e669', description: 'Waiting for the issue author to provide more information' },
+              { name: 'in-progress',       color: '0075ca', description: 'Being actively investigated' },
+              { name: 'user-replied',      color: '0e8a16', description: 'Issue author has replied' },
+              { name: 'owner-replied',     color: '1d76db', description: 'Owner has replied, waiting on author' },
+            ];
+            for (const label of labels) {
+              try {
+                await github.rest.issues.createLabel({ owner: context.repo.owner, repo: context.repo.repo, ...label });
+              } catch (e) {
+                // Already exists — fine
+              }
+            }
+
+      - name: Add waiting-on-author label
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              labels: ['waiting-on-author']
+            });
+
+      - name: Post welcome comment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const author = context.payload.issue.user.login;
+            const labels = context.payload.issue.labels.map(l => l.name);
+            const isOther = labels.includes('question');
+
+            let body;
+            if (isOther) {
+              body = [
+                `Hey @${author}, thanks for reaching out! 👋`,
+                ``,
+                `@TheCodingDad-TisonK has been notified and will take a look.`,
+                ``,
+                `> **Reminder:** The "Other / General" template is not for bugs, crashes, feature requests, or mod conflicts. If this turns out to be one of those, it will be closed and redirected to the correct template.`,
+                ``,
+                `If you have a question, you may also get a faster response in [Discussions](https://github.com/TheCodingDad-TisonK/FS25_MarketDynamics/discussions).`,
+              ].join('\n');
+            } else {
+              body = [
+                `Hey @${author}, thanks for opening this issue! 👋`,
+                ``,
+                `@TheCodingDad-TisonK has been notified and will take a look.`,
+                ``,
+                `**While you wait, please double-check the following:**`,
+                ``,
+                `- [ ] You are on the latest version of FS25_MarketDynamics (check the mod manager)`,
+                `- [ ] Your issue includes the relevant \`[MDM]\` lines from \`log.txt\``,
+                `  - Log location: \`Documents/My Games/FarmingSimulator2025/log.txt\``,
+                `  - Search for \`[MDM]\` — paste the relevant section in your issue`,
+                `- [ ] You have searched [existing issues](https://github.com/TheCodingDad-TisonK/FS25_MarketDynamics/issues) for a similar report`,
+                ``,
+                `> **Important:** If this issue is missing a log snippet, it may be closed without investigation. A log is almost always required to reproduce bugs.`,
+                ``,
+                `This issue is currently marked **waiting-on-author** — if any of the above information is missing, please add it. If there is no response within **24 hours**, this issue will be closed automatically. You can always reopen it with the missing details.`,
+              ].join('\n');
+            }
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body
+            });
