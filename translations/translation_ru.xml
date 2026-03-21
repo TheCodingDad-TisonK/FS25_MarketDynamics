@@ -77,5 +77,9 @@
         <text name="mdm_screen_new_contract_btn" text="Новый контракт [Н]"/>
         <text name="mdm_settings_mdm_general" text="Динамика рынка"/>
 
+    
+        <!-- Input action display names -->
+        <text name="input_MDM_MARKET_SCREEN" text="Открыть рынок" />
+        <text name="input_MDM_CREATE_CONTRACT" text="Создать фьючерсный контракт" />
     </texts>
 </l10n>

@@ -29,7 +29,7 @@ local function onFire(intensity)
         end
     end
 
-    MDMLog.info("LivestockBoomEvent fired — forage crops up " .. string.format("%.0f%%", (factor - 1) * 100))
+    MDMLog.info("LivestockBoomEvent fired — forage crops up " .. math.floor((factor - 1) * 100) .. "%")
 end
 
 local function onExpire(intensity)

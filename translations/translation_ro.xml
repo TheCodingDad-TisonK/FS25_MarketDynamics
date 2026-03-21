@@ -77,5 +77,9 @@
         <text name="mdm_screen_new_contract_btn" text="Contract nou [N]"/>
         <text name="mdm_settings_mdm_general" text="Dinamica pieței"/>
 
+    
+        <!-- Input action display names -->
+        <text name="input_MDM_MARKET_SCREEN" text="Deschide piața" />
+        <text name="input_MDM_CREATE_CONTRACT" text="Creează contract futures" />
     </texts>
 </l10n>

@@ -77,5 +77,9 @@
         <text name="mdm_screen_new_contract_btn" text="Ny kontrakt [N]"/>
         <text name="mdm_settings_mdm_general" text="Markedsdynamikk"/>
 
+    
+        <!-- Input action display names -->
+        <text name="input_MDM_MARKET_SCREEN" text="Åpne markedet" />
+        <text name="input_MDM_CREATE_CONTRACT" text="Opprett terminkontrakt" />
     </texts>
 </l10n>

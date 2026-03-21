@@ -77,5 +77,9 @@
         <text name="mdm_screen_new_contract_btn" text="Hợp đồng mới [N]"/>
         <text name="mdm_settings_mdm_general" text="Động lực thị trường"/>
 
+    
+        <!-- Input action display names -->
+        <text name="input_MDM_MARKET_SCREEN" text="Mở thị trường" />
+        <text name="input_MDM_CREATE_CONTRACT" text="Tạo hợp đồng kỳ hạn" />
     </texts>
 </l10n>

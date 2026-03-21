@@ -81,9 +81,9 @@ function WorldEventSystem:loadActiveEvent(id, endsAt, intensity, extraData)
     -- Re-apply UP market modifier with remaining duration.
     local now = g_currentMission and g_currentMission.time or 0
     UPIntegration.onWorldEventFired(id, intensity, math.max(0, endsAt - now))
-    
-    MDMLog.info("WorldEventSystem: restored active event '" .. id .. "' (ends in " .. 
-        string.format("%.1f", (endsAt - (g_currentMission.time or 0)) / 60000) .. "m)")
+
+    MDMLog.info("WorldEventSystem: restored active event '" .. id .. "' (ends in " ..
+        string.format("%.1f", (endsAt - now) / 60000) .. "m)")
 end
 
 -- Advance the event tick timer, expire any events past their endsAt, and

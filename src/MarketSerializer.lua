@@ -26,12 +26,18 @@ end
 
 -- Persist current market state.
 function MarketSerializer:save(coordinator)
+    if not g_currentMission or not g_currentMission.missionInfo then
+        MDMLog.warn("MarketSerializer: g_currentMission or missionInfo not available — cannot save")
+        return
+    end
     local savegameDir = g_currentMission.missionInfo.savegameDirectory
     if savegameDir == nil or savegameDir == "" then
         MDMLog.warn("MarketSerializer: no savegame directory — cannot save")
         return
     end
 
+    local dir     = savegameDir .. "/modSettings/"
+    createFolder(dir)
     local path    = SAVE_PATH_TEMPLATE:format(savegameDir .. "/")
     local xmlFile = createXMLFile("MDMSave", path, "marketDynamics")
 
@@ -133,6 +139,10 @@ end
 
 -- Load and restore market state.
 function MarketSerializer:load(coordinator)
+    if not g_currentMission or not g_currentMission.missionInfo then
+        MDMLog.info("MarketSerializer: g_currentMission or missionInfo not available — starting fresh")
+        return
+    end
     local savegameDir = g_currentMission.missionInfo.savegameDirectory
     if savegameDir == nil or savegameDir == "" then
         MDMLog.info("MarketSerializer: no savegame directory yet — starting fresh")

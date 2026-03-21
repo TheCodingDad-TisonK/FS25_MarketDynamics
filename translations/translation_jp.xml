@@ -77,5 +77,9 @@
         <text name="mdm_screen_new_contract_btn" text="新規契約[N]"/>
         <text name="mdm_settings_mdm_general" text="市場動向"/>
 
+    
+        <!-- Input action display names -->
+        <text name="input_MDM_MARKET_SCREEN" text="市場を開く" />
+        <text name="input_MDM_CREATE_CONTRACT" text="先物契約を作成" />
     </texts>
 </l10n>

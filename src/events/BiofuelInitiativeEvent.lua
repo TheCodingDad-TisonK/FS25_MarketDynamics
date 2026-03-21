@@ -30,7 +30,7 @@ local function onFire(intensity)
         end
     end
 
-    MDMLog.info("BiofuelInitiativeEvent fired — energy crops up " .. string.format("%.0f%%", (factor - 1) * 100))
+    MDMLog.info("BiofuelInitiativeEvent fired — energy crops up " .. math.floor((factor - 1) * 100) .. "%")
 end
 
 local function onExpire(intensity)

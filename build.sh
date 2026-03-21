@@ -13,7 +13,7 @@ OUT_ZIP="${MOD_NAME}.zip"
 INCLUDE=(
     main.lua
     modDesc.xml
-    icon.dds
+    images/
     guiProfiles.xml
     src/
     gui/

@@ -77,5 +77,9 @@
         <text name="mdm_screen_new_contract_btn" text="Nová smlouva [N]"/>
         <text name="mdm_settings_mdm_general" text="Dynamika trhu"/>
 
+    
+        <!-- Input action display names -->
+        <text name="input_MDM_MARKET_SCREEN" text="Otevřít trh" />
+        <text name="input_MDM_CREATE_CONTRACT" text="Vytvořit futures kontrakt" />
     </texts>
 </l10n>

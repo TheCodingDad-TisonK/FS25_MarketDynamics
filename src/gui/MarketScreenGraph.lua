@@ -48,10 +48,6 @@ function MDMMarketScreenGraph.update(dt)
         if not buf then
             buf = { samples = {}, head = 0, count = 0 }
             _buffers[fillTypeIndex] = buf
-
-            buf.head = 1
-            buf.samples[1] = entry.current
-            buf.count = 1
             MDMLog.info(string.format("MarketScreenGraph: seeded buffer for fillType %d with price %.2f", fillTypeIndex, entry.current))
         end
 
