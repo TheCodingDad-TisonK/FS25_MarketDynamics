@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<l10n>
+    <texts>
+
+        <text name="mdm_event_drought" text="Kekeringan Daerah"/>
+        <text name="mdm_event_bumper_harvest" text="Panen Bemper"/>
+        <text name="mdm_event_trade_disruption" text="Gangguan Perdagangan"/>
+        <text name="mdm_event_geopolitical" text="Krisis Geopolitik"/>
+        <text name="mdm_event_biofuel_initiative" text="Inisiatif Bahan Bakar Nabati"/>
+        <text name="mdm_event_livestock_boom" text="Booming Pakan Ternak"/>
+        <text name="mdm_event_pest_outbreak" text="Penyakit Hawar Tanaman Akar"/>
+        <text name="mdm_hud_title" text="Pengawasan Pasar"/>
+        <text name="mdm_hud_active_events" text="Acara Aktif"/>
+        <text name="mdm_hud_no_events" text="Pasar stabil"/>
+        <text name="mdm_hud_event_mild" text="Lembut"/>
+        <text name="mdm_hud_event_moderate" text="Sedang"/>
+        <text name="mdm_hud_event_severe" text="Berat"/>
+        <text name="mdm_screen_title" text="Dinamika Pasar"/>
+        <text name="mdm_screen_col_crop" text="Tanaman"/>
+        <text name="mdm_screen_col_base" text="Basis"/>
+        <text name="mdm_screen_col_current" text="Saat ini"/>
+        <text name="mdm_screen_col_change" text="Mengubah"/>
+        <text name="mdm_screen_col_day" text="Hari"/>
+        <text name="mdm_screen_col_price" text="Harga"/>
+        <text name="mdm_screen_no_data" text="Tidak ada data harga yang tersedia"/>
+        <text name="mdm_screen_no_history" text="Belum ada sejarah yang tercatat"/>
+        <text name="mdm_screen_close_hint" text="Tekan ESC untuk menutup"/>
+        <text name="mdm_screen_switch_tabs" text="Beralih tab"/>
+        <text name="mdm_screen_nav_crops" text="Kiri/Kanan: beralih pangkas"/>
+        <text name="mdm_screen_tab_prices" text="Harga"/>
+        <text name="mdm_screen_tab_events" text="Acara"/>
+        <text name="mdm_screen_tab_contracts" text="Kontrak"/>
+        <text name="mdm_screen_commodities" text="KOMODITAS"/>
+        <text name="mdm_screen_current_price" text="Harga Saat Ini"/>
+        <text name="mdm_screen_base_price" text="Harga Dasar"/>
+        <text name="mdm_screen_change" text="Mengubah"/>
+        <text name="mdm_screen_volatility" text="Keriangan"/>
+        <text name="mdm_screen_modifiers" text="Pengubah Aktif"/>
+        <text name="mdm_screen_session_trend" text="Tren Harga Sesi"/>
+        <text name="mdm_screen_collecting" text="Mengumpulkan data..."/>
+        <text name="mdm_screen_select_crop" text="Pilih komoditas"/>
+        <text name="mdm_screen_no_events" text="Pasar tenang. Tidak ada acara aktif."/>
+        <text name="mdm_screen_events_hdr" text="ACARA AKTIF"/>
+        <text name="mdm_screen_contracts_hdr" text="KONTRAK BERJANGKA"/>
+        <text name="mdm_screen_new_contract" text="Alt+F: Kontrak Baru"/>
+        <text name="mdm_screen_no_contracts" text="Belum ada kontrak. Tekan Alt+F untuk membuatnya."/>
+        <text name="mdm_screen_at_risk" text="BERISIKO"/>
+        <text name="mdm_screen_hint_bar" text="ESC: Tutup |  T/E: Tab |  Atas/Bawah: Navigasi"/>
+        <text name="mdm_screen_timeline" text="Garis Waktu Sesi"/>
+        <text name="mdm_screen_balance" text="Keseimbangan :"/>
+        <text name="mdm_futures_title" text="Pasar Berjangka"/>
+        <text name="mdm_futures_new_title" text="Kontrak Berjangka Baru"/>
+        <text name="mdm_futures_create" text="Kontrak Baru"/>
+        <text name="mdm_futures_fulfill" text="Terpenuhi"/>
+        <text name="mdm_futures_defaulted" text="Gagal bayar"/>
+        <text name="mdm_futures_active" text="Aktif"/>
+        <text name="mdm_futures_delivery_label" text="Pengiriman"/>
+        <text name="mdm_futures_locked_label" text="Harga Terkunci"/>
+        <text name="mdm_futures_quantity_label" text="Kuantitas (L)"/>
+        <text name="mdm_futures_crop_label" text="Tanaman"/>
+        <text name="mdm_futures_confirm" text="Mengonfirmasi"/>
+        <text name="mdm_futures_cancel" text="Membatalkan"/>
+        <text name="mdm_futures_total_value" text="Nilai Total"/>
+        <text name="mdm_futures_bc_disabled" text="Kontrak berjangka dinonaktifkan — Mode BetterContracts aktif"/>
+        <text name="mdm_futures_created" text="Kontrak Dibuat!"/>
+        <text name="mdm_futures_no_contracts" text="Belum ada kontrak"/>
+        <text name="mdm_settings_mdm_general" text="Dinamika Pasar"/>
+
+    </texts>
+</l10n>

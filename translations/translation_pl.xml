@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<l10n>
+    <texts>
+
+        <text name="mdm_event_drought" text="Regionalna susza"/>
+        <text name="mdm_event_bumper_harvest" text="Zbiór zderzaków"/>
+        <text name="mdm_event_trade_disruption" text="Zakłócenia w handlu"/>
+        <text name="mdm_event_geopolitical" text="Kryzys geopolityczny"/>
+        <text name="mdm_event_biofuel_initiative" text="Inicjatywa na rzecz biopaliw"/>
+        <text name="mdm_event_livestock_boom" text="Boom na paszę dla zwierząt gospodarskich"/>
+        <text name="mdm_event_pest_outbreak" text="Zaraza roślin okopowych"/>
+        <text name="mdm_hud_title" text="Zegarek rynkowy"/>
+        <text name="mdm_hud_active_events" text="Aktywne wydarzenia"/>
+        <text name="mdm_hud_no_events" text="Rynki stabilne"/>
+        <text name="mdm_hud_event_mild" text="Łagodny"/>
+        <text name="mdm_hud_event_moderate" text="Umiarkowany"/>
+        <text name="mdm_hud_event_severe" text="Ciężki : silny"/>
+        <text name="mdm_screen_title" text="Dynamika rynku"/>
+        <text name="mdm_screen_col_crop" text="Przyciąć"/>
+        <text name="mdm_screen_col_base" text="Opierać"/>
+        <text name="mdm_screen_col_current" text="Aktualny"/>
+        <text name="mdm_screen_col_change" text="Zmiana"/>
+        <text name="mdm_screen_col_day" text="Dzień"/>
+        <text name="mdm_screen_col_price" text="Cena"/>
+        <text name="mdm_screen_no_data" text="Brak danych cenowych"/>
+        <text name="mdm_screen_no_history" text="Nie zapisano jeszcze żadnej historii"/>
+        <text name="mdm_screen_close_hint" text="Naciśnij ESC, aby zamknąć"/>
+        <text name="mdm_screen_switch_tabs" text="Przełącz karty"/>
+        <text name="mdm_screen_nav_crops" text="Lewo/Prawo: przełączanie przycinania"/>
+        <text name="mdm_screen_tab_prices" text="Ceny"/>
+        <text name="mdm_screen_tab_events" text="Wydarzenia"/>
+        <text name="mdm_screen_tab_contracts" text="Umowy"/>
+        <text name="mdm_screen_commodities" text="TOWARY"/>
+        <text name="mdm_screen_current_price" text="Aktualna cena"/>
+        <text name="mdm_screen_base_price" text="Cena podstawowa"/>
+        <text name="mdm_screen_change" text="Zmiana"/>
+        <text name="mdm_screen_volatility" text="Zmienność"/>
+        <text name="mdm_screen_modifiers" text="Aktywne modyfikatory"/>
+        <text name="mdm_screen_session_trend" text="Trend cenowy sesji"/>
+        <text name="mdm_screen_collecting" text="Zbieranie danych..."/>
+        <text name="mdm_screen_select_crop" text="Wybierz towar"/>
+        <text name="mdm_screen_no_events" text="Rynki są spokojne. Brak aktywnych wydarzeń."/>
+        <text name="mdm_screen_events_hdr" text="AKTYWNE WYDARZENIA"/>
+        <text name="mdm_screen_contracts_hdr" text="KONTRAKTY PRZYSZŁOŚCIOWE"/>
+        <text name="mdm_screen_new_contract" text="Alt+F: Nowy kontrakt"/>
+        <text name="mdm_screen_no_contracts" text="Nie ma jeszcze żadnych umów. Naciśnij Alt+F, aby go utworzyć."/>
+        <text name="mdm_screen_at_risk" text="RYZYKO"/>
+        <text name="mdm_screen_hint_bar" text="ESC: Zamknij |  Pytania i odpowiedzi: Zakładki |  W górę/w dół: Nawiguj"/>
+        <text name="mdm_screen_timeline" text="Harmonogram sesji"/>
+        <text name="mdm_screen_balance" text="Balansować :"/>
+        <text name="mdm_futures_title" text="Rynek kontraktów terminowych"/>
+        <text name="mdm_futures_new_title" text="Nowy kontrakt futures"/>
+        <text name="mdm_futures_create" text="Nowy kontrakt"/>
+        <text name="mdm_futures_fulfill" text="Spełniony"/>
+        <text name="mdm_futures_defaulted" text="Domyślne"/>
+        <text name="mdm_futures_active" text="Aktywny"/>
+        <text name="mdm_futures_delivery_label" text="Dostawa"/>
+        <text name="mdm_futures_locked_label" text="Cena zablokowana"/>
+        <text name="mdm_futures_quantity_label" text="Ilość (L)"/>
+        <text name="mdm_futures_crop_label" text="Przyciąć"/>
+        <text name="mdm_futures_confirm" text="Potwierdzać"/>
+        <text name="mdm_futures_cancel" text="Anulować"/>
+        <text name="mdm_futures_total_value" text="Całkowita wartość"/>
+        <text name="mdm_futures_bc_disabled" text="Kontrakty terminowe wyłączone — tryb BetterContracts aktywny"/>
+        <text name="mdm_futures_created" text="Umowa utworzona!"/>
+        <text name="mdm_futures_no_contracts" text="Nie ma jeszcze żadnych umów"/>
+        <text name="mdm_settings_mdm_general" text="Dynamika rynku"/>
+
+    </texts>
+</l10n>

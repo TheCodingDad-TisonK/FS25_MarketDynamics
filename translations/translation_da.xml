@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<l10n>
+    <texts>
+
+        <text name="mdm_event_drought" text="Regional tørke"/>
+        <text name="mdm_event_bumper_harvest" text="Bumper Harvest"/>
+        <text name="mdm_event_trade_disruption" text="Handelsforstyrrelse"/>
+        <text name="mdm_event_geopolitical" text="Geopolitisk krise"/>
+        <text name="mdm_event_biofuel_initiative" text="Biobrændstof-initiativet"/>
+        <text name="mdm_event_livestock_boom" text="Husdyrfoderbom"/>
+        <text name="mdm_event_pest_outbreak" text="Rodafgrødeskimmel"/>
+        <text name="mdm_hud_title" text="Market Watch"/>
+        <text name="mdm_hud_active_events" text="Aktive begivenheder"/>
+        <text name="mdm_hud_no_events" text="Markederne er stabile"/>
+        <text name="mdm_hud_event_mild" text="Mild"/>
+        <text name="mdm_hud_event_moderate" text="Moderat"/>
+        <text name="mdm_hud_event_severe" text="Alvorlig"/>
+        <text name="mdm_screen_title" text="Markedsdynamik"/>
+        <text name="mdm_screen_col_crop" text="Afgrøde"/>
+        <text name="mdm_screen_col_base" text="Grundlag"/>
+        <text name="mdm_screen_col_current" text="Strøm"/>
+        <text name="mdm_screen_col_change" text="Forandring"/>
+        <text name="mdm_screen_col_day" text="Dag"/>
+        <text name="mdm_screen_col_price" text="Pris"/>
+        <text name="mdm_screen_no_data" text="Ingen prisdata tilgængelige"/>
+        <text name="mdm_screen_no_history" text="Ingen historie registreret endnu"/>
+        <text name="mdm_screen_close_hint" text="Tryk på ESC for at lukke"/>
+        <text name="mdm_screen_switch_tabs" text="Skift faner"/>
+        <text name="mdm_screen_nav_crops" text="Venstre/Højre: Skift afgrøde"/>
+        <text name="mdm_screen_tab_prices" text="Priser"/>
+        <text name="mdm_screen_tab_events" text="Begivenheder"/>
+        <text name="mdm_screen_tab_contracts" text="Kontrakter"/>
+        <text name="mdm_screen_commodities" text="RÅVARER"/>
+        <text name="mdm_screen_current_price" text="Nuværende pris"/>
+        <text name="mdm_screen_base_price" text="Grundpris"/>
+        <text name="mdm_screen_change" text="Forandring"/>
+        <text name="mdm_screen_volatility" text="Volatilitet"/>
+        <text name="mdm_screen_modifiers" text="Aktive modifikatorer"/>
+        <text name="mdm_screen_session_trend" text="Session Pris Trend"/>
+        <text name="mdm_screen_collecting" text="Indsamler data..."/>
+        <text name="mdm_screen_select_crop" text="Vælg en vare"/>
+        <text name="mdm_screen_no_events" text="Markederne er rolige. Ingen aktive begivenheder."/>
+        <text name="mdm_screen_events_hdr" text="AKTIVE ARRANGEMENTER"/>
+        <text name="mdm_screen_contracts_hdr" text="FUTURES KONTRAKTER"/>
+        <text name="mdm_screen_new_contract" text="Alt+F: Ny kontrakt"/>
+        <text name="mdm_screen_no_contracts" text="Ingen kontrakter endnu. Tryk på Alt+F for at oprette en."/>
+        <text name="mdm_screen_at_risk" text="I RISIKO"/>
+        <text name="mdm_screen_hint_bar" text="ESC: Luk |  Q/E: Faner |  Op/Ned: Naviger"/>
+        <text name="mdm_screen_timeline" text="Sessions tidslinje"/>
+        <text name="mdm_screen_balance" text="Balance:"/>
+        <text name="mdm_futures_title" text="Futures marked"/>
+        <text name="mdm_futures_new_title" text="Ny Futures kontrakt"/>
+        <text name="mdm_futures_create" text="Ny kontrakt"/>
+        <text name="mdm_futures_fulfill" text="Opfyldt"/>
+        <text name="mdm_futures_defaulted" text="Standard"/>
+        <text name="mdm_futures_active" text="Aktiv"/>
+        <text name="mdm_futures_delivery_label" text="Levering"/>
+        <text name="mdm_futures_locked_label" text="Låst pris"/>
+        <text name="mdm_futures_quantity_label" text="Mængde (L)"/>
+        <text name="mdm_futures_crop_label" text="Afgrøde"/>
+        <text name="mdm_futures_confirm" text="Bekræfte"/>
+        <text name="mdm_futures_cancel" text="Ophæve"/>
+        <text name="mdm_futures_total_value" text="Samlet værdi"/>
+        <text name="mdm_futures_bc_disabled" text="Futures deaktiveret — BetterContracts-tilstand aktiv"/>
+        <text name="mdm_futures_created" text="Kontrakt oprettet!"/>
+        <text name="mdm_futures_no_contracts" text="Ingen kontrakter endnu"/>
+        <text name="mdm_settings_mdm_general" text="Markedsdynamik"/>
+
+    </texts>
+</l10n>

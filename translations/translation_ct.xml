@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<l10n>
+    <texts>
+
+        <text name="mdm_event_drought" text="區域乾旱"/>
+        <text name="mdm_event_bumper_harvest" text="豐收"/>
+        <text name="mdm_event_trade_disruption" text="貿易中斷"/>
+        <text name="mdm_event_geopolitical" text="地緣政治危機"/>
+        <text name="mdm_event_biofuel_initiative" text="生物燃料倡議"/>
+        <text name="mdm_event_livestock_boom" text="牲畜飼料熱潮"/>
+        <text name="mdm_event_pest_outbreak" text="塊根作物枯萎病"/>
+        <text name="mdm_hud_title" text="市場觀察"/>
+        <text name="mdm_hud_active_events" text="活動活動"/>
+        <text name="mdm_hud_no_events" text="市場穩定"/>
+        <text name="mdm_hud_event_mild" text="輕微"/>
+        <text name="mdm_hud_event_moderate" text="緩和"/>
+        <text name="mdm_hud_event_severe" text="劇烈"/>
+        <text name="mdm_screen_title" text="市場動態"/>
+        <text name="mdm_screen_col_crop" text="莊稼"/>
+        <text name="mdm_screen_col_base" text="根據"/>
+        <text name="mdm_screen_col_current" text="目前的"/>
+        <text name="mdm_screen_col_change" text="改變"/>
+        <text name="mdm_screen_col_day" text="天"/>
+        <text name="mdm_screen_col_price" text="價格"/>
+        <text name="mdm_screen_no_data" text="無可用價格數據"/>
+        <text name="mdm_screen_no_history" text="還沒有歷史記錄"/>
+        <text name="mdm_screen_close_hint" text="按 ESC 關閉"/>
+        <text name="mdm_screen_switch_tabs" text="切換標籤"/>
+        <text name="mdm_screen_nav_crops" text="左/右：切換裁剪"/>
+        <text name="mdm_screen_tab_prices" text="價格"/>
+        <text name="mdm_screen_tab_events" text="活動"/>
+        <text name="mdm_screen_tab_contracts" text="合約"/>
+        <text name="mdm_screen_commodities" text="商品"/>
+        <text name="mdm_screen_current_price" text="目前價格"/>
+        <text name="mdm_screen_base_price" text="基價"/>
+        <text name="mdm_screen_change" text="改變"/>
+        <text name="mdm_screen_volatility" text="揮發性"/>
+        <text name="mdm_screen_modifiers" text="主動修飾符"/>
+        <text name="mdm_screen_session_trend" text="時段價格趨勢"/>
+        <text name="mdm_screen_collecting" text="正在收集數據..."/>
+        <text name="mdm_screen_select_crop" text="選擇商品"/>
+        <text name="mdm_screen_no_events" text="市場平靜。沒有活動活動。"/>
+        <text name="mdm_screen_events_hdr" text="活動活動"/>
+        <text name="mdm_screen_contracts_hdr" text="期貨合約"/>
+        <text name="mdm_screen_new_contract" text="Alt+F：新合約"/>
+        <text name="mdm_screen_no_contracts" text="還沒有合約。按 Alt+F 建立一個。"/>
+        <text name="mdm_screen_at_risk" text="有風險"/>
+        <text name="mdm_screen_hint_bar" text="ESC：關閉| Q/E：選項卡| 向上/向下：導航"/>
+        <text name="mdm_screen_timeline" text="會議時間表"/>
+        <text name="mdm_screen_balance" text="平衡 ："/>
+        <text name="mdm_futures_title" text="期貨市場"/>
+        <text name="mdm_futures_new_title" text="新期貨合約"/>
+        <text name="mdm_futures_create" text="新合約"/>
+        <text name="mdm_futures_fulfill" text="實現了"/>
+        <text name="mdm_futures_defaulted" text="違約"/>
+        <text name="mdm_futures_active" text="積極的"/>
+        <text name="mdm_futures_delivery_label" text="送貨"/>
+        <text name="mdm_futures_locked_label" text="鎖定價格"/>
+        <text name="mdm_futures_quantity_label" text="數量（公升）"/>
+        <text name="mdm_futures_crop_label" text="莊稼"/>
+        <text name="mdm_futures_confirm" text="確認"/>
+        <text name="mdm_futures_cancel" text="取消"/>
+        <text name="mdm_futures_total_value" text="總價值"/>
+        <text name="mdm_futures_bc_disabled" text="期貨已停用 — BetterContracts 模式已激活"/>
+        <text name="mdm_futures_created" text="合約已創建！"/>
+        <text name="mdm_futures_no_contracts" text="還沒有合約"/>
+        <text name="mdm_settings_mdm_general" text="市場動態"/>
+
+    </texts>
+</l10n>
