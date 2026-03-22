@@ -112,9 +112,6 @@
       <!-- Price signal (color set by Lua) -->
       <Text profile="mdmDlg_signal"    id="dlgSignal"    position="445px -490px"/>
 
-      <!-- BC-mode blocked message (shown instead of signal) -->
-      <Text profile="mdmDlg_bcBlocked" id="dlgBcBlocked" text="$l10n_mdm_dialog_bc_blocked" position="445px -490px" visible="false"/>
-
     </GuiElement>
 
     <!-- ═══════ ACTION BUTTONS — native game bottom bar ═══════ -->

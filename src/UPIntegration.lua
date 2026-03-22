@@ -2,13 +2,13 @@
 -- Optional integration layer with FS25_UsedPlus (XelaNull).
 -- API version targeted: v1.1.0 (FS25_UsedPlus v2.15.4.96)
 --
--- When UsedPlus is installed AND the player enables "UP mode", this module:
+-- When UsedPlus is installed this module automatically:
 --   1. Registers MDM futures contracts as external deals → affects credit score
 --   2. Reports fulfilled/defaulted contracts → credit score up/down
 --   3. Reads credit score at contract creation → scales MDM default penalty rate
 --   4. Applies world event market modifiers → affects used equipment prices
 --
--- All UsedPlusAPI calls are server-only (g_currentMission.isServer guard).
+-- All UsedPlusAPI calls are server-only (isServer guard).
 -- See: https://github.com/XelaNull/FS25_UsedPlus/issues/40
 --
 -- Author: tison (dev-1)
@@ -19,7 +19,6 @@ UPIntegration = {}
 -- Config
 -- ---------------------------------------------------------------------------
 
--- Credit score thresholds for penalty scaling.
 local CREDIT_TIER_EXCELLENT = 750
 local CREDIT_TIER_POOR      = 600
 
@@ -27,9 +26,6 @@ local PENALTY_MOD_EXCELLENT = 0.67  -- 10% effective penalty  (vs default 15%)
 local PENALTY_MOD_POOR      = 1.33  -- 20% effective penalty  (vs default 15%)
 local PENALTY_MOD_DEFAULT   = 1.0   -- 15% — used when UP not active or score unknown
 
--- Used equipment price multiplier per world event ID.
--- Maps intensity (0-1) to a multiplier passed to getAPI().applyMarketModifier().
--- Clamped 0.5-2.0 by the UP API — our ranges are well within that.
 local EVENT_MODIFIERS = {
     drought           = function(i) return 1.0 + i * 0.20 end,  -- +0-20%: farmers need equipment
     geopolitical      = function(i) return 1.0 + i * 0.15 end,  -- +0-15%: can't source new
@@ -40,7 +36,6 @@ local EVENT_MODIFIERS = {
     pest_outbreak     = function(i) return 1.0 - i * 0.08 end,  -- -0-8%: economic stress, selling
 }
 
--- Modifier key prefix used to build the UP modifier ID: "MarketDynamics_<eventId>"
 local MOD_NAME = "MarketDynamics"
 
 -- ---------------------------------------------------------------------------
@@ -56,8 +51,6 @@ end
 -- State
 -- ---------------------------------------------------------------------------
 
-local _enabled = false  -- user opt-in (persisted via MarketSerializer)
-
 -- Maps contractId → upDealId returned by getAPI().registerExternalDeal().
 -- Persisted by save/load so we can report payments/defaults across sessions.
 local _dealIds = {}
@@ -68,17 +61,12 @@ local _dealIds = {}
 
 function UPIntegration.isAvailable()
     if g_modManager:getModByName("FS25_UsedPlus") == nil then return false end
-    -- Also verify the API object is actually present (timing: checked after mission load)
     return getAPI() ~= nil
 end
 
+-- Always active when UP is installed — no manual opt-in required.
 function UPIntegration.isEnabled()
-    return UPIntegration.isAvailable() and _enabled
-end
-
-function UPIntegration.setEnabled(val)
-    _enabled = val == true
-    MDMLog.info("UPIntegration: UP mode " .. (_enabled and "ENABLED" or "DISABLED"))
+    return UPIntegration.isAvailable()
 end
 
 -- Called from MarketDynamics:onMissionLoaded.
@@ -90,19 +78,11 @@ function UPIntegration.init()
 
     local upMod   = g_modManager:getModByName("FS25_UsedPlus")
     local version = (upMod and upMod.version) or "?"
-    MDMLog.info("UPIntegration: FS25_UsedPlus detected (v" .. version .. ")")
-
-    if _enabled then
-        MDMLog.info("UPIntegration: UP mode active — credit bridge and market modifiers enabled")
-    else
-        MDMLog.info("UPIntegration: UP mode inactive — use 'mdmUPMode on' or Settings to enable")
-    end
+    MDMLog.info("UPIntegration: FS25_UsedPlus detected (v" .. version .. ") — credit bridge and market modifiers active")
 end
 
--- Save UP mode state and deal ID map. Called from MarketSerializer.
+-- Save deal ID map. Called from MarketSerializer.
 function UPIntegration.save(xmlFile, baseKey)
-    setXMLBool(xmlFile, baseKey .. "#upMode", _enabled)
-
     local i = 0
     for contractId, upDealId in pairs(_dealIds) do
         local base = baseKey .. ".dealIds.entry(" .. i .. ")"
@@ -112,11 +92,8 @@ function UPIntegration.save(xmlFile, baseKey)
     end
 end
 
--- Load UP mode state and deal ID map. Called from MarketSerializer.
+-- Load deal ID map. Called from MarketSerializer.
 function UPIntegration.load(xmlFile, baseKey)
-    local val = getXMLBool(xmlFile, baseKey .. "#upMode")
-    _enabled  = val == true
-
     _dealIds = {}
     local i = 0
     while true do
@@ -129,16 +106,10 @@ function UPIntegration.load(xmlFile, baseKey)
         end
         i = i + 1
     end
-
-    MDMLog.info("UPIntegration: loaded upMode=" .. tostring(_enabled) ..
-        ", dealIds=" .. i)
+    MDMLog.info("UPIntegration: loaded " .. i .. " deal ID(s)")
 end
 
 -- Post-load re-registration pass for active contracts.
--- Called from MarketDynamics:onStartMission after serializer:load().
--- Registers any active contract that has no persisted upDealId (e.g. save predating
--- the integration, or a dealId that was lost). Skips contracts already registered.
--- registerExternalDeal() is idempotent on the UP side — safe to re-call.
 function UPIntegration.reregisterActiveContracts(contracts)
     if not UPIntegration.isEnabled() then return end
     if g_currentMission and g_currentMission.isClient and not g_currentMission.isServer then return end
@@ -171,7 +142,6 @@ end
 -- Futures contract hooks (called from FuturesMarket)
 -- ---------------------------------------------------------------------------
 
--- Called when a futures contract is created.
 function UPIntegration.onContractCreated(contractId, farmId, params)
     if not UPIntegration.isEnabled() then return end
     if g_currentMission and g_currentMission.isClient and not g_currentMission.isServer then return end
@@ -193,7 +163,6 @@ function UPIntegration.onContractCreated(contractId, farmId, params)
     end
 end
 
--- Called when a futures contract is fulfilled (full delivery on time).
 function UPIntegration.onContractFulfilled(contractId, farmId, payoutAmount)
     if not UPIntegration.isEnabled() then return end
     if g_currentMission and g_currentMission.isClient and not g_currentMission.isServer then return end
@@ -210,7 +179,6 @@ function UPIntegration.onContractFulfilled(contractId, farmId, payoutAmount)
     MDMLog.info("UPIntegration: reported fulfillment for deal #" .. upDealId)
 end
 
--- Called when a futures contract is defaulted (delivery missed or short).
 function UPIntegration.onContractDefaulted(contractId, farmId, penaltyAmount)
     if not UPIntegration.isEnabled() then return end
     if g_currentMission and g_currentMission.isClient and not g_currentMission.isServer then return end
@@ -228,11 +196,9 @@ function UPIntegration.onContractDefaulted(contractId, farmId, penaltyAmount)
 end
 
 -- Returns a penalty multiplier based on the player's credit score.
--- Applied to FuturesMarket's DEFAULT_PENALTY at contract settlement.
 --   Excellent credit (750+) → 0.67× → effective ~10% penalty
 --   Normal credit (600-749) → 1.0×  → effective ~15% penalty
 --   Poor credit   (<600)    → 1.33× → effective ~20% penalty
--- Returns 1.0 (no change) when UP is not active or score is unavailable.
 function UPIntegration.getPenaltyModifier(farmId)
     if not UPIntegration.isEnabled() then return PENALTY_MOD_DEFAULT end
 
@@ -247,7 +213,6 @@ function UPIntegration.getPenaltyModifier(farmId)
     return PENALTY_MOD_DEFAULT
 end
 
--- Returns the player's current credit score (300-850), or nil if unavailable.
 function UPIntegration.getCreditScore(farmId)
     if not UPIntegration.isEnabled() then return nil end
     if g_currentMission and g_currentMission.isClient and not g_currentMission.isServer then return nil end
@@ -258,8 +223,6 @@ end
 -- World event hooks (called from WorldEventSystem)
 -- ---------------------------------------------------------------------------
 
--- Called when a world event fires (or is restored from savegame).
--- durationMs is the remaining active duration in game milliseconds.
 function UPIntegration.onWorldEventFired(eventId, intensity, durationMs)
     if not UPIntegration.isEnabled() then return end
     if g_currentMission and g_currentMission.isClient and not g_currentMission.isServer then return end
@@ -282,7 +245,6 @@ function UPIntegration.onWorldEventFired(eventId, intensity, durationMs)
         eventId, multiplier, durationHours))
 end
 
--- Called when a world event expires.
 function UPIntegration.onWorldEventExpired(eventId)
     if not UPIntegration.isEnabled() then return end
     if g_currentMission and g_currentMission.isClient and not g_currentMission.isServer then return end

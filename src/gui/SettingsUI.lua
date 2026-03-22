@@ -229,27 +229,6 @@ function MDMSettingsUI._addSettingsElements()
         "How wildly prices swing. Low=0.5x, Normal=1x, High=1.5x, Extreme=2x"
     )
 
-    -- ── Integrations ──────────────────────────────────────────────────────
-
-    MDMSettingsUI._addSection(layout, "Integrations")
-
-    -- Requires FS25_BetterContracts. Enables supply-spike reactions and
-    -- suppresses the MDM futures UI in favour of BC's contract system.
-    _elem.bcMode = MDMSettingsUI._addBinary(
-        layout, "onMDMBCModeChanged",
-        "BetterContracts",
-        "Requires FS25_BetterContracts. Links market reactions to BC contract completions."
-    )
-
-    -- Requires FS25_UsedPlus. Links futures contract settlements to the
-    -- UsedPlus credit score system — fulfil contracts to build credit,
-    -- default to hurt it. Credit score scales your penalty rate.
-    _elem.upMode = MDMSettingsUI._addBinary(
-        layout, "onMDMUPModeChanged",
-        "UsedPlus",
-        "Requires FS25_UsedPlus. Futures contracts affect your credit score and penalty rates."
-    )
-
     -- ── Debug ─────────────────────────────────────────────────────────────
 
     MDMSettingsUI._addSection(layout, "Debug")
@@ -296,14 +275,6 @@ function MDMSettingsUI._updateSettingsUI()
         _elem.volatility:setState(MDMSettingsUI._findValueIndex(VOLATILITY_VALUES, scale))
     end
 
-    if _elem.upMode then
-        _elem.upMode:setIsChecked(UPIntegration.isEnabled(), false, false)
-    end
-
-    if _elem.bcMode then
-        _elem.bcMode:setIsChecked(BCIntegration.isEnabled(), false, false)
-    end
-
     if _elem.debugMode then
         _elem.debugMode:setIsChecked(MDMLog.debugEnabled == true, false, false)
     end
@@ -328,26 +299,6 @@ function MDMSettingsUI:onMDMVolatilityChanged(state)
         g_MarketDynamics.marketEngine.volatilityScale = scale
     end
     MDMLog.info("SettingsUI: volatilityScale = " .. tostring(scale))
-end
-
-function MDMSettingsUI:onMDMUPModeChanged(state)
-    local enabled = (state == BinaryOptionElement.STATE_RIGHT)
-    if not UPIntegration.isAvailable() and enabled then
-        MDMLog.warn("SettingsUI: FS25_UsedPlus not installed — forcing off")
-        if _elem.upMode then _elem.upMode:setIsChecked(false, false, false) end
-        return
-    end
-    UPIntegration.setEnabled(enabled)
-end
-
-function MDMSettingsUI:onMDMBCModeChanged(state)
-    local enabled = (state == BinaryOptionElement.STATE_RIGHT)
-    if not BCIntegration.isAvailable() and enabled then
-        MDMLog.warn("SettingsUI: BetterContracts not installed — forcing off")
-        if _elem.bcMode then _elem.bcMode:setIsChecked(false, false, false) end
-        return
-    end
-    BCIntegration.setEnabled(enabled)
 end
 
 function MDMSettingsUI:onMDMDebugModeChanged(state)

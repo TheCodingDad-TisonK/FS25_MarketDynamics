@@ -38,7 +38,6 @@ function MDMContractDialog.new(target, custom_mt)
     self.noCropsText  = nil
 
     -- Right column
-    self.bcBlockText  = nil
     self.signalText   = nil
     self.confirmBtn   = nil
     self.confirmText  = nil
@@ -91,7 +90,6 @@ function MDMContractDialog:onGuiSetupFinished()
     self.noCropsText  = self:getDescendantById("dlgNoCrops")
 
     -- Right column
-    self.bcBlockText  = self:getDescendantById("dlgBcBlocked")
     self.signalText   = self:getDescendantById("dlgSignal")
     self.confirmBtn   = self:getDescendantById("dlgConfirmBtn")
     self.confirmText  = self:getDescendantById("dlgConfirmText")
@@ -143,17 +141,11 @@ function MDMContractDialog:onOpen()
 
     self.isOpen = true
 
-    local hasCrops  = #self.commodities > 0
-    local bcBlocked = BCIntegration and BCIntegration.isEnabled()
+    local hasCrops = #self.commodities > 0
 
-    if self.noCropsText  then self.noCropsText:setVisible(not hasCrops) end
-    if self.bcBlockText  then self.bcBlockText:setVisible(bcBlocked) end
-    if self.signalText   then self.signalText:setVisible(not bcBlocked) end
-    if self.confirmBtn   then self.confirmBtn:setDisabled(bcBlocked or not hasCrops) end
-    if self.confirmText  then
-        local blocked = bcBlocked or not hasCrops
-        self.confirmText:setTextColor(blocked and 0.45 or 0.75, blocked and 0.45 or 0.75, blocked and 0.45 or 0.75, 1.0)
-    end
+    if self.noCropsText then self.noCropsText:setVisible(not hasCrops) end
+    if self.signalText  then self.signalText:setVisible(hasCrops) end
+    if self.confirmBtn  then self.confirmBtn:setDisabled(not hasCrops) end
 
     self:_updateSummary()
     self:_updateButtonStates()
@@ -196,10 +188,6 @@ function MDMContractDialog:onDelivClick(element)
 end
 
 function MDMContractDialog:onConfirmClick()
-    if BCIntegration and BCIntegration.isEnabled() then
-        self:close()
-        return
-    end
     local crop = self.commodities[self.selectedCropIdx]
     if not crop then return end
     if self._onConfirmed then

@@ -10,7 +10,7 @@
 --   market prices      — volatilityFactor per fillType
 --   price history      — daily history samples per fillType
 --   general settings   — pricesEnabled, debugMode, volatilityScale
---   integration flags  — BC mode and UP mode
+--   UP deal IDs        — contractId → upDealId map for UsedPlus
 --
 -- Author: tison (dev-1)
 
@@ -128,8 +128,7 @@ function MarketSerializer:save(coordinator)
             coordinator.marketEngine.volatilityScale or 1.0)
     end
 
-    -- ── Integration flags ────────────────────────────────────────────────
-    BCIntegration.save(xmlFile, "marketDynamics.bcIntegration")
+    -- ── Integration state ────────────────────────────────────────────────
     UPIntegration.save(xmlFile, "marketDynamics.upIntegration")
 
     saveXMLFile(xmlFile)
@@ -269,8 +268,7 @@ function MarketSerializer:load(coordinator)
         end
     end
 
-    -- ── Integration flags ─────────────────────────────────────────────────
-    BCIntegration.load(xmlFile, "marketDynamics.bcIntegration")
+    -- ── Integration state ─────────────────────────────────────────────────
     UPIntegration.load(xmlFile, "marketDynamics.upIntegration")
 
     delete(xmlFile)
