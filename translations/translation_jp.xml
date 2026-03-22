@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<l10n>
+    <texts>
+
+        <text name="mdm_event_drought" text="地域的な干ばつ"/>
+        <text name="mdm_event_bumper_harvest" text="バンパーハーベスト"/>
+        <text name="mdm_event_trade_disruption" text="貿易妨害"/>
+        <text name="mdm_event_geopolitical" text="地政学的危機"/>
+        <text name="mdm_event_biofuel_initiative" text="バイオ燃料イニシアチブ"/>
+        <text name="mdm_event_livestock_boom" text="家畜飼料ブーム"/>
+        <text name="mdm_event_pest_outbreak" text="根枯れ病"/>
+        <text name="mdm_hud_title" text="マーケットウォッチ"/>
+        <text name="mdm_hud_active_events" text="アクティブなイベント"/>
+        <text name="mdm_hud_no_events" text="市場は安定"/>
+        <text name="mdm_hud_event_mild" text="軽度"/>
+        <text name="mdm_hud_event_moderate" text="適度"/>
+        <text name="mdm_hud_event_severe" text="厳しい"/>
+        <text name="mdm_screen_title" text="市場動向"/>
+        <text name="mdm_screen_col_crop" text="作物"/>
+        <text name="mdm_screen_col_base" text="ベース"/>
+        <text name="mdm_screen_col_current" text="現在"/>
+        <text name="mdm_screen_col_change" text="変化"/>
+        <text name="mdm_screen_col_day" text="日"/>
+        <text name="mdm_screen_col_price" text="価格"/>
+        <text name="mdm_screen_col_qty" text="数量"/>
+        <text name="mdm_screen_col_locked" text="ロックされています"/>
+        <text name="mdm_screen_col_delivered" text="納品済み"/>
+        <text name="mdm_screen_col_deadline" text="締め切り"/>
+        <text name="mdm_screen_col_status" text="状態"/>
+        <text name="mdm_screen_no_data" text="入手可能な価格データはありません"/>
+        <text name="mdm_screen_no_history" text="まだ履歴が記録されていません"/>
+        <text name="mdm_screen_close_hint" text="ESC を押して閉じます"/>
+        <text name="mdm_screen_switch_tabs" text="タブを切り替える"/>
+        <text name="mdm_screen_nav_crops" text="左/右: クロップの切り替え"/>
+        <text name="mdm_screen_tab_prices" text="価格"/>
+        <text name="mdm_screen_tab_events" text="イベント"/>
+        <text name="mdm_screen_tab_contracts" text="契約"/>
+        <text name="mdm_screen_commodities" text="商品"/>
+        <text name="mdm_screen_current_price" text="現在の価格"/>
+        <text name="mdm_screen_base_price" text="基本価格"/>
+        <text name="mdm_screen_change" text="変化"/>
+        <text name="mdm_screen_volatility" text="ボラティリティ"/>
+        <text name="mdm_screen_modifiers" text="アクティブなモディファイア"/>
+        <text name="mdm_screen_session_trend" text="セッション価格の傾向"/>
+        <text name="mdm_screen_collecting" text="データを収集中..."/>
+        <text name="mdm_screen_select_crop" text="商品を選択してください"/>
+        <text name="mdm_screen_no_events" text="市場は穏やかだ。アクティブなイベントはありません。"/>
+        <text name="mdm_screen_events_hdr" text="アクティブなイベント"/>
+        <text name="mdm_screen_contracts_hdr" text="先物契約"/>
+        <text name="mdm_screen_new_contract" text="Alt+F: 新しい契約"/>
+        <text name="mdm_screen_no_contracts" text="まだ契約はありません。 Alt+F を押して作成します。"/>
+        <text name="mdm_screen_at_risk" text="危険にさらされています"/>
+        <text name="mdm_screen_hint_bar" text="ESC: 閉じる |  Q/E: タブ |  上/下: ナビゲート"/>
+        <text name="mdm_screen_timeline" text="セッションのタイムライン"/>
+        <text name="mdm_screen_balance" text="バランス ："/>
+        <text name="mdm_futures_title" text="先物市場"/>
+        <text name="mdm_futures_new_title" text="新しい先物契約"/>
+        <text name="mdm_futures_create" text="新規契約"/>
+        <text name="mdm_futures_fulfill" text="満たされた"/>
+        <text name="mdm_futures_defaulted" text="デフォルト"/>
+        <text name="mdm_futures_active" text="アクティブ"/>
+        <text name="mdm_futures_delivery_label" text="配達"/>
+        <text name="mdm_futures_locked_label" text="ロック価格"/>
+        <text name="mdm_futures_quantity_label" text="数量(L)"/>
+        <text name="mdm_futures_crop_label" text="作物"/>
+        <text name="mdm_futures_confirm" text="確認する"/>
+        <text name="mdm_futures_cancel" text="キャンセル"/>
+        <text name="mdm_futures_total_value" text="合計値"/>
+        <text name="mdm_futures_bc_disabled" text="先物無効 — BetterContracts モード有効"/>
+        <text name="mdm_futures_created" text="契約書が作成されました!"/>
+        <text name="mdm_futures_no_contracts" text="まだ契約はありません"/>
+        <text name="mdm_dialog_summary" text="契約概要"/>
+        <text name="mdm_dialog_qty_label" text="量"/>
+        <text name="mdm_dialog_delivery_label" text="配送期間"/>
+        <text name="mdm_dialog_bc_blocked" text="先物無効 — BetterContracts モード有効"/>
+        <text name="mdm_dialog_no_crops" text="市場データはまだありません。"/>
+        <text name="mdm_screen_new_contract_btn" text="新規契約[N]"/>
+        <text name="mdm_settings_mdm_general" text="市場動向"/>
+
+    
+        <!-- Input action display names -->
+        <text name="input_MDM_MARKET_SCREEN" text="市場を開く" />
+        <text name="input_MDM_CREATE_CONTRACT" text="先物契約を作成" />
+
+        <!-- Contract admin dialog -->
+        <text name="mdm_admin_title"            text="Contract Details" />
+        <text name="mdm_admin_details_label"    text="Contract Info" />
+        <text name="mdm_admin_summary_label"    text="Value Summary" />
+        <text name="mdm_admin_crop"             text="Crop:" />
+        <text name="mdm_admin_qty"              text="Quantity:" />
+        <text name="mdm_admin_price"            text="Locked price:" />
+        <text name="mdm_admin_delivered"        text="Delivered:" />
+        <text name="mdm_admin_deadline"         text="Deadline:" />
+        <text name="mdm_admin_status"           text="Status:" />
+        <text name="mdm_admin_complete"         text="Force Complete" />
+        <text name="mdm_admin_cancel_contract"  text="Cancel Contract" />
+        <text name="mdm_admin_close"            text="Close" />
+        <text name="mdm_admin_delete"           text="Delete" />
+        <text name="mdm_admin_settled"          text="This contract is already settled." />
+    </texts>
+</l10n>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<l10n>
+    <texts>
+
+        <text name="mdm_event_drought" text="Bölgesel Kuraklık"/>
+        <text name="mdm_event_bumper_harvest" text="Tampon Hasadı"/>
+        <text name="mdm_event_trade_disruption" text="Ticaretin Bozulması"/>
+        <text name="mdm_event_geopolitical" text="Jeopolitik Kriz"/>
+        <text name="mdm_event_biofuel_initiative" text="Biyoyakıt Girişimi"/>
+        <text name="mdm_event_livestock_boom" text="Hayvancılık Yem Patlaması"/>
+        <text name="mdm_event_pest_outbreak" text="Kök Bitki Yanıklığı"/>
+        <text name="mdm_hud_title" text="Piyasa Gözlemi"/>
+        <text name="mdm_hud_active_events" text="Aktif Etkinlikler"/>
+        <text name="mdm_hud_no_events" text="Piyasalar istikrarlı"/>
+        <text name="mdm_hud_event_mild" text="Hafif"/>
+        <text name="mdm_hud_event_moderate" text="Ilıman"/>
+        <text name="mdm_hud_event_severe" text="Haşin"/>
+        <text name="mdm_screen_title" text="Pazar Dinamikleri"/>
+        <text name="mdm_screen_col_crop" text="Mahsul"/>
+        <text name="mdm_screen_col_base" text="Temel"/>
+        <text name="mdm_screen_col_current" text="Akım"/>
+        <text name="mdm_screen_col_change" text="Değiştirmek"/>
+        <text name="mdm_screen_col_day" text="Gün"/>
+        <text name="mdm_screen_col_price" text="Fiyat"/>
+        <text name="mdm_screen_col_qty" text="Adet"/>
+        <text name="mdm_screen_col_locked" text="Kilitli"/>
+        <text name="mdm_screen_col_delivered" text="Teslim edilmiş"/>
+        <text name="mdm_screen_col_deadline" text="Son teslim tarihi"/>
+        <text name="mdm_screen_col_status" text="Durum"/>
+        <text name="mdm_screen_no_data" text="Fiyat verisi mevcut değil"/>
+        <text name="mdm_screen_no_history" text="Henüz kayıtlı bir geçmiş yok"/>
+        <text name="mdm_screen_close_hint" text="Kapatmak için ESC'ye basın"/>
+        <text name="mdm_screen_switch_tabs" text="Sekmeleri değiştir"/>
+        <text name="mdm_screen_nav_crops" text="Sol/Sağ: kırpmayı değiştir"/>
+        <text name="mdm_screen_tab_prices" text="Fiyatlar"/>
+        <text name="mdm_screen_tab_events" text="Olaylar"/>
+        <text name="mdm_screen_tab_contracts" text="Sözleşmeler"/>
+        <text name="mdm_screen_commodities" text="EMTİALAR"/>
+        <text name="mdm_screen_current_price" text="Güncel Fiyat"/>
+        <text name="mdm_screen_base_price" text="Taban Fiyat"/>
+        <text name="mdm_screen_change" text="Değiştirmek"/>
+        <text name="mdm_screen_volatility" text="Volatilite"/>
+        <text name="mdm_screen_modifiers" text="Aktif Değiştiriciler"/>
+        <text name="mdm_screen_session_trend" text="Seans Fiyat Trendi"/>
+        <text name="mdm_screen_collecting" text="Veri toplanıyor..."/>
+        <text name="mdm_screen_select_crop" text="Bir ürün seçin"/>
+        <text name="mdm_screen_no_events" text="Piyasalar sakin. Aktif etkinlik yok."/>
+        <text name="mdm_screen_events_hdr" text="AKTİF ETKİNLİKLER"/>
+        <text name="mdm_screen_contracts_hdr" text="VADELI SÖZLEŞMELER"/>
+        <text name="mdm_screen_new_contract" text="Alt+F: Yeni Sözleşme"/>
+        <text name="mdm_screen_no_contracts" text="Henüz sözleşme yok. Bir tane oluşturmak için Alt+F tuşlarına basın."/>
+        <text name="mdm_screen_at_risk" text="RİSK ALTINDA"/>
+        <text name="mdm_screen_hint_bar" text="ESC: Kapat |  Soru/Cevap: Sekmeler |  Yukarı/Aşağı: Gezin"/>
+        <text name="mdm_screen_timeline" text="Oturum Zaman Çizelgesi"/>
+        <text name="mdm_screen_balance" text="Denge :"/>
+        <text name="mdm_futures_title" text="Vadeli İşlem Piyasası"/>
+        <text name="mdm_futures_new_title" text="Yeni Vadeli İşlem Sözleşmesi"/>
+        <text name="mdm_futures_create" text="Yeni Sözleşme"/>
+        <text name="mdm_futures_fulfill" text="Yerine getirildi"/>
+        <text name="mdm_futures_defaulted" text="Varsayılan"/>
+        <text name="mdm_futures_active" text="Aktif"/>
+        <text name="mdm_futures_delivery_label" text="Teslimat"/>
+        <text name="mdm_futures_locked_label" text="Kilitli Fiyat"/>
+        <text name="mdm_futures_quantity_label" text="Adet (L)"/>
+        <text name="mdm_futures_crop_label" text="Mahsul"/>
+        <text name="mdm_futures_confirm" text="Onaylamak"/>
+        <text name="mdm_futures_cancel" text="İptal etmek"/>
+        <text name="mdm_futures_total_value" text="Toplam Değer"/>
+        <text name="mdm_futures_bc_disabled" text="Vadeli işlemler devre dışı bırakıldı — BetterContracts modu etkin"/>
+        <text name="mdm_futures_created" text="Sözleşme Oluşturuldu!"/>
+        <text name="mdm_futures_no_contracts" text="Henüz sözleşme yok"/>
+        <text name="mdm_dialog_summary" text="Sözleşme Özeti"/>
+        <text name="mdm_dialog_qty_label" text="Miktar"/>
+        <text name="mdm_dialog_delivery_label" text="Teslimat Aralığı"/>
+        <text name="mdm_dialog_bc_blocked" text="Vadeli işlemler devre dışı bırakıldı — BetterContracts modu etkin"/>
+        <text name="mdm_dialog_no_crops" text="Henüz piyasa verisi mevcut değil."/>
+        <text name="mdm_screen_new_contract_btn" text="Yeni Sözleşme [N]"/>
+        <text name="mdm_settings_mdm_general" text="Pazar Dinamikleri"/>
+
+    
+        <!-- Input action display names -->
+        <text name="input_MDM_MARKET_SCREEN" text="Piyasayı aç" />
+        <text name="input_MDM_CREATE_CONTRACT" text="Vadeli işlem sözleşmesi oluştur" />
+
+        <!-- Contract admin dialog -->
+        <text name="mdm_admin_title"            text="Contract Details" />
+        <text name="mdm_admin_details_label"    text="Contract Info" />
+        <text name="mdm_admin_summary_label"    text="Value Summary" />
+        <text name="mdm_admin_crop"             text="Crop:" />
+        <text name="mdm_admin_qty"              text="Quantity:" />
+        <text name="mdm_admin_price"            text="Locked price:" />
+        <text name="mdm_admin_delivered"        text="Delivered:" />
+        <text name="mdm_admin_deadline"         text="Deadline:" />
+        <text name="mdm_admin_status"           text="Status:" />
+        <text name="mdm_admin_complete"         text="Force Complete" />
+        <text name="mdm_admin_cancel_contract"  text="Cancel Contract" />
+        <text name="mdm_admin_close"            text="Close" />
+        <text name="mdm_admin_delete"           text="Delete" />
+        <text name="mdm_admin_settled"          text="This contract is already settled." />
+    </texts>
+</l10n>

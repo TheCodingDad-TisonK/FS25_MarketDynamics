@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<l10n>
+    <texts>
+
+        <text name="mdm_event_drought" text="Regional torka"/>
+        <text name="mdm_event_bumper_harvest" text="Bumper Harvest"/>
+        <text name="mdm_event_trade_disruption" text="Handelsstörning"/>
+        <text name="mdm_event_geopolitical" text="Geopolitisk kris"/>
+        <text name="mdm_event_biofuel_initiative" text="Biobränsleinitiativ"/>
+        <text name="mdm_event_livestock_boom" text="Boskapsfoderbom"/>
+        <text name="mdm_event_pest_outbreak" text="Root Crop Blight"/>
+        <text name="mdm_hud_title" text="Market Watch"/>
+        <text name="mdm_hud_active_events" text="Aktiva evenemang"/>
+        <text name="mdm_hud_no_events" text="Marknaderna stabila"/>
+        <text name="mdm_hud_event_mild" text="Mild"/>
+        <text name="mdm_hud_event_moderate" text="Måttlig"/>
+        <text name="mdm_hud_event_severe" text="Svår"/>
+        <text name="mdm_screen_title" text="Marknadsdynamik"/>
+        <text name="mdm_screen_col_crop" text="Beskära"/>
+        <text name="mdm_screen_col_base" text="Bas"/>
+        <text name="mdm_screen_col_current" text="Nuvarande"/>
+        <text name="mdm_screen_col_change" text="Ändra"/>
+        <text name="mdm_screen_col_day" text="Dag"/>
+        <text name="mdm_screen_col_price" text="Pris"/>
+        <text name="mdm_screen_col_qty" text="Antal"/>
+        <text name="mdm_screen_col_locked" text="Låst"/>
+        <text name="mdm_screen_col_delivered" text="Levereras"/>
+        <text name="mdm_screen_col_deadline" text="Tidsfrist"/>
+        <text name="mdm_screen_col_status" text="Status"/>
+        <text name="mdm_screen_no_data" text="Inga prisuppgifter tillgängliga"/>
+        <text name="mdm_screen_no_history" text="Ingen historik registrerad ännu"/>
+        <text name="mdm_screen_close_hint" text="Tryck på ESC för att stänga"/>
+        <text name="mdm_screen_switch_tabs" text="Byt flikar"/>
+        <text name="mdm_screen_nav_crops" text="Vänster/Höger: växla gröda"/>
+        <text name="mdm_screen_tab_prices" text="Priser"/>
+        <text name="mdm_screen_tab_events" text="Händelser"/>
+        <text name="mdm_screen_tab_contracts" text="Kontrakt"/>
+        <text name="mdm_screen_commodities" text="HANDELSVAROR"/>
+        <text name="mdm_screen_current_price" text="Aktuellt pris"/>
+        <text name="mdm_screen_base_price" text="Baspris"/>
+        <text name="mdm_screen_change" text="Ändra"/>
+        <text name="mdm_screen_volatility" text="Flyktighet"/>
+        <text name="mdm_screen_modifiers" text="Aktiva modifierare"/>
+        <text name="mdm_screen_session_trend" text="Session Pris Trend"/>
+        <text name="mdm_screen_collecting" text="Samlar in data..."/>
+        <text name="mdm_screen_select_crop" text="Välj en vara"/>
+        <text name="mdm_screen_no_events" text="Marknaderna är lugna. Inga aktiva händelser."/>
+        <text name="mdm_screen_events_hdr" text="AKTIVA HÄNDELSER"/>
+        <text name="mdm_screen_contracts_hdr" text="FRAMTIDSAVTAL"/>
+        <text name="mdm_screen_new_contract" text="Alt+F: Nytt kontrakt"/>
+        <text name="mdm_screen_no_contracts" text="Inga kontrakt ännu. Tryck på Alt+F för att skapa en."/>
+        <text name="mdm_screen_at_risk" text="I RISK"/>
+        <text name="mdm_screen_hint_bar" text="ESC: Stäng |  F/E: Flikar |  Upp/Ner: Navigera"/>
+        <text name="mdm_screen_timeline" text="Sessionens tidslinje"/>
+        <text name="mdm_screen_balance" text="Saldo:"/>
+        <text name="mdm_futures_title" text="Futures Market"/>
+        <text name="mdm_futures_new_title" text="Nytt terminskontrakt"/>
+        <text name="mdm_futures_create" text="Nytt kontrakt"/>
+        <text name="mdm_futures_fulfill" text="Uppfyllt"/>
+        <text name="mdm_futures_defaulted" text="Förinställt"/>
+        <text name="mdm_futures_active" text="Aktiv"/>
+        <text name="mdm_futures_delivery_label" text="Leverans"/>
+        <text name="mdm_futures_locked_label" text="Låst pris"/>
+        <text name="mdm_futures_quantity_label" text="Kvantitet (L)"/>
+        <text name="mdm_futures_crop_label" text="Beskära"/>
+        <text name="mdm_futures_confirm" text="Bekräfta"/>
+        <text name="mdm_futures_cancel" text="Avboka"/>
+        <text name="mdm_futures_total_value" text="Totalt värde"/>
+        <text name="mdm_futures_bc_disabled" text="Futures inaktiverad — BetterContracts-läget aktivt"/>
+        <text name="mdm_futures_created" text="Kontrakt skapat!"/>
+        <text name="mdm_futures_no_contracts" text="Inga kontrakt ännu"/>
+        <text name="mdm_dialog_summary" text="Kontraktssammanfattning"/>
+        <text name="mdm_dialog_qty_label" text="Kvantitet"/>
+        <text name="mdm_dialog_delivery_label" text="Leveransfönster"/>
+        <text name="mdm_dialog_bc_blocked" text="Futures inaktiverad — BetterContracts-läget aktivt"/>
+        <text name="mdm_dialog_no_crops" text="Ingen marknadsdata tillgänglig ännu."/>
+        <text name="mdm_screen_new_contract_btn" text="Nytt kontrakt [N]"/>
+        <text name="mdm_settings_mdm_general" text="Marknadsdynamik"/>
+
+    
+        <!-- Input action display names -->
+        <text name="input_MDM_MARKET_SCREEN" text="Öppna marknaden" />
+        <text name="input_MDM_CREATE_CONTRACT" text="Skapa terminskontrakt" />
+
+        <!-- Contract admin dialog -->
+        <text name="mdm_admin_title"            text="Contract Details" />
+        <text name="mdm_admin_details_label"    text="Contract Info" />
+        <text name="mdm_admin_summary_label"    text="Value Summary" />
+        <text name="mdm_admin_crop"             text="Crop:" />
+        <text name="mdm_admin_qty"              text="Quantity:" />
+        <text name="mdm_admin_price"            text="Locked price:" />
+        <text name="mdm_admin_delivered"        text="Delivered:" />
+        <text name="mdm_admin_deadline"         text="Deadline:" />
+        <text name="mdm_admin_status"           text="Status:" />
+        <text name="mdm_admin_complete"         text="Force Complete" />
+        <text name="mdm_admin_cancel_contract"  text="Cancel Contract" />
+        <text name="mdm_admin_close"            text="Close" />
+        <text name="mdm_admin_delete"           text="Delete" />
+        <text name="mdm_admin_settled"          text="This contract is already settled." />
+    </texts>
+</l10n>

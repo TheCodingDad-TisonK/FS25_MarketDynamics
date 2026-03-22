@@ -23,12 +23,17 @@
 
         <!-- Market Screen -->
         <text name="mdm_screen_title"            text="Market Dynamics" />
-        <text name="mdm_screen_col_crop"         text="Crop" />
+        <text name="mdm_screen_col_crop"          text="Crop" />
         <text name="mdm_screen_col_base"         text="Base" />
         <text name="mdm_screen_col_current"      text="Current" />
         <text name="mdm_screen_col_change"       text="Change" />
         <text name="mdm_screen_col_day"          text="Day" />
         <text name="mdm_screen_col_price"        text="Price" />
+        <text name="mdm_screen_col_qty"          text="Qty" />
+        <text name="mdm_screen_col_locked"       text="Locked" />
+        <text name="mdm_screen_col_delivered"    text="Delivered" />
+        <text name="mdm_screen_col_deadline"     text="Deadline" />
+        <text name="mdm_screen_col_status"       text="Status" />
         <text name="mdm_screen_no_data"          text="No price data available" />
         <text name="mdm_screen_no_history"       text="No history recorded yet" />
         <text name="mdm_screen_close_hint"       text="Press ESC to close" />
@@ -44,13 +49,16 @@
         <text name="mdm_screen_volatility"       text="Volatility" />
         <text name="mdm_screen_modifiers"        text="Active Modifiers" />
         <text name="mdm_screen_session_trend"    text="Session Price Trend" />
-        <text name="mdm_screen_collecting"       text="Collecting data..." />
+        <text name="mdm_screen_collecting"       text="Price history builds as time passes — check back soon" />
         <text name="mdm_screen_select_crop"      text="Select a commodity" />
-        <text name="mdm_screen_no_events"        text="Markets are calm. No active events." />
+        <text name="mdm_screen_no_events"        text="Markets are calm. Events may appear as conditions shift." />
         <text name="mdm_screen_events_hdr"       text="ACTIVE EVENTS" />
+        <text name="mdm_screen_col_event"        text="Event" />
+        <text name="mdm_screen_col_intensity"    text="Intensity" />
+        <text name="mdm_screen_col_time_left"    text="Time Left" />
         <text name="mdm_screen_contracts_hdr"    text="FUTURES CONTRACTS" />
-        <text name="mdm_screen_new_contract"     text="Alt+F: New Contract" />
-        <text name="mdm_screen_no_contracts"     text="No contracts yet. Press Alt+F to create one." />
+        <text name="mdm_screen_new_contract"     text="N: New Contract" />
+        <text name="mdm_screen_no_contracts"     text="No contracts yet. Press N to create one." />
         <text name="mdm_screen_at_risk"          text="AT RISK" />
         <text name="mdm_screen_hint_bar"         text="ESC: Close  |  Q/E: Tabs  |  Up/Down: Navigate" />
         <text name="mdm_screen_timeline"         text="Session Timeline" />
@@ -74,7 +82,35 @@
         <text name="mdm_futures_created"         text="Contract Created!" />
         <text name="mdm_futures_no_contracts"    text="No contracts yet" />
 
+        <!-- Contract creation dialog -->
+        <text name="mdm_dialog_summary"       text="Contract Summary" />
+        <text name="mdm_dialog_qty_label"     text="Quantity" />
+        <text name="mdm_dialog_delivery_label" text="Delivery Window" />
+        <text name="mdm_dialog_bc_blocked"    text="Futures disabled — BetterContracts mode active" />
+        <text name="mdm_dialog_no_crops"      text="No market data available yet." />
+        <text name="mdm_screen_new_contract_btn" text="New Contract [N]" />
+
+        <!-- Contract admin dialog -->
+        <text name="mdm_admin_title"            text="Contract Details" />
+        <text name="mdm_admin_details_label"    text="Contract Info" />
+        <text name="mdm_admin_summary_label"    text="Value Summary" />
+        <text name="mdm_admin_crop"             text="Crop:" />
+        <text name="mdm_admin_qty"              text="Quantity:" />
+        <text name="mdm_admin_price"            text="Locked price:" />
+        <text name="mdm_admin_delivered"        text="Delivered:" />
+        <text name="mdm_admin_deadline"         text="Deadline:" />
+        <text name="mdm_admin_status"           text="Status:" />
+        <text name="mdm_admin_complete"         text="Force Complete" />
+        <text name="mdm_admin_cancel_contract"  text="Cancel Contract" />
+        <text name="mdm_admin_close"            text="Close" />
+        <text name="mdm_admin_delete"           text="Delete" />
+        <text name="mdm_admin_settled"          text="This contract is already settled." />
+
         <!-- Settings -->
         <text name="mdm_settings_mdm_general"  text="Market Dynamics" />
+    
+        <!-- Input action display names -->
+        <text name="input_MDM_MARKET_SCREEN" text="Open Market Screen" />
+        <text name="input_MDM_CREATE_CONTRACT" text="Create Futures Contract" />
     </texts>
 </l10n>

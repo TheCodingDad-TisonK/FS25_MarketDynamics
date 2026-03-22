@@ -32,8 +32,10 @@ local _tabInserted = false  -- tab injected into settings frame
 -- Stored element references (set in addSettingsElements, read in updateSettingsUI)
 local _elem = {}
 
--- Option values for the volatility dropdown (parallel to display strings)
-local VOLATILITY_VALUES = { 0.5, 1.0, 1.5, 2.0 }
+-- Option values for dropdowns (parallel to display strings)
+local VOLATILITY_VALUES      = { 0.5, 1.0, 1.5, 2.0 }
+local EVENT_FREQUENCY_VALUES = { 0.4, 1.0, 2.0 }
+local FUTURES_PENALTY_VALUES = { 0.08, 0.15, 0.25 }
 
 -- ---------------------------------------------------------------------------
 -- XML controller callbacks (called by the game from XML onClick="...")
@@ -133,6 +135,7 @@ function MDMSettingsUI._insertTab()
     -- onGuiSetupFinished on page AFTER children and AFTER adding to frame
     addAt(mdmPage, ps.subCategoryPages[1].parent, pos)
     mdmPage:onGuiSetupFinished()
+    mdmPage:setVisible(false)  -- hidden by default; shown only when our tab is active
 
     -- Store references used by _addSettingsElements and _updateSettingsUI
     MDMSettingsUI.mdmTab         = mdmTab
@@ -177,6 +180,12 @@ function MDMSettingsUI._insertTab()
     -- Patch InGameMenuSettingsFrame.updateSubCategoryPages (the class method) so that
     -- Q/E keyboard navigation (which calls this method directly, bypassing the paging
     -- instance callback) also gets the correct header text for our tab.
+    -- Patch InGameMenuSettingsFrame.updateSubCategoryPages (the class method) so that
+    -- Q/E keyboard navigation (which calls this method directly, bypassing the paging
+    -- instance callback) also gets the correct header text for our tab.
+    -- Visibility is handled by vanilla (mdmPage is registered in subCategoryPages)
+    -- and by the setVisible(false) init above — do NOT touch visibility here or it
+    -- conflicts with BC and other mods that also append this function.
     InGameMenuSettingsFrame.updateSubCategoryPages = Utils.appendedFunction(
         InGameMenuSettingsFrame.updateSubCategoryPages,
         function(self, state)
@@ -210,58 +219,69 @@ function MDMSettingsUI._addSettingsElements()
     local layout = MDMSettingsUI.settingsLayout
     if not layout then return end
 
-    -- ── Market Dynamics ───────────────────────────────────────────────────
+    -- ── Prices ────────────────────────────────────────────────────────────
 
-    MDMSettingsUI._addSection(layout, "Market Dynamics")
+    MDMSettingsUI._addSection(layout, "Prices")
 
-    -- Toggle the MDM price engine on/off. Off = vanilla prices pass through.
     _elem.pricesEnabled = MDMSettingsUI._addBinary(
         layout, "onMDMPricesEnabledChanged",
         "Dynamic Prices",
         "Enable MDM price fluctuations. Off reverts to vanilla sell prices."
     )
 
-    -- Scale the strength of intraday + daily price movements.
     _elem.volatility = MDMSettingsUI._addMulti(
         layout, "onMDMVolatilityChanged",
         { "Low", "Normal", "High", "Extreme" },
         "Price Volatility",
-        "How wildly prices swing. Low=0.5x, Normal=1x, High=1.5x, Extreme=2x"
+        "How wildly prices swing intraday and day-to-day. Low=0.5x, Normal=1x, High=1.5x, Extreme=2x."
     )
 
-    -- ── Integrations ──────────────────────────────────────────────────────
+    -- ── World Events ──────────────────────────────────────────────────────
 
-    MDMSettingsUI._addSection(layout, "Integrations")
+    MDMSettingsUI._addSection(layout, "World Events")
 
-    -- Requires FS25_BetterContracts. Enables supply-spike reactions and
-    -- suppresses the MDM futures UI in favour of BC's contract system.
-    _elem.bcMode = MDMSettingsUI._addBinary(
-        layout, "onMDMBCModeChanged",
-        "BetterContracts",
-        "Requires FS25_BetterContracts. Links market reactions to BC contract completions."
+    _elem.eventsEnabled = MDMSettingsUI._addBinary(
+        layout, "onMDMEventsEnabledChanged",
+        "World Events",
+        "Enable or disable world events. Prices still fluctuate when events are off."
     )
 
-    -- Requires FS25_UsedPlus. Links futures contract settlements to the
-    -- UsedPlus credit score system — fulfil contracts to build credit,
-    -- default to hurt it. Credit score scales your penalty rate.
-    _elem.upMode = MDMSettingsUI._addBinary(
-        layout, "onMDMUPModeChanged",
-        "UsedPlus",
-        "Requires FS25_UsedPlus. Futures contracts affect your credit score and penalty rates."
+    _elem.eventFrequency = MDMSettingsUI._addMulti(
+        layout, "onMDMEventFrequencyChanged",
+        { "Rare", "Normal", "Frequent" },
+        "Event Frequency",
+        "How often events occur. Rare=0.4x, Normal=1x, Frequent=2x the base probability per check."
     )
+
+    -- ── Futures Contracts ─────────────────────────────────────────────────
+
+    MDMSettingsUI._addSection(layout, "Futures Contracts")
+
+    _elem.futuresPenalty = MDMSettingsUI._addMulti(
+        layout, "onMDMFuturesPenaltyChanged",
+        { "Low (8%)", "Normal (15%)", "High (25%)" },
+        "Default Penalty",
+        "Penalty on the undelivered contract value when a deadline is missed."
+    )
+
+    -- ── Status ────────────────────────────────────────────────────────────
+
+    MDMSettingsUI._addSection(layout, "Status")
+
+    _elem.statusVersion   = MDMSettingsUI._addStatusRow(layout, "Version:             —")
+    _elem.statusEvents    = MDMSettingsUI._addStatusRow(layout, "Active Events:       —")
+    _elem.statusBC        = MDMSettingsUI._addStatusRow(layout, "BetterContracts:     —")
+    _elem.statusUP        = MDMSettingsUI._addStatusRow(layout, "UsedPlus:            —")
 
     -- ── Debug ─────────────────────────────────────────────────────────────
 
     MDMSettingsUI._addSection(layout, "Debug")
 
-    -- Enables verbose [MDM] DEBUG lines in log.txt.
     _elem.debugMode = MDMSettingsUI._addBinary(
         layout, "onMDMDebugModeChanged",
         "Debug Logging",
         "Write verbose [MDM] DEBUG entries to log.txt. For developers only."
     )
-
-    -- ── ADD NEW SETTINGS ABOVE THIS LINE ─────────────────────────────────
 end
 
 -- ---------------------------------------------------------------------------
@@ -296,16 +316,47 @@ function MDMSettingsUI._updateSettingsUI()
         _elem.volatility:setState(MDMSettingsUI._findValueIndex(VOLATILITY_VALUES, scale))
     end
 
-    if _elem.upMode then
-        _elem.upMode:setIsChecked(UPIntegration.isEnabled(), false, false)
+    if _elem.eventsEnabled then
+        _elem.eventsEnabled:setIsChecked(mdm.settings.eventsEnabled ~= false, false, false)
     end
 
-    if _elem.bcMode then
-        _elem.bcMode:setIsChecked(BCIntegration.isEnabled(), false, false)
+    if _elem.eventFrequency then
+        _elem.eventFrequency:setState(MDMSettingsUI._findValueIndex(
+            EVENT_FREQUENCY_VALUES, mdm.settings.eventFrequency or 1.0))
+    end
+
+    if _elem.futuresPenalty then
+        _elem.futuresPenalty:setState(MDMSettingsUI._findValueIndex(
+            FUTURES_PENALTY_VALUES, mdm.settings.futuresPenalty or 0.15))
     end
 
     if _elem.debugMode then
         _elem.debugMode:setIsChecked(MDMLog.debugEnabled == true, false, false)
+    end
+
+    -- Status rows (live, updated on every open)
+    if _elem.statusVersion then
+        local modInfo = g_modManager and g_modManager:getModByName(mdm.modName)
+        _elem.statusVersion:setText("Version:             " .. ((modInfo and modInfo.version) or "?"))
+    end
+
+    if _elem.statusEvents then
+        local count = 0
+        if mdm.worldEvents then
+            for _ in pairs(mdm.worldEvents.active) do count = count + 1 end
+        end
+        local val = count == 0 and "None" or (count .. " active")
+        _elem.statusEvents:setText("Active Events:       " .. val)
+    end
+
+    if _elem.statusBC then
+        local val = BCIntegration.isAvailable() and "Detected" or "Not installed"
+        _elem.statusBC:setText("BetterContracts:     " .. val)
+    end
+
+    if _elem.statusUP then
+        local val = UPIntegration.isAvailable() and "Detected" or "Not installed"
+        _elem.statusUP:setText("UsedPlus:            " .. val)
     end
 end
 
@@ -330,24 +381,22 @@ function MDMSettingsUI:onMDMVolatilityChanged(state)
     MDMLog.info("SettingsUI: volatilityScale = " .. tostring(scale))
 end
 
-function MDMSettingsUI:onMDMUPModeChanged(state)
-    local enabled = (state == BinaryOptionElement.STATE_RIGHT)
-    if not UPIntegration.isAvailable() and enabled then
-        MDMLog.warn("SettingsUI: FS25_UsedPlus not installed — forcing off")
-        if _elem.upMode then _elem.upMode:setIsChecked(false, false, false) end
-        return
-    end
-    UPIntegration.setEnabled(enabled)
+function MDMSettingsUI:onMDMEventsEnabledChanged(state)
+    if not g_MarketDynamics or not g_MarketDynamics.settings then return end
+    g_MarketDynamics.settings.eventsEnabled = (state == BinaryOptionElement.STATE_RIGHT)
+    MDMLog.info("SettingsUI: eventsEnabled = " .. tostring(g_MarketDynamics.settings.eventsEnabled))
 end
 
-function MDMSettingsUI:onMDMBCModeChanged(state)
-    local enabled = (state == BinaryOptionElement.STATE_RIGHT)
-    if not BCIntegration.isAvailable() and enabled then
-        MDMLog.warn("SettingsUI: BetterContracts not installed — forcing off")
-        if _elem.bcMode then _elem.bcMode:setIsChecked(false, false, false) end
-        return
-    end
-    BCIntegration.setEnabled(enabled)
+function MDMSettingsUI:onMDMEventFrequencyChanged(state)
+    if not g_MarketDynamics or not g_MarketDynamics.settings then return end
+    g_MarketDynamics.settings.eventFrequency = EVENT_FREQUENCY_VALUES[state] or 1.0
+    MDMLog.info("SettingsUI: eventFrequency = " .. tostring(g_MarketDynamics.settings.eventFrequency))
+end
+
+function MDMSettingsUI:onMDMFuturesPenaltyChanged(state)
+    if not g_MarketDynamics or not g_MarketDynamics.settings then return end
+    g_MarketDynamics.settings.futuresPenalty = FUTURES_PENALTY_VALUES[state] or 0.15
+    MDMLog.info("SettingsUI: futuresPenalty = " .. tostring(g_MarketDynamics.settings.futuresPenalty))
 end
 
 function MDMSettingsUI:onMDMDebugModeChanged(state)
@@ -434,6 +483,27 @@ function MDMSettingsUI._addMulti(layout, callbackName, texts, title, tooltip)
     bitMap:onGuiSetupFinished()
 
     return option
+end
+
+-- Read-only status row — label and value in one string.
+-- Uses the same container profile as regular settings rows so text is visible
+-- and alternating row backgrounds apply correctly.
+-- Returns the inner TextElement so _updateSettingsUI can call setText() on it.
+function MDMSettingsUI._addStatusRow(layout, initialText)
+    local bitMap = BitmapElement.new()
+    bitMap:loadProfile(g_gui:getProfile("fs25_multiTextOptionContainer"), true)
+
+    local titleEl = TextElement.new()
+    titleEl:loadProfile(g_gui:getProfile("fs25_settingsMultiTextOptionTitle"), true)
+    titleEl.textUpperCase = false
+    titleEl:setText(initialText or "—")
+
+    bitMap:addElement(titleEl)
+    titleEl:onGuiSetupFinished()
+    layout:addElement(bitMap)
+    bitMap:onGuiSetupFinished()
+
+    return titleEl
 end
 
 -- Returns the index in `values` whose entry is closest to `target`.

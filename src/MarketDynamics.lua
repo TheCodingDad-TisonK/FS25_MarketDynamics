@@ -32,8 +32,11 @@ function MarketDynamics.new(modDir, modName)
     -- Player-configurable settings (persisted by MarketSerializer, edited via SettingsUI)
     -- Add new settings here and wire them in MarketSerializer + SettingsUI.
     self.settings = {
-        pricesEnabled = true,   -- When false, PriceHook passes through to vanilla prices
-        debugMode     = false,  -- MDMLog.debugEnabled mirror (also set directly on MDMLog)
+        pricesEnabled   = true,   -- When false, PriceHook passes through to vanilla prices
+        debugMode       = false,  -- MDMLog.debugEnabled mirror (also set directly on MDMLog)
+        eventsEnabled   = true,   -- When false, WorldEventSystem skips probability rolls
+        eventFrequency  = 1.0,   -- Probability scale: 0.4=Rare, 1.0=Normal, 2.0=Frequent
+        futuresPenalty  = 0.15,  -- Default penalty fraction on unfulfilled contracts
     }
 
     -- Subsystems
@@ -59,6 +62,14 @@ function MarketDynamics:onMissionLoaded(mission)
     MDMSettingsUI.initGui(self.modDir)
     self._debugHud = MDMDebugHUD.new()  -- TEMP: remove when LeGrizzly's GUI lands
     MDMAdminCommands_register()
+
+    -- Dialog loader: init + register modal dialogs (client only — no GUI on dedicated servers)
+    if not g_currentMission.isServer or g_currentMission.isClient then
+        MDMDialogLoader.init(self.modDir)
+        MDMDialogLoader.register("MDMContractDialog",      MDMContractDialog,      "xml/gui/MDMContractDialog.xml")
+        MDMDialogLoader.register("MDMContractAdminDialog", MDMContractAdminDialog, "xml/gui/MDMContractAdminDialog.xml")
+    end
+
     MDMLog.info("MarketDynamics: mission loaded, system active")
 end
 
@@ -106,6 +117,7 @@ function MarketDynamics:delete()
     end
     self._debugHud = nil
     MDMAdminCommands_remove()
+    MDMDialogLoader.cleanup()
     MDMLog.info("MarketDynamics: deleted")
 end
 

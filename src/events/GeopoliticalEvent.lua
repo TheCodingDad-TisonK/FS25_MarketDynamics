@@ -67,6 +67,7 @@ end
 MDM_pendingRegistrations = MDM_pendingRegistrations or {}
 table.insert(MDM_pendingRegistrations, {
     id             = EVENT_ID,
+    nameKey        = "mdm_event_geopolitical",
     name           = "Geopolitical Crisis",
     probability    = 0.04,
     minIntensity   = 0.4,

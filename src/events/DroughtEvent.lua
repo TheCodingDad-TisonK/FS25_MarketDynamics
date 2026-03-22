@@ -48,6 +48,7 @@ end
 MDM_pendingRegistrations = MDM_pendingRegistrations or {}
 table.insert(MDM_pendingRegistrations, {
     id             = EVENT_ID,
+    nameKey        = "mdm_event_drought",
     name           = "Regional Drought",
     probability    = 0.08,
     minIntensity   = 0.2,

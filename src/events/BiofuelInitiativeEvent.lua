@@ -30,7 +30,7 @@ local function onFire(intensity)
         end
     end
 
-    MDMLog.info("BiofuelInitiativeEvent fired — energy crops up " .. string.format("%.0f%%", (factor - 1) * 100))
+    MDMLog.info("BiofuelInitiativeEvent fired — energy crops up " .. math.floor((factor - 1) * 100) .. "pct")
 end
 
 local function onExpire(intensity)
@@ -48,6 +48,7 @@ end
 MDM_pendingRegistrations = MDM_pendingRegistrations or {}
 table.insert(MDM_pendingRegistrations, {
     id             = EVENT_ID,
+    nameKey        = "mdm_event_biofuel_initiative",
     name           = "Biofuel Initiative",
     probability    = 0.03,
     minIntensity   = 0.5,

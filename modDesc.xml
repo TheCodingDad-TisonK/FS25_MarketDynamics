@@ -11,11 +11,16 @@
 
     <iconFilename>images/icon.dds</iconFilename>
 
-    <multiplayer supported="false" />
+    <multiplayer supported="true" />
 
     <extraSourceFiles>
         <sourceFile filename="main.lua" />
     </extraSourceFiles>
+
+    <actions>
+        <action name="MDM_MARKET_SCREEN" />
+        <action name="MDM_CREATE_CONTRACT" />
+    </actions>
 
     <inputBinding filename="xml/inputBinding.xml" />
 

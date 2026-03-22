@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<l10n>
+    <texts>
+
+        <text name="mdm_event_drought" text="지역 가뭄"/>
+        <text name="mdm_event_bumper_harvest" text="범퍼 수확"/>
+        <text name="mdm_event_trade_disruption" text="무역 중단"/>
+        <text name="mdm_event_geopolitical" text="지정학적 위기"/>
+        <text name="mdm_event_biofuel_initiative" text="바이오연료 이니셔티브"/>
+        <text name="mdm_event_livestock_boom" text="가축 사료 붐"/>
+        <text name="mdm_event_pest_outbreak" text="뿌리 작물 마름병"/>
+        <text name="mdm_hud_title" text="시장 감시"/>
+        <text name="mdm_hud_active_events" text="활성 이벤트"/>
+        <text name="mdm_hud_no_events" text="시장은 안정적이다"/>
+        <text name="mdm_hud_event_mild" text="경증"/>
+        <text name="mdm_hud_event_moderate" text="보통의"/>
+        <text name="mdm_hud_event_severe" text="극심한"/>
+        <text name="mdm_screen_title" text="시장 역학"/>
+        <text name="mdm_screen_col_crop" text="수확고"/>
+        <text name="mdm_screen_col_base" text="베이스"/>
+        <text name="mdm_screen_col_current" text="현재의"/>
+        <text name="mdm_screen_col_change" text="변화"/>
+        <text name="mdm_screen_col_day" text="낮"/>
+        <text name="mdm_screen_col_price" text="가격"/>
+        <text name="mdm_screen_col_qty" text="수량"/>
+        <text name="mdm_screen_col_locked" text="잠김"/>
+        <text name="mdm_screen_col_delivered" text="배달됨"/>
+        <text name="mdm_screen_col_deadline" text="사선"/>
+        <text name="mdm_screen_col_status" text="상태"/>
+        <text name="mdm_screen_no_data" text="가격 데이터가 없습니다."/>
+        <text name="mdm_screen_no_history" text="아직 기록된 기록이 없습니다."/>
+        <text name="mdm_screen_close_hint" text="닫으려면 ESC를 누르세요."/>
+        <text name="mdm_screen_switch_tabs" text="탭 전환"/>
+        <text name="mdm_screen_nav_crops" text="왼쪽/오른쪽: 자르기 전환"/>
+        <text name="mdm_screen_tab_prices" text="물가"/>
+        <text name="mdm_screen_tab_events" text="이벤트"/>
+        <text name="mdm_screen_tab_contracts" text="계약"/>
+        <text name="mdm_screen_commodities" text="상품"/>
+        <text name="mdm_screen_current_price" text="현재 가격"/>
+        <text name="mdm_screen_base_price" text="기본 가격"/>
+        <text name="mdm_screen_change" text="변화"/>
+        <text name="mdm_screen_volatility" text="휘발성"/>
+        <text name="mdm_screen_modifiers" text="활성 수정자"/>
+        <text name="mdm_screen_session_trend" text="세션 가격 추세"/>
+        <text name="mdm_screen_collecting" text="데이터를 수집하는 중..."/>
+        <text name="mdm_screen_select_crop" text="상품을 선택하세요"/>
+        <text name="mdm_screen_no_events" text="시장은 조용합니다. 활성 이벤트가 없습니다."/>
+        <text name="mdm_screen_events_hdr" text="활성 이벤트"/>
+        <text name="mdm_screen_contracts_hdr" text="선물 계약"/>
+        <text name="mdm_screen_new_contract" text="Alt+F: 새 계약"/>
+        <text name="mdm_screen_no_contracts" text="아직 계약이 없습니다. Alt+F를 눌러 하나 만듭니다."/>
+        <text name="mdm_screen_at_risk" text="위험에 처하다"/>
+        <text name="mdm_screen_hint_bar" text="ESC: 닫기 |  Q/E: 탭 |  위/아래: 탐색"/>
+        <text name="mdm_screen_timeline" text="세션 타임라인"/>
+        <text name="mdm_screen_balance" text="균형 :"/>
+        <text name="mdm_futures_title" text="선물시장"/>
+        <text name="mdm_futures_new_title" text="새로운 선물 계약"/>
+        <text name="mdm_futures_create" text="새로운 계약"/>
+        <text name="mdm_futures_fulfill" text="이행됨"/>
+        <text name="mdm_futures_defaulted" text="기본값"/>
+        <text name="mdm_futures_active" text="활동적인"/>
+        <text name="mdm_futures_delivery_label" text="배달"/>
+        <text name="mdm_futures_locked_label" text="고정 가격"/>
+        <text name="mdm_futures_quantity_label" text="수량(L)"/>
+        <text name="mdm_futures_crop_label" text="수확고"/>
+        <text name="mdm_futures_confirm" text="확인하다"/>
+        <text name="mdm_futures_cancel" text="취소"/>
+        <text name="mdm_futures_total_value" text="총 가치"/>
+        <text name="mdm_futures_bc_disabled" text="선물 비활성화 — BetterContracts 모드 활성화"/>
+        <text name="mdm_futures_created" text="계약이 생성되었습니다!"/>
+        <text name="mdm_futures_no_contracts" text="아직 계약이 없습니다"/>
+        <text name="mdm_dialog_summary" text="계약 요약"/>
+        <text name="mdm_dialog_qty_label" text="수량"/>
+        <text name="mdm_dialog_delivery_label" text="배송 기간"/>
+        <text name="mdm_dialog_bc_blocked" text="선물 비활성화 — BetterContracts 모드 활성화"/>
+        <text name="mdm_dialog_no_crops" text="아직 시장 데이터가 없습니다."/>
+        <text name="mdm_screen_new_contract_btn" text="신규 계약 [N]"/>
+        <text name="mdm_settings_mdm_general" text="시장 역학"/>
+
+    
+        <!-- Input action display names -->
+        <text name="input_MDM_MARKET_SCREEN" text="시장 열기" />
+        <text name="input_MDM_CREATE_CONTRACT" text="선물 계약 생성" />
+
+        <!-- Contract admin dialog -->
+        <text name="mdm_admin_title"            text="Contract Details" />
+        <text name="mdm_admin_details_label"    text="Contract Info" />
+        <text name="mdm_admin_summary_label"    text="Value Summary" />
+        <text name="mdm_admin_crop"             text="Crop:" />
+        <text name="mdm_admin_qty"              text="Quantity:" />
+        <text name="mdm_admin_price"            text="Locked price:" />
+        <text name="mdm_admin_delivered"        text="Delivered:" />
+        <text name="mdm_admin_deadline"         text="Deadline:" />
+        <text name="mdm_admin_status"           text="Status:" />
+        <text name="mdm_admin_complete"         text="Force Complete" />
+        <text name="mdm_admin_cancel_contract"  text="Cancel Contract" />
+        <text name="mdm_admin_close"            text="Close" />
+        <text name="mdm_admin_delete"           text="Delete" />
+        <text name="mdm_admin_settled"          text="This contract is already settled." />
+    </texts>
+</l10n>

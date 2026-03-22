@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<l10n>
+    <texts>
+
+        <text name="mdm_event_drought" text="Regionális szárazság"/>
+        <text name="mdm_event_bumper_harvest" text="Rekordtermés"/>
+        <text name="mdm_event_trade_disruption" text="Kereskedelmi zavar"/>
+        <text name="mdm_event_geopolitical" text="Geopolitikai válság"/>
+        <text name="mdm_event_biofuel_initiative" text="Bioüzemanyag kezdeményezés"/>
+        <text name="mdm_event_livestock_boom" text="Állattenyésztési takarmányboom"/>
+        <text name="mdm_event_pest_outbreak" text="Root Crop Blight"/>
+        <text name="mdm_hud_title" text="Piacfigyelő"/>
+        <text name="mdm_hud_active_events" text="Aktív események"/>
+        <text name="mdm_hud_no_events" text="A piacok stabilak"/>
+        <text name="mdm_hud_event_mild" text="Enyhe"/>
+        <text name="mdm_hud_event_moderate" text="Mérsékelt"/>
+        <text name="mdm_hud_event_severe" text="Szigorú"/>
+        <text name="mdm_screen_title" text="Piaci dinamika"/>
+        <text name="mdm_screen_col_crop" text="Termés"/>
+        <text name="mdm_screen_col_base" text="Bázis"/>
+        <text name="mdm_screen_col_current" text="Jelenlegi"/>
+        <text name="mdm_screen_col_change" text="Változás"/>
+        <text name="mdm_screen_col_day" text="Nap"/>
+        <text name="mdm_screen_col_price" text="Ár"/>
+        <text name="mdm_screen_col_qty" text="Menny"/>
+        <text name="mdm_screen_col_locked" text="Bezárt"/>
+        <text name="mdm_screen_col_delivered" text="Szállítva"/>
+        <text name="mdm_screen_col_deadline" text="Határidő"/>
+        <text name="mdm_screen_col_status" text="Állapot"/>
+        <text name="mdm_screen_no_data" text="Áradat nem áll rendelkezésre"/>
+        <text name="mdm_screen_no_history" text="Még nem rögzítették az előzményeket"/>
+        <text name="mdm_screen_close_hint" text="Nyomja meg az ESC gombot a bezáráshoz"/>
+        <text name="mdm_screen_switch_tabs" text="Váltás a lapok között"/>
+        <text name="mdm_screen_nav_crops" text="Bal/Jobb: Vágja a kivágást"/>
+        <text name="mdm_screen_tab_prices" text="Árak"/>
+        <text name="mdm_screen_tab_events" text="Események"/>
+        <text name="mdm_screen_tab_contracts" text="Szerződések"/>
+        <text name="mdm_screen_commodities" text="ÁRUK"/>
+        <text name="mdm_screen_current_price" text="Jelenlegi ár"/>
+        <text name="mdm_screen_base_price" text="Alapár"/>
+        <text name="mdm_screen_change" text="Változás"/>
+        <text name="mdm_screen_volatility" text="Volatilitás"/>
+        <text name="mdm_screen_modifiers" text="Aktív módosítók"/>
+        <text name="mdm_screen_session_trend" text="Session Price Trend"/>
+        <text name="mdm_screen_collecting" text="Adatgyűjtés..."/>
+        <text name="mdm_screen_select_crop" text="Válasszon egy árut"/>
+        <text name="mdm_screen_no_events" text="A piacok nyugodtak. Nincsenek aktív események."/>
+        <text name="mdm_screen_events_hdr" text="AKTÍV ESEMÉNYEK"/>
+        <text name="mdm_screen_contracts_hdr" text="FUTURES SZERZŐDÉSEK"/>
+        <text name="mdm_screen_new_contract" text="Alt+F: Új szerződés"/>
+        <text name="mdm_screen_no_contracts" text="Még nincsenek szerződések. Az Alt+F megnyomásával hozzon létre egyet."/>
+        <text name="mdm_screen_at_risk" text="KOCKÁZATBAN"/>
+        <text name="mdm_screen_hint_bar" text="ESC: Bezárás |  K/V: Tabs |  Fel/Le: Navigálás"/>
+        <text name="mdm_screen_timeline" text="Munkamenet idővonala"/>
+        <text name="mdm_screen_balance" text="Egyenleg:"/>
+        <text name="mdm_futures_title" text="Határidős piac"/>
+        <text name="mdm_futures_new_title" text="Új határidős szerződés"/>
+        <text name="mdm_futures_create" text="Új szerződés"/>
+        <text name="mdm_futures_fulfill" text="Teljesült"/>
+        <text name="mdm_futures_defaulted" text="Alapértelmezett"/>
+        <text name="mdm_futures_active" text="Aktív"/>
+        <text name="mdm_futures_delivery_label" text="Szállítás"/>
+        <text name="mdm_futures_locked_label" text="Zárolt ár"/>
+        <text name="mdm_futures_quantity_label" text="Mennyiség (L)"/>
+        <text name="mdm_futures_crop_label" text="Termés"/>
+        <text name="mdm_futures_confirm" text="Erősítse meg"/>
+        <text name="mdm_futures_cancel" text="Mégsem"/>
+        <text name="mdm_futures_total_value" text="Teljes érték"/>
+        <text name="mdm_futures_bc_disabled" text="Futures letiltva — BetterContracts mód aktív"/>
+        <text name="mdm_futures_created" text="Szerződés létrejött!"/>
+        <text name="mdm_futures_no_contracts" text="Még nincsenek szerződések"/>
+        <text name="mdm_dialog_summary" text="Szerződés összefoglalója"/>
+        <text name="mdm_dialog_qty_label" text="Mennyiség"/>
+        <text name="mdm_dialog_delivery_label" text="Szállítási ablak"/>
+        <text name="mdm_dialog_bc_blocked" text="Futures letiltva — BetterContracts mód aktív"/>
+        <text name="mdm_dialog_no_crops" text="Még nem állnak rendelkezésre piaci adatok."/>
+        <text name="mdm_screen_new_contract_btn" text="Új szerződés [N]"/>
+        <text name="mdm_settings_mdm_general" text="Piaci dinamika"/>
+
+    
+        <!-- Input action display names -->
+        <text name="input_MDM_MARKET_SCREEN" text="Piac megnyitása" />
+        <text name="input_MDM_CREATE_CONTRACT" text="Határidős szerződés létrehozása" />
+
+        <!-- Contract admin dialog -->
+        <text name="mdm_admin_title"            text="Contract Details" />
+        <text name="mdm_admin_details_label"    text="Contract Info" />
+        <text name="mdm_admin_summary_label"    text="Value Summary" />
+        <text name="mdm_admin_crop"             text="Crop:" />
+        <text name="mdm_admin_qty"              text="Quantity:" />
+        <text name="mdm_admin_price"            text="Locked price:" />
+        <text name="mdm_admin_delivered"        text="Delivered:" />
+        <text name="mdm_admin_deadline"         text="Deadline:" />
+        <text name="mdm_admin_status"           text="Status:" />
+        <text name="mdm_admin_complete"         text="Force Complete" />
+        <text name="mdm_admin_cancel_contract"  text="Cancel Contract" />
+        <text name="mdm_admin_close"            text="Close" />
+        <text name="mdm_admin_delete"           text="Delete" />
+        <text name="mdm_admin_settled"          text="This contract is already settled." />
+    </texts>
+</l10n>
