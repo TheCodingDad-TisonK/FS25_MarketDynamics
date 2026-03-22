@@ -32,8 +32,10 @@ local _tabInserted = false  -- tab injected into settings frame
 -- Stored element references (set in addSettingsElements, read in updateSettingsUI)
 local _elem = {}
 
--- Option values for the volatility dropdown (parallel to display strings)
-local VOLATILITY_VALUES = { 0.5, 1.0, 1.5, 2.0 }
+-- Option values for dropdowns (parallel to display strings)
+local VOLATILITY_VALUES      = { 0.5, 1.0, 1.5, 2.0 }
+local EVENT_FREQUENCY_VALUES = { 0.4, 1.0, 2.0 }
+local FUTURES_PENALTY_VALUES = { 0.08, 0.15, 0.25 }
 
 -- ---------------------------------------------------------------------------
 -- XML controller callbacks (called by the game from XML onClick="...")
@@ -210,37 +212,84 @@ function MDMSettingsUI._addSettingsElements()
     local layout = MDMSettingsUI.settingsLayout
     if not layout then return end
 
-    -- ── Market Dynamics ───────────────────────────────────────────────────
+    -- ── About ─────────────────────────────────────────────────────────────
 
-    MDMSettingsUI._addSection(layout, "Market Dynamics")
+    MDMSettingsUI._addSection(layout, "About")
+    MDMSettingsUI._addInfo(layout,
+        "Market Dynamics replaces vanilla static sell prices with a live market: " ..
+        "prices drift throughout the day, shift overnight, and react to world events " ..
+        "like droughts or bumper harvests. Lock in a good price early using futures contracts.")
 
-    -- Toggle the MDM price engine on/off. Off = vanilla prices pass through.
+    -- ── Prices ────────────────────────────────────────────────────────────
+
+    MDMSettingsUI._addSection(layout, "Prices")
+
     _elem.pricesEnabled = MDMSettingsUI._addBinary(
         layout, "onMDMPricesEnabledChanged",
         "Dynamic Prices",
         "Enable MDM price fluctuations. Off reverts to vanilla sell prices."
     )
 
-    -- Scale the strength of intraday + daily price movements.
     _elem.volatility = MDMSettingsUI._addMulti(
         layout, "onMDMVolatilityChanged",
         { "Low", "Normal", "High", "Extreme" },
         "Price Volatility",
-        "How wildly prices swing. Low=0.5x, Normal=1x, High=1.5x, Extreme=2x"
+        "How wildly prices swing intraday and day-to-day. Low=0.5x, Normal=1x, High=1.5x, Extreme=2x."
     )
+
+    -- ── World Events ──────────────────────────────────────────────────────
+
+    MDMSettingsUI._addSection(layout, "World Events")
+    MDMSettingsUI._addInfo(layout,
+        "World events fire randomly and temporarily shift prices for affected crops. " ..
+        "Examples: a drought raises grain prices, a bumper harvest pushes them down.")
+
+    _elem.eventsEnabled = MDMSettingsUI._addBinary(
+        layout, "onMDMEventsEnabledChanged",
+        "World Events",
+        "Enable or disable world events entirely. Prices will still fluctuate when off."
+    )
+
+    _elem.eventFrequency = MDMSettingsUI._addMulti(
+        layout, "onMDMEventFrequencyChanged",
+        { "Rare", "Normal", "Frequent" },
+        "Event Frequency",
+        "How often events occur. Rare=0.4x, Normal=1x, Frequent=2x the base probability per check."
+    )
+
+    -- ── Futures Contracts ─────────────────────────────────────────────────
+
+    MDMSettingsUI._addSection(layout, "Futures Contracts")
+    MDMSettingsUI._addInfo(layout,
+        "Lock in a crop price today for delivery at a future date. " ..
+        "Miss the deadline and a penalty is charged on the unfulfilled portion. " ..
+        "Your UsedPlus credit score (if installed) can reduce or increase this rate.")
+
+    _elem.futuresPenalty = MDMSettingsUI._addMulti(
+        layout, "onMDMFuturesPenaltyChanged",
+        { "Low (8%)", "Normal (15%)", "High (25%)" },
+        "Default Penalty",
+        "Penalty on the undelivered contract value when a deadline is missed."
+    )
+
+    -- ── Status ────────────────────────────────────────────────────────────
+
+    MDMSettingsUI._addSection(layout, "Status")
+
+    _elem.statusVersion   = MDMSettingsUI._addStatusRow(layout, "Version")
+    _elem.statusEvents    = MDMSettingsUI._addStatusRow(layout, "Active Events")
+    _elem.statusBC        = MDMSettingsUI._addStatusRow(layout, "BetterContracts")
+    _elem.statusUP        = MDMSettingsUI._addStatusRow(layout, "UsedPlus")
 
     -- ── Debug ─────────────────────────────────────────────────────────────
 
     MDMSettingsUI._addSection(layout, "Debug")
 
-    -- Enables verbose [MDM] DEBUG lines in log.txt.
     _elem.debugMode = MDMSettingsUI._addBinary(
         layout, "onMDMDebugModeChanged",
         "Debug Logging",
         "Write verbose [MDM] DEBUG entries to log.txt. For developers only."
     )
-
-    -- ── ADD NEW SETTINGS ABOVE THIS LINE ─────────────────────────────────
 end
 
 -- ---------------------------------------------------------------------------
@@ -275,8 +324,44 @@ function MDMSettingsUI._updateSettingsUI()
         _elem.volatility:setState(MDMSettingsUI._findValueIndex(VOLATILITY_VALUES, scale))
     end
 
+    if _elem.eventsEnabled then
+        _elem.eventsEnabled:setIsChecked(mdm.settings.eventsEnabled ~= false, false, false)
+    end
+
+    if _elem.eventFrequency then
+        _elem.eventFrequency:setState(MDMSettingsUI._findValueIndex(
+            EVENT_FREQUENCY_VALUES, mdm.settings.eventFrequency or 1.0))
+    end
+
+    if _elem.futuresPenalty then
+        _elem.futuresPenalty:setState(MDMSettingsUI._findValueIndex(
+            FUTURES_PENALTY_VALUES, mdm.settings.futuresPenalty or 0.15))
+    end
+
     if _elem.debugMode then
         _elem.debugMode:setIsChecked(MDMLog.debugEnabled == true, false, false)
+    end
+
+    -- Status rows (live, updated on every open)
+    if _elem.statusVersion then
+        local modInfo = g_modManager and g_modManager:getModByName(mdm.modName)
+        _elem.statusVersion:setText((modInfo and modInfo.version) or "?")
+    end
+
+    if _elem.statusEvents then
+        local count = 0
+        if mdm.worldEvents then
+            for _ in pairs(mdm.worldEvents.active) do count = count + 1 end
+        end
+        _elem.statusEvents:setText(count == 0 and "None" or (count .. " active"))
+    end
+
+    if _elem.statusBC then
+        _elem.statusBC:setText(BCIntegration.isAvailable() and "Detected" or "Not installed")
+    end
+
+    if _elem.statusUP then
+        _elem.statusUP:setText(UPIntegration.isAvailable() and "Detected" or "Not installed")
     end
 end
 
@@ -299,6 +384,24 @@ function MDMSettingsUI:onMDMVolatilityChanged(state)
         g_MarketDynamics.marketEngine.volatilityScale = scale
     end
     MDMLog.info("SettingsUI: volatilityScale = " .. tostring(scale))
+end
+
+function MDMSettingsUI:onMDMEventsEnabledChanged(state)
+    if not g_MarketDynamics or not g_MarketDynamics.settings then return end
+    g_MarketDynamics.settings.eventsEnabled = (state == BinaryOptionElement.STATE_RIGHT)
+    MDMLog.info("SettingsUI: eventsEnabled = " .. tostring(g_MarketDynamics.settings.eventsEnabled))
+end
+
+function MDMSettingsUI:onMDMEventFrequencyChanged(state)
+    if not g_MarketDynamics or not g_MarketDynamics.settings then return end
+    g_MarketDynamics.settings.eventFrequency = EVENT_FREQUENCY_VALUES[state] or 1.0
+    MDMLog.info("SettingsUI: eventFrequency = " .. tostring(g_MarketDynamics.settings.eventFrequency))
+end
+
+function MDMSettingsUI:onMDMFuturesPenaltyChanged(state)
+    if not g_MarketDynamics or not g_MarketDynamics.settings then return end
+    g_MarketDynamics.settings.futuresPenalty = FUTURES_PENALTY_VALUES[state] or 0.15
+    MDMLog.info("SettingsUI: futuresPenalty = " .. tostring(g_MarketDynamics.settings.futuresPenalty))
 end
 
 function MDMSettingsUI:onMDMDebugModeChanged(state)
@@ -385,6 +488,47 @@ function MDMSettingsUI._addMulti(layout, callbackName, texts, title, tooltip)
     bitMap:onGuiSetupFinished()
 
     return option
+end
+
+-- Static info/description paragraph — uses tooltip style, no interaction.
+function MDMSettingsUI._addInfo(layout, text)
+    local container = BitmapElement.new()
+    container:loadProfile(g_gui:getProfile("fs25_multiTextOptionContainer"), true)
+
+    local el = TextElement.new()
+    el:loadProfile(g_gui:getProfile("fs25_multiTextOptionTooltip"), true)
+    el.focusActive = false
+    el:setText(text)
+
+    container:addElement(el)
+    el:onGuiSetupFinished()
+    layout:addElement(container)
+    container:onGuiSetupFinished()
+end
+
+-- Read-only status row: label on the right (title position), value on the left.
+-- Returns the value TextElement so _updateSettingsUI can push live data into it.
+function MDMSettingsUI._addStatusRow(layout, label)
+    local container = BitmapElement.new()
+    container:loadProfile(g_gui:getProfile("fs25_multiTextOptionContainer"), true)
+
+    local valueEl = TextElement.new()
+    valueEl:loadProfile(g_gui:getProfile("fs25_settingsSectionHeader"), true)
+    valueEl.textUpperCase = false
+    valueEl:setText("—")
+
+    local titleEl = TextElement.new()
+    titleEl:loadProfile(g_gui:getProfile("fs25_settingsMultiTextOptionTitle"), true)
+    titleEl:setText(label)
+
+    container:addElement(valueEl)
+    container:addElement(titleEl)
+    valueEl:onGuiSetupFinished()
+    titleEl:onGuiSetupFinished()
+    layout:addElement(container)
+    container:onGuiSetupFinished()
+
+    return valueEl
 end
 
 -- Returns the index in `values` whose entry is closest to `target`.

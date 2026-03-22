@@ -103,7 +103,10 @@ function WorldEventSystem:update(dt)
     -- Probabilistic event roll on a fixed interval
     if self.timer >= CHECK_INTERVAL_MS then
         self.timer = 0
-        self:_rollForEvents()
+        local settings = g_MarketDynamics and g_MarketDynamics.settings
+        if not settings or settings.eventsEnabled ~= false then
+            self:_rollForEvents()
+        end
     end
 end
 
@@ -175,13 +178,15 @@ end
 -- Iterate all registered events and roll each one for firing.
 -- An event is eligible if: not currently active AND cooldown has elapsed.
 function WorldEventSystem:_rollForEvents()
-    local now = g_currentMission and g_currentMission.time or 0
+    local now       = g_currentMission and g_currentMission.time or 0
+    local settings  = g_MarketDynamics and g_MarketDynamics.settings
+    local freqScale = (settings and settings.eventFrequency) or 1.0
 
     for id, event in pairs(self.registry) do
         if not self.active[id] then
             local cooldown = event.cooldownMs or MIN_COOLDOWN_MS
             if (now - event.lastFiredAt) >= cooldown then
-                if math.random() < event.probability then
+                if math.random() < (event.probability * freqScale) then
                     self:_fireEvent(event, now)
                 end
             end

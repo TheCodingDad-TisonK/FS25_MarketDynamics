@@ -119,8 +119,11 @@ function MarketSerializer:save(coordinator)
     -- ── General settings ─────────────────────────────────────────────────
     local s = coordinator.settings
     if s then
-        setXMLBool(xmlFile, "marketDynamics.settings#pricesEnabled", s.pricesEnabled ~= false)
-        setXMLBool(xmlFile, "marketDynamics.settings#debugMode",     s.debugMode     == true)
+        setXMLBool (xmlFile, "marketDynamics.settings#pricesEnabled",  s.pricesEnabled  ~= false)
+        setXMLBool (xmlFile, "marketDynamics.settings#debugMode",      s.debugMode      == true)
+        setXMLBool (xmlFile, "marketDynamics.settings#eventsEnabled",  s.eventsEnabled  ~= false)
+        setXMLFloat(xmlFile, "marketDynamics.settings#eventFrequency", s.eventFrequency or 1.0)
+        setXMLFloat(xmlFile, "marketDynamics.settings#futuresPenalty", s.futuresPenalty or 0.15)
     end
 
     if coordinator.marketEngine then
@@ -249,16 +252,25 @@ function MarketSerializer:load(coordinator)
 
     -- ── Restore general settings ──────────────────────────────────────────
     if coordinator.settings then
+        local s = coordinator.settings
+
         local pricesEnabled = getXMLBool(xmlFile, "marketDynamics.settings#pricesEnabled")
-        if pricesEnabled ~= nil then
-            coordinator.settings.pricesEnabled = pricesEnabled
-        end
+        if pricesEnabled ~= nil then s.pricesEnabled = pricesEnabled end
 
         local debugMode = getXMLBool(xmlFile, "marketDynamics.settings#debugMode")
         if debugMode ~= nil then
-            coordinator.settings.debugMode = debugMode
+            s.debugMode = debugMode
             MDMLog.debugEnabled = debugMode
         end
+
+        local eventsEnabled = getXMLBool(xmlFile, "marketDynamics.settings#eventsEnabled")
+        if eventsEnabled ~= nil then s.eventsEnabled = eventsEnabled end
+
+        local eventFrequency = getXMLFloat(xmlFile, "marketDynamics.settings#eventFrequency")
+        if eventFrequency and eventFrequency > 0 then s.eventFrequency = eventFrequency end
+
+        local futuresPenalty = getXMLFloat(xmlFile, "marketDynamics.settings#futuresPenalty")
+        if futuresPenalty and futuresPenalty > 0 then s.futuresPenalty = futuresPenalty end
     end
 
     if coordinator.marketEngine then

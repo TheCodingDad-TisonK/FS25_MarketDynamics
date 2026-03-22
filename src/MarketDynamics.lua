@@ -32,8 +32,11 @@ function MarketDynamics.new(modDir, modName)
     -- Player-configurable settings (persisted by MarketSerializer, edited via SettingsUI)
     -- Add new settings here and wire them in MarketSerializer + SettingsUI.
     self.settings = {
-        pricesEnabled = true,   -- When false, PriceHook passes through to vanilla prices
-        debugMode     = false,  -- MDMLog.debugEnabled mirror (also set directly on MDMLog)
+        pricesEnabled   = true,   -- When false, PriceHook passes through to vanilla prices
+        debugMode       = false,  -- MDMLog.debugEnabled mirror (also set directly on MDMLog)
+        eventsEnabled   = true,   -- When false, WorldEventSystem skips probability rolls
+        eventFrequency  = 1.0,   -- Probability scale: 0.4=Rare, 1.0=Normal, 2.0=Frequent
+        futuresPenalty  = 0.15,  -- Default penalty fraction on unfulfilled contracts
     }
 
     -- Subsystems

@@ -175,9 +175,10 @@ function FuturesMarket:_defaultContract(id)
 
     local partialPayout = delivered * contract.lockedPrice
 
-    -- Apply credit-score-based penalty scaling from UPIntegration.
-    -- Returns 1.0 (no change) when UP is not active or score is unavailable.
-    local penaltyRate = DEFAULT_PENALTY * UPIntegration.getPenaltyModifier(contract.farmId)
+    -- Base penalty comes from player settings; UP credit score may scale it further.
+    local settings    = g_MarketDynamics and g_MarketDynamics.settings
+    local basePenalty = (settings and settings.futuresPenalty) or DEFAULT_PENALTY
+    local penaltyRate = basePenalty * UPIntegration.getPenaltyModifier(contract.farmId)
     local penalty     = unfulfilled * contract.lockedPrice * penaltyRate
 
     -- Floor net at 0: never drain the player's account for a default.
