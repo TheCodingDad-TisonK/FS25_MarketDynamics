@@ -215,10 +215,9 @@ function MDMSettingsUI._addSettingsElements()
     -- ── About ─────────────────────────────────────────────────────────────
 
     MDMSettingsUI._addSection(layout, "About")
-    MDMSettingsUI._addInfo(layout,
-        "Market Dynamics replaces vanilla static sell prices with a live market: " ..
-        "prices drift throughout the day, shift overnight, and react to world events " ..
-        "like droughts or bumper harvests. Lock in a good price early using futures contracts.")
+    MDMSettingsUI._addInfo(layout, "Replaces static sell prices with a live market that drifts daily.")
+    MDMSettingsUI._addInfo(layout, "World events shift prices for affected crops temporarily.")
+    MDMSettingsUI._addInfo(layout, "Lock in a good price early using the futures contracts system.")
 
     -- ── Prices ────────────────────────────────────────────────────────────
 
@@ -240,9 +239,8 @@ function MDMSettingsUI._addSettingsElements()
     -- ── World Events ──────────────────────────────────────────────────────
 
     MDMSettingsUI._addSection(layout, "World Events")
-    MDMSettingsUI._addInfo(layout,
-        "World events fire randomly and temporarily shift prices for affected crops. " ..
-        "Examples: a drought raises grain prices, a bumper harvest pushes them down.")
+    MDMSettingsUI._addInfo(layout, "Events fire randomly and shift prices for affected crops.")
+    MDMSettingsUI._addInfo(layout, "Example: drought raises grain, bumper harvest pushes it down.")
 
     _elem.eventsEnabled = MDMSettingsUI._addBinary(
         layout, "onMDMEventsEnabledChanged",
@@ -260,10 +258,9 @@ function MDMSettingsUI._addSettingsElements()
     -- ── Futures Contracts ─────────────────────────────────────────────────
 
     MDMSettingsUI._addSection(layout, "Futures Contracts")
-    MDMSettingsUI._addInfo(layout,
-        "Lock in a crop price today for delivery at a future date. " ..
-        "Miss the deadline and a penalty is charged on the unfulfilled portion. " ..
-        "Your UsedPlus credit score (if installed) can reduce or increase this rate.")
+    MDMSettingsUI._addInfo(layout, "Lock in a price today, deliver by the deadline, collect at that rate.")
+    MDMSettingsUI._addInfo(layout, "Miss the deadline and a penalty applies to the undelivered portion.")
+    MDMSettingsUI._addInfo(layout, "UsedPlus credit score (if installed) can reduce or increase the rate.")
 
     _elem.futuresPenalty = MDMSettingsUI._addMulti(
         layout, "onMDMFuturesPenaltyChanged",
@@ -276,10 +273,10 @@ function MDMSettingsUI._addSettingsElements()
 
     MDMSettingsUI._addSection(layout, "Status")
 
-    _elem.statusVersion   = MDMSettingsUI._addStatusRow(layout, "Version")
-    _elem.statusEvents    = MDMSettingsUI._addStatusRow(layout, "Active Events")
-    _elem.statusBC        = MDMSettingsUI._addStatusRow(layout, "BetterContracts")
-    _elem.statusUP        = MDMSettingsUI._addStatusRow(layout, "UsedPlus")
+    _elem.statusVersion   = MDMSettingsUI._addStatusRow(layout, "Version:             —")
+    _elem.statusEvents    = MDMSettingsUI._addStatusRow(layout, "Active Events:       —")
+    _elem.statusBC        = MDMSettingsUI._addStatusRow(layout, "BetterContracts:     —")
+    _elem.statusUP        = MDMSettingsUI._addStatusRow(layout, "UsedPlus:            —")
 
     -- ── Debug ─────────────────────────────────────────────────────────────
 
@@ -345,7 +342,7 @@ function MDMSettingsUI._updateSettingsUI()
     -- Status rows (live, updated on every open)
     if _elem.statusVersion then
         local modInfo = g_modManager and g_modManager:getModByName(mdm.modName)
-        _elem.statusVersion:setText((modInfo and modInfo.version) or "?")
+        _elem.statusVersion:setText("Version:             " .. ((modInfo and modInfo.version) or "?"))
     end
 
     if _elem.statusEvents then
@@ -353,15 +350,18 @@ function MDMSettingsUI._updateSettingsUI()
         if mdm.worldEvents then
             for _ in pairs(mdm.worldEvents.active) do count = count + 1 end
         end
-        _elem.statusEvents:setText(count == 0 and "None" or (count .. " active"))
+        local val = count == 0 and "None" or (count .. " active")
+        _elem.statusEvents:setText("Active Events:       " .. val)
     end
 
     if _elem.statusBC then
-        _elem.statusBC:setText(BCIntegration.isAvailable() and "Detected" or "Not installed")
+        local val = BCIntegration.isAvailable() and "Detected" or "Not installed"
+        _elem.statusBC:setText("BetterContracts:     " .. val)
     end
 
     if _elem.statusUP then
-        _elem.statusUP:setText(UPIntegration.isAvailable() and "Detected" or "Not installed")
+        local val = UPIntegration.isAvailable() and "Detected" or "Not installed"
+        _elem.statusUP:setText("UsedPlus:            " .. val)
     end
 end
 
@@ -490,45 +490,29 @@ function MDMSettingsUI._addMulti(layout, callbackName, texts, title, tooltip)
     return option
 end
 
--- Static info/description paragraph — uses tooltip style, no interaction.
+-- Static info/description line — same as _addSection but plain (not bold/uppercase).
+-- Uses fs25_settingsSectionHeader directly in the layout, which is guaranteed to render.
+-- Keep text short enough to fit one line — no wrapping support.
 function MDMSettingsUI._addInfo(layout, text)
-    local container = BitmapElement.new()
-    container:loadProfile(g_gui:getProfile("fs25_multiTextOptionContainer"), true)
-
     local el = TextElement.new()
-    el:loadProfile(g_gui:getProfile("fs25_multiTextOptionTooltip"), true)
-    el.focusActive = false
+    el:loadProfile(g_gui:getProfile("fs25_settingsSectionHeader"), true)
+    el.textUpperCase = false
+    el.textBold      = false
     el:setText(text)
-
-    container:addElement(el)
+    layout:addElement(el)
     el:onGuiSetupFinished()
-    layout:addElement(container)
-    container:onGuiSetupFinished()
 end
 
--- Read-only status row: label on the right (title position), value on the left.
--- Returns the value TextElement so _updateSettingsUI can push live data into it.
-function MDMSettingsUI._addStatusRow(layout, label)
-    local container = BitmapElement.new()
-    container:loadProfile(g_gui:getProfile("fs25_multiTextOptionContainer"), true)
-
-    local valueEl = TextElement.new()
-    valueEl:loadProfile(g_gui:getProfile("fs25_settingsSectionHeader"), true)
-    valueEl.textUpperCase = false
-    valueEl:setText("—")
-
-    local titleEl = TextElement.new()
-    titleEl:loadProfile(g_gui:getProfile("fs25_settingsMultiTextOptionTitle"), true)
-    titleEl:setText(label)
-
-    container:addElement(valueEl)
-    container:addElement(titleEl)
-    valueEl:onGuiSetupFinished()
-    titleEl:onGuiSetupFinished()
-    layout:addElement(container)
-    container:onGuiSetupFinished()
-
-    return valueEl
+-- Read-only status row — same profile as _addInfo, label and value in one string.
+-- Returns the TextElement so _updateSettingsUI can call setText("Label:  Value") on it.
+function MDMSettingsUI._addStatusRow(layout, initialText)
+    local el = TextElement.new()
+    el:loadProfile(g_gui:getProfile("fs25_settingsSectionHeader"), true)
+    el.textUpperCase = false
+    el:setText(initialText or "—")
+    layout:addElement(el)
+    el:onGuiSetupFinished()
+    return el
 end
 
 -- Returns the index in `values` whose entry is closest to `target`.
