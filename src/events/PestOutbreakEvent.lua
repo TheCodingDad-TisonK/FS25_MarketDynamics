@@ -30,7 +30,7 @@ local function onFire(intensity)
         end
     end
 
-    MDMLog.info("PestOutbreakEvent fired — root crops up " .. math.floor((factor - 1) * 100) .. "%")
+    MDMLog.info("PestOutbreakEvent fired — root crops up " .. math.floor((factor - 1) * 100) .. "pct")
 end
 
 local function onExpire(intensity)
