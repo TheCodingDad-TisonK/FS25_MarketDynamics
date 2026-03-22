@@ -117,18 +117,12 @@
 
     </GuiElement>
 
-    <!-- ═══════ ACTION BUTTONS — standard bottom-strip area, outside content container ═══════ -->
-    <!-- Positioned directly in dialogBg so they sit in the fs25_dialogBgBottom strip (~80px). -->
-
-    <!-- Cancel (left) -->
-    <Bitmap profile="mdmDlg_cancelBtnBg" position="40px  -622px" size="390px 44px"/>
-    <Button profile="mdmDlg_btnHit"      id="dlgCancelBtn"   onClick="onCancelClick"  position="40px  -622px" size="390px 44px"/>
-    <Text   profile="mdmDlg_btnText"     id="dlgCancelText"  text="$l10n_mdm_futures_cancel"  position="40px  -622px" size="390px 44px"/>
-
-    <!-- Confirm (right) -->
-    <Bitmap profile="mdmDlg_confirmBtnBg" position="490px -622px" size="390px 44px"/>
-    <Button profile="mdmDlg_btnHit"       id="dlgConfirmBtn"  onClick="onConfirmClick" position="490px -622px" size="390px 44px"/>
-    <Text   profile="mdmDlg_btnText"      id="dlgConfirmText" text="$l10n_mdm_futures_confirm" position="490px -622px" size="390px 44px"/>
+    <!-- ═══════ ACTION BUTTONS — native game bottom bar ═══════ -->
+    <BoxLayout profile="fs25_dialogButtonBox">
+      <Button profile="buttonBack" text="$l10n_mdm_futures_cancel"  onClick="onCancelClick"  id="dlgCancelBtn"/>
+      <Bitmap profile="fs25_dialogButtonBoxSeparator"/>
+      <Button profile="buttonOK"   text="$l10n_mdm_futures_confirm" onClick="onConfirmClick" id="dlgConfirmBtn"/>
+    </BoxLayout>
 
   </GuiElement>
 

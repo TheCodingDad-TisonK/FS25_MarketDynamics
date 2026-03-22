@@ -64,23 +64,14 @@
 
     </GuiElement>
 
-    <!-- ═══════ ACTION BUTTONS — standard bottom-strip area, outside content container ═══════ -->
-    <!-- Positioned directly in dialogBg so they sit in the fs25_dialogBgBottom strip (~78px). -->
-
-    <!-- Force Complete (left) — hidden for settled contracts -->
-    <Bitmap profile="mdmAdm_completeBtnBg" id="admCompleteBg"   position="27px  -622px" size="280px 44px"/>
-    <Button profile="mdmAdm_btnHit"        id="admCompleteBtn"  onClick="onCompleteClick" position="27px  -622px" size="280px 44px"/>
-    <Text   profile="mdmAdm_btnText"       id="admCompleteText" text="$l10n_mdm_admin_complete"         position="27px  -622px" size="280px 44px"/>
-
-    <!-- Cancel Contract (middle) — hidden for settled contracts -->
-    <Bitmap profile="mdmAdm_cancelBtnBg"   id="admCancelBg"     position="320px -622px" size="280px 44px"/>
-    <Button profile="mdmAdm_btnHit"        id="admCancelBtn"    onClick="onCancelContractClick" position="320px -622px" size="280px 44px"/>
-    <Text   profile="mdmAdm_btnText"       id="admCancelText"   text="$l10n_mdm_admin_cancel_contract"  position="320px -622px" size="280px 44px"/>
-
-    <!-- Close (right, always visible) -->
-    <Bitmap profile="mdmAdm_closeBtnBg"    position="613px -622px" size="280px 44px"/>
-    <Button profile="mdmAdm_btnHit"        id="admCloseBtn"     onClick="onCloseClick" position="613px -622px" size="280px 44px"/>
-    <Text   profile="mdmAdm_btnText"       id="admCloseText"    text="$l10n_mdm_admin_close"            position="613px -622px" size="280px 44px"/>
+    <!-- ═══════ ACTION BUTTONS — native game bottom bar ═══════ -->
+    <BoxLayout profile="fs25_dialogButtonBox">
+      <Button profile="buttonBack" text="$l10n_mdm_admin_close"            onClick="onCloseClick"          id="admCloseBtn"/>
+      <Bitmap profile="fs25_dialogButtonBoxSeparator"/>
+      <Button profile="buttonBack" text="$l10n_mdm_admin_cancel_contract"  onClick="onCancelContractClick" id="admCancelBtn"/>
+      <Bitmap profile="fs25_dialogButtonBoxSeparator"/>
+      <Button profile="buttonOK"   text="$l10n_mdm_admin_complete"         onClick="onCompleteClick"       id="admCompleteBtn"/>
+    </BoxLayout>
 
   </GuiElement>
 

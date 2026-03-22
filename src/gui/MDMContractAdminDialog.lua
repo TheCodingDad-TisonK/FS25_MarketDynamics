@@ -36,13 +36,9 @@ function MDMContractAdminDialog.new(target, custom_mt)
     self.admActionHint     = nil
     self.admSettledNotice  = nil
 
-    -- Action buttons
+    -- Action buttons (native buttonBox elements)
     self.admCompleteBtn  = nil
-    self.admCompleteBg   = nil
-    self.admCompleteText = nil
     self.admCancelBtn    = nil
-    self.admCancelBg     = nil
-    self.admCancelText   = nil
     self.admCloseBtn     = nil
 
     return self
@@ -82,11 +78,7 @@ function MDMContractAdminDialog:onGuiSetupFinished()
     self.admSettledNotice = self:getDescendantById("admSettledNotice")
 
     self.admCompleteBtn   = self:getDescendantById("admCompleteBtn")
-    self.admCompleteBg    = self:getDescendantById("admCompleteBg")
-    self.admCompleteText  = self:getDescendantById("admCompleteText")
     self.admCancelBtn     = self:getDescendantById("admCancelBtn")
-    self.admCancelBg      = self:getDescendantById("admCancelBg")
-    self.admCancelText    = self:getDescendantById("admCancelText")
     self.admCloseBtn      = self:getDescendantById("admCloseBtn")
 
     MDMLog.info("MDMContractAdminDialog:onGuiSetupFinished OK")
@@ -205,19 +197,16 @@ function MDMContractAdminDialog:_populate()
             self:_fmt(delivValue), delivPct))
     end
 
-    -- Show/hide action buttons based on status
+    -- Show/hide action buttons based on status (native buttonBox buttons)
     local showActions = isActive
-    if self.admCompleteBtn  then self.admCompleteBtn:setDisabled(not showActions) end
-    if self.admCompleteBg   then self.admCompleteBg:setVisible(showActions) end
-    if self.admCompleteText then
-        self.admCompleteText:setVisible(showActions)
-        if showActions then
-            self.admCompleteText:setTextColor(0.75, 0.75, 0.75, 1.0)
-        end
+    if self.admCompleteBtn then
+        self.admCompleteBtn:setVisible(showActions)
+        self.admCompleteBtn:setDisabled(not showActions)
     end
-    if self.admCancelBtn    then self.admCancelBtn:setDisabled(not showActions) end
-    if self.admCancelBg     then self.admCancelBg:setVisible(showActions) end
-    if self.admCancelText   then self.admCancelText:setVisible(showActions) end
+    if self.admCancelBtn then
+        self.admCancelBtn:setVisible(showActions)
+        self.admCancelBtn:setDisabled(not showActions)
+    end
 
     -- Hint / settled notice
     if self.admActionHint then
