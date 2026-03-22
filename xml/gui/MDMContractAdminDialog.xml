@@ -14,7 +14,7 @@
   <GuiElement profile="newLayer" />
   <Bitmap profile="dialogFullscreenBg" />
 
-  <GuiElement profile="dialogBg" id="dialogElement" size="920px 620px">
+  <GuiElement profile="dialogBg" id="dialogElement" size="920px 700px">
     <ThreePartBitmap profile="fs25_dialogBgMiddle" />
     <ThreePartBitmap profile="fs25_dialogBgTop" />
     <ThreePartBitmap profile="fs25_dialogBgBottom" />
@@ -64,22 +64,23 @@
 
     </GuiElement>
 
-    <!-- ═══════ ACTION BUTTONS — standard bottom-strip area ═══════ -->
+    <!-- ═══════ ACTION BUTTONS — standard bottom-strip area, outside content container ═══════ -->
+    <!-- Positioned directly in dialogBg so they sit in the fs25_dialogBgBottom strip (~78px). -->
 
-    <!-- Complete (force fulfill, left) — hidden for settled contracts -->
-    <Bitmap profile="mdmAdm_completeBtnBg" id="admCompleteBg"   position="30px  -540px" size="270px 44px"/>
-    <Button profile="mdmAdm_btnHit"        id="admCompleteBtn"  onClick="onCompleteClick" position="30px  -540px" size="270px 44px"/>
-    <Text   profile="mdmAdm_btnText"       id="admCompleteText" text="$l10n_mdm_admin_complete"   position="30px  -540px" size="270px 44px"/>
+    <!-- Force Complete (left) — hidden for settled contracts -->
+    <Bitmap profile="mdmAdm_completeBtnBg" id="admCompleteBg"   position="27px  -622px" size="280px 44px"/>
+    <Button profile="mdmAdm_btnHit"        id="admCompleteBtn"  onClick="onCompleteClick" position="27px  -622px" size="280px 44px"/>
+    <Text   profile="mdmAdm_btnText"       id="admCompleteText" text="$l10n_mdm_admin_complete"         position="27px  -622px" size="280px 44px"/>
 
     <!-- Cancel Contract (middle) — hidden for settled contracts -->
-    <Bitmap profile="mdmAdm_cancelBtnBg"   id="admCancelBg"     position="320px -540px" size="270px 44px"/>
-    <Button profile="mdmAdm_btnHit"        id="admCancelBtn"    onClick="onCancelContractClick" position="320px -540px" size="270px 44px"/>
-    <Text   profile="mdmAdm_btnText"       id="admCancelText"   text="$l10n_mdm_admin_cancel_contract" position="320px -540px" size="270px 44px"/>
+    <Bitmap profile="mdmAdm_cancelBtnBg"   id="admCancelBg"     position="320px -622px" size="280px 44px"/>
+    <Button profile="mdmAdm_btnHit"        id="admCancelBtn"    onClick="onCancelContractClick" position="320px -622px" size="280px 44px"/>
+    <Text   profile="mdmAdm_btnText"       id="admCancelText"   text="$l10n_mdm_admin_cancel_contract"  position="320px -622px" size="280px 44px"/>
 
     <!-- Close (right, always visible) -->
-    <Bitmap profile="mdmAdm_closeBtnBg"    position="620px -540px" size="270px 44px"/>
-    <Button profile="mdmAdm_btnHit"        id="admCloseBtn"     onClick="onCloseClick" position="620px -540px" size="270px 44px"/>
-    <Text   profile="mdmAdm_btnText"       id="admCloseText"    text="$l10n_mdm_admin_close"     position="620px -540px" size="270px 44px"/>
+    <Bitmap profile="mdmAdm_closeBtnBg"    position="613px -622px" size="280px 44px"/>
+    <Button profile="mdmAdm_btnHit"        id="admCloseBtn"     onClick="onCloseClick" position="613px -622px" size="280px 44px"/>
+    <Text   profile="mdmAdm_btnText"       id="admCloseText"    text="$l10n_mdm_admin_close"            position="613px -622px" size="280px 44px"/>
 
   </GuiElement>
 
