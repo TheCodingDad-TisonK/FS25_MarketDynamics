@@ -212,13 +212,6 @@ function MDMSettingsUI._addSettingsElements()
     local layout = MDMSettingsUI.settingsLayout
     if not layout then return end
 
-    -- ── About ─────────────────────────────────────────────────────────────
-
-    MDMSettingsUI._addSection(layout, "About")
-    MDMSettingsUI._addInfo(layout, "Replaces static sell prices with a live market that drifts daily.")
-    MDMSettingsUI._addInfo(layout, "World events shift prices for affected crops temporarily.")
-    MDMSettingsUI._addInfo(layout, "Lock in a good price early using the futures contracts system.")
-
     -- ── Prices ────────────────────────────────────────────────────────────
 
     MDMSettingsUI._addSection(layout, "Prices")
@@ -239,13 +232,11 @@ function MDMSettingsUI._addSettingsElements()
     -- ── World Events ──────────────────────────────────────────────────────
 
     MDMSettingsUI._addSection(layout, "World Events")
-    MDMSettingsUI._addInfo(layout, "Events fire randomly and shift prices for affected crops.")
-    MDMSettingsUI._addInfo(layout, "Example: drought raises grain, bumper harvest pushes it down.")
 
     _elem.eventsEnabled = MDMSettingsUI._addBinary(
         layout, "onMDMEventsEnabledChanged",
         "World Events",
-        "Enable or disable world events entirely. Prices will still fluctuate when off."
+        "Enable or disable world events. Prices still fluctuate when events are off."
     )
 
     _elem.eventFrequency = MDMSettingsUI._addMulti(
@@ -258,9 +249,6 @@ function MDMSettingsUI._addSettingsElements()
     -- ── Futures Contracts ─────────────────────────────────────────────────
 
     MDMSettingsUI._addSection(layout, "Futures Contracts")
-    MDMSettingsUI._addInfo(layout, "Lock in a price today, deliver by the deadline, collect at that rate.")
-    MDMSettingsUI._addInfo(layout, "Miss the deadline and a penalty applies to the undelivered portion.")
-    MDMSettingsUI._addInfo(layout, "UsedPlus credit score (if installed) can reduce or increase the rate.")
 
     _elem.futuresPenalty = MDMSettingsUI._addMulti(
         layout, "onMDMFuturesPenaltyChanged",
@@ -490,25 +478,13 @@ function MDMSettingsUI._addMulti(layout, callbackName, texts, title, tooltip)
     return option
 end
 
--- Static info/description line — same as _addSection but plain (not bold/uppercase).
--- Uses fs25_settingsSectionHeader directly in the layout, which is guaranteed to render.
--- Keep text short enough to fit one line — no wrapping support.
-function MDMSettingsUI._addInfo(layout, text)
-    local el = TextElement.new()
-    el:loadProfile(g_gui:getProfile("fs25_settingsSectionHeader"), true)
-    el.textUpperCase = false
-    el.textBold      = false
-    el:setText(text)
-    layout:addElement(el)
-    el:onGuiSetupFinished()
-end
-
--- Read-only status row — same profile as _addInfo, label and value in one string.
+-- Read-only status row — label and value in one string, excluded from alternating backgrounds.
 -- Returns the TextElement so _updateSettingsUI can call setText("Label:  Value") on it.
 function MDMSettingsUI._addStatusRow(layout, initialText)
     local el = TextElement.new()
     el:loadProfile(g_gui:getProfile("fs25_settingsSectionHeader"), true)
     el.textUpperCase = false
+    el.name = "ignore"  -- skip updateAlternatingElements to prevent white background
     el:setText(initialText or "—")
     layout:addElement(el)
     el:onGuiSetupFinished()
