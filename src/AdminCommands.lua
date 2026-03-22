@@ -15,6 +15,7 @@
 --   mdmBCMode [on|off]     toggle BetterContracts integration
 --   mdmUPMode [on|off]     toggle UsedPlus integration
 --   mdmHud                 toggle the debug HUD overlay (TEMP)
+--   mdmContracts           open market screen → Contracts tab → New Contract dialog
 --
 -- Author: tison (dev-1)
 
@@ -278,6 +279,80 @@ local function cmdHud(self)
     end
 end
 
+local function cmdContracts(self)
+    if not g_MarketDynamics or not g_MarketDynamics.isActive then
+        print("[MDM] System not active")
+        return
+    end
+    -- Set flag so onOpen() auto-navigates to contracts tab and opens the dialog
+    g_MarketDynamics._autoOpenContracts = true
+    MDMMarketScreen.show()
+    print("[MDM] Opening market screen → Contracts tab → New Contract dialog")
+end
+
+-- mdmContract: directly open the contract dialog (bypasses MarketScreen entirely)
+local function cmdContract(self)
+    if not g_MarketDynamics or not g_MarketDynamics.isActive then
+        print("[MDM] System not active")
+        return
+    end
+
+    print("[MDM] mdmContract: directly calling MDMDialogLoader.show ...")
+
+    -- Build minimal commodity list from engine so the dialog has real data
+    local commodities = {}
+    if g_MarketDynamics.marketEngine then
+        for fillTypeIndex, entry in pairs(g_MarketDynamics.marketEngine.prices) do
+            local ft = g_fillTypeManager:getFillTypeByIndex(fillTypeIndex)
+            local isCrop = g_fruitTypeManager ~= nil
+                and g_fruitTypeManager.getFruitTypeByFillTypeIndex ~= nil
+                and g_fruitTypeManager:getFruitTypeByFillTypeIndex(fillTypeIndex) ~= nil
+            if ft and isCrop then
+                local changePct = g_MarketDynamics.marketEngine:getPriceChangePercent(fillTypeIndex)
+                table.insert(commodities, {
+                    idx       = fillTypeIndex,
+                    name      = ft.name,
+                    title     = ft.title or ft.name,
+                    current   = entry.current,
+                    base      = entry.base,
+                    changePct = changePct,
+                })
+            end
+        end
+        table.sort(commodities, function(a, b) return a.title < b.title end)
+    end
+
+    print("[MDM] mdmContract: built " .. #commodities .. " commodity entries")
+    print("[MDM] mdmContract: loader registry size = " .. (function()
+        local n = 0
+        for _ in pairs(MDMDialogLoader._registry) do n = n + 1 end
+        return n
+    end)())
+
+    local entry = MDMDialogLoader._registry["MDMContractDialog"]
+    if not entry then
+        print("[MDM] mdmContract: ERROR — 'MDMContractDialog' not in loader registry!")
+        return
+    end
+    print("[MDM] mdmContract: registry entry found, loaded=" .. tostring(entry.loaded))
+
+    local ok, err = pcall(function()
+        MDMDialogLoader.show("MDMContractDialog", "setData", {
+            commodities = commodities,
+            selectedIdx = 1,
+            onConfirmed = function(crop, qty, delivDays)
+                print("[MDM] mdmContract: confirmed — " .. tostring(crop and crop.title) .. " " .. tostring(qty) .. "L " .. tostring(delivDays) .. "d")
+            end,
+        })
+    end)
+
+    if not ok then
+        print("[MDM] mdmContract: pcall ERROR: " .. tostring(err))
+    else
+        print("[MDM] mdmContract: show() call completed (check log for loader msgs)")
+    end
+end
+
 -- ---------------------------------------------------------------------------
 -- Registration / removal — called from MarketDynamics lifecycle
 -- ---------------------------------------------------------------------------
@@ -293,19 +368,23 @@ function MDMAdminCommands_register()
     g_MarketDynamics.cmdMdmBCMode  = cmdBCMode
     g_MarketDynamics.cmdMdmUPMode  = cmdUPMode
     g_MarketDynamics.cmdMdmUPTest  = cmdUPTest
-    g_MarketDynamics.cmdMdmHud     = cmdHud
+    g_MarketDynamics.cmdMdmHud       = cmdHud
+    g_MarketDynamics.cmdMdmContracts = cmdContracts
+    g_MarketDynamics.cmdMdmContract  = cmdContract
 
-    addConsoleCommand("mdmStatus",  "MDM: system health and active events",             "cmdMdmStatus",  g_MarketDynamics)
-    addConsoleCommand("mdmEvent",   "MDM: force-fire event (arg: eventId)",             "cmdMdmEvent",   g_MarketDynamics)
-    addConsoleCommand("mdmExpire",  "MDM: force-expire active event (arg: eventId)",    "cmdMdmExpire",  g_MarketDynamics)
-    addConsoleCommand("mdmPrice",   "MDM: show price for a crop (arg: cropName)",       "cmdMdmPrice",   g_MarketDynamics)
-    addConsoleCommand("mdmEvents",  "MDM: list all registered events and status",       "cmdMdmEvents",  g_MarketDynamics)
-    addConsoleCommand("mdmBCMode",  "MDM: toggle BetterContracts integration (on/off)", "cmdMdmBCMode",  g_MarketDynamics)
-    addConsoleCommand("mdmUPMode",  "MDM: toggle UsedPlus integration (on/off)",        "cmdMdmUPMode",  g_MarketDynamics)
-    addConsoleCommand("mdmUPTest",  "MDM: test UP contract lifecycle (fulfill|default)", "cmdMdmUPTest",  g_MarketDynamics)
-    addConsoleCommand("mdmHud",     "MDM: toggle debug HUD overlay (TEMP)",             "cmdMdmHud",     g_MarketDynamics)
+    addConsoleCommand("mdmStatus",    "MDM: system health and active events",              "cmdMdmStatus",    g_MarketDynamics)
+    addConsoleCommand("mdmEvent",     "MDM: force-fire event (arg: eventId)",              "cmdMdmEvent",     g_MarketDynamics)
+    addConsoleCommand("mdmExpire",    "MDM: force-expire active event (arg: eventId)",     "cmdMdmExpire",    g_MarketDynamics)
+    addConsoleCommand("mdmPrice",     "MDM: show price for a crop (arg: cropName)",        "cmdMdmPrice",     g_MarketDynamics)
+    addConsoleCommand("mdmEvents",    "MDM: list all registered events and status",        "cmdMdmEvents",    g_MarketDynamics)
+    addConsoleCommand("mdmBCMode",    "MDM: toggle BetterContracts integration (on/off)",  "cmdMdmBCMode",    g_MarketDynamics)
+    addConsoleCommand("mdmUPMode",    "MDM: toggle UsedPlus integration (on/off)",         "cmdMdmUPMode",    g_MarketDynamics)
+    addConsoleCommand("mdmUPTest",    "MDM: test UP contract lifecycle (fulfill|default)",  "cmdMdmUPTest",    g_MarketDynamics)
+    addConsoleCommand("mdmHud",       "MDM: toggle debug HUD overlay",                     "cmdMdmHud",       g_MarketDynamics)
+    addConsoleCommand("mdmContracts", "MDM: open market screen → Contracts → New dialog",  "cmdMdmContracts", g_MarketDynamics)
+    addConsoleCommand("mdmContract",  "MDM: directly open contract dialog (debug)",        "cmdMdmContract",  g_MarketDynamics)
 
-    MDMLog.info("AdminCommands: registered 9 console commands")
+    MDMLog.info("AdminCommands: registered 11 console commands")
 end
 
 function MDMAdminCommands_remove()
@@ -318,4 +397,6 @@ function MDMAdminCommands_remove()
     removeConsoleCommand("mdmUPMode")
     removeConsoleCommand("mdmUPTest")
     removeConsoleCommand("mdmHud")
+    removeConsoleCommand("mdmContracts")
+    removeConsoleCommand("mdmContract")
 end

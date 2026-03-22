@@ -59,6 +59,11 @@ function MarketDynamics:onMissionLoaded(mission)
     MDMSettingsUI.initGui(self.modDir)
     self._debugHud = MDMDebugHUD.new()  -- TEMP: remove when LeGrizzly's GUI lands
     MDMAdminCommands_register()
+
+    -- Dialog loader: init + register modal dialogs
+    MDMDialogLoader.init(self.modDir)
+    MDMDialogLoader.register("MDMContractDialog", MDMContractDialog, "xml/gui/MDMContractDialog.xml")
+
     MDMLog.info("MarketDynamics: mission loaded, system active")
 end
 
@@ -106,6 +111,7 @@ function MarketDynamics:delete()
     end
     self._debugHud = nil
     MDMAdminCommands_remove()
+    MDMDialogLoader.cleanup()
     MDMLog.info("MarketDynamics: deleted")
 end
 
