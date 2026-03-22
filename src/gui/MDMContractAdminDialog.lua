@@ -114,11 +114,17 @@ end
 
 function MDMContractAdminDialog:onCancelContractClick()
     local c = self.contract
-    if not c or c.status ~= "active" then self:close(); return end
+    if not c then self:close(); return end
     if g_MarketDynamics and g_MarketDynamics.futuresMarket then
-        g_MarketDynamics.futuresMarket:adminCancel(c.id)
+        if c.status == "active" then
+            g_MarketDynamics.futuresMarket:adminCancel(c.id)
+            if self._onCancel then self._onCancel(c.id) end
+        else
+            -- Settled contract — delete it from the list
+            g_MarketDynamics.futuresMarket:adminDelete(c.id)
+            if self._onCancel then self._onCancel(c.id) end
+        end
     end
-    if self._onCancel then self._onCancel(c.id) end
     self:close()
 end
 
@@ -198,27 +204,31 @@ function MDMContractAdminDialog:_populate()
     end
 
     -- Show/hide action buttons based on status (native buttonBox buttons)
-    local showActions = isActive
     if self.admCompleteBtn then
-        self.admCompleteBtn:setVisible(showActions)
-        self.admCompleteBtn:setDisabled(not showActions)
+        self.admCompleteBtn:setVisible(isActive)
+        self.admCompleteBtn:setDisabled(not isActive)
     end
     if self.admCancelBtn then
-        self.admCancelBtn:setVisible(showActions)
-        self.admCancelBtn:setDisabled(not showActions)
+        -- Active: "Cancel Contract" | Settled: "Delete"
+        self.admCancelBtn:setVisible(true)
+        if isActive then
+            self.admCancelBtn:setText(g_i18n:getText("mdm_admin_cancel_contract"))
+        else
+            self.admCancelBtn:setText(g_i18n:getText("mdm_admin_delete"))
+        end
     end
 
     -- Hint / settled notice
     if self.admActionHint then
-        self.admActionHint:setVisible(showActions)
-        if showActions then
+        self.admActionHint:setVisible(isActive)
+        if isActive then
             self.admActionHint:setText(
                 "Complete: force full payout now at locked price.\n\n" ..
                 "Cancel: remove contract — no payout, no penalty.")
         end
     end
     if self.admSettledNotice then
-        self.admSettledNotice:setVisible(not showActions)
+        self.admSettledNotice:setVisible(not isActive)
     end
 end
 

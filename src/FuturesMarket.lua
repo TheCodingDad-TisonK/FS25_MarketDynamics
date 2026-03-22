@@ -229,12 +229,19 @@ function FuturesMarket:adminComplete(contractId)
 end
 
 --- Remove an active contract with no payout and no penalty.
---- Use this to "admin delete" / cancel a contract the player no longer wants.
---- Safe to call if contract is already settled (no-op).
 function FuturesMarket:adminCancel(contractId)
     local contract = self.contracts[contractId]
     if not contract then return end
     if contract.status ~= "active" then return end
     self.contracts[contractId] = nil
     MDMLog.info("FuturesMarket: admin cancelled (removed) contract #" .. contractId)
+end
+
+--- Remove a settled (fulfilled or defaulted) contract from the list.
+function FuturesMarket:adminDelete(contractId)
+    local contract = self.contracts[contractId]
+    if not contract then return end
+    if contract.status == "active" then return end
+    self.contracts[contractId] = nil
+    MDMLog.info("FuturesMarket: admin deleted settled contract #" .. contractId)
 end

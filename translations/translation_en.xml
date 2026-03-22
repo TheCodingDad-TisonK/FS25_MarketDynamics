@@ -103,6 +103,7 @@
         <text name="mdm_admin_complete"         text="Force Complete" />
         <text name="mdm_admin_cancel_contract"  text="Cancel Contract" />
         <text name="mdm_admin_close"            text="Close" />
+        <text name="mdm_admin_delete"           text="Delete" />
         <text name="mdm_admin_settled"          text="This contract is already settled." />
 
         <!-- Settings -->
