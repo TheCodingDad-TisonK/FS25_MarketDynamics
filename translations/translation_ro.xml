@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<l10n>
+    <texts>
+
+        <text name="mdm_event_drought" text="Seceta regională"/>
+        <text name="mdm_event_bumper_harvest" text="Bumper Harvest"/>
+        <text name="mdm_event_trade_disruption" text="Perturbarea comerțului"/>
+        <text name="mdm_event_geopolitical" text="Criza geopolitică"/>
+        <text name="mdm_event_biofuel_initiative" text="Inițiativa pentru biocombustibili"/>
+        <text name="mdm_event_livestock_boom" text="Boom de hrană pentru animale"/>
+        <text name="mdm_event_pest_outbreak" text="Rădăcină rădăcină"/>
+        <text name="mdm_hud_title" text="Vegherea pieței"/>
+        <text name="mdm_hud_active_events" text="Evenimente active"/>
+        <text name="mdm_hud_no_events" text="Piețele stabile"/>
+        <text name="mdm_hud_event_mild" text="Ușoară"/>
+        <text name="mdm_hud_event_moderate" text="Moderat"/>
+        <text name="mdm_hud_event_severe" text="Severă"/>
+        <text name="mdm_screen_title" text="Dinamica pieței"/>
+        <text name="mdm_screen_col_crop" text="Decupați"/>
+        <text name="mdm_screen_col_base" text="Baza"/>
+        <text name="mdm_screen_col_current" text="Actual"/>
+        <text name="mdm_screen_col_change" text="Schimba"/>
+        <text name="mdm_screen_col_day" text="Zi"/>
+        <text name="mdm_screen_col_price" text="Preţ"/>
+        <text name="mdm_screen_col_qty" text="Cant"/>
+        <text name="mdm_screen_col_locked" text="Blocat"/>
+        <text name="mdm_screen_col_delivered" text="Livrat"/>
+        <text name="mdm_screen_col_deadline" text="Termen limită"/>
+        <text name="mdm_screen_col_status" text="Stare"/>
+        <text name="mdm_screen_no_data" text="Nu sunt disponibile date despre preț"/>
+        <text name="mdm_screen_no_history" text="Nu s-a înregistrat încă un istoric"/>
+        <text name="mdm_screen_close_hint" text="Apăsați ESC pentru a închide"/>
+        <text name="mdm_screen_switch_tabs" text="Schimbați filele"/>
+        <text name="mdm_screen_nav_crops" text="Stânga/Dreapta: comutați decuparea"/>
+        <text name="mdm_screen_tab_prices" text="Preturi"/>
+        <text name="mdm_screen_tab_events" text="Evenimente"/>
+        <text name="mdm_screen_tab_contracts" text="Contracte"/>
+        <text name="mdm_screen_commodities" text="MĂRFURI"/>
+        <text name="mdm_screen_current_price" text="Prețul curent"/>
+        <text name="mdm_screen_base_price" text="Prețul de bază"/>
+        <text name="mdm_screen_change" text="Schimba"/>
+        <text name="mdm_screen_volatility" text="Volatilitate"/>
+        <text name="mdm_screen_modifiers" text="Modificatori activi"/>
+        <text name="mdm_screen_session_trend" text="Tendința prețului sesiunii"/>
+        <text name="mdm_screen_collecting" text="Se colectează date..."/>
+        <text name="mdm_screen_select_crop" text="Selectați o marfă"/>
+        <text name="mdm_screen_no_events" text="Piețele sunt calme. Nu există evenimente active."/>
+        <text name="mdm_screen_events_hdr" text="EVENIMENTE ACTIVE"/>
+        <text name="mdm_screen_contracts_hdr" text="CONTRACTE DE FUTUR"/>
+        <text name="mdm_screen_new_contract" text="Alt+F: Contract nou"/>
+        <text name="mdm_screen_no_contracts" text="Încă nu există contracte. Apăsați Alt+F pentru a crea unul."/>
+        <text name="mdm_screen_at_risk" text="ÎN RISC"/>
+        <text name="mdm_screen_hint_bar" text="ESC: Închide |  Î/E: File |  Sus/Jos: Navigați"/>
+        <text name="mdm_screen_timeline" text="Cronologia sesiunii"/>
+        <text name="mdm_screen_balance" text="Sold:"/>
+        <text name="mdm_futures_title" text="Piata Futures"/>
+        <text name="mdm_futures_new_title" text="Contract de viitor nou"/>
+        <text name="mdm_futures_create" text="Contract nou"/>
+        <text name="mdm_futures_fulfill" text="împlinit"/>
+        <text name="mdm_futures_defaulted" text="Implicit"/>
+        <text name="mdm_futures_active" text="Activ"/>
+        <text name="mdm_futures_delivery_label" text="Livrare"/>
+        <text name="mdm_futures_locked_label" text="Preț blocat"/>
+        <text name="mdm_futures_quantity_label" text="Cantitate (L)"/>
+        <text name="mdm_futures_crop_label" text="Decupați"/>
+        <text name="mdm_futures_confirm" text="Confirma"/>
+        <text name="mdm_futures_cancel" text="Anula"/>
+        <text name="mdm_futures_total_value" text="Valoarea totală"/>
+        <text name="mdm_futures_bc_disabled" text="Futures dezactivate — modul BetterContracts activ"/>
+        <text name="mdm_futures_created" text="Contract creat!"/>
+        <text name="mdm_futures_no_contracts" text="Încă nu există contracte"/>
+        <text name="mdm_dialog_summary" text="Rezumatul contractului"/>
+        <text name="mdm_dialog_qty_label" text="Cantitate"/>
+        <text name="mdm_dialog_delivery_label" text="Fereastra de livrare"/>
+        <text name="mdm_dialog_bc_blocked" text="Futures dezactivate — modul BetterContracts activ"/>
+        <text name="mdm_dialog_no_crops" text="Nu sunt disponibile date de piață încă."/>
+        <text name="mdm_screen_new_contract_btn" text="Contract nou [N]"/>
+        <text name="mdm_settings_mdm_general" text="Dinamica pieței"/>
+
+    
+        <!-- Input action display names -->
+        <text name="input_MDM_MARKET_SCREEN" text="Deschide piața" />
+        <text name="input_MDM_CREATE_CONTRACT" text="Creează contract futures" />
+    </texts>
+</l10n>

@@ -55,6 +55,9 @@ source(modDirectory .. "src/DebugHUD.lua")
 source(modDirectory .. "src/gui/SettingsUI.lua")
 
 -- GUI screens (LeGrizzly / dev-2)
+source(modDirectory .. "src/gui/MDMDialogLoader.lua")
+source(modDirectory .. "src/gui/MDMContractDialog.lua")
+source(modDirectory .. "src/gui/MDMContractAdminDialog.lua")
 source(modDirectory .. "src/gui/MarketScreenGraph.lua")
 source(modDirectory .. "src/gui/MarketScreen.lua")
 

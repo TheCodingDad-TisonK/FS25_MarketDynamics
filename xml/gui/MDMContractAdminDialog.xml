@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<!--
+    MDM Contract Admin Dialog
+    MessageDialog subclass — allows admins to view, force-complete, or cancel a contract.
+    Controller: MDMContractAdminDialog (src/gui/MDMContractAdminDialog.lua)
+    Opened via: MDMDialogLoader.show("MDMContractAdminDialog", "setData", params)
+
+    Layout:
+      Left  (0px–420px):   Contract details (crop, qty, price, delivered, deadline, status)
+      Right (440px–860px): Value summary + action buttons
+    Full-width bottom strip: Complete | Cancel Contract | Close (standard dialog area)
+-->
+<GUI name="MDMContractAdminDialog" onOpen="onOpen" onClose="onClose" onCreate="onCreate">
+  <GuiElement profile="newLayer" />
+  <Bitmap profile="dialogFullscreenBg" />
+
+  <GuiElement profile="dialogBg" id="dialogElement" size="920px 700px">
+    <ThreePartBitmap profile="fs25_dialogBgMiddle" />
+    <ThreePartBitmap profile="fs25_dialogBgTop" />
+    <ThreePartBitmap profile="fs25_dialogBgBottom" />
+
+    <GuiElement profile="fs25_dialogContentContainer">
+
+      <!-- ═══════ TITLE ═══════ -->
+      <Text profile="mdmAdm_title" id="admTitleText" text="$l10n_mdm_admin_title" position="0px -12px"/>
+
+      <!-- ═══════ LEFT COLUMN: Contract details ═══════ -->
+      <Text profile="mdmAdm_sectionLabel" text="$l10n_mdm_admin_details_label" position="0px -50px"/>
+
+      <Text profile="mdmAdm_rowLabel" id="admCropLabel"      text="$l10n_mdm_admin_crop"      position="0px  -76px"/>
+      <Text profile="mdmAdm_rowValue" id="admCropValue"                                        position="150px -76px" size="270px 24px"/>
+
+      <Text profile="mdmAdm_rowLabel" id="admQtyLabel"       text="$l10n_mdm_admin_qty"        position="0px -104px"/>
+      <Text profile="mdmAdm_rowValue" id="admQtyValue"                                         position="150px -104px" size="270px 24px"/>
+
+      <Text profile="mdmAdm_rowLabel" id="admPriceLabel"     text="$l10n_mdm_admin_price"      position="0px -132px"/>
+      <Text profile="mdmAdm_rowValue" id="admPriceValue"                                       position="150px -132px" size="270px 24px"/>
+
+      <Text profile="mdmAdm_rowLabel" id="admDelivLabel"     text="$l10n_mdm_admin_delivered"  position="0px -160px"/>
+      <Text profile="mdmAdm_rowValue" id="admDelivValue"                                       position="150px -160px" size="270px 24px"/>
+
+      <ThreePartBitmap profile="fs25_lineSeparatorTop" position="0px -195px" width="400px"/>
+
+      <Text profile="mdmAdm_rowLabel" id="admDeadlineLabel"  text="$l10n_mdm_admin_deadline"   position="0px -215px"/>
+      <Text profile="mdmAdm_rowValue" id="admDeadlineValue"                                    position="150px -215px" size="270px 24px"/>
+
+      <Text profile="mdmAdm_rowLabel" id="admStatusLabel"    text="$l10n_mdm_admin_status"     position="0px -243px"/>
+      <Text profile="mdmAdm_statusValue" id="admStatusValue"                                   position="150px -243px" size="270px 28px"/>
+
+      <!-- ═══════ RIGHT COLUMN: Value summary + actions ═══════ -->
+      <Text profile="mdmAdm_sectionLabel" text="$l10n_mdm_admin_summary_label" position="440px -50px"/>
+
+      <Text profile="mdmAdm_summaryRow" id="admSumTotal"    position="440px -76px"/>
+      <Text profile="mdmAdm_summaryRow" id="admSumProgress" position="440px -104px"/>
+
+      <ThreePartBitmap profile="fs25_lineSeparatorTop" position="440px -140px" width="440px"/>
+
+      <!-- Action hint (tells player what each button does) -->
+      <Text profile="mdmAdm_hint" id="admActionHint" position="440px -160px" size="440px 100px"/>
+
+      <!-- Settled-contract notice (shown instead of action buttons for fulfilled/defaulted) -->
+      <Text profile="mdmAdm_settled" id="admSettledNotice" text="$l10n_mdm_admin_settled"
+            position="440px -160px" size="440px 60px" visible="false"/>
+
+    </GuiElement>
+
+    <!-- ═══════ ACTION BUTTONS — native game bottom bar ═══════ -->
+    <BoxLayout profile="fs25_dialogButtonBox">
+      <Button profile="buttonBack" text="$l10n_mdm_admin_close"            onClick="onCloseClick"          id="admCloseBtn"/>
+      <Bitmap profile="fs25_dialogButtonBoxSeparator"/>
+      <Button profile="buttonBack" text="$l10n_mdm_admin_cancel_contract"  onClick="onCancelContractClick" id="admCancelBtn"/>
+      <Bitmap profile="fs25_dialogButtonBoxSeparator"/>
+      <Button profile="buttonOK"   text="$l10n_mdm_admin_complete"         onClick="onCompleteClick"       id="admCompleteBtn"/>
+    </BoxLayout>
+
+  </GuiElement>
+
+  <!-- ═══════ INLINE PROFILES ═══════ -->
+  <GUIProfiles>
+
+    <Profile name="mdmAdm_title" extends="fs25_textDefault" with="anchorTopLeft">
+      <textSize value="22px"/>
+      <textBold value="true"/>
+      <textColor value="$preset_fs25_colorMainHighlight"/>
+    </Profile>
+
+    <Profile name="mdmAdm_sectionLabel" extends="fs25_textDefault" with="anchorTopLeft">
+      <textSize value="12px"/>
+      <textBold value="true"/>
+      <textUpperCase value="true"/>
+      <textColor value="$preset_colorWhite_50"/>
+    </Profile>
+
+    <Profile name="mdmAdm_rowLabel" extends="fs25_textDefault" with="anchorTopLeft">
+      <textSize value="13px"/>
+      <textColor value="$preset_colorWhite_50"/>
+    </Profile>
+
+    <Profile name="mdmAdm_rowValue" extends="fs25_textDefault" with="anchorTopLeft">
+      <textSize value="13px"/>
+      <textBold value="true"/>
+      <textColor value="$preset_colorWhite"/>
+    </Profile>
+
+    <Profile name="mdmAdm_statusValue" extends="fs25_textDefault" with="anchorTopLeft">
+      <textSize value="14px"/>
+      <textBold value="true"/>
+    </Profile>
+
+    <Profile name="mdmAdm_summaryRow" extends="fs25_textDefault" with="anchorTopLeft">
+      <textSize value="15px"/>
+      <textColor value="$preset_colorWhite"/>
+    </Profile>
+
+    <Profile name="mdmAdm_hint" extends="fs25_textDefault" with="anchorTopLeft">
+      <textSize value="12px"/>
+      <textColor value="$preset_colorWhite_50"/>
+      <textWrap value="true"/>
+    </Profile>
+
+    <Profile name="mdmAdm_settled" extends="fs25_textDefault" with="anchorTopLeft">
+      <textSize value="14px"/>
+      <textBold value="true"/>
+      <textColor value="0.65 0.65 0.65 1.0"/>
+      <textWrap value="true"/>
+    </Profile>
+
+    <!-- Button profiles -->
+    <Profile name="mdmAdm_completeBtnBg" extends="baseReference" with="anchorTopLeft">
+      <imageColor value="0.10 0.30 0.15 0.95"/>
+    </Profile>
+
+    <Profile name="mdmAdm_cancelBtnBg" extends="baseReference" with="anchorTopLeft">
+      <imageColor value="0.28 0.10 0.10 0.90"/>
+    </Profile>
+
+    <Profile name="mdmAdm_closeBtnBg" extends="baseReference" with="anchorTopLeft">
+      <imageColor value="0.15 0.18 0.22 0.90"/>
+    </Profile>
+
+    <Profile name="mdmAdm_btnHit" extends="emptyPanel" with="anchorTopLeft">
+      <isFocusable value="true"/>
+    </Profile>
+
+    <Profile name="mdmAdm_btnText" extends="fs25_textDefault" with="anchorTopLeft">
+      <textSize value="13px"/>
+      <textBold value="true"/>
+      <textColor value="0.75 0.75 0.75 1.0"/>
+      <textAlignment value="center"/>
+      <textVerticalAlignment value="middle"/>
+    </Profile>
+
+  </GUIProfiles>
+</GUI>

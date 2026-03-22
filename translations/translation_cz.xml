@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<l10n>
+    <texts>
+
+        <text name="mdm_event_drought" text="Regionální sucho"/>
+        <text name="mdm_event_bumper_harvest" text="Bumper Harvest"/>
+        <text name="mdm_event_trade_disruption" text="Narušení obchodu"/>
+        <text name="mdm_event_geopolitical" text="Geopolitická krize"/>
+        <text name="mdm_event_biofuel_initiative" text="Iniciativa pro biopaliva"/>
+        <text name="mdm_event_livestock_boom" text="Boom krmiv pro hospodářská zvířata"/>
+        <text name="mdm_event_pest_outbreak" text="Kořenová plíseň"/>
+        <text name="mdm_hud_title" text="Market Watch"/>
+        <text name="mdm_hud_active_events" text="Aktivní události"/>
+        <text name="mdm_hud_no_events" text="Trhy stabilní"/>
+        <text name="mdm_hud_event_mild" text="Mírný"/>
+        <text name="mdm_hud_event_moderate" text="Mírný"/>
+        <text name="mdm_hud_event_severe" text="Těžké"/>
+        <text name="mdm_screen_title" text="Dynamika trhu"/>
+        <text name="mdm_screen_col_crop" text="Plodina"/>
+        <text name="mdm_screen_col_base" text="Báze"/>
+        <text name="mdm_screen_col_current" text="Proud"/>
+        <text name="mdm_screen_col_change" text="Přeměna"/>
+        <text name="mdm_screen_col_day" text="Den"/>
+        <text name="mdm_screen_col_price" text="Cena"/>
+        <text name="mdm_screen_col_qty" text="množství"/>
+        <text name="mdm_screen_col_locked" text="Zamčeno"/>
+        <text name="mdm_screen_col_delivered" text="Doručeno"/>
+        <text name="mdm_screen_col_deadline" text="Lhůta"/>
+        <text name="mdm_screen_col_status" text="Postavení"/>
+        <text name="mdm_screen_no_data" text="Nejsou k dispozici žádné údaje o ceně"/>
+        <text name="mdm_screen_no_history" text="Dosud nebyla zaznamenána žádná historie"/>
+        <text name="mdm_screen_close_hint" text="Stisknutím ESC zavřete"/>
+        <text name="mdm_screen_switch_tabs" text="Přepínání karet"/>
+        <text name="mdm_screen_nav_crops" text="Vlevo/vpravo: přepnutí oříznutí"/>
+        <text name="mdm_screen_tab_prices" text="Ceny"/>
+        <text name="mdm_screen_tab_events" text="Události"/>
+        <text name="mdm_screen_tab_contracts" text="Smlouvy"/>
+        <text name="mdm_screen_commodities" text="KOMODITY"/>
+        <text name="mdm_screen_current_price" text="Aktuální cena"/>
+        <text name="mdm_screen_base_price" text="Základní cena"/>
+        <text name="mdm_screen_change" text="Přeměna"/>
+        <text name="mdm_screen_volatility" text="Volatilita"/>
+        <text name="mdm_screen_modifiers" text="Aktivní modifikátory"/>
+        <text name="mdm_screen_session_trend" text="Trend ceny relace"/>
+        <text name="mdm_screen_collecting" text="Sběr dat..."/>
+        <text name="mdm_screen_select_crop" text="Vyberte komoditu"/>
+        <text name="mdm_screen_no_events" text="Trhy jsou klidné. Žádné aktivní události."/>
+        <text name="mdm_screen_events_hdr" text="AKTIVNÍ AKCE"/>
+        <text name="mdm_screen_contracts_hdr" text="BUDOUCÍ SMLOUVY"/>
+        <text name="mdm_screen_new_contract" text="Alt+F: Nová smlouva"/>
+        <text name="mdm_screen_no_contracts" text="Zatím žádné smlouvy. Vytvořte jej stisknutím Alt+F."/>
+        <text name="mdm_screen_at_risk" text="OHROŽENO"/>
+        <text name="mdm_screen_hint_bar" text="ESC: Zavřít |  Q/E: Karty |  Nahoru/dolů: Navigace"/>
+        <text name="mdm_screen_timeline" text="Časová osa relace"/>
+        <text name="mdm_screen_balance" text="Zůstatek:"/>
+        <text name="mdm_futures_title" text="Futures Market"/>
+        <text name="mdm_futures_new_title" text="Nová smlouva o futures"/>
+        <text name="mdm_futures_create" text="Nová smlouva"/>
+        <text name="mdm_futures_fulfill" text="Splněno"/>
+        <text name="mdm_futures_defaulted" text="Výchozí"/>
+        <text name="mdm_futures_active" text="Aktivní"/>
+        <text name="mdm_futures_delivery_label" text="Dodání"/>
+        <text name="mdm_futures_locked_label" text="Uzamčená cena"/>
+        <text name="mdm_futures_quantity_label" text="Množství (L)"/>
+        <text name="mdm_futures_crop_label" text="Plodina"/>
+        <text name="mdm_futures_confirm" text="Potvrdit"/>
+        <text name="mdm_futures_cancel" text="Zrušit"/>
+        <text name="mdm_futures_total_value" text="Celková hodnota"/>
+        <text name="mdm_futures_bc_disabled" text="Futures zakázány — režim BetterContracts je aktivní"/>
+        <text name="mdm_futures_created" text="Smlouva vytvořena!"/>
+        <text name="mdm_futures_no_contracts" text="Zatím žádné smlouvy"/>
+        <text name="mdm_dialog_summary" text="Shrnutí smlouvy"/>
+        <text name="mdm_dialog_qty_label" text="Množství"/>
+        <text name="mdm_dialog_delivery_label" text="Doručovací okno"/>
+        <text name="mdm_dialog_bc_blocked" text="Futures zakázány — režim BetterContracts je aktivní"/>
+        <text name="mdm_dialog_no_crops" text="Údaje o trhu zatím nejsou k dispozici."/>
+        <text name="mdm_screen_new_contract_btn" text="Nová smlouva [N]"/>
+        <text name="mdm_settings_mdm_general" text="Dynamika trhu"/>
+
+    
+        <!-- Input action display names -->
+        <text name="input_MDM_MARKET_SCREEN" text="Otevřít trh" />
+        <text name="input_MDM_CREATE_CONTRACT" text="Vytvořit futures kontrakt" />
+    </texts>
+</l10n>

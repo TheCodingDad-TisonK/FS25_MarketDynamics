@@ -24,14 +24,16 @@ function MDMMarketScreen.new()
     self.name       = "MDMMarketScreen"
     self.className  = "MDMMarketScreen"
 
-    self.activeTab         = TAB_PRICES
-    self.commodities       = {}
-    self.selectedCropIndex = 1
-    self.eventData         = {}
-    self.contractData      = {}
-    self.refreshTimer      = 0
+    self.activeTab              = TAB_PRICES
+    self.commodities            = {}
+    self.selectedCropIndex      = 1
+    self.eventData              = {}
+    self.contractData           = {}
+    self.selectedContractIndex  = 0
+    self.refreshTimer           = 0
     self.returnScreenName  = ""
     self.menuButtonInfo    = {}
+    -- (dialogOpen and inline dialog state removed — MDMContractDialog handles its own state)
 
     return self
 end
@@ -40,6 +42,15 @@ function MDMMarketScreen:initialize()
     MDMLog.info("MarketScreen: initializing")
 
     MDMMarketScreen:superClass().initialize(self)
+
+    -- Register custom footer buttons:
+    --   [1] New Contract  → MENU_EXTRA_1 (custom, triggers dialog)
+    --   [2] Close         → MENU_BACK    (standard close)
+    self:setMenuButtonInfo({
+        {inputAction = "MENU_EXTRA_1", text = "New Contract",
+         callback = function() self:onNewContractClick() end},
+        {inputAction = "MENU_BACK"},
+    })
 end
 
 -- ---------------------------------------------------------------------------
@@ -58,14 +69,22 @@ end
 
 function MDMMarketScreen.show()
     local inGameMenu = g_gui.screenControllers[InGameMenu] or g_inGameMenu
-    if inGameMenu == nil then return end
+    if inGameMenu == nil then
+        MDMLog.info("MarketScreen.show: inGameMenu is nil — cannot open")
+        return
+    end
     local page = inGameMenu[MDMMarketScreen.MENU_PAGE_NAME]
-    if page == nil then return end
+    if page == nil then
+        MDMLog.info("MarketScreen.show: page '" .. MDMMarketScreen.MENU_PAGE_NAME .. "' not registered — cannot open")
+        return
+    end
+    MDMLog.info("MarketScreen.show: opening screen")
     g_gui:showGui("InGameMenu")
     inGameMenu:goToPage(page)
 end
 
 function MDMMarketScreen.toggle()
+    MDMLog.info("MarketScreen.toggle: called")
     if g_gui.currentGuiName == "InGameMenu" then
         local inGameMenu = g_gui.screenControllers[InGameMenu] or g_inGameMenu
         if inGameMenu and inGameMenu.currentPage == inGameMenu[MDMMarketScreen.MENU_PAGE_NAME] then
@@ -116,6 +135,14 @@ function MDMMarketScreen:onGuiSetupFinished()
     self.eventsHeader = self:getDescendantById("eventsHeader")
     self.noEventsText = self:getDescendantById("noEventsText")
 
+    self.tabLabelPrices    = self:getDescendantById("tabLabelPrices")
+    self.tabLabelEvents    = self:getDescendantById("tabLabelEvents")
+    self.tabLabelContracts = self:getDescendantById("tabLabelContracts")
+
+    self.tabUnderlinePrices    = self:getDescendantById("tabUnderlinePrices")
+    self.tabUnderlineEvents    = self:getDescendantById("tabUnderlineEvents")
+    self.tabUnderlineContracts = self:getDescendantById("tabUnderlineContracts")
+
     self.contractsHeader = self:getDescendantById("contractsHeader")
     self.contractsColCrop = self:getDescendantById("contractsColCrop")
     self.noContractsText = self:getDescendantById("noContractsText")
@@ -143,7 +170,7 @@ function MDMMarketScreen:onGuiSetupFinished()
             el:setText(fallback or tostring(key))
         end
 
-        print(string.format("MarketScreen: set text for key '%s' to '%s'", key, el:getText()))
+        MDMLog.debug("MarketScreen: set text '" .. tostring(key) .. "'")
     end
 
     _setTextSafe(self.categoryHeaderText, "mdm_screen_title", "Market Dynamics")
@@ -159,7 +186,7 @@ function MDMMarketScreen:onGuiSetupFinished()
     _setTextSafe(self.contractsHeader, "mdm_screen_contracts_hdr", "FUTURES CONTRACTS")
     _setTextSafe(self.contractsColCrop, "mdm_screen_col_crop", "Crop")
     _setTextSafe(self.noContractsText, "mdm_screen_no_contracts", "No contracts")
-    _setTextSafe(self.newContractHint, "mdm_screen_new_contract", "Alt+F: New Contract")
+    _setTextSafe(self.newContractHint, "mdm_screen_new_contract_btn", "New Contract [N]")
 end
 
 function MDMMarketScreen:onOpen()
@@ -167,16 +194,33 @@ function MDMMarketScreen:onOpen()
 
     self:onMoneyChange()
     self:rebuildAllData()
-    self:setActiveTab(TAB_PRICES)
     self:reloadAllLists()
 
-    if self.selectedCropIndex > 0 and #self.commodities > 0 then
-        self:refreshPricesDetail()
+    -- Admin command mdmContracts: jump straight to contracts tab + open dialog
+    if g_MarketDynamics and g_MarketDynamics._autoOpenContracts then
+        g_MarketDynamics._autoOpenContracts = false
+        self:setActiveTab(TAB_CONTRACTS)
+        self:openContractDialog()
+    else
+        self:setActiveTab(TAB_PRICES)
+        if self.selectedCropIndex > 0 and #self.commodities > 0 then
+            self:refreshPricesDetail()
+        end
     end
+
 end
 
 function MDMMarketScreen:onClose()
     MDMMarketScreen:superClass().onClose(self)
+end
+
+-- Called by the "New Contract" footer button (always visible, any tab)
+function MDMMarketScreen:onNewContractClick()
+    MDMLog.info("MarketScreen: New Contract button clicked — openContractDialog")
+    if self.activeTab ~= TAB_CONTRACTS then
+        self:setActiveTab(TAB_CONTRACTS)
+    end
+    self:openContractDialog()
 end
 
 function MDMMarketScreen:onMoneyChange()
@@ -298,23 +342,29 @@ function MDMMarketScreen:onClickBack()
 end
 
 function MDMMarketScreen:inputEvent(action, value, eventUsed)
-    eventUsed = MDMMarketScreen:superClass().inputEvent(self, action, value, eventUsed)
-    if eventUsed then return true end
-
-    if action == InputAction.MENU_PAGE_PREV and value > 0 then
-        local newTab = self.activeTab - 1
-        if newTab < TAB_PRICES then newTab = TAB_CONTRACTS end
-        self:setActiveTab(newTab)
-        return true
+    -- Handle tab-cycling and N-key contract shortcut BEFORE super
+    if not eventUsed and value > 0 then
+        if action == InputAction.MENU_PAGE_PREV then
+            local newTab = self.activeTab - 1
+            if newTab < TAB_PRICES then newTab = TAB_CONTRACTS end
+            self:setActiveTab(newTab)
+            return true
+        end
+        if action == InputAction.MENU_PAGE_NEXT then
+            -- On the Contracts tab: N opens the New Contract dialog instead of cycling
+            if self.activeTab == TAB_CONTRACTS then
+                MDMLog.info("MarketScreen: MENU_PAGE_NEXT on TAB_CONTRACTS — opening contract dialog")
+                self:openContractDialog()
+            else
+                local newTab = self.activeTab + 1
+                if newTab > TAB_CONTRACTS then newTab = TAB_PRICES end
+                self:setActiveTab(newTab)
+            end
+            return true
+        end
     end
-    if action == InputAction.MENU_PAGE_NEXT and value > 0 then
-        local newTab = self.activeTab + 1
-        if newTab > TAB_CONTRACTS then newTab = TAB_PRICES end
-        self:setActiveTab(newTab)
-        return true
-    end
 
-    return false
+    return MDMMarketScreen:superClass().inputEvent(self, action, value, eventUsed)
 end
 
 -- ---------------------------------------------------------------------------
@@ -350,6 +400,8 @@ function MDMMarketScreen:onListSelectionChanged(list, section, index)
     if list == self.commodityList and index > 0 then
         self.selectedCropIndex = index
         self:refreshPricesDetail()
+    elseif list == self.contractList and index > 0 then
+        self.selectedContractIndex = index
     end
 end
 
@@ -357,20 +409,80 @@ function MDMMarketScreen:onClickCommodity(element)
     -- onListSelectionChanged handles selection; nothing extra needed
 end
 
+-- Called when the player clicks a row in the Contracts tab list.
+-- Opens the admin panel dialog for that contract.
+function MDMMarketScreen:onContractRowClick(element)
+    local idx = self.selectedContractIndex or 0
+    local contract = self.contractData[idx]
+    if not contract then return end
+
+    MDMDialogLoader.show("MDMContractAdminDialog", "setData", {
+        contract   = contract,
+        onComplete = function(contractId)
+            self:_onContractAdminAction("complete", contractId)
+        end,
+        onCancel   = function(contractId)
+            self:_onContractAdminAction("cancel", contractId)
+        end,
+    })
+end
+
+-- Refresh the contracts list after an admin action.
+function MDMMarketScreen:_onContractAdminAction(action, contractId)
+    MDMLog.info(string.format("MarketScreen: admin %s contract #%s", action, tostring(contractId)))
+    self:_buildContractData()
+    self:reloadAllLists()
+end
+
 -- ---------------------------------------------------------------------------
 -- Tab Switching
 -- ---------------------------------------------------------------------------
 
 function MDMMarketScreen:onClickTabPrices()
+    MDMLog.info("MarketScreen: tab click -> PRICES")
     self:setActiveTab(TAB_PRICES)
 end
 
 function MDMMarketScreen:onClickTabEvents()
+    MDMLog.info("MarketScreen: tab click -> EVENTS")
     self:setActiveTab(TAB_EVENTS)
 end
 
 function MDMMarketScreen:onClickTabContracts()
+    MDMLog.info("MarketScreen: tab click -> CONTRACTS")
     self:setActiveTab(TAB_CONTRACTS)
+end
+
+-- Manual mouse-click detection for tab labels.
+-- FS25 doesn't always route Button onClick through TabbedMenuFrameElement custom pages,
+-- so we hit-test the confirmed-visible label elements directly.
+function MDMMarketScreen:mouseEvent(posX, posY, isDown, isUp, button, eventUsed)
+    -- Block tab hit-testing while the contract dialog is open to prevent click-through
+    local dlg = MDMDialogLoader and MDMDialogLoader.getDialog and MDMDialogLoader.getDialog("MDMContractDialog")
+    if dlg and dlg.isOpen then
+        return MDMMarketScreen:superClass().mouseEvent(self, posX, posY, isDown, isUp, button, eventUsed)
+    end
+
+    if isDown and button == Input.MOUSE_BUTTON_LEFT then
+        local tabs = {
+            { el = self.tabLabelPrices,    cb = MDMMarketScreen.onClickTabPrices    },
+            { el = self.tabLabelEvents,    cb = MDMMarketScreen.onClickTabEvents    },
+            { el = self.tabLabelContracts, cb = MDMMarketScreen.onClickTabContracts },
+        }
+        for _, t in ipairs(tabs) do
+            if t.el then
+                local ap = t.el.absPosition
+                local as = t.el.absSize
+                if ap and as and
+                   posX >= ap[1] and posX <= ap[1] + as[1] and
+                   posY >= ap[2] and posY <= ap[2] + as[2] then
+                    t.cb(self)
+                    return true
+                end
+            end
+        end
+    end
+    return MDMMarketScreen:superClass().mouseEvent(self, posX, posY, isDown, isUp, button, eventUsed)
 end
 
 function MDMMarketScreen:setActiveTab(tab)
@@ -381,11 +493,40 @@ function MDMMarketScreen:setActiveTab(tab)
     end
     if self.eventsContent then
         self.eventsContent:setVisible(tab == TAB_EVENTS)
+        if tab == TAB_EVENTS then
+            if type(self.eventsContent.updateAbsolutePosition) == "function" then
+                self.eventsContent:updateAbsolutePosition()
+            end
+            if self.eventList then self.eventList:reloadData() end
+        end
     end
     if self.contractsContent then
         self.contractsContent:setVisible(tab == TAB_CONTRACTS)
+        if tab == TAB_CONTRACTS then
+            if type(self.contractsContent.updateAbsolutePosition) == "function" then
+                self.contractsContent:updateAbsolutePosition()
+            end
+            if self.contractList then self.contractList:reloadData() end
+        end
     end
 
+    -- Color tab indicator labels: active = MDM green, inactive = dim white
+    local function _tabColor(el, isActive)
+        if not el then return end
+        if isActive then
+            el:setTextColor(0.0, 0.82, 0.48, 1.0)
+        else
+            el:setTextColor(1.0, 1.0, 1.0, 0.40)
+        end
+    end
+    _tabColor(self.tabLabelPrices,    tab == TAB_PRICES)
+    _tabColor(self.tabLabelEvents,    tab == TAB_EVENTS)
+    _tabColor(self.tabLabelContracts, tab == TAB_CONTRACTS)
+
+    -- Show underline only under the active tab
+    if self.tabUnderlinePrices    then self.tabUnderlinePrices:setVisible(tab == TAB_PRICES) end
+    if self.tabUnderlineEvents    then self.tabUnderlineEvents:setVisible(tab == TAB_EVENTS) end
+    if self.tabUnderlineContracts then self.tabUnderlineContracts:setVisible(tab == TAB_CONTRACTS) end
 end
 
 -- ---------------------------------------------------------------------------
@@ -407,17 +548,24 @@ function MDMMarketScreen:_buildCommodityData()
     for fillTypeIndex, entry in pairs(engine.prices) do
         local fillType = g_fillTypeManager:getFillTypeByIndex(fillTypeIndex)
         if fillType then
-            local changePct = engine:getPriceChangePercent(fillTypeIndex)
-            table.insert(self.commodities, {
-                idx       = fillTypeIndex,
-                name      = fillType.name,
-                title     = fillType.title or fillType.name,
-                current   = entry.current,
-                base      = entry.base,
-                changePct = changePct,
-                volatility = entry.volatilityFactor,
-                modifiers = entry.modifiers,
-            })
+            -- Only show harvestable field crops (not livestock, packaging, byproducts)
+            local isCrop = g_fruitTypeManager ~= nil
+                and g_fruitTypeManager.getFruitTypeByFillTypeIndex ~= nil
+                and g_fruitTypeManager:getFruitTypeByFillTypeIndex(fillTypeIndex) ~= nil
+            if isCrop then
+                local changePct = engine:getPriceChangePercent(fillTypeIndex)
+                table.insert(self.commodities, {
+                    idx        = fillTypeIndex,
+                    name       = fillType.name,
+                    title      = fillType.title or fillType.name,
+                    current    = entry.current,
+                    base       = entry.base,
+                    changePct  = changePct,
+                    volatility = entry.volatilityFactor,
+                    modifiers  = entry.modifiers,
+                    hudOverlay = fillType.hudOverlayFilename,
+                })
+            end
         end
     end
 
@@ -479,16 +627,62 @@ function MDMMarketScreen:reloadAllLists()
 end
 
 -- ---------------------------------------------------------------------------
--- Cell Population
+-- Contract Dialog — Open / Close / Update
 -- ---------------------------------------------------------------------------
+
+function MDMMarketScreen:openContractDialog()
+    MDMLog.info("MarketScreen.openContractDialog: commodities=" .. #self.commodities .. " selectedIdx=" .. self.selectedCropIndex)
+    MDMDialogLoader.show("MDMContractDialog", "setData", {
+        commodities = self.commodities,
+        selectedIdx = self.selectedCropIndex,
+        onConfirmed = function(crop, qty, delivDays)
+            self:_onContractConfirmed(crop, qty, delivDays)
+        end,
+    })
+end
+
+function MDMMarketScreen:_onContractConfirmed(crop, qty, delivDays)
+    if not g_MarketDynamics or not g_MarketDynamics.futuresMarket then return end
+    if not g_localPlayer or not g_localPlayer.farmId then return end
+
+    local now            = g_currentMission and g_currentMission.time or 0
+    local deliveryTimeMs = now + (delivDays * 24 * 60 * 60000)
+
+    g_MarketDynamics.futuresMarket:createContract({
+        farmId         = g_localPlayer.farmId,
+        fillTypeIndex  = crop.idx,
+        fillTypeName   = crop.title,
+        quantity       = qty,
+        lockedPrice    = crop.current,
+        deliveryTimeMs = deliveryTimeMs,
+    })
+
+    MDMLog.info(string.format("MarketScreen: contract — %s %dL @ $%.2f deliver in %dd",
+        crop.title, qty, crop.current, delivDays))
+
+    self:setActiveTab(TAB_CONTRACTS)
+    self:_buildContractData()
+    self:reloadAllLists()
+end
+
 
 function MDMMarketScreen:_populateCommodityCell(index, cell)
     local data = self.commodities[index]
     if not data then return end
 
+    local iconEl   = cell:getDescendantByName("cropIcon")
     local nameEl   = cell:getDescendantByName("cropName")
     local priceEl  = cell:getDescendantByName("cropPrice")
     local changeEl = cell:getDescendantByName("cropChange")
+
+    if iconEl then
+        if data.hudOverlay and data.hudOverlay ~= "" then
+            iconEl:setImageFilename(data.hudOverlay)
+            iconEl:setVisible(true)
+        else
+            iconEl:setVisible(false)
+        end
+    end
 
     if nameEl then
         nameEl:setText(data.title)
@@ -557,7 +751,10 @@ end
 
 function MDMMarketScreen:_populateContractCell(index, cell)
     local data = self.contractData[index]
-    if not data then return end
+    if not data then
+        MDMLog.warn("MarketScreen: _populateContractCell index=" .. tostring(index) .. " data=nil")
+        return
+    end
 
     local cropEl     = cell:getDescendantByName("contractCrop")
     local qtyEl      = cell:getDescendantByName("contractQty")
@@ -573,7 +770,7 @@ function MDMMarketScreen:_populateContractCell(index, cell)
         qtyEl:setText(string.format("%.0fL", data.quantity))
     end
     if priceEl then
-        priceEl:setText(string.format("$%.0f", data.lockedPrice))
+        priceEl:setText(string.format("$%.2f", data.lockedPrice))
     end
     if progressEl then
         local pct = 0
@@ -597,7 +794,6 @@ function MDMMarketScreen:_populateContractCell(index, cell)
         local status = data.status or "active"
         if status == "active" then
             local now = g_currentMission and g_currentMission.time or 0
-            local totalDuration = data.deliveryTime - (data.deliveryTime - 86400000) -- approximate
             local remaining = math.max(0, data.deliveryTime - now)
             local pctDelivered = data.quantity > 0 and (data.delivered / data.quantity) or 0
 
@@ -673,9 +869,8 @@ function MDMMarketScreen:refreshPricesDetail()
         )
     end
 
-    local graphTitle = self:getDescendantById("graphTitle")
-    if graphTitle then
-        graphTitle:setText(crop.title .. " — " .. g_i18n:getText("mdm_screen_session_trend"))
+    if self.graphTitle then
+        self.graphTitle:setText(crop.title .. " — " .. g_i18n:getText("mdm_screen_session_trend"))
     end
 end
 
@@ -740,12 +935,13 @@ function MDMMarketScreen._performRegistration(modDir)
         _setById("eventsHeader", "mdm_screen_events_hdr", "ACTIVE EVENTS")
         _setById("contractsHeader", "mdm_screen_contracts_hdr", "FUTURES CONTRACTS")
 
-        _setById("contractsColCrop", "mdm_screen_col_crop", "Crop")
-        _setById("contractsColQty", nil, "Qty")
-        _setById("contractsColLocked", nil, "Locked")
-        _setById("contractsColDelivered", nil, "Delivered")
-        _setById("contractsColDeadline", nil, "Deadline")
-        _setById("contractsColStatus", nil, "Status")
+        _setById("contractsColCrop",      "mdm_screen_col_crop",      "Crop")
+        _setById("contractsColQty",       "mdm_screen_col_qty",       "Qty")
+        _setById("contractsColLocked",    "mdm_screen_col_locked",    "Locked")
+        _setById("contractsColDelivered", "mdm_screen_col_delivered", "Delivered")
+        _setById("contractsColDeadline",  "mdm_screen_col_deadline",  "Deadline")
+        _setById("contractsColStatus",    "mdm_screen_col_status",    "Status")
+        _setById("newContractHint",       "mdm_screen_new_contract_btn", "New Contract  [N]")
 
         _setById("detailCropName", "mdm_screen_select_crop", "Select a commodity")
         _setById("detailCurrentPrice", nil, "")
@@ -854,12 +1050,16 @@ function MDMMarketScreen._attemptDeferredRegister(dt)
 end
 
 local function _registerToggleAction(mission)
+    MDMLog.info("MarketScreen: registering MDM_MARKET_SCREEN toggle (InputAction=" .. tostring(InputAction.MDM_MARKET_SCREEN) .. ")")
     local _, eventId = g_inputBinding:registerActionEvent(
         InputAction.MDM_MARKET_SCREEN, nil, MDMMarketScreen.toggle,
         false, true, false, true
     )
     if eventId then
         g_inputBinding:setActionEventTextVisibility(eventId, false)
+        MDMLog.info("MarketScreen: F10 toggle registered (evId=" .. tostring(eventId) .. ")")
+    else
+        MDMLog.info("MarketScreen: F10 toggle registerActionEvent returned nil — F10 will not work")
     end
 end
 

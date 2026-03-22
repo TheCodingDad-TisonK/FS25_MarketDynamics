@@ -10,7 +10,7 @@
 --   market prices      — volatilityFactor per fillType
 --   price history      — daily history samples per fillType
 --   general settings   — pricesEnabled, debugMode, volatilityScale
---   integration flags  — BC mode and UP mode
+--   UP deal IDs        — contractId → upDealId map for UsedPlus
 --
 -- Author: tison (dev-1)
 
@@ -26,12 +26,18 @@ end
 
 -- Persist current market state.
 function MarketSerializer:save(coordinator)
+    if not g_currentMission or not g_currentMission.missionInfo then
+        MDMLog.warn("MarketSerializer: g_currentMission or missionInfo not available — cannot save")
+        return
+    end
     local savegameDir = g_currentMission.missionInfo.savegameDirectory
     if savegameDir == nil or savegameDir == "" then
         MDMLog.warn("MarketSerializer: no savegame directory — cannot save")
         return
     end
 
+    local dir     = savegameDir .. "/modSettings/"
+    createFolder(dir)
     local path    = SAVE_PATH_TEMPLATE:format(savegameDir .. "/")
     local xmlFile = createXMLFile("MDMSave", path, "marketDynamics")
 
@@ -98,6 +104,14 @@ function MarketSerializer:save(coordinator)
             setXMLString(xmlFile, base .. "#id",        id)
             setXMLFloat (xmlFile, base .. "#endsAt",    active.endsAt)
             setXMLFloat (xmlFile, base .. "#intensity", active.intensity)
+            -- Persist per-event extra state (e.g. which crops were affected)
+            local desc = coordinator.worldEvents.registry[id]
+            if desc and desc.getExtraData then
+                local extra = desc.getExtraData()
+                if extra and extra ~= "" then
+                    setXMLString(xmlFile, base .. "#extraData", extra)
+                end
+            end
             a = a + 1
         end
     end
@@ -105,8 +119,11 @@ function MarketSerializer:save(coordinator)
     -- ── General settings ─────────────────────────────────────────────────
     local s = coordinator.settings
     if s then
-        setXMLBool(xmlFile, "marketDynamics.settings#pricesEnabled", s.pricesEnabled ~= false)
-        setXMLBool(xmlFile, "marketDynamics.settings#debugMode",     s.debugMode     == true)
+        setXMLBool (xmlFile, "marketDynamics.settings#pricesEnabled",  s.pricesEnabled  ~= false)
+        setXMLBool (xmlFile, "marketDynamics.settings#debugMode",      s.debugMode      == true)
+        setXMLBool (xmlFile, "marketDynamics.settings#eventsEnabled",  s.eventsEnabled  ~= false)
+        setXMLFloat(xmlFile, "marketDynamics.settings#eventFrequency", s.eventFrequency or 1.0)
+        setXMLFloat(xmlFile, "marketDynamics.settings#futuresPenalty", s.futuresPenalty or 0.15)
     end
 
     if coordinator.marketEngine then
@@ -114,8 +131,7 @@ function MarketSerializer:save(coordinator)
             coordinator.marketEngine.volatilityScale or 1.0)
     end
 
-    -- ── Integration flags ────────────────────────────────────────────────
-    BCIntegration.save(xmlFile, "marketDynamics.bcIntegration")
+    -- ── Integration state ────────────────────────────────────────────────
     UPIntegration.save(xmlFile, "marketDynamics.upIntegration")
 
     saveXMLFile(xmlFile)
@@ -125,6 +141,10 @@ end
 
 -- Load and restore market state.
 function MarketSerializer:load(coordinator)
+    if not g_currentMission or not g_currentMission.missionInfo then
+        MDMLog.info("MarketSerializer: g_currentMission or missionInfo not available — starting fresh")
+        return
+    end
     local savegameDir = g_currentMission.missionInfo.savegameDirectory
     if savegameDir == nil or savegameDir == "" then
         MDMLog.info("MarketSerializer: no savegame directory yet — starting fresh")
@@ -222,25 +242,35 @@ function MarketSerializer:load(coordinator)
             local evId = getXMLString(xmlFile, base .. "#id")
             if not evId then break end
 
-            local endsAt    = getXMLFloat(xmlFile, base .. "#endsAt")
-            local intensity = getXMLFloat(xmlFile, base .. "#intensity")
-            coordinator.worldEvents:loadActiveEvent(evId, endsAt, intensity)
+            local endsAt    = getXMLFloat (xmlFile, base .. "#endsAt")
+            local intensity = getXMLFloat (xmlFile, base .. "#intensity")
+            local extraData = getXMLString(xmlFile, base .. "#extraData") or ""
+            coordinator.worldEvents:loadActiveEvent(evId, endsAt, intensity, extraData)
             a = a + 1
         end
     end
 
     -- ── Restore general settings ──────────────────────────────────────────
     if coordinator.settings then
+        local s = coordinator.settings
+
         local pricesEnabled = getXMLBool(xmlFile, "marketDynamics.settings#pricesEnabled")
-        if pricesEnabled ~= nil then
-            coordinator.settings.pricesEnabled = pricesEnabled
-        end
+        if pricesEnabled ~= nil then s.pricesEnabled = pricesEnabled end
 
         local debugMode = getXMLBool(xmlFile, "marketDynamics.settings#debugMode")
         if debugMode ~= nil then
-            coordinator.settings.debugMode = debugMode
+            s.debugMode = debugMode
             MDMLog.debugEnabled = debugMode
         end
+
+        local eventsEnabled = getXMLBool(xmlFile, "marketDynamics.settings#eventsEnabled")
+        if eventsEnabled ~= nil then s.eventsEnabled = eventsEnabled end
+
+        local eventFrequency = getXMLFloat(xmlFile, "marketDynamics.settings#eventFrequency")
+        if eventFrequency and eventFrequency > 0 then s.eventFrequency = eventFrequency end
+
+        local futuresPenalty = getXMLFloat(xmlFile, "marketDynamics.settings#futuresPenalty")
+        if futuresPenalty and futuresPenalty > 0 then s.futuresPenalty = futuresPenalty end
     end
 
     if coordinator.marketEngine then
@@ -250,8 +280,7 @@ function MarketSerializer:load(coordinator)
         end
     end
 
-    -- ── Integration flags ─────────────────────────────────────────────────
-    BCIntegration.load(xmlFile, "marketDynamics.bcIntegration")
+    -- ── Integration state ─────────────────────────────────────────────────
     UPIntegration.load(xmlFile, "marketDynamics.upIntegration")
 
     delete(xmlFile)

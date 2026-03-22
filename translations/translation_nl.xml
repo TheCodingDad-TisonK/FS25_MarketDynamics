@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<l10n>
+    <texts>
+
+        <text name="mdm_event_drought" text="Regionale droogte"/>
+        <text name="mdm_event_bumper_harvest" text="Bumperoogst"/>
+        <text name="mdm_event_trade_disruption" text="Handelsverstoring"/>
+        <text name="mdm_event_geopolitical" text="Geopolitieke crisis"/>
+        <text name="mdm_event_biofuel_initiative" text="Biobrandstof-initiatief"/>
+        <text name="mdm_event_livestock_boom" text="Veevoerboom"/>
+        <text name="mdm_event_pest_outbreak" text="Worteloogstziekte"/>
+        <text name="mdm_hud_title" text="Markt kijken"/>
+        <text name="mdm_hud_active_events" text="Actieve evenementen"/>
+        <text name="mdm_hud_no_events" text="Markten stabiel"/>
+        <text name="mdm_hud_event_mild" text="Mild"/>
+        <text name="mdm_hud_event_moderate" text="Gematigd"/>
+        <text name="mdm_hud_event_severe" text="Streng"/>
+        <text name="mdm_screen_title" text="Marktdynamiek"/>
+        <text name="mdm_screen_col_crop" text="Gewas"/>
+        <text name="mdm_screen_col_base" text="Baseren"/>
+        <text name="mdm_screen_col_current" text="Huidig"/>
+        <text name="mdm_screen_col_change" text="Wijziging"/>
+        <text name="mdm_screen_col_day" text="Dag"/>
+        <text name="mdm_screen_col_price" text="Prijs"/>
+        <text name="mdm_screen_col_qty" text="Aantal"/>
+        <text name="mdm_screen_col_locked" text="Vergrendeld"/>
+        <text name="mdm_screen_col_delivered" text="Afgeleverd"/>
+        <text name="mdm_screen_col_deadline" text="Termijn"/>
+        <text name="mdm_screen_col_status" text="Status"/>
+        <text name="mdm_screen_no_data" text="Geen prijsgegevens beschikbaar"/>
+        <text name="mdm_screen_no_history" text="Er is nog geen geschiedenis vastgelegd"/>
+        <text name="mdm_screen_close_hint" text="Druk op ESC om te sluiten"/>
+        <text name="mdm_screen_switch_tabs" text="Schakel tussen tabbladen"/>
+        <text name="mdm_screen_nav_crops" text="Links/Rechts: wissel van gewas"/>
+        <text name="mdm_screen_tab_prices" text="Prijzen"/>
+        <text name="mdm_screen_tab_events" text="Evenementen"/>
+        <text name="mdm_screen_tab_contracts" text="Contracten"/>
+        <text name="mdm_screen_commodities" text="GRONDSTOFFEN"/>
+        <text name="mdm_screen_current_price" text="Huidige prijs"/>
+        <text name="mdm_screen_base_price" text="Basisprijs"/>
+        <text name="mdm_screen_change" text="Wijziging"/>
+        <text name="mdm_screen_volatility" text="Wisselvalligheid"/>
+        <text name="mdm_screen_modifiers" text="Actieve modificatoren"/>
+        <text name="mdm_screen_session_trend" text="Sessieprijstrend"/>
+        <text name="mdm_screen_collecting" text="Gegevens verzamelen..."/>
+        <text name="mdm_screen_select_crop" text="Selecteer een artikel"/>
+        <text name="mdm_screen_no_events" text="De markten zijn rustig. Geen actieve evenementen."/>
+        <text name="mdm_screen_events_hdr" text="ACTIEVE EVENEMENTEN"/>
+        <text name="mdm_screen_contracts_hdr" text="TOEKOMSTIGE CONTRACTEN"/>
+        <text name="mdm_screen_new_contract" text="Alt+F: Nieuw contract"/>
+        <text name="mdm_screen_no_contracts" text="Nog geen contracten. Druk op Alt+F om er een te maken."/>
+        <text name="mdm_screen_at_risk" text="IN RISICO"/>
+        <text name="mdm_screen_hint_bar" text="ESC: Sluiten |  Q/E: Tabbladen |  Omhoog/Omlaag: Navigeren"/>
+        <text name="mdm_screen_timeline" text="Sessie tijdlijn"/>
+        <text name="mdm_screen_balance" text="Evenwicht :"/>
+        <text name="mdm_futures_title" text="Futures-markt"/>
+        <text name="mdm_futures_new_title" text="Nieuw termijncontract"/>
+        <text name="mdm_futures_create" text="Nieuw contract"/>
+        <text name="mdm_futures_fulfill" text="Vervuld"/>
+        <text name="mdm_futures_defaulted" text="In gebreke gebleven"/>
+        <text name="mdm_futures_active" text="Actief"/>
+        <text name="mdm_futures_delivery_label" text="Levering"/>
+        <text name="mdm_futures_locked_label" text="Vergrendelde prijs"/>
+        <text name="mdm_futures_quantity_label" text="Hoeveelheid (L)"/>
+        <text name="mdm_futures_crop_label" text="Gewas"/>
+        <text name="mdm_futures_confirm" text="Bevestigen"/>
+        <text name="mdm_futures_cancel" text="Annuleren"/>
+        <text name="mdm_futures_total_value" text="Totale waarde"/>
+        <text name="mdm_futures_bc_disabled" text="Futures uitgeschakeld — BetterContracts-modus actief"/>
+        <text name="mdm_futures_created" text="Contract aangemaakt!"/>
+        <text name="mdm_futures_no_contracts" text="Nog geen contracten"/>
+        <text name="mdm_dialog_summary" text="Contractsamenvatting"/>
+        <text name="mdm_dialog_qty_label" text="Hoeveelheid"/>
+        <text name="mdm_dialog_delivery_label" text="Leveringsvenster"/>
+        <text name="mdm_dialog_bc_blocked" text="Futures uitgeschakeld — BetterContracts-modus actief"/>
+        <text name="mdm_dialog_no_crops" text="Er zijn nog geen marktgegevens beschikbaar."/>
+        <text name="mdm_screen_new_contract_btn" text="Nieuw contract [N]"/>
+        <text name="mdm_settings_mdm_general" text="Marktdynamiek"/>
+
+    
+        <!-- Input action display names -->
+        <text name="input_MDM_MARKET_SCREEN" text="Markt openen" />
+        <text name="input_MDM_CREATE_CONTRACT" text="Futurescontract aanmaken" />
+    </texts>
+</l10n>

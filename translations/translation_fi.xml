@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<l10n>
+    <texts>
+
+        <text name="mdm_event_drought" text="Alueellinen kuivuus"/>
+        <text name="mdm_event_bumper_harvest" text="Puskurin sadonkorjuu"/>
+        <text name="mdm_event_trade_disruption" text="Kaupan häiriö"/>
+        <text name="mdm_event_geopolitical" text="Geopoliittinen kriisi"/>
+        <text name="mdm_event_biofuel_initiative" text="Biopolttoainealoite"/>
+        <text name="mdm_event_livestock_boom" text="Karjan rehupuomi"/>
+        <text name="mdm_event_pest_outbreak" text="Juurirutto"/>
+        <text name="mdm_hud_title" text="Markkinat Watch"/>
+        <text name="mdm_hud_active_events" text="Aktiiviset tapahtumat"/>
+        <text name="mdm_hud_no_events" text="Markkinat vakaat"/>
+        <text name="mdm_hud_event_mild" text="Lievä"/>
+        <text name="mdm_hud_event_moderate" text="Kohtalainen"/>
+        <text name="mdm_hud_event_severe" text="Vakava"/>
+        <text name="mdm_screen_title" text="Markkinadynamiikka"/>
+        <text name="mdm_screen_col_crop" text="Rajaa"/>
+        <text name="mdm_screen_col_base" text="Pohja"/>
+        <text name="mdm_screen_col_current" text="Nykyinen"/>
+        <text name="mdm_screen_col_change" text="Muuttaa"/>
+        <text name="mdm_screen_col_day" text="Päivä"/>
+        <text name="mdm_screen_col_price" text="Hinta"/>
+        <text name="mdm_screen_col_qty" text="Määrä"/>
+        <text name="mdm_screen_col_locked" text="Lukittu"/>
+        <text name="mdm_screen_col_delivered" text="Toimitettu"/>
+        <text name="mdm_screen_col_deadline" text="Määräaika"/>
+        <text name="mdm_screen_col_status" text="Status"/>
+        <text name="mdm_screen_no_data" text="Hintatietoja ei ole saatavilla"/>
+        <text name="mdm_screen_no_history" text="Historiaa ei ole vielä tallennettu"/>
+        <text name="mdm_screen_close_hint" text="Sulje painamalla ESC"/>
+        <text name="mdm_screen_switch_tabs" text="Vaihda välilehtiä"/>
+        <text name="mdm_screen_nav_crops" text="Vasen/Oikea: vaihda rajausta"/>
+        <text name="mdm_screen_tab_prices" text="hinnat"/>
+        <text name="mdm_screen_tab_events" text="Tapahtumat"/>
+        <text name="mdm_screen_tab_contracts" text="Sopimukset"/>
+        <text name="mdm_screen_commodities" text="HYÖDYKKEET"/>
+        <text name="mdm_screen_current_price" text="Nykyinen hinta"/>
+        <text name="mdm_screen_base_price" text="Perushinta"/>
+        <text name="mdm_screen_change" text="Muuttaa"/>
+        <text name="mdm_screen_volatility" text="Volatiliteetti"/>
+        <text name="mdm_screen_modifiers" text="Aktiiviset muuntajat"/>
+        <text name="mdm_screen_session_trend" text="Istunnon hintatrendi"/>
+        <text name="mdm_screen_collecting" text="Tietoja kerätään..."/>
+        <text name="mdm_screen_select_crop" text="Valitse hyödyke"/>
+        <text name="mdm_screen_no_events" text="Markkinat ovat rauhalliset. Ei aktiivisia tapahtumia."/>
+        <text name="mdm_screen_events_hdr" text="AKTIIVISET TAPAHTUMAT"/>
+        <text name="mdm_screen_contracts_hdr" text="TULEVAISUUDEN SOPIMUKSET"/>
+        <text name="mdm_screen_new_contract" text="Alt+F: Uusi sopimus"/>
+        <text name="mdm_screen_no_contracts" text="Ei vielä sopimuksia. Luo sellainen painamalla Alt+F."/>
+        <text name="mdm_screen_at_risk" text="VAARASSA"/>
+        <text name="mdm_screen_hint_bar" text="ESC: Sulje |  K/V: Välilehdet |  Ylös/alas: Navigoi"/>
+        <text name="mdm_screen_timeline" text="Istunnon aikajana"/>
+        <text name="mdm_screen_balance" text="Saldo:"/>
+        <text name="mdm_futures_title" text="Futuurimarkkinat"/>
+        <text name="mdm_futures_new_title" text="Uusi futuurisopimus"/>
+        <text name="mdm_futures_create" text="Uusi sopimus"/>
+        <text name="mdm_futures_fulfill" text="Täytetty"/>
+        <text name="mdm_futures_defaulted" text="Oletusasetus"/>
+        <text name="mdm_futures_active" text="Aktiivinen"/>
+        <text name="mdm_futures_delivery_label" text="Toimitus"/>
+        <text name="mdm_futures_locked_label" text="Lukittu hinta"/>
+        <text name="mdm_futures_quantity_label" text="Määrä (L)"/>
+        <text name="mdm_futures_crop_label" text="Rajaa"/>
+        <text name="mdm_futures_confirm" text="Vahvistaa"/>
+        <text name="mdm_futures_cancel" text="Peruuttaa"/>
+        <text name="mdm_futures_total_value" text="Kokonaisarvo"/>
+        <text name="mdm_futures_bc_disabled" text="Futuurit pois käytöstä — BetterContracts-tila aktiivinen"/>
+        <text name="mdm_futures_created" text="Sopimus tehty!"/>
+        <text name="mdm_futures_no_contracts" text="Ei vielä sopimuksia"/>
+        <text name="mdm_dialog_summary" text="Sopimuksen yhteenveto"/>
+        <text name="mdm_dialog_qty_label" text="Määrä"/>
+        <text name="mdm_dialog_delivery_label" text="Toimitusikkuna"/>
+        <text name="mdm_dialog_bc_blocked" text="Futuurit pois käytöstä — BetterContracts-tila aktiivinen"/>
+        <text name="mdm_dialog_no_crops" text="Markkinatietoja ei ole vielä saatavilla."/>
+        <text name="mdm_screen_new_contract_btn" text="Uusi sopimus [N]"/>
+        <text name="mdm_settings_mdm_general" text="Markkinadynamiikka"/>
+
+    
+        <!-- Input action display names -->
+        <text name="input_MDM_MARKET_SCREEN" text="Avaa markkinat" />
+        <text name="input_MDM_CREATE_CONTRACT" text="Luo futuurisopimus" />
+    </texts>
+</l10n>

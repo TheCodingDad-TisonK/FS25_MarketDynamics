@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<l10n>
+    <texts>
+
+        <text name="mdm_event_drought" text="Hạn hán khu vực"/>
+        <text name="mdm_event_bumper_harvest" text="Thu hoạch bội thu"/>
+        <text name="mdm_event_trade_disruption" text="Gián đoạn thương mại"/>
+        <text name="mdm_event_geopolitical" text="Khủng hoảng địa chính trị"/>
+        <text name="mdm_event_biofuel_initiative" text="Sáng kiến ​​nhiên liệu sinh học"/>
+        <text name="mdm_event_livestock_boom" text="Bùng nổ thức ăn chăn nuôi"/>
+        <text name="mdm_event_pest_outbreak" text="Bệnh bạc lá cây trồng"/>
+        <text name="mdm_hud_title" text="Theo dõi thị trường"/>
+        <text name="mdm_hud_active_events" text="Sự kiện đang hoạt động"/>
+        <text name="mdm_hud_no_events" text="Thị trường ổn định"/>
+        <text name="mdm_hud_event_mild" text="Nhẹ"/>
+        <text name="mdm_hud_event_moderate" text="Vừa phải"/>
+        <text name="mdm_hud_event_severe" text="Nghiêm trọng"/>
+        <text name="mdm_screen_title" text="Động lực thị trường"/>
+        <text name="mdm_screen_col_crop" text="Mùa vụ"/>
+        <text name="mdm_screen_col_base" text="Căn cứ"/>
+        <text name="mdm_screen_col_current" text="Hiện hành"/>
+        <text name="mdm_screen_col_change" text="Thay đổi"/>
+        <text name="mdm_screen_col_day" text="Ngày"/>
+        <text name="mdm_screen_col_price" text="Giá"/>
+        <text name="mdm_screen_col_qty" text="Số lượng"/>
+        <text name="mdm_screen_col_locked" text="Đã khóa"/>
+        <text name="mdm_screen_col_delivered" text="Đã giao hàng"/>
+        <text name="mdm_screen_col_deadline" text="Thời hạn"/>
+        <text name="mdm_screen_col_status" text="Trạng thái"/>
+        <text name="mdm_screen_no_data" text="Không có dữ liệu về giá"/>
+        <text name="mdm_screen_no_history" text="Chưa có lịch sử nào được ghi lại"/>
+        <text name="mdm_screen_close_hint" text="Nhấn ESC để đóng"/>
+        <text name="mdm_screen_switch_tabs" text="Chuyển tab"/>
+        <text name="mdm_screen_nav_crops" text="Trái/Phải: chuyển đổi cắt xén"/>
+        <text name="mdm_screen_tab_prices" text="Giá cả"/>
+        <text name="mdm_screen_tab_events" text="Sự kiện"/>
+        <text name="mdm_screen_tab_contracts" text="Hợp đồng"/>
+        <text name="mdm_screen_commodities" text="HÀNG HÓA"/>
+        <text name="mdm_screen_current_price" text="Giá hiện tại"/>
+        <text name="mdm_screen_base_price" text="Giá cơ sở"/>
+        <text name="mdm_screen_change" text="Thay đổi"/>
+        <text name="mdm_screen_volatility" text="Biến động"/>
+        <text name="mdm_screen_modifiers" text="Công cụ sửa đổi hoạt động"/>
+        <text name="mdm_screen_session_trend" text="Xu hướng giá phiên"/>
+        <text name="mdm_screen_collecting" text="Đang thu thập dữ liệu..."/>
+        <text name="mdm_screen_select_crop" text="Chọn một mặt hàng"/>
+        <text name="mdm_screen_no_events" text="Thị trường bình tĩnh. Không có sự kiện hoạt động."/>
+        <text name="mdm_screen_events_hdr" text="SỰ KIỆN HOẠT ĐỘNG"/>
+        <text name="mdm_screen_contracts_hdr" text="HỢP ĐỒNG TƯƠNG LAI"/>
+        <text name="mdm_screen_new_contract" text="Alt+F: Hợp đồng mới"/>
+        <text name="mdm_screen_no_contracts" text="Chưa có hợp đồng nào. Nhấn Alt+F để tạo một cái."/>
+        <text name="mdm_screen_at_risk" text="CÓ RỦI RO"/>
+        <text name="mdm_screen_hint_bar" text="ESC: Đóng |  Hỏi/Đáp: Tab |  Lên/Xuống: Điều hướng"/>
+        <text name="mdm_screen_timeline" text="Dòng thời gian của phiên"/>
+        <text name="mdm_screen_balance" text="Sự cân bằng :"/>
+        <text name="mdm_futures_title" text="Thị trường tương lai"/>
+        <text name="mdm_futures_new_title" text="Hợp đồng tương lai mới"/>
+        <text name="mdm_futures_create" text="Hợp đồng mới"/>
+        <text name="mdm_futures_fulfill" text="Đã hoàn thành"/>
+        <text name="mdm_futures_defaulted" text="Mặc định"/>
+        <text name="mdm_futures_active" text="Tích cực"/>
+        <text name="mdm_futures_delivery_label" text="Vận chuyển"/>
+        <text name="mdm_futures_locked_label" text="Giá bị khóa"/>
+        <text name="mdm_futures_quantity_label" text="Số lượng (L)"/>
+        <text name="mdm_futures_crop_label" text="Mùa vụ"/>
+        <text name="mdm_futures_confirm" text="Xác nhận"/>
+        <text name="mdm_futures_cancel" text="Hủy bỏ"/>
+        <text name="mdm_futures_total_value" text="Tổng giá trị"/>
+        <text name="mdm_futures_bc_disabled" text="Hợp đồng tương lai bị vô hiệu hóa - Chế độ BetterContracts đang hoạt động"/>
+        <text name="mdm_futures_created" text="Hợp đồng đã được tạo!"/>
+        <text name="mdm_futures_no_contracts" text="Chưa có hợp đồng"/>
+        <text name="mdm_dialog_summary" text="Tóm tắt hợp đồng"/>
+        <text name="mdm_dialog_qty_label" text="Số lượng"/>
+        <text name="mdm_dialog_delivery_label" text="Cửa sổ giao hàng"/>
+        <text name="mdm_dialog_bc_blocked" text="Hợp đồng tương lai bị vô hiệu hóa - Chế độ BetterContracts đang hoạt động"/>
+        <text name="mdm_dialog_no_crops" text="Chưa có dữ liệu thị trường."/>
+        <text name="mdm_screen_new_contract_btn" text="Hợp đồng mới [N]"/>
+        <text name="mdm_settings_mdm_general" text="Động lực thị trường"/>
+
+    
+        <!-- Input action display names -->
+        <text name="input_MDM_MARKET_SCREEN" text="Mở thị trường" />
+        <text name="input_MDM_CREATE_CONTRACT" text="Tạo hợp đồng kỳ hạn" />
+    </texts>
+</l10n>

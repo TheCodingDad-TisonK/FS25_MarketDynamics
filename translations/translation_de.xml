@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<l10n>
+    <texts>
+
+        <text name="mdm_event_drought" text="Regionale Dürre"/>
+        <text name="mdm_event_bumper_harvest" text="Rekordernte"/>
+        <text name="mdm_event_trade_disruption" text="Handelsstörung"/>
+        <text name="mdm_event_geopolitical" text="Geopolitische Krise"/>
+        <text name="mdm_event_biofuel_initiative" text="Biokraftstoff-Initiative"/>
+        <text name="mdm_event_livestock_boom" text="Viehfutterboom"/>
+        <text name="mdm_event_pest_outbreak" text="Wurzelfäule"/>
+        <text name="mdm_hud_title" text="Marktbeobachtung"/>
+        <text name="mdm_hud_active_events" text="Aktive Ereignisse"/>
+        <text name="mdm_hud_no_events" text="Märkte stabil"/>
+        <text name="mdm_hud_event_mild" text="Leicht"/>
+        <text name="mdm_hud_event_moderate" text="Mäßig"/>
+        <text name="mdm_hud_event_severe" text="Schwer"/>
+        <text name="mdm_screen_title" text="Marktdynamik"/>
+        <text name="mdm_screen_col_crop" text="Ernte"/>
+        <text name="mdm_screen_col_base" text="Base"/>
+        <text name="mdm_screen_col_current" text="Aktuell"/>
+        <text name="mdm_screen_col_change" text="Ändern"/>
+        <text name="mdm_screen_col_day" text="Tag"/>
+        <text name="mdm_screen_col_price" text="Preis"/>
+        <text name="mdm_screen_col_qty" text="Menge"/>
+        <text name="mdm_screen_col_locked" text="Gesperrt"/>
+        <text name="mdm_screen_col_delivered" text="Geliefert"/>
+        <text name="mdm_screen_col_deadline" text="Frist"/>
+        <text name="mdm_screen_col_status" text="Status"/>
+        <text name="mdm_screen_no_data" text="Keine Preisdaten verfügbar"/>
+        <text name="mdm_screen_no_history" text="Noch keine Historie erfasst"/>
+        <text name="mdm_screen_close_hint" text="Zum Schließen ESC drücken"/>
+        <text name="mdm_screen_switch_tabs" text="Tabs wechseln"/>
+        <text name="mdm_screen_nav_crops" text="Links/Rechts: Zuschnitt wechseln"/>
+        <text name="mdm_screen_tab_prices" text="Preise"/>
+        <text name="mdm_screen_tab_events" text="Veranstaltungen"/>
+        <text name="mdm_screen_tab_contracts" text="Verträge"/>
+        <text name="mdm_screen_commodities" text="WAREN"/>
+        <text name="mdm_screen_current_price" text="Aktueller Preis"/>
+        <text name="mdm_screen_base_price" text="Grundpreis"/>
+        <text name="mdm_screen_change" text="Ändern"/>
+        <text name="mdm_screen_volatility" text="Volatilität"/>
+        <text name="mdm_screen_modifiers" text="Aktive Modifikatoren"/>
+        <text name="mdm_screen_session_trend" text="Sitzungspreistrend"/>
+        <text name="mdm_screen_collecting" text="Daten sammeln..."/>
+        <text name="mdm_screen_select_crop" text="Wählen Sie eine Ware aus"/>
+        <text name="mdm_screen_no_events" text="Die Märkte sind ruhig. Keine aktiven Veranstaltungen."/>
+        <text name="mdm_screen_events_hdr" text="AKTIVE VERANSTALTUNGEN"/>
+        <text name="mdm_screen_contracts_hdr" text="TERMINKONTRAKTE"/>
+        <text name="mdm_screen_new_contract" text="Alt+F: Neuer Vertrag"/>
+        <text name="mdm_screen_no_contracts" text="Noch keine Verträge. Drücken Sie Alt+F, um eines zu erstellen."/>
+        <text name="mdm_screen_at_risk" text="GEFÄHRDET"/>
+        <text name="mdm_screen_hint_bar" text="ESC: Schließen |  F/E: Tabs |  Auf/Ab: Navigieren"/>
+        <text name="mdm_screen_timeline" text="Zeitleiste der Sitzung"/>
+        <text name="mdm_screen_balance" text="Gleichgewicht :"/>
+        <text name="mdm_futures_title" text="Terminmarkt"/>
+        <text name="mdm_futures_new_title" text="Neuer Futures-Kontrakt"/>
+        <text name="mdm_futures_create" text="Neuer Vertrag"/>
+        <text name="mdm_futures_fulfill" text="Erfüllt"/>
+        <text name="mdm_futures_defaulted" text="Standardmäßig"/>
+        <text name="mdm_futures_active" text="Aktiv"/>
+        <text name="mdm_futures_delivery_label" text="Lieferung"/>
+        <text name="mdm_futures_locked_label" text="Gesperrter Preis"/>
+        <text name="mdm_futures_quantity_label" text="Menge (L)"/>
+        <text name="mdm_futures_crop_label" text="Ernte"/>
+        <text name="mdm_futures_confirm" text="Bestätigen"/>
+        <text name="mdm_futures_cancel" text="Stornieren"/>
+        <text name="mdm_futures_total_value" text="Gesamtwert"/>
+        <text name="mdm_futures_bc_disabled" text="Futures deaktiviert – BetterContracts-Modus aktiv"/>
+        <text name="mdm_futures_created" text="Vertrag erstellt!"/>
+        <text name="mdm_futures_no_contracts" text="Noch keine Verträge"/>
+        <text name="mdm_dialog_summary" text="Vertragszusammenfassung"/>
+        <text name="mdm_dialog_qty_label" text="Menge"/>
+        <text name="mdm_dialog_delivery_label" text="Lieferfenster"/>
+        <text name="mdm_dialog_bc_blocked" text="Futures deaktiviert – BetterContracts-Modus aktiv"/>
+        <text name="mdm_dialog_no_crops" text="Noch keine Marktdaten verfügbar."/>
+        <text name="mdm_screen_new_contract_btn" text="Neuer Vertrag [N]"/>
+        <text name="mdm_settings_mdm_general" text="Marktdynamik"/>
+
+    
+        <!-- Input action display names -->
+        <text name="input_MDM_MARKET_SCREEN" text="Marktübersicht öffnen" />
+        <text name="input_MDM_CREATE_CONTRACT" text="Terminkontrakt erstellen" />
+    </texts>
+</l10n>

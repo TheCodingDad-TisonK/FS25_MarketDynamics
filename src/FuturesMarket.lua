@@ -140,6 +140,14 @@ function FuturesMarket:_fulfillContract(id)
     g_currentMission:addMoney(payout, contract.farmId, MoneyType.OTHER, true)
     MDMLog.info("FuturesMarket: contract #" .. id .. " FULFILLED — payout $" .. payout)
 
+    -- HUD notification (only show to the owning farm's local player)
+    if g_localPlayer and g_localPlayer.farmId == contract.farmId then
+        local msg = string.format("Contract fulfilled: %s — $%s paid out",
+            contract.fillTypeName,
+            g_i18n:formatMoney(math.floor(payout), 0, true, false))
+        g_currentMission:addIngameNotification(FSBaseMission.INGAME_NOTIFICATION_OK, msg)
+    end
+
     -- Notify UPIntegration for credit score reporting.
     UPIntegration.onContractFulfilled(id, contract.farmId, payout)
 end
@@ -167,9 +175,10 @@ function FuturesMarket:_defaultContract(id)
 
     local partialPayout = delivered * contract.lockedPrice
 
-    -- Apply credit-score-based penalty scaling from UPIntegration.
-    -- Returns 1.0 (no change) when UP is not active or score is unavailable.
-    local penaltyRate = DEFAULT_PENALTY * UPIntegration.getPenaltyModifier(contract.farmId)
+    -- Base penalty comes from player settings; UP credit score may scale it further.
+    local settings    = g_MarketDynamics and g_MarketDynamics.settings
+    local basePenalty = (settings and settings.futuresPenalty) or DEFAULT_PENALTY
+    local penaltyRate = basePenalty * UPIntegration.getPenaltyModifier(contract.farmId)
     local penalty     = unfulfilled * contract.lockedPrice * penaltyRate
 
     -- Floor net at 0: never drain the player's account for a default.
@@ -183,6 +192,57 @@ function FuturesMarket:_defaultContract(id)
         "FuturesMarket: contract #%d DEFAULTED — delivered %dL/%dL  partial $%.2f  penalty -$%.2f  net $%.2f",
         id, delivered, contract.quantity, partialPayout, penalty, net))
 
+    -- HUD notification (only show to the owning farm's local player)
+    if g_localPlayer and g_localPlayer.farmId == contract.farmId then
+        local msg
+        if net > 0 then
+            msg = string.format("Contract defaulted: %s — %dL/%dL delivered, $%s after penalty",
+                contract.fillTypeName,
+                delivered, contract.quantity,
+                g_i18n:formatMoney(math.floor(net), 0, true, false))
+        else
+            msg = string.format("Contract defaulted: %s — %dL/%dL delivered, no payout",
+                contract.fillTypeName,
+                delivered, contract.quantity)
+        end
+        g_currentMission:addIngameNotification(FSBaseMission.INGAME_NOTIFICATION_CRITICAL, msg)
+    end
+
     -- Notify UPIntegration for credit score reporting.
     UPIntegration.onContractDefaulted(id, contract.farmId, penalty)
+end
+
+-- ---------------------------------------------------------------------------
+-- Admin actions (called from MDMContractAdminDialog)
+-- ---------------------------------------------------------------------------
+
+--- Force-complete an active contract: pays out full locked price * quantity
+--- regardless of how much has actually been delivered.
+--- Safe to call if contract is already settled (no-op).
+function FuturesMarket:adminComplete(contractId)
+    local contract = self.contracts[contractId]
+    if not contract then return end
+    if contract.status ~= "active" then return end
+    -- Mark as fully delivered so _fulfillContract pays the full amount.
+    contract.delivered = contract.quantity
+    self:_fulfillContract(contractId)
+    MDMLog.info("FuturesMarket: admin forced completion of contract #" .. contractId)
+end
+
+--- Remove an active contract with no payout and no penalty.
+function FuturesMarket:adminCancel(contractId)
+    local contract = self.contracts[contractId]
+    if not contract then return end
+    if contract.status ~= "active" then return end
+    self.contracts[contractId] = nil
+    MDMLog.info("FuturesMarket: admin cancelled (removed) contract #" .. contractId)
+end
+
+--- Remove a settled (fulfilled or defaulted) contract from the list.
+function FuturesMarket:adminDelete(contractId)
+    local contract = self.contracts[contractId]
+    if not contract then return end
+    if contract.status == "active" then return end
+    self.contracts[contractId] = nil
+    MDMLog.info("FuturesMarket: admin deleted settled contract #" .. contractId)
 end

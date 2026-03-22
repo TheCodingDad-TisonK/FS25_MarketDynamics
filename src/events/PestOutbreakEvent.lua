@@ -30,7 +30,7 @@ local function onFire(intensity)
         end
     end
 
-    MDMLog.info("PestOutbreakEvent fired — root crops up " .. string.format("%.0f%%", (factor - 1) * 100))
+    MDMLog.info("PestOutbreakEvent fired — root crops up " .. math.floor((factor - 1) * 100) .. "pct")
 end
 
 local function onExpire(intensity)
@@ -48,6 +48,7 @@ end
 MDM_pendingRegistrations = MDM_pendingRegistrations or {}
 table.insert(MDM_pendingRegistrations, {
     id             = EVENT_ID,
+    nameKey        = "mdm_event_pest_outbreak",
     name           = "Root Crop Blight",
     probability    = 0.05,
     minIntensity   = 0.3,
