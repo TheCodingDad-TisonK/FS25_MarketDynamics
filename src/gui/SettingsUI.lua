@@ -135,6 +135,7 @@ function MDMSettingsUI._insertTab()
     -- onGuiSetupFinished on page AFTER children and AFTER adding to frame
     addAt(mdmPage, ps.subCategoryPages[1].parent, pos)
     mdmPage:onGuiSetupFinished()
+    mdmPage:setVisible(false)  -- hidden by default; shown only when our tab is active
 
     -- Store references used by _addSettingsElements and _updateSettingsUI
     MDMSettingsUI.mdmTab         = mdmTab
@@ -179,6 +180,12 @@ function MDMSettingsUI._insertTab()
     -- Patch InGameMenuSettingsFrame.updateSubCategoryPages (the class method) so that
     -- Q/E keyboard navigation (which calls this method directly, bypassing the paging
     -- instance callback) also gets the correct header text for our tab.
+    -- Patch InGameMenuSettingsFrame.updateSubCategoryPages (the class method) so that
+    -- Q/E keyboard navigation (which calls this method directly, bypassing the paging
+    -- instance callback) also gets the correct header text for our tab.
+    -- Visibility is handled by vanilla (mdmPage is registered in subCategoryPages)
+    -- and by the setVisible(false) init above — do NOT touch visibility here or it
+    -- conflicts with BC and other mods that also append this function.
     InGameMenuSettingsFrame.updateSubCategoryPages = Utils.appendedFunction(
         InGameMenuSettingsFrame.updateSubCategoryPages,
         function(self, state)
@@ -478,17 +485,25 @@ function MDMSettingsUI._addMulti(layout, callbackName, texts, title, tooltip)
     return option
 end
 
--- Read-only status row — label and value in one string, excluded from alternating backgrounds.
--- Returns the TextElement so _updateSettingsUI can call setText("Label:  Value") on it.
+-- Read-only status row — label and value in one string.
+-- Uses the same container profile as regular settings rows so text is visible
+-- and alternating row backgrounds apply correctly.
+-- Returns the inner TextElement so _updateSettingsUI can call setText() on it.
 function MDMSettingsUI._addStatusRow(layout, initialText)
-    local el = TextElement.new()
-    el:loadProfile(g_gui:getProfile("fs25_settingsSectionHeader"), true)
-    el.textUpperCase = false
-    el.name = "ignore"  -- skip updateAlternatingElements to prevent white background
-    el:setText(initialText or "—")
-    layout:addElement(el)
-    el:onGuiSetupFinished()
-    return el
+    local bitMap = BitmapElement.new()
+    bitMap:loadProfile(g_gui:getProfile("fs25_multiTextOptionContainer"), true)
+
+    local titleEl = TextElement.new()
+    titleEl:loadProfile(g_gui:getProfile("fs25_settingsMultiTextOptionTitle"), true)
+    titleEl.textUpperCase = false
+    titleEl:setText(initialText or "—")
+
+    bitMap:addElement(titleEl)
+    titleEl:onGuiSetupFinished()
+    layout:addElement(bitMap)
+    bitMap:onGuiSetupFinished()
+
+    return titleEl
 end
 
 -- Returns the index in `values` whose entry is closest to `target`.

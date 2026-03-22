@@ -63,10 +63,12 @@ function MarketDynamics:onMissionLoaded(mission)
     self._debugHud = MDMDebugHUD.new()  -- TEMP: remove when LeGrizzly's GUI lands
     MDMAdminCommands_register()
 
-    -- Dialog loader: init + register modal dialogs
-    MDMDialogLoader.init(self.modDir)
-    MDMDialogLoader.register("MDMContractDialog",      MDMContractDialog,      "xml/gui/MDMContractDialog.xml")
-    MDMDialogLoader.register("MDMContractAdminDialog", MDMContractAdminDialog, "xml/gui/MDMContractAdminDialog.xml")
+    -- Dialog loader: init + register modal dialogs (client only — no GUI on dedicated servers)
+    if not g_currentMission.isServer or g_currentMission.isClient then
+        MDMDialogLoader.init(self.modDir)
+        MDMDialogLoader.register("MDMContractDialog",      MDMContractDialog,      "xml/gui/MDMContractDialog.xml")
+        MDMDialogLoader.register("MDMContractAdminDialog", MDMContractAdminDialog, "xml/gui/MDMContractAdminDialog.xml")
+    end
 
     MDMLog.info("MarketDynamics: mission loaded, system active")
 end
