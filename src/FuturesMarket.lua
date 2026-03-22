@@ -210,3 +210,31 @@ function FuturesMarket:_defaultContract(id)
     -- Notify UPIntegration for credit score reporting.
     UPIntegration.onContractDefaulted(id, contract.farmId, penalty)
 end
+
+-- ---------------------------------------------------------------------------
+-- Admin actions (called from MDMContractAdminDialog)
+-- ---------------------------------------------------------------------------
+
+--- Force-complete an active contract: pays out full locked price * quantity
+--- regardless of how much has actually been delivered.
+--- Safe to call if contract is already settled (no-op).
+function FuturesMarket:adminComplete(contractId)
+    local contract = self.contracts[contractId]
+    if not contract then return end
+    if contract.status ~= "active" then return end
+    -- Mark as fully delivered so _fulfillContract pays the full amount.
+    contract.delivered = contract.quantity
+    self:_fulfillContract(contractId)
+    MDMLog.info("FuturesMarket: admin forced completion of contract #" .. contractId)
+end
+
+--- Remove an active contract with no payout and no penalty.
+--- Use this to "admin delete" / cancel a contract the player no longer wants.
+--- Safe to call if contract is already settled (no-op).
+function FuturesMarket:adminCancel(contractId)
+    local contract = self.contracts[contractId]
+    if not contract then return end
+    if contract.status ~= "active" then return end
+    self.contracts[contractId] = nil
+    MDMLog.info("FuturesMarket: admin cancelled (removed) contract #" .. contractId)
+end

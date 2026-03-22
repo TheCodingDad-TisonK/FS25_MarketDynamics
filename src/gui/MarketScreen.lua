@@ -24,12 +24,13 @@ function MDMMarketScreen.new()
     self.name       = "MDMMarketScreen"
     self.className  = "MDMMarketScreen"
 
-    self.activeTab         = TAB_PRICES
-    self.commodities       = {}
-    self.selectedCropIndex = 1
-    self.eventData         = {}
-    self.contractData      = {}
-    self.refreshTimer      = 0
+    self.activeTab              = TAB_PRICES
+    self.commodities            = {}
+    self.selectedCropIndex      = 1
+    self.eventData              = {}
+    self.contractData           = {}
+    self.selectedContractIndex  = 0
+    self.refreshTimer           = 0
     self.returnScreenName  = ""
     self.menuButtonInfo    = {}
     -- (dialogOpen and inline dialog state removed — MDMContractDialog handles its own state)
@@ -399,11 +400,38 @@ function MDMMarketScreen:onListSelectionChanged(list, section, index)
     if list == self.commodityList and index > 0 then
         self.selectedCropIndex = index
         self:refreshPricesDetail()
+    elseif list == self.contractList and index > 0 then
+        self.selectedContractIndex = index
     end
 end
 
 function MDMMarketScreen:onClickCommodity(element)
     -- onListSelectionChanged handles selection; nothing extra needed
+end
+
+-- Called when the player clicks a row in the Contracts tab list.
+-- Opens the admin panel dialog for that contract.
+function MDMMarketScreen:onContractRowClick(element)
+    local idx = self.selectedContractIndex or 0
+    local contract = self.contractData[idx]
+    if not contract then return end
+
+    MDMDialogLoader.show("MDMContractAdminDialog", "setData", {
+        contract   = contract,
+        onComplete = function(contractId)
+            self:_onContractAdminAction("complete", contractId)
+        end,
+        onCancel   = function(contractId)
+            self:_onContractAdminAction("cancel", contractId)
+        end,
+    })
+end
+
+-- Refresh the contracts list after an admin action.
+function MDMMarketScreen:_onContractAdminAction(action, contractId)
+    MDMLog.info(string.format("MarketScreen: admin %s contract #%s", action, tostring(contractId)))
+    self:_buildContractData()
+    self:reloadAllLists()
 end
 
 -- ---------------------------------------------------------------------------

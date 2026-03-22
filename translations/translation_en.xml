@@ -90,6 +90,21 @@
         <text name="mdm_dialog_no_crops"      text="No market data available yet." />
         <text name="mdm_screen_new_contract_btn" text="New Contract [N]" />
 
+        <!-- Contract admin dialog -->
+        <text name="mdm_admin_title"            text="Contract Details" />
+        <text name="mdm_admin_details_label"    text="Contract Info" />
+        <text name="mdm_admin_summary_label"    text="Value Summary" />
+        <text name="mdm_admin_crop"             text="Crop:" />
+        <text name="mdm_admin_qty"              text="Quantity:" />
+        <text name="mdm_admin_price"            text="Locked price:" />
+        <text name="mdm_admin_delivered"        text="Delivered:" />
+        <text name="mdm_admin_deadline"         text="Deadline:" />
+        <text name="mdm_admin_status"           text="Status:" />
+        <text name="mdm_admin_complete"         text="Force Complete" />
+        <text name="mdm_admin_cancel_contract"  text="Cancel Contract" />
+        <text name="mdm_admin_close"            text="Close" />
+        <text name="mdm_admin_settled"          text="This contract is already settled." />
+
         <!-- Settings -->
         <text name="mdm_settings_mdm_general"  text="Market Dynamics" />
     

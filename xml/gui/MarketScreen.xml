@@ -127,7 +127,7 @@
           <!-- List container: Y-UP anchorBottomLeft. bottom=143, height=450 → top=593 (75px from content top) -->
           <GuiElement id="contractListContainer" position="0px 143px" width="1000px" height="450px">
             <SmoothList id="contractList" profile="mdm_smoothList">
-              <ListItem profile="mdm_commodityItem">
+              <ListItem profile="mdm_commodityItem" onClick="onContractRowClick">
                 <Bitmap profile="mdm_commodityItemBg" name="alternating"/>
                 <Text profile="mdm_cellLeft"  name="contractCrop"     size="130px 32px"/>
                 <Text profile="mdm_cellRight" name="contractQty"      position="140px 0px"/>

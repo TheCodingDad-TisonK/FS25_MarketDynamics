@@ -62,7 +62,8 @@ function MarketDynamics:onMissionLoaded(mission)
 
     -- Dialog loader: init + register modal dialogs
     MDMDialogLoader.init(self.modDir)
-    MDMDialogLoader.register("MDMContractDialog", MDMContractDialog, "xml/gui/MDMContractDialog.xml")
+    MDMDialogLoader.register("MDMContractDialog",      MDMContractDialog,      "xml/gui/MDMContractDialog.xml")
+    MDMDialogLoader.register("MDMContractAdminDialog", MDMContractAdminDialog, "xml/gui/MDMContractAdminDialog.xml")
 
     MDMLog.info("MarketDynamics: mission loaded, system active")
 end
