@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<!--
+    MDM Futures Contract Creation Dialog
+    MessageDialog subclass — WCSalaryDialog confirmed pattern.
+    Controller: MDMContractDialog (src/gui/MDMContractDialog.lua)
+    Opened via: MDMDialogLoader.show("MDMContractDialog", "setData", params)
+
+    Two-column layout inside fs25_dialogContentContainer (Y-down convention):
+      Left  (0px–425px):   Selected crop info (static display — no SmoothList)
+      Right (445px–880px): Qty presets, delivery window, summary, price signal
+    Full-width bottom row: Cancel + Confirm (3-layer buttons)
+
+    Crop selection happens in the main MarketScreen list (Prices tab).
+    The dialog operates on whichever crop was selected when N was pressed.
+
+    All buttons use 3-layer pattern: Bitmap (bg) + Button (emptyPanel hit) + Text (label).
+-->
+<GUI name="MDMContractDialog" onOpen="onOpen" onClose="onClose" onCreate="onCreate">
+  <GuiElement profile="newLayer" />
+  <Bitmap profile="dialogFullscreenBg" />
+
+  <GuiElement profile="dialogBg" id="dialogElement" size="920px 700px">
+    <ThreePartBitmap profile="fs25_dialogBgMiddle" />
+    <ThreePartBitmap profile="fs25_dialogBgTop" />
+    <ThreePartBitmap profile="fs25_dialogBgBottom" />
+
+    <GuiElement profile="fs25_dialogContentContainer">
+
+      <!-- ═══════ DIALOG TITLE ═══════ -->
+      <Text profile="mdmDlg_title" id="dlgTitleText" text="$l10n_mdm_futures_new_title" position="0px -12px"/>
+
+      <!-- ═══════ LEFT COLUMN: Selected crop display ═══════ -->
+      <Text profile="mdmDlg_sectionLabel" text="$l10n_mdm_futures_crop_label" position="0px -48px"/>
+
+      <Text profile="mdmDlg_cropName"   id="dlgCropName"   position="0px -80px"  size="425px 30px"/>
+      <Text profile="mdmDlg_cropPrice"  id="dlgCropPrice"  position="0px -118px" size="425px 24px"/>
+      <Text profile="mdmDlg_cropChange" id="dlgCropChange" position="0px -148px" size="425px 24px"/>
+
+      <ThreePartBitmap profile="fs25_lineSeparatorTop" position="0px -185px" width="400px"/>
+
+      <Text profile="mdmDlg_cropHint" id="dlgNoCrops"
+            text="$l10n_mdm_dialog_no_crops"
+            position="0px -200px" size="420px 60px"/>
+
+      <!-- ═══════ RIGHT COLUMN ═══════ -->
+
+      <!-- Quantity presets -->
+      <Text profile="mdmDlg_sectionLabel" text="$l10n_mdm_dialog_qty_label" position="445px -48px"/>
+
+      <!-- Qty 500 -->
+      <Bitmap profile="mdmDlg_optBtnBg" position="445px -72px"  size="143px 38px"/>
+      <Button profile="mdmDlg_btnHit"   id="dlgQty500"     onClick="onQtyClick" position="445px -72px"  size="143px 38px"/>
+      <Text   profile="mdmDlg_btnText"  id="dlgQty500Text" text="500 L"         position="445px -72px"  size="143px 38px"/>
+
+      <!-- Qty 1000 -->
+      <Bitmap profile="mdmDlg_optBtnBg" position="597px -72px"  size="143px 38px"/>
+      <Button profile="mdmDlg_btnHit"   id="dlgQty1000"     onClick="onQtyClick" position="597px -72px"  size="143px 38px"/>
+      <Text   profile="mdmDlg_btnText"  id="dlgQty1000Text" text="1,000 L"       position="597px -72px"  size="143px 38px"/>
+
+      <!-- Qty 5000 -->
+      <Bitmap profile="mdmDlg_optBtnBg" position="749px -72px"  size="143px 38px"/>
+      <Button profile="mdmDlg_btnHit"   id="dlgQty5000"     onClick="onQtyClick" position="749px -72px"  size="143px 38px"/>
+      <Text   profile="mdmDlg_btnText"  id="dlgQty5000Text" text="5,000 L"       position="749px -72px"  size="143px 38px"/>
+
+      <!-- Qty 10000 -->
+      <Bitmap profile="mdmDlg_optBtnBg" position="445px -117px" size="143px 38px"/>
+      <Button profile="mdmDlg_btnHit"   id="dlgQty10000"     onClick="onQtyClick" position="445px -117px" size="143px 38px"/>
+      <Text   profile="mdmDlg_btnText"  id="dlgQty10000Text" text="10,000 L"      position="445px -117px" size="143px 38px"/>
+
+      <!-- Qty 25000 -->
+      <Bitmap profile="mdmDlg_optBtnBg" position="597px -117px" size="143px 38px"/>
+      <Button profile="mdmDlg_btnHit"   id="dlgQty25000"     onClick="onQtyClick" position="597px -117px" size="143px 38px"/>
+      <Text   profile="mdmDlg_btnText"  id="dlgQty25000Text" text="25,000 L"      position="597px -117px" size="143px 38px"/>
+
+      <!-- Qty 50000 -->
+      <Bitmap profile="mdmDlg_optBtnBg" position="749px -117px" size="143px 38px"/>
+      <Button profile="mdmDlg_btnHit"   id="dlgQty50000"     onClick="onQtyClick" position="749px -117px" size="143px 38px"/>
+      <Text   profile="mdmDlg_btnText"  id="dlgQty50000Text" text="50,000 L"      position="749px -117px" size="143px 38px"/>
+
+      <!-- Delivery window -->
+      <Text profile="mdmDlg_sectionLabel" text="$l10n_mdm_dialog_delivery_label" position="445px -167px"/>
+
+      <!-- Del 30 -->
+      <Bitmap profile="mdmDlg_optBtnBg" position="445px -191px" size="205px 38px"/>
+      <Button profile="mdmDlg_btnHit"   id="dlgDel30"     onClick="onDelivClick" position="445px -191px" size="205px 38px"/>
+      <Text   profile="mdmDlg_btnText"  id="dlgDel30Text" text="30 Days"         position="445px -191px" size="205px 38px"/>
+
+      <!-- Del 60 -->
+      <Bitmap profile="mdmDlg_optBtnBg" position="660px -191px" size="205px 38px"/>
+      <Button profile="mdmDlg_btnHit"   id="dlgDel60"     onClick="onDelivClick" position="660px -191px" size="205px 38px"/>
+      <Text   profile="mdmDlg_btnText"  id="dlgDel60Text" text="60 Days"         position="660px -191px" size="205px 38px"/>
+
+      <!-- Del 90 -->
+      <Bitmap profile="mdmDlg_optBtnBg" position="445px -236px" size="205px 38px"/>
+      <Button profile="mdmDlg_btnHit"   id="dlgDel90"     onClick="onDelivClick" position="445px -236px" size="205px 38px"/>
+      <Text   profile="mdmDlg_btnText"  id="dlgDel90Text" text="90 Days"         position="445px -236px" size="205px 38px"/>
+
+      <!-- Del 120 -->
+      <Bitmap profile="mdmDlg_optBtnBg" position="660px -236px" size="205px 38px"/>
+      <Button profile="mdmDlg_btnHit"   id="dlgDel120"     onClick="onDelivClick" position="660px -236px" size="205px 38px"/>
+      <Text   profile="mdmDlg_btnText"  id="dlgDel120Text" text="120 Days"        position="660px -236px" size="205px 38px"/>
+
+      <!-- Summary -->
+      <Text profile="mdmDlg_sectionLabel"  text="$l10n_mdm_dialog_summary"  position="445px -288px"/>
+      <Text profile="mdmDlg_summaryRow"    id="dlgSumCrop"     position="445px -313px"/>
+      <Text profile="mdmDlg_summaryRow"    id="dlgSumQty"      position="445px -337px"/>
+      <Text profile="mdmDlg_summaryRow"    id="dlgSumLocked"   position="445px -361px"/>
+      <Text profile="mdmDlg_summaryBig"    id="dlgSumTotal"    position="445px -394px"/>
+      <Text profile="mdmDlg_summaryRow"    id="dlgSumDeadline" position="445px -430px"/>
+      <Text profile="mdmDlg_summarySmall"  id="dlgSumPenalty"  position="445px -455px"/>
+
+      <!-- Price signal (color set by Lua) -->
+      <Text profile="mdmDlg_signal"    id="dlgSignal"    position="445px -490px"/>
+
+      <!-- BC-mode blocked message (shown instead of signal) -->
+      <Text profile="mdmDlg_bcBlocked" id="dlgBcBlocked" text="$l10n_mdm_dialog_bc_blocked" position="445px -490px" visible="false"/>
+
+      <!-- ═══════ ACTION BUTTONS — 3-layer, inside content container ═══════ -->
+
+      <!-- Cancel (left) -->
+      <Bitmap profile="mdmDlg_cancelBtnBg" position="40px  -535px" size="390px 44px"/>
+      <Button profile="mdmDlg_btnHit"      id="dlgCancelBtn"   onClick="onCancelClick"  position="40px  -535px" size="390px 44px"/>
+      <Text   profile="mdmDlg_btnText"     id="dlgCancelText"  text="$l10n_mdm_futures_cancel"  position="40px  -535px" size="390px 44px"/>
+
+      <!-- Confirm (right) -->
+      <Bitmap profile="mdmDlg_confirmBtnBg" position="470px -535px" size="390px 44px"/>
+      <Button profile="mdmDlg_btnHit"       id="dlgConfirmBtn"  onClick="onConfirmClick" position="470px -535px" size="390px 44px"/>
+      <Text   profile="mdmDlg_btnText"      id="dlgConfirmText" text="$l10n_mdm_futures_confirm" position="470px -535px" size="390px 44px"/>
+
+    </GuiElement>
+
+  </GuiElement>
+
+  <!-- ═══════ INLINE PROFILES ═══════ -->
+  <GUIProfiles>
+
+    <Profile name="mdmDlg_title" extends="fs25_textDefault" with="anchorTopLeft">
+      <textSize value="22px"/>
+      <textBold value="true"/>
+      <textColor value="$preset_fs25_colorMainHighlight"/>
+    </Profile>
+
+    <Profile name="mdmDlg_sectionLabel" extends="fs25_textDefault" with="anchorTopLeft">
+      <textSize value="12px"/>
+      <textBold value="true"/>
+      <textUpperCase value="true"/>
+      <textColor value="$preset_colorWhite_50"/>
+    </Profile>
+
+    <!-- Left column: selected crop display -->
+    <Profile name="mdmDlg_cropName" extends="fs25_textDefault" with="anchorTopLeft">
+      <textSize value="20px"/>
+      <textBold value="true"/>
+      <textColor value="$preset_fs25_colorMainHighlight"/>
+    </Profile>
+
+    <Profile name="mdmDlg_cropPrice" extends="fs25_textDefault" with="anchorTopLeft">
+      <textSize value="15px"/>
+      <textColor value="$preset_colorWhite"/>
+    </Profile>
+
+    <Profile name="mdmDlg_cropChange" extends="fs25_textDefault" with="anchorTopLeft">
+      <textSize value="14px"/>
+      <textBold value="true"/>
+    </Profile>
+
+    <Profile name="mdmDlg_cropHint" extends="fs25_textDefault" with="anchorTopLeft">
+      <textSize value="11px"/>
+      <textColor value="$preset_colorWhite_50"/>
+      <textWrap value="true"/>
+    </Profile>
+
+    <!-- 3-layer button profiles -->
+    <Profile name="mdmDlg_optBtnBg" extends="baseReference" with="anchorTopLeft">
+      <imageColor value="0.15 0.18 0.22 0.90"/>
+    </Profile>
+
+    <Profile name="mdmDlg_confirmBtnBg" extends="baseReference" with="anchorTopLeft">
+      <imageColor value="0.10 0.30 0.15 0.95"/>
+    </Profile>
+
+    <Profile name="mdmDlg_cancelBtnBg" extends="baseReference" with="anchorTopLeft">
+      <imageColor value="0.28 0.10 0.10 0.90"/>
+    </Profile>
+
+    <Profile name="mdmDlg_btnHit" extends="emptyPanel" with="anchorTopLeft">
+      <isFocusable value="true"/>
+    </Profile>
+
+    <Profile name="mdmDlg_btnText" extends="fs25_textDefault" with="anchorTopLeft">
+      <textSize value="13px"/>
+      <textBold value="true"/>
+      <textColor value="0.75 0.75 0.75 1.0"/>
+      <textAlignment value="center"/>
+      <textVerticalAlignment value="middle"/>
+    </Profile>
+
+    <Profile name="mdmDlg_summaryRow" extends="fs25_textDefault" with="anchorTopLeft">
+      <textSize value="14px"/>
+      <textColor value="$preset_colorWhite"/>
+    </Profile>
+
+    <Profile name="mdmDlg_summaryBig" extends="fs25_textDefault" with="anchorTopLeft">
+      <textSize value="20px"/>
+      <textBold value="true"/>
+      <textColor value="$preset_fs25_colorMainHighlight"/>
+    </Profile>
+
+    <Profile name="mdmDlg_summarySmall" extends="fs25_textDefault" with="anchorTopLeft">
+      <textSize value="12px"/>
+      <textColor value="$preset_colorWhite_50"/>
+    </Profile>
+
+    <Profile name="mdmDlg_signal" extends="fs25_textDefault" with="anchorTopLeft">
+      <textSize value="14px"/>
+      <textBold value="true"/>
+    </Profile>
+
+    <Profile name="mdmDlg_bcBlocked" extends="fs25_textDefault" with="anchorTopLeft">
+      <textSize value="15px"/>
+      <textBold value="true"/>
+      <textColor value="0.95 0.75 0.10 1.0"/>
+    </Profile>
+
+  </GUIProfiles>
+</GUI>

@@ -140,6 +140,14 @@ function FuturesMarket:_fulfillContract(id)
     g_currentMission:addMoney(payout, contract.farmId, MoneyType.OTHER, true)
     MDMLog.info("FuturesMarket: contract #" .. id .. " FULFILLED — payout $" .. payout)
 
+    -- HUD notification (only show to the owning farm's local player)
+    if g_localPlayer and g_localPlayer.farmId == contract.farmId then
+        local msg = string.format("Contract fulfilled: %s — $%s paid out",
+            contract.fillTypeName,
+            g_i18n:formatMoney(math.floor(payout), 0, true, false))
+        g_currentMission:addIngameNotification(FSBaseMission.INGAME_NOTIFICATION_OK, msg)
+    end
+
     -- Notify UPIntegration for credit score reporting.
     UPIntegration.onContractFulfilled(id, contract.farmId, payout)
 end
@@ -182,6 +190,22 @@ function FuturesMarket:_defaultContract(id)
     MDMLog.warn(string.format(
         "FuturesMarket: contract #%d DEFAULTED — delivered %dL/%dL  partial $%.2f  penalty -$%.2f  net $%.2f",
         id, delivered, contract.quantity, partialPayout, penalty, net))
+
+    -- HUD notification (only show to the owning farm's local player)
+    if g_localPlayer and g_localPlayer.farmId == contract.farmId then
+        local msg
+        if net > 0 then
+            msg = string.format("Contract defaulted: %s — %dL/%dL delivered, $%s after penalty",
+                contract.fillTypeName,
+                delivered, contract.quantity,
+                g_i18n:formatMoney(math.floor(net), 0, true, false))
+        else
+            msg = string.format("Contract defaulted: %s — %dL/%dL delivered, no payout",
+                contract.fillTypeName,
+                delivered, contract.quantity)
+        end
+        g_currentMission:addIngameNotification(FSBaseMission.INGAME_NOTIFICATION_CRITICAL, msg)
+    end
 
     -- Notify UPIntegration for credit score reporting.
     UPIntegration.onContractDefaulted(id, contract.farmId, penalty)
