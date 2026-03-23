@@ -59,7 +59,13 @@
       "Bash(head -20 grep -rn \"fs25_subCategoryTabButton\\\\|tabButton\" /tmp/usedplus_inspect/gui/)",
       "Bash(sed -i 's/MDMLog\\\\.info\\(\"\"LivestockBoomEvent fired — forage crops up \"\" \\\\.\\\\. string\\\\.format\\(\"\"%.0f%%%%\"\", \\(factor - 1\\) \\\\* 100\\)\\)/MDMLog.info\\(\"\"LivestockBoomEvent fired — forage crops up \"\" .. math.floor\\(\\(factor - 1\\) * 100\\) .. \"\"%\"\"\\)/' \"/c/Users/tison/Desktop/FS25 MODS/FS25_MarketDynamics/src/events/LivestockBoomEvent.lua\")",
       "Bash(sed -i 's/MDMLog\\\\.info\\(\"\"BiofuelInitiativeEvent fired — energy crops up \"\" \\\\.\\\\. string\\\\.format\\(\"\"%.0f%%%%\"\", \\(factor - 1\\) \\\\* 100\\)\\)/MDMLog.info\\(\"\"BiofuelInitiativeEvent fired — energy crops up \"\" .. math.floor\\(\\(factor - 1\\) * 100\\) .. \"\"%\"\"\\)/' \"/c/Users/tison/Desktop/FS25 MODS/FS25_MarketDynamics/src/events/BiofuelInitiativeEvent.lua\")",
-      "Bash(sed -i 's/MDMLog\\\\.info\\(\"\"PestOutbreakEvent fired — root crops up \"\" \\\\.\\\\. string\\\\.format\\(\"\"%.0f%%%%\"\", \\(factor - 1\\) \\\\* 100\\)\\)/MDMLog.info\\(\"\"PestOutbreakEvent fired — root crops up \"\" .. math.floor\\(\\(factor - 1\\) * 100\\) .. \"\"%\"\"\\)/' \"/c/Users/tison/Desktop/FS25 MODS/FS25_MarketDynamics/src/events/PestOutbreakEvent.lua\")"
+      "Bash(sed -i 's/MDMLog\\\\.info\\(\"\"PestOutbreakEvent fired — root crops up \"\" \\\\.\\\\. string\\\\.format\\(\"\"%.0f%%%%\"\", \\(factor - 1\\) \\\\* 100\\)\\)/MDMLog.info\\(\"\"PestOutbreakEvent fired — root crops up \"\" .. math.floor\\(\\(factor - 1\\) * 100\\) .. \"\"%\"\"\\)/' \"/c/Users/tison/Desktop/FS25 MODS/FS25_MarketDynamics/src/events/PestOutbreakEvent.lua\")",
+      "Bash(py build.py --deploy)",
+      "Bash(powershell -Command \"Select-String -Path 'C:\\\\Users\\\\tison\\\\Documents\\\\My Games\\\\FarmingSimulator2025\\\\log.txt' -Pattern '\\\\[SoilFertilizer\\\\]|FARMLAND_OWNER|Error.*[Ss]oil|[Ss]oil.*[Ee]rror' | Select-Object -Last 40 | ForEach-Object { \\\\$_.Line }\")",
+      "Bash(powershell -Command \"Select-String -Path 'C:\\\\Users\\\\tison\\\\Documents\\\\My Games\\\\FarmingSimulator2025\\\\log.txt' -Pattern 'Error:|LUA method' | Select-Object -Last 20 | ForEach-Object { \\\\$_.Line }\")",
+      "Bash(powershell -Command \"Select-String -Path 'C:\\\\Users\\\\tison\\\\Documents\\\\My Games\\\\FarmingSimulator2025\\\\log.txt' -Pattern 'LUA method .update.|LUA method .mouseEvent.' | Select-Object -Last 5 | ForEach-Object { \\\\$_.LineNumber }\")",
+      "Bash(powershell -Command \"Get-Content 'C:\\\\Users\\\\tison\\\\Documents\\\\My Games\\\\FarmingSimulator2025\\\\log.txt' | Select-Object -Last 30\")",
+      "Skill(fs25-status)"
     ]
   }
 }

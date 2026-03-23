@@ -27,7 +27,7 @@
       <!-- ═══════ LEFT COLUMN: Contract details ═══════ -->
       <Text profile="mdmAdm_sectionLabel" text="$l10n_mdm_admin_details_label" position="0px -50px"/>
 
-      <Text profile="mdmAdm_rowLabel" id="admCropLabel"      text="$l10n_mdm_admin_crop"      position="0px  -76px"/>
+      <Text profile="mdmAdm_rowLabel" id="admCropLabel"      text="$l10n_mdm_admin_crop"      position="0px -76px"/>
       <Text profile="mdmAdm_rowValue" id="admCropValue"                                        position="150px -76px" size="270px 24px"/>
 
       <Text profile="mdmAdm_rowLabel" id="admQtyLabel"       text="$l10n_mdm_admin_qty"        position="0px -104px"/>
@@ -41,11 +41,11 @@
 
       <ThreePartBitmap profile="fs25_lineSeparatorTop" position="0px -195px" width="400px"/>
 
-      <Text profile="mdmAdm_rowLabel" id="admDeadlineLabel"  text="$l10n_mdm_admin_deadline"   position="0px -215px"/>
-      <Text profile="mdmAdm_rowValue" id="admDeadlineValue"                                    position="150px -215px" size="270px 24px"/>
+      <Text profile="mdmAdm_rowLabel" id="admDeadlineLabel"  text="$l10n_mdm_admin_deadline"   position="0px -218px"/>
+      <Text profile="mdmAdm_rowValue" id="admDeadlineValue"                                    position="150px -218px" size="270px 24px"/>
 
-      <Text profile="mdmAdm_rowLabel" id="admStatusLabel"    text="$l10n_mdm_admin_status"     position="0px -243px"/>
-      <Text profile="mdmAdm_statusValue" id="admStatusValue"                                   position="150px -243px" size="270px 28px"/>
+      <Text profile="mdmAdm_rowLabel" id="admStatusLabel"    text="$l10n_mdm_admin_status"     position="0px -246px"/>
+      <Text profile="mdmAdm_statusValue" id="admStatusValue"                                   position="150px -246px" size="270px 28px"/>
 
       <!-- ═══════ RIGHT COLUMN: Value summary + actions ═══════ -->
       <Text profile="mdmAdm_sectionLabel" text="$l10n_mdm_admin_summary_label" position="440px -50px"/>
@@ -53,14 +53,14 @@
       <Text profile="mdmAdm_summaryRow" id="admSumTotal"    position="440px -76px"/>
       <Text profile="mdmAdm_summaryRow" id="admSumProgress" position="440px -104px"/>
 
-      <ThreePartBitmap profile="fs25_lineSeparatorTop" position="440px -140px" width="440px"/>
+      <ThreePartBitmap profile="fs25_lineSeparatorTop" position="440px -148px" width="440px"/>
 
       <!-- Action hint (tells player what each button does) -->
-      <Text profile="mdmAdm_hint" id="admActionHint" position="440px -160px" size="440px 100px"/>
+      <Text profile="mdmAdm_hint" id="admActionHint" position="440px -172px" size="440px 100px"/>
 
       <!-- Settled-contract notice (shown instead of action buttons for fulfilled/defaulted) -->
       <Text profile="mdmAdm_settled" id="admSettledNotice" text="$l10n_mdm_admin_settled"
-            position="440px -160px" size="440px 60px" visible="false"/>
+            position="440px -172px" size="440px 60px" visible="false"/>
 
     </GuiElement>
 

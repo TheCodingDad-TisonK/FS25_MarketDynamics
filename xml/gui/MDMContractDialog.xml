@@ -36,11 +36,11 @@
       <Text profile="mdmDlg_cropPrice"  id="dlgCropPrice"  position="0px -118px" size="425px 24px"/>
       <Text profile="mdmDlg_cropChange" id="dlgCropChange" position="0px -148px" size="425px 24px"/>
 
-      <ThreePartBitmap profile="fs25_lineSeparatorTop" position="0px -185px" width="400px"/>
+      <ThreePartBitmap profile="fs25_lineSeparatorTop" position="0px -180px" width="400px"/>
 
       <Text profile="mdmDlg_cropHint" id="dlgNoCrops"
             text="$l10n_mdm_dialog_no_crops"
-            position="0px -200px" size="420px 60px"/>
+            position="0px -196px" size="420px 60px"/>
 
       <!-- ═══════ RIGHT COLUMN ═══════ -->
 
@@ -78,27 +78,27 @@
       <Text   profile="mdmDlg_btnText"  id="dlgQty50000Text" text="50,000 L"      position="749px -117px" size="143px 38px"/>
 
       <!-- Delivery window -->
-      <Text profile="mdmDlg_sectionLabel" text="$l10n_mdm_dialog_delivery_label" position="445px -167px"/>
+      <Text profile="mdmDlg_sectionLabel" text="$l10n_mdm_dialog_delivery_label" position="445px -163px"/>
 
       <!-- Del 30 -->
-      <Bitmap profile="mdmDlg_optBtnBg" position="445px -191px" size="205px 38px"/>
-      <Button profile="mdmDlg_btnHit"   id="dlgDel30"     onClick="onDelivClick" position="445px -191px" size="205px 38px"/>
-      <Text   profile="mdmDlg_btnText"  id="dlgDel30Text" text="30 Days"         position="445px -191px" size="205px 38px"/>
+      <Bitmap profile="mdmDlg_optBtnBg" position="445px -187px" size="205px 38px"/>
+      <Button profile="mdmDlg_btnHit"   id="dlgDel30"     onClick="onDelivClick" position="445px -187px" size="205px 38px"/>
+      <Text   profile="mdmDlg_btnText"  id="dlgDel30Text" text="30 Days"         position="445px -187px" size="205px 38px"/>
 
       <!-- Del 60 -->
-      <Bitmap profile="mdmDlg_optBtnBg" position="660px -191px" size="205px 38px"/>
-      <Button profile="mdmDlg_btnHit"   id="dlgDel60"     onClick="onDelivClick" position="660px -191px" size="205px 38px"/>
-      <Text   profile="mdmDlg_btnText"  id="dlgDel60Text" text="60 Days"         position="660px -191px" size="205px 38px"/>
+      <Bitmap profile="mdmDlg_optBtnBg" position="660px -187px" size="205px 38px"/>
+      <Button profile="mdmDlg_btnHit"   id="dlgDel60"     onClick="onDelivClick" position="660px -187px" size="205px 38px"/>
+      <Text   profile="mdmDlg_btnText"  id="dlgDel60Text" text="60 Days"         position="660px -187px" size="205px 38px"/>
 
       <!-- Del 90 -->
-      <Bitmap profile="mdmDlg_optBtnBg" position="445px -236px" size="205px 38px"/>
-      <Button profile="mdmDlg_btnHit"   id="dlgDel90"     onClick="onDelivClick" position="445px -236px" size="205px 38px"/>
-      <Text   profile="mdmDlg_btnText"  id="dlgDel90Text" text="90 Days"         position="445px -236px" size="205px 38px"/>
+      <Bitmap profile="mdmDlg_optBtnBg" position="445px -232px" size="205px 38px"/>
+      <Button profile="mdmDlg_btnHit"   id="dlgDel90"     onClick="onDelivClick" position="445px -232px" size="205px 38px"/>
+      <Text   profile="mdmDlg_btnText"  id="dlgDel90Text" text="90 Days"         position="445px -232px" size="205px 38px"/>
 
       <!-- Del 120 -->
-      <Bitmap profile="mdmDlg_optBtnBg" position="660px -236px" size="205px 38px"/>
-      <Button profile="mdmDlg_btnHit"   id="dlgDel120"     onClick="onDelivClick" position="660px -236px" size="205px 38px"/>
-      <Text   profile="mdmDlg_btnText"  id="dlgDel120Text" text="120 Days"        position="660px -236px" size="205px 38px"/>
+      <Bitmap profile="mdmDlg_optBtnBg" position="660px -232px" size="205px 38px"/>
+      <Button profile="mdmDlg_btnHit"   id="dlgDel120"     onClick="onDelivClick" position="660px -232px" size="205px 38px"/>
+      <Text   profile="mdmDlg_btnText"  id="dlgDel120Text" text="120 Days"        position="660px -232px" size="205px 38px"/>
 
       <!-- Summary -->
       <Text profile="mdmDlg_sectionLabel"  text="$l10n_mdm_dialog_summary"  position="445px -288px"/>
