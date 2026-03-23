@@ -36,7 +36,6 @@
       <Text profile="mdmDlg_cropPrice"  id="dlgCropPrice"  position="0px -118px" size="425px 24px"/>
       <Text profile="mdmDlg_cropChange" id="dlgCropChange" position="0px -148px" size="425px 24px"/>
 
-      <ThreePartBitmap profile="fs25_lineSeparatorTop" position="0px -180px" width="400px"/>
 
       <Text profile="mdmDlg_cropHint" id="dlgNoCrops"
             text="$l10n_mdm_dialog_no_crops"
