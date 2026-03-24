@@ -144,7 +144,12 @@ function MDMMarketScreen:onGuiSetupFinished()
     self.tabUnderlineContracts = self:getDescendantById("tabUnderlineContracts")
 
     self.contractsHeader = self:getDescendantById("contractsHeader")
-    self.contractsColCrop = self:getDescendantById("contractsColCrop")
+    self.contractsColCrop      = self:getDescendantById("contractsColCrop")
+    self.contractsColQty       = self:getDescendantById("contractsColQty")
+    self.contractsColLocked    = self:getDescendantById("contractsColLocked")
+    self.contractsColDelivered = self:getDescendantById("contractsColDelivered")
+    self.contractsColDeadline  = self:getDescendantById("contractsColDeadline")
+    self.contractsColStatus    = self:getDescendantById("contractsColStatus")
     self.noContractsText = self:getDescendantById("noContractsText")
     self.newContractHint = self:getDescendantById("newContractHint")
 
@@ -184,7 +189,12 @@ function MDMMarketScreen:onGuiSetupFinished()
     _setTextSafe(self.eventsHeader, "mdm_screen_events_hdr", "ACTIVE EVENTS")
     _setTextSafe(self.noEventsText, "mdm_screen_no_events", "No events")
     _setTextSafe(self.contractsHeader, "mdm_screen_contracts_hdr", "FUTURES CONTRACTS")
-    _setTextSafe(self.contractsColCrop, "mdm_screen_col_crop", "Crop")
+    _setTextSafe(self.contractsColCrop,      "mdm_screen_col_crop",      "Crop")
+    _setTextSafe(self.contractsColQty,       "mdm_screen_col_qty",       "Qty")
+    _setTextSafe(self.contractsColLocked,    "mdm_screen_col_locked",    "Locked")
+    _setTextSafe(self.contractsColDelivered, "mdm_screen_col_delivered", "Delivered")
+    _setTextSafe(self.contractsColDeadline,  "mdm_screen_col_deadline",  "Deadline")
+    _setTextSafe(self.contractsColStatus,    "mdm_screen_col_status",    "Status")
     _setTextSafe(self.noContractsText, "mdm_screen_no_contracts", "No contracts")
     _setTextSafe(self.newContractHint, "mdm_screen_new_contract_btn", "New Contract [N]")
 end
@@ -196,16 +206,9 @@ function MDMMarketScreen:onOpen()
     self:rebuildAllData()
     self:reloadAllLists()
 
-    -- Admin command mdmContracts: jump straight to contracts tab + open dialog
-    if g_MarketDynamics and g_MarketDynamics._autoOpenContracts then
-        g_MarketDynamics._autoOpenContracts = false
-        self:setActiveTab(TAB_CONTRACTS)
-        self:openContractDialog()
-    else
-        self:setActiveTab(TAB_PRICES)
-        if self.selectedCropIndex > 0 and #self.commodities > 0 then
-            self:refreshPricesDetail()
-        end
+    self:setActiveTab(TAB_PRICES)
+    if self.selectedCropIndex > 0 and #self.commodities > 0 then
+        self:refreshPricesDetail()
     end
 
 end

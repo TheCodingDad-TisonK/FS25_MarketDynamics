@@ -13,7 +13,7 @@
 --   Mission00.loadMission00Finished — init engine, register events, activate
 --   Mission00.onStartMission    — load saved state from XML
 --   FSBaseMission.update        — tick all subsystems
---   FSBaseMission.draw          — delegate to g_MDMHud if present
+--   FSBaseMission.draw          — delegate to g_MDMHud if market screen is open
 --   FSCareerMissionInfo.saveToXMLFile — persist state
 --   FSBaseMission.delete        — cleanup
 --
@@ -60,7 +60,6 @@ function MarketDynamics:onMissionLoaded(mission)
     BCIntegration.init(self.marketEngine)
     UPIntegration.init()
     MDMSettingsUI.initGui(self.modDir)
-    self._debugHud = MDMDebugHUD.new()  -- TEMP: remove when LeGrizzly's GUI lands
     MDMAdminCommands_register()
 
     -- Dialog loader: init + register modal dialogs (client only — no GUI on dedicated servers)
@@ -90,8 +89,7 @@ function MarketDynamics:update(dt)
     BCIntegration.update()           -- expire BC supply-spike modifiers
 end
 
--- Per-frame draw. Delegates to g_MDMHud if one is registered.
--- LeGrizzly's GUI sets g_MDMHud on load; the debug HUD uses the same slot.
+-- Per-frame draw. Delegates to g_MDMHud if the market screen registers one.
 function MarketDynamics:draw()
     if not self.isActive then return end
     if g_MDMHud then
@@ -108,14 +106,6 @@ end
 
 function MarketDynamics:delete()
     self.isActive = false
-    -- Only nil the internal debug HUD reference. g_MDMHud is LeGrizzly's GUI
-    -- global and belongs to that module -- clearing it here would silently
-    -- destroy the production HUD on every mission exit/reload.
-    if g_MDMHud == self._debugHud then
-        -- The debug HUD is currently active; clear the shared ref before dropping it.
-        g_MDMHud = nil
-    end
-    self._debugHud = nil
     MDMAdminCommands_remove()
     MDMDialogLoader.cleanup()
     MDMLog.info("MarketDynamics: deleted")

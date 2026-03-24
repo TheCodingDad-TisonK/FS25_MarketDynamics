@@ -91,14 +91,12 @@
         <GuiElement id="eventsContent" position="0px 0px" width="1000px" height="668px" visible="false" debugEnabled="false">
           <!-- Header: 10px from top → TOP at 658 -->
           <Text profile="mdm_sectionHeader" id="eventsHeader" text="$l10n_mdm_screen_events_hdr" position="0px 658px"/>
-          <!-- Column headers: 40px from top → TOP at 628 -->
-          <GuiElement profile="mdm_listHeaderRow" position="0px 628px">
-            <Text profile="mdm_colHeaderLeft"  text="$l10n_mdm_screen_col_event"     position="10px 0"/>
-            <Text profile="mdm_colHeaderRight" text="$l10n_mdm_screen_col_intensity" position="500px 0"/>
-            <Text profile="mdm_colHeaderRight" text="$l10n_mdm_screen_col_time_left" position="700px 0"/>
-          </GuiElement>
+          <!-- Column headers: matching data cell positions exactly -->
+          <Text profile="mdm_colHeaderLeft"  text="$l10n_mdm_screen_col_event"     position="10px 628px"  size="340px 32px"/>
+          <Text profile="mdm_colHeaderLeft"  text="$l10n_mdm_screen_col_intensity" position="350px 628px" size="350px 32px"/>
+          <Text profile="mdm_colHeaderRight" text="$l10n_mdm_screen_col_time_left" position="700px 628px" size="100px 32px"/>
           <!-- List container: Y-UP anchorBottomLeft. bottom=118, height=475 → top=593 (75px from content top) -->
-          <GuiElement id="eventListContainer" position="0px 118px" width="1000px" height="475px">
+          <GuiElement id="eventListContainer" position="0px 83px" width="1000px" height="475px">
             <SmoothList id="eventList" profile="mdm_smoothList">
               <ListItem profile="mdm_commodityItem">
                 <Bitmap profile="mdm_commodityItemBg" name="alternating"/>
@@ -115,17 +113,15 @@
         <GuiElement id="contractsContent" position="0px 0px" width="1000px" height="668px" visible="false" debugEnabled="false">
           <!-- Header: 10px from top → TOP at 658 -->
           <Text profile="mdm_sectionHeader" id="contractsHeader" text="$l10n_mdm_screen_contracts_hdr" position="0px 658px"/>
-          <!-- Column headers: 40px from top → TOP at 628 -->
-          <GuiElement profile="mdm_listHeaderRow" position="0px 628px">
-            <Text profile="mdm_colHeaderLeft" id="contractsColCrop"       text="$l10n_mdm_screen_col_crop"       position="10px 0"/>
-            <Text profile="mdm_colHeaderRight" id="contractsColQty"       text="$l10n_mdm_screen_col_qty"        position="140px 0"/>
-            <Text profile="mdm_colHeaderRight" id="contractsColLocked"    text="$l10n_mdm_screen_col_locked"     position="240px 0"/>
-            <Text profile="mdm_colHeaderRight" id="contractsColDelivered" text="$l10n_mdm_screen_col_delivered"  position="330px 0"/>
-            <Text profile="mdm_colHeaderRight" id="contractsColDeadline"  text="$l10n_mdm_screen_col_deadline"   position="430px 0"/>
-            <Text profile="mdm_colHeaderRight" id="contractsColStatus"    text="$l10n_mdm_screen_col_status"     position="530px 0"/>
-          </GuiElement>
-          <!-- List container: Y-UP anchorBottomLeft. bottom=143, height=450 → top=593 (75px from content top) -->
-          <GuiElement id="contractListContainer" position="0px 143px" width="1000px" height="450px">
+          <!-- Column headers: at list top (593px), filling the first-row slot -->
+          <Text profile="mdm_colHeaderLeft"  id="contractsColCrop"       text="$l10n_mdm_screen_col_crop"      position="10px 593px"  size="130px 32px"/>
+          <Text profile="mdm_colHeaderRight" id="contractsColQty"        text="$l10n_mdm_screen_col_qty"       position="140px 593px" size="100px 32px"/>
+          <Text profile="mdm_colHeaderRight" id="contractsColLocked"     text="$l10n_mdm_screen_col_locked"    position="240px 593px" size="100px 32px"/>
+          <Text profile="mdm_colHeaderRight" id="contractsColDelivered"  text="$l10n_mdm_screen_col_delivered" position="330px 593px" size="100px 32px"/>
+          <Text profile="mdm_colHeaderRight" id="contractsColDeadline"   text="$l10n_mdm_screen_col_deadline"  position="430px 593px" size="100px 32px"/>
+          <Text profile="mdm_colHeaderRight" id="contractsColStatus"     text="$l10n_mdm_screen_col_status"    position="530px 593px" size="200px 32px"/>
+          <!-- List container: shifted down 32px to sit below column headers -->
+          <GuiElement id="contractListContainer" position="0px 76px" width="1000px" height="450px">
             <SmoothList id="contractList" profile="mdm_smoothList">
               <ListItem profile="mdm_commodityItem" onClick="onContractRowClick">
                 <Bitmap profile="mdm_commodityItemBg" name="alternating"/>

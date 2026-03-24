@@ -7,8 +7,8 @@
 --      (large supply hits market → prices dip for ~1 in-game hour)
 --   3. Cleans up expired supply-spike modifiers on each update tick
 --
--- MDM's futures contract UI is NOT suppressed — BC contracts (harvest jobs)
--- and MDM futures (price-lock deals) serve different purposes and coexist.
+-- MDM's futures contract UI remains available alongside BetterContracts —
+-- BC harvest jobs and MDM futures contracts serve different purposes and coexist.
 --
 -- BC detection: g_modManager:getModByName("FS25_BetterContracts")
 -- Author: tison (dev-1)

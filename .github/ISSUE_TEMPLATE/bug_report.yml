@@ -17,7 +17,7 @@ body:
     attributes:
       label: Mod Version
       description: Found in modDesc.xml or the in-game mod manager.
-      placeholder: "e.g. 0.1.0.0"
+      placeholder: "e.g. 1.0.0.0"
     validations:
       required: true
 

@@ -50,8 +50,6 @@ source(modDirectory .. "src/AdminCommands.lua")
 source(modDirectory .. "src/BCIntegration.lua")
 source(modDirectory .. "src/UPIntegration.lua")
 
--- Debug HUD (TEMP: remove when LeGrizzly's GUI lands)
-source(modDirectory .. "src/DebugHUD.lua")
 source(modDirectory .. "src/gui/SettingsUI.lua")
 
 -- GUI screens (LeGrizzly / dev-2)

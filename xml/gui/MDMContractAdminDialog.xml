@@ -5,9 +5,12 @@
     Controller: MDMContractAdminDialog (src/gui/MDMContractAdminDialog.lua)
     Opened via: MDMDialogLoader.show("MDMContractAdminDialog", "setData", params)
 
-    Layout:
+    Layout (revised):
+      Title:  centered at top
+      Separator line: below title
       Left  (0px–420px):   Contract details (crop, qty, price, delivered, deadline, status)
-      Right (440px–860px): Value summary + action buttons
+      Top-Right (440px–880px): Action hint / tip
+      Bottom-Left: Value summary
     Full-width bottom strip: Complete | Cancel Contract | Close (standard dialog area)
 -->
 <GUI name="MDMContractAdminDialog" onOpen="onOpen" onClose="onClose" onCreate="onCreate">
@@ -21,46 +24,45 @@
 
     <GuiElement profile="fs25_dialogContentContainer">
 
-      <!-- ═══════ TITLE ═══════ -->
-      <Text profile="mdmAdm_title" id="admTitleText" text="$l10n_mdm_admin_title" position="0px -12px"/>
+      <!-- ═══════ TITLE — centered ═══════ -->
+      <Text profile="mdmAdm_titleCenter" id="admTitleText" text="$l10n_mdm_admin_title" position="0px -12px" size="880px 30px"/>
+
+      <!-- Separator line under title -->
+      <Bitmap profile="mdmAdm_separator" position="0px -48px" size="880px 2px"/>
 
       <!-- ═══════ LEFT COLUMN: Contract details ═══════ -->
-      <Text profile="mdmAdm_sectionLabel" text="$l10n_mdm_admin_details_label" position="0px -50px"/>
+      <Text profile="mdmAdm_sectionLabel" text="$l10n_mdm_admin_details_label" position="0px -62px"/>
 
-      <Text profile="mdmAdm_rowLabel" id="admCropLabel"      text="$l10n_mdm_admin_crop"      position="0px  -76px"/>
-      <Text profile="mdmAdm_rowValue" id="admCropValue"                                        position="150px -76px" size="270px 24px"/>
+      <Text profile="mdmAdm_rowLabel" id="admCropLabel"      text="$l10n_mdm_admin_crop"      position="0px -88px"/>
+      <Text profile="mdmAdm_rowValue" id="admCropValue"                                        position="150px -88px" size="270px 24px"/>
 
-      <Text profile="mdmAdm_rowLabel" id="admQtyLabel"       text="$l10n_mdm_admin_qty"        position="0px -104px"/>
-      <Text profile="mdmAdm_rowValue" id="admQtyValue"                                         position="150px -104px" size="270px 24px"/>
+      <Text profile="mdmAdm_rowLabel" id="admQtyLabel"       text="$l10n_mdm_admin_qty"        position="0px -116px"/>
+      <Text profile="mdmAdm_rowValue" id="admQtyValue"                                         position="150px -116px" size="270px 24px"/>
 
-      <Text profile="mdmAdm_rowLabel" id="admPriceLabel"     text="$l10n_mdm_admin_price"      position="0px -132px"/>
-      <Text profile="mdmAdm_rowValue" id="admPriceValue"                                       position="150px -132px" size="270px 24px"/>
+      <Text profile="mdmAdm_rowLabel" id="admPriceLabel"     text="$l10n_mdm_admin_price"      position="0px -144px"/>
+      <Text profile="mdmAdm_rowValue" id="admPriceValue"                                       position="150px -144px" size="270px 24px"/>
 
-      <Text profile="mdmAdm_rowLabel" id="admDelivLabel"     text="$l10n_mdm_admin_delivered"  position="0px -160px"/>
-      <Text profile="mdmAdm_rowValue" id="admDelivValue"                                       position="150px -160px" size="270px 24px"/>
+      <Text profile="mdmAdm_rowLabel" id="admDelivLabel"     text="$l10n_mdm_admin_delivered"  position="0px -172px"/>
+      <Text profile="mdmAdm_rowValue" id="admDelivValue"                                       position="150px -172px" size="270px 24px"/>
 
-      <ThreePartBitmap profile="fs25_lineSeparatorTop" position="0px -195px" width="400px"/>
+      <Text profile="mdmAdm_rowLabel" id="admDeadlineLabel"  text="$l10n_mdm_admin_deadline"   position="0px -200px"/>
+      <Text profile="mdmAdm_rowValue" id="admDeadlineValue"                                    position="150px -200px" size="270px 24px"/>
 
-      <Text profile="mdmAdm_rowLabel" id="admDeadlineLabel"  text="$l10n_mdm_admin_deadline"   position="0px -215px"/>
-      <Text profile="mdmAdm_rowValue" id="admDeadlineValue"                                    position="150px -215px" size="270px 24px"/>
+      <Text profile="mdmAdm_rowLabel" id="admStatusLabel"    text="$l10n_mdm_admin_status"     position="0px -228px"/>
+      <Text profile="mdmAdm_statusValue" id="admStatusValue"                                   position="150px -228px" size="270px 28px"/>
 
-      <Text profile="mdmAdm_rowLabel" id="admStatusLabel"    text="$l10n_mdm_admin_status"     position="0px -243px"/>
-      <Text profile="mdmAdm_statusValue" id="admStatusValue"                                   position="150px -243px" size="270px 28px"/>
+      <!-- ═══════ TOP-RIGHT: Hint / tip ═══════ -->
+      <Text profile="mdmAdm_hint" id="admActionHint" position="440px -62px" size="440px 160px"/>
 
-      <!-- ═══════ RIGHT COLUMN: Value summary + actions ═══════ -->
-      <Text profile="mdmAdm_sectionLabel" text="$l10n_mdm_admin_summary_label" position="440px -50px"/>
-
-      <Text profile="mdmAdm_summaryRow" id="admSumTotal"    position="440px -76px"/>
-      <Text profile="mdmAdm_summaryRow" id="admSumProgress" position="440px -104px"/>
-
-      <ThreePartBitmap profile="fs25_lineSeparatorTop" position="440px -140px" width="440px"/>
-
-      <!-- Action hint (tells player what each button does) -->
-      <Text profile="mdmAdm_hint" id="admActionHint" position="440px -160px" size="440px 100px"/>
-
-      <!-- Settled-contract notice (shown instead of action buttons for fulfilled/defaulted) -->
+      <!-- Settled-contract notice (shown instead of hint for fulfilled/defaulted) -->
       <Text profile="mdmAdm_settled" id="admSettledNotice" text="$l10n_mdm_admin_settled"
-            position="440px -160px" size="440px 60px" visible="false"/>
+            position="440px -62px" size="440px 80px" visible="false"/>
+
+      <!-- ═══════ BOTTOM-LEFT: Value summary ═══════ -->
+      <Text profile="mdmAdm_sectionLabel" text="$l10n_mdm_admin_summary_label" position="0px -290px"/>
+
+      <Text profile="mdmAdm_summaryRow" id="admSumTotal"    position="0px -316px"/>
+      <Text profile="mdmAdm_summaryRow" id="admSumProgress" position="0px -344px"/>
 
     </GuiElement>
 
@@ -78,10 +80,20 @@
   <!-- ═══════ INLINE PROFILES ═══════ -->
   <GUIProfiles>
 
-    <Profile name="mdmAdm_title" extends="fs25_textDefault" with="anchorTopLeft">
+    <Profile name="mdmAdm_titleCenter" extends="fs25_textDefault" with="anchorTopLeft">
       <textSize value="22px"/>
       <textBold value="true"/>
+      <textAlignment value="center"/>
       <textColor value="$preset_fs25_colorMainHighlight"/>
+    </Profile>
+
+    <!-- Keep old title profile for backward compat -->
+    <Profile name="mdmAdm_title" extends="mdmAdm_titleCenter">
+      <textAlignment value="left"/>
+    </Profile>
+
+    <Profile name="mdmAdm_separator" extends="baseReference" with="anchorTopLeft">
+      <imageColor value="1.0 1.0 1.0 0.18"/>
     </Profile>
 
     <Profile name="mdmAdm_sectionLabel" extends="fs25_textDefault" with="anchorTopLeft">
