@@ -1,8 +1,7 @@
 # FS25_MarketDynamics
 
 > [!TIP]
-> Want to join the conversation or track development?
-> [Dev Log & Progress Tracker](https://github.com/TheCodingDad-TisonK/TheCodingDad-TisonK/issues/4)
+> Want to be part of our community? Share tips, report issues, and chat with other farmers on the **[FS25 Modding Community Discord](https://discord.gg/Th2pnq36)**!
 
 **Real-world inspired dynamic crop pricing for Farming Simulator 25.**
 
