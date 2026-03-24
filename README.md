@@ -1,18 +1,11 @@
 # FS25_MarketDynamics
 
 > [!TIP]
-> Want to follow development or join the conversation?
-> [Dev Log & Progress Tracker](https://github.com/TheCodingDad-TisonK/TheCodingDad-TisonK/issues/4)
+> Want to be part of our community? Share tips, report issues, and chat with other farmers on the **[FS25 Modding Community Discord](https://discord.gg/Th2pnq36)**!
 
 **Real-world inspired dynamic crop pricing for Farming Simulator 25.**
 
 Prices no longer sit static. A drought in Europe, a bumper harvest in the Americas, a geopolitical shock — they all move markets. Open the Market screen, track live prices, react to global events, and lock in your harvest via futures contracts like a real commodity trader.
-
----
-
-<a href="https://paypal.me/TheCodingDad">
-  <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" alt="Donate via PayPal" height="50">
-</a>
 
 ---
 
