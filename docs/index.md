@@ -3,7 +3,7 @@
 Dynamic crop pricing driven by world events, supply/demand, and intraday volatility.
 Includes a futures contract system for hedging harvest prices.
 
-**Version:** 0.1.0.0 · **Authors:** TheCodingDad (tison) & LeGrizzly
+**Version:** 1.0.0.0 · **Authors:** TheCodingDad (tison) & LeGrizzly
 
 ---
 

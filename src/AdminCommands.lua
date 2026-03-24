@@ -12,10 +12,6 @@
 --   mdmExpire <eventId>    force-expire an active event immediately
 --   mdmPrice  <cropName>   show current vs base price for a crop (e.g. mdmPrice wheat)
 --   mdmEvents              list all registered events with status and cooldown
---   mdmBCMode [on|off]     toggle BetterContracts integration
---   mdmUPMode [on|off]     toggle UsedPlus integration
---   mdmHud                 toggle the debug HUD overlay (TEMP)
---   mdmContracts           open market screen → Contracts tab → New Contract dialog
 --
 -- Author: tison (dev-1)
 
@@ -148,243 +144,24 @@ local function cmdEvents(self)
     print("=============================")
 end
 
-local function cmdBCMode(self, arg)
-    if not g_MarketDynamics or not g_MarketDynamics.isActive then
-        print("[MDM] System not active")
-        return
-    end
-
-    if not BCIntegration.isAvailable() then
-        print("[MDM] BetterContracts is not installed — BC mode unavailable")
-        return
-    end
-
-    if arg == "on" or arg == "1" or arg == "true" then
-        BCIntegration.setEnabled(true)
-        print("[MDM] BC mode ON — supply reactions active, MDM futures UI suppressed")
-    elseif arg == "off" or arg == "0" or arg == "false" then
-        BCIntegration.setEnabled(false)
-        print("[MDM] BC mode OFF — MDM futures system active")
-    else
-        local state = BCIntegration.isEnabled() and "ON" or "OFF"
-        print("[MDM] BC mode is currently: " .. state)
-        print("[MDM] Usage: mdmBCMode on | off")
-    end
-end
-
-local function cmdUPMode(self, arg)
-    if not g_MarketDynamics or not g_MarketDynamics.isActive then
-        print("[MDM] System not active")
-        return
-    end
-
-    if not UPIntegration.isAvailable() then
-        print("[MDM] FS25_UsedPlus is not installed — UP mode unavailable")
-        return
-    end
-
-    if arg == "on" or arg == "1" or arg == "true" then
-        UPIntegration.setEnabled(true)
-        print("[MDM] UP mode ON — futures contracts will affect credit score (stubs active)")
-    elseif arg == "off" or arg == "0" or arg == "false" then
-        UPIntegration.setEnabled(false)
-        print("[MDM] UP mode OFF")
-    else
-        local state = UPIntegration.isEnabled() and "ON" or "OFF"
-        print("[MDM] UP mode is currently: " .. state)
-        print("[MDM] Usage: mdmUPMode on | off")
-    end
-end
-
-local function cmdUPTest(self, outcome)
-    if not g_MarketDynamics or not g_MarketDynamics.isActive then
-        print("[MDM] System not active")
-        return
-    end
-
-    if not UPIntegration.isAvailable() then
-        print("[MDM] FS25_UsedPlus is not installed — cannot test")
-        return
-    end
-
-    if not UPIntegration.isEnabled() then
-        print("[MDM] UP mode is OFF — run 'mdmUPMode on' first")
-        return
-    end
-
-    outcome = outcome or "fulfill"
-    if outcome ~= "fulfill" and outcome ~= "default" then
-        print("[MDM] Usage: mdmUPTest [fulfill|default]")
-        return
-    end
-
-    -- Create a synthetic contract directly (bypasses UI, uses farmId 1)
-    local farmId = g_currentMission and g_currentMission.player and
-        g_currentMission.player.farmId or 1
-
-    -- Diagnostics: confirm what's visible in our mod's environment
-    print("[MDM] UPTest: UsedPlusAPI type = " .. type(UsedPlusAPI))
-    -- Cross-mod global visibility probe: if g_rvbMenu is readable here, FS25 globals
-    -- are shared across mods and rawset(_G,...) should work. If nil, sandbox is real.
-    print("[MDM] UPTest: g_rvbMenu visible = " .. tostring(g_rvbMenu ~= nil))
-    print("[MDM] UPTest: rawget(_G,'UsedPlusAPI') = " .. tostring(rawget(_G, "UsedPlusAPI") ~= nil))
-    if type(UsedPlusAPI) == "table" then
-        print("[MDM] UPTest: UsedPlusAPI.isReady = " .. tostring(UsedPlusAPI.isReady and UsedPlusAPI.isReady()))
-        print("[MDM] UPTest: registerExternalDeal = " .. type(UsedPlusAPI.registerExternalDeal))
-    end
-
-    print("[MDM] UPTest: creating test futures contract (wheat, 10000L, farmId=" .. farmId .. ")")
-
-    local contractId = g_MarketDynamics.futuresMarket:createContract({
-        farmId        = farmId,
-        fillTypeIndex = 1,
-        fillTypeName  = "Wheat",
-        quantity      = 10000,
-        lockedPrice   = 1.50,
-        deliveryTimeMs = (g_currentMission and g_currentMission.time or 0) + 60000,
-    })
-
-    print("[MDM] UPTest: contract #" .. contractId .. " created — settling as: " .. outcome)
-
-    if outcome == "fulfill" then
-        g_MarketDynamics.futuresMarket.contracts[contractId].delivered = 10000
-        g_MarketDynamics.futuresMarket:_fulfillContract(contractId)
-        print("[MDM] UPTest: fulfilled — check log for UPIntegration deal report")
-    else
-        g_MarketDynamics.futuresMarket:_defaultContract(contractId)
-        print("[MDM] UPTest: defaulted — check log for UPIntegration default report")
-    end
-
-    -- Show credit score after settlement
-    local score = UPIntegration.getCreditScore(farmId)
-    if score then
-        print("[MDM] UPTest: credit score for farm " .. farmId .. " = " .. score)
-    else
-        print("[MDM] UPTest: credit score unavailable (not server or UP not responding)")
-    end
-end
-
-local function cmdHud(self)
-    if not g_MarketDynamics or not g_MarketDynamics.isActive then
-        print("[MDM] System not active")
-        return
-    end
-
-    if g_MDMHud then
-        g_MDMHud = nil
-        print("[MDM] Debug HUD: OFF")
-    else
-        g_MDMHud = g_MarketDynamics._debugHud
-        print("[MDM] Debug HUD: ON")
-    end
-end
-
-local function cmdContracts(self)
-    if not g_MarketDynamics or not g_MarketDynamics.isActive then
-        print("[MDM] System not active")
-        return
-    end
-    -- Set flag so onOpen() auto-navigates to contracts tab and opens the dialog
-    g_MarketDynamics._autoOpenContracts = true
-    MDMMarketScreen.show()
-    print("[MDM] Opening market screen → Contracts tab → New Contract dialog")
-end
-
--- mdmContract: directly open the contract dialog (bypasses MarketScreen entirely)
-local function cmdContract(self)
-    if not g_MarketDynamics or not g_MarketDynamics.isActive then
-        print("[MDM] System not active")
-        return
-    end
-
-    print("[MDM] mdmContract: directly calling MDMDialogLoader.show ...")
-
-    -- Build minimal commodity list from engine so the dialog has real data
-    local commodities = {}
-    if g_MarketDynamics.marketEngine then
-        for fillTypeIndex, entry in pairs(g_MarketDynamics.marketEngine.prices) do
-            local ft = g_fillTypeManager:getFillTypeByIndex(fillTypeIndex)
-            local isCrop = g_fruitTypeManager ~= nil
-                and g_fruitTypeManager.getFruitTypeByFillTypeIndex ~= nil
-                and g_fruitTypeManager:getFruitTypeByFillTypeIndex(fillTypeIndex) ~= nil
-            if ft and isCrop then
-                local changePct = g_MarketDynamics.marketEngine:getPriceChangePercent(fillTypeIndex)
-                table.insert(commodities, {
-                    idx       = fillTypeIndex,
-                    name      = ft.name,
-                    title     = ft.title or ft.name,
-                    current   = entry.current,
-                    base      = entry.base,
-                    changePct = changePct,
-                })
-            end
-        end
-        table.sort(commodities, function(a, b) return a.title < b.title end)
-    end
-
-    print("[MDM] mdmContract: built " .. #commodities .. " commodity entries")
-    print("[MDM] mdmContract: loader registry size = " .. (function()
-        local n = 0
-        for _ in pairs(MDMDialogLoader._registry) do n = n + 1 end
-        return n
-    end)())
-
-    local entry = MDMDialogLoader._registry["MDMContractDialog"]
-    if not entry then
-        print("[MDM] mdmContract: ERROR — 'MDMContractDialog' not in loader registry!")
-        return
-    end
-    print("[MDM] mdmContract: registry entry found, loaded=" .. tostring(entry.loaded))
-
-    local ok, err = pcall(function()
-        MDMDialogLoader.show("MDMContractDialog", "setData", {
-            commodities = commodities,
-            selectedIdx = 1,
-            onConfirmed = function(crop, qty, delivDays)
-                print("[MDM] mdmContract: confirmed — " .. tostring(crop and crop.title) .. " " .. tostring(qty) .. "L " .. tostring(delivDays) .. "d")
-            end,
-        })
-    end)
-
-    if not ok then
-        print("[MDM] mdmContract: pcall ERROR: " .. tostring(err))
-    else
-        print("[MDM] mdmContract: show() call completed (check log for loader msgs)")
-    end
-end
-
 -- ---------------------------------------------------------------------------
 -- Registration / removal — called from MarketDynamics lifecycle
 -- ---------------------------------------------------------------------------
 
 function MDMAdminCommands_register()
-    -- Attach handlers to the coordinator instance first — console resolves
-    -- "cmdMdmXxx" as a method lookup on the target object passed below.
-    g_MarketDynamics.cmdMdmStatus  = cmdStatus
-    g_MarketDynamics.cmdMdmEvent   = cmdEvent
-    g_MarketDynamics.cmdMdmExpire  = cmdExpire
-    g_MarketDynamics.cmdMdmPrice   = cmdPrice
-    g_MarketDynamics.cmdMdmEvents  = cmdEvents
-    g_MarketDynamics.cmdMdmBCMode  = cmdBCMode
-    g_MarketDynamics.cmdMdmUPMode  = cmdUPMode
-    g_MarketDynamics.cmdMdmUPTest  = cmdUPTest
-    g_MarketDynamics.cmdMdmHud       = cmdHud
-    g_MarketDynamics.cmdMdmContracts = cmdContracts
-    g_MarketDynamics.cmdMdmContract  = cmdContract
+    g_MarketDynamics.cmdMdmStatus = cmdStatus
+    g_MarketDynamics.cmdMdmEvent  = cmdEvent
+    g_MarketDynamics.cmdMdmExpire = cmdExpire
+    g_MarketDynamics.cmdMdmPrice  = cmdPrice
+    g_MarketDynamics.cmdMdmEvents = cmdEvents
 
-    addConsoleCommand("mdmStatus",    "MDM: system health and active events",              "cmdMdmStatus",    g_MarketDynamics)
-    addConsoleCommand("mdmEvent",     "MDM: force-fire event (arg: eventId)",              "cmdMdmEvent",     g_MarketDynamics)
-    addConsoleCommand("mdmExpire",    "MDM: force-expire active event (arg: eventId)",     "cmdMdmExpire",    g_MarketDynamics)
-    addConsoleCommand("mdmPrice",     "MDM: show price for a crop (arg: cropName)",        "cmdMdmPrice",     g_MarketDynamics)
-    addConsoleCommand("mdmEvents",    "MDM: list all registered events and status",        "cmdMdmEvents",    g_MarketDynamics)
-    addConsoleCommand("mdmBCMode",    "MDM: toggle BetterContracts integration (on/off)",  "cmdMdmBCMode",    g_MarketDynamics)
-    addConsoleCommand("mdmUPMode",    "MDM: toggle UsedPlus integration (on/off)",         "cmdMdmUPMode",    g_MarketDynamics)
-    addConsoleCommand("mdmUPTest",    "MDM: test UP contract lifecycle (fulfill|default)",  "cmdMdmUPTest",    g_MarketDynamics)
-    addConsoleCommand("mdmHud",       "MDM: toggle debug HUD overlay",                     "cmdMdmHud",       g_MarketDynamics)
-    addConsoleCommand("mdmContracts", "MDM: open market screen → Contracts → New dialog",  "cmdMdmContracts", g_MarketDynamics)
-    addConsoleCommand("mdmContract",  "MDM: directly open contract dialog (debug)",        "cmdMdmContract",  g_MarketDynamics)
+    addConsoleCommand("mdmStatus", "MDM: system health and active events",          "cmdMdmStatus", g_MarketDynamics)
+    addConsoleCommand("mdmEvent",  "MDM: force-fire event (arg: eventId)",          "cmdMdmEvent",  g_MarketDynamics)
+    addConsoleCommand("mdmExpire", "MDM: force-expire active event (arg: eventId)", "cmdMdmExpire", g_MarketDynamics)
+    addConsoleCommand("mdmPrice",  "MDM: show price for a crop (arg: cropName)",    "cmdMdmPrice",  g_MarketDynamics)
+    addConsoleCommand("mdmEvents", "MDM: list all registered events and status",    "cmdMdmEvents", g_MarketDynamics)
 
-    MDMLog.info("AdminCommands: registered 11 console commands")
+    MDMLog.info("AdminCommands: registered 5 console commands")
 end
 
 function MDMAdminCommands_remove()
@@ -393,10 +170,4 @@ function MDMAdminCommands_remove()
     removeConsoleCommand("mdmExpire")
     removeConsoleCommand("mdmPrice")
     removeConsoleCommand("mdmEvents")
-    removeConsoleCommand("mdmBCMode")
-    removeConsoleCommand("mdmUPMode")
-    removeConsoleCommand("mdmUPTest")
-    removeConsoleCommand("mdmHud")
-    removeConsoleCommand("mdmContracts")
-    removeConsoleCommand("mdmContract")
 end

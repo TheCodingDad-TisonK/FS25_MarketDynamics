@@ -1,12 +1,12 @@
 # FS25_MarketDynamics
 
 > [!TIP]
-> Want to join the conversation or track development?
+> Want to follow development or join the conversation?
 > [Dev Log & Progress Tracker](https://github.com/TheCodingDad-TisonK/TheCodingDad-TisonK/issues/4)
 
 **Real-world inspired dynamic crop pricing for Farming Simulator 25.**
 
-Prices no longer sit static. A drought in Europe, a bumper harvest in the Americas, a geopolitical shock — they all move markets. Track live prices, react to global events, and lock in your harvest via futures contracts like a real commodity trader.
+Prices no longer sit static. A drought in Europe, a bumper harvest in the Americas, a geopolitical shock — they all move markets. Open the Market screen, track live prices, react to global events, and lock in your harvest via futures contracts like a real commodity trader.
 
 ---
 
@@ -19,10 +19,12 @@ Prices no longer sit static. A drought in Europe, a bumper harvest in the Americ
 ## Features
 
 ### Dynamic Pricing Engine
-- Per-crop price state with a base price + live modifier stack
+
+Every crop has a live price built from three layers: a base price that tracks the vanilla seasonal curve, a volatility factor that drifts intraday and daily with mean-reversion, and an event modifier stack that stacks cleanly and expires on its own. The price you see at the selling station is always the result of all three — no static values, no ghost effects after events end.
+
 - Intraday micro-fluctuations every in-game minute
 - Daily trend shifts with mean-reversion toward the base price
-- All modifiers stack and expire cleanly — no ghost effects after events end
+- Prices clamp between 50% and 200% of base — volatile but never absurd
 
 ### World Event System — 7 Events
 
@@ -36,17 +38,19 @@ Prices no longer sit static. A drought in Europe, a bumper harvest in the Americ
 | Livestock Feed Boom | Grass, Silage, Maize | +15–40% | 1.5 hrs |
 | Root Crop Blight | Potato, Sugarbeet | +20–60% | 1 hr |
 
-Events fire probabilistically on a fixed check interval with per-type cooldowns so markets feel alive, not random noise.
+Events fire probabilistically on a fixed check interval with per-type cooldowns so markets feel alive without becoming random noise. Intensity is rolled per-event, so a drought can hit mild one time and severe the next.
 
 ### Futures Contracts
-- Lock in a price now for delivery up to 120 in-game days in the future
-- Choose any crop tracked by MDM, set a quantity and delivery window
-- Fulfill by delivering before the deadline → full locked-price payout
-- Default (miss the deadline) → partial payout minus 15% penalty on the unfulfilled portion
-- Credit score integration with **FS25_UsedPlus** — good credit lowers the default penalty
 
-### Market Screen  *(Press **F10**)*
-Full InGameMenu page with three tabs:
+Lock in a sell price today for delivery up to 120 in-game days from now. Pick a crop, set a quantity, choose a delivery window — MDM handles the rest.
+
+- **Fulfill on time** → full locked-price payout, regardless of what the market did
+- **Miss the deadline** → partial payout, with a 15% penalty on the unfulfilled portion
+- Credit score integration with **FS25_UsedPlus** — good credit history lowers your default penalty (down to ~10%), poor history raises it (up to ~20%)
+
+### Market Screen *(Press F10)*
+
+A full InGameMenu page with three tabs:
 
 | Tab | What you see |
 |-----|-------------|
@@ -54,30 +58,35 @@ Full InGameMenu page with three tabs:
 | **Events** | All currently active world events with intensity (Mild / Moderate / Severe) and time remaining |
 | **Contracts** | Your active, fulfilled, and defaulted futures contracts |
 
-Press **Q / E** to cycle tabs, **Up / Down** to navigate lists.
+Press **Q / E** to cycle tabs, **Up / Down** to navigate the list.
 
-### Futures Contract Dialog  *(Press **N** or click "New Contract" in the Contracts tab)*
-- Crop selector with live prices and change % for every tracked crop
+### New Contract Dialog *(Press N, or click "New Contract")*
+
+- Crop selector with live prices and % change for every tracked crop
 - Six quantity presets: 500 / 1,000 / 5,000 / 10,000 / 25,000 / 50,000 L
 - Four delivery windows: 30 / 60 / 90 / 120 days
-- Live summary panel: locked price, total value, deadline, penalty note
-- **Price signal badge**: green ▲ when price is above base (good time to lock in), yellow ◆ near baseline, red ▼ below base (consider waiting)
-- Press **Enter** to confirm or **Escape** to cancel
+- Live summary panel: locked price, total contract value, deadline, penalty note
+- **Price signal badge** — green ▲ when the price is above its historical base (good time to lock in), yellow ◆ near baseline, red ▼ below base (consider waiting)
 
 ### Mod Integrations
 
-**FS25_BetterContracts** (by Mmtrx)
-- Harvest missions trigger supply-spike modifiers via the MDM price engine
-- MDM's own futures UI is suppressed when BC mode is active
-- BC can read MDM futures contracts via `g_currentMission.MarketDynamics.futuresMarket:getContractsForFarm(farmId)`
+**FS25_BetterContracts** (by Mmtrx) — when installed, completing a harvest contract triggers a short-lived supply-spike on the harvested crop (prices dip ~8% for one in-game hour, reflecting the increased supply hitting the market). MDM's futures UI remains fully available alongside BetterContracts — they serve different purposes and coexist cleanly.
 
-**FS25_UsedPlus** (by XelaNull)
-- Fulfilled contracts improve your credit score; defaults hurt it
-- Credit score scales the default penalty: excellent credit → ~10%, poor credit → ~20%
-- New contract registrations are forwarded to the UP credit bureau
+**FS25_UsedPlus** (by XelaNull) — fulfilled futures contracts improve your credit score; defaults hurt it. Your credit score then scales the penalty rate on future defaults. New contract registrations are forwarded to the UP credit bureau automatically on detection.
+
+### Settings
+
+All options are available in-game under ESC → Settings → Market Dynamics:
+
+- Enable / disable dynamic prices (fall back to vanilla prices)
+- Enable / disable world events
+- Event frequency (Rare / Normal / Frequent)
+- Price volatility scale (Low / Normal / High / Extreme)
+- Debug logging
 
 ### Translations
-Full localization for all 25 FS25 languages — generated via Google Translate from the English source.
+
+Full localization for all 25 Farming Simulator 25 languages, generated from the English source.
 
 ---
 
@@ -86,7 +95,7 @@ Full localization for all 25 FS25 languages — generated via Google Translate f
 1. Download `FS25_MarketDynamics.zip`
 2. Place in `Documents/My Games/FarmingSimulator2025/mods/`
 3. Enable in the in-game Mod Manager
-4. Start a career save — the mod activates automatically
+4. Start a career save — the mod activates automatically on load
 
 **Keyboard shortcuts** (rebindable in Game Controls):
 
@@ -99,9 +108,21 @@ Full localization for all 25 FS25 languages — generated via Google Translate f
 
 ## Compatibility
 
-- **Farming Simulator 25** — PC/Mac (singleplayer)
-- Multiplayer: not supported in v0.1
+- **Farming Simulator 25** — PC/Mac
+- **Singleplayer** — fully supported
+- **Multiplayer** — singleplayer only for now; multiplayer support is planned for a future release
 - Compatible with FS25_BetterContracts and FS25_UsedPlus (see integrations above)
+
+---
+
+## Roadmap
+
+These are features planned for future releases — not present in v0.1:
+
+- **Multiplayer support** — syncing price state and events across all connected clients on a dedicated server
+- **More world events** — seasonal harvest windows, currency crises, fuel price shocks
+- **Price alerts** — notify the player when a tracked crop crosses a threshold
+- **Contract templates** — save and reuse favourite crop/quantity/window combinations
 
 ---
 
@@ -110,8 +131,8 @@ Full localization for all 25 FS25 languages — generated via Google Translate f
 See [CONTRIBUTING.md](CONTRIBUTING.md) for branch structure, coding standards, and build instructions.
 
 **Authors:**
-- **TisonK (TheCodingDad)** — core systems (engine, events, futures, serializer, GUI)
-- **LeGrizzly** — original Market Screen UI design
+- **TisonK (TheCodingDad)** — core systems (engine, events, futures, serializer, GUI integration)
+- **LeGrizzly** — Market Screen UI design
 
 ---
 

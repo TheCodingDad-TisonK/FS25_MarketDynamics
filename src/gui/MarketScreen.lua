@@ -206,16 +206,9 @@ function MDMMarketScreen:onOpen()
     self:rebuildAllData()
     self:reloadAllLists()
 
-    -- Admin command mdmContracts: jump straight to contracts tab + open dialog
-    if g_MarketDynamics and g_MarketDynamics._autoOpenContracts then
-        g_MarketDynamics._autoOpenContracts = false
-        self:setActiveTab(TAB_CONTRACTS)
-        self:openContractDialog()
-    else
-        self:setActiveTab(TAB_PRICES)
-        if self.selectedCropIndex > 0 and #self.commodities > 0 then
-            self:refreshPricesDetail()
-        end
+    self:setActiveTab(TAB_PRICES)
+    if self.selectedCropIndex > 0 and #self.commodities > 0 then
+        self:refreshPricesDetail()
     end
 
 end
