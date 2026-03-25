@@ -10,6 +10,9 @@ Prices no longer sit static. A drought in Europe, a bumper harvest in the Americ
 
 ---
 
+[![Downloads](https://img.shields.io/github/downloads/TheCodingDad-TisonK/FS25_MarketDynamics/total?style=for-the-badge&logo=github&color=4caf50&logoColor=white)](https://github.com/TheCodingDad-TisonK/FS25_SoilFertilizer/releases)
+[![Release](https://img.shields.io/github/v/release/TheCodingDad-TisonK/FS25_MarketDynamics?style=for-the-badge&logo=tag&color=76c442&logoColor=white)](https://github.com/TheCodingDad-TisonK/FS25_SoilFertilizer/releases/latest)
+[![License](https://img.shields.io/badge/license-CC%20BY--NC--ND%204.0-lightgrey?style=for-the-badge&logo=creativecommons&logoColor=white)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
 <a href="https://paypal.me/TheCodingDad">
   <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" alt="Donate via PayPal" height="50">
 </a>
@@ -125,14 +128,23 @@ These are features planned for future releases — not present in v0.1:
 - **Contract templates** — save and reuse favourite crop/quantity/window combinations
 
 ---
+## Credits
+
+This project wouldn’t have been possible without the amazing people behind it:
+
+- **@RattlerGU** — for the original idea
+- **@TheCodingDad-TisonK** — lead developer & author
+- **@LeGrizzly** — contributor, made the initial **Market Screen** page
+- **@Mmtrx** — creator of *Better Contracts*, the integration and **testing** of the mod 
+- **@XelaNull** — creator of *UsedPlus*, for allowing integration
+
+Huge thanks to everyone involved — this was an incredibly fun project to build 💯
+
+---
 
 ## Development
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for branch structure, coding standards, and build instructions.
-
-**Authors:**
-- **TisonK (TheCodingDad)** — core systems (engine, events, futures, serializer, GUI integration)
-- **LeGrizzly** — Market Screen UI design
 
 ---
 
