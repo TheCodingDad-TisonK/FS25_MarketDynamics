@@ -91,18 +91,20 @@ if SellingStation and SellingStation.sellFillType then
     SellingStation.sellFillType = Utils.overwrittenFunction(
         SellingStation.sellFillType,
         function(self, superFunc, farmId, fillDelta, fillTypeIndex, toolType, extraAttributes)
-            local accepted = superFunc(self, farmId, fillDelta, fillTypeIndex, toolType, extraAttributes)
+            local result = superFunc(self, farmId, fillDelta, fillTypeIndex, toolType, extraAttributes)
 
-            -- Only track on server; only when MDM is active with a futures market
-            if accepted and accepted > 0
+            -- FS25's sellFillType does not return the accepted liter count.
+            -- We use fillDelta (the liters passed in) as the delivery amount.
+            -- Only track on server; only when MDM is active with a futures market.
+            if fillDelta and fillDelta > 0
                 and g_currentMission and g_currentMission.isServer
                 and g_MarketDynamics and g_MarketDynamics.isActive
                 and g_MarketDynamics.futuresMarket then
 
-                g_MarketDynamics.futuresMarket:onCropDelivered(farmId, fillTypeIndex, accepted)
+                g_MarketDynamics.futuresMarket:onCropDelivered(farmId, fillTypeIndex, fillDelta)
             end
 
-            return accepted
+            return result
         end
     )
 
