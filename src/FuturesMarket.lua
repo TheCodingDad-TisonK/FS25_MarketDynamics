@@ -135,6 +135,15 @@ function FuturesMarket:_fulfillContract(id)
     if g_currentMission and g_currentMission.isClient and not g_currentMission.isServer then return end
 
     contract.status = "fulfilled"
+
+    -- BC-managed contracts: payout is handled by the base game mission system.
+    -- MDM must not pay a second time; just update state and notify UP.
+    if contract.bcManaged then
+        MDMLog.info("FuturesMarket: contract #" .. id .. " FULFILLED (BC-managed — no MDM payout)")
+        UPIntegration.onContractFulfilled(id, contract.farmId, 0)
+        return
+    end
+
     local payout = contract.quantity * contract.lockedPrice
 
     g_currentMission:addMoney(payout, contract.farmId, MoneyType.OTHER, true)
@@ -169,6 +178,13 @@ function FuturesMarket:_defaultContract(id)
     if g_currentMission and g_currentMission.isClient and not g_currentMission.isServer then return end
 
     contract.status = "defaulted"
+
+    -- BC-managed contracts: penalty is handled by the base game mission system.
+    if contract.bcManaged then
+        MDMLog.warn("FuturesMarket: contract #" .. id .. " DEFAULTED (BC-managed — no MDM penalty)")
+        UPIntegration.onContractDefaulted(id, contract.farmId, 0)
+        return
+    end
 
     local delivered   = contract.delivered
     local unfulfilled = contract.quantity - delivered

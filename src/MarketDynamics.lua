@@ -57,7 +57,7 @@ function MarketDynamics:onMissionLoaded(mission)
     self.marketEngine:init()         -- snapshot vanilla base prices
     self:_registerDefaultEvents()    -- drain MDM_pendingRegistrations
     self.isActive = true             -- PriceHook now routes through MDM
-    BCIntegration.init(self.marketEngine)
+    BCIntegration.init(self.marketEngine, self.futuresMarket)
     UPIntegration.init()
     MDMSettingsUI.initGui(self.modDir)
     MDMAdminCommands_register()

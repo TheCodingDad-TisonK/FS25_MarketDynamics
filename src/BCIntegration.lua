@@ -7,8 +7,14 @@
 --      (large supply hits market → prices dip for ~1 in-game hour)
 --   3. Cleans up expired supply-spike modifiers on each update tick
 --
--- MDM's futures contract UI remains available alongside BetterContracts —
--- BC harvest jobs and MDM futures contracts serve different purposes and coexist.
+-- Futures contract integration (BC active):
+--   BC silences MDM's own contract-creation dialog and instead calls:
+--     BCIntegration.onBCContractCreated(params)   — at player signing
+--     BCIntegration.onBCContractFulfilled(id)     — on successful delivery
+--     BCIntegration.onBCContractDefaulted(id)     — on expiry without full delivery
+--   BC may also query:
+--     BCIntegration.getLockedPrice(fillTypeIndex) — current MDM price per litre
+--     BCIntegration.getDeliveryMs(periods)        — period count → absolute game-time ms
 --
 -- BC detection: g_modManager:getModByName("FS25_BetterContracts")
 -- Author: tison (dev-1)
@@ -28,6 +34,7 @@ local SUPPLY_SPIKE_DURATION  = 60 * 60 * 1000  -- 1 in-game hour (ms)
 
 local _hooked          = false  -- AbstractMission.finish hook installed?
 local _marketEngine    = nil    -- reference set in init()
+local _futuresMarket   = nil    -- reference set in init()
 local _pendingRemovals = {}     -- { fillTypeIndex, modId, expiresAt }
 
 -- ---------------------------------------------------------------------------
@@ -45,8 +52,9 @@ function BCIntegration.isEnabled()
 end
 
 -- Called from MarketDynamics:onMissionLoaded — safe to hook game APIs here.
-function BCIntegration.init(marketEngine)
-    _marketEngine = marketEngine
+function BCIntegration.init(marketEngine, futuresMarket)
+    _marketEngine  = marketEngine
+    _futuresMarket = futuresMarket
 
     if not BCIntegration.isAvailable() then
         MDMLog.info("BCIntegration: BetterContracts not detected — integration inactive")
@@ -76,6 +84,81 @@ function BCIntegration.update()
         end
         i = i - 1
     end
+end
+
+-- ---------------------------------------------------------------------------
+-- BetterContracts → MDM entry points
+-- ---------------------------------------------------------------------------
+
+-- Called by BC at contract signing. Registers the contract in MDM's tracking list
+-- and returns the MDM contract id so BC can reference it later.
+--
+-- params = { farmId, fillTypeIndex, fillTypeName, quantity, lockedPrice, deliveryTimeMs }
+-- Returns: contractId (integer), or nil if futuresMarket is not ready.
+function BCIntegration.onBCContractCreated(params)
+    if not _futuresMarket then
+        MDMLog.warn("BCIntegration.onBCContractCreated: futuresMarket not ready")
+        return nil
+    end
+    -- bcManaged=true tells FuturesMarket._fulfillContract/_defaultContract to skip
+    -- addMoney — BC handles payout and penalty through the base game mission system.
+    params.bcManaged = true
+    local id = _futuresMarket:createContract(params)
+    MDMLog.info("BCIntegration: BC contract registered as MDM contract #" .. tostring(id))
+    return id
+end
+
+-- Called by BC when a futures mission is successfully fulfilled.
+-- BC has already paid out the locked price; MDM just updates its list and
+-- notifies UPIntegration so the player's credit score improves.
+function BCIntegration.onBCContractFulfilled(contractId)
+    if not _futuresMarket then return end
+    local contract = _futuresMarket.contracts[contractId]
+    if not contract or contract.status ~= "active" then return end
+
+    contract.status = "fulfilled"
+    MDMLog.info("BCIntegration: contract #" .. tostring(contractId) .. " marked fulfilled by BC")
+    UPIntegration.onContractFulfilled(contractId, contract.farmId, 0)
+end
+
+-- Called by BC when a futures mission expires without full delivery.
+-- BC has already applied any penalty; MDM just updates its list and
+-- notifies UPIntegration so the player's credit score is affected.
+function BCIntegration.onBCContractDefaulted(contractId)
+    if not _futuresMarket then return end
+    local contract = _futuresMarket.contracts[contractId]
+    if not contract or contract.status ~= "active" then return end
+
+    contract.status = "defaulted"
+    MDMLog.warn("BCIntegration: contract #" .. tostring(contractId) .. " marked defaulted by BC")
+    UPIntegration.onContractDefaulted(contractId, contract.farmId, 0)
+end
+
+-- Returns MDM's current dynamic price per litre for a fill type.
+-- BC should call this at the moment the player signs a contract to get the
+-- locked price that MDM's engine has set (may differ from vanilla base price).
+-- Returns nil if MDM has no price data for the fill type.
+function BCIntegration.getLockedPrice(fillTypeIndex)
+    if not _marketEngine or not _marketEngine.prices then return nil end
+    local priceData = _marketEngine.prices[fillTypeIndex]
+    return priceData and priceData.current or nil
+end
+
+-- Converts a BC period count into an absolute game-time timestamp (ms) that
+-- MDM's FuturesMarket uses for delivery deadlines.
+--
+-- Giants calls a game month a "period". The player controls how many real
+-- game-days fit in one period (g_currentMission.environment.daysPerPeriod, 1-30).
+-- One game-day has a duration of environment.dayDuration milliseconds.
+--
+-- Example: periods=3, daysPerPeriod=30, dayDuration=3,600,000 ms (1 h/day)
+--   → deliveryTimeMs = now + 90 * 3,600,000
+function BCIntegration.getDeliveryMs(periods)
+    local env           = g_currentMission and g_currentMission.environment
+    local daysPerPeriod = (env and env.daysPerPeriod) or 30
+    local dayDuration   = (env and env.dayDuration)   or (24 * 60 * 60 * 1000)
+    local now           = (g_currentMission and g_currentMission.time) or 0
+    return now + (periods * daysPerPeriod * dayDuration)
 end
 
 -- ---------------------------------------------------------------------------
