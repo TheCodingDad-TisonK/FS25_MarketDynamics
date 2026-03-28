@@ -138,15 +138,6 @@ end
 
 function MDMContractDialog:onOpen()
     MDMContractDialog:superClass().onOpen(self)
-
-    -- When BetterContracts is active it owns the futures contract flow.
-    -- MDM's dialog would duplicate that UI — close immediately and let BC handle it.
-    if BCIntegration.isEnabled() then
-        MDMLog.info("MDMContractDialog: BC active — suppressing MDM contract dialog")
-        self:close()
-        return
-    end
-
     self.isOpen = true
 
     local hasCrops = #self.commodities > 0

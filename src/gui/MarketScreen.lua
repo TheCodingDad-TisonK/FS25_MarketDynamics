@@ -634,6 +634,13 @@ end
 -- ---------------------------------------------------------------------------
 
 function MDMMarketScreen:openContractDialog()
+    -- When BetterContracts is active it owns the futures contract flow entirely.
+    -- Never open MDM's dialog — BC will present its own UI for contract creation.
+    if BCIntegration.isEnabled() then
+        MDMLog.info("MarketScreen.openContractDialog: BC active — dialog suppressed")
+        return
+    end
+
     MDMLog.info("MarketScreen.openContractDialog: commodities=" .. #self.commodities .. " selectedIdx=" .. self.selectedCropIndex)
     MDMDialogLoader.show("MDMContractDialog", "setData", {
         commodities = self.commodities,
