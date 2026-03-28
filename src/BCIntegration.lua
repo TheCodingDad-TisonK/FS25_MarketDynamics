@@ -13,8 +13,11 @@
 --     BCIntegration.onBCContractFulfilled(id)     — on successful delivery
 --     BCIntegration.onBCContractDefaulted(id)     — on expiry without full delivery
 --   BC may also query:
---     BCIntegration.getLockedPrice(fillTypeIndex) — current MDM price per litre
---     BCIntegration.getDeliveryMs(periods)        — period count → absolute game-time ms
+--     BCIntegration.getLockedPrice(fillTypeIndex)      — current MDM price per litre
+--     BCIntegration.getPriceChangePercent(fillTypeIndex) — % change from vanilla base price
+--     BCIntegration.getPenaltyPercent(farmId)          — effective penalty % (settings + UP credit)
+--     BCIntegration.getDeliveryMs(periods)             — period count → absolute game-time ms (midnight)
+--     BCIntegration.recordDelivery(contractId, liters) — record partial delivery toward a contract
 --
 -- BC detection: g_modManager:getModByName("FS25_BetterContracts")
 -- Author: tison (dev-1)
@@ -144,21 +147,56 @@ function BCIntegration.getLockedPrice(fillTypeIndex)
     return priceData and priceData.current or nil
 end
 
+-- Returns MDM's % price change from the vanilla base price for a fill type.
+-- Positive values mean MDM is currently above base; negative means below.
+-- Returns 0 if the fill type is unknown or the engine is not ready.
+function BCIntegration.getPriceChangePercent(fillTypeIndex)
+    if not _marketEngine then return 0 end
+    return _marketEngine:getPriceChangePercent(fillTypeIndex)
+end
+
+-- Returns the effective penalty percent that would apply on a defaulted contract
+-- for the given farm. Combines the player's futures-penalty setting with any
+-- credit-score modifier from UPIntegration.
+-- Example: settings.futuresPenalty=0.15, UP modifier=1.0 → returns 15.0
+function BCIntegration.getPenaltyPercent(farmId)
+    local settings    = g_MarketDynamics and g_MarketDynamics.settings
+    local basePenalty = (settings and settings.futuresPenalty) or 0.15
+    local modifier    = UPIntegration.getPenaltyModifier(farmId)
+    return basePenalty * modifier * 100
+end
+
+-- Records a partial or full crop delivery toward a BC-managed MDM contract.
+-- Call this from BC's sell-station hook when the normal delivery counting is
+-- bypassed because an active harvest/futures mission is in progress.
+-- Returns true if the contract is now fully fulfilled, false otherwise.
+function BCIntegration.recordDelivery(contractId, liters)
+    if not _futuresMarket then return false end
+    return _futuresMarket:recordDelivery(contractId, liters)
+end
+
 -- Converts a BC period count into an absolute game-time timestamp (ms) that
 -- MDM's FuturesMarket uses for delivery deadlines.
+--
+-- The deadline is set at midnight (end-of-day) of the last day so that it
+-- always aligns with BC's contract display, regardless of the time of signing.
+-- Formula: skip to end of today, then add the full contract duration.
 --
 -- Giants calls a game month a "period". The player controls how many real
 -- game-days fit in one period (g_currentMission.environment.daysPerPeriod, 1-30).
 -- One game-day has a duration of environment.dayDuration milliseconds.
 --
--- Example: periods=3, daysPerPeriod=30, dayDuration=3,600,000 ms (1 h/day)
---   → deliveryTimeMs = now + 90 * 3,600,000
+-- Example: periods=3, daysPerPeriod=30, dayDuration=3,600,000 ms (1 h/day), dayTime=1h
+--   → deliveryTimeMs = now + (3,599,999 - 3,600,000) + 90 * 3,600,000  (midnight of day 90)
 function BCIntegration.getDeliveryMs(periods)
     local env           = g_currentMission and g_currentMission.environment
     local daysPerPeriod = (env and env.daysPerPeriod) or 30
     local dayDuration   = (env and env.dayDuration)   or (24 * 60 * 60 * 1000)
     local now           = (g_currentMission and g_currentMission.time) or 0
-    return now + (periods * daysPerPeriod * dayDuration)
+    local dayTime       = (env and env.dayTime) or 0
+    -- 86399999 = one full day in ms minus 1 — represents the last ms of a day.
+    -- Subtracting dayTime gives the remaining time until midnight today.
+    return now + (86399999 - dayTime) + (periods * daysPerPeriod * dayDuration)
 end
 
 -- ---------------------------------------------------------------------------
