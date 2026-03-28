@@ -112,5 +112,6 @@
         <!-- Input action display names -->
         <text name="input_MDM_MARKET_SCREEN" text="Open Market Screen" />
         <text name="input_MDM_CREATE_CONTRACT" text="Create Futures Contract" />
+            <text name="mdm_bc_dialog_suppressed" text="BetterContracts is active and handles contract creation. Please use BetterContracts to create futures contracts." />
     </texts>
 </l10n>

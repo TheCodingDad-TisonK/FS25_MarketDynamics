@@ -635,9 +635,11 @@ end
 
 function MDMMarketScreen:openContractDialog()
     -- When BetterContracts is active it owns the futures contract flow entirely.
-    -- Never open MDM's dialog — BC will present its own UI for contract creation.
+    -- Show the player a brief info dialog so they know why nothing happened,
+    -- then return. InfoDialog's OK button (and ESC) closes it cleanly.
     if BCIntegration.isEnabled() then
-        MDMLog.info("MarketScreen.openContractDialog: BC active — dialog suppressed")
+        MDMLog.info("MarketScreen.openContractDialog: BC active — showing info dialog")
+        InfoDialog.show(g_i18n:getText("mdm_bc_dialog_suppressed"))
         return
     end
 

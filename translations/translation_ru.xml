@@ -97,5 +97,6 @@
         <text name="mdm_admin_close"            text="Close" />
         <text name="mdm_admin_delete"           text="Delete" />
         <text name="mdm_admin_settled"          text="This contract is already settled." />
+            <text name="mdm_bc_dialog_suppressed" text="BetterContracts is active and handles contract creation. Please use BetterContracts to create futures contracts." />
     </texts>
 </l10n>
