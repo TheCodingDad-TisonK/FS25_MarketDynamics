@@ -1,0 +1,140 @@
+[
+  {
+    "timestamp": "2026-03-29T12:02:13Z",
+    "date": "2026-03-29",
+    "views": {
+      "count": 770,
+      "uniques": 172
+    },
+    "clones": {
+      "count": 578,
+      "uniques": 188
+    },
+    "referrers": [
+      {
+        "referrer": "github.com",
+        "count": 279,
+        "uniques": 72
+      },
+      {
+        "referrer": "kingmods.net",
+        "count": 86,
+        "uniques": 56
+      },
+      {
+        "referrer": "steamcommunity.com",
+        "count": 5,
+        "uniques": 2
+      },
+      {
+        "referrer": "Yahoo",
+        "count": 5,
+        "uniques": 1
+      },
+      {
+        "referrer": "Google",
+        "count": 4,
+        "uniques": 3
+      },
+      {
+        "referrer": "Bing",
+        "count": 3,
+        "uniques": 1
+      }
+    ],
+    "popular_paths": [
+      {
+        "path": "/TheCodingDad-TisonK/FS25_MarketDynamics",
+        "title": "GitHub - TheCodingDad-TisonK/FS25_MarketDynamics: Dynamic crop pricing for FS...",
+        "count": 265,
+        "uniques": 91
+      },
+      {
+        "path": "/TheCodingDad-TisonK/FS25_MarketDynamics/issues",
+        "title": "GitHub · Where software is built",
+        "count": 73,
+        "uniques": 25
+      },
+      {
+        "path": "/TheCodingDad-TisonK/FS25_MarketDynamics/pull/3",
+        "title": "Phase 2: BetterContracts integration, Settings UI, serializer fixes by TheCod...",
+        "count": 40,
+        "uniques": 36
+      },
+      {
+        "path": "/TheCodingDad-TisonK/FS25_MarketDynamics/releases/tag/v0.1.0-rc1",
+        "title": "Release v0.1.0-rc1 — Release Candidate (testing) · TheCodingDad-TisonK/FS25_M...",
+        "count": 36,
+        "uniques": 30
+      },
+      {
+        "path": "/TheCodingDad-TisonK/FS25_MarketDynamics/issues/10",
+        "title": "Draft Futures contract cards · Issue #10 · TheCodingDad-TisonK/FS25_MarketDyn...",
+        "count": 31,
+        "uniques": 5
+      },
+      {
+        "path": "/TheCodingDad-TisonK/FS25_MarketDynamics/releases/tag/v1.0.0.1",
+        "title": "Release Hotfix · TheCodingDad-TisonK/FS25_MarketDynamics · GitHub",
+        "count": 25,
+        "uniques": 12
+      },
+      {
+        "path": "/TheCodingDad-TisonK/FS25_MarketDynamics/tree/main",
+        "title": "GitHub - TheCodingDad-TisonK/FS25_MarketDynamics: Dynamic crop pricing for FS...",
+        "count": 19,
+        "uniques": 5
+      },
+      {
+        "path": "/TheCodingDad-TisonK/FS25_MarketDynamics/releases/tag/v1.0.0.0",
+        "title": "Release v1.0.0.0 - First release · TheCodingDad-TisonK/FS25_MarketDynamics · ...",
+        "count": 12,
+        "uniques": 8
+      },
+      {
+        "path": "/TheCodingDad-TisonK/FS25_MarketDynamics/releases",
+        "title": "Releases · TheCodingDad-TisonK/FS25_MarketDynamics",
+        "count": 11,
+        "uniques": 7
+      },
+      {
+        "path": "/TheCodingDad-TisonK/FS25_MarketDynamics/pulls",
+        "title": "Pull requests · TheCodingDad-TisonK/FS25_MarketDynamics",
+        "count": 11,
+        "uniques": 4
+      }
+    ],
+    "releases": [
+      {
+        "assets": [
+          {
+            "downloads": 22,
+            "name": "FS25_MarketDynamics.zip"
+          }
+        ],
+        "tag": "v1.0.0.1"
+      },
+      {
+        "assets": [
+          {
+            "downloads": 3,
+            "name": "FS25_MarketDynamics.zip"
+          }
+        ],
+        "tag": "v1.0.0.0"
+      },
+      {
+        "assets": [
+          {
+            "downloads": 8,
+            "name": "FS25_MarketDynamics.zip"
+          }
+        ],
+        "tag": "v0.1.0-rc1"
+      }
+    ],
+    "stars": 9,
+    "forks": 1,
+    "watchers": 2
+  }
+]
