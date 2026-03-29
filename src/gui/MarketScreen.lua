@@ -405,6 +405,7 @@ function MDMMarketScreen:onListSelectionChanged(list, section, index)
         self:refreshPricesDetail()
     elseif list == self.contractList and index > 0 then
         self.selectedContractIndex = index
+        if self._reloadingContracts then return end  -- programmatic reload; don't pop dialog
         local contract = self.contractData[index]
         if not contract then return end
         MDMDialogLoader.show("MDMContractAdminDialog", "setData", {
@@ -623,7 +624,9 @@ function MDMMarketScreen:reloadAllLists()
         self.eventList:reloadData()
     end
     if self.contractList then
+        self._reloadingContracts = true
         self.contractList:reloadData()
+        self._reloadingContracts = false
     end
 end
 
