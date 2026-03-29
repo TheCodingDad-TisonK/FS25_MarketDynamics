@@ -195,8 +195,19 @@ function MDMMarketScreen:onGuiSetupFinished()
     _setTextSafe(self.contractsColDelivered, "mdm_screen_col_delivered", "Delivered")
     _setTextSafe(self.contractsColDeadline,  "mdm_screen_col_deadline",  "Deadline")
     _setTextSafe(self.contractsColStatus,    "mdm_screen_col_status",    "Status")
-    _setTextSafe(self.noContractsText, "mdm_screen_no_contracts", "No contracts")
-    _setTextSafe(self.newContractHint, "mdm_screen_new_contract_btn", "New Contract [N]")
+    if BCIntegration.isEnabled() then
+        _setTextSafe(self.noContractsText, "mdm_screen_no_contracts",
+            "Futures contracts are managed by BetterContracts.\n\n" ..
+            "How to create one:\n" ..
+            "1. Open the Contracts page (ESC menu)\n" ..
+            "2. Look for the \"Futures\" section in the contract list\n" ..
+            "3. Select a futures contract and press Accept")
+        if self.newContractHint then self.newContractHint:setVisible(false) end
+    else
+        _setTextSafe(self.noContractsText, "mdm_screen_no_contracts", "No contracts yet. Press X to create one.")
+        _setTextSafe(self.newContractHint, "mdm_screen_new_contract_btn", "New Contract [X]")
+        if self.newContractHint then self.newContractHint:setVisible(true) end
+    end
 end
 
 function MDMMarketScreen:onOpen()
@@ -405,7 +416,13 @@ function MDMMarketScreen:onListSelectionChanged(list, section, index)
         self:refreshPricesDetail()
     elseif list == self.contractList and index > 0 then
         self.selectedContractIndex = index
-        if self._reloadingContracts then return end  -- programmatic reload; don't pop dialog
+        if self._reloadingContracts then return end
+
+        -- When BetterContracts is active it owns the contract lifecycle entirely.
+        -- The admin dialog is meaningless in that context and its open/close cycle
+        -- causes the spam bug, so skip it completely.
+        if BCIntegration.isEnabled() then return end
+
         local contract = self.contractData[index]
         if not contract then return end
         MDMDialogLoader.show("MDMContractAdminDialog", "setData", {
@@ -432,6 +449,7 @@ end
 -- Refresh the contracts list after an admin action.
 function MDMMarketScreen:_onContractAdminAction(action, contractId)
     MDMLog.info(string.format("MarketScreen: admin %s contract #%s", action, tostring(contractId)))
+    self._lastAdminDialogTime = 0  -- reset debounce so the next click is never blocked
     self:_buildContractData()
     self:reloadAllLists()
 end
@@ -640,7 +658,7 @@ function MDMMarketScreen:openContractDialog()
     -- then return. InfoDialog's OK button (and ESC) closes it cleanly.
     if BCIntegration.isEnabled() then
         MDMLog.info("MarketScreen.openContractDialog: BC active — showing info dialog")
-        InfoDialog.show(g_i18n:getText("mdm_bc_dialog_suppressed"))
+        InfoDialog.show("BetterContracts is active - You cannot create contracts directly.")
         return
     end
 
@@ -942,7 +960,20 @@ function MDMMarketScreen._performRegistration(modDir)
 
         _setById("graphHint", "mdm_screen_collecting", "Collecting data...")
         _setById("noEventsText", "mdm_screen_no_events", "No events")
-        _setById("noContractsText", "mdm_screen_no_contracts", "No contracts")
+        if BCIntegration.isEnabled() then
+            _setById("noContractsText", nil,
+                "Futures contracts are managed by BetterContracts.\n\n" ..
+                "How to create one:\n" ..
+                "1. Open the Contracts page (ESC menu)\n" ..
+                "2. Look for the \"Futures\" section in the contract list\n" ..
+                "3. Select a futures contract and press Accept")
+            local hint = screen:getDescendantById("newContractHint")
+            if hint then hint:setVisible(false) end
+        else
+            _setById("noContractsText", "mdm_screen_no_contracts", "No contracts yet. Press X to create one.")
+            local hint = screen:getDescendantById("newContractHint")
+            if hint then hint:setVisible(true) end
+        end
         _setById("graphTitle", "mdm_screen_session_trend", "Session Timeline")
 
         _setById("eventsHeader", "mdm_screen_events_hdr", "ACTIVE EVENTS")
@@ -954,7 +985,9 @@ function MDMMarketScreen._performRegistration(modDir)
         _setById("contractsColDelivered", "mdm_screen_col_delivered", "Delivered")
         _setById("contractsColDeadline",  "mdm_screen_col_deadline",  "Deadline")
         _setById("contractsColStatus",    "mdm_screen_col_status",    "Status")
-        _setById("newContractHint",       "mdm_screen_new_contract_btn", "New Contract  [N]")
+        if not BCIntegration.isEnabled() then
+            _setById("newContractHint", "mdm_screen_new_contract_btn", "New Contract  [X]")
+        end
 
         _setById("detailCropName", "mdm_screen_select_crop", "Select a commodity")
         _setById("detailCurrentPrice", nil, "")

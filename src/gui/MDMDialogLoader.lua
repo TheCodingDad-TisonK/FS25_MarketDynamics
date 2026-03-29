@@ -83,6 +83,12 @@ function MDMDialogLoader.show(name, dataMethod, ...)
             MDMLog.warn("MDMDialogLoader: " .. name .. ":" .. dataMethod .. "() error: " .. tostring(err))
         end
     end
+    -- Secondary guard: if the dialog has a tracked isOpen flag and it's already
+    -- showing, don't call showDialog again (avoids FS25 re-stacking it).
+    if entry.instance.isOpen then
+        MDMLog.info("MDMDialogLoader.show: '" .. name .. "' already open — skipping showDialog")
+        return false
+    end
     MDMLog.info("MDMDialogLoader.show: calling g_gui:showDialog('" .. name .. "') ...")
     local ok, err = pcall(g_gui.showDialog, g_gui, name)
     if not ok then

@@ -134,8 +134,8 @@
               </ListItem>
             </SmoothList>
           </GuiElement>
-          <Text profile="mdm_emptyHint" id="noContractsText" text="$l10n_mdm_screen_no_contracts"/>
-          <Text profile="mdm_hintText" id="newContractHint" position="0px 30px"/>
+          <Text profile="mdm_emptyHint" id="noContractsText" text="$l10n_mdm_screen_no_contracts" size="800px 160px" wrapText="true" autoFitHeight="true"/>
+          <Text profile="mdm_hintText" id="newContractHint" position="0px 30px" size="500px 28px"/>
         </GuiElement>
 
         <!-- tabBar LAST: FS25 processes mouse events in reverse XML order.
