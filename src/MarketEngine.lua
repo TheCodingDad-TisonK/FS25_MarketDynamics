@@ -34,9 +34,9 @@ local DAILY_INTERVAL_MS    = 24 * 60 * 1000  -- every in-game day
 
 -- Volatility parameters
 local INTRADAY_MAGNITUDE   = 0.020  -- ±2.0% per intraday tick
-local DAILY_MAGNITUDE      = 0.08   -- ±8% per daily shift
+local DAILY_MAGNITUDE      = 0.015  -- ±1.5% per daily shift (realistic commodity range)
 local INTRADAY_REVERSION   = 0.003  -- 0.3% pull toward 1.0 per tick
-local DAILY_REVERSION      = 0.08   -- 8% pull toward 1.0 per day
+local DAILY_REVERSION      = 0.02   -- 2% pull toward 1.0 per day (gentle, allows trends to persist)
 local VOLATILITY_MIN       = 0.50   -- hard floor: never less than 50% of base
 local VOLATILITY_MAX       = 2.00   -- hard ceiling: never more than 200% of base
 

@@ -148,7 +148,7 @@ function MDMContractAdminDialog:_populate()
     -- Left column details
     if self.admCropValue     then self.admCropValue:setText(c.fillTypeName or "?") end
     if self.admQtyValue      then self.admQtyValue:setText(self:_fmt(c.quantity) .. " L") end
-    if self.admPriceValue    then self.admPriceValue:setText(string.format("$%.2f / L", c.lockedPrice or 0)) end
+    if self.admPriceValue    then self.admPriceValue:setText(string.format("$%.0f / 1,000L", (c.lockedPrice or 0) * 1000)) end
 
     local delivPct = 0
     if c.quantity and c.quantity > 0 then

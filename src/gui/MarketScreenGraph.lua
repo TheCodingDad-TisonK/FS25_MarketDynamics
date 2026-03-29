@@ -209,9 +209,9 @@ function MDMMarketScreenGraph._drawLineChart(series, gx, gy, gw, gh)
         setTextAlignment(RenderText.ALIGN_RIGHT)
 
         local labelSize = math.max(gh * 0.020, 0.003)
-        local labelStr = string.format("$%.2f", price)
-        -- Rotate only when price integer part has 4+ digits (price >= 1000)
-        if price >= 1000 then
+        local labelStr = string.format("$%.0f", price * 1000)
+        -- Rotate only when price integer part has 5+ digits (price*1000 >= 10000)
+        if price * 1000 >= 10000 then
             local labelX = gx - 0.005
             setTextRotation(math.rad(30), labelX, ly)
             renderText(labelX, ly, labelSize, labelStr)

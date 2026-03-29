@@ -405,6 +405,17 @@ function MDMMarketScreen:onListSelectionChanged(list, section, index)
         self:refreshPricesDetail()
     elseif list == self.contractList and index > 0 then
         self.selectedContractIndex = index
+        local contract = self.contractData[index]
+        if not contract then return end
+        MDMDialogLoader.show("MDMContractAdminDialog", "setData", {
+            contract   = contract,
+            onComplete = function(contractId)
+                self:_onContractAdminAction("complete", contractId)
+            end,
+            onCancel   = function(contractId)
+                self:_onContractAdminAction("cancel", contractId)
+            end,
+        })
     end
 end
 
@@ -412,22 +423,9 @@ function MDMMarketScreen:onClickCommodity(element)
     -- onListSelectionChanged handles selection; nothing extra needed
 end
 
--- Called when the player clicks a row in the Contracts tab list.
--- Opens the admin panel dialog for that contract.
+-- Contract admin dialog is now opened in onListSelectionChanged to ensure
+-- the current selection index is always used (not the previously selected one).
 function MDMMarketScreen:onContractRowClick(element)
-    local idx = self.selectedContractIndex or 0
-    local contract = self.contractData[idx]
-    if not contract then return end
-
-    MDMDialogLoader.show("MDMContractAdminDialog", "setData", {
-        contract   = contract,
-        onComplete = function(contractId)
-            self:_onContractAdminAction("complete", contractId)
-        end,
-        onCancel   = function(contractId)
-            self:_onContractAdminAction("cancel", contractId)
-        end,
-    })
 end
 
 -- Refresh the contracts list after an admin action.
@@ -700,7 +698,7 @@ function MDMMarketScreen:_populateCommodityCell(index, cell)
         nameEl:setText(data.title)
     end
     if priceEl then
-        priceEl:setText(string.format("$%.0f", data.current))
+        priceEl:setText(string.format("$%.0f / 1,000L", data.current * 1000))
     end
     if changeEl then
         local sign = data.changePct >= 0 and "+" or ""
@@ -782,7 +780,7 @@ function MDMMarketScreen:_populateContractCell(index, cell)
         qtyEl:setText(string.format("%.0fL", data.quantity))
     end
     if priceEl then
-        priceEl:setText(string.format("$%.2f", data.lockedPrice))
+        priceEl:setText(string.format("$%.0f / 1,000L", data.lockedPrice * 1000))
     end
     if progressEl then
         local pct = 0
@@ -845,13 +843,13 @@ function MDMMarketScreen:refreshPricesDetail()
     if self.detailCurrentPrice then
         self.detailCurrentPrice:setText(
             g_i18n:getText("mdm_screen_current_price") .. ": " ..
-            string.format("$%.2f / L", crop.current)
+            string.format("$%.0f / 1,000L", crop.current * 1000)
         )
     end
     if self.detailBasePrice then
         self.detailBasePrice:setText(
             g_i18n:getText("mdm_screen_base_price") .. ": " ..
-            string.format("$%.2f / L", crop.base)
+            string.format("$%.0f / 1,000L", crop.base * 1000)
         )
     end
     if self.detailChange then

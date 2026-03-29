@@ -37,16 +37,18 @@ function FuturesMarket:createContract(params)
     local id = self.nextId
     self.nextId = self.nextId + 1
 
+    local now = g_currentMission and g_currentMission.time or 0
     local contract = {
-        id            = id,
-        farmId        = params.farmId,
-        fillTypeIndex = params.fillTypeIndex,
-        fillTypeName  = params.fillTypeName,
-        quantity      = params.quantity,       -- in liters
-        lockedPrice   = params.lockedPrice,    -- per liter at contract creation
-        deliveryTime  = params.deliveryTimeMs, -- absolute game time (ms)
-        delivered     = 0,                     -- liters delivered so far
-        status        = "active",              -- active | fulfilled | defaulted
+        id                = id,
+        farmId            = params.farmId,
+        fillTypeIndex     = params.fillTypeIndex,
+        fillTypeName      = params.fillTypeName,
+        quantity          = params.quantity,       -- in liters
+        lockedPrice       = params.lockedPrice,    -- per liter at contract creation
+        deliveryTime      = params.deliveryTimeMs, -- absolute game time (ms)
+        deliveryStartTime = now + (params.deliveryTimeMs - now) * 0.5, -- locked price only applies after first half of contract term
+        delivered         = 0,                     -- liters delivered so far
+        status            = "active",              -- active | fulfilled | defaulted
     }
 
     self.contracts[id] = contract
@@ -93,13 +95,17 @@ end
 -- Called from the SellingStation delivery hook on every accepted crop sale.
 -- Routes liters to all active contracts matching this farm + fillType, oldest first.
 -- Excess liters (beyond what contracts need) are silently ignored — normal selling.
+-- Deliveries before the contract's deliveryStartTime do not count toward the contract
+-- (the locked price applies to future production, not existing inventory).
 function FuturesMarket:onCropDelivered(farmId, fillTypeIndex, liters)
+    local now = g_currentMission and g_currentMission.time or 0
     local remaining = liters
     for id, contract in pairs(self.contracts) do
         if remaining <= 0 then break end
         if contract.status == "active"
             and contract.farmId == farmId
-            and contract.fillTypeIndex == fillTypeIndex then
+            and contract.fillTypeIndex == fillTypeIndex
+            and now >= (contract.deliveryStartTime or 0) then
 
             local needed   = contract.quantity - contract.delivered
             local applying = math.min(remaining, needed)
