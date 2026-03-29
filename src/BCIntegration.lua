@@ -17,7 +17,8 @@
 --     BCIntegration.getPriceChangePercent(fillTypeIndex) — % change from vanilla base price
 --     BCIntegration.getPenaltyPercent(farmId)          — effective penalty % (settings + UP credit)
 --     BCIntegration.getDeliveryMs(periods)             — period count → absolute game-time ms (midnight)
---     BCIntegration.recordDelivery(contractId, liters) — record partial delivery toward a contract
+--     BCIntegration.recordDelivery(contractId, liters)          — record partial delivery toward a contract
+--     BCIntegration.getContractsForFarm(farmId)                 — active MDM-only contracts (no bcManaged flag) for savegame migration
 --
 -- BC detection: g_modManager:getModByName("FS25_BetterContracts")
 -- Author: tison (dev-1)
@@ -46,7 +47,7 @@ local _pendingRemovals = {}     -- { fillTypeIndex, modId, expiresAt }
 
 -- Returns true if BetterContracts is installed.
 function BCIntegration.isAvailable()
-    return g_modManager:getModByName("FS25_BetterContracts") ~= nil
+    return g_modManager:getModByName("FS25_FuturesMission") ~= nil
 end
 
 -- Always active when BC is installed — no manual opt-in required.
@@ -173,6 +174,24 @@ end
 function BCIntegration.recordDelivery(contractId, liters)
     if not _futuresMarket then return false end
     return _futuresMarket:recordDelivery(contractId, liters)
+end
+
+-- Returns active MDM-native contracts for a farm — i.e. contracts that were
+-- created by MDM directly (not via BC/FuturesMission) and are still active.
+-- FuturesMission calls this on savegame load when BCIntegration is enabled so
+-- it can take over tracking of any contracts that were written before FM was
+-- installed.  bcManaged contracts are excluded because FM already owns those.
+function BCIntegration.getContractsForFarm(farmId)
+    if not _futuresMarket then return {} end
+    local result = {}
+    for _, contract in pairs(_futuresMarket.contracts) do
+        if contract.farmId == farmId
+            and contract.status == "active"
+            and not contract.bcManaged then
+            table.insert(result, contract)
+        end
+    end
+    return result
 end
 
 -- Converts a BC period count into an absolute game-time timestamp (ms) that
