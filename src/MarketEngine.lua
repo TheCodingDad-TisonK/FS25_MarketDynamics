@@ -190,7 +190,7 @@ end
 
 -- Daily shift: mean-reversion toward 1.0 + random trend (±3% scaled).
 function MarketEngine:_applyDailyShift()
-    local now            = g_currentMission and g_currentMission.time or 0
+    local now            = MDMUtil.getGameTime()
     local scale          = self.volatilityScale or 1.0
     local dailyMagnitude = DAILY_MAGNITUDE * scale
     local dailyReversion = DAILY_REVERSION

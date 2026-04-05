@@ -101,7 +101,7 @@ function MDMDebugHUD:draw()
     if #events == 0 then
         y = rline(y, FONT_BODY, "  (none active)", C_DIM)
     else
-        local now = g_currentMission and g_currentMission.time or 0
+        local now = MDMUtil.getGameTime()
         for _, ev in ipairs(events) do
             local rem  = math.max(0, ev.endsAt - now)
             local mins = math.floor(rem / 60000)
@@ -131,7 +131,7 @@ function MDMDebugHUD:draw()
     if #active == 0 then
         y = rline(y, FONT_BODY, "  (no active contracts)", C_DIM)
     else
-        local now = g_currentMission and g_currentMission.time or 0
+        local now = MDMUtil.getGameTime()
         for _, c in ipairs(active) do
             local pct  = c.quantity > 0 and (c.delivered / c.quantity * 100) or 0
             local rem  = math.max(0, c.deliveryTime - now)

@@ -211,7 +211,7 @@ function BCIntegration.getDeliveryMs(periods)
     local env           = g_currentMission and g_currentMission.environment
     local daysPerPeriod = (env and env.daysPerPeriod) or 30
     local dayDuration   = (env and env.dayDuration)   or (24 * 60 * 60 * 1000)
-    local now           = (g_currentMission and g_currentMission.time) or 0
+    local now           = MDMUtil.getGameTime()
     local dayTime       = (env and env.dayTime) or 0
     -- 86399999 = one full day in ms minus 1 — represents the last ms of a day.
     -- Subtracting dayTime gives the remaining time until midnight today.

@@ -37,7 +37,7 @@ function FuturesMarket:createContract(params)
     local id = self.nextId
     self.nextId = self.nextId + 1
 
-    local now = g_currentMission and g_currentMission.time or 0
+    local now = MDMUtil.getGameTime()
     local contract = {
         id                = id,
         farmId            = params.farmId,
@@ -79,7 +79,7 @@ end
 -- Check all active contracts for delivery deadline expiry.
 -- Called every frame from MarketDynamics:update().
 function FuturesMarket:checkExpiry()
-    local now = g_currentMission and g_currentMission.time or 0
+    local now = MDMUtil.getGameTime()
 
     for id, contract in pairs(self.contracts) do
         if contract.status == "active" and now >= contract.deliveryTime then
@@ -98,7 +98,7 @@ end
 -- Deliveries before the contract's deliveryStartTime do not count toward the contract
 -- (the locked price applies to future production, not existing inventory).
 function FuturesMarket:onCropDelivered(farmId, fillTypeIndex, liters)
-    local now = g_currentMission and g_currentMission.time or 0
+    local now = MDMUtil.getGameTime()
     local remaining = liters
     for id, contract in pairs(self.contracts) do
         if remaining <= 0 then break end

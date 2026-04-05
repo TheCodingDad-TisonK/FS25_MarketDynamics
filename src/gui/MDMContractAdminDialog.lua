@@ -161,7 +161,7 @@ function MDMContractAdminDialog:_populate()
 
     -- Deadline (convert ms to in-game days remaining)
     if self.admDeadlineValue then
-        local now = g_currentMission and g_currentMission.time or 0
+        local now = MDMUtil.getGameTime()
         local remaining = math.max(0, (c.deliveryTime or 0) - now)
         local daysLeft  = math.floor(remaining / (24 * 60 * 60000))
         if isActive then

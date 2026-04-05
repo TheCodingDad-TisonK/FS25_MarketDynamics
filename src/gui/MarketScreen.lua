@@ -676,7 +676,7 @@ function MDMMarketScreen:_onContractConfirmed(crop, qty, delivDays)
     if not g_MarketDynamics or not g_MarketDynamics.futuresMarket then return end
     if not g_localPlayer or not g_localPlayer.farmId then return end
 
-    local now            = g_currentMission and g_currentMission.time or 0
+    local now            = MDMUtil.getGameTime()
     local deliveryTimeMs = now + (delivDays * 24 * 60 * 60000)
 
     g_MarketDynamics.futuresMarket:createContract({
@@ -768,7 +768,7 @@ function MDMMarketScreen:_populateEventCell(index, cell)
     end
 
     if timeEl then
-        local now = g_currentMission and g_currentMission.time or 0
+        local now = MDMUtil.getGameTime()
         local remaining = math.max(0, data.endsAt - now)
         local mins = math.floor(remaining / 60000)
         if mins > 60 then
@@ -811,7 +811,7 @@ function MDMMarketScreen:_populateContractCell(index, cell)
         progressEl:setText(string.format("%.0f%%", pct))
     end
     if deadlineEl then
-        local now = g_currentMission and g_currentMission.time or 0
+        local now = MDMUtil.getGameTime()
         local remaining = math.max(0, data.deliveryTime - now)
         local days = math.floor(remaining / (24 * 60 * 60000))
         if days > 0 then
@@ -824,7 +824,7 @@ function MDMMarketScreen:_populateContractCell(index, cell)
     if statusEl then
         local status = data.status or "active"
         if status == "active" then
-            local now = g_currentMission and g_currentMission.time or 0
+            local now = MDMUtil.getGameTime()
             local remaining = math.max(0, data.deliveryTime - now)
             local pctDelivered = data.quantity > 0 and (data.delivered / data.quantity) or 0
 

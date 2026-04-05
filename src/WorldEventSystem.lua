@@ -79,7 +79,7 @@ function WorldEventSystem:loadActiveEvent(id, endsAt, intensity, extraData)
     end
 
     -- Re-apply UP market modifier with remaining duration.
-    local now = g_currentMission and g_currentMission.time or 0
+    local now = MDMUtil.getGameTime()
     UPIntegration.onWorldEventFired(id, intensity, math.max(0, endsAt - now))
 
     MDMLog.info("WorldEventSystem: restored active event '" .. id .. "' (ends in " ..
@@ -93,7 +93,7 @@ function WorldEventSystem:update(dt)
     self.timer = self.timer + dt
 
     -- Tick active events — expire any that have passed their end time
-    local now = g_currentMission and g_currentMission.time or 0
+    local now = MDMUtil.getGameTime()
     for id, active in pairs(self.active) do
         if now >= active.endsAt then
             self:_expireEvent(id)
@@ -144,7 +144,7 @@ function WorldEventSystem:forceFireEvent(id, intensity)
     end
 
     intensity = math.max(0, math.min(1, intensity or 1.0))
-    local now    = g_currentMission and g_currentMission.time or 0
+    local now    = MDMUtil.getGameTime()
     local minDur = event.minDurationMs or (5  * 60 * 1000)
     local maxDur = event.maxDurationMs or (15 * 60 * 1000)
     local duration = minDur + math.random() * (maxDur - minDur)
@@ -178,7 +178,7 @@ end
 -- Iterate all registered events and roll each one for firing.
 -- An event is eligible if: not currently active AND cooldown has elapsed.
 function WorldEventSystem:_rollForEvents()
-    local now       = g_currentMission and g_currentMission.time or 0
+    local now       = MDMUtil.getGameTime()
     local settings  = g_MarketDynamics and g_MarketDynamics.settings
     local freqScale = (settings and settings.eventFrequency) or 1.0
 
