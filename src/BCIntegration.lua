@@ -104,6 +104,22 @@ function BCIntegration.onBCContractCreated(params)
         MDMLog.warn("BCIntegration.onBCContractCreated: futuresMarket not ready")
         return nil
     end
+
+    -- Guard against duplicates: if FM already has an active contract for this
+    -- farm + crop + deadline, return its id instead of creating a second one.
+    -- This can happen when BC fires onBCContractCreated after FM has already
+    -- taken the contract over (e.g. on savegame reload or mission re-sync).
+    for id, contract in pairs(_futuresMarket.contracts) do
+        if contract.status == "active"
+            and contract.farmId        == params.farmId
+            and contract.fillTypeIndex == params.fillTypeIndex
+            and contract.deliveryTime  == params.deliveryTimeMs
+        then
+            MDMLog.info("BCIntegration: duplicate BC contract ignored, returning existing MDM contract #" .. tostring(id))
+            return id
+        end
+    end
+
     -- bcManaged=true tells FuturesMarket._fulfillContract/_defaultContract to skip
     -- addMoney — BC handles payout and penalty through the base game mission system.
     params.bcManaged = true
