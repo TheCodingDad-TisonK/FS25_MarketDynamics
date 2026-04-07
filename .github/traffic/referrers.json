@@ -300,23 +300,18 @@
   "2026-04-07": [
     {
       "referrer": "github.com",
-      "count": 221,
-      "uniques": 65
+      "count": 210,
+      "uniques": 60
     },
     {
       "referrer": "kingmods.net",
-      "count": 51,
-      "uniques": 32
+      "count": 42,
+      "uniques": 24
     },
     {
       "referrer": "Google",
       "count": 10,
       "uniques": 5
-    },
-    {
-      "referrer": "steamcommunity.com",
-      "count": 5,
-      "uniques": 2
     },
     {
       "referrer": "Bing",
@@ -325,6 +320,11 @@
     },
     {
       "referrer": "Yahoo",
+      "count": 2,
+      "uniques": 1
+    },
+    {
+      "referrer": "steamcommunity.com",
       "count": 2,
       "uniques": 1
     },

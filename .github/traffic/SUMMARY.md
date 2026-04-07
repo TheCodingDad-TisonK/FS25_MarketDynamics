@@ -1,7 +1,7 @@
 # Repository Traffic Dashboard
 
-**Last updated:** 2026-04-07T06:12:47Z
-**Days tracked:** 10 | **Download snapshots:** 37 (hourly)
+**Last updated:** 2026-04-07T12:54:31Z
+**Days tracked:** 10 | **Download snapshots:** 38 (hourly)
 
 ---
 
@@ -11,10 +11,10 @@
 
 | Metric | 14-Day Total | Unique |
 |--------|-------------|--------|
-| Page Views | 550 | 127 |
-| Git Clones | 591 | 225 |
+| Page Views | 530 | 118 |
+| Git Clones | 620 | 229 |
 
-> **Engagement:** 4.3 pages per visitor (14-day avg)
+> **Engagement:** 4.4 pages per visitor (14-day avg)
 
 ---
 
@@ -30,9 +30,9 @@
 
 ![Conversion](charts/conversion.png)
 
-> **14-day conversion:** 271 of 127 visitors cloned or downloaded (**213.3%**)
+> **14-day conversion:** 275 of 118 visitors cloned or downloaded (**233.0%**)
 >
-> Unique cloners: 225 | Release downloads: 46
+> Unique cloners: 229 | Release downloads: 46
 
 ---
 
@@ -43,8 +43,8 @@
 | Channel | Count |
 |---------|-------|
 | Zip Downloads | 46 |
-| Git Clones (14-day) | 591 |
-| **Total Acquisitions** | **637** |
+| Git Clones (14-day) | 620 |
+| **Total Acquisitions** | **666** |
 
 ---
 
@@ -54,12 +54,12 @@
 
 | Source | Views | Unique |
 |--------|-------|--------|
-| github.com | 221 | 65 |
-| kingmods.net | 51 | 32 |
+| github.com | 210 | 60 |
+| kingmods.net | 42 | 24 |
 | Google | 10 | 5 |
-| steamcommunity.com | 5 | 2 |
 | Bing | 3 | 1 |
 | Yahoo | 2 | 1 |
+| steamcommunity.com | 2 | 1 |
 | DuckDuckGo | 1 | 1 |
 
 ---
@@ -80,11 +80,11 @@
 
 | Page | Views | Unique |
 |------|-------|--------|
-| `/TheCodingDad-TisonK/FS25_MarketDynamics` | 209 | 80 |
-| `/TheCodingDad-TisonK/FS25_MarketDynamics/issues` | 47 | 22 |
-| `/TheCodingDad-TisonK/FS25_MarketDynamics/releases/tag/v0.1.0-rc1` | 42 | 33 |
+| `/TheCodingDad-TisonK/FS25_MarketDynamics` | 205 | 79 |
+| `/TheCodingDad-TisonK/FS25_MarketDynamics/issues` | 44 | 20 |
+| `/TheCodingDad-TisonK/FS25_MarketDynamics/tree/main` | 44 | 3 |
 | `/TheCodingDad-TisonK/FS25_MarketDynamics/releases/tag/v1.0.0.1` | 40 | 19 |
-| `/TheCodingDad-TisonK/FS25_MarketDynamics/tree/main` | 40 | 4 |
+| `/TheCodingDad-TisonK/FS25_MarketDynamics/releases/tag/v0.1.0-rc1` | 31 | 23 |
 | `/TheCodingDad-TisonK/FS25_MarketDynamics/releases/tag/v1.0.0.0` | 12 | 8 |
 | `/TheCodingDad-TisonK/FS25_MarketDynamics/releases` | 10 | 8 |
 | `/TheCodingDad-TisonK/FS25_MarketDynamics/branches` | 10 | 4 |
