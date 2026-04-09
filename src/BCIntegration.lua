@@ -1,26 +1,27 @@
 -- BCIntegration.lua
--- Optional integration layer with FS25_BetterContracts (Mmtrx).
+-- Optional integration layer with FS25_FuturesMission (by Mmtrx).
 --
--- When BC is installed this module automatically:
+-- FS25_FuturesMission is a companion mod that bridges BetterContracts harvest
+-- missions with MDM's futures system. When it is installed this module:
 --   1. Hooks AbstractMission.finish to detect successful harvest completions
 --   2. Applies a short-lived supply-spike price modifier to the harvested crop
 --      (large supply hits market → prices dip for ~1 in-game hour)
 --   3. Cleans up expired supply-spike modifiers on each update tick
 --
--- Futures contract integration (BC active):
---   BC silences MDM's own contract-creation dialog and instead calls:
+-- Futures contract integration (FuturesMission active):
+--   FuturesMission silences MDM's own contract-creation dialog and instead calls:
 --     BCIntegration.onBCContractCreated(params)   — at player signing
 --     BCIntegration.onBCContractFulfilled(id)     — on successful delivery
 --     BCIntegration.onBCContractDefaulted(id)     — on expiry without full delivery
---   BC may also query:
---     BCIntegration.getLockedPrice(fillTypeIndex)      — current MDM price per litre
+--   FuturesMission may also query:
+--     BCIntegration.getLockedPrice(fillTypeIndex)       — current MDM price per litre
 --     BCIntegration.getPriceChangePercent(fillTypeIndex) — % change from vanilla base price
---     BCIntegration.getPenaltyPercent(farmId)          — effective penalty % (settings + UP credit)
---     BCIntegration.getDeliveryMs(periods)             — period count → absolute game-time ms (midnight)
---     BCIntegration.recordDelivery(contractId, liters)          — record partial delivery toward a contract
---     BCIntegration.getContractsForFarm(farmId)                 — active MDM-only contracts (no bcManaged flag) for savegame migration
+--     BCIntegration.getPenaltyPercent(farmId)           — effective penalty % (settings + UP credit)
+--     BCIntegration.getDeliveryMs(periods)              — period count → absolute game-time ms (midnight)
+--     BCIntegration.recordDelivery(contractId, liters)  — record partial delivery toward a contract
+--     BCIntegration.getContractsForFarm(farmId)         — active MDM-only contracts (no bcManaged flag) for savegame migration
 --
--- BC detection: g_modManager:getModByName("FS25_BetterContracts")
+-- Detection: g_modManager:getModByName("FS25_FuturesMission")
 -- Author: tison (dev-1)
 
 BCIntegration = {}
@@ -45,12 +46,12 @@ local _pendingRemovals = {}     -- { fillTypeIndex, modId, expiresAt }
 -- Public API
 -- ---------------------------------------------------------------------------
 
--- Returns true if BetterContracts is installed.
+-- Returns true if FS25_FuturesMission is installed.
 function BCIntegration.isAvailable()
     return g_modManager:getModByName("FS25_FuturesMission") ~= nil
 end
 
--- Always active when BC is installed — no manual opt-in required.
+-- Always active when FuturesMission is installed — no manual opt-in required.
 function BCIntegration.isEnabled()
     return BCIntegration.isAvailable()
 end
@@ -61,13 +62,13 @@ function BCIntegration.init(marketEngine, futuresMarket)
     _futuresMarket = futuresMarket
 
     if not BCIntegration.isAvailable() then
-        MDMLog.info("BCIntegration: BetterContracts not detected — integration inactive")
+        MDMLog.info("BCIntegration: FS25_FuturesMission not detected — integration inactive")
         return
     end
 
-    local bcMod   = g_modManager:getModByName("FS25_BetterContracts")
-    local version = (bcMod and bcMod.version) or "?"
-    MDMLog.info("BCIntegration: BetterContracts detected (v" .. version .. ") — supply reactions active")
+    local fmMod   = g_modManager:getModByName("FS25_FuturesMission")
+    local version = (fmMod and fmMod.version) or "?"
+    MDMLog.info("BCIntegration: FS25_FuturesMission detected (v" .. version .. ") — supply reactions active")
 
     BCIntegration._installHook()
 end
@@ -91,7 +92,7 @@ function BCIntegration.update()
 end
 
 -- ---------------------------------------------------------------------------
--- BetterContracts → MDM entry points
+-- FuturesMission → MDM entry points
 -- ---------------------------------------------------------------------------
 
 -- Called by BC at contract signing. Registers the contract in MDM's tracking list
@@ -103,21 +104,6 @@ function BCIntegration.onBCContractCreated(params)
     if not _futuresMarket then
         MDMLog.warn("BCIntegration.onBCContractCreated: futuresMarket not ready")
         return nil
-    end
-
-    -- Guard against duplicates: if FM already has an active contract for this
-    -- farm + crop + deadline, return its id instead of creating a second one.
-    -- This can happen when BC fires onBCContractCreated after FM has already
-    -- taken the contract over (e.g. on savegame reload or mission re-sync).
-    for id, contract in pairs(_futuresMarket.contracts) do
-        if contract.status == "active"
-            and contract.farmId        == params.farmId
-            and contract.fillTypeIndex == params.fillTypeIndex
-            and contract.deliveryTime  == params.deliveryTimeMs
-        then
-            MDMLog.info("BCIntegration: duplicate BC contract ignored, returning existing MDM contract #" .. tostring(id))
-            return id
-        end
     end
 
     -- bcManaged=true tells FuturesMarket._fulfillContract/_defaultContract to skip
@@ -197,15 +183,23 @@ end
 -- FuturesMission calls this on savegame load when BCIntegration is enabled so
 -- it can take over tracking of any contracts that were written before FM was
 -- installed.  bcManaged contracts are excluded because FM already owns those.
+-- DESTRUCTIVE: each returned contract is removed from _futuresMarket.contracts
+-- so that onBCContractCreated cannot create a duplicate when FM re-registers it.
 function BCIntegration.getContractsForFarm(farmId)
     if not _futuresMarket then return {} end
     local result = {}
-    for _, contract in pairs(_futuresMarket.contracts) do
+    local toRemove = {}
+    for id, contract in pairs(_futuresMarket.contracts) do
         if contract.farmId == farmId
             and contract.status == "active"
             and not contract.bcManaged then
             table.insert(result, contract)
+            table.insert(toRemove, id)
         end
+    end
+    for _, id in ipairs(toRemove) do
+        _futuresMarket.contracts[id] = nil
+        MDMLog.info("BCIntegration.getContractsForFarm: handed contract #" .. tostring(id) .. " to FM and removed from MDM")
     end
     return result
 end

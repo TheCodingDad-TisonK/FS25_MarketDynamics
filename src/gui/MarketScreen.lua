@@ -197,11 +197,12 @@ function MDMMarketScreen:onGuiSetupFinished()
     _setTextSafe(self.contractsColStatus,    "mdm_screen_col_status",    "Status")
     if BCIntegration.isEnabled() then
         _setTextSafe(self.noContractsText, "mdm_screen_no_contracts",
-            "Futures contracts are managed by BetterContracts.\n\n" ..
+            "Futures contracts are managed by FS25_FuturesMission (by Mmtrx).\n\n" ..
             "How to create one:\n" ..
             "1. Open the Contracts page (ESC menu)\n" ..
-            "2. Look for the \"Futures\" section in the contract list\n" ..
-            "3. Select a futures contract and press Accept")
+            "2. Look for the Futures section in the contract list\n" ..
+            "3. Select a futures contract and press Accept\n\n" ..
+            "Don't have it? Search GitHub for: FS25_FuturesMission by Mmtrx")
         if self.newContractHint then self.newContractHint:setVisible(false) end
     else
         _setTextSafe(self.noContractsText, "mdm_screen_no_contracts", "No contracts yet. Press X to create one.")
@@ -658,7 +659,7 @@ function MDMMarketScreen:openContractDialog()
     -- then return. InfoDialog's OK button (and ESC) closes it cleanly.
     if BCIntegration.isEnabled() then
         MDMLog.info("MarketScreen.openContractDialog: BC active — showing info dialog")
-        InfoDialog.show("BetterContracts is active - You cannot create contracts directly.")
+        InfoDialog.show("FS25_FuturesMission is active — contracts are created via the Contracts page (ESC menu). Search GitHub for FS25_FuturesMission by Mmtrx if you don't have it.")
         return
     end
 
@@ -962,11 +963,12 @@ function MDMMarketScreen._performRegistration(modDir)
         _setById("noEventsText", "mdm_screen_no_events", "No events")
         if BCIntegration.isEnabled() then
             _setById("noContractsText", nil,
-                "Futures contracts are managed by BetterContracts.\n\n" ..
+                "Futures contracts are managed by FS25_FuturesMission (by Mmtrx).\n\n" ..
                 "How to create one:\n" ..
                 "1. Open the Contracts page (ESC menu)\n" ..
-                "2. Look for the \"Futures\" section in the contract list\n" ..
-                "3. Select a futures contract and press Accept")
+                "2. Look for the Futures section in the contract list\n" ..
+                "3. Select a futures contract and press Accept\n\n" ..
+                "Don't have it? Search GitHub for: FS25_FuturesMission by Mmtrx")
             local hint = screen:getDescendantById("newContractHint")
             if hint then hint:setVisible(false) end
         else

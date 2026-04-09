@@ -73,7 +73,12 @@ Press **Q / E** to cycle tabs, **Up / Down** to navigate the list.
 
 ### Mod Integrations
 
-**FS25_BetterContracts** (by Mmtrx) — when installed, completing a harvest contract triggers a short-lived supply-spike on the harvested crop (prices dip ~8% for one in-game hour, reflecting the increased supply hitting the market). MDM's futures UI remains fully available alongside BetterContracts — they serve different purposes and coexist cleanly.
+**FS25_FuturesMission** (by Mmtrx) — a companion mod that bridges BetterContracts harvest missions with MDM's futures system. When installed:
+- Harvest contract completions trigger a short-lived supply-spike on the harvested crop (prices dip ~8% for one in-game hour, reflecting increased supply hitting the market)
+- Futures contracts are created through the BetterContracts mission flow instead of MDM's own dialog
+- Savegame migration is handled automatically — existing MDM contracts are handed off to FuturesMission on first load
+
+> **Get it here:** [FS25_FuturesMission on GitHub](https://github.com/Mmtrx/FS25_FuturesMission)
 
 **FS25_UsedPlus** (by XelaNull) — fulfilled futures contracts improve your credit score; defaults hurt it. Your credit score then scales the penalty rate on future defaults. New contract registrations are forwarded to the UP credit bureau automatically on detection.
 
@@ -135,7 +140,7 @@ This project wouldn’t have been possible without the amazing people behind it:
 - **@RattlerGU** — for the original idea
 - **@TheCodingDad-TisonK** — lead developer & author
 - **@LeGrizzly** — contributor, made the initial **Market Screen** page
-- **@Mmtrx** — creator of *Better Contracts*, the integration and **testing** of the mod 
+- **@Mmtrx** — creator of *BetterContracts* and *FS25_FuturesMission*, the integration and **testing** of the mod
 - **@XelaNull** — creator of *UsedPlus*, for allowing integration
 
 Huge thanks to everyone involved — this was an incredibly fun project to build 💯

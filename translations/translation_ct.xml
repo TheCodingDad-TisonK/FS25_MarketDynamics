@@ -97,6 +97,6 @@
         <text name="mdm_admin_close"            text="Close" />
         <text name="mdm_admin_delete"           text="Delete" />
         <text name="mdm_admin_settled"          text="This contract is already settled." />
-            <text name="mdm_bc_dialog_suppressed" text="BetterContracts is active and handles contract creation. Please use BetterContracts to create futures contracts." />
+            <text name="mdm_bc_dialog_suppressed" text="FS25_FuturesMission is active and handles contract creation. Use the Contracts page (ESC menu) to create futures contracts. Get it on GitHub: search FS25_FuturesMission by Mmtrx." />
     </texts>
 </l10n>

@@ -270,7 +270,7 @@ function MDMSettingsUI._addSettingsElements()
 
     _elem.statusVersion   = MDMSettingsUI._addStatusRow(layout, "Version:             —")
     _elem.statusEvents    = MDMSettingsUI._addStatusRow(layout, "Active Events:       —")
-    _elem.statusBC        = MDMSettingsUI._addStatusRow(layout, "BetterContracts:     —")
+    _elem.statusBC        = MDMSettingsUI._addStatusRow(layout, "FuturesMission:      —")
     _elem.statusUP        = MDMSettingsUI._addStatusRow(layout, "UsedPlus:            —")
 
     -- ── Debug ─────────────────────────────────────────────────────────────
@@ -351,7 +351,7 @@ function MDMSettingsUI._updateSettingsUI()
 
     if _elem.statusBC then
         local val = BCIntegration.isAvailable() and "Detected" or "Not installed"
-        _elem.statusBC:setText("BetterContracts:     " .. val)
+        _elem.statusBC:setText("FuturesMission:      " .. val)
     end
 
     if _elem.statusUP then
