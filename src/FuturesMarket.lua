@@ -37,16 +37,18 @@ function FuturesMarket:createContract(params)
     local id = self.nextId
     self.nextId = self.nextId + 1
 
+    local now = MDMUtil.getGameTime()
     local contract = {
-        id            = id,
-        farmId        = params.farmId,
-        fillTypeIndex = params.fillTypeIndex,
-        fillTypeName  = params.fillTypeName,
-        quantity      = params.quantity,       -- in liters
-        lockedPrice   = params.lockedPrice,    -- per liter at contract creation
-        deliveryTime  = params.deliveryTimeMs, -- absolute game time (ms)
-        delivered     = 0,                     -- liters delivered so far
-        status        = "active",              -- active | fulfilled | defaulted
+        id                = id,
+        farmId            = params.farmId,
+        fillTypeIndex     = params.fillTypeIndex,
+        fillTypeName      = params.fillTypeName,
+        quantity          = params.quantity,       -- in liters
+        lockedPrice       = params.lockedPrice,    -- per liter at contract creation
+        deliveryTime      = params.deliveryTimeMs, -- absolute game time (ms)
+        deliveryStartTime = now + (params.deliveryTimeMs - now) * 0.5, -- locked price only applies after first half of contract term
+        delivered         = 0,                     -- liters delivered so far
+        status            = "active",              -- active | fulfilled | defaulted
     }
 
     self.contracts[id] = contract
@@ -77,7 +79,7 @@ end
 -- Check all active contracts for delivery deadline expiry.
 -- Called every frame from MarketDynamics:update().
 function FuturesMarket:checkExpiry()
-    local now = g_currentMission and g_currentMission.time or 0
+    local now = MDMUtil.getGameTime()
 
     for id, contract in pairs(self.contracts) do
         if contract.status == "active" and now >= contract.deliveryTime then
@@ -93,13 +95,17 @@ end
 -- Called from the SellingStation delivery hook on every accepted crop sale.
 -- Routes liters to all active contracts matching this farm + fillType, oldest first.
 -- Excess liters (beyond what contracts need) are silently ignored — normal selling.
+-- Deliveries before the contract's deliveryStartTime do not count toward the contract
+-- (the locked price applies to future production, not existing inventory).
 function FuturesMarket:onCropDelivered(farmId, fillTypeIndex, liters)
+    local now = MDMUtil.getGameTime()
     local remaining = liters
     for id, contract in pairs(self.contracts) do
         if remaining <= 0 then break end
         if contract.status == "active"
             and contract.farmId == farmId
-            and contract.fillTypeIndex == fillTypeIndex then
+            and contract.fillTypeIndex == fillTypeIndex
+            and now >= (contract.deliveryStartTime or 0) then
 
             local needed   = contract.quantity - contract.delivered
             local applying = math.min(remaining, needed)
@@ -135,6 +141,15 @@ function FuturesMarket:_fulfillContract(id)
     if g_currentMission and g_currentMission.isClient and not g_currentMission.isServer then return end
 
     contract.status = "fulfilled"
+
+    -- BC-managed contracts: payout is handled by the base game mission system.
+    -- MDM must not pay a second time; just update state and notify UP.
+    if contract.bcManaged then
+        MDMLog.info("FuturesMarket: contract #" .. id .. " FULFILLED (BC-managed — no MDM payout)")
+        UPIntegration.onContractFulfilled(id, contract.farmId, 0)
+        return
+    end
+
     local payout = contract.quantity * contract.lockedPrice
 
     g_currentMission:addMoney(payout, contract.farmId, MoneyType.OTHER, true)
@@ -169,6 +184,13 @@ function FuturesMarket:_defaultContract(id)
     if g_currentMission and g_currentMission.isClient and not g_currentMission.isServer then return end
 
     contract.status = "defaulted"
+
+    -- BC-managed contracts: penalty is handled by the base game mission system.
+    if contract.bcManaged then
+        MDMLog.warn("FuturesMarket: contract #" .. id .. " DEFAULTED (BC-managed — no MDM penalty)")
+        UPIntegration.onContractDefaulted(id, contract.farmId, 0)
+        return
+    end
 
     local delivered   = contract.delivered
     local unfulfilled = contract.quantity - delivered

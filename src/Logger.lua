@@ -40,3 +40,29 @@ end
 
 -- Off by default. Enabled by SettingsUI callback or loaded from save via MarketSerializer.
 MDMLog.debugEnabled = false
+
+-- ---------------------------------------------------------------------------
+-- MDMUtil — shared utilities available to all MDM modules
+-- ---------------------------------------------------------------------------
+MDMUtil = {}
+
+-- Returns absolute game-world time in milliseconds.
+--
+-- WHY NOT g_currentMission.time?
+--   g_currentMission.time is session-elapsed time — it resets to 0 on every
+--   load. Any value written to a savegame using .time as a base (contract
+--   deadlines, event endsAt, cooldown lastFiredAt, history timestamps) will
+--   be compared against a completely different .time value after reload,
+--   causing incorrect expiry, wrong time-remaining display, and broken
+--   cooldown logic.
+--
+-- The correct base is absolute game-world time:
+--   (currentDay - 1) * 86400000 + dayTime
+-- This is stable across saves and reloads.
+function MDMUtil.getGameTime()
+    local env = g_currentMission and g_currentMission.environment
+    if not env then return 0 end
+    local currentDay = env.currentDay or 1
+    local dayTime    = env.dayTime    or 0
+    return (currentDay - 1) * 86400000 + dayTime
+end

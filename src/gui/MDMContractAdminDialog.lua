@@ -148,7 +148,7 @@ function MDMContractAdminDialog:_populate()
     -- Left column details
     if self.admCropValue     then self.admCropValue:setText(c.fillTypeName or "?") end
     if self.admQtyValue      then self.admQtyValue:setText(self:_fmt(c.quantity) .. " L") end
-    if self.admPriceValue    then self.admPriceValue:setText(string.format("$%.2f / L", c.lockedPrice or 0)) end
+    if self.admPriceValue    then self.admPriceValue:setText(string.format("$%.0f / 1,000L", (c.lockedPrice or 0) * 1000)) end
 
     local delivPct = 0
     if c.quantity and c.quantity > 0 then
@@ -161,7 +161,7 @@ function MDMContractAdminDialog:_populate()
 
     -- Deadline (convert ms to in-game days remaining)
     if self.admDeadlineValue then
-        local now = g_currentMission and g_currentMission.time or 0
+        local now = MDMUtil.getGameTime()
         local remaining = math.max(0, (c.deliveryTime or 0) - now)
         local daysLeft  = math.floor(remaining / (24 * 60 * 60000))
         if isActive then

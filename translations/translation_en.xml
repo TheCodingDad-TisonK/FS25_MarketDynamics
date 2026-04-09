@@ -78,7 +78,7 @@
         <text name="mdm_futures_confirm"         text="Confirm" />
         <text name="mdm_futures_cancel"          text="Cancel" />
         <text name="mdm_futures_total_value"     text="Total Value" />
-        <text name="mdm_futures_bc_disabled"     text="Futures disabled — BetterContracts mode active" />
+        <text name="mdm_futures_bc_disabled"     text="Futures disabled — FuturesMission mode active" />
         <text name="mdm_futures_created"         text="Contract Created!" />
         <text name="mdm_futures_no_contracts"    text="No contracts yet" />
 
@@ -86,7 +86,7 @@
         <text name="mdm_dialog_summary"       text="Contract Summary" />
         <text name="mdm_dialog_qty_label"     text="Quantity" />
         <text name="mdm_dialog_delivery_label" text="Delivery Window" />
-        <text name="mdm_dialog_bc_blocked"    text="Futures disabled — BetterContracts mode active" />
+        <text name="mdm_dialog_bc_blocked"    text="Futures disabled — FuturesMission mode active" />
         <text name="mdm_dialog_no_crops"      text="No market data available yet." />
         <text name="mdm_screen_new_contract_btn" text="New Contract [N]" />
 
@@ -112,5 +112,6 @@
         <!-- Input action display names -->
         <text name="input_MDM_MARKET_SCREEN" text="Open Market Screen" />
         <text name="input_MDM_CREATE_CONTRACT" text="Create Futures Contract" />
+            <text name="mdm_bc_dialog_suppressed" text="FS25_FuturesMission is active and handles contract creation. Use the Contracts page (ESC menu) to create futures contracts. Get it on GitHub: search FS25_FuturesMission by Mmtrx." />
     </texts>
 </l10n>

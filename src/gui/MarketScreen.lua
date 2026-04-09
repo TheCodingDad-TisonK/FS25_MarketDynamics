@@ -195,8 +195,20 @@ function MDMMarketScreen:onGuiSetupFinished()
     _setTextSafe(self.contractsColDelivered, "mdm_screen_col_delivered", "Delivered")
     _setTextSafe(self.contractsColDeadline,  "mdm_screen_col_deadline",  "Deadline")
     _setTextSafe(self.contractsColStatus,    "mdm_screen_col_status",    "Status")
-    _setTextSafe(self.noContractsText, "mdm_screen_no_contracts", "No contracts")
-    _setTextSafe(self.newContractHint, "mdm_screen_new_contract_btn", "New Contract [N]")
+    if BCIntegration.isEnabled() then
+        _setTextSafe(self.noContractsText, "mdm_screen_no_contracts",
+            "Futures contracts are managed by FS25_FuturesMission (by Mmtrx).\n\n" ..
+            "How to create one:\n" ..
+            "1. Open the Contracts page (ESC menu)\n" ..
+            "2. Look for the Futures section in the contract list\n" ..
+            "3. Select a futures contract and press Accept\n\n" ..
+            "Don't have it? Search GitHub for: FS25_FuturesMission by Mmtrx")
+        if self.newContractHint then self.newContractHint:setVisible(false) end
+    else
+        _setTextSafe(self.noContractsText, "mdm_screen_no_contracts", "No contracts yet. Press X to create one.")
+        _setTextSafe(self.newContractHint, "mdm_screen_new_contract_btn", "New Contract [X]")
+        if self.newContractHint then self.newContractHint:setVisible(true) end
+    end
 end
 
 function MDMMarketScreen:onOpen()
@@ -405,6 +417,24 @@ function MDMMarketScreen:onListSelectionChanged(list, section, index)
         self:refreshPricesDetail()
     elseif list == self.contractList and index > 0 then
         self.selectedContractIndex = index
+        if self._reloadingContracts then return end
+
+        -- When BetterContracts is active it owns the contract lifecycle entirely.
+        -- The admin dialog is meaningless in that context and its open/close cycle
+        -- causes the spam bug, so skip it completely.
+        if BCIntegration.isEnabled() then return end
+
+        local contract = self.contractData[index]
+        if not contract then return end
+        MDMDialogLoader.show("MDMContractAdminDialog", "setData", {
+            contract   = contract,
+            onComplete = function(contractId)
+                self:_onContractAdminAction("complete", contractId)
+            end,
+            onCancel   = function(contractId)
+                self:_onContractAdminAction("cancel", contractId)
+            end,
+        })
     end
 end
 
@@ -412,27 +442,15 @@ function MDMMarketScreen:onClickCommodity(element)
     -- onListSelectionChanged handles selection; nothing extra needed
 end
 
--- Called when the player clicks a row in the Contracts tab list.
--- Opens the admin panel dialog for that contract.
+-- Contract admin dialog is now opened in onListSelectionChanged to ensure
+-- the current selection index is always used (not the previously selected one).
 function MDMMarketScreen:onContractRowClick(element)
-    local idx = self.selectedContractIndex or 0
-    local contract = self.contractData[idx]
-    if not contract then return end
-
-    MDMDialogLoader.show("MDMContractAdminDialog", "setData", {
-        contract   = contract,
-        onComplete = function(contractId)
-            self:_onContractAdminAction("complete", contractId)
-        end,
-        onCancel   = function(contractId)
-            self:_onContractAdminAction("cancel", contractId)
-        end,
-    })
 end
 
 -- Refresh the contracts list after an admin action.
 function MDMMarketScreen:_onContractAdminAction(action, contractId)
     MDMLog.info(string.format("MarketScreen: admin %s contract #%s", action, tostring(contractId)))
+    self._lastAdminDialogTime = 0  -- reset debounce so the next click is never blocked
     self:_buildContractData()
     self:reloadAllLists()
 end
@@ -625,7 +643,9 @@ function MDMMarketScreen:reloadAllLists()
         self.eventList:reloadData()
     end
     if self.contractList then
+        self._reloadingContracts = true
         self.contractList:reloadData()
+        self._reloadingContracts = false
     end
 end
 
@@ -634,6 +654,15 @@ end
 -- ---------------------------------------------------------------------------
 
 function MDMMarketScreen:openContractDialog()
+    -- When BetterContracts is active it owns the futures contract flow entirely.
+    -- Show the player a brief info dialog so they know why nothing happened,
+    -- then return. InfoDialog's OK button (and ESC) closes it cleanly.
+    if BCIntegration.isEnabled() then
+        MDMLog.info("MarketScreen.openContractDialog: BC active — showing info dialog")
+        InfoDialog.show("FS25_FuturesMission is active — contracts are created via the Contracts page (ESC menu). Search GitHub for FS25_FuturesMission by Mmtrx if you don't have it.")
+        return
+    end
+
     MDMLog.info("MarketScreen.openContractDialog: commodities=" .. #self.commodities .. " selectedIdx=" .. self.selectedCropIndex)
     MDMDialogLoader.show("MDMContractDialog", "setData", {
         commodities = self.commodities,
@@ -648,7 +677,7 @@ function MDMMarketScreen:_onContractConfirmed(crop, qty, delivDays)
     if not g_MarketDynamics or not g_MarketDynamics.futuresMarket then return end
     if not g_localPlayer or not g_localPlayer.farmId then return end
 
-    local now            = g_currentMission and g_currentMission.time or 0
+    local now            = MDMUtil.getGameTime()
     local deliveryTimeMs = now + (delivDays * 24 * 60 * 60000)
 
     g_MarketDynamics.futuresMarket:createContract({
@@ -691,7 +720,7 @@ function MDMMarketScreen:_populateCommodityCell(index, cell)
         nameEl:setText(data.title)
     end
     if priceEl then
-        priceEl:setText(string.format("$%.0f", data.current))
+        priceEl:setText(string.format("$%.0f / 1,000L", data.current * 1000))
     end
     if changeEl then
         local sign = data.changePct >= 0 and "+" or ""
@@ -740,7 +769,7 @@ function MDMMarketScreen:_populateEventCell(index, cell)
     end
 
     if timeEl then
-        local now = g_currentMission and g_currentMission.time or 0
+        local now = MDMUtil.getGameTime()
         local remaining = math.max(0, data.endsAt - now)
         local mins = math.floor(remaining / 60000)
         if mins > 60 then
@@ -773,7 +802,7 @@ function MDMMarketScreen:_populateContractCell(index, cell)
         qtyEl:setText(string.format("%.0fL", data.quantity))
     end
     if priceEl then
-        priceEl:setText(string.format("$%.2f", data.lockedPrice))
+        priceEl:setText(string.format("$%.0f / 1,000L", data.lockedPrice * 1000))
     end
     if progressEl then
         local pct = 0
@@ -783,7 +812,7 @@ function MDMMarketScreen:_populateContractCell(index, cell)
         progressEl:setText(string.format("%.0f%%", pct))
     end
     if deadlineEl then
-        local now = g_currentMission and g_currentMission.time or 0
+        local now = MDMUtil.getGameTime()
         local remaining = math.max(0, data.deliveryTime - now)
         local days = math.floor(remaining / (24 * 60 * 60000))
         if days > 0 then
@@ -796,7 +825,7 @@ function MDMMarketScreen:_populateContractCell(index, cell)
     if statusEl then
         local status = data.status or "active"
         if status == "active" then
-            local now = g_currentMission and g_currentMission.time or 0
+            local now = MDMUtil.getGameTime()
             local remaining = math.max(0, data.deliveryTime - now)
             local pctDelivered = data.quantity > 0 and (data.delivered / data.quantity) or 0
 
@@ -836,13 +865,13 @@ function MDMMarketScreen:refreshPricesDetail()
     if self.detailCurrentPrice then
         self.detailCurrentPrice:setText(
             g_i18n:getText("mdm_screen_current_price") .. ": " ..
-            string.format("$%.2f / L", crop.current)
+            string.format("$%.0f / 1,000L", crop.current * 1000)
         )
     end
     if self.detailBasePrice then
         self.detailBasePrice:setText(
             g_i18n:getText("mdm_screen_base_price") .. ": " ..
-            string.format("$%.2f / L", crop.base)
+            string.format("$%.0f / 1,000L", crop.base * 1000)
         )
     end
     if self.detailChange then
@@ -932,7 +961,21 @@ function MDMMarketScreen._performRegistration(modDir)
 
         _setById("graphHint", "mdm_screen_collecting", "Collecting data...")
         _setById("noEventsText", "mdm_screen_no_events", "No events")
-        _setById("noContractsText", "mdm_screen_no_contracts", "No contracts")
+        if BCIntegration.isEnabled() then
+            _setById("noContractsText", nil,
+                "Futures contracts are managed by FS25_FuturesMission (by Mmtrx).\n\n" ..
+                "How to create one:\n" ..
+                "1. Open the Contracts page (ESC menu)\n" ..
+                "2. Look for the Futures section in the contract list\n" ..
+                "3. Select a futures contract and press Accept\n\n" ..
+                "Don't have it? Search GitHub for: FS25_FuturesMission by Mmtrx")
+            local hint = screen:getDescendantById("newContractHint")
+            if hint then hint:setVisible(false) end
+        else
+            _setById("noContractsText", "mdm_screen_no_contracts", "No contracts yet. Press X to create one.")
+            local hint = screen:getDescendantById("newContractHint")
+            if hint then hint:setVisible(true) end
+        end
         _setById("graphTitle", "mdm_screen_session_trend", "Session Timeline")
 
         _setById("eventsHeader", "mdm_screen_events_hdr", "ACTIVE EVENTS")
@@ -944,7 +987,9 @@ function MDMMarketScreen._performRegistration(modDir)
         _setById("contractsColDelivered", "mdm_screen_col_delivered", "Delivered")
         _setById("contractsColDeadline",  "mdm_screen_col_deadline",  "Deadline")
         _setById("contractsColStatus",    "mdm_screen_col_status",    "Status")
-        _setById("newContractHint",       "mdm_screen_new_contract_btn", "New Contract  [N]")
+        if not BCIntegration.isEnabled() then
+            _setById("newContractHint", "mdm_screen_new_contract_btn", "New Contract  [X]")
+        end
 
         _setById("detailCropName", "mdm_screen_select_crop", "Select a commodity")
         _setById("detailCurrentPrice", nil, "")

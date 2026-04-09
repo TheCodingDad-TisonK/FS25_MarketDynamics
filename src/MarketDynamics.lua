@@ -45,6 +45,10 @@ function MarketDynamics.new(modDir, modName)
     self.futuresMarket = FuturesMarket.new()
     self.serializer    = MarketSerializer.new()
 
+    -- Expose BCIntegration so external mods (e.g. BetterContracts) can reach it via
+    -- g_MarketDynamics.bcIntegration without depending on the global table name.
+    self.bcIntegration = BCIntegration
+
     local modInfo = g_modManager:getModByName(modName)
     MDMLog.info("MarketDynamics created — v" .. (modInfo and modInfo.version or "?"))
     return self
@@ -57,7 +61,7 @@ function MarketDynamics:onMissionLoaded(mission)
     self.marketEngine:init()         -- snapshot vanilla base prices
     self:_registerDefaultEvents()    -- drain MDM_pendingRegistrations
     self.isActive = true             -- PriceHook now routes through MDM
-    BCIntegration.init(self.marketEngine)
+    BCIntegration.init(self.marketEngine, self.futuresMarket)
     UPIntegration.init()
     MDMSettingsUI.initGui(self.modDir)
     MDMAdminCommands_register()

@@ -41,7 +41,7 @@ local function cmdStatus(self)
     print("  Events:         " .. #activeEvents .. " active / " .. registryCount .. " registered")
 
     if #activeEvents > 0 then
-        local now = g_currentMission and g_currentMission.time or 0
+        local now = MDMUtil.getGameTime()
         for _, ev in ipairs(activeEvents) do
             local remaining = math.max(0, ev.endsAt - now)
             local mins      = math.floor(remaining / 60000)
@@ -123,7 +123,7 @@ local function cmdEvents(self)
         return
     end
 
-    local now = g_currentMission and g_currentMission.time or 0
+    local now = MDMUtil.getGameTime()
     print("=== MDM Registered Events ===")
     for id, event in pairs(g_MarketDynamics.worldEvents.registry) do
         local active = g_MarketDynamics.worldEvents.active[id]

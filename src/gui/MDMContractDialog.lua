@@ -138,7 +138,6 @@ end
 
 function MDMContractDialog:onOpen()
     MDMContractDialog:superClass().onOpen(self)
-
     self.isOpen = true
 
     local hasCrops = #self.commodities > 0
@@ -247,7 +246,7 @@ function MDMContractDialog:_updateSummary()
         self.cropNameEl:setText(crop.title)
     end
     if self.cropPriceEl then
-        self.cropPriceEl:setText(string.format("Current price:  $%.2f / L", crop.current))
+        self.cropPriceEl:setText(string.format("Current price:  $%.0f / 1,000L", crop.current * 1000))
     end
     if self.cropChangeEl and crop.base and crop.base > 0 then
         local pct  = ((crop.current - crop.base) / crop.base) * 100
@@ -268,7 +267,7 @@ function MDMContractDialog:_updateSummary()
 
     if self.sumCrop    then self.sumCrop:setText("Crop:         " .. crop.title) end
     if self.sumQty     then self.sumQty:setText("Quantity:     " .. self:_fmtNum(self.selectedQty) .. " L") end
-    if self.sumLocked  then self.sumLocked:setText(string.format("Locked price: $%.2f / L", lockedPrice)) end
+    if self.sumLocked  then self.sumLocked:setText(string.format("Locked price: $%.0f / 1,000L", lockedPrice * 1000)) end
     if self.sumTotal   then self.sumTotal:setText("Total:  $" .. self:_fmtNum(totalValue)) end
     if self.sumDeadline then self.sumDeadline:setText("Deliver in:   " .. self.selectedDelivDays .. " days") end
     if self.sumPenalty  then self.sumPenalty:setText("Default penalty: 15% on unfulfilled qty") end
