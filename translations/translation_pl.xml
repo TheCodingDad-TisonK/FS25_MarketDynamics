@@ -2,22 +2,22 @@
 <l10n>
     <texts>
 
-        <text name="mdm_event_drought" text="Regionalna susza"/>
-        <text name="mdm_event_bumper_harvest" text="Zbiór zderzaków"/>
+        <text name="mdm_event_drought" text="Susza w regionie"/>
+        <text name="mdm_event_bumper_harvest" text="Nadzwyczajne zbiory"/>
         <text name="mdm_event_trade_disruption" text="Zakłócenia w handlu"/>
         <text name="mdm_event_geopolitical" text="Kryzys geopolityczny"/>
         <text name="mdm_event_biofuel_initiative" text="Inicjatywa na rzecz biopaliw"/>
-        <text name="mdm_event_livestock_boom" text="Boom na paszę dla zwierząt gospodarskich"/>
+        <text name="mdm_event_livestock_boom" text="Wzrost popytu na paszę"/>
         <text name="mdm_event_pest_outbreak" text="Zaraza roślin okopowych"/>
-        <text name="mdm_hud_title" text="Zegarek rynkowy"/>
+        <text name="mdm_hud_title" text="Obserwacja rynku"/>
         <text name="mdm_hud_active_events" text="Aktywne wydarzenia"/>
         <text name="mdm_hud_no_events" text="Rynki stabilne"/>
-        <text name="mdm_hud_event_mild" text="Łagodny"/>
-        <text name="mdm_hud_event_moderate" text="Umiarkowany"/>
-        <text name="mdm_hud_event_severe" text="Ciężki : silny"/>
+        <text name="mdm_hud_event_mild" text="Łagodne"/>
+        <text name="mdm_hud_event_moderate" text="Umiarkowane"/>
+        <text name="mdm_hud_event_severe" text="Poważne"/>
         <text name="mdm_screen_title" text="Dynamika rynku"/>
-        <text name="mdm_screen_col_crop" text="Przyciąć"/>
-        <text name="mdm_screen_col_base" text="Opierać"/>
+        <text name="mdm_screen_col_crop" text="Uprawa"/>
+        <text name="mdm_screen_col_base" text="Podstawa"/>
         <text name="mdm_screen_col_current" text="Aktualny"/>
         <text name="mdm_screen_col_change" text="Zmiana"/>
         <text name="mdm_screen_col_day" text="Dzień"/>
@@ -30,8 +30,8 @@
         <text name="mdm_screen_no_data" text="Brak danych cenowych"/>
         <text name="mdm_screen_no_history" text="Nie zapisano jeszcze żadnej historii"/>
         <text name="mdm_screen_close_hint" text="Naciśnij ESC, aby zamknąć"/>
-        <text name="mdm_screen_switch_tabs" text="Przełącz karty"/>
-        <text name="mdm_screen_nav_crops" text="Lewo/Prawo: przełączanie przycinania"/>
+        <text name="mdm_screen_switch_tabs" text="Przełącz zakładki"/>
+        <text name="mdm_screen_nav_crops" text="Lewo/Prawo: przełączanie uprawy"/>
         <text name="mdm_screen_tab_prices" text="Ceny"/>
         <text name="mdm_screen_tab_events" text="Wydarzenia"/>
         <text name="mdm_screen_tab_contracts" text="Umowy"/>
@@ -46,29 +46,32 @@
         <text name="mdm_screen_select_crop" text="Wybierz towar"/>
         <text name="mdm_screen_no_events" text="Rynki są spokojne. Brak aktywnych wydarzeń."/>
         <text name="mdm_screen_events_hdr" text="AKTYWNE WYDARZENIA"/>
-        <text name="mdm_screen_contracts_hdr" text="KONTRAKTY PRZYSZŁOŚCIOWE"/>
-        <text name="mdm_screen_new_contract" text="Alt+F: Nowy kontrakt"/>
-        <text name="mdm_screen_no_contracts" text="Nie ma jeszcze żadnych umów. Naciśnij Alt+F, aby go utworzyć."/>
+        <text name="mdm_screen_col_event" text="Wydarzenie" />
+        <text name="mdm_screen_col_intensity" text="Intensywność" />
+        <text name="mdm_screen_col_time_left" text="Pozostały Czas" />
+        <text name="mdm_screen_contracts_hdr" text="KONTRAKTY TERMINOWE"/>
+        <text name="mdm_screen_new_contract" text="N: Nowy kontrakt"/>
+        <text name="mdm_screen_no_contracts" text="Nie ma jeszcze żadnych umów. Naciśnij N, aby go utworzyć."/>
         <text name="mdm_screen_at_risk" text="RYZYKO"/>
-        <text name="mdm_screen_hint_bar" text="ESC: Zamknij |  Pytania i odpowiedzi: Zakładki |  W górę/w dół: Nawiguj"/>
+        <text name="mdm_screen_hint_bar" text="ESC: Zamknij | Q/E: Zakładki | ↑↓: Nawigacja"/>
         <text name="mdm_screen_timeline" text="Harmonogram sesji"/>
-        <text name="mdm_screen_balance" text="Balansować :"/>
+        <text name="mdm_screen_balance" text="Saldo :"/>
         <text name="mdm_futures_title" text="Rynek kontraktów terminowych"/>
-        <text name="mdm_futures_new_title" text="Nowy kontrakt futures"/>
+        <text name="mdm_futures_new_title" text="Nowy kontrakt terminowy"/>
         <text name="mdm_futures_create" text="Nowy kontrakt"/>
-        <text name="mdm_futures_fulfill" text="Spełniony"/>
+        <text name="mdm_futures_fulfill" text="Wypełniony"/>
         <text name="mdm_futures_defaulted" text="Domyślne"/>
         <text name="mdm_futures_active" text="Aktywny"/>
         <text name="mdm_futures_delivery_label" text="Dostawa"/>
         <text name="mdm_futures_locked_label" text="Cena zablokowana"/>
         <text name="mdm_futures_quantity_label" text="Ilość (L)"/>
-        <text name="mdm_futures_crop_label" text="Przyciąć"/>
-        <text name="mdm_futures_confirm" text="Potwierdzać"/>
-        <text name="mdm_futures_cancel" text="Anulować"/>
+        <text name="mdm_futures_crop_label" text="Uprawa"/>
+        <text name="mdm_futures_confirm" text="Potwierdź"/>
+        <text name="mdm_futures_cancel" text="Anuluj"/>
         <text name="mdm_futures_total_value" text="Całkowita wartość"/>
         <text name="mdm_futures_bc_disabled" text="Kontrakty terminowe wyłączone — tryb BetterContracts aktywny"/>
-        <text name="mdm_futures_created" text="Umowa utworzona!"/>
-        <text name="mdm_futures_no_contracts" text="Nie ma jeszcze żadnych umów"/>
+        <text name="mdm_futures_created" text="Kontrakt terminowy utworzony!"/>
+        <text name="mdm_futures_no_contracts" text="Nie ma jeszcze żadnych kontraktów terminowych"/>
         <text name="mdm_dialog_summary" text="Podsumowanie umowy"/>
         <text name="mdm_dialog_qty_label" text="Ilość"/>
         <text name="mdm_dialog_delivery_label" text="Okno dostawy"/>
@@ -80,23 +83,23 @@
     
         <!-- Input action display names -->
         <text name="input_MDM_MARKET_SCREEN" text="Otwórz rynek" />
-        <text name="input_MDM_CREATE_CONTRACT" text="Utwórz kontrakt futures" />
+        <text name="input_MDM_CREATE_CONTRACT" text="Utwórz kontrakt terminowy" />
 
         <!-- Contract admin dialog -->
-        <text name="mdm_admin_title"            text="Contract Details" />
-        <text name="mdm_admin_details_label"    text="Contract Info" />
-        <text name="mdm_admin_summary_label"    text="Value Summary" />
-        <text name="mdm_admin_crop"             text="Crop:" />
-        <text name="mdm_admin_qty"              text="Quantity:" />
-        <text name="mdm_admin_price"            text="Locked price:" />
-        <text name="mdm_admin_delivered"        text="Delivered:" />
-        <text name="mdm_admin_deadline"         text="Deadline:" />
+        <text name="mdm_admin_title"            text="Szczegóły kontraktu terminowego" />
+        <text name="mdm_admin_details_label"    text="Informacje O kontrakcie" />
+        <text name="mdm_admin_summary_label"    text="Podsumowanie wartości" />
+        <text name="mdm_admin_crop"             text="Uprawa:" />
+        <text name="mdm_admin_qty"              text="Ilość:" />
+        <text name="mdm_admin_price"            text="Zablokowana cena:" />
+        <text name="mdm_admin_delivered"        text="Dostarczone:" />
+        <text name="mdm_admin_deadline"         text="Termin realizacji:" />
         <text name="mdm_admin_status"           text="Status:" />
-        <text name="mdm_admin_complete"         text="Force Complete" />
-        <text name="mdm_admin_cancel_contract"  text="Cancel Contract" />
-        <text name="mdm_admin_close"            text="Close" />
-        <text name="mdm_admin_delete"           text="Delete" />
-        <text name="mdm_admin_settled"          text="This contract is already settled." />
+        <text name="mdm_admin_complete"         text="Wymuś zakończenie" />
+        <text name="mdm_admin_cancel_contract"  text="Anuluj kontrakt" />
+        <text name="mdm_admin_close"            text="Zamknij" />
+        <text name="mdm_admin_delete"           text="Usuń" />
+        <text name="mdm_admin_settled"          text="Ten kontrakt został już rozliczony." />
             <text name="mdm_bc_dialog_suppressed" text="FS25_FuturesMission is active and handles contract creation. Use the Contracts page (ESC menu) to create futures contracts. Get it on GitHub: search FS25_FuturesMission by Mmtrx." />
     </texts>
 </l10n>
