@@ -470,27 +470,22 @@
   "2026-04-12": [
     {
       "referrer": "github.com",
-      "count": 150,
-      "uniques": 58
+      "count": 144,
+      "uniques": 56
     },
     {
       "referrer": "kingmods.net",
-      "count": 20,
-      "uniques": 10
+      "count": 22,
+      "uniques": 12
     },
     {
       "referrer": "Google",
-      "count": 13,
-      "uniques": 5
+      "count": 17,
+      "uniques": 7
     },
     {
       "referrer": "Yahoo",
       "count": 2,
-      "uniques": 1
-    },
-    {
-      "referrer": "Bing",
-      "count": 1,
       "uniques": 1
     },
     {
