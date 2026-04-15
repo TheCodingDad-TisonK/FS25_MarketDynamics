@@ -219,11 +219,11 @@ end
 --   → deliveryTimeMs = now + (3,599,999 - 3,600,000) + 90 * 3,600,000  (midnight of day 90)
 function BCIntegration.getDeliveryMs(periods)
     local env           = g_currentMission and g_currentMission.environment
-    local daysPerPeriod = (env and env.daysPerSeason) or 30   -- ← daysPerSeason, not daysPerPeriod
-    local dayDuration   = (env and env.dayDuration)   or (24 * 60 * 60 * 1000)
+    local daysPerPeriod = (env and env.daysPerSeason) or 30
     local now           = MDMUtil.getGameTime()
     local dayTime       = (env and env.dayTime) or 0
-    return now + (86399999 - dayTime) + (periods * daysPerPeriod * dayDuration)
+    -- Use game-world day length (86400000 ms), NOT env.dayDuration (real-time speed)
+    return now + (86399999 - dayTime) + (periods * daysPerPeriod * 86400000)
 end
 
 -- ---------------------------------------------------------------------------
