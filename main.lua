@@ -60,6 +60,9 @@ source(modDirectory .. "src/gui/MarketScreenGraph.lua")
 source(modDirectory .. "src/gui/MarketScreen.lua")
 
 -- Events
+source(modDirectory .. "src/events/MDMContractRequestEvent.lua")
+source(modDirectory .. "src/events/MDMContractSyncEvent.lua")
+source(modDirectory .. "src/events/MDMContractSyncRequestEvent.lua")
 source(modDirectory .. "src/events/DroughtEvent.lua")
 source(modDirectory .. "src/events/BumperHarvestEvent.lua")
 source(modDirectory .. "src/events/TradeDisruptionEvent.lua")

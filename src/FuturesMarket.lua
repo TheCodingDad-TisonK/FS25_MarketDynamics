@@ -267,4 +267,7 @@ function FuturesMarket:adminDelete(contractId)
     if contract.status == "active" then return end
     self.contracts[contractId] = nil
     MDMLog.info("FuturesMarket: admin deleted settled contract #" .. contractId)
+    if g_server ~= nil then
+        MDMContractSyncEvent.sendToClients(MDMContractSyncEvent.SYNC_REMOVE, {id = contractId})
+    end
 end
