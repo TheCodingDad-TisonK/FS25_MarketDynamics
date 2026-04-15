@@ -105,9 +105,7 @@ end
 function MDMContractAdminDialog:onCompleteClick()
     local c = self.contract
     if not c or c.status ~= "active" then self:close(); return end
-    if g_MarketDynamics and g_MarketDynamics.futuresMarket then
-        g_MarketDynamics.futuresMarket:adminComplete(c.id)
-    end
+    MDMContractRequestEvent.sendToServer(MDMContractRequestEvent.ACTION_ADMIN_COMPLETE, { contractId = c.id })
     if self._onComplete then self._onComplete(c.id) end
     self:close()
 end

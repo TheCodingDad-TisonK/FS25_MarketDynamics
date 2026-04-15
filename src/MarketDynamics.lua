@@ -78,9 +78,14 @@ end
 
 -- Called when the player's savegame session actually starts (load saved data here)
 function MarketDynamics:onStartMission(mission)
-    self.serializer:load(self)
-    UPIntegration.reregisterActiveContracts(self.futuresMarket.contracts)
-    MDMLog.info("MarketDynamics: savegame data loaded")
+    if g_currentMission.isServer then
+        self.serializer:load(self)
+        UPIntegration.reregisterActiveContracts(self.futuresMarket.contracts)
+        MDMLog.info("MarketDynamics: savegame data loaded")
+    else
+        MDMContractSyncRequestEvent.sendToServer()
+        MDMLog.info("MarketDynamics: requested contract sync from server")
+    end
 end
 
 -- Per-frame tick. dt = in-game milliseconds from FSBaseMission.update.
