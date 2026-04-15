@@ -1,9 +1,0 @@
-# Normalize all text files to LF in the repo
-* text=auto eol=lf
-
-# Force binary files to stay as-is
-*.png binary
-*.jpg binary
-*.ico binary
-*.zip binary
-*.dds binary

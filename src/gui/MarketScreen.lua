@@ -366,15 +366,14 @@ function MDMMarketScreen:inputEvent(action, value, eventUsed)
             return true
         end
         if action == InputAction.MENU_PAGE_NEXT then
-            -- On the Contracts tab: N opens the New Contract dialog instead of cycling
-            if self.activeTab == TAB_CONTRACTS then
-                MDMLog.info("MarketScreen: MENU_PAGE_NEXT on TAB_CONTRACTS — opening contract dialog")
-                self:openContractDialog()
-            else
-                local newTab = self.activeTab + 1
-                if newTab > TAB_CONTRACTS then newTab = TAB_PRICES end
-                self:setActiveTab(newTab)
-            end
+            local newTab = self.activeTab + 1
+            if newTab > TAB_CONTRACTS then newTab = TAB_PRICES end
+            self:setActiveTab(newTab)
+            return true
+        end
+        if action == InputAction.MDM_CREATE_CONTRACT then
+            MDMLog.info("MarketScreen: MDM_CREATE_CONTRACT — opening contract dialog")
+            self:openContractDialog()
             return true
         end
     end
@@ -680,7 +679,7 @@ function MDMMarketScreen:_onContractConfirmed(crop, qty, delivDays)
     local now            = MDMUtil.getGameTime()
     local deliveryTimeMs = now + (delivDays * 24 * 60 * 60000)
 
-    g_MarketDynamics.futuresMarket:createContract({
+    MDMContractRequestEvent.sendToServer(MDMContractRequestEvent.ACTION_CREATE, {
         farmId         = g_localPlayer.farmId,
         fillTypeIndex  = crop.idx,
         fillTypeName   = crop.title,
@@ -689,12 +688,11 @@ function MDMMarketScreen:_onContractConfirmed(crop, qty, delivDays)
         deliveryTimeMs = deliveryTimeMs,
     })
 
-    MDMLog.info(string.format("MarketScreen: contract — %s %dL @ $%.2f deliver in %dd",
+    MDMLog.info(string.format("MarketScreen: sent contract request — %s %dL @ $%.2f deliver in %dd",
         crop.title, qty, crop.current, delivDays))
 
     self:setActiveTab(TAB_CONTRACTS)
-    self:_buildContractData()
-    self:reloadAllLists()
+    -- UI will update when server broadcasts the new contract
 end
 
 
