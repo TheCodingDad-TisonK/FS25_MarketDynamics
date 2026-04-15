@@ -2403,5 +2403,147 @@
     "stars": 8,
     "forks": 1,
     "watchers": 2
+  },
+  {
+    "timestamp": "2026-04-15T06:26:11Z",
+    "date": "2026-04-15",
+    "views": {
+      "count": 329,
+      "uniques": 97
+    },
+    "clones": {
+      "count": 815,
+      "uniques": 284
+    },
+    "referrers": [
+      {
+        "referrer": "github.com",
+        "count": 167,
+        "uniques": 62
+      },
+      {
+        "referrer": "kingmods.net",
+        "count": 18,
+        "uniques": 8
+      },
+      {
+        "referrer": "Google",
+        "count": 14,
+        "uniques": 6
+      },
+      {
+        "referrer": "Yahoo",
+        "count": 2,
+        "uniques": 1
+      },
+      {
+        "referrer": "DuckDuckGo",
+        "count": 1,
+        "uniques": 1
+      }
+    ],
+    "popular_paths": [
+      {
+        "path": "/TheCodingDad-TisonK/FS25_MarketDynamics",
+        "title": "Overview",
+        "count": 146,
+        "uniques": 74
+      },
+      {
+        "path": "/TheCodingDad-TisonK/FS25_MarketDynamics/tree/main",
+        "title": "/tree/main",
+        "count": 50,
+        "uniques": 3
+      },
+      {
+        "path": "/TheCodingDad-TisonK/FS25_MarketDynamics/releases/tag/v1.1.1.0",
+        "title": "/releases/tag/v1.1.1.0",
+        "count": 24,
+        "uniques": 18
+      },
+      {
+        "path": "/TheCodingDad-TisonK/FS25_MarketDynamics/issues",
+        "title": "/issues",
+        "count": 21,
+        "uniques": 11
+      },
+      {
+        "path": "/TheCodingDad-TisonK/FS25_MarketDynamics/releases",
+        "title": "/releases",
+        "count": 18,
+        "uniques": 13
+      },
+      {
+        "path": "/TheCodingDad-TisonK/FS25_MarketDynamics/releases/tag/v0.1.0-rc1",
+        "title": "/releases/tag/v0.1.0-rc1",
+        "count": 15,
+        "uniques": 7
+      },
+      {
+        "path": "/TheCodingDad-TisonK/FS25_MarketDynamics/releases/tag/v1.0.0.1",
+        "title": "/releases/tag/v1.0.0.1",
+        "count": 10,
+        "uniques": 5
+      },
+      {
+        "path": "/TheCodingDad-TisonK/FS25_MarketDynamics/issues/29",
+        "title": "/issues/29",
+        "count": 4,
+        "uniques": 4
+      },
+      {
+        "path": "/TheCodingDad-TisonK/FS25_MarketDynamics/pull/3",
+        "title": "/pull/3",
+        "count": 3,
+        "uniques": 2
+      },
+      {
+        "path": "/TheCodingDad-TisonK/FS25_MarketDynamics/pulls",
+        "title": "/pulls",
+        "count": 3,
+        "uniques": 2
+      }
+    ],
+    "releases": [
+      {
+        "assets": [
+          {
+            "downloads": 37,
+            "name": "FS25_MarketDynamics.zip"
+          }
+        ],
+        "tag": "v1.1.1.0"
+      },
+      {
+        "assets": [
+          {
+            "downloads": 33,
+            "name": "FS25_MarketDynamics.zip"
+          }
+        ],
+        "tag": "v1.0.0.1"
+      },
+      {
+        "assets": [
+          {
+            "downloads": 3,
+            "name": "FS25_MarketDynamics.zip"
+          }
+        ],
+        "tag": "v1.0.0.0"
+      },
+      {
+        "assets": [
+          {
+            "downloads": 12,
+            "name": "FS25_MarketDynamics.zip"
+          }
+        ],
+        "tag": "v0.1.0-rc1"
+      }
+    ],
+    "stars": 8,
+    "forks": 1,
+    "watchers": 2
   }
 ]
