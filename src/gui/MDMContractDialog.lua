@@ -189,10 +189,16 @@ end
 function MDMContractDialog:onConfirmClick()
     local crop = self.commodities[self.selectedCropIdx]
     if not crop then return end
-    if self._onConfirmed then
-        self._onConfirmed(crop, self.selectedQty, self.selectedDelivDays)
-    end
+    
+    local cb = self._onConfirmed
+    local qty = self.selectedQty
+    local delivDays = self.selectedDelivDays
+    
     self:close()
+    
+    if cb then
+        cb(crop, qty, delivDays)
+    end
 end
 
 function MDMContractDialog:onCancelClick()

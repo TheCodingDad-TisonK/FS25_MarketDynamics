@@ -129,6 +129,6 @@ function MDMContractSyncEvent.execute(syncType, data)
 end
 
 function MDMContractSyncEvent:run(connection)
-    if connection:getIsServer() then return end
+    if not connection:getIsServer() then return end
     MDMContractSyncEvent.execute(self.syncType, self.data)
 end
