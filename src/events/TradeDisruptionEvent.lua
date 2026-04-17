@@ -10,7 +10,7 @@
 
 local EVENT_ID = "trade_disruption"
 
-local ALL_CROPS = { "wheat", "barley", "canola", "corn", "sunflower", "soybean", "oat" }
+local ALL_CROPS = { "wheat", "barley", "canola", "corn", "dryCorn", "sunflower", "soybean", "oat" }
 
 -- Tracks which cropNames were affected by the most recent firing.
 -- Populated in onFire, consumed in onExpire.

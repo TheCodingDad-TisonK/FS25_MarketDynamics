@@ -258,6 +258,9 @@ function FuturesMarket:adminCancel(contractId)
     if contract.status ~= "active" then return end
     self.contracts[contractId] = nil
     MDMLog.info("FuturesMarket: admin cancelled (removed) contract #" .. contractId)
+    if g_server ~= nil then
+        MDMContractSyncEvent.sendToClients(MDMContractSyncEvent.SYNC_REMOVE, {id = contractId})
+    end
 end
 
 --- Remove a settled (fulfilled or defaulted) contract from the list.
