@@ -17,7 +17,7 @@
         <text name="mdm_hud_event_severe" text="Schwer"/>
         <text name="mdm_screen_title" text="Marktdynamik"/>
         <text name="mdm_screen_col_crop" text="Ernte"/>
-        <text name="mdm_screen_col_base" text="Base"/>
+        <text name="mdm_screen_col_base" text="Basis"/>
         <text name="mdm_screen_col_current" text="Aktuell"/>
         <text name="mdm_screen_col_change" text="Ändern"/>
         <text name="mdm_screen_col_day" text="Tag"/>
@@ -27,6 +27,9 @@
         <text name="mdm_screen_col_delivered" text="Geliefert"/>
         <text name="mdm_screen_col_deadline" text="Frist"/>
         <text name="mdm_screen_col_status" text="Status"/>
+        <text name="mdm_screen_col_event" text="Ereignis"/>
+        <text name="mdm_screen_col_intensity" text="Intensität"/>
+        <text name="mdm_screen_col_time_left" text="Verbleibende Zeit"/>
         <text name="mdm_screen_no_data" text="Keine Preisdaten verfügbar"/>
         <text name="mdm_screen_no_history" text="Noch keine Historie erfasst"/>
         <text name="mdm_screen_close_hint" text="Zum Schließen ESC drücken"/>
@@ -83,20 +86,20 @@
         <text name="input_MDM_CREATE_CONTRACT" text="Terminkontrakt erstellen" />
 
         <!-- Contract admin dialog -->
-        <text name="mdm_admin_title"            text="Contract Details" />
-        <text name="mdm_admin_details_label"    text="Contract Info" />
-        <text name="mdm_admin_summary_label"    text="Value Summary" />
-        <text name="mdm_admin_crop"             text="Crop:" />
-        <text name="mdm_admin_qty"              text="Quantity:" />
-        <text name="mdm_admin_price"            text="Locked price:" />
-        <text name="mdm_admin_delivered"        text="Delivered:" />
-        <text name="mdm_admin_deadline"         text="Deadline:" />
+        <text name="mdm_admin_title"            text="Vertragsdetails" />
+        <text name="mdm_admin_details_label"    text="Vertragsinformationen" />
+        <text name="mdm_admin_summary_label"    text="Wertzusammenfassung" />
+        <text name="mdm_admin_crop"             text="Ernte:" />
+        <text name="mdm_admin_qty"              text="Menge:" />
+        <text name="mdm_admin_price"            text="Gesperrter Preis:" />
+        <text name="mdm_admin_delivered"        text="Geliefert:" />
+        <text name="mdm_admin_deadline"         text="Frist:" />
         <text name="mdm_admin_status"           text="Status:" />
-        <text name="mdm_admin_complete"         text="Force Complete" />
-        <text name="mdm_admin_cancel_contract"  text="Cancel Contract" />
-        <text name="mdm_admin_close"            text="Close" />
-        <text name="mdm_admin_delete"           text="Delete" />
-        <text name="mdm_admin_settled"          text="This contract is already settled." />
-            <text name="mdm_bc_dialog_suppressed" text="FS25_FuturesMission is active and handles contract creation. Use the Contracts page (ESC menu) to create futures contracts. Get it on GitHub: search FS25_FuturesMission by Mmtrx." />
+        <text name="mdm_admin_complete"         text="Abschluss erzwingen" />
+        <text name="mdm_admin_cancel_contract"  text="Vertrag stornieren" />
+        <text name="mdm_admin_close"            text="Schließen" />
+        <text name="mdm_admin_delete"           text="Löschen" />
+        <text name="mdm_admin_settled"          text="Dieser Vertrag ist bereits abgerechnet." />
+            <text name="mdm_bc_dialog_suppressed" text="FS25_FuturesMission ist aktiv und übernimmt die Vertragserstellung. Verwenden Sie die Vertragsseite (ESC-Menü), um Terminkontrakte zu erstellen. Auf GitHub erhältlich: FS25_FuturesMission von Mmtrx." />
     </texts>
 </l10n>
