@@ -12,6 +12,9 @@
         <text name="mdm_event_biofuel_initiative"   text="Biofuel Initiative" />
         <text name="mdm_event_livestock_boom"       text="Livestock Feed Boom" />
         <text name="mdm_event_pest_outbreak"        text="Root Crop Blight" />
+        <text name="mdm_event_cold_snap"             text="Cold Snap" />
+        <text name="mdm_event_financial_panic"       text="Financial Panic" />
+        <text name="mdm_event_protein_premium"       text="Protein Premium Surge" />
 
         <!-- HUD Overlay -->
         <text name="mdm_hud_title"               text="Market Watch" />
