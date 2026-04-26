@@ -11,7 +11,7 @@
 
 local EVENT_ID = "bumper_harvest"
 
-local AFFECTED_CROPS = { "wheat", "barley", "corn", "oat", "sorghum" }
+local AFFECTED_CROPS = { "wheat", "barley", "corn", "dryCorn", "oat", "sorghum" }
 
 local function onFire(intensity)
     if not g_MarketDynamics then return end

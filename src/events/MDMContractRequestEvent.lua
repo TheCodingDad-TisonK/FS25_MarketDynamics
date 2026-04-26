@@ -75,6 +75,6 @@ function MDMContractRequestEvent.execute(action, params)
 end
 
 function MDMContractRequestEvent:run(connection)
-    if not connection:getIsServer() then return end
+    if connection:getIsServer() then return end
     MDMContractRequestEvent.execute(self.action, self.params)
 end

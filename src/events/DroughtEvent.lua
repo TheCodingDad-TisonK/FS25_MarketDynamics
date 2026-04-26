@@ -11,7 +11,7 @@
 
 local EVENT_ID = "drought"
 
-local AFFECTED_CROPS = { "wheat", "barley", "canola", "corn", "sunflower" }
+local AFFECTED_CROPS = { "wheat", "barley", "canola", "corn", "dryCorn", "sunflower" }
 
 local function onFire(intensity)
     if not g_MarketDynamics then return end

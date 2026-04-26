@@ -11,7 +11,7 @@
 
 local EVENT_ID = "livestock_boom"
 
-local AFFECTED_CROPS = { "GRASS_WINDROW", "SILAGE", "MAIZE" }
+local AFFECTED_CROPS = { "GRASS_WINDROW", "SILAGE", "MAIZE", "DRYCORN" }
 
 local function onFire(intensity)
     if not g_MarketDynamics then return end
