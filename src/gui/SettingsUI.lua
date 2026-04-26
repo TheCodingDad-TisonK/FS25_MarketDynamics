@@ -72,6 +72,28 @@ end
 function MDMSettingsUI.onFrameOpen(self)
     if not _guiLoaded then return end
 
+    -- Re-validate on every open: if the frame was rebuilt, or SERVER SETTINGS
+    -- (MP) or another mod displaced our tab, detect it and allow re-insertion.
+    if _tabInserted and MDMSettingsUI.mdmTab then
+        local ps = g_inGameMenu and g_inGameMenu.pageSettings
+        local found = false
+        if ps then
+            for i, tab in ipairs(ps.subCategoryTabs) do
+                if tab == MDMSettingsUI.mdmTab then
+                    MDMSettingsUI.modPageNr = i  -- sync if position shifted
+                    found = true
+                    break
+                end
+            end
+        end
+        if not found then
+            _tabInserted = false
+            MDMSettingsUI.mdmTab         = nil
+            MDMSettingsUI.mdmPage        = nil
+            MDMSettingsUI.settingsLayout = nil
+        end
+    end
+
     if not _tabInserted then
         if MDMSettingsUI._insertTab() then
             _tabInserted = true
@@ -95,7 +117,12 @@ function MDMSettingsUI._insertTab()
     end
 
     -- ── Position: always last tab ──────────────────────────────────────────
-    local pos = #ps.subCategoryTabs + 1
+    -- Use the larger of subCategoryTabs and subCategoryPages so we land after
+    -- any tab (e.g. the MP SERVER SETTINGS tab) that may be registered in one
+    -- array but not yet the other at the time of insertion.
+    local tabCount  = #ps.subCategoryTabs
+    local pageCount = ps.subCategoryPages and #ps.subCategoryPages or tabCount
+    local pos = math.max(tabCount, pageCount) + 1
     MDMSettingsUI.modPageNr = pos
 
     -- Helper: reparent element and insert at exact position (same as BC's addElementAtPosition)
