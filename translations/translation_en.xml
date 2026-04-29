@@ -109,12 +109,21 @@
         <text name="mdm_admin_delete"           text="Delete" />
         <text name="mdm_admin_settled"          text="This contract is already settled." />
 
+        <!-- Custom Input Dialog -->
+        <text name="mdm_custom_amount"          text="Custom Amount" />
+        <text name="mdm_custom_days"            text="Custom Days" />
+        <text name="mdm_enter_amount"           text="Enter Amount:" />
+        <text name="mdm_enter_days"             text="Enter Days:" />
+        <text name="mdm_custom_amount_hint"     text="Enter the desired contract quantity in liters." />
+        <text name="mdm_custom_days_hint"       text="Select delivery window length. Real Days will convert to game time based on your current time scale setting." />
+
         <!-- Settings -->
         <text name="mdm_settings_mdm_general"  text="Market Dynamics" />
     
         <!-- Input action display names -->
         <text name="input_MDM_MARKET_SCREEN" text="Open Market Screen" />
         <text name="input_MDM_CREATE_CONTRACT" text="Create Futures Contract" />
+        <text name="input_MDM_SETTINGS_PANEL" text="Market Dynamics Settings" />
             <text name="mdm_bc_dialog_suppressed" text="FS25_FuturesMission is active and handles contract creation. Use the Contracts page (ESC menu) to create futures contracts. Get it on GitHub: search FS25_FuturesMission by Mmtrx." />
     </texts>
 </l10n>

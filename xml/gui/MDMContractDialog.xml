@@ -19,7 +19,7 @@
   <GuiElement profile="newLayer" />
   <Bitmap profile="dialogFullscreenBg" />
 
-  <GuiElement profile="dialogBg" id="dialogElement" size="920px 700px">
+  <GuiElement profile="dialogBg" id="dialogElement" size="920px 850px">
     <ThreePartBitmap profile="fs25_dialogBgMiddle" />
     <ThreePartBitmap profile="fs25_dialogBgTop" />
     <ThreePartBitmap profile="fs25_dialogBgBottom" />
@@ -46,70 +46,80 @@
       <!-- Quantity presets -->
       <Text profile="mdmDlg_sectionLabel" text="$l10n_mdm_dialog_qty_label" position="445px -48px"/>
 
-      <!-- Qty 500 -->
-      <Bitmap profile="mdmDlg_optBtnBg" position="445px -72px"  size="143px 38px"/>
-      <Button profile="mdmDlg_btnHit"   id="dlgQty500"     onClick="onQtyClick" position="445px -72px"  size="143px 38px"/>
-      <Text   profile="mdmDlg_btnText"  id="dlgQty500Text" text="500 L"         position="445px -72px"  size="143px 38px"/>
+      <!-- Qty 500  — buttons use 141px width, 5px gap, rightmost ends at 878px (within 880px boundary) -->
+      <Bitmap profile="mdmDlg_optBtnBg" position="445px -72px"  size="141px 38px"/>
+      <Button profile="mdmDlg_btnHit"   id="dlgQty500"     onClick="onQtyClick" position="445px -72px"  size="141px 38px"/>
+      <Text   profile="mdmDlg_btnText"  id="dlgQty500Text" text="500 L"         position="445px -72px"  size="141px 38px"/>
 
       <!-- Qty 1000 -->
-      <Bitmap profile="mdmDlg_optBtnBg" position="597px -72px"  size="143px 38px"/>
-      <Button profile="mdmDlg_btnHit"   id="dlgQty1000"     onClick="onQtyClick" position="597px -72px"  size="143px 38px"/>
-      <Text   profile="mdmDlg_btnText"  id="dlgQty1000Text" text="1,000 L"       position="597px -72px"  size="143px 38px"/>
+      <Bitmap profile="mdmDlg_optBtnBg" position="591px -72px"  size="141px 38px"/>
+      <Button profile="mdmDlg_btnHit"   id="dlgQty1000"     onClick="onQtyClick" position="591px -72px"  size="141px 38px"/>
+      <Text   profile="mdmDlg_btnText"  id="dlgQty1000Text" text="1,000 L"       position="591px -72px"  size="141px 38px"/>
 
       <!-- Qty 5000 -->
-      <Bitmap profile="mdmDlg_optBtnBg" position="749px -72px"  size="143px 38px"/>
-      <Button profile="mdmDlg_btnHit"   id="dlgQty5000"     onClick="onQtyClick" position="749px -72px"  size="143px 38px"/>
-      <Text   profile="mdmDlg_btnText"  id="dlgQty5000Text" text="5,000 L"       position="749px -72px"  size="143px 38px"/>
+      <Bitmap profile="mdmDlg_optBtnBg" position="737px -72px"  size="141px 38px"/>
+      <Button profile="mdmDlg_btnHit"   id="dlgQty5000"     onClick="onQtyClick" position="737px -72px"  size="141px 38px"/>
+      <Text   profile="mdmDlg_btnText"  id="dlgQty5000Text" text="5,000 L"       position="737px -72px"  size="141px 38px"/>
 
       <!-- Qty 10000 -->
-      <Bitmap profile="mdmDlg_optBtnBg" position="445px -117px" size="143px 38px"/>
-      <Button profile="mdmDlg_btnHit"   id="dlgQty10000"     onClick="onQtyClick" position="445px -117px" size="143px 38px"/>
-      <Text   profile="mdmDlg_btnText"  id="dlgQty10000Text" text="10,000 L"      position="445px -117px" size="143px 38px"/>
+      <Bitmap profile="mdmDlg_optBtnBg" position="445px -117px" size="141px 38px"/>
+      <Button profile="mdmDlg_btnHit"   id="dlgQty10000"     onClick="onQtyClick" position="445px -117px" size="141px 38px"/>
+      <Text   profile="mdmDlg_btnText"  id="dlgQty10000Text" text="10,000 L"      position="445px -117px" size="141px 38px"/>
 
       <!-- Qty 25000 -->
-      <Bitmap profile="mdmDlg_optBtnBg" position="597px -117px" size="143px 38px"/>
-      <Button profile="mdmDlg_btnHit"   id="dlgQty25000"     onClick="onQtyClick" position="597px -117px" size="143px 38px"/>
-      <Text   profile="mdmDlg_btnText"  id="dlgQty25000Text" text="25,000 L"      position="597px -117px" size="143px 38px"/>
+      <Bitmap profile="mdmDlg_optBtnBg" position="591px -117px" size="141px 38px"/>
+      <Button profile="mdmDlg_btnHit"   id="dlgQty25000"     onClick="onQtyClick" position="591px -117px" size="141px 38px"/>
+      <Text   profile="mdmDlg_btnText"  id="dlgQty25000Text" text="25,000 L"      position="591px -117px" size="141px 38px"/>
 
       <!-- Qty 50000 -->
-      <Bitmap profile="mdmDlg_optBtnBg" position="749px -117px" size="143px 38px"/>
-      <Button profile="mdmDlg_btnHit"   id="dlgQty50000"     onClick="onQtyClick" position="749px -117px" size="143px 38px"/>
-      <Text   profile="mdmDlg_btnText"  id="dlgQty50000Text" text="50,000 L"      position="749px -117px" size="143px 38px"/>
+      <Bitmap profile="mdmDlg_optBtnBg" position="737px -117px" size="141px 38px"/>
+      <Button profile="mdmDlg_btnHit"   id="dlgQty50000"     onClick="onQtyClick" position="737px -117px" size="141px 38px"/>
+      <Text   profile="mdmDlg_btnText"  id="dlgQty50000Text" text="50,000 L"      position="737px -117px" size="141px 38px"/>
+
+      <!-- Qty Custom — full right column width (445 to 878px) -->
+      <Bitmap profile="mdmDlg_optBtnBg" position="445px -162px" size="433px 38px"/>
+      <Button profile="mdmDlg_btnHit"   id="dlgQtyCustom"     onClick="onQtyCustomClick" position="445px -162px" size="433px 38px"/>
+      <Text   profile="mdmDlg_btnText"  id="dlgQtyCustomText" text="$l10n_mdm_custom_amount" position="445px -162px" size="433px 38px"/>
 
       <!-- Delivery window -->
-      <Text profile="mdmDlg_sectionLabel" text="$l10n_mdm_dialog_delivery_label" position="445px -163px"/>
+      <Text profile="mdmDlg_sectionLabel" text="$l10n_mdm_dialog_delivery_label" position="445px -210px"/>
 
       <!-- Del 30 -->
-      <Bitmap profile="mdmDlg_optBtnBg" position="445px -187px" size="205px 38px"/>
-      <Button profile="mdmDlg_btnHit"   id="dlgDel30"     onClick="onDelivClick" position="445px -187px" size="205px 38px"/>
-      <Text   profile="mdmDlg_btnText"  id="dlgDel30Text" text="30 Days"         position="445px -187px" size="205px 38px"/>
+      <Bitmap profile="mdmDlg_optBtnBg" position="445px -234px" size="205px 38px"/>
+      <Button profile="mdmDlg_btnHit"   id="dlgDel30"     onClick="onDelivClick" position="445px -234px" size="205px 38px"/>
+      <Text   profile="mdmDlg_btnText"  id="dlgDel30Text" text="30 Days"         position="445px -234px" size="205px 38px"/>
 
       <!-- Del 60 -->
-      <Bitmap profile="mdmDlg_optBtnBg" position="660px -187px" size="205px 38px"/>
-      <Button profile="mdmDlg_btnHit"   id="dlgDel60"     onClick="onDelivClick" position="660px -187px" size="205px 38px"/>
-      <Text   profile="mdmDlg_btnText"  id="dlgDel60Text" text="60 Days"         position="660px -187px" size="205px 38px"/>
+      <Bitmap profile="mdmDlg_optBtnBg" position="660px -234px" size="205px 38px"/>
+      <Button profile="mdmDlg_btnHit"   id="dlgDel60"     onClick="onDelivClick" position="660px -234px" size="205px 38px"/>
+      <Text   profile="mdmDlg_btnText"  id="dlgDel60Text" text="60 Days"         position="660px -234px" size="205px 38px"/>
 
       <!-- Del 90 -->
-      <Bitmap profile="mdmDlg_optBtnBg" position="445px -232px" size="205px 38px"/>
-      <Button profile="mdmDlg_btnHit"   id="dlgDel90"     onClick="onDelivClick" position="445px -232px" size="205px 38px"/>
-      <Text   profile="mdmDlg_btnText"  id="dlgDel90Text" text="90 Days"         position="445px -232px" size="205px 38px"/>
+      <Bitmap profile="mdmDlg_optBtnBg" position="445px -279px" size="205px 38px"/>
+      <Button profile="mdmDlg_btnHit"   id="dlgDel90"     onClick="onDelivClick" position="445px -279px" size="205px 38px"/>
+      <Text   profile="mdmDlg_btnText"  id="dlgDel90Text" text="90 Days"         position="445px -279px" size="205px 38px"/>
 
       <!-- Del 120 -->
-      <Bitmap profile="mdmDlg_optBtnBg" position="660px -232px" size="205px 38px"/>
-      <Button profile="mdmDlg_btnHit"   id="dlgDel120"     onClick="onDelivClick" position="660px -232px" size="205px 38px"/>
-      <Text   profile="mdmDlg_btnText"  id="dlgDel120Text" text="120 Days"        position="660px -232px" size="205px 38px"/>
+      <Bitmap profile="mdmDlg_optBtnBg" position="660px -279px" size="205px 38px"/>
+      <Button profile="mdmDlg_btnHit"   id="dlgDel120"     onClick="onDelivClick" position="660px -279px" size="205px 38px"/>
+      <Text   profile="mdmDlg_btnText"  id="dlgDel120Text" text="120 Days"        position="660px -279px" size="205px 38px"/>
+
+      <!-- Del Custom -->
+      <Bitmap profile="mdmDlg_optBtnBg" position="445px -324px" size="420px 38px"/>
+      <Button profile="mdmDlg_btnHit"   id="dlgDelCustom"     onClick="onDelCustomClick" position="445px -324px" size="420px 38px"/>
+      <Text   profile="mdmDlg_btnText"  id="dlgDelCustomText" text="$l10n_mdm_custom_days" position="445px -324px" size="420px 38px"/>
 
       <!-- Summary -->
-      <Text profile="mdmDlg_sectionLabel"  text="$l10n_mdm_dialog_summary"  position="445px -288px"/>
-      <Text profile="mdmDlg_summaryRow"    id="dlgSumCrop"     position="445px -313px"/>
-      <Text profile="mdmDlg_summaryRow"    id="dlgSumQty"      position="445px -337px"/>
-      <Text profile="mdmDlg_summaryRow"    id="dlgSumLocked"   position="445px -361px"/>
-      <Text profile="mdmDlg_summaryBig"    id="dlgSumTotal"    position="445px -394px"/>
-      <Text profile="mdmDlg_summaryRow"    id="dlgSumDeadline" position="445px -430px"/>
-      <Text profile="mdmDlg_summarySmall"  id="dlgSumPenalty"  position="445px -455px"/>
+      <Text profile="mdmDlg_sectionLabel"  text="$l10n_mdm_dialog_summary"  position="445px -370px"/>
+      <Text profile="mdmDlg_summaryRow"    id="dlgSumCrop"     position="445px -395px"/>
+      <Text profile="mdmDlg_summaryRow"    id="dlgSumQty"      position="445px -419px"/>
+      <Text profile="mdmDlg_summaryRow"    id="dlgSumLocked"   position="445px -443px"/>
+      <Text profile="mdmDlg_summaryBig"    id="dlgSumTotal"    position="445px -476px"/>
+      <Text profile="mdmDlg_summaryRow"    id="dlgSumDeadline" position="445px -512px"/>
+      <Text profile="mdmDlg_summarySmall"  id="dlgSumPenalty"  position="445px -537px"/>
 
       <!-- Price signal (color set by Lua) -->
-      <Text profile="mdmDlg_signal"    id="dlgSignal"    position="445px -490px"/>
+      <Text profile="mdmDlg_signal"    id="dlgSignal"    position="445px -570px"/>
 
     </GuiElement>
 

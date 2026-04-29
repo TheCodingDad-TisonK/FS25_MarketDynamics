@@ -69,6 +69,9 @@ function MDMContractDialog:setData(params)
     self.selectedCropIdx   = params.selectedIdx  or 1
     self.selectedQty       = 5000
     self.selectedDelivDays = 30
+    self.isCustomQty       = false
+    self.isCustomDel       = false
+    self.isCustomDelReal   = false
 end
 
 -- -----------------------------------------------------------------------
@@ -109,12 +112,18 @@ function MDMContractDialog:onGuiSetupFinished()
         [25000] = self:getDescendantById("dlgQty25000"),
         [50000] = self:getDescendantById("dlgQty50000"),
     }
+    self.qtyCustomBtn  = self:getDescendantById("dlgQtyCustom")
+    self.qtyCustomText = self:getDescendantById("dlgQtyCustomText")
+
     self.delBtns = {
         [30]  = self:getDescendantById("dlgDel30"),
         [60]  = self:getDescendantById("dlgDel60"),
         [90]  = self:getDescendantById("dlgDel90"),
         [120] = self:getDescendantById("dlgDel120"),
     }
+    self.delCustomBtn  = self:getDescendantById("dlgDelCustom")
+    self.delCustomText = self:getDescendantById("dlgDelCustomText")
+
     self.qtyBtnTexts = {
         [500]   = self:getDescendantById("dlgQty500Text"),
         [1000]  = self:getDescendantById("dlgQty1000Text"),
@@ -167,6 +176,7 @@ end
 -- -----------------------------------------------------------------------
 
 function MDMContractDialog:onQtyClick(element)
+    self.isCustomQty = false
     for qty, btn in pairs(self.qtyBtns) do
         if btn == element then
             self.selectedQty = qty
@@ -177,7 +187,23 @@ function MDMContractDialog:onQtyClick(element)
     end
 end
 
+function MDMContractDialog:onQtyCustomClick()
+    MDMDialogLoader.show("MDMCustomInputDialog", "setData", {
+        mode = "amount",
+        currentValue = self.selectedQty,
+        onConfirmed = function(val, _)
+            self.isCustomQty = true
+            self.selectedQty = val
+            if self.qtyCustomText then self.qtyCustomText:setText(self:_fmtNum(val) .. " L") end
+            self:_updateSummary()
+            self:_updateButtonStates()
+        end
+    })
+end
+
 function MDMContractDialog:onDelivClick(element)
+    self.isCustomDel = false
+    self.isCustomDelReal = false
     for days, btn in pairs(self.delBtns) do
         if btn == element then
             self.selectedDelivDays = days
@@ -188,6 +214,23 @@ function MDMContractDialog:onDelivClick(element)
     end
 end
 
+function MDMContractDialog:onDelCustomClick()
+    MDMDialogLoader.show("MDMCustomInputDialog", "setData", {
+        mode = "days",
+        currentValue = self.selectedDelivDays,
+        isRealDays = self.isCustomDelReal or false,
+        onConfirmed = function(val, isReal)
+            self.isCustomDel = true
+            self.isCustomDelReal = isReal
+            self.selectedDelivDays = val
+            local suffix = isReal and "Real Days" or "Game Days"
+            if self.delCustomText then self.delCustomText:setText(tostring(val) .. " " .. suffix) end
+            self:_updateSummary()
+            self:_updateButtonStates()
+        end
+    })
+end
+
 function MDMContractDialog:onConfirmClick()
     local crop = self.commodities[self.selectedCropIdx]
     if not crop then return end
@@ -195,6 +238,20 @@ function MDMContractDialog:onConfirmClick()
     local cb = self._onConfirmed
     local qty = self.selectedQty
     local delivDays = self.selectedDelivDays
+    
+    -- If real days, we adjust delivDays here or just pass the flag?
+    -- MarketScreen's cb takes (crop, qty, delivDays). Let's adjust delivDays if it's real time.
+    if self.isCustomDelReal and g_currentMission then
+        -- 1 real day = g_currentMission.timeScale game days.
+        -- Wait, a "real day" is a constant amount of real time. The contract runs on Game Time ms.
+        -- So 1 real day = 24 * 60 * 60 * 1000 real ms.
+        -- In game ms, 1 real ms = timeScale game ms.
+        -- So 1 real day = 24 * 60 * 60 * 1000 * timeScale game ms.
+        -- MarketScreen does: deliveryTimeMs = now + (delivDays * 24 * 60 * 60000)
+        -- To make it match real days, we multiply the number of days by timeScale.
+        local ts = g_currentMission.timeScale or 1
+        delivDays = delivDays * ts
+    end
     
     self:close()
     
@@ -217,14 +274,29 @@ function MDMContractDialog:_updateButtonStates()
 
     for qty, txt in pairs(self.qtyBtnTexts) do
         if txt then
-            local c = (qty == self.selectedQty) and SEL or UNSEL
+            local c = (not self.isCustomQty and qty == self.selectedQty) and SEL or UNSEL
             txt:setTextColor(c[1], c[2], c[3], c[4])
         end
     end
+    if self.qtyCustomText then
+        local c = self.isCustomQty and SEL or UNSEL
+        self.qtyCustomText:setTextColor(c[1], c[2], c[3], c[4])
+        if not self.isCustomQty then
+            self.qtyCustomText:setText(g_i18n:getText("mdm_custom_amount") or "Custom Amount")
+        end
+    end
+
     for days, txt in pairs(self.delBtnTexts) do
         if txt then
-            local c = (days == self.selectedDelivDays) and SEL or UNSEL
+            local c = (not self.isCustomDel and days == self.selectedDelivDays) and SEL or UNSEL
             txt:setTextColor(c[1], c[2], c[3], c[4])
+        end
+    end
+    if self.delCustomText then
+        local c = self.isCustomDel and SEL or UNSEL
+        self.delCustomText:setTextColor(c[1], c[2], c[3], c[4])
+        if not self.isCustomDel then
+            self.delCustomText:setText(g_i18n:getText("mdm_custom_days") or "Custom Days")
         end
     end
 end
@@ -277,7 +349,10 @@ function MDMContractDialog:_updateSummary()
     if self.sumQty     then self.sumQty:setText("Quantity:     " .. self:_fmtNum(self.selectedQty) .. " L") end
     if self.sumLocked  then self.sumLocked:setText(string.format("Locked price: $%.0f / 1,000L", lockedPrice * 1000)) end
     if self.sumTotal   then self.sumTotal:setText("Total:  $" .. self:_fmtNum(totalValue)) end
-    if self.sumDeadline then self.sumDeadline:setText("Deliver in:   " .. self.selectedDelivDays .. " days") end
+    if self.sumDeadline then 
+        local unit = self.isCustomDelReal and "real days" or "game days"
+        self.sumDeadline:setText("Deliver in:   " .. self.selectedDelivDays .. " " .. unit) 
+    end
     if self.sumPenalty  then self.sumPenalty:setText("Default penalty: 15% on unfulfilled qty") end
 
     if self.signalText and crop.base and crop.base > 0 then

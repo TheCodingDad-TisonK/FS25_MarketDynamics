@@ -357,7 +357,7 @@ function MDMMarketScreen:onClickBack()
 end
 
 function MDMMarketScreen:inputEvent(action, value, eventUsed)
-    -- Handle tab-cycling and N-key contract shortcut BEFORE super
+    -- Handle tab-cycling BEFORE super
     if not eventUsed and value > 0 then
         if action == InputAction.MENU_PAGE_PREV then
             local newTab = self.activeTab - 1
@@ -369,11 +369,6 @@ function MDMMarketScreen:inputEvent(action, value, eventUsed)
             local newTab = self.activeTab + 1
             if newTab > TAB_CONTRACTS then newTab = TAB_PRICES end
             self:setActiveTab(newTab)
-            return true
-        end
-        if action == InputAction.MDM_CREATE_CONTRACT then
-            MDMLog.info("MarketScreen: MDM_CREATE_CONTRACT — opening contract dialog")
-            self:openContractDialog()
             return true
         end
     end
@@ -1096,17 +1091,12 @@ function MDMMarketScreen._attemptDeferredRegister(dt)
     end
 end
 
-local function _registerToggleAction(mission)
-    MDMLog.info("MarketScreen: registering MDM_MARKET_SCREEN toggle (InputAction=" .. tostring(InputAction.MDM_MARKET_SCREEN) .. ")")
-    local _, eventId = g_inputBinding:registerActionEvent(
-        InputAction.MDM_MARKET_SCREEN, nil, MDMMarketScreen.toggle,
-        false, true, false, true
-    )
-    if eventId then
-        g_inputBinding:setActionEventTextVisibility(eventId, false)
-        MDMLog.info("MarketScreen: F10 toggle registered (evId=" .. tostring(eventId) .. ")")
-    else
-        MDMLog.info("MarketScreen: F10 toggle registerActionEvent returned nil — F10 will not work")
+function MDMMarketScreen.onGlobalCreateContract()
+    if g_gui.currentGuiName == "InGameMenu" then
+        local inGameMenu = g_gui.screenControllers[InGameMenu] or g_inGameMenu
+        if inGameMenu and inGameMenu.currentPage == inGameMenu[MDMMarketScreen.MENU_PAGE_NAME] then
+            inGameMenu.currentPage:openContractDialog()
+        end
     end
 end
 
@@ -1120,7 +1110,6 @@ local function _onDelete(mission)
 end
 
 Mission00.loadMission00Finished = Utils.appendedFunction(Mission00.loadMission00Finished, _onMissionLoaded)
-Mission00.onStartMission        = Utils.appendedFunction(Mission00.onStartMission, _registerToggleAction)
 FSBaseMission.update            = Utils.appendedFunction(FSBaseMission.update, _onUpdate)
 FSBaseMission.delete            = Utils.appendedFunction(FSBaseMission.delete, _onDelete)
 

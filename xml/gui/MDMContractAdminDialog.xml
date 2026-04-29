@@ -51,12 +51,18 @@
       <Text profile="mdmAdm_rowLabel" id="admStatusLabel"    text="$l10n_mdm_admin_status"     position="0px -228px"/>
       <Text profile="mdmAdm_statusValue" id="admStatusValue"                                   position="150px -228px" size="270px 28px"/>
 
+      <!-- Vertical Separator -->
+      <Bitmap profile="mdmAdm_separator" position="420px -62px" size="2px 200px"/>
+
       <!-- ═══════ TOP-RIGHT: Hint / tip ═══════ -->
       <Text profile="mdmAdm_hint" id="admActionHint" position="440px -62px" size="440px 160px"/>
 
       <!-- Settled-contract notice (shown instead of hint for fulfilled/defaulted) -->
       <Text profile="mdmAdm_settled" id="admSettledNotice" text="$l10n_mdm_admin_settled"
             position="440px -62px" size="440px 80px" visible="false"/>
+
+      <!-- Horizontal Separator -->
+      <Bitmap profile="mdmAdm_separator" position="0px -270px" size="880px 2px"/>
 
       <!-- ═══════ BOTTOM-LEFT: Value summary ═══════ -->
       <Text profile="mdmAdm_sectionLabel" text="$l10n_mdm_admin_summary_label" position="0px -290px"/>
