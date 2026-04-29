@@ -1,7 +1,9 @@
 -- MarketSerializer.lua
 -- Handles save/load of MDM market state to a per-savegame XML file.
 --
--- Save path: <savegameDirectory>/modSettings/FS25_MarketDynamics.xml
+-- Save path: <savegameDirectory>/FS25_MarketDynamics.xml
+-- (v1.1.4.1+: no longer creates a modSettings subfolder inside the savegame
+--  directory; dedicated servers cannot upload savegames with subfolders)
 --
 -- What is persisted (v2):
 --   futures contracts  — active/settled contracts
@@ -17,7 +19,8 @@
 MarketSerializer = {}
 MarketSerializer.__index = MarketSerializer
 
-local SAVE_PATH_TEMPLATE = "%smodSettings/FS25_MarketDynamics.xml"
+local SAVE_PATH_TEMPLATE     = "%sFS25_MarketDynamics.xml"
+local LEGACY_PATH_TEMPLATE   = "%smodSettings/FS25_MarketDynamics.xml"
 
 function MarketSerializer.new()
     local self = setmetatable({}, MarketSerializer)
@@ -36,8 +39,6 @@ function MarketSerializer:save(coordinator)
         return
     end
 
-    local dir     = savegameDir .. "/modSettings/"
-    createFolder(dir)
     local path    = SAVE_PATH_TEMPLATE:format(savegameDir .. "/")
     local xmlFile = createXMLFile("MDMSave", path, "marketDynamics")
 
@@ -153,6 +154,15 @@ function MarketSerializer:load(coordinator)
 
     local path    = SAVE_PATH_TEMPLATE:format(savegameDir .. "/")
     local xmlFile = loadXMLFile("MDMLoad", path)
+
+    -- Migration: try old path (savegame/modSettings/) for saves from v1.1.4.0 and earlier
+    if not xmlFile or xmlFile == 0 then
+        local legacyPath = LEGACY_PATH_TEMPLATE:format(savegameDir .. "/")
+        xmlFile = loadXMLFile("MDMLoad", legacyPath)
+        if xmlFile and xmlFile ~= 0 then
+            MDMLog.info("MarketSerializer: migrating from legacy path " .. legacyPath)
+        end
+    end
 
     if not xmlFile or xmlFile == 0 then
         MDMLog.info("MarketSerializer: no save file found — starting fresh")

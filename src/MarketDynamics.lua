@@ -63,7 +63,12 @@ function MarketDynamics:onMissionLoaded(mission)
     self.isActive = true             -- PriceHook now routes through MDM
     BCIntegration.init(self.marketEngine, self.futuresMarket)
     UPIntegration.init()
-    MDMSettingsUI.initGui(self.modDir)
+
+    if not g_currentMission.isServer or g_currentMission.isClient then
+        self.settingsPanel = MDMSettingsPanel.new()
+        self.settingsPanel:initialize()
+    end
+    
     MDMAdminCommands_register()
 
     -- Dialog loader: init + register modal dialogs (client only — no GUI on dedicated servers)
@@ -71,6 +76,7 @@ function MarketDynamics:onMissionLoaded(mission)
         MDMDialogLoader.init(self.modDir)
         MDMDialogLoader.register("MDMContractDialog",      MDMContractDialog,      "xml/gui/MDMContractDialog.xml")
         MDMDialogLoader.register("MDMContractAdminDialog", MDMContractAdminDialog, "xml/gui/MDMContractAdminDialog.xml")
+        MDMDialogLoader.register("MDMCustomInputDialog",   MDMCustomInputDialog,   "xml/gui/MDMCustomInputDialog.xml")
     end
 
     MDMLog.info("MarketDynamics: mission loaded, system active")
@@ -96,6 +102,10 @@ function MarketDynamics:update(dt)
     self.worldEvents:update(dt)      -- event expiry and probability rolls
     self.futuresMarket:checkExpiry() -- settle contracts past delivery date
     BCIntegration.update()           -- expire BC supply-spike modifiers
+    
+    if self.settingsPanel then
+        self.settingsPanel:update(dt)
+    end
 end
 
 -- Per-frame draw. Delegates to g_MDMHud if the market screen registers one.
@@ -104,10 +114,30 @@ function MarketDynamics:draw()
     if g_MDMHud then
         g_MDMHud:draw()
     end
+    if self.settingsPanel then
+        self.settingsPanel:draw()
+    end
 end
 
--- Triggered by FSCareerMissionInfo.saveToXMLFile. The xmlFile param from that
--- hook is not used here; MarketSerializer builds its own path from savegameDirectory.
+-- Mouse event pass-through
+function MarketDynamics:mouseEvent(posX, posY, isDown, isUp, button, eventUsed)
+    if not self.isActive then return end
+    if self.settingsPanel then
+        self.settingsPanel:onMouseEvent(posX, posY, isDown, isUp, button, eventUsed)
+    end
+end
+
+-- Toggle Settings Panel
+function MarketDynamics:toggleSettings()
+    MDMLog.info("[MDM] MarketDynamics:toggleSettings triggered")
+    if self.settingsPanel then
+        self.settingsPanel:toggle()
+    else
+        MDMLog.warn("[MDM] MarketDynamics:toggleSettings called but settingsPanel is nil")
+    end
+end
+
+-- Triggered by FSCareerMissionInfo.saveToXMLFile.
 function MarketDynamics:save(xmlFile)
     if not self.isActive then return end
     self.serializer:save(self)
@@ -115,6 +145,10 @@ end
 
 function MarketDynamics:delete()
     self.isActive = false
+    if self.settingsPanel then
+        self.settingsPanel:delete()
+        self.settingsPanel = nil
+    end
     MDMAdminCommands_remove()
     MDMDialogLoader.cleanup()
     MDMLog.info("MarketDynamics: deleted")

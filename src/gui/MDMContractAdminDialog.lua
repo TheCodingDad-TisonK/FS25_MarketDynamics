@@ -87,6 +87,7 @@ end
 function MDMContractAdminDialog:onOpen()
     MDMContractAdminDialog:superClass().onOpen(self)
     self.isOpen = true
+    self._isPending = false  -- clear the synchronous pending flag
     self:_populate()
     if self.admCloseBtn then
         FocusManager:setFocus(self.admCloseBtn)
@@ -95,6 +96,7 @@ end
 
 function MDMContractAdminDialog:onClose()
     self.isOpen = false
+    self._isPending = false
     MDMContractAdminDialog:superClass().onClose(self)
 end
 

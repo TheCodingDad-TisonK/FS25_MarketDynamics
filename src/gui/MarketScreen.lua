@@ -357,7 +357,7 @@ function MDMMarketScreen:onClickBack()
 end
 
 function MDMMarketScreen:inputEvent(action, value, eventUsed)
-    -- Handle tab-cycling and N-key contract shortcut BEFORE super
+    -- Handle tab-cycling BEFORE super
     if not eventUsed and value > 0 then
         if action == InputAction.MENU_PAGE_PREV then
             local newTab = self.activeTab - 1
@@ -369,11 +369,6 @@ function MDMMarketScreen:inputEvent(action, value, eventUsed)
             local newTab = self.activeTab + 1
             if newTab > TAB_CONTRACTS then newTab = TAB_PRICES end
             self:setActiveTab(newTab)
-            return true
-        end
-        if action == InputAction.MDM_CREATE_CONTRACT then
-            MDMLog.info("MarketScreen: MDM_CREATE_CONTRACT — opening contract dialog")
-            self:openContractDialog()
             return true
         end
     end
@@ -415,25 +410,9 @@ function MDMMarketScreen:onListSelectionChanged(list, section, index)
         self.selectedCropIndex = index
         self:refreshPricesDetail()
     elseif list == self.contractList and index > 0 then
+        -- Only track the selection index here. The dialog is opened exclusively
+        -- by onContractRowClick (real user click), never by programmatic reloads.
         self.selectedContractIndex = index
-        if self._reloadingContracts then return end
-
-        -- When BetterContracts is active it owns the contract lifecycle entirely.
-        -- The admin dialog is meaningless in that context and its open/close cycle
-        -- causes the spam bug, so skip it completely.
-        if BCIntegration.isEnabled() then return end
-
-        local contract = self.contractData[index]
-        if not contract then return end
-        MDMDialogLoader.show("MDMContractAdminDialog", "setData", {
-            contract   = contract,
-            onComplete = function(contractId)
-                self:_onContractAdminAction("complete", contractId)
-            end,
-            onCancel   = function(contractId)
-                self:_onContractAdminAction("cancel", contractId)
-            end,
-        })
     end
 end
 
@@ -441,9 +420,26 @@ function MDMMarketScreen:onClickCommodity(element)
     -- onListSelectionChanged handles selection; nothing extra needed
 end
 
--- Contract admin dialog is now opened in onListSelectionChanged to ensure
--- the current selection index is always used (not the previously selected one).
+-- Opens the contract admin dialog. Called only on real user click via XML onClick,
+-- never by programmatic list reloads — this is the sole gatekeeper for the dialog.
 function MDMMarketScreen:onContractRowClick(element)
+    if BCIntegration.isEnabled() then return end
+
+    local index = self.selectedContractIndex
+    if index <= 0 then return end
+
+    local contract = self.contractData[index]
+    if not contract then return end
+
+    MDMDialogLoader.show("MDMContractAdminDialog", "setData", {
+        contract   = contract,
+        onComplete = function(contractId)
+            self:_onContractAdminAction("complete", contractId)
+        end,
+        onCancel   = function(contractId)
+            self:_onContractAdminAction("cancel", contractId)
+        end,
+    })
 end
 
 -- Refresh the contracts list after an admin action.
@@ -1095,17 +1091,12 @@ function MDMMarketScreen._attemptDeferredRegister(dt)
     end
 end
 
-local function _registerToggleAction(mission)
-    MDMLog.info("MarketScreen: registering MDM_MARKET_SCREEN toggle (InputAction=" .. tostring(InputAction.MDM_MARKET_SCREEN) .. ")")
-    local _, eventId = g_inputBinding:registerActionEvent(
-        InputAction.MDM_MARKET_SCREEN, nil, MDMMarketScreen.toggle,
-        false, true, false, true
-    )
-    if eventId then
-        g_inputBinding:setActionEventTextVisibility(eventId, false)
-        MDMLog.info("MarketScreen: F10 toggle registered (evId=" .. tostring(eventId) .. ")")
-    else
-        MDMLog.info("MarketScreen: F10 toggle registerActionEvent returned nil — F10 will not work")
+function MDMMarketScreen.onGlobalCreateContract()
+    if g_gui.currentGuiName == "InGameMenu" then
+        local inGameMenu = g_gui.screenControllers[InGameMenu] or g_inGameMenu
+        if inGameMenu and inGameMenu.currentPage == inGameMenu[MDMMarketScreen.MENU_PAGE_NAME] then
+            inGameMenu.currentPage:openContractDialog()
+        end
     end
 end
 
@@ -1119,7 +1110,6 @@ local function _onDelete(mission)
 end
 
 Mission00.loadMission00Finished = Utils.appendedFunction(Mission00.loadMission00Finished, _onMissionLoaded)
-Mission00.onStartMission        = Utils.appendedFunction(Mission00.onStartMission, _registerToggleAction)
 FSBaseMission.update            = Utils.appendedFunction(FSBaseMission.update, _onUpdate)
 FSBaseMission.delete            = Utils.appendedFunction(FSBaseMission.delete, _onDelete)
 

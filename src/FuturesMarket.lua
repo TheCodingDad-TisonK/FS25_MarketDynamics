@@ -58,6 +58,11 @@ function FuturesMarket:createContract(params)
     -- Notify UPIntegration so it can register this as an external deal if UP mode is on.
     UPIntegration.onContractCreated(id, params.farmId, params)
 
+    -- Broadcast new contract to all connected clients so they see it immediately.
+    if g_server ~= nil then
+        MDMContractSyncEvent.sendToClients(MDMContractSyncEvent.SYNC_UPDATE, contract)
+    end
+
     return id
 end
 
@@ -73,6 +78,11 @@ function FuturesMarket:recordDelivery(contractId, liters)
         self:_fulfillContract(contractId)
         return true
     end
+
+    if g_server ~= nil then
+        MDMContractSyncEvent.sendToClients(MDMContractSyncEvent.SYNC_UPDATE, contract)
+    end
+
     return false
 end
 
@@ -165,6 +175,11 @@ function FuturesMarket:_fulfillContract(id)
 
     -- Notify UPIntegration for credit score reporting.
     UPIntegration.onContractFulfilled(id, contract.farmId, payout)
+
+    -- Broadcast fulfilled status to all connected clients.
+    if g_server ~= nil then
+        MDMContractSyncEvent.sendToClients(MDMContractSyncEvent.SYNC_UPDATE, contract)
+    end
 end
 
 -- Settle a defaulted contract: partial payout for delivered portion, minus
