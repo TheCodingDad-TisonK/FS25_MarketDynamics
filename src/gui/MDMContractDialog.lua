@@ -56,6 +56,10 @@ function MDMContractDialog.new(target, custom_mt)
     self.qtyBtnTexts = {}
     self.delBtnTexts = {}
 
+    -- Time unit toggle (persistent across all delivery selections)
+    self.delUnitGameText = nil
+    self.delUnitRealText = nil
+
     return self
 end
 
@@ -124,6 +128,9 @@ function MDMContractDialog:onGuiSetupFinished()
     self.delCustomBtn  = self:getDescendantById("dlgDelCustom")
     self.delCustomText = self:getDescendantById("dlgDelCustomText")
 
+    self.delUnitGameText = self:getDescendantById("dlgDelUnitGameText")
+    self.delUnitRealText = self:getDescendantById("dlgDelUnitRealText")
+
     self.qtyBtnTexts = {
         [500]   = self:getDescendantById("dlgQty500Text"),
         [1000]  = self:getDescendantById("dlgQty1000Text"),
@@ -158,6 +165,7 @@ function MDMContractDialog:onOpen()
 
     self:_updateSummary()
     self:_updateButtonStates()
+    self:_updateDelivUnitToggle()
 
     -- Explicit focus prevents FS25 from auto-traversing all focusable elements
     if self.confirmBtn then
@@ -201,9 +209,20 @@ function MDMContractDialog:onQtyCustomClick()
     })
 end
 
+function MDMContractDialog:onToggleGameDays()
+    self.isCustomDelReal = false
+    self:_updateDelivUnitToggle()
+    self:_updateSummary()
+end
+
+function MDMContractDialog:onToggleRealDays()
+    self.isCustomDelReal = true
+    self:_updateDelivUnitToggle()
+    self:_updateSummary()
+end
+
 function MDMContractDialog:onDelivClick(element)
     self.isCustomDel = false
-    self.isCustomDelReal = false
     for days, btn in pairs(self.delBtns) do
         if btn == element then
             self.selectedDelivDays = days
@@ -218,12 +237,10 @@ function MDMContractDialog:onDelCustomClick()
     MDMDialogLoader.show("MDMCustomInputDialog", "setData", {
         mode = "days",
         currentValue = self.selectedDelivDays,
-        isRealDays = self.isCustomDelReal or false,
-        onConfirmed = function(val, isReal)
+        onConfirmed = function(val)
             self.isCustomDel = true
-            self.isCustomDelReal = isReal
             self.selectedDelivDays = val
-            local suffix = isReal and "Real Days" or "Game Days"
+            local suffix = self.isCustomDelReal and "Real Days" or "Game Days"
             if self.delCustomText then self.delCustomText:setText(tostring(val) .. " " .. suffix) end
             self:_updateSummary()
             self:_updateButtonStates()
@@ -267,6 +284,15 @@ end
 -- -----------------------------------------------------------------------
 -- Internal helpers
 -- -----------------------------------------------------------------------
+
+function MDMContractDialog:_updateDelivUnitToggle()
+    local SEL   = {0.0,  0.83, 0.49, 1.0}
+    local UNSEL = {0.75, 0.75, 0.75, 1.0}
+    local gameC = self.isCustomDelReal and UNSEL or SEL
+    local realC = self.isCustomDelReal and SEL   or UNSEL
+    if self.delUnitGameText then self.delUnitGameText:setTextColor(gameC[1], gameC[2], gameC[3], gameC[4]) end
+    if self.delUnitRealText then self.delUnitRealText:setTextColor(realC[1], realC[2], realC[3], realC[4]) end
+end
 
 function MDMContractDialog:_updateButtonStates()
     local SEL   = {0.0,  0.83, 0.49, 1.0}

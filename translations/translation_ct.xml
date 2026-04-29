@@ -71,6 +71,9 @@
         <text name="mdm_futures_no_contracts" text="還沒有合約"/>
         <text name="mdm_dialog_summary" text="合約概要"/>
         <text name="mdm_dialog_qty_label" text="數量"/>
+        <text name="mdm_dialog_unit_label"    text="Time Unit" />
+        <text name="mdm_unit_game_days"       text="In-Game Days" />
+        <text name="mdm_unit_real_days"       text="Real Days" />
         <text name="mdm_dialog_delivery_label" text="交貨窗口"/>
         <text name="mdm_dialog_bc_blocked" text="期貨已停用 — BetterContracts 模式已激活"/>
         <text name="mdm_dialog_no_crops" text="尚無可用的市場數據。"/>

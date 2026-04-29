@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <!--
     MDM Custom Input Dialog
-    MessageDialog subclass.
+    MessageDialog subclass — number entry for custom quantity or custom delivery days.
+    Time unit (game/real days) is now controlled by the toggle in MDMContractDialog.
 -->
 <GUI name="MDMCustomInputDialog" onOpen="onOpen" onClose="onClose" onCreate="onCreate">
   <GuiElement profile="newLayer" />
   <Bitmap profile="dialogFullscreenBg" />
 
-  <GuiElement profile="dialogBg" id="dialogElement" size="600px 500px">
+  <GuiElement profile="dialogBg" id="dialogElement" size="580px 360px">
     <ThreePartBitmap profile="fs25_dialogBgMiddle" />
     <ThreePartBitmap profile="fs25_dialogBgTop" />
     <ThreePartBitmap profile="fs25_dialogBgBottom" />
@@ -15,34 +16,24 @@
     <GuiElement profile="fs25_dialogContentContainer">
 
       <!-- Title -->
-      <Text profile="mdmCustom_title" id="dlgTitle" text="Custom Input" position="0px -12px" size="560px 30px"/>
+      <Text profile="mdmCustom_title" id="dlgTitle" text="Custom Input" position="0px -12px" size="500px 30px"/>
 
-      <Bitmap profile="mdmCustom_separator" position="0px -48px" size="560px 2px"/>
+      <Bitmap profile="mdmCustom_separator" position="0px -48px" size="500px 2px"/>
 
-      <!-- Input Label -->
-      <Text profile="mdmCustom_label" id="dlgInputLabel" text="Enter Value:" position="0px -80px"/>
+      <!-- Input label -->
+      <Text profile="mdmCustom_label" id="dlgInputLabel" text="Enter Value:" position="0px -68px"/>
 
-      <!-- Text Input -->
-      <TextInput profile="fs25_textInput" id="textInput" position="0px -115px" size="560px 40px" maxCharacters="10" onTextChanged="onTextChanged" onEnterPressed="onConfirmClick">
-          <ThreePartBitmap profile="fs25_textInputBg" absoluteSizeOffset="0px 0px"/>
+      <!-- Text input -->
+      <TextInput profile="fs25_textInput" id="textInput"
+                 position="0px -100px" size="500px 44px"
+                 maxCharacters="10"
+                 onTextChanged="onTextChanged"
+                 onEnterPressed="onConfirmClick">
+        <ThreePartBitmap profile="fs25_textInputBg" absoluteSizeOffset="0px 0px"/>
       </TextInput>
 
-      <!-- Toggle for Days (Hidden when not needed) -->
-      <GuiElement profile="emptyPanel" with="anchorTopLeft" id="daysToggleContainer" position="0px -175px" size="560px 80px">
-          <Text profile="mdmCustom_label" text="Time Unit:" position="0px 0px"/>
-          
-          <!-- In-Game Days -->
-          <Bitmap profile="mdmDlg_optBtnBg" position="0px -35px" size="270px 38px"/>
-          <Button profile="mdmDlg_btnHit"   id="btnGameDays" onClick="onToggleGameDays" position="0px -35px" size="270px 38px"/>
-          <Text   profile="mdmDlg_btnText"  id="txtGameDays" text="In-Game Days" position="0px -35px" size="270px 38px"/>
-
-          <!-- Real Days -->
-          <Bitmap profile="mdmDlg_optBtnBg" position="290px -35px" size="270px 38px"/>
-          <Button profile="mdmDlg_btnHit"   id="btnRealDays" onClick="onToggleRealDays" position="290px -35px" size="270px 38px"/>
-          <Text   profile="mdmDlg_btnText"  id="txtRealDays" text="Real Days" position="290px -35px" size="270px 38px"/>
-      </GuiElement>
-
-      <Text profile="mdmCustom_hint" id="dlgHint" position="0px -250px" size="560px 60px"/>
+      <!-- Hint (context set by Lua based on mode) -->
+      <Text profile="mdmCustom_hint" id="dlgHint" position="0px -162px" size="500px 60px"/>
 
     </GuiElement>
 
@@ -56,16 +47,15 @@
 
   <GUIProfiles>
     <Profile name="mdmCustom_title" extends="fs25_textDefault" with="anchorTopLeft">
-      <textSize value="22px"/>
+      <textSize value="20px"/>
       <textBold value="true"/>
-      <textAlignment value="center"/>
       <textColor value="$preset_fs25_colorMainHighlight"/>
     </Profile>
     <Profile name="mdmCustom_separator" extends="baseReference" with="anchorTopLeft">
       <imageColor value="1.0 1.0 1.0 0.18"/>
     </Profile>
     <Profile name="mdmCustom_label" extends="fs25_textDefault" with="anchorTopLeft">
-      <textSize value="14px"/>
+      <textSize value="13px"/>
       <textBold value="true"/>
       <textColor value="$preset_colorWhite_50"/>
     </Profile>
@@ -73,20 +63,6 @@
       <textSize value="12px"/>
       <textColor value="$preset_colorWhite_50"/>
       <textWrap value="true"/>
-    </Profile>
-    <!-- Reuse from other dialogs -->
-    <Profile name="mdmDlg_optBtnBg" extends="baseReference" with="anchorTopLeft">
-      <imageColor value="0.15 0.18 0.22 0.90"/>
-    </Profile>
-    <Profile name="mdmDlg_btnHit" extends="emptyPanel" with="anchorTopLeft">
-      <isFocusable value="true"/>
-    </Profile>
-    <Profile name="mdmDlg_btnText" extends="fs25_textDefault" with="anchorTopLeft">
-      <textSize value="13px"/>
-      <textBold value="true"/>
-      <textColor value="0.75 0.75 0.75 1.0"/>
-      <textAlignment value="center"/>
-      <textVerticalAlignment value="middle"/>
     </Profile>
   </GUIProfiles>
 </GUI>

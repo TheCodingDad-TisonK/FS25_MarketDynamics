@@ -74,6 +74,9 @@
         <text name="mdm_futures_no_contracts" text="Nie ma jeszcze żadnych kontraktów terminowych"/>
         <text name="mdm_dialog_summary" text="Podsumowanie umowy"/>
         <text name="mdm_dialog_qty_label" text="Ilość"/>
+        <text name="mdm_dialog_unit_label"    text="Time Unit" />
+        <text name="mdm_unit_game_days"       text="In-Game Days" />
+        <text name="mdm_unit_real_days"       text="Real Days" />
         <text name="mdm_dialog_delivery_label" text="Okno dostawy"/>
         <text name="mdm_dialog_bc_blocked" text="Kontrakty terminowe wyłączone — tryb BetterContracts aktywny"/>
         <text name="mdm_dialog_no_crops" text="Brak jeszcze danych rynkowych."/>

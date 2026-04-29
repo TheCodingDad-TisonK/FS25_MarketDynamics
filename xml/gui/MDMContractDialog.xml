@@ -109,17 +109,28 @@
       <Button profile="mdmDlg_btnHit"   id="dlgDelCustom"     onClick="onDelCustomClick" position="445px -324px" size="420px 38px"/>
       <Text   profile="mdmDlg_btnText"  id="dlgDelCustomText" text="$l10n_mdm_custom_days" position="445px -324px" size="420px 38px"/>
 
+      <!-- Time unit toggle (persistent — applies to all delivery options) -->
+      <Text profile="mdmDlg_sectionLabel" text="$l10n_mdm_dialog_unit_label" position="445px -372px"/>
+
+      <Bitmap profile="mdmDlg_optBtnBg" position="445px -396px" size="205px 38px"/>
+      <Button profile="mdmDlg_btnHit"   id="dlgDelUnitGameBtn"  onClick="onToggleGameDays" position="445px -396px" size="205px 38px"/>
+      <Text   profile="mdmDlg_btnText"  id="dlgDelUnitGameText" text="$l10n_mdm_unit_game_days" position="445px -396px" size="205px 38px"/>
+
+      <Bitmap profile="mdmDlg_optBtnBg" position="660px -396px" size="205px 38px"/>
+      <Button profile="mdmDlg_btnHit"   id="dlgDelUnitRealBtn"  onClick="onToggleRealDays" position="660px -396px" size="205px 38px"/>
+      <Text   profile="mdmDlg_btnText"  id="dlgDelUnitRealText" text="$l10n_mdm_unit_real_days" position="660px -396px" size="205px 38px"/>
+
       <!-- Summary -->
-      <Text profile="mdmDlg_sectionLabel"  text="$l10n_mdm_dialog_summary"  position="445px -370px"/>
-      <Text profile="mdmDlg_summaryRow"    id="dlgSumCrop"     position="445px -395px"/>
-      <Text profile="mdmDlg_summaryRow"    id="dlgSumQty"      position="445px -419px"/>
-      <Text profile="mdmDlg_summaryRow"    id="dlgSumLocked"   position="445px -443px"/>
-      <Text profile="mdmDlg_summaryBig"    id="dlgSumTotal"    position="445px -476px"/>
-      <Text profile="mdmDlg_summaryRow"    id="dlgSumDeadline" position="445px -512px"/>
-      <Text profile="mdmDlg_summarySmall"  id="dlgSumPenalty"  position="445px -537px"/>
+      <Text profile="mdmDlg_sectionLabel"  text="$l10n_mdm_dialog_summary"  position="445px -445px"/>
+      <Text profile="mdmDlg_summaryRow"    id="dlgSumCrop"     position="445px -470px"/>
+      <Text profile="mdmDlg_summaryRow"    id="dlgSumQty"      position="445px -494px"/>
+      <Text profile="mdmDlg_summaryRow"    id="dlgSumLocked"   position="445px -518px"/>
+      <Text profile="mdmDlg_summaryBig"    id="dlgSumTotal"    position="445px -551px"/>
+      <Text profile="mdmDlg_summaryRow"    id="dlgSumDeadline" position="445px -587px"/>
+      <Text profile="mdmDlg_summarySmall"  id="dlgSumPenalty"  position="445px -612px"/>
 
       <!-- Price signal (color set by Lua) -->
-      <Text profile="mdmDlg_signal"    id="dlgSignal"    position="445px -570px"/>
+      <Text profile="mdmDlg_signal"    id="dlgSignal"    position="445px -645px"/>
 
     </GuiElement>
 

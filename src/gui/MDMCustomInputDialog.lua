@@ -1,11 +1,11 @@
 -- MDMCustomInputDialog.lua
--- Custom dialog for entering manual amounts or delivery days.
+-- Number-entry popup for custom quantity or custom delivery days.
+-- Time unit (game/real days) is controlled by the toggle in MDMContractDialog.
 --
 -- params = {
---   mode = "amount" | "days",
+--   mode         = "amount" | "days",
 --   currentValue = number,
---   isRealDays = boolean (only used if mode == "days"),
---   onConfirmed = function(value, isRealDays)
+--   onConfirmed  = function(value)
 -- }
 
 MDMCustomInputDialog = {}
@@ -15,27 +15,21 @@ function MDMCustomInputDialog.new(target, custom_mt)
     local self = MessageDialog.new(target, custom_mt or MDMCustomInputDialog_mt)
     self.mode = "amount"
     self.currentValue = 0
-    self.isRealDays = false
     self._onConfirmed = nil
 
-    self.dlgTitle = nil
+    self.dlgTitle      = nil
     self.dlgInputLabel = nil
-    self.textInput = nil
-    self.daysToggleContainer = nil
-    self.txtGameDays = nil
-    self.txtRealDays = nil
-    self.dlgHint = nil
-    self.btnConfirm = nil
-    
-    self.isOpen = false
+    self.textInput     = nil
+    self.dlgHint       = nil
+    self.btnConfirm    = nil
 
+    self.isOpen = false
     return self
 end
 
 function MDMCustomInputDialog:setData(params)
-    self.mode = params.mode or "amount"
+    self.mode         = params.mode or "amount"
     self.currentValue = params.currentValue or 0
-    self.isRealDays = params.isRealDays or false
     self._onConfirmed = params.onConfirmed
 end
 
@@ -47,14 +41,11 @@ end
 function MDMCustomInputDialog:onGuiSetupFinished()
     MDMCustomInputDialog:superClass().onGuiSetupFinished(self)
 
-    self.dlgTitle = self:getDescendantById("dlgTitle")
+    self.dlgTitle      = self:getDescendantById("dlgTitle")
     self.dlgInputLabel = self:getDescendantById("dlgInputLabel")
-    self.textInput = self:getDescendantById("textInput")
-    self.daysToggleContainer = self:getDescendantById("daysToggleContainer")
-    self.txtGameDays = self:getDescendantById("txtGameDays")
-    self.txtRealDays = self:getDescendantById("txtRealDays")
-    self.dlgHint = self:getDescendantById("dlgHint")
-    self.btnConfirm = self:getDescendantById("btnConfirm")
+    self.textInput     = self:getDescendantById("textInput")
+    self.dlgHint       = self:getDescendantById("dlgHint")
+    self.btnConfirm    = self:getDescendantById("btnConfirm")
 end
 
 function MDMCustomInputDialog:onOpen()
@@ -70,16 +61,13 @@ function MDMCustomInputDialog:onOpen()
     end
 
     if self.mode == "amount" then
-        if self.dlgTitle then self.dlgTitle:setText(g_i18n:getText("mdm_custom_amount")) end
+        if self.dlgTitle      then self.dlgTitle:setText(g_i18n:getText("mdm_custom_amount")) end
         if self.dlgInputLabel then self.dlgInputLabel:setText(g_i18n:getText("mdm_enter_amount")) end
-        if self.daysToggleContainer then self.daysToggleContainer:setVisible(false) end
-        if self.dlgHint then self.dlgHint:setText(g_i18n:getText("mdm_custom_amount_hint") or "Enter the quantity in liters.") end
+        if self.dlgHint       then self.dlgHint:setText(g_i18n:getText("mdm_custom_amount_hint") or "Enter the quantity in liters.") end
     else
-        if self.dlgTitle then self.dlgTitle:setText(g_i18n:getText("mdm_custom_days")) end
+        if self.dlgTitle      then self.dlgTitle:setText(g_i18n:getText("mdm_custom_days")) end
         if self.dlgInputLabel then self.dlgInputLabel:setText(g_i18n:getText("mdm_enter_days")) end
-        if self.daysToggleContainer then self.daysToggleContainer:setVisible(true) end
-        if self.dlgHint then self.dlgHint:setText(g_i18n:getText("mdm_custom_days_hint") or "Select delivery window length. Real Days will convert to game time based on current time scale.") end
-        self:_updateToggleUI()
+        if self.dlgHint       then self.dlgHint:setText(g_i18n:getText("mdm_custom_days_hint") or "Enter the delivery window length. Time unit is set in the contract dialog.") end
     end
 
     self:_validateInput()
@@ -97,62 +85,31 @@ end
 
 function MDMCustomInputDialog:_validateInput()
     if not self.textInput then return end
-    local text = self.textInput:getText()
-    local val = tonumber(text)
-    
+    local val = tonumber(self.textInput:getText())
+
     local isValid = false
-    if val ~= nil and val > 0 then
-        if self.mode == "amount" and val <= 100000000 then -- Reasonable max limits
+    if val and val > 0 then
+        if self.mode == "amount" and val <= 100000000 then
             isValid = true
         elseif self.mode == "days" and val <= 3650 then
             isValid = true
         end
     end
-    
+
     if self.btnConfirm then
         self.btnConfirm:setDisabled(not isValid)
     end
 end
 
-function MDMCustomInputDialog:_updateToggleUI()
-    local SEL   = {0.0,  0.83, 0.49, 1.0}
-    local UNSEL = {0.75, 0.75, 0.75, 1.0}
-    
-    if self.txtGameDays then
-        local c = self.isRealDays and UNSEL or SEL
-        self.txtGameDays:setTextColor(c[1], c[2], c[3], c[4])
-    end
-    if self.txtRealDays then
-        local c = self.isRealDays and SEL or UNSEL
-        self.txtRealDays:setTextColor(c[1], c[2], c[3], c[4])
-    end
-end
-
-function MDMCustomInputDialog:onToggleGameDays()
-    self.isRealDays = false
-    self:_updateToggleUI()
-end
-
-function MDMCustomInputDialog:onToggleRealDays()
-    self.isRealDays = true
-    self:_updateToggleUI()
-end
-
 function MDMCustomInputDialog:onConfirmClick()
     if self.btnConfirm and self.btnConfirm.disabled then return end
-    
-    local text = self.textInput:getText()
-    local val = tonumber(text)
+
+    local val = tonumber(self.textInput:getText())
     if not val or val <= 0 then return end
-    
+
     local cb = self._onConfirmed
-    local isReal = self.isRealDays
-    
     self:close()
-    
-    if cb then
-        cb(val, isReal)
-    end
+    if cb then cb(val) end
 end
 
 function MDMCustomInputDialog:onCancelClick()

@@ -71,6 +71,9 @@
         <text name="mdm_futures_no_contracts" text="Még nincsenek szerződések"/>
         <text name="mdm_dialog_summary" text="Szerződés összefoglalója"/>
         <text name="mdm_dialog_qty_label" text="Mennyiség"/>
+        <text name="mdm_dialog_unit_label"    text="Time Unit" />
+        <text name="mdm_unit_game_days"       text="In-Game Days" />
+        <text name="mdm_unit_real_days"       text="Real Days" />
         <text name="mdm_dialog_delivery_label" text="Szállítási ablak"/>
         <text name="mdm_dialog_bc_blocked" text="Futures letiltva — BetterContracts mód aktív"/>
         <text name="mdm_dialog_no_crops" text="Még nem állnak rendelkezésre piaci adatok."/>

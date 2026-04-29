@@ -71,6 +71,9 @@
         <text name="mdm_futures_no_contracts" text="Контрактів ще немає"/>
         <text name="mdm_dialog_summary" text="Резюме контракту"/>
         <text name="mdm_dialog_qty_label" text="Кількість"/>
+        <text name="mdm_dialog_unit_label"    text="Time Unit" />
+        <text name="mdm_unit_game_days"       text="In-Game Days" />
+        <text name="mdm_unit_real_days"       text="Real Days" />
         <text name="mdm_dialog_delivery_label" text="Вікно доставки"/>
         <text name="mdm_dialog_bc_blocked" text="Ф'ючерси вимкнено — активний режим BetterContracts"/>
         <text name="mdm_dialog_no_crops" text="Ринкові дані ще відсутні."/>

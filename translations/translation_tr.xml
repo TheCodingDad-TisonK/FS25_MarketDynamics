@@ -71,6 +71,9 @@
         <text name="mdm_futures_no_contracts" text="Henüz sözleşme yok"/>
         <text name="mdm_dialog_summary" text="Sözleşme Özeti"/>
         <text name="mdm_dialog_qty_label" text="Miktar"/>
+        <text name="mdm_dialog_unit_label"    text="Time Unit" />
+        <text name="mdm_unit_game_days"       text="In-Game Days" />
+        <text name="mdm_unit_real_days"       text="Real Days" />
         <text name="mdm_dialog_delivery_label" text="Teslimat Aralığı"/>
         <text name="mdm_dialog_bc_blocked" text="Vadeli işlemler devre dışı bırakıldı — BetterContracts modu etkin"/>
         <text name="mdm_dialog_no_crops" text="Henüz piyasa verisi mevcut değil."/>

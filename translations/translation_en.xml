@@ -89,6 +89,9 @@
         <text name="mdm_dialog_summary"       text="Contract Summary" />
         <text name="mdm_dialog_qty_label"     text="Quantity" />
         <text name="mdm_dialog_delivery_label" text="Delivery Window" />
+        <text name="mdm_dialog_unit_label"    text="Time Unit" />
+        <text name="mdm_unit_game_days"       text="In-Game Days" />
+        <text name="mdm_unit_real_days"       text="Real Days" />
         <text name="mdm_dialog_bc_blocked"    text="Futures disabled — FuturesMission mode active" />
         <text name="mdm_dialog_no_crops"      text="No market data available yet." />
         <text name="mdm_screen_new_contract_btn" text="New Contract [N]" />
