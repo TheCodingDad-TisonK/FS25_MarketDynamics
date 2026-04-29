@@ -11,7 +11,4 @@
     <actionBinding action="MDM_CREATE_CONTRACT">
         <binding device="KB_MOUSE_DEFAULT" input="KEY_N" />
     </actionBinding>
-    <actionBinding action="MDM_SETTINGS_PANEL">
-        <binding device="KB_MOUSE_DEFAULT" input="KEY_LSHIFT KEY_M" />
-    </actionBinding>
 </inputBinding>

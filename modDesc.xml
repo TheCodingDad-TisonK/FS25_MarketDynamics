@@ -23,7 +23,7 @@
         <sourceFile filename="src/AdminCommands.lua" />
         <sourceFile filename="src/BCIntegration.lua" />
         <sourceFile filename="src/UPIntegration.lua" />
-        <sourceFile filename="src/gui/MDMSettingsPanel.lua" />
+        <sourceFile filename="src/gui/SettingsUI.lua" />
         <sourceFile filename="src/gui/MDMDialogLoader.lua" />
         <sourceFile filename="src/gui/MDMContractDialog.lua" />
         <sourceFile filename="src/gui/MDMContractAdminDialog.lua" />
@@ -54,9 +54,6 @@
         <action name="MDM_CREATE_CONTRACT" category="ONFOOT VEHICLE" axisType="HALF" ignoreComboMask="false">
             <binding device="KB_MOUSE_DEFAULT" input="KEY_N" />
         </action>
-        <action name="MDM_SETTINGS_PANEL" category="ONFOOT VEHICLE" axisType="HALF" ignoreComboMask="false">
-            <binding device="KB_MOUSE_DEFAULT" input="KEY_LSHIFT KEY_M" />
-        </action>
     </actions>
 
     <!-- l10n definitions for input bindings (required for help display) -->
@@ -66,9 +63,6 @@
         </text>
         <text name="input_MDM_CREATE_CONTRACT">
             <en>MDM: Create Contract</en>
-        </text>
-        <text name="input_MDM_SETTINGS_PANEL">
-            <en>MDM: Settings Panel</en>
         </text>
     </l10n>
 </modDesc>

@@ -104,17 +104,6 @@ function MDMInputListener:registerActionEvents()
         return actionName
     end
 
-    -- Settings Panel Toggle
-    local _, settingsEventId = g_inputBinding:registerActionEvent(
-        actionId("MDM_SETTINGS_PANEL"), mdm,
-        mdm.toggleSettings,
-        false, true, false, true
-    )
-    if settingsEventId then
-        g_inputBinding:setActionEventTextVisibility(settingsEventId, false)
-        MDMLog.info("[MDM] Settings Panel toggle registered successfully")
-    end
-
     -- Market Screen Toggle
     local _, screenEventId = g_inputBinding:registerActionEvent(
         actionId("MDM_MARKET_SCREEN"), nil, MDMMarketScreen.toggle,

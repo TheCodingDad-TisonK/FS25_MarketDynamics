@@ -63,11 +63,7 @@ function MarketDynamics:onMissionLoaded(mission)
     self.isActive = true             -- PriceHook now routes through MDM
     BCIntegration.init(self.marketEngine, self.futuresMarket)
     UPIntegration.init()
-
-    if not g_currentMission.isServer or g_currentMission.isClient then
-        self.settingsPanel = MDMSettingsPanel.new()
-        self.settingsPanel:initialize()
-    end
+    MDMSettingsUI.initGui(self.modDir)
     
     MDMAdminCommands_register()
 
@@ -145,10 +141,6 @@ end
 
 function MarketDynamics:delete()
     self.isActive = false
-    if self.settingsPanel then
-        self.settingsPanel:delete()
-        self.settingsPanel = nil
-    end
     MDMAdminCommands_remove()
     MDMDialogLoader.cleanup()
     MDMLog.info("MarketDynamics: deleted")
