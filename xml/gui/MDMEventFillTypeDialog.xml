@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<!--
+    MDM Event Fill Type Dialog
+    MessageDialog subclass — per-event custom fill type editor.
+    Controller: MDMEventFillTypeDialog (src/gui/MDMEventFillTypeDialog.lua)
+
+    Layout (Y-down from fs25_dialogContentContainer top):
+      Title / hint / current fill type list (8 rows) / add new section
+    All rows use 3-layer pattern: Bitmap bg + Button hit + Text label.
+-->
+<GUI name="MDMEventFillTypeDialog" onOpen="onOpen" onClose="onClose" onCreate="onCreate">
+  <GuiElement profile="newLayer" />
+  <Bitmap profile="dialogFullscreenBg" />
+
+  <GuiElement profile="dialogBg" id="dialogElement" size="600px 660px">
+    <ThreePartBitmap profile="fs25_dialogBgMiddle" />
+    <ThreePartBitmap profile="fs25_dialogBgTop" />
+    <ThreePartBitmap profile="fs25_dialogBgBottom" />
+
+    <GuiElement profile="fs25_dialogContentContainer">
+
+      <!-- Title -->
+      <Text profile="mdmFt_title" id="evtFtTitle" text="Event Fill Types" position="0px -14px" size="520px 28px"/>
+      <Bitmap profile="mdmFt_sep" position="0px -48px" size="520px 2px"/>
+
+      <!-- Hint (status/feedback line) -->
+      <Text profile="mdmFt_hint" id="evtFtHint"
+            text="Enter fill type names as used in game (e.g. WHEAT, MUNGBEAN). Changes take effect on the next event firing."
+            position="0px -64px" size="520px 50px"/>
+      <Bitmap profile="mdmFt_sep" position="0px -120px" size="520px 2px"/>
+
+      <!-- Section label -->
+      <Text profile="mdmFt_sectionLabel" text="CUSTOM FILL TYPES" position="0px -136px" size="300px 22px"/>
+
+      <!-- Empty state (shown only when list is empty) -->
+      <Text profile="mdmFt_empty" id="evtFtEmpty" text="No custom fill types configured." position="0px -164px" size="520px 28px"/>
+
+      <!-- Row 0 -->
+      <Text   profile="mdmFt_rowName" id="evtFtName0"   text="" position="0px -164px"   size="350px 28px" visible="false"/>
+      <Bitmap profile="mdmFt_remBg"   id="evtFtRemBg0"  position="360px -162px" size="130px 32px" visible="false"/>
+      <Button profile="mdmFt_btnHit"  id="evtFtRemBtn0" onClick="onRemove0" position="360px -162px" size="130px 32px" visible="false"/>
+      <Text   profile="mdmFt_remTxt"  id="evtFtRemTxt0" text="Remove" position="360px -162px" size="130px 32px" visible="false"/>
+      <!-- Row 1 -->
+      <Text   profile="mdmFt_rowName" id="evtFtName1"   text="" position="0px -198px"   size="350px 28px" visible="false"/>
+      <Bitmap profile="mdmFt_remBg"   id="evtFtRemBg1"  position="360px -196px" size="130px 32px" visible="false"/>
+      <Button profile="mdmFt_btnHit"  id="evtFtRemBtn1" onClick="onRemove1" position="360px -196px" size="130px 32px" visible="false"/>
+      <Text   profile="mdmFt_remTxt"  id="evtFtRemTxt1" text="Remove" position="360px -196px" size="130px 32px" visible="false"/>
+      <!-- Row 2 -->
+      <Text   profile="mdmFt_rowName" id="evtFtName2"   text="" position="0px -232px"   size="350px 28px" visible="false"/>
+      <Bitmap profile="mdmFt_remBg"   id="evtFtRemBg2"  position="360px -230px" size="130px 32px" visible="false"/>
+      <Button profile="mdmFt_btnHit"  id="evtFtRemBtn2" onClick="onRemove2" position="360px -230px" size="130px 32px" visible="false"/>
+      <Text   profile="mdmFt_remTxt"  id="evtFtRemTxt2" text="Remove" position="360px -230px" size="130px 32px" visible="false"/>
+      <!-- Row 3 -->
+      <Text   profile="mdmFt_rowName" id="evtFtName3"   text="" position="0px -266px"   size="350px 28px" visible="false"/>
+      <Bitmap profile="mdmFt_remBg"   id="evtFtRemBg3"  position="360px -264px" size="130px 32px" visible="false"/>
+      <Button profile="mdmFt_btnHit"  id="evtFtRemBtn3" onClick="onRemove3" position="360px -264px" size="130px 32px" visible="false"/>
+      <Text   profile="mdmFt_remTxt"  id="evtFtRemTxt3" text="Remove" position="360px -264px" size="130px 32px" visible="false"/>
+      <!-- Row 4 -->
+      <Text   profile="mdmFt_rowName" id="evtFtName4"   text="" position="0px -300px"   size="350px 28px" visible="false"/>
+      <Bitmap profile="mdmFt_remBg"   id="evtFtRemBg4"  position="360px -298px" size="130px 32px" visible="false"/>
+      <Button profile="mdmFt_btnHit"  id="evtFtRemBtn4" onClick="onRemove4" position="360px -298px" size="130px 32px" visible="false"/>
+      <Text   profile="mdmFt_remTxt"  id="evtFtRemTxt4" text="Remove" position="360px -298px" size="130px 32px" visible="false"/>
+      <!-- Row 5 -->
+      <Text   profile="mdmFt_rowName" id="evtFtName5"   text="" position="0px -334px"   size="350px 28px" visible="false"/>
+      <Bitmap profile="mdmFt_remBg"   id="evtFtRemBg5"  position="360px -332px" size="130px 32px" visible="false"/>
+      <Button profile="mdmFt_btnHit"  id="evtFtRemBtn5" onClick="onRemove5" position="360px -332px" size="130px 32px" visible="false"/>
+      <Text   profile="mdmFt_remTxt"  id="evtFtRemTxt5" text="Remove" position="360px -332px" size="130px 32px" visible="false"/>
+      <!-- Row 6 -->
+      <Text   profile="mdmFt_rowName" id="evtFtName6"   text="" position="0px -368px"   size="350px 28px" visible="false"/>
+      <Bitmap profile="mdmFt_remBg"   id="evtFtRemBg6"  position="360px -366px" size="130px 32px" visible="false"/>
+      <Button profile="mdmFt_btnHit"  id="evtFtRemBtn6" onClick="onRemove6" position="360px -366px" size="130px 32px" visible="false"/>
+      <Text   profile="mdmFt_remTxt"  id="evtFtRemTxt6" text="Remove" position="360px -366px" size="130px 32px" visible="false"/>
+      <!-- Row 7 -->
+      <Text   profile="mdmFt_rowName" id="evtFtName7"   text="" position="0px -402px"   size="350px 28px" visible="false"/>
+      <Bitmap profile="mdmFt_remBg"   id="evtFtRemBg7"  position="360px -400px" size="130px 32px" visible="false"/>
+      <Button profile="mdmFt_btnHit"  id="evtFtRemBtn7" onClick="onRemove7" position="360px -400px" size="130px 32px" visible="false"/>
+      <Text   profile="mdmFt_remTxt"  id="evtFtRemTxt7" text="Remove" position="360px -400px" size="130px 32px" visible="false"/>
+
+      <Bitmap profile="mdmFt_sep" position="0px -434px" size="520px 2px"/>
+
+      <!-- Add new fill type -->
+      <Text profile="mdmFt_sectionLabel" text="ADD NEW FILL TYPE" position="0px -452px" size="300px 22px"/>
+
+      <TextInput profile="mdmFt_textInput" id="evtFtInput"
+                 position="0px -476px" size="350px 36px"
+                 maxCharacters="40"
+                 onEnterPressed="onAddClick">
+        <ThreePartBitmap profile="fs25_textInputBg" absoluteSizeOffset="0px 0px"/>
+      </TextInput>
+      <Bitmap profile="mdmFt_addBg"  id="evtFtAddBg"     position="360px -474px" size="130px 36px"/>
+      <Button profile="mdmFt_btnHit" id="evtFtAddBtn"    onClick="onAddClick"    position="360px -474px" size="130px 36px"/>
+      <Text   profile="mdmFt_remTxt" id="evtFtAddBtnTxt" text="Add"              position="360px -474px" size="130px 36px"/>
+
+    </GuiElement>
+
+    <BoxLayout profile="fs25_dialogButtonBox">
+      <Button profile="buttonBack" text="$l10n_button_close" onClick="onCloseClick" id="evtFtCloseBtn"/>
+    </BoxLayout>
+
+  </GuiElement>
+
+  <GUIProfiles>
+    <Profile name="mdmFt_title" extends="fs25_textDefault" with="anchorTopLeft">
+      <textSize value="20px"/>
+      <textBold value="true"/>
+      <textColor value="$preset_fs25_colorMainHighlight"/>
+    </Profile>
+    <Profile name="mdmFt_sep" extends="baseReference" with="anchorTopLeft">
+      <imageColor value="1.0 1.0 1.0 0.18"/>
+    </Profile>
+    <Profile name="mdmFt_hint" extends="fs25_textDefault" with="anchorTopLeft">
+      <textSize value="12px"/>
+      <textColor value="0.65 0.65 0.65 1.0"/>
+      <textWrap value="true"/>
+    </Profile>
+    <Profile name="mdmFt_sectionLabel" extends="fs25_textDefault" with="anchorTopLeft">
+      <textSize value="11px"/>
+      <textBold value="true"/>
+      <textColor value="0.50 0.50 0.50 1.0"/>
+    </Profile>
+    <Profile name="mdmFt_empty" extends="fs25_textDefault" with="anchorTopLeft">
+      <textSize value="13px"/>
+      <textColor value="0.45 0.45 0.45 1.0"/>
+    </Profile>
+    <Profile name="mdmFt_rowName" extends="fs25_textDefault" with="anchorTopLeft">
+      <textSize value="13px"/>
+      <textColor value="$preset_colorWhite"/>
+    </Profile>
+    <Profile name="mdmFt_remBg" extends="baseReference" with="anchorTopLeft">
+      <imageColor value="0.35 0.08 0.08 0.9"/>
+    </Profile>
+    <Profile name="mdmFt_addBg" extends="baseReference" with="anchorTopLeft">
+      <imageColor value="0.05 0.35 0.18 0.9"/>
+    </Profile>
+    <Profile name="mdmFt_btnHit" extends="emptyPanel" with="anchorTopLeft"/>
+    <Profile name="mdmFt_remTxt" extends="fs25_textDefault" with="anchorTopLeft">
+      <textSize value="12px"/>
+      <textAlignment value="center"/>
+      <textColor value="$preset_colorWhite"/>
+    </Profile>
+    <Profile name="mdmFt_textInput" extends="fs25_textInput" with="anchorTopLeft">
+      <textSize value="14px"/>
+      <textColor value="$preset_colorWhite"/>
+    </Profile>
+  </GUIProfiles>
+</GUI>

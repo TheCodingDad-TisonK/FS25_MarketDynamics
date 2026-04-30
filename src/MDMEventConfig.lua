@@ -1,10 +1,11 @@
 -- MDMEventConfig.lua
--- Loads a user-editable XML configuration for event fill types.
--- Users can add custom fill type names (e.g. from custom maps / mods)
--- to any registered event so those crops are also affected.
+-- Manages per-event custom fill type configuration.
+-- Fill types are stored in g_MarketDynamics.settings.eventCustomFillTypes and
+-- edited via the in-game Event Settings dialog (MDMEventSettingsDialog).
 --
--- Config file location: <savegameDirectory>/FS25_MarketDynamics_eventConfig.xml
--- An annotated example is shipped with the mod at: xml/MDMEventConfig_example.xml
+-- MDMEventConfig.load() handles a one-time migration from the legacy XML config
+-- file (FS25_MarketDynamics_eventConfig.xml) written by v1.1.6.0 and earlier.
+-- After migration the XML file is ignored; the UI and MarketSerializer own the data.
 --
 -- Per-event extra fill types get the PRIMARY factor for that event.
 -- (For multi-factor events like Protein Premium, that is the higher-intensity group.)
@@ -13,25 +14,26 @@
 
 MDMEventConfig = {}
 
-local _extraFillTypes = {}  -- { [eventId] = { fillTypeName, ... } }
+-- Returns the active extra fill type list for an event from settings.
+local function _getList(eventId)
+    if not g_MarketDynamics or not g_MarketDynamics.settings then return {} end
+    local cft = g_MarketDynamics.settings.eventCustomFillTypes
+    if not cft then return {} end
+    return cft[eventId] or {}
+end
 
--- Load user config from the savegame directory.
+-- Migrate legacy XML config into settings (one-time, only for entries not yet in settings).
 -- Called by MarketDynamics:onStartMission() once the savegame path is known.
 function MDMEventConfig.load(savegameDir)
-    _extraFillTypes = {}
-
-    if not savegameDir or savegameDir == "" then
-        MDMLog.info("MDMEventConfig: no savegame directory — skipping user event config")
-        return
-    end
+    if not savegameDir or savegameDir == "" then return end
 
     local path    = savegameDir .. "/FS25_MarketDynamics_eventConfig.xml"
     local xmlFile = loadXMLFile("MDMEventConfig", path)
+    if not xmlFile or xmlFile == 0 then return end
 
-    if not xmlFile or xmlFile == 0 then
-        MDMLog.info("MDMEventConfig: no event config file found at " .. path .. " — using built-in crop lists")
-        return
-    end
+    local settings = g_MarketDynamics and g_MarketDynamics.settings
+    if not settings then delete(xmlFile); return end
+    settings.eventCustomFillTypes = settings.eventCustomFillTypes or {}
 
     local total = 0
     local i = 0
@@ -40,35 +42,39 @@ function MDMEventConfig.load(savegameDir)
         local eventId = getXMLString(xmlFile, base .. "#id")
         if not eventId then break end
 
-        _extraFillTypes[eventId] = _extraFillTypes[eventId] or {}
-
-        local j = 0
-        while true do
-            local ftBase = base .. ".fillType(" .. j .. ")"
-            local name   = getXMLString(xmlFile, ftBase .. "#name")
-            if not name then break end
-            table.insert(_extraFillTypes[eventId], name)
-            total = total + 1
-            j = j + 1
+        -- Only seed if the player hasn't yet configured this event via the UI
+        if not settings.eventCustomFillTypes[eventId] then
+            settings.eventCustomFillTypes[eventId] = {}
+            local j = 0
+            while true do
+                local ftBase = base .. ".fillType(" .. j .. ")"
+                local name   = getXMLString(xmlFile, ftBase .. "#name")
+                if not name then break end
+                table.insert(settings.eventCustomFillTypes[eventId], name)
+                total = total + 1
+                j = j + 1
+            end
         end
 
         i = i + 1
     end
 
     delete(xmlFile)
-    MDMLog.info(string.format("MDMEventConfig: loaded %d extra fill type(s) across %d event(s)", total, i))
+    if total > 0 then
+        MDMLog.info(string.format("MDMEventConfig: migrated %d fill type(s) from legacy XML config", total))
+    end
 end
 
--- Returns the list of user-configured extra fill type names for an event.
+-- Returns the list of custom extra fill type names for an event.
 function MDMEventConfig.getExtraFillTypes(eventId)
-    return _extraFillTypes[eventId] or {}
+    return _getList(eventId)
 end
 
 -- Apply extra fill type modifiers for an event at the given factor.
 -- Called from each event's onFire (and onLoad for events with state tracking).
 function MDMEventConfig.applyExtra(eventId, factor)
     if not g_MarketDynamics then return end
-    for _, name in ipairs(_extraFillTypes[eventId] or {}) do
+    for _, name in ipairs(_getList(eventId)) do
         local ft = g_fillTypeManager:getFillTypeByName(name)
         if ft then
             g_MarketDynamics.marketEngine:addModifier({
@@ -84,7 +90,7 @@ end
 -- Called from each event's onExpire.
 function MDMEventConfig.removeExtra(eventId)
     if not g_MarketDynamics then return end
-    for _, name in ipairs(_extraFillTypes[eventId] or {}) do
+    for _, name in ipairs(_getList(eventId)) do
         local ft = g_fillTypeManager:getFillTypeByName(name)
         if ft then
             g_MarketDynamics.marketEngine:removeModifierById(ft.index, eventId .. "_cfg_" .. name)

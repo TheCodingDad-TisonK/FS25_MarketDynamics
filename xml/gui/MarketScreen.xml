@@ -91,6 +91,10 @@
         <GuiElement id="eventsContent" position="0px 0px" width="1000px" height="668px" visible="false" debugEnabled="false">
           <!-- Header: 10px from top → TOP at 658 -->
           <Text profile="mdm_sectionHeader" id="eventsHeader" text="$l10n_mdm_screen_events_hdr" position="0px 658px"/>
+          <!-- Event Settings button (top-right of events panel) -->
+          <Bitmap profile="mdm_evtSettingsBg"  id="evtSettingsBg"  position="790px 643px" size="200px 34px"/>
+          <Button profile="mdm_btnHitArea"      id="evtSettingsBtn" onClick="onEventSettingsClick" position="790px 643px" size="200px 34px"/>
+          <Text   profile="mdm_evtSettingsTxt"  id="evtSettingsTxt" text="Event Settings"           position="790px 643px" size="200px 34px"/>
           <!-- Column headers: matching data cell positions exactly -->
           <Text profile="mdm_colHeaderLeft"  text="$l10n_mdm_screen_col_event"     position="10px 628px"  size="340px 32px"/>
           <Text profile="mdm_colHeaderLeft"  text="$l10n_mdm_screen_col_intensity" position="350px 628px" size="350px 32px"/>
@@ -279,6 +283,17 @@
       <textSize value="14px"/>
       <textAlignment value="right"/>
       <textColor value="$preset_colorWhite_50"/>
+    </Profile>
+
+    <!-- Event Settings button -->
+    <Profile name="mdm_evtSettingsBg" extends="baseReference" with="anchorTopLeft">
+      <imageColor value="0.05 0.35 0.18 0.85"/>
+    </Profile>
+    <Profile name="mdm_btnHitArea" extends="emptyPanel" with="anchorTopLeft"/>
+    <Profile name="mdm_evtSettingsTxt" extends="fs25_textDefault" with="anchorTopLeft">
+      <textSize value="13px"/>
+      <textAlignment value="center"/>
+      <textColor value="$preset_colorWhite"/>
     </Profile>
   </GUIProfiles>
 </GUI>

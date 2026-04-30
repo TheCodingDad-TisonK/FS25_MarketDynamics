@@ -32,11 +32,13 @@ function MarketDynamics.new(modDir, modName)
     -- Player-configurable settings (persisted by MarketSerializer, edited via SettingsUI)
     -- Add new settings here and wire them in MarketSerializer + SettingsUI.
     self.settings = {
-        pricesEnabled   = true,   -- When false, PriceHook passes through to vanilla prices
-        debugMode       = false,  -- MDMLog.debugEnabled mirror (also set directly on MDMLog)
-        eventsEnabled   = true,   -- When false, WorldEventSystem skips probability rolls
-        eventFrequency  = 1.0,   -- Probability scale: 0.4=Rare, 1.0=Normal, 2.0=Frequent
-        futuresPenalty  = 0.15,  -- Default penalty fraction on unfulfilled contracts
+        pricesEnabled        = true,   -- When false, PriceHook passes through to vanilla prices
+        debugMode            = false,  -- MDMLog.debugEnabled mirror (also set directly on MDMLog)
+        eventsEnabled        = true,   -- When false, WorldEventSystem skips probability rolls
+        eventFrequency       = 1.0,   -- Probability scale: 0.4=Rare, 1.0=Normal, 2.0=Frequent
+        futuresPenalty       = 0.15,  -- Default penalty fraction on unfulfilled contracts
+        disabledEvents       = {},    -- { [eventId] = true } — events that won't roll
+        eventCustomFillTypes = {},    -- { [eventId] = { fillTypeName, ... } }
     }
 
     -- Subsystems
@@ -72,9 +74,11 @@ function MarketDynamics:onMissionLoaded(mission)
     -- is unreliable on headless dedicated servers and can be nil during onMissionLoaded.
     if g_client ~= nil then
         MDMDialogLoader.init(self.modDir)
-        MDMDialogLoader.register("MDMContractDialog",      MDMContractDialog,      "xml/gui/MDMContractDialog.xml")
-        MDMDialogLoader.register("MDMContractAdminDialog", MDMContractAdminDialog, "xml/gui/MDMContractAdminDialog.xml")
-        MDMDialogLoader.register("MDMCustomInputDialog",   MDMCustomInputDialog,   "xml/gui/MDMCustomInputDialog.xml")
+        MDMDialogLoader.register("MDMContractDialog",        MDMContractDialog,        "xml/gui/MDMContractDialog.xml")
+        MDMDialogLoader.register("MDMContractAdminDialog",   MDMContractAdminDialog,   "xml/gui/MDMContractAdminDialog.xml")
+        MDMDialogLoader.register("MDMCustomInputDialog",     MDMCustomInputDialog,     "xml/gui/MDMCustomInputDialog.xml")
+        MDMDialogLoader.register("MDMEventSettingsDialog",   MDMEventSettingsDialog,   "xml/gui/MDMEventSettingsDialog.xml")
+        MDMDialogLoader.register("MDMEventFillTypeDialog",   MDMEventFillTypeDialog,   "xml/gui/MDMEventFillTypeDialog.xml")
     end
 
     MDMLog.info("MarketDynamics: mission loaded, system active")
