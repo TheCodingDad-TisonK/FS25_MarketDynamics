@@ -176,14 +176,15 @@ end
 -- ---------------------------------------------------------------------------
 
 -- Iterate all registered events and roll each one for firing.
--- An event is eligible if: not currently active AND cooldown has elapsed.
+-- An event is eligible if: not disabled, not currently active, and cooldown has elapsed.
 function WorldEventSystem:_rollForEvents()
     local now       = MDMUtil.getGameTime()
     local settings  = g_MarketDynamics and g_MarketDynamics.settings
     local freqScale = (settings and settings.eventFrequency) or 1.0
+    local disabled  = settings and settings.disabledEvents
 
     for id, event in pairs(self.registry) do
-        if not self.active[id] then
+        if not (disabled and disabled[id]) and not self.active[id] then
             local cooldown = event.cooldownMs or MIN_COOLDOWN_MS
             if (now - event.lastFiredAt) >= cooldown then
                 if math.random() < (event.probability * freqScale) then

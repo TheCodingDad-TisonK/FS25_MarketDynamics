@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <modDesc descVersion="106">
     <author>TisonK &amp; LeGrizzly</author>
-    <version>1.1.6.0</version>
+    <version>1.1.7.0</version>
     <title>
         <en>Market Dynamics</en>
     </title>
@@ -29,6 +29,8 @@
         <sourceFile filename="src/gui/MDMContractDialog.lua" />
         <sourceFile filename="src/gui/MDMContractAdminDialog.lua" />
         <sourceFile filename="src/gui/MDMCustomInputDialog.lua" />
+        <sourceFile filename="src/gui/MDMEventSettingsDialog.lua" />
+        <sourceFile filename="src/gui/MDMEventFillTypeDialog.lua" />
         <sourceFile filename="src/gui/MarketScreenGraph.lua" />
         <sourceFile filename="src/gui/MarketScreen.lua" />
         <sourceFile filename="src/events/MDMContractRequestEvent.lua" />

@@ -125,6 +125,29 @@ function MarketSerializer:save(coordinator)
         setXMLBool (xmlFile, "marketDynamics.settings#eventsEnabled",  s.eventsEnabled  ~= false)
         setXMLFloat(xmlFile, "marketDynamics.settings#eventFrequency", s.eventFrequency or 1.0)
         setXMLFloat(xmlFile, "marketDynamics.settings#futuresPenalty", s.futuresPenalty or 0.15)
+
+        -- Disabled events: { [eventId] = true }
+        local de = s.disabledEvents or {}
+        local di = 0
+        for id, _ in pairs(de) do
+            local base = "marketDynamics.disabledEvents.event(" .. di .. ")"
+            setXMLString(xmlFile, base .. "#id", id)
+            di = di + 1
+        end
+
+        -- Custom fill types per event: { [eventId] = { name, ... } }
+        local cft = s.eventCustomFillTypes or {}
+        local ci = 0
+        for eventId, list in pairs(cft) do
+            if #list > 0 then
+                local base = "marketDynamics.eventCustomFillTypes.event(" .. ci .. ")"
+                setXMLString(xmlFile, base .. "#id", eventId)
+                for fi, name in ipairs(list) do
+                    setXMLString(xmlFile, base .. ".fillType(" .. (fi - 1) .. ")#name", name)
+                end
+                ci = ci + 1
+            end
+        end
     end
 
     if coordinator.marketEngine then
@@ -281,6 +304,35 @@ function MarketSerializer:load(coordinator)
 
         local futuresPenalty = getXMLFloat(xmlFile, "marketDynamics.settings#futuresPenalty")
         if futuresPenalty and futuresPenalty > 0 then s.futuresPenalty = futuresPenalty end
+
+        -- Disabled events
+        s.disabledEvents = {}
+        local di = 0
+        while true do
+            local base = "marketDynamics.disabledEvents.event(" .. di .. ")"
+            local evId = getXMLString(xmlFile, base .. "#id")
+            if not evId then break end
+            s.disabledEvents[evId] = true
+            di = di + 1
+        end
+
+        -- Custom fill types per event
+        s.eventCustomFillTypes = {}
+        local ci = 0
+        while true do
+            local base    = "marketDynamics.eventCustomFillTypes.event(" .. ci .. ")"
+            local eventId = getXMLString(xmlFile, base .. "#id")
+            if not eventId then break end
+            s.eventCustomFillTypes[eventId] = {}
+            local fi = 0
+            while true do
+                local name = getXMLString(xmlFile, base .. ".fillType(" .. fi .. ")#name")
+                if not name then break end
+                table.insert(s.eventCustomFillTypes[eventId], name)
+                fi = fi + 1
+            end
+            ci = ci + 1
+        end
     end
 
     if coordinator.marketEngine then

@@ -132,8 +132,9 @@ function MDMMarketScreen:onGuiSetupFinished()
     self.graphTitle = self:getDescendantById("graphTitle")
     self.graphHint = self:getDescendantById("graphHint")
 
-    self.eventsHeader = self:getDescendantById("eventsHeader")
-    self.noEventsText = self:getDescendantById("noEventsText")
+    self.eventsHeader    = self:getDescendantById("eventsHeader")
+    self.noEventsText    = self:getDescendantById("noEventsText")
+    self.evtSettingsBtn  = self:getDescendantById("evtSettingsBtn")
 
     self.tabLabelPrices    = self:getDescendantById("tabLabelPrices")
     self.tabLabelEvents    = self:getDescendantById("tabLabelEvents")
@@ -227,6 +228,13 @@ end
 
 function MDMMarketScreen:onClose()
     MDMMarketScreen:superClass().onClose(self)
+end
+
+-- Called by the "Event Settings" button in the Events tab
+function MDMMarketScreen:onEventSettingsClick()
+    MDMDialogLoader.show("MDMEventSettingsDialog", "setData", {
+        onClose = function() end,
+    })
 end
 
 -- Called by the "New Contract" footer button (always visible, any tab)
