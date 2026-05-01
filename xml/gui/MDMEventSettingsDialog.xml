@@ -7,14 +7,21 @@
     Layout (Y-down from fs25_dialogContentContainer top):
       Title / Global section (enabled toggle + frequency) / Per-event rows (10 rows)
 
-    Per-event columns: Name | Enabled/Disabled toggle | Custom fills count | Edit button
+    Per-event columns: Name | Enabled/Disabled toggle | Custom fills count | Edit | Force/Stop
     All buttons use 3-layer pattern: Bitmap bg + Button hit + Text label.
+
+    Column positions (700px content area):
+      Name      0px   250px
+      Toggle  258px   115px
+      Count   380px    75px
+      Edit    462px    90px
+      Force   558px   135px  (total span = 693px)
 -->
 <GUI name="MDMEventSettingsDialog" onOpen="onOpen" onClose="onClose" onCreate="onCreate">
   <GuiElement profile="newLayer" />
   <Bitmap profile="dialogFullscreenBg" />
 
-  <GuiElement profile="dialogBg" id="dialogElement" size="800px 760px">
+  <GuiElement profile="dialogBg" id="dialogElement" size="800px 800px">
     <ThreePartBitmap profile="fs25_dialogBgMiddle" />
     <ThreePartBitmap profile="fs25_dialogBgTop" />
     <ThreePartBitmap profile="fs25_dialogBgBottom" />
@@ -55,101 +62,137 @@
       <Text profile="mdmEvtS_sectionLabel" text="INDIVIDUAL EVENTS" position="0px -196px" size="300px 22px"/>
 
       <!-- Column headers -->
-      <Text profile="mdmEvtS_colHdr" text="Event"         position="0px -222px"   size="330px 24px"/>
-      <Text profile="mdmEvtS_colHdr" text="Status"        position="340px -222px" size="130px 24px"/>
-      <Text profile="mdmEvtS_colHdr" text="Custom Fills"  position="480px -222px" size="100px 24px"/>
-      <Text profile="mdmEvtS_colHdr" text=""              position="590px -222px" size="100px 24px"/>
+      <Text profile="mdmEvtS_colHdr" text="Event"         position="0px -222px"   size="250px 24px"/>
+      <Text profile="mdmEvtS_colHdr" text="Status"        position="258px -222px" size="115px 24px"/>
+      <Text profile="mdmEvtS_colHdr" text="Custom Fills"  position="380px -222px" size="75px 24px"/>
+      <Text profile="mdmEvtS_colHdr" text=""              position="462px -222px" size="90px 24px"/>
+      <Text profile="mdmEvtS_colHdr" text="Test"          position="558px -222px" size="135px 24px"/>
 
       <!-- ── Row 0 ── -->
-      <Text   profile="mdmEvtS_evtName" id="evtRowName0"    text="" position="0px -254px"   size="330px 28px" visible="false"/>
-      <Bitmap profile="mdmEvtS_togBg"   id="evtRowTogBg0"   position="340px -252px" size="130px 34px" visible="false"/>
-      <Button profile="mdmEvtS_btnHit"  id="evtRowTogBtn0"  onClick="onToggle0" position="340px -252px" size="130px 34px" visible="false"/>
-      <Text   profile="mdmEvtS_togTxt"  id="evtRowTogTxt0"  text="" position="340px -252px" size="130px 34px" visible="false"/>
-      <Text   profile="mdmEvtS_cntTxt"  id="evtRowCount0"   text="" position="480px -254px" size="100px 28px" visible="false"/>
-      <Bitmap profile="mdmEvtS_editBg"  id="evtRowEditBg0"  position="590px -252px" size="100px 34px" visible="false"/>
-      <Button profile="mdmEvtS_btnHit"  id="evtRowEditBtn0" onClick="onEdit0"  position="590px -252px" size="100px 34px" visible="false"/>
-      <Text   profile="mdmEvtS_editTxt" id="evtRowEditTxt0" text="Edit Fills"  position="590px -252px" size="100px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_evtName" id="evtRowName0"     text="" position="0px -254px"   size="250px 28px" visible="false"/>
+      <Bitmap profile="mdmEvtS_togBg"   id="evtRowTogBg0"    position="258px -252px" size="115px 34px" visible="false"/>
+      <Button profile="mdmEvtS_btnHit"  id="evtRowTogBtn0"   onClick="onToggle0" position="258px -252px" size="115px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_togTxt"  id="evtRowTogTxt0"   text="" position="258px -252px" size="115px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_cntTxt"  id="evtRowCount0"    text="" position="380px -254px" size="75px 28px" visible="false"/>
+      <Bitmap profile="mdmEvtS_editBg"  id="evtRowEditBg0"   position="462px -252px" size="90px 34px" visible="false"/>
+      <Button profile="mdmEvtS_btnHit"  id="evtRowEditBtn0"  onClick="onEdit0"  position="462px -252px" size="90px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_editTxt" id="evtRowEditTxt0"  text="Edit Fills"  position="462px -252px" size="90px 34px" visible="false"/>
+      <Bitmap profile="mdmEvtS_forceBg" id="evtRowForceBg0"  position="558px -252px" size="135px 34px" visible="false"/>
+      <Button profile="mdmEvtS_btnHit"  id="evtRowForceBtn0" onClick="onForce0" position="558px -252px" size="135px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_forceTxt" id="evtRowForceTxt0" text="Force Fire" position="558px -252px" size="135px 34px" visible="false"/>
       <!-- ── Row 1 ── -->
-      <Text   profile="mdmEvtS_evtName" id="evtRowName1"    text="" position="0px -290px"   size="330px 28px" visible="false"/>
-      <Bitmap profile="mdmEvtS_togBg"   id="evtRowTogBg1"   position="340px -288px" size="130px 34px" visible="false"/>
-      <Button profile="mdmEvtS_btnHit"  id="evtRowTogBtn1"  onClick="onToggle1" position="340px -288px" size="130px 34px" visible="false"/>
-      <Text   profile="mdmEvtS_togTxt"  id="evtRowTogTxt1"  text="" position="340px -288px" size="130px 34px" visible="false"/>
-      <Text   profile="mdmEvtS_cntTxt"  id="evtRowCount1"   text="" position="480px -290px" size="100px 28px" visible="false"/>
-      <Bitmap profile="mdmEvtS_editBg"  id="evtRowEditBg1"  position="590px -288px" size="100px 34px" visible="false"/>
-      <Button profile="mdmEvtS_btnHit"  id="evtRowEditBtn1" onClick="onEdit1"  position="590px -288px" size="100px 34px" visible="false"/>
-      <Text   profile="mdmEvtS_editTxt" id="evtRowEditTxt1" text="Edit Fills"  position="590px -288px" size="100px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_evtName" id="evtRowName1"     text="" position="0px -290px"   size="250px 28px" visible="false"/>
+      <Bitmap profile="mdmEvtS_togBg"   id="evtRowTogBg1"    position="258px -288px" size="115px 34px" visible="false"/>
+      <Button profile="mdmEvtS_btnHit"  id="evtRowTogBtn1"   onClick="onToggle1" position="258px -288px" size="115px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_togTxt"  id="evtRowTogTxt1"   text="" position="258px -288px" size="115px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_cntTxt"  id="evtRowCount1"    text="" position="380px -290px" size="75px 28px" visible="false"/>
+      <Bitmap profile="mdmEvtS_editBg"  id="evtRowEditBg1"   position="462px -288px" size="90px 34px" visible="false"/>
+      <Button profile="mdmEvtS_btnHit"  id="evtRowEditBtn1"  onClick="onEdit1"  position="462px -288px" size="90px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_editTxt" id="evtRowEditTxt1"  text="Edit Fills"  position="462px -288px" size="90px 34px" visible="false"/>
+      <Bitmap profile="mdmEvtS_forceBg" id="evtRowForceBg1"  position="558px -288px" size="135px 34px" visible="false"/>
+      <Button profile="mdmEvtS_btnHit"  id="evtRowForceBtn1" onClick="onForce1" position="558px -288px" size="135px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_forceTxt" id="evtRowForceTxt1" text="Force Fire" position="558px -288px" size="135px 34px" visible="false"/>
       <!-- ── Row 2 ── -->
-      <Text   profile="mdmEvtS_evtName" id="evtRowName2"    text="" position="0px -326px"   size="330px 28px" visible="false"/>
-      <Bitmap profile="mdmEvtS_togBg"   id="evtRowTogBg2"   position="340px -324px" size="130px 34px" visible="false"/>
-      <Button profile="mdmEvtS_btnHit"  id="evtRowTogBtn2"  onClick="onToggle2" position="340px -324px" size="130px 34px" visible="false"/>
-      <Text   profile="mdmEvtS_togTxt"  id="evtRowTogTxt2"  text="" position="340px -324px" size="130px 34px" visible="false"/>
-      <Text   profile="mdmEvtS_cntTxt"  id="evtRowCount2"   text="" position="480px -326px" size="100px 28px" visible="false"/>
-      <Bitmap profile="mdmEvtS_editBg"  id="evtRowEditBg2"  position="590px -324px" size="100px 34px" visible="false"/>
-      <Button profile="mdmEvtS_btnHit"  id="evtRowEditBtn2" onClick="onEdit2"  position="590px -324px" size="100px 34px" visible="false"/>
-      <Text   profile="mdmEvtS_editTxt" id="evtRowEditTxt2" text="Edit Fills"  position="590px -324px" size="100px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_evtName" id="evtRowName2"     text="" position="0px -326px"   size="250px 28px" visible="false"/>
+      <Bitmap profile="mdmEvtS_togBg"   id="evtRowTogBg2"    position="258px -324px" size="115px 34px" visible="false"/>
+      <Button profile="mdmEvtS_btnHit"  id="evtRowTogBtn2"   onClick="onToggle2" position="258px -324px" size="115px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_togTxt"  id="evtRowTogTxt2"   text="" position="258px -324px" size="115px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_cntTxt"  id="evtRowCount2"    text="" position="380px -326px" size="75px 28px" visible="false"/>
+      <Bitmap profile="mdmEvtS_editBg"  id="evtRowEditBg2"   position="462px -324px" size="90px 34px" visible="false"/>
+      <Button profile="mdmEvtS_btnHit"  id="evtRowEditBtn2"  onClick="onEdit2"  position="462px -324px" size="90px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_editTxt" id="evtRowEditTxt2"  text="Edit Fills"  position="462px -324px" size="90px 34px" visible="false"/>
+      <Bitmap profile="mdmEvtS_forceBg" id="evtRowForceBg2"  position="558px -324px" size="135px 34px" visible="false"/>
+      <Button profile="mdmEvtS_btnHit"  id="evtRowForceBtn2" onClick="onForce2" position="558px -324px" size="135px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_forceTxt" id="evtRowForceTxt2" text="Force Fire" position="558px -324px" size="135px 34px" visible="false"/>
       <!-- ── Row 3 ── -->
-      <Text   profile="mdmEvtS_evtName" id="evtRowName3"    text="" position="0px -362px"   size="330px 28px" visible="false"/>
-      <Bitmap profile="mdmEvtS_togBg"   id="evtRowTogBg3"   position="340px -360px" size="130px 34px" visible="false"/>
-      <Button profile="mdmEvtS_btnHit"  id="evtRowTogBtn3"  onClick="onToggle3" position="340px -360px" size="130px 34px" visible="false"/>
-      <Text   profile="mdmEvtS_togTxt"  id="evtRowTogTxt3"  text="" position="340px -360px" size="130px 34px" visible="false"/>
-      <Text   profile="mdmEvtS_cntTxt"  id="evtRowCount3"   text="" position="480px -362px" size="100px 28px" visible="false"/>
-      <Bitmap profile="mdmEvtS_editBg"  id="evtRowEditBg3"  position="590px -360px" size="100px 34px" visible="false"/>
-      <Button profile="mdmEvtS_btnHit"  id="evtRowEditBtn3" onClick="onEdit3"  position="590px -360px" size="100px 34px" visible="false"/>
-      <Text   profile="mdmEvtS_editTxt" id="evtRowEditTxt3" text="Edit Fills"  position="590px -360px" size="100px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_evtName" id="evtRowName3"     text="" position="0px -362px"   size="250px 28px" visible="false"/>
+      <Bitmap profile="mdmEvtS_togBg"   id="evtRowTogBg3"    position="258px -360px" size="115px 34px" visible="false"/>
+      <Button profile="mdmEvtS_btnHit"  id="evtRowTogBtn3"   onClick="onToggle3" position="258px -360px" size="115px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_togTxt"  id="evtRowTogTxt3"   text="" position="258px -360px" size="115px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_cntTxt"  id="evtRowCount3"    text="" position="380px -362px" size="75px 28px" visible="false"/>
+      <Bitmap profile="mdmEvtS_editBg"  id="evtRowEditBg3"   position="462px -360px" size="90px 34px" visible="false"/>
+      <Button profile="mdmEvtS_btnHit"  id="evtRowEditBtn3"  onClick="onEdit3"  position="462px -360px" size="90px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_editTxt" id="evtRowEditTxt3"  text="Edit Fills"  position="462px -360px" size="90px 34px" visible="false"/>
+      <Bitmap profile="mdmEvtS_forceBg" id="evtRowForceBg3"  position="558px -360px" size="135px 34px" visible="false"/>
+      <Button profile="mdmEvtS_btnHit"  id="evtRowForceBtn3" onClick="onForce3" position="558px -360px" size="135px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_forceTxt" id="evtRowForceTxt3" text="Force Fire" position="558px -360px" size="135px 34px" visible="false"/>
       <!-- ── Row 4 ── -->
-      <Text   profile="mdmEvtS_evtName" id="evtRowName4"    text="" position="0px -398px"   size="330px 28px" visible="false"/>
-      <Bitmap profile="mdmEvtS_togBg"   id="evtRowTogBg4"   position="340px -396px" size="130px 34px" visible="false"/>
-      <Button profile="mdmEvtS_btnHit"  id="evtRowTogBtn4"  onClick="onToggle4" position="340px -396px" size="130px 34px" visible="false"/>
-      <Text   profile="mdmEvtS_togTxt"  id="evtRowTogTxt4"  text="" position="340px -396px" size="130px 34px" visible="false"/>
-      <Text   profile="mdmEvtS_cntTxt"  id="evtRowCount4"   text="" position="480px -398px" size="100px 28px" visible="false"/>
-      <Bitmap profile="mdmEvtS_editBg"  id="evtRowEditBg4"  position="590px -396px" size="100px 34px" visible="false"/>
-      <Button profile="mdmEvtS_btnHit"  id="evtRowEditBtn4" onClick="onEdit4"  position="590px -396px" size="100px 34px" visible="false"/>
-      <Text   profile="mdmEvtS_editTxt" id="evtRowEditTxt4" text="Edit Fills"  position="590px -396px" size="100px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_evtName" id="evtRowName4"     text="" position="0px -398px"   size="250px 28px" visible="false"/>
+      <Bitmap profile="mdmEvtS_togBg"   id="evtRowTogBg4"    position="258px -396px" size="115px 34px" visible="false"/>
+      <Button profile="mdmEvtS_btnHit"  id="evtRowTogBtn4"   onClick="onToggle4" position="258px -396px" size="115px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_togTxt"  id="evtRowTogTxt4"   text="" position="258px -396px" size="115px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_cntTxt"  id="evtRowCount4"    text="" position="380px -398px" size="75px 28px" visible="false"/>
+      <Bitmap profile="mdmEvtS_editBg"  id="evtRowEditBg4"   position="462px -396px" size="90px 34px" visible="false"/>
+      <Button profile="mdmEvtS_btnHit"  id="evtRowEditBtn4"  onClick="onEdit4"  position="462px -396px" size="90px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_editTxt" id="evtRowEditTxt4"  text="Edit Fills"  position="462px -396px" size="90px 34px" visible="false"/>
+      <Bitmap profile="mdmEvtS_forceBg" id="evtRowForceBg4"  position="558px -396px" size="135px 34px" visible="false"/>
+      <Button profile="mdmEvtS_btnHit"  id="evtRowForceBtn4" onClick="onForce4" position="558px -396px" size="135px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_forceTxt" id="evtRowForceTxt4" text="Force Fire" position="558px -396px" size="135px 34px" visible="false"/>
       <!-- ── Row 5 ── -->
-      <Text   profile="mdmEvtS_evtName" id="evtRowName5"    text="" position="0px -434px"   size="330px 28px" visible="false"/>
-      <Bitmap profile="mdmEvtS_togBg"   id="evtRowTogBg5"   position="340px -432px" size="130px 34px" visible="false"/>
-      <Button profile="mdmEvtS_btnHit"  id="evtRowTogBtn5"  onClick="onToggle5" position="340px -432px" size="130px 34px" visible="false"/>
-      <Text   profile="mdmEvtS_togTxt"  id="evtRowTogTxt5"  text="" position="340px -432px" size="130px 34px" visible="false"/>
-      <Text   profile="mdmEvtS_cntTxt"  id="evtRowCount5"   text="" position="480px -434px" size="100px 28px" visible="false"/>
-      <Bitmap profile="mdmEvtS_editBg"  id="evtRowEditBg5"  position="590px -432px" size="100px 34px" visible="false"/>
-      <Button profile="mdmEvtS_btnHit"  id="evtRowEditBtn5" onClick="onEdit5"  position="590px -432px" size="100px 34px" visible="false"/>
-      <Text   profile="mdmEvtS_editTxt" id="evtRowEditTxt5" text="Edit Fills"  position="590px -432px" size="100px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_evtName" id="evtRowName5"     text="" position="0px -434px"   size="250px 28px" visible="false"/>
+      <Bitmap profile="mdmEvtS_togBg"   id="evtRowTogBg5"    position="258px -432px" size="115px 34px" visible="false"/>
+      <Button profile="mdmEvtS_btnHit"  id="evtRowTogBtn5"   onClick="onToggle5" position="258px -432px" size="115px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_togTxt"  id="evtRowTogTxt5"   text="" position="258px -432px" size="115px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_cntTxt"  id="evtRowCount5"    text="" position="380px -434px" size="75px 28px" visible="false"/>
+      <Bitmap profile="mdmEvtS_editBg"  id="evtRowEditBg5"   position="462px -432px" size="90px 34px" visible="false"/>
+      <Button profile="mdmEvtS_btnHit"  id="evtRowEditBtn5"  onClick="onEdit5"  position="462px -432px" size="90px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_editTxt" id="evtRowEditTxt5"  text="Edit Fills"  position="462px -432px" size="90px 34px" visible="false"/>
+      <Bitmap profile="mdmEvtS_forceBg" id="evtRowForceBg5"  position="558px -432px" size="135px 34px" visible="false"/>
+      <Button profile="mdmEvtS_btnHit"  id="evtRowForceBtn5" onClick="onForce5" position="558px -432px" size="135px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_forceTxt" id="evtRowForceTxt5" text="Force Fire" position="558px -432px" size="135px 34px" visible="false"/>
       <!-- ── Row 6 ── -->
-      <Text   profile="mdmEvtS_evtName" id="evtRowName6"    text="" position="0px -470px"   size="330px 28px" visible="false"/>
-      <Bitmap profile="mdmEvtS_togBg"   id="evtRowTogBg6"   position="340px -468px" size="130px 34px" visible="false"/>
-      <Button profile="mdmEvtS_btnHit"  id="evtRowTogBtn6"  onClick="onToggle6" position="340px -468px" size="130px 34px" visible="false"/>
-      <Text   profile="mdmEvtS_togTxt"  id="evtRowTogTxt6"  text="" position="340px -468px" size="130px 34px" visible="false"/>
-      <Text   profile="mdmEvtS_cntTxt"  id="evtRowCount6"   text="" position="480px -470px" size="100px 28px" visible="false"/>
-      <Bitmap profile="mdmEvtS_editBg"  id="evtRowEditBg6"  position="590px -468px" size="100px 34px" visible="false"/>
-      <Button profile="mdmEvtS_btnHit"  id="evtRowEditBtn6" onClick="onEdit6"  position="590px -468px" size="100px 34px" visible="false"/>
-      <Text   profile="mdmEvtS_editTxt" id="evtRowEditTxt6" text="Edit Fills"  position="590px -468px" size="100px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_evtName" id="evtRowName6"     text="" position="0px -470px"   size="250px 28px" visible="false"/>
+      <Bitmap profile="mdmEvtS_togBg"   id="evtRowTogBg6"    position="258px -468px" size="115px 34px" visible="false"/>
+      <Button profile="mdmEvtS_btnHit"  id="evtRowTogBtn6"   onClick="onToggle6" position="258px -468px" size="115px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_togTxt"  id="evtRowTogTxt6"   text="" position="258px -468px" size="115px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_cntTxt"  id="evtRowCount6"    text="" position="380px -470px" size="75px 28px" visible="false"/>
+      <Bitmap profile="mdmEvtS_editBg"  id="evtRowEditBg6"   position="462px -468px" size="90px 34px" visible="false"/>
+      <Button profile="mdmEvtS_btnHit"  id="evtRowEditBtn6"  onClick="onEdit6"  position="462px -468px" size="90px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_editTxt" id="evtRowEditTxt6"  text="Edit Fills"  position="462px -468px" size="90px 34px" visible="false"/>
+      <Bitmap profile="mdmEvtS_forceBg" id="evtRowForceBg6"  position="558px -468px" size="135px 34px" visible="false"/>
+      <Button profile="mdmEvtS_btnHit"  id="evtRowForceBtn6" onClick="onForce6" position="558px -468px" size="135px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_forceTxt" id="evtRowForceTxt6" text="Force Fire" position="558px -468px" size="135px 34px" visible="false"/>
       <!-- ── Row 7 ── -->
-      <Text   profile="mdmEvtS_evtName" id="evtRowName7"    text="" position="0px -506px"   size="330px 28px" visible="false"/>
-      <Bitmap profile="mdmEvtS_togBg"   id="evtRowTogBg7"   position="340px -504px" size="130px 34px" visible="false"/>
-      <Button profile="mdmEvtS_btnHit"  id="evtRowTogBtn7"  onClick="onToggle7" position="340px -504px" size="130px 34px" visible="false"/>
-      <Text   profile="mdmEvtS_togTxt"  id="evtRowTogTxt7"  text="" position="340px -504px" size="130px 34px" visible="false"/>
-      <Text   profile="mdmEvtS_cntTxt"  id="evtRowCount7"   text="" position="480px -506px" size="100px 28px" visible="false"/>
-      <Bitmap profile="mdmEvtS_editBg"  id="evtRowEditBg7"  position="590px -504px" size="100px 34px" visible="false"/>
-      <Button profile="mdmEvtS_btnHit"  id="evtRowEditBtn7" onClick="onEdit7"  position="590px -504px" size="100px 34px" visible="false"/>
-      <Text   profile="mdmEvtS_editTxt" id="evtRowEditTxt7" text="Edit Fills"  position="590px -504px" size="100px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_evtName" id="evtRowName7"     text="" position="0px -506px"   size="250px 28px" visible="false"/>
+      <Bitmap profile="mdmEvtS_togBg"   id="evtRowTogBg7"    position="258px -504px" size="115px 34px" visible="false"/>
+      <Button profile="mdmEvtS_btnHit"  id="evtRowTogBtn7"   onClick="onToggle7" position="258px -504px" size="115px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_togTxt"  id="evtRowTogTxt7"   text="" position="258px -504px" size="115px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_cntTxt"  id="evtRowCount7"    text="" position="380px -506px" size="75px 28px" visible="false"/>
+      <Bitmap profile="mdmEvtS_editBg"  id="evtRowEditBg7"   position="462px -504px" size="90px 34px" visible="false"/>
+      <Button profile="mdmEvtS_btnHit"  id="evtRowEditBtn7"  onClick="onEdit7"  position="462px -504px" size="90px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_editTxt" id="evtRowEditTxt7"  text="Edit Fills"  position="462px -504px" size="90px 34px" visible="false"/>
+      <Bitmap profile="mdmEvtS_forceBg" id="evtRowForceBg7"  position="558px -504px" size="135px 34px" visible="false"/>
+      <Button profile="mdmEvtS_btnHit"  id="evtRowForceBtn7" onClick="onForce7" position="558px -504px" size="135px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_forceTxt" id="evtRowForceTxt7" text="Force Fire" position="558px -504px" size="135px 34px" visible="false"/>
       <!-- ── Row 8 ── -->
-      <Text   profile="mdmEvtS_evtName" id="evtRowName8"    text="" position="0px -542px"   size="330px 28px" visible="false"/>
-      <Bitmap profile="mdmEvtS_togBg"   id="evtRowTogBg8"   position="340px -540px" size="130px 34px" visible="false"/>
-      <Button profile="mdmEvtS_btnHit"  id="evtRowTogBtn8"  onClick="onToggle8" position="340px -540px" size="130px 34px" visible="false"/>
-      <Text   profile="mdmEvtS_togTxt"  id="evtRowTogTxt8"  text="" position="340px -540px" size="130px 34px" visible="false"/>
-      <Text   profile="mdmEvtS_cntTxt"  id="evtRowCount8"   text="" position="480px -542px" size="100px 28px" visible="false"/>
-      <Bitmap profile="mdmEvtS_editBg"  id="evtRowEditBg8"  position="590px -540px" size="100px 34px" visible="false"/>
-      <Button profile="mdmEvtS_btnHit"  id="evtRowEditBtn8" onClick="onEdit8"  position="590px -540px" size="100px 34px" visible="false"/>
-      <Text   profile="mdmEvtS_editTxt" id="evtRowEditTxt8" text="Edit Fills"  position="590px -540px" size="100px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_evtName" id="evtRowName8"     text="" position="0px -542px"   size="250px 28px" visible="false"/>
+      <Bitmap profile="mdmEvtS_togBg"   id="evtRowTogBg8"    position="258px -540px" size="115px 34px" visible="false"/>
+      <Button profile="mdmEvtS_btnHit"  id="evtRowTogBtn8"   onClick="onToggle8" position="258px -540px" size="115px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_togTxt"  id="evtRowTogTxt8"   text="" position="258px -540px" size="115px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_cntTxt"  id="evtRowCount8"    text="" position="380px -542px" size="75px 28px" visible="false"/>
+      <Bitmap profile="mdmEvtS_editBg"  id="evtRowEditBg8"   position="462px -540px" size="90px 34px" visible="false"/>
+      <Button profile="mdmEvtS_btnHit"  id="evtRowEditBtn8"  onClick="onEdit8"  position="462px -540px" size="90px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_editTxt" id="evtRowEditTxt8"  text="Edit Fills"  position="462px -540px" size="90px 34px" visible="false"/>
+      <Bitmap profile="mdmEvtS_forceBg" id="evtRowForceBg8"  position="558px -540px" size="135px 34px" visible="false"/>
+      <Button profile="mdmEvtS_btnHit"  id="evtRowForceBtn8" onClick="onForce8" position="558px -540px" size="135px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_forceTxt" id="evtRowForceTxt8" text="Force Fire" position="558px -540px" size="135px 34px" visible="false"/>
       <!-- ── Row 9 ── -->
-      <Text   profile="mdmEvtS_evtName" id="evtRowName9"    text="" position="0px -578px"   size="330px 28px" visible="false"/>
-      <Bitmap profile="mdmEvtS_togBg"   id="evtRowTogBg9"   position="340px -576px" size="130px 34px" visible="false"/>
-      <Button profile="mdmEvtS_btnHit"  id="evtRowTogBtn9"  onClick="onToggle9" position="340px -576px" size="130px 34px" visible="false"/>
-      <Text   profile="mdmEvtS_togTxt"  id="evtRowTogTxt9"  text="" position="340px -576px" size="130px 34px" visible="false"/>
-      <Text   profile="mdmEvtS_cntTxt"  id="evtRowCount9"   text="" position="480px -578px" size="100px 28px" visible="false"/>
-      <Bitmap profile="mdmEvtS_editBg"  id="evtRowEditBg9"  position="590px -576px" size="100px 34px" visible="false"/>
-      <Button profile="mdmEvtS_btnHit"  id="evtRowEditBtn9" onClick="onEdit9"  position="590px -576px" size="100px 34px" visible="false"/>
-      <Text   profile="mdmEvtS_editTxt" id="evtRowEditTxt9" text="Edit Fills"  position="590px -576px" size="100px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_evtName" id="evtRowName9"     text="" position="0px -578px"   size="250px 28px" visible="false"/>
+      <Bitmap profile="mdmEvtS_togBg"   id="evtRowTogBg9"    position="258px -576px" size="115px 34px" visible="false"/>
+      <Button profile="mdmEvtS_btnHit"  id="evtRowTogBtn9"   onClick="onToggle9" position="258px -576px" size="115px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_togTxt"  id="evtRowTogTxt9"   text="" position="258px -576px" size="115px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_cntTxt"  id="evtRowCount9"    text="" position="380px -578px" size="75px 28px" visible="false"/>
+      <Bitmap profile="mdmEvtS_editBg"  id="evtRowEditBg9"   position="462px -576px" size="90px 34px" visible="false"/>
+      <Button profile="mdmEvtS_btnHit"  id="evtRowEditBtn9"  onClick="onEdit9"  position="462px -576px" size="90px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_editTxt" id="evtRowEditTxt9"  text="Edit Fills"  position="462px -576px" size="90px 34px" visible="false"/>
+      <Bitmap profile="mdmEvtS_forceBg" id="evtRowForceBg9"  position="558px -576px" size="135px 34px" visible="false"/>
+      <Button profile="mdmEvtS_btnHit"  id="evtRowForceBtn9" onClick="onForce9" position="558px -576px" size="135px 34px" visible="false"/>
+      <Text   profile="mdmEvtS_forceTxt" id="evtRowForceTxt9" text="Force Fire" position="558px -576px" size="135px 34px" visible="false"/>
+
+      <!-- ═══ FILL TYPE REFERENCE ═══ -->
+      <Bitmap profile="mdmEvtS_sep" position="0px -618px" size="700px 2px"/>
+      <Text profile="mdmEvtS_sectionLabel" text="TRACKED FILL TYPES" position="0px -634px" size="300px 20px"/>
+      <Text profile="mdmEvtS_ftHint" id="evtSFillTypeHint" text="" position="0px -654px" size="700px 38px"/>
 
     </GuiElement>
 
@@ -207,6 +250,14 @@
       <textAlignment value="center"/>
       <textColor value="$preset_colorWhite"/>
     </Profile>
+    <Profile name="mdmEvtS_forceBg" extends="baseReference" with="anchorTopLeft">
+      <imageColor value="0.05 0.30 0.15 0.9"/>
+    </Profile>
+    <Profile name="mdmEvtS_forceTxt" extends="fs25_textDefault" with="anchorTopLeft">
+      <textSize value="11px"/>
+      <textAlignment value="center"/>
+      <textColor value="$preset_colorWhite"/>
+    </Profile>
     <Profile name="mdmEvtS_btnBg" extends="baseReference" with="anchorTopLeft">
       <imageColor value="0.14 0.14 0.14 0.9"/>
     </Profile>
@@ -216,5 +267,10 @@
       <textColor value="$preset_colorWhite"/>
     </Profile>
     <Profile name="mdmEvtS_btnHit" extends="emptyPanel" with="anchorTopLeft"/>
+    <Profile name="mdmEvtS_ftHint" extends="fs25_textDefault" with="anchorTopLeft">
+      <textSize value="11px"/>
+      <textColor value="0.50 0.50 0.50 1.0"/>
+      <textWrap value="true"/>
+    </Profile>
   </GUIProfiles>
 </GUI>

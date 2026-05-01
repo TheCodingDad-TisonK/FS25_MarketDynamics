@@ -123,6 +123,8 @@
         <!-- Event settings dialog -->
         <text name="mdm_evt_enabled"           text="Enabled" />
         <text name="mdm_evt_disabled"          text="Disabled" />
+        <text name="mdm_evt_force"             text="Force Fire" />
+        <text name="mdm_evt_stop"              text="Stop Event" />
 
         <!-- Fill type editor dialog -->
         <text name="mdm_evt_ft_hint"           text="Enter a fill type name (e.g. WHEAT, MUNGBEAN). Changes take effect on the next event firing." />

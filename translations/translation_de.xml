@@ -90,6 +90,8 @@
         <!-- Event settings dialog -->
         <text name="mdm_evt_enabled"           text="Aktiviert" />
         <text name="mdm_evt_disabled"          text="Deaktiviert" />
+        <text name="mdm_evt_force"             text="Erzwingen" />
+        <text name="mdm_evt_stop"              text="Stoppen" />
 
         <!-- Fill type editor dialog -->
         <text name="mdm_evt_ft_hint"           text="Fülltyp-Namen eingeben (z.B. WHEAT, MUNGBEAN). Änderungen wirken beim nächsten Ereignis." />
