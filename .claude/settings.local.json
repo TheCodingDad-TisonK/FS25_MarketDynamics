@@ -6,7 +6,14 @@
       "Bash(git checkout *)",
       "Bash(git add *)",
       "Bash(git commit -m ' *)",
-      "Skill(fs25-deploy)"
+      "Skill(fs25-deploy)",
+      "Bash(gh pr *)",
+      "Bash(gh release create v1.1.6.0 FS25_MarketDynamics.zip --target main --title v1.1.6.0 --notes ' *)",
+      "Bash(gh repo *)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(npx *)",
+      "Bash(git push *)"
     ]
   }
 }
