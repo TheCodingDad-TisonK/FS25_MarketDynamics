@@ -398,6 +398,12 @@ function MDMSettingsUI:onMDMPricesEnabledChanged(state)
     local enabled = (state == BinaryOptionElement.STATE_RIGHT)
     g_MarketDynamics.settings.pricesEnabled = enabled
     MDMLog.info("SettingsUI: pricesEnabled = " .. tostring(enabled))
+
+    if g_server ~= nil then
+        MDMSettingsSyncEvent.sendToClients()
+    else
+        MDMSettingsSyncEvent.sendToServer()
+    end
 end
 
 function MDMSettingsUI:onMDMVolatilityChanged(state)
@@ -406,24 +412,48 @@ function MDMSettingsUI:onMDMVolatilityChanged(state)
         g_MarketDynamics.marketEngine.volatilityScale = scale
     end
     MDMLog.info("SettingsUI: volatilityScale = " .. tostring(scale))
+
+    if g_server ~= nil then
+        MDMSettingsSyncEvent.sendToClients()
+    else
+        MDMSettingsSyncEvent.sendToServer()
+    end
 end
 
 function MDMSettingsUI:onMDMEventsEnabledChanged(state)
     if not g_MarketDynamics or not g_MarketDynamics.settings then return end
     g_MarketDynamics.settings.eventsEnabled = (state == BinaryOptionElement.STATE_RIGHT)
     MDMLog.info("SettingsUI: eventsEnabled = " .. tostring(g_MarketDynamics.settings.eventsEnabled))
+
+    if g_server ~= nil then
+        MDMSettingsSyncEvent.sendToClients()
+    else
+        MDMSettingsSyncEvent.sendToServer()
+    end
 end
 
 function MDMSettingsUI:onMDMEventFrequencyChanged(state)
     if not g_MarketDynamics or not g_MarketDynamics.settings then return end
     g_MarketDynamics.settings.eventFrequency = EVENT_FREQUENCY_VALUES[state] or 1.0
     MDMLog.info("SettingsUI: eventFrequency = " .. tostring(g_MarketDynamics.settings.eventFrequency))
+
+    if g_server ~= nil then
+        MDMSettingsSyncEvent.sendToClients()
+    else
+        MDMSettingsSyncEvent.sendToServer()
+    end
 end
 
 function MDMSettingsUI:onMDMFuturesPenaltyChanged(state)
     if not g_MarketDynamics or not g_MarketDynamics.settings then return end
     g_MarketDynamics.settings.futuresPenalty = FUTURES_PENALTY_VALUES[state] or 0.15
     MDMLog.info("SettingsUI: futuresPenalty = " .. tostring(g_MarketDynamics.settings.futuresPenalty))
+
+    if g_server ~= nil then
+        MDMSettingsSyncEvent.sendToClients()
+    else
+        MDMSettingsSyncEvent.sendToServer()
+    end
 end
 
 function MDMSettingsUI:onMDMDebugModeChanged(state)
@@ -432,6 +462,12 @@ function MDMSettingsUI:onMDMDebugModeChanged(state)
         g_MarketDynamics.settings.debugMode = MDMLog.debugEnabled
     end
     MDMLog.info("SettingsUI: debugMode = " .. tostring(MDMLog.debugEnabled))
+
+    if g_server ~= nil then
+        MDMSettingsSyncEvent.sendToClients()
+    else
+        MDMSettingsSyncEvent.sendToServer()
+    end
 end
 
 -- ---------------------------------------------------------------------------

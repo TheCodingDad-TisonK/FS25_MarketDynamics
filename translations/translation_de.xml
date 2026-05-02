@@ -9,6 +9,9 @@
         <text name="mdm_event_biofuel_initiative" text="Biokraftstoff-Initiative"/>
         <text name="mdm_event_livestock_boom" text="Viehfutterboom"/>
         <text name="mdm_event_pest_outbreak" text="Wurzelfäule"/>
+        <text name="mdm_event_cold_snap" text="Kältewelle"/>
+        <text name="mdm_event_financial_panic" text="Finanzpanik"/>
+        <text name="mdm_event_protein_premium" text="Proteinpreis-Boom"/>
         <text name="mdm_hud_title" text="Marktbeobachtung"/>
         <text name="mdm_hud_active_events" text="Aktive Ereignisse"/>
         <text name="mdm_hud_no_events" text="Märkte stabil"/>
@@ -74,9 +77,9 @@
         <text name="mdm_futures_no_contracts" text="Noch keine Verträge"/>
         <text name="mdm_dialog_summary" text="Vertragszusammenfassung"/>
         <text name="mdm_dialog_qty_label" text="Menge"/>
-        <text name="mdm_dialog_unit_label"    text="Time Unit" />
-        <text name="mdm_unit_game_days"       text="In-Game Days" />
-        <text name="mdm_unit_real_days"       text="Real Days" />
+        <text name="mdm_dialog_unit_label"    text="Zeiteinheit" />
+        <text name="mdm_unit_game_days"       text="Spieltage" />
+        <text name="mdm_unit_real_days"       text="Echtzeittage" />
         <text name="mdm_dialog_delivery_label" text="Lieferfenster"/>
         <text name="mdm_dialog_bc_blocked" text="Futures deaktiviert – BetterContracts-Modus aktiv"/>
         <text name="mdm_dialog_no_crops" text="Noch keine Marktdaten verfügbar."/>
@@ -84,9 +87,32 @@
         <text name="mdm_settings_mdm_general" text="Marktdynamik"/>
 
     
+        <!-- Event settings dialog -->
+        <text name="mdm_evt_enabled"           text="Aktiviert" />
+        <text name="mdm_evt_disabled"          text="Deaktiviert" />
+        <text name="mdm_evt_force"             text="Erzwingen" />
+        <text name="mdm_evt_stop"              text="Stoppen" />
+
+        <!-- Fill type editor dialog -->
+        <text name="mdm_evt_ft_hint"           text="Fülltyp-Namen eingeben (z.B. WHEAT, MUNGBEAN). Änderungen wirken beim nächsten Ereignis." />
+        <text name="mdm_evt_ft_browse"         text="Alle verfügbaren Typen: " />
+        <text name="mdm_evt_ft_not_found"      text="Fülltyp nicht gefunden. Schreibweise prüfen: " />
+        <text name="mdm_evt_ft_duplicate"      text="Bereits in der Liste: " />
+        <text name="mdm_evt_ft_added"          text="Hinzugefügt – wirkt beim nächsten Ereignis: " />
+        <text name="mdm_evt_ft_title_suffix"   text=" — Benutzerdefinierte Fülltypen" />
+
+        <!-- Custom amount/days dialog -->
+        <text name="mdm_custom_amount"          text="Benutzerdefinierte Menge" />
+        <text name="mdm_custom_days"            text="Benutzerdefinierte Tage" />
+        <text name="mdm_enter_amount"           text="Betrag eingeben:" />
+        <text name="mdm_enter_days"             text="Tage eingeben:" />
+        <text name="mdm_custom_amount_hint"     text="Gewünschte Vertragsmenge in Litern eingeben." />
+        <text name="mdm_custom_days_hint"       text="Lieferfensterlänge wählen. Echtzeittage werden anhand der aktuellen Zeitskala umgerechnet." />
+
         <!-- Input action display names -->
         <text name="input_MDM_MARKET_SCREEN" text="Marktübersicht öffnen" />
         <text name="input_MDM_CREATE_CONTRACT" text="Terminkontrakt erstellen" />
+        <text name="input_MDM_SETTINGS_PANEL" text="Marktdynamik-Einstellungen" />
 
         <!-- Contract admin dialog -->
         <text name="mdm_admin_title"            text="Vertragsdetails" />

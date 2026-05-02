@@ -46,7 +46,7 @@ function FuturesMarket:createContract(params)
         quantity          = params.quantity,       -- in liters
         lockedPrice       = params.lockedPrice,    -- per liter at contract creation
         deliveryTime      = params.deliveryTimeMs, -- absolute game time (ms)
-        deliveryStartTime = now + (params.deliveryTimeMs - now) * 0.5, -- locked price only applies after first half of contract term
+        deliveryStartTime = now,                   -- can start delivering immediately
         delivered         = 0,                     -- liters delivered so far
         status            = "active",              -- active | fulfilled | defaulted
     }

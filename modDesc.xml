@@ -36,6 +36,7 @@
         <sourceFile filename="src/events/MDMContractRequestEvent.lua" />
         <sourceFile filename="src/events/MDMContractSyncEvent.lua" />
         <sourceFile filename="src/events/MDMContractSyncRequestEvent.lua" />
+        <sourceFile filename="src/events/MDMSettingsSyncEvent.lua" />
         <sourceFile filename="src/events/DroughtEvent.lua" />
         <sourceFile filename="src/events/BumperHarvestEvent.lua" />
         <sourceFile filename="src/events/TradeDisruptionEvent.lua" />

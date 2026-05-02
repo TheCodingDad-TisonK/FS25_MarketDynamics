@@ -6,8 +6,10 @@
 --   Event Frequency (Rare / Normal / Frequent)
 --
 -- Per-event section (10 rows, alphabetically sorted):
---   Event name | Enabled/Disabled toggle | Custom fill type count | [Edit] button
+--   Event name | Enabled/Disabled toggle | Custom fill type count | [Edit] | [Force Fire / Stop]
 --   [Edit] opens MDMEventFillTypeDialog for that specific event.
+--   [Force Fire] immediately fires the event at full intensity for testing.
+--   [Stop]       immediately expires an active event.
 --
 -- All settings are applied immediately to g_MarketDynamics.settings and
 -- persisted on the next game save via MarketSerializer.
@@ -25,8 +27,9 @@ local FREQ_HIGH      = 2.0
 function MDMEventSettingsDialog.new(target, custom_mt)
     local self = MessageDialog.new(target, custom_mt or MDMEventSettingsDialog_mt)
 
-    self.isOpen   = false
-    self._onClose = nil
+    self.isOpen       = false
+    self._onClose     = nil
+    self.fillTypeHint = nil
 
     -- Global section elements
     self.globalOffBg   = nil; self.globalOffBtn  = nil; self.globalOffTxt  = nil
@@ -36,14 +39,17 @@ function MDMEventSettingsDialog.new(target, custom_mt)
     self.freqHighBg    = nil; self.freqHighBtn   = nil; self.freqHighTxt   = nil
 
     -- Per-event row elements (indexed 0..9)
-    self.rowNames     = {}
-    self.rowTogBgs    = {}
-    self.rowTogBtns   = {}
-    self.rowTogTxts   = {}
-    self.rowCounts    = {}
-    self.rowEditBgs   = {}
-    self.rowEditBtns  = {}
-    self.rowEditTxts  = {}
+    self.rowNames      = {}
+    self.rowTogBgs     = {}
+    self.rowTogBtns    = {}
+    self.rowTogTxts    = {}
+    self.rowCounts     = {}
+    self.rowEditBgs    = {}
+    self.rowEditBtns   = {}
+    self.rowEditTxts   = {}
+    self.rowForceBgs   = {}
+    self.rowForceBtns  = {}
+    self.rowForceTxts  = {}
 
     -- Sorted event list built at onOpen
     self._eventOrder = {}
@@ -81,16 +87,22 @@ function MDMEventSettingsDialog:onGuiSetupFinished()
     self.freqHighBtn   = self:getDescendantById("evtFreqHighBtn")
     self.freqHighTxt   = self:getDescendantById("evtFreqHighTxt")
 
+    -- Fill type reference hint
+    self.fillTypeHint = self:getDescendantById("evtSFillTypeHint")
+
     -- Per-event rows
     for i = 0, MAX_EVENT_ROWS - 1 do
-        self.rowNames[i]    = self:getDescendantById("evtRowName"    .. i)
-        self.rowTogBgs[i]   = self:getDescendantById("evtRowTogBg"   .. i)
-        self.rowTogBtns[i]  = self:getDescendantById("evtRowTogBtn"  .. i)
-        self.rowTogTxts[i]  = self:getDescendantById("evtRowTogTxt"  .. i)
-        self.rowCounts[i]   = self:getDescendantById("evtRowCount"   .. i)
-        self.rowEditBgs[i]  = self:getDescendantById("evtRowEditBg"  .. i)
-        self.rowEditBtns[i] = self:getDescendantById("evtRowEditBtn" .. i)
-        self.rowEditTxts[i] = self:getDescendantById("evtRowEditTxt" .. i)
+        self.rowNames[i]     = self:getDescendantById("evtRowName"     .. i)
+        self.rowTogBgs[i]    = self:getDescendantById("evtRowTogBg"    .. i)
+        self.rowTogBtns[i]   = self:getDescendantById("evtRowTogBtn"   .. i)
+        self.rowTogTxts[i]   = self:getDescendantById("evtRowTogTxt"   .. i)
+        self.rowCounts[i]    = self:getDescendantById("evtRowCount"    .. i)
+        self.rowEditBgs[i]   = self:getDescendantById("evtRowEditBg"   .. i)
+        self.rowEditBtns[i]  = self:getDescendantById("evtRowEditBtn"  .. i)
+        self.rowEditTxts[i]  = self:getDescendantById("evtRowEditTxt"  .. i)
+        self.rowForceBgs[i]  = self:getDescendantById("evtRowForceBg"  .. i)
+        self.rowForceBtns[i] = self:getDescendantById("evtRowForceBtn" .. i)
+        self.rowForceTxts[i] = self:getDescendantById("evtRowForceTxt" .. i)
     end
 end
 
@@ -110,6 +122,7 @@ function MDMEventSettingsDialog:onOpen()
 
     self:_refreshGlobal()
     self:_refreshEventRows()
+    self:_refreshFillTypeHint()
 end
 
 function MDMEventSettingsDialog:onClose()
@@ -169,30 +182,85 @@ function MDMEventSettingsDialog:onGlobalOffClick()
     if not g_MarketDynamics then return end
     g_MarketDynamics.settings.eventsEnabled = false
     self:_refreshGlobal()
+
+    if g_server ~= nil then
+        MDMSettingsSyncEvent.sendToClients()
+    else
+        MDMSettingsSyncEvent.sendToServer()
+    end
 end
 
 function MDMEventSettingsDialog:onGlobalOnClick()
     if not g_MarketDynamics then return end
     g_MarketDynamics.settings.eventsEnabled = true
     self:_refreshGlobal()
+
+    if g_server ~= nil then
+        MDMSettingsSyncEvent.sendToClients()
+    else
+        MDMSettingsSyncEvent.sendToServer()
+    end
 end
 
 function MDMEventSettingsDialog:onFreqRareClick()
     if not g_MarketDynamics then return end
     g_MarketDynamics.settings.eventFrequency = FREQ_RARE
     self:_refreshGlobal()
+
+    if g_server ~= nil then
+        MDMSettingsSyncEvent.sendToClients()
+    else
+        MDMSettingsSyncEvent.sendToServer()
+    end
 end
 
 function MDMEventSettingsDialog:onFreqNormalClick()
     if not g_MarketDynamics then return end
     g_MarketDynamics.settings.eventFrequency = FREQ_NORMAL
     self:_refreshGlobal()
+
+    if g_server ~= nil then
+        MDMSettingsSyncEvent.sendToClients()
+    else
+        MDMSettingsSyncEvent.sendToServer()
+    end
 end
 
 function MDMEventSettingsDialog:onFreqHighClick()
     if not g_MarketDynamics then return end
     g_MarketDynamics.settings.eventFrequency = FREQ_HIGH
     self:_refreshGlobal()
+
+    if g_server ~= nil then
+        MDMSettingsSyncEvent.sendToClients()
+    else
+        MDMSettingsSyncEvent.sendToServer()
+    end
+end
+
+-- ── Fill type reference hint ──────────────────────────────────────────────────
+
+-- Populate the "TRACKED FILL TYPES" section at the bottom of the dialog with
+-- every fill type currently tracked by MarketEngine (vanilla + all mod crops).
+-- Players use this as a reference when typing names into the fill type editor.
+function MDMEventSettingsDialog:_refreshFillTypeHint()
+    if not self.fillTypeHint then return end
+    local list = self:_buildAvailableFillTypeList()
+    self.fillTypeHint:setText(list ~= "" and list or "—")
+end
+
+function MDMEventSettingsDialog:_buildAvailableFillTypeList()
+    if not g_fillTypeManager or not g_MarketDynamics then return "" end
+    local engine = g_MarketDynamics.marketEngine
+    local names  = {}
+    for _, ft in ipairs(g_fillTypeManager:getFillTypes()) do
+        if ft and ft.index and ft.index > 1 and ft.name and ft.name ~= ""
+           and engine and engine.prices[ft.index] then
+            table.insert(names, ft.name)
+        end
+    end
+    table.sort(names)
+    return table.concat(names, "  ·  ")
 end
 
 -- ── Per-event rows ────────────────────────────────────────────────────────────
@@ -201,24 +269,24 @@ function MDMEventSettingsDialog:_refreshEventRows()
     local s        = g_MarketDynamics and g_MarketDynamics.settings
     local disabled = (s and s.disabledEvents)         or {}
     local cft      = (s and s.eventCustomFillTypes)   or {}
+    local active   = (g_MarketDynamics and g_MarketDynamics.worldEvents and
+                      g_MarketDynamics.worldEvents.active) or {}
 
     for i = 0, MAX_EVENT_ROWS - 1 do
         local entry  = self._eventOrder[i + 1]
         local hasRow = entry ~= nil
 
-        -- Visibility
-        if self.rowNames[i]    then self.rowNames[i]:setVisible(hasRow)    end
-        if self.rowTogBgs[i]   then self.rowTogBgs[i]:setVisible(hasRow)   end
-        if self.rowTogBtns[i]  then self.rowTogBtns[i]:setVisible(hasRow)  end
-        if self.rowTogTxts[i]  then self.rowTogTxts[i]:setVisible(hasRow)  end
-        if self.rowCounts[i]   then self.rowCounts[i]:setVisible(hasRow)   end
-        if self.rowEditBgs[i]  then self.rowEditBgs[i]:setVisible(hasRow)  end
-        if self.rowEditBtns[i] then self.rowEditBtns[i]:setVisible(hasRow) end
-        if self.rowEditTxts[i] then self.rowEditTxts[i]:setVisible(hasRow) end
+        -- Visibility: all row elements together
+        local function setVis(el) if el then el:setVisible(hasRow) end end
+        setVis(self.rowNames[i]);    setVis(self.rowTogBgs[i]);   setVis(self.rowTogBtns[i])
+        setVis(self.rowTogTxts[i]);  setVis(self.rowCounts[i]);   setVis(self.rowEditBgs[i])
+        setVis(self.rowEditBtns[i]); setVis(self.rowEditTxts[i]); setVis(self.rowForceBgs[i])
+        setVis(self.rowForceBtns[i]); setVis(self.rowForceTxts[i])
 
         if hasRow then
             local id          = entry.id
             local isDisabled  = disabled[id] == true
+            local isActive    = active[id] ~= nil
             local customCount = cft[id] and #cft[id] or 0
 
             -- Name
@@ -241,10 +309,10 @@ function MDMEventSettingsDialog:_refreshEventRows()
             end
             if self.rowTogTxts[i] then
                 if isDisabled then
-                    self.rowTogTxts[i]:setText("Disabled")
+                    self.rowTogTxts[i]:setText(g_i18n:getText("mdm_evt_disabled"))
                     self.rowTogTxts[i]:setTextColor(0.85, 0.38, 0.38, 1.0)
                 else
-                    self.rowTogTxts[i]:setText("Enabled")
+                    self.rowTogTxts[i]:setText(g_i18n:getText("mdm_evt_enabled"))
                     self.rowTogTxts[i]:setTextColor(0.25, 0.82, 0.48, 1.0)
                 end
             end
@@ -256,6 +324,24 @@ function MDMEventSettingsDialog:_refreshEventRows()
                     self.rowCounts[i]:setTextColor(0.25, 0.72, 0.48, 1.0)
                 else
                     self.rowCounts[i]:setText("")
+                end
+            end
+
+            -- Force Fire / Stop button: green = idle (fire), amber = active (stop)
+            if self.rowForceBgs[i] then
+                if isActive then
+                    self.rowForceBgs[i]:setImageColor(nil, 0.45, 0.22, 0.04, 0.9)
+                else
+                    self.rowForceBgs[i]:setImageColor(nil, 0.05, 0.30, 0.15, 0.9)
+                end
+            end
+            if self.rowForceTxts[i] then
+                if isActive then
+                    self.rowForceTxts[i]:setText(g_i18n:getText("mdm_evt_stop"))
+                    self.rowForceTxts[i]:setTextColor(1.0, 0.68, 0.20, 1.0)
+                else
+                    self.rowForceTxts[i]:setText(g_i18n:getText("mdm_evt_force"))
+                    self.rowForceTxts[i]:setTextColor(0.25, 0.88, 0.50, 1.0)
                 end
             end
         end
@@ -278,6 +364,12 @@ function MDMEventSettingsDialog:_handleToggle(rowIndex)
     end
 
     self:_refreshEventRows()
+
+    if g_server ~= nil then
+        MDMSettingsSyncEvent.sendToClients()
+    else
+        MDMSettingsSyncEvent.sendToServer()
+    end
 end
 
 function MDMEventSettingsDialog:_handleEdit(rowIndex)
@@ -291,6 +383,23 @@ function MDMEventSettingsDialog:_handleEdit(rowIndex)
             self:_refreshEventRows()
         end,
     })
+end
+
+-- Force-fire if the event is idle; force-expire if it is currently active.
+function MDMEventSettingsDialog:_handleForce(rowIndex)
+    local entry = self._eventOrder[rowIndex + 1]
+    if not entry or not g_MarketDynamics then return end
+
+    local ws = g_MarketDynamics.worldEvents
+    if ws.active[entry.id] then
+        ws:forceExpireEvent(entry.id)
+        MDMLog.info("MDMEventSettingsDialog: force-expired '" .. entry.id .. "'")
+    else
+        ws:forceFireEvent(entry.id, 1.0)
+        MDMLog.info("MDMEventSettingsDialog: force-fired '" .. entry.id .. "'")
+    end
+
+    self:_refreshEventRows()
 end
 
 -- ── Per-row click handlers ────────────────────────────────────────────────────
@@ -316,3 +425,14 @@ function MDMEventSettingsDialog:onEdit6() self:_handleEdit(6) end
 function MDMEventSettingsDialog:onEdit7() self:_handleEdit(7) end
 function MDMEventSettingsDialog:onEdit8() self:_handleEdit(8) end
 function MDMEventSettingsDialog:onEdit9() self:_handleEdit(9) end
+
+function MDMEventSettingsDialog:onForce0() self:_handleForce(0) end
+function MDMEventSettingsDialog:onForce1() self:_handleForce(1) end
+function MDMEventSettingsDialog:onForce2() self:_handleForce(2) end
+function MDMEventSettingsDialog:onForce3() self:_handleForce(3) end
+function MDMEventSettingsDialog:onForce4() self:_handleForce(4) end
+function MDMEventSettingsDialog:onForce5() self:_handleForce(5) end
+function MDMEventSettingsDialog:onForce6() self:_handleForce(6) end
+function MDMEventSettingsDialog:onForce7() self:_handleForce(7) end
+function MDMEventSettingsDialog:onForce8() self:_handleForce(8) end
+function MDMEventSettingsDialog:onForce9() self:_handleForce(9) end

@@ -74,12 +74,10 @@ function MDMEventFillTypeDialog:onOpen()
     self._isPending = false
 
     if self.dlgTitle then
-        self.dlgTitle:setText((self.eventName or "Event") .. " — Custom Fill Types")
+        local suffix = g_i18n:getText("mdm_evt_ft_title_suffix")
+        self.dlgTitle:setText((self.eventName or "Event") .. suffix)
     end
-    if self.dlgHint then
-        self.dlgHint:setText("Enter fill type names as used in the game (e.g. WHEAT, MUNGBEAN). Changes take effect on the next event firing.")
-        self.dlgHint:setTextColor(0.65, 0.65, 0.65, 1.0)
-    end
+    self:_showIdleHint()
     if self.addInput then
         self.addInput:setText("")
     end
@@ -96,6 +94,43 @@ end
 
 function MDMEventFillTypeDialog:onCloseClick()
     self:close()
+end
+
+-- ── Hint helpers ──────────────────────────────────────────────────────────────
+
+-- Show the idle hint: instructions + a list of all price-tracked fill types so
+-- players can discover the correct names for third-party mod crops.
+function MDMEventFillTypeDialog:_showIdleHint()
+    if not self.dlgHint then return end
+    local hint = g_i18n:getText("mdm_evt_ft_hint")
+    local browseList = self:_buildAvailableFillTypeList()
+    if browseList ~= "" then
+        hint = hint .. "\n" .. g_i18n:getText("mdm_evt_ft_browse") .. browseList
+    end
+    self.dlgHint:setText(hint)
+    self.dlgHint:setTextColor(0.65, 0.65, 0.65, 1.0)
+end
+
+-- Return a compact comma-separated string of all fill types currently tracked
+-- by MarketEngine — this includes every vanilla and third-party mod crop that
+-- the game loaded, so players know exactly which names are valid to add.
+function MDMEventFillTypeDialog:_buildAvailableFillTypeList()
+    if not g_fillTypeManager or not g_MarketDynamics then return "" end
+    local engine = g_MarketDynamics.marketEngine
+    local names  = {}
+    for _, ft in ipairs(g_fillTypeManager:getFillTypes()) do
+        if ft and ft.index and ft.index > 1 and ft.name and ft.name ~= ""
+           and engine and engine.prices[ft.index] then
+            table.insert(names, ft.name)
+        end
+    end
+    table.sort(names)
+    local LIMIT = 15
+    local result = table.concat(names, ", ", 1, math.min(LIMIT, #names))
+    if #names > LIMIT then
+        result = result .. " (+" .. (#names - LIMIT) .. " more)"
+    end
+    return result
 end
 
 -- ── Internal helpers ──────────────────────────────────────────────────────────
@@ -156,6 +191,12 @@ function MDMEventFillTypeDialog:_removeAt(rowIndex)
     self:_setList(list)
     self:_refreshRows()
     MDMLog.info("MDMEventFillTypeDialog: removed '" .. tostring(removed) .. "' from event '" .. tostring(self.eventId) .. "'")
+
+    if g_server ~= nil then
+        MDMSettingsSyncEvent.sendToClients()
+    else
+        MDMSettingsSyncEvent.sendToServer()
+    end
 end
 
 -- ── Add handler ───────────────────────────────────────────────────────────────
@@ -172,7 +213,7 @@ function MDMEventFillTypeDialog:onAddClick()
     local ft = g_fillTypeManager and g_fillTypeManager:getFillTypeByName(name)
     if not ft then
         if self.dlgHint then
-            self.dlgHint:setText("Fill type '" .. name .. "' was not found. Check spelling.")
+            self.dlgHint:setText(g_i18n:getText("mdm_evt_ft_not_found") .. name)
             self.dlgHint:setTextColor(0.9, 0.3, 0.2, 1.0)
         end
         return
@@ -183,7 +224,7 @@ function MDMEventFillTypeDialog:onAddClick()
     for _, existing in ipairs(list) do
         if existing == name then
             if self.dlgHint then
-                self.dlgHint:setText("'" .. name .. "' is already in the list.")
+                self.dlgHint:setText(g_i18n:getText("mdm_evt_ft_duplicate") .. name)
                 self.dlgHint:setTextColor(0.9, 0.78, 0.1, 1.0)
             end
             return
@@ -198,12 +239,18 @@ function MDMEventFillTypeDialog:onAddClick()
     self.addInput:setText("")
 
     if self.dlgHint then
-        self.dlgHint:setText("Added " .. ft.title .. ". Changes take effect on the next event firing.")
+        self.dlgHint:setText(g_i18n:getText("mdm_evt_ft_added") .. (ft.title or name))
         self.dlgHint:setTextColor(0.25, 0.82, 0.48, 1.0)
     end
 
     self:_refreshRows()
     MDMLog.info("MDMEventFillTypeDialog: added '" .. name .. "' to event '" .. tostring(self.eventId) .. "'")
+
+    if g_server ~= nil then
+        MDMSettingsSyncEvent.sendToClients()
+    else
+        MDMSettingsSyncEvent.sendToServer()
+    end
 end
 
 -- ── Per-row remove handlers ───────────────────────────────────────────────────

@@ -97,3 +97,35 @@ function MDMEventConfig.removeExtra(eventId)
         end
     end
 end
+
+-- Validate stored custom fill type names after save-game load.
+-- Removes names that no longer resolve in g_fillTypeManager — e.g. because a
+-- third-party mod that provided them was uninstalled between sessions.
+-- Logs every removed entry so the player can see what was cleaned up.
+function MDMEventConfig.validateAndClean()
+    if not g_MarketDynamics or not g_MarketDynamics.settings then return end
+    local cft = g_MarketDynamics.settings.eventCustomFillTypes
+    if not cft then return end
+
+    local removed = 0
+    for eventId, list in pairs(cft) do
+        for i = #list, 1, -1 do
+            local name = list[i]
+            local ft = g_fillTypeManager and g_fillTypeManager:getFillTypeByName(name)
+            if not ft then
+                MDMLog.warn(string.format(
+                    "MDMEventConfig: removing stale fill type '%s' from event '%s' (fill type no longer exists — mod removed?)",
+                    tostring(name), tostring(eventId)))
+                table.remove(list, i)
+                removed = removed + 1
+            end
+        end
+        if #list == 0 then
+            cft[eventId] = nil
+        end
+    end
+
+    if removed > 0 then
+        MDMLog.info(string.format("MDMEventConfig: cleaned %d stale fill type entry(s)", removed))
+    end
+end

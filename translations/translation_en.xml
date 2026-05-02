@@ -120,6 +120,20 @@
         <text name="mdm_custom_amount_hint"     text="Enter the desired contract quantity in liters." />
         <text name="mdm_custom_days_hint"       text="Select delivery window length. Real Days will convert to game time based on your current time scale setting." />
 
+        <!-- Event settings dialog -->
+        <text name="mdm_evt_enabled"           text="Enabled" />
+        <text name="mdm_evt_disabled"          text="Disabled" />
+        <text name="mdm_evt_force"             text="Force Fire" />
+        <text name="mdm_evt_stop"              text="Stop Event" />
+
+        <!-- Fill type editor dialog -->
+        <text name="mdm_evt_ft_hint"           text="Enter a fill type name (e.g. WHEAT, MUNGBEAN). Changes take effect on the next event firing." />
+        <text name="mdm_evt_ft_browse"         text="All tracked types: " />
+        <text name="mdm_evt_ft_not_found"      text="Fill type not found. Check spelling: " />
+        <text name="mdm_evt_ft_duplicate"      text="Already in the list: " />
+        <text name="mdm_evt_ft_added"          text="Added — changes apply on the next firing: " />
+        <text name="mdm_evt_ft_title_suffix"   text=" — Custom Fill Types" />
+
         <!-- Settings -->
         <text name="mdm_settings_mdm_general"  text="Market Dynamics" />
     

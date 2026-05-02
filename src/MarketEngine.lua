@@ -158,6 +158,32 @@ function MarketEngine:getPriceHistory(fillTypeIndex)
     return {}
 end
 
+-- Remove price entries for fill type indices that no longer exist in g_fillTypeManager.
+-- Called after save-game load to purge stale data left by removed third-party mods.
+function MarketEngine:cleanupStaleEntries()
+    if not g_fillTypeManager then return end
+
+    local validIndices = {}
+    for _, ft in ipairs(g_fillTypeManager:getFillTypes()) do
+        if ft and ft.index then validIndices[ft.index] = true end
+    end
+
+    local removed = 0
+    for index in pairs(self.prices) do
+        if not validIndices[index] then
+            self.prices[index] = nil
+            removed = removed + 1
+            MDMLog.warn(string.format(
+                "MarketEngine: purged stale price entry for fill type index %d (fill type no longer exists)",
+                index))
+        end
+    end
+
+    if removed > 0 then
+        MDMLog.info(string.format("MarketEngine: cleaned %d stale price entry(s)", removed))
+    end
+end
+
 -- Returns the percentage change of the current price relative to the base price.
 function MarketEngine:getPriceChangePercent(fillTypeIndex)
     local entry = self.prices[fillTypeIndex]

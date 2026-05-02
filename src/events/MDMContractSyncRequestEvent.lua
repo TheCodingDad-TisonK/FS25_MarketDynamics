@@ -29,7 +29,10 @@ end
 function MDMContractSyncRequestEvent:run(connection)
     if connection:getIsServer() then return end
 
-    if g_MarketDynamics and g_MarketDynamics.futuresMarket then
-        MDMContractSyncEvent.sendToClient(connection, MDMContractSyncEvent.SYNC_FULL, g_MarketDynamics.futuresMarket.contracts)
+    if g_MarketDynamics then
+        if g_MarketDynamics.futuresMarket then
+            MDMContractSyncEvent.sendToClient(connection, MDMContractSyncEvent.SYNC_FULL, g_MarketDynamics.futuresMarket.contracts)
+        end
+        MDMSettingsSyncEvent.sendToClient(connection)
     end
 end

@@ -99,6 +99,9 @@ function MarketDynamics:onStartMission(mission)
 
     if g_server ~= nil then
         self.serializer:load(self)
+        -- Remove stale entries from removed mods before anything uses the data.
+        self.marketEngine:cleanupStaleEntries()
+        MDMEventConfig.validateAndClean()
         UPIntegration.reregisterActiveContracts(self.futuresMarket.contracts)
         MDMLog.info("MarketDynamics: savegame data loaded")
     else
