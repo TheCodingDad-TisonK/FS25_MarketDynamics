@@ -115,7 +115,11 @@ function MDMEventSettingsDialog:onOpen()
     self._eventOrder = {}
     if g_MarketDynamics and g_MarketDynamics.worldEvents then
         for id, ev in pairs(g_MarketDynamics.worldEvents.registry) do
-            table.insert(self._eventOrder, { id = id, name = ev.name or id })
+            local name = ev.name or id
+            if ev.nameKey and g_i18n then
+                name = g_i18n:getText(ev.nameKey) or name
+            end
+            table.insert(self._eventOrder, { id = id, name = name })
         end
         table.sort(self._eventOrder, function(a, b) return a.name < b.name end)
     end
@@ -329,10 +333,10 @@ function MDMEventSettingsDialog:_refreshEventRows()
             end
             if self.rowTogTxts[i] then
                 if isDisabled then
-                    self.rowTogTxts[i]:setText(g_i18n:getText("mdm_evt_disabled"))
+                    self.rowTogTxts[i]:setText(g_i18n:getText("mdm_label_disabled") or "Disabled")
                     self.rowTogTxts[i]:setTextColor(0.85, 0.38, 0.38, 1.0)
                 else
-                    self.rowTogTxts[i]:setText(g_i18n:getText("mdm_evt_enabled"))
+                    self.rowTogTxts[i]:setText(g_i18n:getText("mdm_label_enabled") or "Enabled")
                     self.rowTogTxts[i]:setTextColor(0.25, 0.82, 0.48, 1.0)
                 end
             end
@@ -357,10 +361,10 @@ function MDMEventSettingsDialog:_refreshEventRows()
             end
             if self.rowForceTxts[i] then
                 if isActive then
-                    self.rowForceTxts[i]:setText(g_i18n:getText("mdm_evt_stop"))
+                    self.rowForceTxts[i]:setText(g_i18n:getText("mdm_evt_stop") or "Stop Event")
                     self.rowForceTxts[i]:setTextColor(1.0, 0.68, 0.20, 1.0)
                 else
-                    self.rowForceTxts[i]:setText(g_i18n:getText("mdm_evt_force"))
+                    self.rowForceTxts[i]:setText(g_i18n:getText("mdm_evt_force_fire") or "Force Fire")
                     self.rowForceTxts[i]:setTextColor(0.25, 0.88, 0.50, 1.0)
                 end
             end
@@ -417,6 +421,10 @@ function MDMEventSettingsDialog:_handleForce(rowIndex)
     else
         ws:forceFireEvent(entry.id, 1.0)
         MDMLog.info("MDMEventSettingsDialog: force-fired '" .. entry.id .. "'")
+    end
+
+    if MDMMarketSyncEvent then
+        MDMMarketSyncEvent.sendToClients()
     end
 
     self:_refreshEventRows()

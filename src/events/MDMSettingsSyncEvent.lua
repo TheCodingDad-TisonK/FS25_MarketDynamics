@@ -44,6 +44,8 @@ function MDMSettingsSyncEvent:writeStream(streamId, connection)
     streamWriteBool(streamId, s.eventsEnabled ~= false)
     streamWriteFloat32(streamId, s.eventFrequency or 1.0)
     streamWriteFloat32(streamId, s.futuresPenalty or 0.15)
+    streamWriteBool(streamId, s.showEventNotifications ~= false)
+    streamWriteBool(streamId, s.showContractHUD ~= false)
     
     -- Disabled events
     local de = s.disabledEvents or {}
@@ -78,6 +80,8 @@ function MDMSettingsSyncEvent:readStream(streamId, connection)
         eventsEnabled  = streamReadBool(streamId),
         eventFrequency = streamReadFloat32(streamId),
         futuresPenalty = streamReadFloat32(streamId),
+        showEventNotifications = streamReadBool(streamId),
+        showContractHUD = streamReadBool(streamId),
         disabledEvents = {},
         eventCustomFillTypes = {},
     }

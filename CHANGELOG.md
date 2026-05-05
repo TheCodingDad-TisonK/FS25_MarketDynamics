@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [1.1.9.3] - 2026-05-05
+
+### Fixed
+- Added a new HUD for when there is a active contract
+- Added a dialog that shows up when a event has started
+- Added new strings to all 25 translation files
+
+---
+
 ## [1.1.9.2] - 2026-05-05
 
 ### Fixed

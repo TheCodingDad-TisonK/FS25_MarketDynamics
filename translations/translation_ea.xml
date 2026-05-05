@@ -9,6 +9,9 @@
         <text name="mdm_event_biofuel_initiative" text="Iniciativa de biocombustibles"/>
         <text name="mdm_event_livestock_boom" text="Auge de la alimentación del ganado"/>
         <text name="mdm_event_pest_outbreak" text="Tizón de los cultivos de raíces"/>
+		<text name="mdm_event_cold_snap" text="[EN] Cold Snap"/>
+		<text name="mdm_event_financial_panic" text="[EN] Financial Panic"/>
+		<text name="mdm_event_protein_premium" text="[EN] Protein Premium Surge"/>
         <text name="mdm_hud_title" text="Vigilancia del mercado"/>
         <text name="mdm_hud_active_events" text="Eventos activos"/>
         <text name="mdm_hud_no_events" text="Mercados estables"/>
@@ -16,17 +19,6 @@
         <text name="mdm_hud_event_moderate" text="Moderado"/>
         <text name="mdm_hud_event_severe" text="Severo"/>
         <text name="mdm_screen_title" text="Dinámica del mercado"/>
-        <text name="mdm_screen_col_crop" text="Cultivo"/>
-        <text name="mdm_screen_col_base" text="Base"/>
-        <text name="mdm_screen_col_current" text="Actual"/>
-        <text name="mdm_screen_col_change" text="Cambiar"/>
-        <text name="mdm_screen_col_day" text="Día"/>
-        <text name="mdm_screen_col_price" text="Precio"/>
-        <text name="mdm_screen_col_qty" text="Cantidad"/>
-        <text name="mdm_screen_col_locked" text="bloqueado"/>
-        <text name="mdm_screen_col_delivered" text="Entregado"/>
-        <text name="mdm_screen_col_deadline" text="Fecha límite"/>
-        <text name="mdm_screen_col_status" text="Estado"/>
         <text name="mdm_screen_no_data" text="No hay datos de precios disponibles"/>
         <text name="mdm_screen_no_history" text="Aún no se ha registrado ningún historial"/>
         <text name="mdm_screen_close_hint" text="Presione ESC para cerrar"/>
@@ -36,17 +28,28 @@
         <text name="mdm_screen_tab_events" text="Eventos"/>
         <text name="mdm_screen_tab_contracts" text="Contratos"/>
         <text name="mdm_screen_commodities" text="COMERCIOS"/>
+		<text name="mdm_screen_events_hdr" text="ACTIVE EVENTS"/>
+		<text name="mdm_screen_contracts_hdr" text="FUTURES CONTRACTS"/>
+		<text name="mdm_screen_col_crop" text="Crop"/>
+		<text name="mdm_screen_col_price" text="Price"/>
+		<text name="mdm_screen_col_change" text="Change"/>
+		<text name="mdm_screen_col_event" text="Event"/>
         <text name="mdm_screen_current_price" text="Precio actual"/>
         <text name="mdm_screen_base_price" text="Precio base"/>
-        <text name="mdm_screen_change" text="Cambiar"/>
+		<text name="mdm_screen_change" text="[EN] Change"/>
         <text name="mdm_screen_volatility" text="Volatilidad"/>
         <text name="mdm_screen_modifiers" text="Modificadores activos"/>
         <text name="mdm_screen_session_trend" text="Tendencia del precio de la sesión"/>
         <text name="mdm_screen_collecting" text="Recopilando datos..."/>
         <text name="mdm_screen_select_crop" text="Seleccione un producto"/>
         <text name="mdm_screen_no_events" text="Los mercados están tranquilos. No hay eventos activos."/>
-        <text name="mdm_screen_events_hdr" text="EVENTOS ACTIVOS"/>
-        <text name="mdm_screen_contracts_hdr" text="CONTRATOS DE FUTUROS"/>
+		<text name="mdm_screen_col_intensity" text="Intensity"/>
+		<text name="mdm_screen_col_time_left" text="Time Left"/>
+		<text name="mdm_screen_col_qty" text="Qty"/>
+		<text name="mdm_screen_col_locked" text="Locked"/>
+		<text name="mdm_screen_col_delivered" text="Delivered"/>
+		<text name="mdm_screen_col_deadline" text="Deadline"/>
+		<text name="mdm_screen_col_status" text="Status"/>
         <text name="mdm_screen_new_contract" text="Alt+F: Nuevo contrato"/>
         <text name="mdm_screen_no_contracts" text="Aún no hay contratos. Presione Alt+F para crear uno."/>
         <text name="mdm_screen_at_risk" text="EN RIESGO"/>
@@ -55,35 +58,129 @@
         <text name="mdm_screen_balance" text="Balance :"/>
         <text name="mdm_futures_title" text="Mercado de futuros"/>
         <text name="mdm_futures_new_title" text="Nuevo contrato de futuros"/>
-        <text name="mdm_futures_create" text="Nuevo contrato"/>
         <text name="mdm_futures_fulfill" text="Cumplido"/>
         <text name="mdm_futures_defaulted" text="Incumplido"/>
         <text name="mdm_futures_active" text="Activo"/>
+		<text name="mdm_settled" text="[EN] Settled"/>
         <text name="mdm_futures_delivery_label" text="Entrega"/>
         <text name="mdm_futures_locked_label" text="Precio bloqueado"/>
         <text name="mdm_futures_quantity_label" text="Cantidad (litros)"/>
-        <text name="mdm_futures_crop_label" text="Cultivo"/>
-        <text name="mdm_futures_confirm" text="Confirmar"/>
-        <text name="mdm_futures_cancel" text="Cancelar"/>
-        <text name="mdm_futures_total_value" text="Valor Total"/>
         <text name="mdm_futures_bc_disabled" text="Futuros deshabilitados: modo BetterContracts activo"/>
         <text name="mdm_futures_created" text="¡Contrato creado!"/>
         <text name="mdm_futures_no_contracts" text="Aún no hay contratos"/>
+		<text name="mdm_futures_create" text="[EN] New Contract"/>
         <text name="mdm_dialog_summary" text="Resumen del contrato"/>
-        <text name="mdm_dialog_qty_label" text="Cantidad"/>
         <text name="mdm_dialog_unit_label"    text="Time Unit" />
         <text name="mdm_unit_game_days"       text="In-Game Days" />
         <text name="mdm_unit_real_days"       text="Real Days" />
         <text name="mdm_dialog_delivery_label" text="Ventana de entrega"/>
-        <text name="mdm_dialog_bc_blocked" text="Futuros deshabilitados: modo BetterContracts activo"/>
         <text name="mdm_dialog_no_crops" text="Aún no hay datos de mercado disponibles."/>
         <text name="mdm_screen_new_contract_btn" text="Nuevo contrato [N]"/>
-        <text name="mdm_settings_mdm_general" text="Dinámica del mercado"/>
+		<text name="mdm_custom_amount" text="[EN] Custom Amount"/>
+		<text name="mdm_custom_days" text="[EN] Custom Days"/>
+		<text name="mdm_enter_amount" text="[EN] Enter Amount:"/>
+		<text name="mdm_enter_days" text="[EN] Enter Days:"/>
+		<text name="mdm_custom_amount_hint" text="[EN] Enter the desired contract quantity in liters."/>
+		<text name="mdm_custom_days_hint" text="[EN] Select delivery window length. Real Days will convert to game time based on your current time scale setting."/>
+		<text name="mdm_evt_force_fire" text="[EN] Force Fire"/>
+		<text name="mdm_evt_stop" text="[EN] Stop Event"/>
+		<text name="mdm_browse_title" text="[EN] Available Fill Types"/>
+		<text name="mdm_browse_hint" text="[EN] Below are all fill types currently tracked by the market. Use these names in the event configuration."/>
+		<text name="mdm_browse_types" text="[EN] Browse Types"/>
+		<text name="mdm_qty_500" text="[EN] 500 L"/>
+		<text name="mdm_qty_1000" text="[EN] 1,000 L"/>
+		<text name="mdm_qty_5000" text="[EN] 5,000 L"/>
+		<text name="mdm_qty_10000" text="[EN] 10,000 L"/>
+		<text name="mdm_qty_25000" text="[EN] 25,000 L"/>
+		<text name="mdm_qty_50000" text="[EN] 50,000 L"/>
+		<text name="mdm_del_30" text="[EN] 30 Days"/>
+		<text name="mdm_del_60" text="[EN] 60 Days"/>
+		<text name="mdm_del_90" text="[EN] 90 Days"/>
+		<text name="mdm_del_120" text="[EN] 120 Days"/>
+		<text name="mdm_custom_input_title" text="[EN] Custom Input"/>
+		<text name="mdm_evt_ft_title" text="[EN] Event Fill Types"/>
+		<text name="mdm_evt_ft_names_hint" text="[EN] Enter fill type names as used in game (e.g. WHEAT, MUNGBEAN). Changes take effect on the next event firing."/>
+		<text name="mdm_evt_ft_custom_header" text="[EN] CUSTOM FILL TYPES"/>
+		<text name="mdm_evt_ft_empty" text="[EN] No custom fill types configured."/>
+		<text name="mdm_evt_ft_add_header" text="[EN] ADD NEW FILL TYPE"/>
+		<text name="mdm_evt_settings_title" text="[EN] Event Settings"/>
+		<text name="mdm_header_global" text="[EN] GLOBAL"/>
+		<text name="mdm_header_individual_events" text="[EN] INDIVIDUAL EVENTS"/>
+		<text name="mdm_col_test" text="[EN] Test"/>
+		<text name="mdm_edit_fills" text="[EN] Edit Fills"/>
+		<text name="mdm_header_tracked_fills" text="[EN] TRACKED FILL TYPES"/>
+		<text name="mdm_days_remaining" text="[EN] %d day(s) remaining"/>
+		<text name="mdm_total_value" text="[EN] Total value:  $"/>
+		<text name="mdm_delivered_value" text="[EN] Delivered value:  $%s  (%d%%)"/>
+		<text name="mdm_adm_hint_complete" text="[EN] Complete: force full payout now at locked price."/>
+		<text name="mdm_adm_hint_cancel" text="[EN] Cancel: remove contract — no payout, no penalty."/>
+		<text name="mdm_current_price_fmt" text="[EN] Current price:  $%.0f / 1,000L"/>
+		<text name="mdm_change_from_base_fmt" text="[EN] Change from base:  %s%.1f%%"/>
+		<text name="mdm_summary_crop" text="[EN] Crop:          "/>
+		<text name="mdm_summary_qty" text="[EN] Quantity:      "/>
+		<text name="mdm_locked_price_fmt" text="[EN] Locked price: $%.0f / 1,000L"/>
+		<text name="mdm_summary_total" text="[EN] Total:  $"/>
+		<text name="mdm_deliver_in" text="[EN] Deliver in:    "/>
+		<text name="mdm_default_penalty_hint" text="[EN] Default penalty: 15% on unfulfilled qty"/>
+		<text name="mdm_signal_above" text="[EN] [+] %.1f%% above base - good time to lock in"/>
+		<text name="mdm_signal_below" text="[EN] [-] %.1f%% below base - consider waiting"/>
+		<text name="mdm_signal_neutral" text="[EN] [~] Near baseline (%.1f%%) - neutral"/>
+		<text name="mdm_screen_no_contracts_bc" text="[EN] Futures contracts are managed by FS25_FuturesMission (by Mmtrx). Please use the Contracts tab in the ESC menu."/>
+		<text name="mdm_time_fmt_hm" text="[EN] %dh %dm"/>
+		<text name="mdm_time_fmt_m" text="[EN] %d min"/>
+		<text name="mdm_qty_fmt" text="[EN] %.0fL"/>
+		<text name="mdm_deadline_fmt_d" text="[EN] %d days"/>
+		<text name="mdm_deadline_fmt_h" text="[EN] %d hrs"/>
+		<text name="mdm_header_prices" text="[EN] Prices"/>
+		<text name="mdm_prices_enabled" text="[EN] Dynamic Prices"/>
+		<text name="mdm_prices_enabled_tooltip" text="[EN] Enable MDM price fluctuations. Off reverts to vanilla sell prices."/>
+		<text name="mdm_price_volatility" text="[EN] Price Volatility"/>
+		<text name="mdm_price_volatility_tooltip" text="[EN] How wildly prices swing intraday and day-to-day. Low=0.5x, Normal=1x, High=1.5x, Extreme=2x."/>
+		<text name="mdm_events_enabled" text="[EN] World Events"/>
+		<text name="mdm_events_enabled_tooltip" text="[EN] Enable or disable world events. Prices still fluctuate when events are off."/>
+		<text name="mdm_header_world_events" text="[EN] World Events"/>
+		<text name="mdm_event_frequency" text="[EN] Event Frequency"/>
+		<text name="mdm_event_frequency_tooltip" text="[EN] How often events occur. Rare=0.4x, Normal=1x, Frequent=2x the base probability per check."/>
+		<text name="mdm_header_futures" text="[EN] Futures Contracts"/>
+		<text name="mdm_default_penalty" text="[EN] Default Penalty"/>
+		<text name="mdm_default_penalty_tooltip" text="[EN] Penalty on the undelivered contract value when a deadline is missed."/>
+		<text name="mdm_penalty_low" text="[EN] Low (8%)"/>
+		<text name="mdm_penalty_normal" text="[EN] Normal (15%)"/>
+		<text name="mdm_penalty_high" text="[EN] High (25%)"/>
+		<text name="mdm_header_interface" text="[EN] Interface"/>
+		<text name="mdm_show_event_notifications" text="[EN] Event Notifications"/>
+		<text name="mdm_show_event_notifications_tooltip" text="[EN] Show a confirmation dialog when a new world event begins."/>
+		<text name="mdm_show_contract_hud" text="[EN] Contract HUD"/>
+		<text name="mdm_show_contract_hud_tooltip" text="[EN] Show an on-screen progress tracker for your active futures contract."/>
+		<text name="mdm_msg_event_started" text="[EN] A new world event has started: %s&amp;#10;&amp;#10;Would you like to open the Market Screen to see the impact?"/>
+		<text name="mdm_header_status" text="[EN] Status"/>
+		<text name="mdm_status_version" text="[EN] Version:             —"/>
+		<text name="mdm_status_events" text="[EN] Active Events:       —"/>
+		<text name="mdm_status_bc" text="[EN] FuturesMission:      —"/>
+		<text name="mdm_status_up" text="[EN] UsedPlus:            —"/>
+		<text name="mdm_header_debug" text="[EN] Debug"/>
+		<text name="mdm_debug_logging" text="[EN] Debug Logging"/>
+		<text name="mdm_debug_logging_tooltip" text="[EN] Write verbose [MDM] DEBUG entries to log.txt. For developers only."/>
+		<text name="mdm_status_version_fmt" text="[EN] Version:             %s"/>
+		<text name="mdm_status_none" text="[EN] None"/>
+		<text name="mdm_status_active_fmt" text="[EN] %d active"/>
+		<text name="mdm_status_events_fmt" text="[EN] Active Events:       %s"/>
+		<text name="mdm_status_detected" text="[EN] Detected"/>
+		<text name="mdm_status_not_installed" text="[EN] Not installed"/>
+		<text name="mdm_status_bc_fmt" text="[EN] FuturesMission:      %s"/>
+		<text name="mdm_status_up_fmt" text="[EN] UsedPlus:            %s"/>
+		<text name="mdm_evt_ft_hint" text="[EN] Enter a fill type name (e.g. WHEAT, MUNGBEAN). Changes take effect on the next event firing."/>
+		<text name="mdm_evt_ft_browse" text="[EN] All tracked types: "/>
+		<text name="mdm_evt_ft_not_found" text="[EN] Fill type not found. Check spelling: "/>
+		<text name="mdm_evt_ft_duplicate" text="[EN] Already in the list: "/>
+		<text name="mdm_evt_ft_added" text="[EN] Added — changes apply on the next firing: "/>
+		<text name="mdm_evt_ft_title_suffix" text="[EN]  — Custom Fill Types"/>
 
     
         <!-- Input action display names -->
         <text name="input_MDM_MARKET_SCREEN" text="Abrir mercado" />
         <text name="input_MDM_CREATE_CONTRACT" text="Crear contrato de futuros" />
+		<text name="input_MDM_SETTINGS_PANEL" text="[EN] Market Dynamics Settings"/>
 
         <!-- Contract admin dialog -->
         <text name="mdm_admin_title"            text="Contract Details" />
@@ -97,9 +194,28 @@
         <text name="mdm_admin_status"           text="Status:" />
         <text name="mdm_admin_complete"         text="Force Complete" />
         <text name="mdm_admin_cancel_contract"  text="Cancel Contract" />
-        <text name="mdm_admin_close"            text="Close" />
-        <text name="mdm_admin_delete"           text="Delete" />
         <text name="mdm_admin_settled"          text="Este contrato está liquidado. Use Eliminar para quitarlo de la lista." />
             <text name="mdm_bc_dialog_suppressed" text="FS25_FuturesMission is active and handles contract creation. Use the Contracts page (ESC menu) to create futures contracts. Get it on GitHub: search FS25_FuturesMission by Mmtrx." />
-    </texts>
+    
+		<text name="mdm_label_enabled" text="[EN] Enabled"/>
+		<text name="mdm_label_disabled" text="[EN] Disabled"/>
+		<text name="mdm_label_normal" text="[EN] Normal"/>
+		<text name="mdm_label_low" text="[EN] Low"/>
+		<text name="mdm_label_high" text="[EN] High"/>
+		<text name="mdm_label_extreme" text="[EN] Extreme"/>
+		<text name="mdm_label_rare" text="[EN] Rare"/>
+		<text name="mdm_label_frequent" text="[EN] Frequent"/>
+		<text name="mdm_label_crop" text="[EN] Crop"/>
+		<text name="mdm_label_qty" text="[EN] Qty"/>
+		<text name="mdm_label_quantity" text="[EN] Quantity"/>
+		<text name="mdm_label_price" text="[EN] Price"/>
+		<text name="mdm_label_change" text="[EN] Change"/>
+		<text name="mdm_label_status" text="[EN] Status"/>
+		<text name="mdm_label_total_value" text="[EN] Total Value"/>
+		<text name="mdm_label_confirm" text="[EN] Confirm"/>
+		<text name="mdm_label_cancel" text="[EN] Cancel"/>
+		<text name="mdm_label_close" text="[EN] Close"/>
+		<text name="mdm_label_delete" text="[EN] Delete"/>
+		<text name="mdm_label_remove" text="[EN] Remove"/>
+		<text name="mdm_label_add" text="[EN] Add"/></texts>
 </l10n>

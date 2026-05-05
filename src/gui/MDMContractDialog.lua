@@ -202,7 +202,7 @@ function MDMContractDialog:onQtyCustomClick()
         onConfirmed = function(val, _)
             self.isCustomQty = true
             self.selectedQty = val
-            if self.qtyCustomText then self.qtyCustomText:setText(self:_fmtNum(val) .. " L") end
+            if self.qtyCustomText then self.qtyCustomText:setText(string.format("%s L", self:_fmtNum(val))) end
             self:_updateSummary()
             self:_updateButtonStates()
         end
@@ -240,7 +240,7 @@ function MDMContractDialog:onDelCustomClick()
         onConfirmed = function(val)
             self.isCustomDel = true
             self.selectedDelivDays = val
-            local suffix = self.isCustomDelReal and "Real Days" or "Game Days"
+            local suffix = self.isCustomDelReal and (g_i18n:getText("mdm_unit_real_days") or "Real Days") or (g_i18n:getText("mdm_unit_game_days") or "Game Days")
             if self.delCustomText then self.delCustomText:setText(tostring(val) .. " " .. suffix) end
             self:_updateSummary()
             self:_updateButtonStates()
@@ -352,12 +352,14 @@ function MDMContractDialog:_updateSummary()
         self.cropNameEl:setText(crop.title)
     end
     if self.cropPriceEl then
-        self.cropPriceEl:setText(string.format("Current price:  $%.0f / 1,000L", crop.current * 1000))
+        local fmt = g_i18n:getText("mdm_current_price_fmt") or "Current price:  $%.0f / 1,000L"
+        self.cropPriceEl:setText(string.format(fmt, crop.current * 1000))
     end
     if self.cropChangeEl and crop.base and crop.base > 0 then
         local pct  = ((crop.current - crop.base) / crop.base) * 100
         local sign = pct >= 0 and "+" or ""
-        self.cropChangeEl:setText(string.format("Change from base:  %s%.1f%%", sign, pct))
+        local fmt  = g_i18n:getText("mdm_change_from_base_fmt") or "Change from base:  %s%.1f%%"
+        self.cropChangeEl:setText(string.format(fmt, sign, pct))
         if pct > 0.5 then
             self.cropChangeEl:setTextColor(0.20, 0.72, 0.35, 1.0)
         elseif pct < -0.5 then
@@ -371,26 +373,32 @@ function MDMContractDialog:_updateSummary()
     local lockedPrice = crop.current
     local totalValue  = math.floor(lockedPrice * self.selectedQty)
 
-    if self.sumCrop    then self.sumCrop:setText("Crop:         " .. crop.title) end
-    if self.sumQty     then self.sumQty:setText("Quantity:     " .. self:_fmtNum(self.selectedQty) .. " L") end
-    if self.sumLocked  then self.sumLocked:setText(string.format("Locked price: $%.0f / 1,000L", lockedPrice * 1000)) end
-    if self.sumTotal   then self.sumTotal:setText("Total:  $" .. self:_fmtNum(totalValue)) end
-    if self.sumDeadline then 
-        local unit = self.isCustomDelReal and "real days" or "game days"
-        self.sumDeadline:setText("Deliver in:   " .. self.selectedDelivDays .. " " .. unit) 
+    if self.sumCrop    then self.sumCrop:setText((g_i18n:getText("mdm_summary_crop") or "Crop:         ") .. crop.title) end
+    if self.sumQty     then self.sumQty:setText((g_i18n:getText("mdm_summary_qty") or "Quantity:     ") .. self:_fmtNum(self.selectedQty) .. " L") end
+    if self.sumLocked  then 
+        local fmt = g_i18n:getText("mdm_locked_price_fmt") or "Locked price: $%.0f / 1,000L"
+        self.sumLocked:setText(string.format(fmt, lockedPrice * 1000)) 
     end
-    if self.sumPenalty  then self.sumPenalty:setText("Default penalty: 15% on unfulfilled qty") end
+    if self.sumTotal   then self.sumTotal:setText((g_i18n:getText("mdm_summary_total") or "Total:  $") .. self:_fmtNum(totalValue)) end
+    if self.sumDeadline then 
+        local unit = self.isCustomDelReal and (g_i18n:getText("mdm_unit_real_days") or "real days") or (g_i18n:getText("mdm_unit_game_days") or "game days")
+        self.sumDeadline:setText((g_i18n:getText("mdm_deliver_in") or "Deliver in:   ") .. self.selectedDelivDays .. " " .. unit) 
+    end
+    if self.sumPenalty  then self.sumPenalty:setText(g_i18n:getText("mdm_default_penalty_hint") or "Default penalty: 15% on unfulfilled qty") end
 
     if self.signalText and crop.base and crop.base > 0 then
         local pct = ((lockedPrice - crop.base) / crop.base) * 100
         if pct > 5 then
-            self.signalText:setText(string.format("[+] %.1f%% above base - good time to lock in", pct))
+            local fmt = g_i18n:getText("mdm_signal_above") or "[+] %.1f%% above base - good time to lock in"
+            self.signalText:setText(string.format(fmt, pct))
             self.signalText:setTextColor(0.20, 0.72, 0.35, 1.0)
         elseif pct < -5 then
-            self.signalText:setText(string.format("[-] %.1f%% below base - consider waiting", math.abs(pct)))
+            local fmt = g_i18n:getText("mdm_signal_below") or "[-] %.1f%% below base - consider waiting"
+            self.signalText:setText(string.format(fmt, math.abs(pct)))
             self.signalText:setTextColor(0.85, 0.30, 0.22, 1.0)
         else
-            self.signalText:setText(string.format("[~] Near baseline (%.1f%%) - neutral", pct))
+            local fmt = g_i18n:getText("mdm_signal_neutral") or "[~] Near baseline (%.1f%%) - neutral"
+            self.signalText:setText(string.format(fmt, pct))
             self.signalText:setTextColor(0.90, 0.72, 0.15, 1.0)
         end
     end
