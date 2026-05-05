@@ -6,6 +6,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [1.1.9.2] - 2026-05-05
+
+### Fixed
+- Added missing deliveryStartTime and bcManaged fields to MarketSerializer and network sync (#64)
+- Fixed BCIntegration deadline offset to use daysPerPeriod (#64)
+- Added UPIntegration hooks and fixed modifier removal keys (#64)
+- Added onLoad and getExtraData fallbacks to all stateless events for save load safety (#64)
+- Fixed TradeDisruptionEvent duplicate extra filltype application (#64)
+- Added session start grace period to MarketDynamics to prevent immediate contract defaults on server restart (#63, #60)
+- Implemented MDMMarketSyncEvent to sync server prices and active events to clients, fixing desyncs (#62)
+- Added deterministic oldest-first contract fulfillment logic
+- Registered missing dialogs and added nil guards across core systems
+
+---
+
 ## [1.1.9.1] - 2026-05-02
 
 ### Added
