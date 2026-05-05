@@ -9,6 +9,9 @@
         <text name="mdm_event_biofuel_initiative" text="Biobrandstof-initiatief"/>
         <text name="mdm_event_livestock_boom" text="Veevoerboom"/>
         <text name="mdm_event_pest_outbreak" text="Worteloogstziekte"/>
+		<text name="mdm_event_cold_snap" text="[EN] Cold Snap"/>
+		<text name="mdm_event_financial_panic" text="[EN] Financial Panic"/>
+		<text name="mdm_event_protein_premium" text="[EN] Protein Premium Surge"/>
         <text name="mdm_hud_title" text="Markt kijken"/>
         <text name="mdm_hud_active_events" text="Actieve evenementen"/>
         <text name="mdm_hud_no_events" text="Markten stabiel"/>
@@ -46,6 +49,9 @@
         <text name="mdm_screen_select_crop" text="Selecteer een artikel"/>
         <text name="mdm_screen_no_events" text="De markten zijn rustig. Geen actieve evenementen."/>
         <text name="mdm_screen_events_hdr" text="ACTIEVE EVENEMENTEN"/>
+		<text name="mdm_screen_col_event" text="[EN] Event"/>
+		<text name="mdm_screen_col_intensity" text="[EN] Intensity"/>
+		<text name="mdm_screen_col_time_left" text="[EN] Time Left"/>
         <text name="mdm_screen_contracts_hdr" text="TOEKOMSTIGE CONTRACTEN"/>
         <text name="mdm_screen_new_contract" text="Alt+F: Nieuw contract"/>
         <text name="mdm_screen_no_contracts" text="Nog geen contracten. Druk op Alt+F om er een te maken."/>
@@ -78,12 +84,29 @@
         <text name="mdm_dialog_bc_blocked" text="Futures uitgeschakeld — BetterContracts-modus actief"/>
         <text name="mdm_dialog_no_crops" text="Er zijn nog geen marktgegevens beschikbaar."/>
         <text name="mdm_screen_new_contract_btn" text="Nieuw contract [N]"/>
+		<text name="mdm_custom_amount" text="[EN] Custom Amount"/>
+		<text name="mdm_custom_days" text="[EN] Custom Days"/>
+		<text name="mdm_enter_amount" text="[EN] Enter Amount:"/>
+		<text name="mdm_enter_days" text="[EN] Enter Days:"/>
+		<text name="mdm_custom_amount_hint" text="[EN] Enter the desired contract quantity in liters."/>
+		<text name="mdm_custom_days_hint" text="[EN] Select delivery window length. Real Days will convert to game time based on your current time scale setting."/>
+		<text name="mdm_evt_enabled" text="[EN] Enabled"/>
+		<text name="mdm_evt_disabled" text="[EN] Disabled"/>
+		<text name="mdm_evt_force" text="[EN] Force Fire"/>
+		<text name="mdm_evt_stop" text="[EN] Stop Event"/>
+		<text name="mdm_evt_ft_hint" text="[EN] Enter a fill type name (e.g. WHEAT, MUNGBEAN). Changes take effect on the next event firing."/>
+		<text name="mdm_evt_ft_browse" text="[EN] All tracked types: "/>
+		<text name="mdm_evt_ft_not_found" text="[EN] Fill type not found. Check spelling: "/>
+		<text name="mdm_evt_ft_duplicate" text="[EN] Already in the list: "/>
+		<text name="mdm_evt_ft_added" text="[EN] Added — changes apply on the next firing: "/>
+		<text name="mdm_evt_ft_title_suffix" text="[EN]  — Custom Fill Types"/>
         <text name="mdm_settings_mdm_general" text="Marktdynamiek"/>
 
     
         <!-- Input action display names -->
         <text name="input_MDM_MARKET_SCREEN" text="Markt openen" />
         <text name="input_MDM_CREATE_CONTRACT" text="Futurescontract aanmaken" />
+		<text name="input_MDM_SETTINGS_PANEL" text="[EN] Market Dynamics Settings"/>
 
         <!-- Contract admin dialog -->
         <text name="mdm_admin_title"            text="Contract Details" />
