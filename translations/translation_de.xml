@@ -70,12 +70,15 @@
         <text name="mdm_futures_no_contracts" text="Noch keine Verträge"/>
 		<text name="mdm_futures_create" text="[EN] New Contract"/>
         <text name="mdm_dialog_summary" text="Vertragszusammenfassung"/>
+		<text name="mdm_futures_crop_label" text="[EN] Commodity"/>
+		<text name="mdm_dialog_qty_label" text="[EN] Contract Quantity"/>
         <text name="mdm_dialog_unit_label"    text="Zeiteinheit" />
         <text name="mdm_unit_game_days"       text="Spieltage" />
         <text name="mdm_unit_real_days"       text="Echtzeittage" />
         <text name="mdm_dialog_delivery_label" text="Lieferfenster"/>
         <text name="mdm_dialog_no_crops" text="Noch keine Marktdaten verfügbar."/>
         <text name="mdm_screen_new_contract_btn" text="Neuer Vertrag [N]"/>
+		<text name="mdm_enter_value" text="[EN] Enter Value:"/>
 		<text name="mdm_evt_force_fire" text="[EN] Force Fire"/>
 		<text name="mdm_browse_title" text="[EN] Available Fill Types"/>
 		<text name="mdm_browse_hint" text="[EN] Below are all fill types currently tracked by the market. Use these names in the event configuration."/>
@@ -99,6 +102,9 @@
 		<text name="mdm_evt_settings_title" text="[EN] Event Settings"/>
 		<text name="mdm_header_global" text="[EN] GLOBAL"/>
 		<text name="mdm_header_individual_events" text="[EN] INDIVIDUAL EVENTS"/>
+		<text name="mdm_col_event" text="[EN] Event"/>
+		<text name="mdm_col_status" text="[EN] Status"/>
+		<text name="mdm_col_custom_fills" text="[EN] Custom Fills"/>
 		<text name="mdm_col_test" text="[EN] Test"/>
 		<text name="mdm_edit_fills" text="[EN] Edit Fills"/>
 		<text name="mdm_header_tracked_fills" text="[EN] TRACKED FILL TYPES"/>

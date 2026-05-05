@@ -106,6 +106,8 @@
 
         <!-- Contract creation dialog -->
         <text name="mdm_dialog_summary"       text="Contract Summary" />
+        <text name="mdm_futures_crop_label"   text="Commodity" />
+        <text name="mdm_dialog_qty_label"     text="Contract Quantity" />
         <text name="mdm_dialog_delivery_label" text="Delivery Window" />
         <text name="mdm_dialog_unit_label"    text="Time Unit" />
         <text name="mdm_unit_game_days"       text="In-Game Days" />
@@ -132,6 +134,7 @@
         <text name="mdm_custom_days"            text="Custom Days" />
         <text name="mdm_enter_amount"           text="Enter Amount:" />
         <text name="mdm_enter_days"             text="Enter Days:" />
+        <text name="mdm_enter_value"            text="Enter Value:" />
         <text name="mdm_custom_amount_hint"     text="Enter the desired contract quantity in liters." />
         <text name="mdm_custom_days_hint"       text="Select delivery window length. Real Days will convert to game time based on your current time scale setting." />
 
@@ -170,6 +173,9 @@
         <text name="mdm_evt_settings_title"      text="Event Settings" />
         <text name="mdm_header_global"           text="GLOBAL" />
         <text name="mdm_header_individual_events" text="INDIVIDUAL EVENTS" />
+        <text name="mdm_col_event"               text="Event" />
+        <text name="mdm_col_status"              text="Status" />
+        <text name="mdm_col_custom_fills"        text="Custom Fills" />
         <text name="mdm_col_test"                text="Test" />
         <text name="mdm_edit_fills"              text="Edit Fills" />
         <text name="mdm_header_tracked_fills"    text="TRACKED FILL TYPES" />
