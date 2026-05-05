@@ -12,7 +12,7 @@
 		<text name="mdm_event_cold_snap" text="[EN] Cold Snap"/>
 		<text name="mdm_event_financial_panic" text="[EN] Financial Panic"/>
 		<text name="mdm_event_protein_premium" text="[EN] Protein Premium Surge"/>
-        <text name="mdm_hud_title" text="Market Watch"/>
+        <text name="mdm_hud_title" text="Aktiv kontrakt"/>
         <text name="mdm_hud_active_events" text="Aktive hendelser"/>
         <text name="mdm_hud_no_events" text="Markedene stabile"/>
         <text name="mdm_hud_event_mild" text="Mild"/>

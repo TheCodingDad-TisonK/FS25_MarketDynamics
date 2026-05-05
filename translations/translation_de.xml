@@ -12,7 +12,7 @@
         <text name="mdm_event_cold_snap" text="Kältewelle"/>
         <text name="mdm_event_financial_panic" text="Finanzpanik"/>
         <text name="mdm_event_protein_premium" text="Proteinpreis-Boom"/>
-        <text name="mdm_hud_title" text="Marktbeobachtung"/>
+        <text name="mdm_hud_title" text="Aktiver Vertrag"/>
         <text name="mdm_hud_active_events" text="Aktive Ereignisse"/>
         <text name="mdm_hud_no_events" text="Märkte stabil"/>
         <text name="mdm_hud_event_mild" text="Leicht"/>
