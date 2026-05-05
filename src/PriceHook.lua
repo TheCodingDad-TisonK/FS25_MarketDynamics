@@ -90,18 +90,23 @@ end
 if SellingStation and SellingStation.sellFillType then
     SellingStation.sellFillType = Utils.overwrittenFunction(
         SellingStation.sellFillType,
-        function(self, superFunc, farmId, fillDelta, fillTypeIndex, toolType, extraAttributes)
-            local result = superFunc(self, farmId, fillDelta, fillTypeIndex, toolType, extraAttributes)
+        function(self, superFunc, farmId, fillDelta, fillTypeIndex, fillPositionData, toolType, extraAttributes)
+            local result = superFunc(self, farmId, fillDelta, fillTypeIndex, fillPositionData, toolType, extraAttributes)
 
-            -- FS25's sellFillType does not return the accepted liter count.
-            -- We use fillDelta (the liters passed in) as the delivery amount.
             -- Only track on server; only when MDM is active with a futures market.
-            if fillDelta and fillDelta > 0
-                and g_currentMission and g_currentMission.isServer
+            -- Use g_server ~= nil (not isServer) — isServer is unreliable in some map setups.
+            if g_server ~= nil
                 and g_MarketDynamics and g_MarketDynamics.isActive
                 and g_MarketDynamics.futuresMarket then
 
-                g_MarketDynamics.futuresMarket:onCropDelivered(farmId, fillTypeIndex, fillDelta)
+                MDMLog.debug(string.format("PriceHook: SellingStation.sellFillType(farmId=%s, delta=%.1f, ft=%s)",
+                    tostring(farmId), tostring(fillDelta), tostring(fillTypeIndex)))
+
+                -- In FS25, we use fillDelta (requested) because result (accepted) can be 
+                -- unreliable in some selling station configurations.
+                if fillDelta and fillDelta > 0 then
+                    g_MarketDynamics.futuresMarket:onCropDelivered(farmId, fillTypeIndex, fillDelta)
+                end
             end
 
             return result
@@ -111,6 +116,35 @@ if SellingStation and SellingStation.sellFillType then
     MDMLog.info("PriceHook: SellingStation.sellFillType hooked for futures tracking")
 else
     MDMLog.warn("PriceHook: SellingStation.sellFillType not found — futures delivery tracking disabled")
+end
+
+-- Fallback hook for addFillLevelFromTool which some selling stations use directly (e.g. trains)
+if SellingStation and SellingStation.addFillLevelFromTool then
+    SellingStation.addFillLevelFromTool = Utils.overwrittenFunction(
+        SellingStation.addFillLevelFromTool,
+        function(self, superFunc, farmId, fillDelta, fillTypeIndex, fillPositionData, toolType, extraAttributes)
+            local result = superFunc(self, farmId, fillDelta, fillTypeIndex, fillPositionData, toolType, extraAttributes)
+            
+            -- Some selling stations (trains, certain placeables) call addFillLevelFromTool
+            -- directly without going through sellFillType, so we must track here too.
+            -- We use `result` (accepted liters) rather than fillDelta to avoid counting
+            -- amounts the station rejected. Double-counting with sellFillType is not an
+            -- issue because stations that use this path skip sellFillType entirely.
+            if g_server ~= nil
+                and g_MarketDynamics and g_MarketDynamics.isActive
+                and g_MarketDynamics.futuresMarket then
+
+                if result and result > 0 then
+                    MDMLog.debug(string.format("PriceHook: SellingStation.addFillLevelFromTool(farmId=%s, accepted=%.1f, ft=%s)",
+                        tostring(farmId), tostring(result), tostring(fillTypeIndex)))
+                    g_MarketDynamics.futuresMarket:onCropDelivered(farmId, fillTypeIndex, result)
+                end
+            end
+            
+            return result
+        end
+    )
+    MDMLog.info("PriceHook: SellingStation.addFillLevelFromTool hooked as fallback")
 end
 
 -- ---------------------------------------------------------------------------

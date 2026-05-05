@@ -12,7 +12,7 @@
 		<text name="mdm_event_cold_snap" text="[EN] Cold Snap"/>
 		<text name="mdm_event_financial_panic" text="[EN] Financial Panic"/>
 		<text name="mdm_event_protein_premium" text="[EN] Protein Premium Surge"/>
-        <text name="mdm_hud_title" text="Обзор ринку"/>
+        <text name="mdm_hud_title" text="Активний контракт"/>
         <text name="mdm_hud_active_events" text="Активні події"/>
         <text name="mdm_hud_no_events" text="Ринки стабільні"/>
         <text name="mdm_hud_event_mild" text="Помірний"/>
