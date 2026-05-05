@@ -44,9 +44,9 @@ function MDMMarketScreen:initialize()
     MDMMarketScreen:superClass().initialize(self)
 
     self:setMenuButtonInfo({
-        {inputAction = "MENU_EXTRA_1", text = "New Contract",
+        {inputAction = "MENU_EXTRA_1", text = g_i18n:getText("mdm_futures_create") or "New Contract",
          callback = function() self:onNewContractClick() end},
-        {inputAction = "MENU_EXTRA_2", text = "Event Settings",
+        {inputAction = "MENU_EXTRA_2", text = g_i18n:getText("mdm_evt_settings_title") or "Event Settings",
          callback = function() self:onEventSettingsClick() end},
         {inputAction = "MENU_BACK"},
     })
@@ -183,28 +183,24 @@ function MDMMarketScreen:onGuiSetupFinished()
     _setTextSafe(self.categoryHeaderText, "mdm_screen_title", "Market Dynamics")
     _setTextSafe(self.currentBalanceText, nil, "")
     _setTextSafe(self.commoditiesHeader, "mdm_screen_commodities", "COMMODITIES")
-    _setTextSafe(self.colHeaderCrop, "mdm_screen_col_crop", "Crop")
-    _setTextSafe(self.colHeaderPrice, "mdm_screen_col_price", "Price")
-    _setTextSafe(self.colHeaderChange, "mdm_screen_col_change", "Change")
+    _setTextSafe(self.colHeaderCrop, "mdm_label_crop", "Crop")
+    _setTextSafe(self.colHeaderPrice, "mdm_label_price", "Price")
+    _setTextSafe(self.colHeaderChange, "mdm_label_change", "Change")
     _setTextSafe(self.graphTitle, "mdm_screen_session_trend", "Session Price Trend")
     _setTextSafe(self.graphHint, "mdm_screen_collecting", "Collecting data...")
     _setTextSafe(self.eventsHeader, "mdm_screen_events_hdr", "ACTIVE EVENTS")
     _setTextSafe(self.noEventsText, "mdm_screen_no_events", "No events")
     _setTextSafe(self.contractsHeader, "mdm_screen_contracts_hdr", "FUTURES CONTRACTS")
-    _setTextSafe(self.contractsColCrop,      "mdm_screen_col_crop",      "Crop")
-    _setTextSafe(self.contractsColQty,       "mdm_screen_col_qty",       "Qty")
+    _setTextSafe(self.contractsColCrop,      "mdm_label_crop",      "Crop")
+    _setTextSafe(self.contractsColQty,       "mdm_label_qty",       "Qty")
     _setTextSafe(self.contractsColLocked,    "mdm_screen_col_locked",    "Locked")
     _setTextSafe(self.contractsColDelivered, "mdm_screen_col_delivered", "Delivered")
     _setTextSafe(self.contractsColDeadline,  "mdm_screen_col_deadline",  "Deadline")
-    _setTextSafe(self.contractsColStatus,    "mdm_screen_col_status",    "Status")
+    _setTextSafe(self.contractsColStatus,    "mdm_label_status",    "Status")
     if BCIntegration.isEnabled() then
-        _setTextSafe(self.noContractsText, "mdm_screen_no_contracts",
+        _setTextSafe(self.noContractsText, "mdm_screen_no_contracts_bc",
             "Futures contracts are managed by FS25_FuturesMission (by Mmtrx).\n\n" ..
-            "How to create one:\n" ..
-            "1. Open the Contracts page (ESC menu)\n" ..
-            "2. Look for the Futures section in the contract list\n" ..
-            "3. Select a futures contract and press Accept\n\n" ..
-            "Don't have it? Search GitHub for: FS25_FuturesMission by Mmtrx")
+            "Please use the Contracts tab in the ESC menu.")
         if self.newContractHint then self.newContractHint:setVisible(false) end
     else
         _setTextSafe(self.noContractsText, "mdm_screen_no_contracts", "No contracts yet. Press X to create one.")
@@ -227,7 +223,7 @@ function MDMMarketScreen:onOpen()
         or g_currentMission.isMasterUser
     if not isAdmin then
         self:setMenuButtonInfo({
-            {inputAction = "MENU_EXTRA_1", text = "New Contract",
+            {inputAction = "MENU_EXTRA_1", text = g_i18n:getText("mdm_futures_create") or "New Contract",
              callback = function() self:onNewContractClick() end},
             {inputAction = "MENU_BACK"},
         })
@@ -696,7 +692,7 @@ function MDMMarketScreen:openContractDialog()
     -- then return. InfoDialog's OK button (and ESC) closes it cleanly.
     if BCIntegration.isEnabled() then
         MDMLog.info("MarketScreen.openContractDialog: BC active — showing info dialog")
-        InfoDialog.show("FS25_FuturesMission is active — contracts are created via the Contracts page (ESC menu). Search GitHub for FS25_FuturesMission by Mmtrx if you don't have it.")
+        InfoDialog.show(g_i18n:getText("mdm_bc_dialog_suppressed") or "FS25_FuturesMission is active — contracts are created via the Contracts page (ESC menu).")
         return
     end
 
@@ -810,9 +806,11 @@ function MDMMarketScreen:_populateEventCell(index, cell)
         local mins = math.floor(remaining / 60000)
         if mins > 60 then
             local hrs = math.floor(mins / 60)
-            timeEl:setText(string.format("%dh %dm", hrs, mins % 60))
+            local fmt = g_i18n:getText("mdm_time_fmt_hm") or "%dh %dm"
+            timeEl:setText(string.format(fmt, hrs, mins % 60))
         else
-            timeEl:setText(string.format("%d min", mins))
+            local fmt = g_i18n:getText("mdm_time_fmt_m") or "%d min"
+            timeEl:setText(string.format(fmt, mins))
         end
     end
 end
@@ -835,7 +833,8 @@ function MDMMarketScreen:_populateContractCell(index, cell)
         cropEl:setText(data.fillTypeName or "?")
     end
     if qtyEl then
-        qtyEl:setText(string.format("%.0fL", data.quantity))
+        local fmt = g_i18n:getText("mdm_qty_fmt") or "%.0fL"
+        qtyEl:setText(string.format(fmt, data.quantity))
     end
     if priceEl then
         priceEl:setText(string.format("$%.0f / 1,000L", data.lockedPrice * 1000))
@@ -852,10 +851,12 @@ function MDMMarketScreen:_populateContractCell(index, cell)
         local remaining = math.max(0, data.deliveryTime - now)
         local days = math.floor(remaining / (24 * 60 * 60000))
         if days > 0 then
-            deadlineEl:setText(string.format("%d days", days))
+            local fmt = g_i18n:getText("mdm_deadline_fmt_d") or "%d days"
+            deadlineEl:setText(string.format(fmt, days))
         else
             local hrs = math.floor(remaining / (60 * 60000))
-            deadlineEl:setText(string.format("%d hrs", hrs))
+            local fmt = g_i18n:getText("mdm_deadline_fmt_h") or "%d hrs"
+            deadlineEl:setText(string.format(fmt, hrs))
         end
     end
     if statusEl then
@@ -991,20 +992,16 @@ function MDMMarketScreen._performRegistration(modDir)
 
         _setById("categoryHeaderText", "mdm_screen_title", "Market Dynamics")
         _setById("commoditiesHeader", "mdm_screen_commodities", "COMMODITIES")
-        _setById("colHeaderCrop", "mdm_screen_col_crop", "Crop")
-        _setById("colHeaderPrice", "mdm_screen_col_price", "Price")
-        _setById("colHeaderChange", "mdm_screen_col_change", "Change")
+        _setById("colHeaderCrop", "mdm_label_crop", "Crop")
+        _setById("colHeaderPrice", "mdm_label_price", "Price")
+        _setById("colHeaderChange", "mdm_label_change", "Change")
 
         _setById("graphHint", "mdm_screen_collecting", "Collecting data...")
         _setById("noEventsText", "mdm_screen_no_events", "No events")
         if BCIntegration.isEnabled() then
-            _setById("noContractsText", nil,
+            _setById("noContractsText", "mdm_screen_no_contracts_bc",
                 "Futures contracts are managed by FS25_FuturesMission (by Mmtrx).\n\n" ..
-                "How to create one:\n" ..
-                "1. Open the Contracts page (ESC menu)\n" ..
-                "2. Look for the Futures section in the contract list\n" ..
-                "3. Select a futures contract and press Accept\n\n" ..
-                "Don't have it? Search GitHub for: FS25_FuturesMission by Mmtrx")
+                "Please use the Contracts tab in the ESC menu.")
             local hint = screen:getDescendantById("newContractHint")
             if hint then hint:setVisible(false) end
         else
@@ -1017,12 +1014,12 @@ function MDMMarketScreen._performRegistration(modDir)
         _setById("eventsHeader", "mdm_screen_events_hdr", "ACTIVE EVENTS")
         _setById("contractsHeader", "mdm_screen_contracts_hdr", "FUTURES CONTRACTS")
 
-        _setById("contractsColCrop",      "mdm_screen_col_crop",      "Crop")
-        _setById("contractsColQty",       "mdm_screen_col_qty",       "Qty")
+        _setById("contractsColCrop",      "mdm_label_crop",      "Crop")
+        _setById("contractsColQty",       "mdm_label_qty",       "Qty")
         _setById("contractsColLocked",    "mdm_screen_col_locked",    "Locked")
         _setById("contractsColDelivered", "mdm_screen_col_delivered", "Delivered")
         _setById("contractsColDeadline",  "mdm_screen_col_deadline",  "Deadline")
-        _setById("contractsColStatus",    "mdm_screen_col_status",    "Status")
+        _setById("contractsColStatus",    "mdm_label_status",    "Status")
         if not BCIntegration.isEnabled() then
             _setById("newContractHint", "mdm_screen_new_contract_btn", "New Contract  [X]")
         end

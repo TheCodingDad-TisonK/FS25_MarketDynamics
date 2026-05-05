@@ -49,7 +49,7 @@ function MDMSettingsUI:onClickMDM()
     -- Set header text directly after setState — vanilla updateSubCategoryPages
     -- runs inside setState and may show a missing-key error; this overrides it.
     if ps.categoryHeaderText then
-        ps.categoryHeaderText:setText("Market Dynamics")
+        ps.categoryHeaderText:setText(g_i18n:getText("mdm_screen_title") or "Market Dynamics")
     end
 end
 
@@ -136,7 +136,7 @@ function MDMSettingsUI._insertTab()
     local mdmTab = ButtonElement.new()
     mdmTab:loadProfile(g_gui:getProfile("fs25_subCategorySelectorTabbedTab"), true)
     mdmTab.textUpperCase = false
-    mdmTab:setText("Market Dynamics")
+    mdmTab:setText(g_i18n:getText("mdm_screen_title") or "Market Dynamics")
     mdmTab.target = MDMSettingsUI
     mdmTab:setCallback("onClickCallback", "onClickMDM")
     -- onGuiSetupFinished called AFTER adding to parent (needs parent context)
@@ -217,7 +217,7 @@ function MDMSettingsUI._insertTab()
         InGameMenuSettingsFrame.updateSubCategoryPages,
         function(self, state)
             if state == MDMSettingsUI.modPageNr and self.categoryHeaderText then
-                self.categoryHeaderText:setText("Market Dynamics")
+                self.categoryHeaderText:setText(g_i18n:getText("mdm_screen_title") or "Market Dynamics")
             end
         end
     )
@@ -248,66 +248,79 @@ function MDMSettingsUI._addSettingsElements()
 
     -- ── Prices ────────────────────────────────────────────────────────────
 
-    MDMSettingsUI._addSection(layout, "Prices")
+    MDMSettingsUI._addSection(layout, g_i18n:getText("mdm_header_prices") or "Prices")
 
     _elem.pricesEnabled = MDMSettingsUI._addBinary(
         layout, "onMDMPricesEnabledChanged",
-        "Dynamic Prices",
-        "Enable MDM price fluctuations. Off reverts to vanilla sell prices."
+        g_i18n:getText("mdm_prices_enabled") or "Dynamic Prices",
+        g_i18n:getText("mdm_prices_enabled_tooltip") or "Enable MDM price fluctuations. Off reverts to vanilla sell prices."
     )
 
     _elem.volatility = MDMSettingsUI._addMulti(
         layout, "onMDMVolatilityChanged",
-        { "Low", "Normal", "High", "Extreme" },
-        "Price Volatility",
-        "How wildly prices swing intraday and day-to-day. Low=0.5x, Normal=1x, High=1.5x, Extreme=2x."
+        { 
+            g_i18n:getText("mdm_label_low") or "Low",
+            g_i18n:getText("mdm_label_normal") or "Normal",
+            g_i18n:getText("mdm_label_high") or "High",
+            g_i18n:getText("mdm_label_extreme") or "Extreme"
+        },
+        g_i18n:getText("mdm_price_volatility") or "Price Volatility",
+        g_i18n:getText("mdm_price_volatility_tooltip") or "How wildly prices swing intraday and day-to-day. Low=0.5x, Normal=1x, High=1.5x, Extreme=2x."
     )
 
     -- ── World Events ──────────────────────────────────────────────────────
 
-    MDMSettingsUI._addSection(layout, "World Events")
+    MDMSettingsUI._addSection(layout, g_i18n:getText("mdm_header_world_events") or "World Events")
 
     _elem.eventsEnabled = MDMSettingsUI._addBinary(
         layout, "onMDMEventsEnabledChanged",
-        "World Events",
-        "Enable or disable world events. Prices still fluctuate when events are off."
+        g_i18n:getText("mdm_events_enabled") or "World Events",
+        g_i18n:getText("mdm_events_enabled_tooltip") or "Enable or disable world events. Prices still fluctuate when events are off."
     )
 
     _elem.eventFrequency = MDMSettingsUI._addMulti(
         layout, "onMDMEventFrequencyChanged",
-        { "Rare", "Normal", "Frequent" },
-        "Event Frequency",
-        "How often events occur. Rare=0.4x, Normal=1x, Frequent=2x the base probability per check."
+        { 
+            g_i18n:getText("mdm_label_rare") or "Rare",
+            g_i18n:getText("mdm_label_normal") or "Normal",
+            g_i18n:getText("mdm_label_frequent") or "Frequent"
+        },
+        g_i18n:getText("mdm_event_frequency") or "Event Frequency",
+        g_i18n:getText("mdm_event_frequency_tooltip") or "How often events occur. Rare=0.4x, Normal=1x, Frequent=2x the base probability per check."
     )
 
     -- ── Futures Contracts ─────────────────────────────────────────────────
 
-    MDMSettingsUI._addSection(layout, "Futures Contracts")
+    MDMSettingsUI._addSection(layout, g_i18n:getText("mdm_header_futures") or "Futures Contracts")
 
     _elem.futuresPenalty = MDMSettingsUI._addMulti(
         layout, "onMDMFuturesPenaltyChanged",
-        { "Low (8%)", "Normal (15%)", "High (25%)" },
-        "Default Penalty",
-        "Penalty on the undelivered contract value when a deadline is missed."
+        { 
+            g_i18n:getText("mdm_penalty_low") or "Low (8%)",
+            g_i18n:getText("mdm_penalty_normal") or "Normal (15%)",
+            g_i18n:getText("mdm_penalty_high") or "High (25%)"
+        },
+        g_i18n:getText("mdm_default_penalty") or "Default Penalty",
+        g_i18n:getText("mdm_default_penalty_tooltip") or "Penalty on the undelivered contract value when a deadline is missed."
     )
 
     -- ── Status ────────────────────────────────────────────────────────────
 
-    MDMSettingsUI._addSection(layout, "Status")
+    MDMSettingsUI._addSection(layout, g_i18n:getText("mdm_header_status") or "Status")
 
-    _elem.statusVersion   = MDMSettingsUI._addStatusRow(layout, "Version:             —")
-    _elem.statusEvents    = MDMSettingsUI._addStatusRow(layout, "Active Events:       —")
-    _elem.statusBC        = MDMSettingsUI._addStatusRow(layout, "FuturesMission:      —")
-    _elem.statusUP        = MDMSettingsUI._addStatusRow(layout, "UsedPlus:            —")
+    _elem.statusVersion   = MDMSettingsUI._addStatusRow(layout, g_i18n:getText("mdm_status_version") or "Version:             —")
+    _elem.statusEvents    = MDMSettingsUI._addStatusRow(layout, g_i18n:getText("mdm_status_events") or "Active Events:       —")
+    _elem.statusBC        = MDMSettingsUI._addStatusRow(layout, g_i18n:getText("mdm_status_bc") or "FuturesMission:      —")
+    _elem.statusUP        = MDMSettingsUI._addStatusRow(layout, g_i18n:getText("mdm_status_up") or "UsedPlus:            —")
 
     -- ── Debug ─────────────────────────────────────────────────────────────
 
-    MDMSettingsUI._addSection(layout, "Debug")
+    MDMSettingsUI._addSection(layout, g_i18n:getText("mdm_header_debug") or "Debug")
 
     _elem.debugMode = MDMSettingsUI._addBinary(
         layout, "onMDMDebugModeChanged",
-        "Debug Logging",
-        "Write verbose [MDM] DEBUG entries to log.txt. For developers only."
+        g_i18n:getText("mdm_debug_logging") or "Debug Logging",
+        g_i18n:getText("mdm_debug_logging_tooltip") or "Write verbose [MDM] DEBUG entries to log.txt. For developers only."
     )
 end
 
@@ -330,7 +343,7 @@ function MDMSettingsUI._updateSettingsUI()
     -- Fix header title if the MDM tab is already active when the frame opens.
     if ps and ps.categoryHeaderText and ps.subCategoryPaging then
         if ps.subCategoryPaging:getState() == MDMSettingsUI.modPageNr then
-            ps.categoryHeaderText:setText("Market Dynamics")
+            ps.categoryHeaderText:setText(g_i18n:getText("mdm_screen_title") or "Market Dynamics")
         end
     end
 
@@ -372,7 +385,8 @@ function MDMSettingsUI._updateSettingsUI()
     -- Status rows (live, updated on every open)
     if _elem.statusVersion then
         local modInfo = g_modManager and g_modManager:getModByName(mdm.modName)
-        _elem.statusVersion:setText("Version:             " .. ((modInfo and modInfo.version) or "?"))
+        local fmt = g_i18n:getText("mdm_status_version_fmt") or "Version:             %s"
+        _elem.statusVersion:setText(string.format(fmt, ((modInfo and modInfo.version) or "?")))
     end
 
     if _elem.statusEvents then
@@ -380,18 +394,21 @@ function MDMSettingsUI._updateSettingsUI()
         if mdm.worldEvents then
             for _ in pairs(mdm.worldEvents.active) do count = count + 1 end
         end
-        local val = count == 0 and "None" or (count .. " active")
-        _elem.statusEvents:setText("Active Events:       " .. val)
+        local val = count == 0 and (g_i18n:getText("mdm_status_none") or "None") or string.format(g_i18n:getText("mdm_status_active_fmt") or "%d active", count)
+        local fmt = g_i18n:getText("mdm_status_events_fmt") or "Active Events:       %s"
+        _elem.statusEvents:setText(string.format(fmt, val))
     end
 
     if _elem.statusBC then
-        local val = BCIntegration.isAvailable() and "Detected" or "Not installed"
-        _elem.statusBC:setText("FuturesMission:      " .. val)
+        local val = BCIntegration.isAvailable() and (g_i18n:getText("mdm_status_detected") or "Detected") or (g_i18n:getText("mdm_status_not_installed") or "Not installed")
+        local fmt = g_i18n:getText("mdm_status_bc_fmt") or "FuturesMission:      %s"
+        _elem.statusBC:setText(string.format(fmt, val))
     end
 
     if _elem.statusUP then
-        local val = UPIntegration.isAvailable() and "Detected" or "Not installed"
-        _elem.statusUP:setText("UsedPlus:            " .. val)
+        local val = UPIntegration.isAvailable() and (g_i18n:getText("mdm_status_detected") or "Detected") or (g_i18n:getText("mdm_status_not_installed") or "Not installed")
+        local fmt = g_i18n:getText("mdm_status_up_fmt") or "UsedPlus:            %s"
+        _elem.statusUP:setText(string.format(fmt, val))
     end
 end
 

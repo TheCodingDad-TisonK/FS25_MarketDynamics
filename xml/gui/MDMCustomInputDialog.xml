@@ -16,12 +16,12 @@
     <GuiElement profile="fs25_dialogContentContainer">
 
       <!-- Title -->
-      <Text profile="mdmCustom_title" id="dlgTitle" text="Custom Input" position="0px -12px" size="500px 30px"/>
+      <Text profile="mdmCustom_title" id="dlgTitle" text="$l10n_mdm_custom_input_title" position="0px -12px" size="500px 30px"/>
 
       <Bitmap profile="mdmCustom_separator" position="0px -44px" size="500px 2px"/>
 
       <!-- Input label -->
-      <Text profile="mdmCustom_label" id="dlgInputLabel" text="Enter Value:" position="0px -60px"/>
+      <Text profile="mdmCustom_label" id="dlgInputLabel" text="$l10n_mdm_enter_value" position="0px -60px"/>
 
       <!-- Text input — directly below the label -->
       <TextInput profile="mdmCustom_textInput" id="textInput"

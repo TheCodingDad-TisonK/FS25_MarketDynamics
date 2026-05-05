@@ -20,66 +20,66 @@
     <GuiElement profile="fs25_dialogContentContainer">
 
       <!-- Title -->
-      <Text profile="mdmFt_title" id="evtFtTitle" text="Event Fill Types" position="0px -14px" size="520px 28px"/>
+      <Text profile="mdmFt_title" id="evtFtTitle" text="$l10n_mdm_evt_ft_title" position="0px -14px" size="520px 28px"/>
       <Bitmap profile="mdmFt_sep" position="0px -48px" size="520px 2px"/>
 
       <!-- Hint (status/feedback line) -->
       <Text profile="mdmFt_hint" id="evtFtHint"
-            text="Enter fill type names as used in game (e.g. WHEAT, MUNGBEAN). Changes take effect on the next event firing."
+            text="$l10n_mdm_evt_ft_names_hint"
             position="0px -64px" size="520px 50px"/>
       <Bitmap profile="mdmFt_sep" position="0px -120px" size="520px 2px"/>
 
       <!-- Section label -->
-      <Text profile="mdmFt_sectionLabel" text="CUSTOM FILL TYPES" position="0px -136px" size="300px 22px"/>
+      <Text profile="mdmFt_sectionLabel" text="$l10n_mdm_evt_ft_custom_header" position="0px -136px" size="300px 22px"/>
 
       <!-- Empty state (shown only when list is empty) -->
-      <Text profile="mdmFt_empty" id="evtFtEmpty" text="No custom fill types configured." position="0px -164px" size="520px 28px"/>
+      <Text profile="mdmFt_empty" id="evtFtEmpty" text="$l10n_mdm_evt_ft_empty" position="0px -164px" size="520px 28px"/>
 
       <!-- Row 0 -->
       <Text   profile="mdmFt_rowName" id="evtFtName0"   text="" position="0px -164px"   size="350px 28px" visible="false"/>
       <Bitmap profile="mdmFt_remBg"   id="evtFtRemBg0"  position="360px -162px" size="130px 32px" visible="false"/>
       <Button profile="mdmFt_btnHit"  id="evtFtRemBtn0" onClick="onRemove0" position="360px -162px" size="130px 32px" visible="false"/>
-      <Text   profile="mdmFt_remTxt"  id="evtFtRemTxt0" text="Remove" position="360px -162px" size="130px 32px" visible="false"/>
+      <Text   profile="mdmFt_remTxt"  id="evtFtRemTxt0" text="$l10n_mdm_label_remove" position="360px -162px" size="130px 32px" visible="false"/>
       <!-- Row 1 -->
       <Text   profile="mdmFt_rowName" id="evtFtName1"   text="" position="0px -198px"   size="350px 28px" visible="false"/>
       <Bitmap profile="mdmFt_remBg"   id="evtFtRemBg1"  position="360px -196px" size="130px 32px" visible="false"/>
       <Button profile="mdmFt_btnHit"  id="evtFtRemBtn1" onClick="onRemove1" position="360px -196px" size="130px 32px" visible="false"/>
-      <Text   profile="mdmFt_remTxt"  id="evtFtRemTxt1" text="Remove" position="360px -196px" size="130px 32px" visible="false"/>
+      <Text   profile="mdmFt_remTxt"  id="evtFtRemTxt1" text="$l10n_mdm_label_remove" position="360px -196px" size="130px 32px" visible="false"/>
       <!-- Row 2 -->
       <Text   profile="mdmFt_rowName" id="evtFtName2"   text="" position="0px -232px"   size="350px 28px" visible="false"/>
       <Bitmap profile="mdmFt_remBg"   id="evtFtRemBg2"  position="360px -230px" size="130px 32px" visible="false"/>
       <Button profile="mdmFt_btnHit"  id="evtFtRemBtn2" onClick="onRemove2" position="360px -230px" size="130px 32px" visible="false"/>
-      <Text   profile="mdmFt_remTxt"  id="evtFtRemTxt2" text="Remove" position="360px -230px" size="130px 32px" visible="false"/>
+      <Text   profile="mdmFt_remTxt"  id="evtFtRemTxt2" text="$l10n_mdm_label_remove" position="360px -230px" size="130px 32px" visible="false"/>
       <!-- Row 3 -->
       <Text   profile="mdmFt_rowName" id="evtFtName3"   text="" position="0px -266px"   size="350px 28px" visible="false"/>
       <Bitmap profile="mdmFt_remBg"   id="evtFtRemBg3"  position="360px -264px" size="130px 32px" visible="false"/>
       <Button profile="mdmFt_btnHit"  id="evtFtRemBtn3" onClick="onRemove3" position="360px -264px" size="130px 32px" visible="false"/>
-      <Text   profile="mdmFt_remTxt"  id="evtFtRemTxt3" text="Remove" position="360px -264px" size="130px 32px" visible="false"/>
+      <Text   profile="mdmFt_remTxt"  id="evtFtRemTxt3" text="$l10n_mdm_label_remove" position="360px -264px" size="130px 32px" visible="false"/>
       <!-- Row 4 -->
       <Text   profile="mdmFt_rowName" id="evtFtName4"   text="" position="0px -300px"   size="350px 28px" visible="false"/>
       <Bitmap profile="mdmFt_remBg"   id="evtFtRemBg4"  position="360px -298px" size="130px 32px" visible="false"/>
       <Button profile="mdmFt_btnHit"  id="evtFtRemBtn4" onClick="onRemove4" position="360px -298px" size="130px 32px" visible="false"/>
-      <Text   profile="mdmFt_remTxt"  id="evtFtRemTxt4" text="Remove" position="360px -298px" size="130px 32px" visible="false"/>
+      <Text   profile="mdmFt_remTxt"  id="evtFtRemTxt4" text="$l10n_mdm_label_remove" position="360px -298px" size="130px 32px" visible="false"/>
       <!-- Row 5 -->
       <Text   profile="mdmFt_rowName" id="evtFtName5"   text="" position="0px -334px"   size="350px 28px" visible="false"/>
       <Bitmap profile="mdmFt_remBg"   id="evtFtRemBg5"  position="360px -332px" size="130px 32px" visible="false"/>
       <Button profile="mdmFt_btnHit"  id="evtFtRemBtn5" onClick="onRemove5" position="360px -332px" size="130px 32px" visible="false"/>
-      <Text   profile="mdmFt_remTxt"  id="evtFtRemTxt5" text="Remove" position="360px -332px" size="130px 32px" visible="false"/>
+      <Text   profile="mdmFt_remTxt"  id="evtFtRemTxt5" text="$l10n_mdm_label_remove" position="360px -332px" size="130px 32px" visible="false"/>
       <!-- Row 6 -->
       <Text   profile="mdmFt_rowName" id="evtFtName6"   text="" position="0px -368px"   size="350px 28px" visible="false"/>
       <Bitmap profile="mdmFt_remBg"   id="evtFtRemBg6"  position="360px -366px" size="130px 32px" visible="false"/>
       <Button profile="mdmFt_btnHit"  id="evtFtRemBtn6" onClick="onRemove6" position="360px -366px" size="130px 32px" visible="false"/>
-      <Text   profile="mdmFt_remTxt"  id="evtFtRemTxt6" text="Remove" position="360px -366px" size="130px 32px" visible="false"/>
+      <Text   profile="mdmFt_remTxt"  id="evtFtRemTxt6" text="$l10n_mdm_label_remove" position="360px -366px" size="130px 32px" visible="false"/>
       <!-- Row 7 -->
       <Text   profile="mdmFt_rowName" id="evtFtName7"   text="" position="0px -402px"   size="350px 28px" visible="false"/>
       <Bitmap profile="mdmFt_remBg"   id="evtFtRemBg7"  position="360px -400px" size="130px 32px" visible="false"/>
       <Button profile="mdmFt_btnHit"  id="evtFtRemBtn7" onClick="onRemove7" position="360px -400px" size="130px 32px" visible="false"/>
-      <Text   profile="mdmFt_remTxt"  id="evtFtRemTxt7" text="Remove" position="360px -400px" size="130px 32px" visible="false"/>
+      <Text   profile="mdmFt_remTxt"  id="evtFtRemTxt7" text="$l10n_mdm_label_remove" position="360px -400px" size="130px 32px" visible="false"/>
 
       <Bitmap profile="mdmFt_sep" position="0px -434px" size="520px 2px"/>
 
       <!-- Add new fill type -->
-      <Text profile="mdmFt_sectionLabel" text="ADD NEW FILL TYPE" position="0px -452px" size="300px 22px"/>
+      <Text profile="mdmFt_sectionLabel" text="$l10n_mdm_evt_ft_add_header" position="0px -452px" size="300px 22px"/>
 
       <TextInput profile="mdmFt_textInput" id="evtFtInput"
                  position="0px -476px" size="350px 36px"
@@ -89,12 +89,12 @@
       </TextInput>
       <Bitmap profile="mdmFt_addBg"  id="evtFtAddBg"     position="360px -474px" size="130px 36px"/>
       <Button profile="mdmFt_btnHit" id="evtFtAddBtn"    onClick="onAddClick"    position="360px -474px" size="130px 36px"/>
-      <Text   profile="mdmFt_remTxt" id="evtFtAddBtnTxt" text="Add"              position="360px -474px" size="130px 36px"/>
+      <Text   profile="mdmFt_remTxt" id="evtFtAddBtnTxt" text="$l10n_mdm_label_add"              position="360px -474px" size="130px 36px"/>
 
     </GuiElement>
 
     <BoxLayout profile="fs25_dialogButtonBox">
-      <Button profile="buttonActivate" text="Browse Types" onClick="onBrowseClick" id="evtFtBrowseBtn"/>
+      <Button profile="buttonActivate" text="$l10n_mdm_browse_types" onClick="onBrowseClick" id="evtFtBrowseBtn"/>
       <Bitmap profile="fs25_dialogButtonBoxSeparator"/>
       <Button profile="buttonBack" text="$l10n_button_close" onClick="onCloseClick" id="evtFtCloseBtn"/>
     </BoxLayout>

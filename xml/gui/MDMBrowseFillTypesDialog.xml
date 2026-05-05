@@ -9,10 +9,10 @@
     <ThreePartBitmap profile="fs25_dialogBgBottom" />
 
     <GuiElement profile="fs25_dialogContentContainer">
-      <Text profile="fs25_dialogTitle" id="title" text="Available Fill Types" position="0px -14px" size="520px 28px"/>
+      <Text profile="fs25_dialogTitle" id="title" text="$l10n_mdm_browse_title" position="0px -14px" size="520px 28px"/>
       <Bitmap profile="mdmFt_sep" position="0px -48px" size="520px 2px"/>
 
-      <Text profile="mdmFt_hint" text="Below are all fill types currently tracked by the market. Use these names in the event configuration."
+      <Text profile="mdmFt_hint" text="$l10n_mdm_browse_hint"
             position="0px -64px" size="520px 40px"/>
 
       <!-- Scrollable Area -->

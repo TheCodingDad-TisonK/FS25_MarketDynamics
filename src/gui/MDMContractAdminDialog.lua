@@ -154,7 +154,10 @@ function MDMContractAdminDialog:_populate()
     -- Left column details
     if self.admCropValue     then self.admCropValue:setText(c.fillTypeName or "?") end
     if self.admQtyValue      then self.admQtyValue:setText(self:_fmt(c.quantity) .. " L") end
-    if self.admPriceValue    then self.admPriceValue:setText(string.format("$%.0f / 1,000L", (c.lockedPrice or 0) * 1000)) end
+    if self.admPriceValue    then
+        local fmt = g_i18n:getText("mdm_locked_price_fmt") or "$%.0f / 1,000L"
+        self.admPriceValue:setText(string.format(fmt, (c.lockedPrice or 0) * 1000))
+    end
 
     local delivPct = 0
     if c.quantity and c.quantity > 0 then
@@ -171,7 +174,8 @@ function MDMContractAdminDialog:_populate()
         local remaining = math.max(0, (c.deliveryTime or 0) - now)
         local daysLeft  = math.floor(remaining / (24 * 60 * 60000))
         if isActive then
-            self.admDeadlineValue:setText(string.format("%d day(s) remaining", daysLeft))
+            local fmt = g_i18n:getText("mdm_days_remaining") or "%d day(s) remaining"
+            self.admDeadlineValue:setText(string.format(fmt, daysLeft))
             if daysLeft <= 5 then
                 self.admDeadlineValue:setTextColor(0.85, 0.22, 0.22, 1.0)
             elseif daysLeft <= 14 then
@@ -180,7 +184,7 @@ function MDMContractAdminDialog:_populate()
                 self.admDeadlineValue:setTextColor(0.80, 0.80, 0.80, 1.0)
             end
         else
-            self.admDeadlineValue:setText("Settled")
+            self.admDeadlineValue:setText(g_i18n:getText("mdm_settled") or "Settled")
             self.admDeadlineValue:setTextColor(0.65, 0.65, 0.65, 1.0)
         end
     end
@@ -188,25 +192,30 @@ function MDMContractAdminDialog:_populate()
     -- Status with colour
     if self.admStatusValue then
         local statusStr = c.status or "unknown"
-        self.admStatusValue:setText(statusStr:upper())
+        local displayStatus = statusStr:upper()
         if statusStr == "active" then
+            displayStatus = g_i18n:getText("mdm_futures_active") or displayStatus
             self.admStatusValue:setTextColor(0.20, 0.72, 0.35, 1.0)
         elseif statusStr == "fulfilled" then
+            displayStatus = g_i18n:getText("mdm_futures_fulfill") or displayStatus
             self.admStatusValue:setTextColor(0.40, 0.60, 1.00, 1.0)
         else
+            displayStatus = g_i18n:getText("mdm_futures_defaulted") or displayStatus
             self.admStatusValue:setTextColor(0.85, 0.30, 0.22, 1.0)
         end
+        self.admStatusValue:setText(displayStatus)
     end
 
     -- Right column summary
     local totalValue = math.floor((c.lockedPrice or 0) * (c.quantity or 0))
     if self.admSumTotal then
-        self.admSumTotal:setText("Total value:  $" .. self:_fmt(totalValue))
+        local lbl = g_i18n:getText("mdm_total_value") or "Total value:  $"
+        self.admSumTotal:setText(lbl .. self:_fmt(totalValue))
     end
     if self.admSumProgress then
         local delivValue = math.floor((c.lockedPrice or 0) * (c.delivered or 0))
-        self.admSumProgress:setText(string.format("Delivered value:  $%s  (%d%%)",
-            self:_fmt(delivValue), delivPct))
+        local fmt = g_i18n:getText("mdm_delivered_value") or "Delivered value:  $%s  (%d%%)"
+        self.admSumProgress:setText(string.format(fmt, self:_fmt(delivValue), delivPct))
     end
 
     -- Show/hide action buttons based on contract status.
@@ -235,9 +244,9 @@ function MDMContractAdminDialog:_populate()
     if self.admActionHint then
         self.admActionHint:setVisible(isActive)
         if isActive then
-            self.admActionHint:setText(
-                "Complete: force full payout now at locked price.\n\n" ..
-                "Cancel: remove contract — no payout, no penalty.")
+            local completeHint = g_i18n:getText("mdm_adm_hint_complete") or "Complete: force full payout now at locked price."
+            local cancelHint   = g_i18n:getText("mdm_adm_hint_cancel") or "Cancel: remove contract — no payout, no penalty."
+            self.admActionHint:setText(completeHint .. "\n\n" .. cancelHint)
         end
     end
     if self.admSettledNotice then
