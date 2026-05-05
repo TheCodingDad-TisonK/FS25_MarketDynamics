@@ -304,6 +304,22 @@ function MDMSettingsUI._addSettingsElements()
         g_i18n:getText("mdm_default_penalty_tooltip") or "Penalty on the undelivered contract value when a deadline is missed."
     )
 
+    -- ── Interface ─────────────────────────────────────────────────────────
+
+    MDMSettingsUI._addSection(layout, g_i18n:getText("mdm_header_interface") or "Interface")
+
+    _elem.showEventNotifications = MDMSettingsUI._addBinary(
+        layout, "onMDMShowEventNotificationsChanged",
+        g_i18n:getText("mdm_show_event_notifications") or "Event Notifications",
+        g_i18n:getText("mdm_show_event_notifications_tooltip") or "Show a confirmation dialog when a new world event begins."
+    )
+
+    _elem.showContractHUD = MDMSettingsUI._addBinary(
+        layout, "onMDMShowContractHUDChanged",
+        g_i18n:getText("mdm_show_contract_hud") or "Contract HUD",
+        g_i18n:getText("mdm_show_contract_hud_tooltip") or "Show an on-screen progress tracker for your active futures contract."
+    )
+
     -- ── Status ────────────────────────────────────────────────────────────
 
     MDMSettingsUI._addSection(layout, g_i18n:getText("mdm_header_status") or "Status")
@@ -375,6 +391,16 @@ function MDMSettingsUI._updateSettingsUI()
         _elem.futuresPenalty:setState(MDMSettingsUI._findValueIndex(
             FUTURES_PENALTY_VALUES, mdm.settings.futuresPenalty or 0.15))
         _elem.futuresPenalty:setDisabled(not isAdmin)
+    end
+
+    if _elem.showEventNotifications then
+        _elem.showEventNotifications:setIsChecked(mdm.settings.showEventNotifications ~= false, false, false)
+        -- Interface settings are personal, no admin check needed
+    end
+
+    if _elem.showContractHUD then
+        _elem.showContractHUD:setIsChecked(mdm.settings.showContractHUD ~= false, false, false)
+        -- Interface settings are personal, no admin check needed
     end
 
     if _elem.debugMode then
@@ -474,6 +500,30 @@ function MDMSettingsUI:onMDMFuturesPenaltyChanged(state)
     g_MarketDynamics.settings.futuresPenalty = FUTURES_PENALTY_VALUES[state] or 0.15
     MDMLog.info("SettingsUI: futuresPenalty = " .. tostring(g_MarketDynamics.settings.futuresPenalty))
 
+    if g_server ~= nil then
+        MDMSettingsSyncEvent.sendToClients()
+    else
+        MDMSettingsSyncEvent.sendToServer()
+    end
+end
+
+function MDMSettingsUI:onMDMShowEventNotificationsChanged(state)
+    if not g_MarketDynamics or not g_MarketDynamics.settings then return end
+    g_MarketDynamics.settings.showEventNotifications = (state == BinaryOptionElement.STATE_RIGHT)
+    MDMLog.info("SettingsUI: showEventNotifications = " .. tostring(g_MarketDynamics.settings.showEventNotifications))
+    -- Personal setting, no network sync needed (except to persist to server save if hosted)
+    -- Actually, we sync all settings for simplicity in MDMSettingsSyncEvent.
+    if g_server ~= nil then
+        MDMSettingsSyncEvent.sendToClients()
+    else
+        MDMSettingsSyncEvent.sendToServer()
+    end
+end
+
+function MDMSettingsUI:onMDMShowContractHUDChanged(state)
+    if not g_MarketDynamics or not g_MarketDynamics.settings then return end
+    g_MarketDynamics.settings.showContractHUD = (state == BinaryOptionElement.STATE_RIGHT)
+    MDMLog.info("SettingsUI: showContractHUD = " .. tostring(g_MarketDynamics.settings.showContractHUD))
     if g_server ~= nil then
         MDMSettingsSyncEvent.sendToClients()
     else

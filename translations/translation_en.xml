@@ -40,7 +40,7 @@
         <text name="mdm_event_protein_premium"       text="Protein Premium Surge" />
 
         <!-- HUD Overlay -->
-        <text name="mdm_hud_title"               text="Market Watch" />
+        <text name="mdm_hud_title"               text="Active Contract" />
         <text name="mdm_hud_active_events"       text="Active Events" />
         <text name="mdm_hud_no_events"           text="Markets stable" />
         <text name="mdm_hud_event_mild"          text="Mild" />
@@ -58,8 +58,22 @@
         <text name="mdm_screen_tab_events"       text="Events" />
         <text name="mdm_screen_tab_contracts"    text="Contracts" />
         <text name="mdm_screen_commodities"      text="COMMODITIES" />
+        <text name="mdm_screen_events_hdr"       text="ACTIVE EVENTS" />
+        <text name="mdm_screen_contracts_hdr"    text="FUTURES CONTRACTS" />
+        <text name="mdm_screen_col_crop"         text="Crop" />
+        <text name="mdm_screen_col_price"        text="Price" />
+        <text name="mdm_screen_col_change"       text="Change" />
+        <text name="mdm_screen_col_event"        text="Event" />
+        <text name="mdm_screen_col_intensity"    text="Intensity" />
+        <text name="mdm_screen_col_time_left"    text="Time Left" />
+        <text name="mdm_screen_col_qty"          text="Qty" />
+        <text name="mdm_screen_col_locked"       text="Locked" />
+        <text name="mdm_screen_col_delivered"    text="Delivered" />
+        <text name="mdm_screen_col_deadline"     text="Deadline" />
+        <text name="mdm_screen_col_status"       text="Status" />
         <text name="mdm_screen_current_price"    text="Current Price" />
         <text name="mdm_screen_base_price"       text="Base Price" />
+        <text name="mdm_screen_change"           text="Change" />
         <text name="mdm_screen_volatility"       text="Volatility" />
         <text name="mdm_screen_modifiers"        text="Active Modifiers" />
         <text name="mdm_screen_session_trend"    text="Session Price Trend" />
@@ -81,12 +95,14 @@
         <text name="mdm_futures_fulfill"         text="Fulfilled" />
         <text name="mdm_futures_defaulted"       text="Failed" />
         <text name="mdm_futures_active"          text="Active" />
+        <text name="mdm_settled"                 text="Settled" />
         <text name="mdm_futures_delivery_label"  text="Delivery" />
         <text name="mdm_futures_locked_label"    text="Locked Price" />
         <text name="mdm_futures_quantity_label"  text="Quantity (L)" />
         <text name="mdm_futures_bc_disabled"     text="Futures disabled — FuturesMission mode active" />
         <text name="mdm_futures_created"         text="Contract Created!" />
         <text name="mdm_futures_no_contracts"    text="No contracts yet" />
+        <text name="mdm_futures_create"          text="New Contract" />
 
         <!-- Contract creation dialog -->
         <text name="mdm_dialog_summary"       text="Contract Summary" />
@@ -192,11 +208,23 @@
         <text name="mdm_price_volatility_tooltip" text="How wildly prices swing intraday and day-to-day. Low=0.5x, Normal=1x, High=1.5x, Extreme=2x." />
         <text name="mdm_events_enabled"          text="World Events" />
         <text name="mdm_events_enabled_tooltip"  text="Enable or disable world events. Prices still fluctuate when events are off." />
+        <text name="mdm_header_world_events"     text="World Events" />
         <text name="mdm_event_frequency"         text="Event Frequency" />
         <text name="mdm_event_frequency_tooltip" text="How often events occur. Rare=0.4x, Normal=1x, Frequent=2x the base probability per check." />
         <text name="mdm_header_futures"          text="Futures Contracts" />
         <text name="mdm_default_penalty"         text="Default Penalty" />
         <text name="mdm_default_penalty_tooltip" text="Penalty on the undelivered contract value when a deadline is missed." />
+        <text name="mdm_penalty_low"             text="Low (8%)" />
+        <text name="mdm_penalty_normal"          text="Normal (15%)" />
+        <text name="mdm_penalty_high"            text="High (25%)" />
+
+        <!-- Interface -->
+        <text name="mdm_header_interface"           text="Interface" />
+        <text name="mdm_show_event_notifications"   text="Event Notifications" />
+        <text name="mdm_show_event_notifications_tooltip" text="Show a confirmation dialog when a new world event begins." />
+        <text name="mdm_show_contract_hud"           text="Contract HUD" />
+        <text name="mdm_show_contract_hud_tooltip"   text="Show an on-screen progress tracker for your active futures contract." />
+        <text name="mdm_msg_event_started"          text="A new world event has started: %s&#10;&#10;Would you like to open the Market Screen to see the impact?" />
 
         <!-- Status & Debug -->
         <text name="mdm_header_status"           text="Status" />

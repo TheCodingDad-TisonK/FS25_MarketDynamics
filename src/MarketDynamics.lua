@@ -37,6 +37,8 @@ function MarketDynamics.new(modDir, modName)
         eventsEnabled        = true,   -- When false, WorldEventSystem skips probability rolls
         eventFrequency       = 1.0,   -- Probability scale: 0.4=Rare, 1.0=Normal, 2.0=Frequent
         futuresPenalty       = 0.15,  -- Default penalty fraction on unfulfilled contracts
+        showEventNotifications = true, -- Show YesNo dialog when a new event fires
+        showContractHUD       = true,  -- Show custom HUD for active contracts
         disabledEvents       = {},    -- { [eventId] = true } — events that won't roll
         eventCustomFillTypes = {},    -- { [eventId] = { fillTypeName, ... } }
     }
@@ -140,6 +142,13 @@ end
 -- Mouse event pass-through
 function MarketDynamics:mouseEvent(posX, posY, isDown, isUp, button, eventUsed)
     if not self.isActive then return end
+    if g_MDMHud then
+        if button == Input.MOUSE_BUTTON_WHEEL_UP or button == Input.MOUSE_BUTTON_WHEEL_DOWN then
+            g_MDMHud:scrollEvent(posX, posY, button)
+        else
+            g_MDMHud:mouseEvent(posX, posY, isDown, isUp, button)
+        end
+    end
     if self.settingsPanel then
         self.settingsPanel:onMouseEvent(posX, posY, isDown, isUp, button, eventUsed)
     end
@@ -170,7 +179,52 @@ function MarketDynamics:delete()
     self.isActive = false
     MDMAdminCommands_remove()
     MDMDialogLoader.cleanup()
+    if g_MDMHud then
+        g_MDMHud:delete()
+    end
     MDMLog.info("MarketDynamics: deleted")
+end
+
+-- ---------------------------------------------------------------------------
+-- UI Helpers
+-- ---------------------------------------------------------------------------
+
+---Shows a YesNoDialog when a world event starts.
+---@param eventListString string Concatenated list of event names.
+function MarketDynamics:showEventNotification(eventListString)
+    -- If eventListString is not a string (e.g. nil or self from addTimer), 
+    -- try to use the stored pending name.
+    if type(eventListString) ~= "string" then
+        eventListString = self.pendingEventNotificationName
+    end
+    self.pendingEventNotificationName = nil
+
+    MDMLog.info("MarketDynamics:showEventNotification triggered for: " .. tostring(eventListString))
+    
+    if not eventListString or eventListString == "" then
+        MDMLog.warn("MarketDynamics: notification triggered but event name is nil/empty")
+        return
+    end
+
+    if not self.settings.showEventNotifications then 
+        MDMLog.info("MarketDynamics: notifications disabled in settings")
+        return 
+    end
+    -- Guard against dedicated server (no GUI)
+    if g_client == nil or g_gui == nil then 
+        MDMLog.info("MarketDynamics: g_client or g_gui is nil")
+        return 
+    end
+
+    local text = string.format(g_i18n:getText("mdm_msg_event_started") or "A new world event has started: %s\n\nWould you like to open the Market Screen to see the impact?", eventListString)
+    local title = g_i18n:getText("mdm_screen_title") or "Market Dynamics"
+
+    MDMLog.info("MarketDynamics: calling YesNoDialog.show")
+    YesNoDialog.show(function(yes)
+        if yes then
+            MDMMarketScreen.show()
+        end
+    end, nil, text, title)
 end
 
 -- ---------------------------------------------------------------------------

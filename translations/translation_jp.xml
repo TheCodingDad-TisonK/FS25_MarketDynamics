@@ -28,16 +28,28 @@
         <text name="mdm_screen_tab_events" text="イベント"/>
         <text name="mdm_screen_tab_contracts" text="契約"/>
         <text name="mdm_screen_commodities" text="商品"/>
+		<text name="mdm_screen_events_hdr" text="アクティブイベント"/>
+		<text name="mdm_screen_contracts_hdr" text="先物契約"/>
+		<text name="mdm_screen_col_crop" text="作物"/>
+		<text name="mdm_screen_col_price" text="価格"/>
+		<text name="mdm_screen_col_change" text="変動"/>
+		<text name="mdm_screen_col_event" text="イベント"/>
         <text name="mdm_screen_current_price" text="現在の価格"/>
         <text name="mdm_screen_base_price" text="基本価格"/>
+		<text name="mdm_screen_change" text="[EN] Change"/>
         <text name="mdm_screen_volatility" text="ボラティリティ"/>
         <text name="mdm_screen_modifiers" text="アクティブなモディファイア"/>
         <text name="mdm_screen_session_trend" text="セッション価格の傾向"/>
         <text name="mdm_screen_collecting" text="データを収集中..."/>
         <text name="mdm_screen_select_crop" text="商品を選択してください"/>
         <text name="mdm_screen_no_events" text="市場は穏やかだ。アクティブなイベントはありません。"/>
-		<text name="mdm_screen_col_intensity" text="[EN] Intensity"/>
-		<text name="mdm_screen_col_time_left" text="[EN] Time Left"/>
+		<text name="mdm_screen_col_intensity" text="強度"/>
+		<text name="mdm_screen_col_time_left" text="残り時間"/>
+		<text name="mdm_screen_col_qty" text="数量"/>
+		<text name="mdm_screen_col_locked" text="固定済"/>
+		<text name="mdm_screen_col_delivered" text="納入済"/>
+		<text name="mdm_screen_col_deadline" text="期限"/>
+		<text name="mdm_screen_col_status" text="ステータス"/>
         <text name="mdm_screen_new_contract" text="Alt+F: 新しい契約"/>
         <text name="mdm_screen_no_contracts" text="まだ契約はありません。 Alt+F を押して作成します。"/>
         <text name="mdm_screen_at_risk" text="危険にさらされています"/>
@@ -49,12 +61,14 @@
         <text name="mdm_futures_fulfill" text="満たされた"/>
         <text name="mdm_futures_defaulted" text="不履行"/>
         <text name="mdm_futures_active" text="アクティブ"/>
+		<text name="mdm_settled" text="[EN] Settled"/>
         <text name="mdm_futures_delivery_label" text="配達"/>
         <text name="mdm_futures_locked_label" text="ロック価格"/>
         <text name="mdm_futures_quantity_label" text="数量(L)"/>
         <text name="mdm_futures_bc_disabled" text="先物無効 — BetterContracts モード有効"/>
         <text name="mdm_futures_created" text="契約書が作成されました!"/>
         <text name="mdm_futures_no_contracts" text="まだ契約はありません"/>
+		<text name="mdm_futures_create" text="[EN] New Contract"/>
         <text name="mdm_dialog_summary" text="契約概要"/>
         <text name="mdm_dialog_unit_label"    text="Time Unit" />
         <text name="mdm_unit_game_days"       text="In-Game Days" />
@@ -124,11 +138,21 @@
 		<text name="mdm_price_volatility_tooltip" text="[EN] How wildly prices swing intraday and day-to-day. Low=0.5x, Normal=1x, High=1.5x, Extreme=2x."/>
 		<text name="mdm_events_enabled" text="[EN] World Events"/>
 		<text name="mdm_events_enabled_tooltip" text="[EN] Enable or disable world events. Prices still fluctuate when events are off."/>
+		<text name="mdm_header_world_events" text="[EN] World Events"/>
 		<text name="mdm_event_frequency" text="[EN] Event Frequency"/>
 		<text name="mdm_event_frequency_tooltip" text="[EN] How often events occur. Rare=0.4x, Normal=1x, Frequent=2x the base probability per check."/>
 		<text name="mdm_header_futures" text="[EN] Futures Contracts"/>
 		<text name="mdm_default_penalty" text="[EN] Default Penalty"/>
 		<text name="mdm_default_penalty_tooltip" text="[EN] Penalty on the undelivered contract value when a deadline is missed."/>
+		<text name="mdm_penalty_low" text="[EN] Low (8%)"/>
+		<text name="mdm_penalty_normal" text="[EN] Normal (15%)"/>
+		<text name="mdm_penalty_high" text="[EN] High (25%)"/>
+		<text name="mdm_header_interface" text="[EN] Interface"/>
+		<text name="mdm_show_event_notifications" text="[EN] Event Notifications"/>
+		<text name="mdm_show_event_notifications_tooltip" text="[EN] Show a confirmation dialog when a new world event begins."/>
+		<text name="mdm_show_contract_hud" text="[EN] Contract HUD"/>
+		<text name="mdm_show_contract_hud_tooltip" text="[EN] Show an on-screen progress tracker for your active futures contract."/>
+		<text name="mdm_msg_event_started" text="[EN] A new world event has started: %s&amp;#10;&amp;#10;Would you like to open the Market Screen to see the impact?"/>
 		<text name="mdm_header_status" text="[EN] Status"/>
 		<text name="mdm_status_version" text="[EN] Version:             —"/>
 		<text name="mdm_status_events" text="[EN] Active Events:       —"/>

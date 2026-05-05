@@ -38,8 +38,9 @@ function WorldEventSystem.new()
     -- { [id] = event descriptor (with lastFiredAt added at registration) }
     self.registry = {}
     -- { [id] = { event, endsAt, intensity } }  — currently active events
-    self.active   = {}
-    self.timer    = 0
+    self.active        = {}
+    self.timer         = 0
+    self.isInitialized = false
 
     MDMLog.info("WorldEventSystem initialized")
     return self
@@ -175,6 +176,13 @@ function WorldEventSystem:forceFireEvent(id, intensity)
         UPIntegration.onWorldEventFired(id, intensity, duration)
     end
 
+    -- Show notification if this is a local player (Host/SP)
+    if g_client ~= nil and g_MarketDynamics then
+        local name = (event.nameKey and g_i18n:getText(event.nameKey)) or event.name or id
+        g_MarketDynamics.pendingEventNotificationName = name
+        addTimer(1000, "showEventNotification", g_MarketDynamics)
+    end
+
     return true, nil
 end
 
@@ -230,6 +238,14 @@ function WorldEventSystem:_fireEvent(event, now)
     end
 
     UPIntegration.onWorldEventFired(event.id, intensity, duration)
+
+    -- Show notification if this is a local player (Host/SP)
+    if g_client ~= nil and g_MarketDynamics then
+        local desc = self.registry[event.id]
+        local name = (desc and desc.nameKey and g_i18n:getText(desc.nameKey)) or (desc and desc.name) or event.id
+        g_MarketDynamics.pendingEventNotificationName = name
+        addTimer(1000, "showEventNotification", g_MarketDynamics)
+    end
 end
 
 -- Expire an active event: call onExpire, remove from active table.

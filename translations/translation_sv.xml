@@ -28,16 +28,28 @@
         <text name="mdm_screen_tab_events" text="Händelser"/>
         <text name="mdm_screen_tab_contracts" text="Kontrakt"/>
         <text name="mdm_screen_commodities" text="HANDELSVAROR"/>
+		<text name="mdm_screen_events_hdr" text="AKTIVA HÄNDELSER"/>
+		<text name="mdm_screen_contracts_hdr" text="TERMINKONTRAKT"/>
+		<text name="mdm_screen_col_crop" text="Gröda"/>
+		<text name="mdm_screen_col_price" text="Pris"/>
+		<text name="mdm_screen_col_change" text="Ändring"/>
+		<text name="mdm_screen_col_event" text="Händelse"/>
         <text name="mdm_screen_current_price" text="Aktuellt pris"/>
         <text name="mdm_screen_base_price" text="Baspris"/>
+		<text name="mdm_screen_change" text="[EN] Change"/>
         <text name="mdm_screen_volatility" text="Flyktighet"/>
         <text name="mdm_screen_modifiers" text="Aktiva modifierare"/>
         <text name="mdm_screen_session_trend" text="Session Pris Trend"/>
         <text name="mdm_screen_collecting" text="Samlar in data..."/>
         <text name="mdm_screen_select_crop" text="Välj en vara"/>
         <text name="mdm_screen_no_events" text="Marknaderna är lugna. Inga aktiva händelser."/>
-		<text name="mdm_screen_col_intensity" text="[EN] Intensity"/>
-		<text name="mdm_screen_col_time_left" text="[EN] Time Left"/>
+		<text name="mdm_screen_col_intensity" text="Intensitet"/>
+		<text name="mdm_screen_col_time_left" text="Tid kvar"/>
+		<text name="mdm_screen_col_qty" text="Mängd"/>
+		<text name="mdm_screen_col_locked" text="Låst"/>
+		<text name="mdm_screen_col_delivered" text="Levererat"/>
+		<text name="mdm_screen_col_deadline" text="Deadline"/>
+		<text name="mdm_screen_col_status" text="Status"/>
         <text name="mdm_screen_new_contract" text="Alt+F: Nytt kontrakt"/>
         <text name="mdm_screen_no_contracts" text="Inga kontrakt ännu. Tryck på Alt+F för att skapa en."/>
         <text name="mdm_screen_at_risk" text="I RISK"/>
@@ -49,12 +61,14 @@
         <text name="mdm_futures_fulfill" text="Uppfyllt"/>
         <text name="mdm_futures_defaulted" text="Fallerade"/>
         <text name="mdm_futures_active" text="Aktiv"/>
+		<text name="mdm_settled" text="[EN] Settled"/>
         <text name="mdm_futures_delivery_label" text="Leverans"/>
         <text name="mdm_futures_locked_label" text="Låst pris"/>
         <text name="mdm_futures_quantity_label" text="Kvantitet (L)"/>
         <text name="mdm_futures_bc_disabled" text="Futures inaktiverad — BetterContracts-läget aktivt"/>
         <text name="mdm_futures_created" text="Kontrakt skapat!"/>
         <text name="mdm_futures_no_contracts" text="Inga kontrakt ännu"/>
+		<text name="mdm_futures_create" text="[EN] New Contract"/>
         <text name="mdm_dialog_summary" text="Kontraktssammanfattning"/>
         <text name="mdm_dialog_unit_label"    text="Time Unit" />
         <text name="mdm_unit_game_days"       text="In-Game Days" />
@@ -124,11 +138,21 @@
 		<text name="mdm_price_volatility_tooltip" text="[EN] How wildly prices swing intraday and day-to-day. Low=0.5x, Normal=1x, High=1.5x, Extreme=2x."/>
 		<text name="mdm_events_enabled" text="[EN] World Events"/>
 		<text name="mdm_events_enabled_tooltip" text="[EN] Enable or disable world events. Prices still fluctuate when events are off."/>
+		<text name="mdm_header_world_events" text="[EN] World Events"/>
 		<text name="mdm_event_frequency" text="[EN] Event Frequency"/>
 		<text name="mdm_event_frequency_tooltip" text="[EN] How often events occur. Rare=0.4x, Normal=1x, Frequent=2x the base probability per check."/>
 		<text name="mdm_header_futures" text="[EN] Futures Contracts"/>
 		<text name="mdm_default_penalty" text="[EN] Default Penalty"/>
 		<text name="mdm_default_penalty_tooltip" text="[EN] Penalty on the undelivered contract value when a deadline is missed."/>
+		<text name="mdm_penalty_low" text="[EN] Low (8%)"/>
+		<text name="mdm_penalty_normal" text="[EN] Normal (15%)"/>
+		<text name="mdm_penalty_high" text="[EN] High (25%)"/>
+		<text name="mdm_header_interface" text="[EN] Interface"/>
+		<text name="mdm_show_event_notifications" text="[EN] Event Notifications"/>
+		<text name="mdm_show_event_notifications_tooltip" text="[EN] Show a confirmation dialog when a new world event begins."/>
+		<text name="mdm_show_contract_hud" text="[EN] Contract HUD"/>
+		<text name="mdm_show_contract_hud_tooltip" text="[EN] Show an on-screen progress tracker for your active futures contract."/>
+		<text name="mdm_msg_event_started" text="[EN] A new world event has started: %s&amp;#10;&amp;#10;Would you like to open the Market Screen to see the impact?"/>
 		<text name="mdm_header_status" text="[EN] Status"/>
 		<text name="mdm_status_version" text="[EN] Version:             —"/>
 		<text name="mdm_status_events" text="[EN] Active Events:       —"/>

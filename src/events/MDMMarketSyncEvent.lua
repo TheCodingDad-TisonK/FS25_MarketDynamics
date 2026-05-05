@@ -106,14 +106,36 @@ function MDMMarketSyncEvent:run(connection)
     end
 
     if g_MarketDynamics.worldEvents then
+        -- Detect new events by comparing against current active list
+        local oldActive = {}
+        for id, _ in pairs(g_MarketDynamics.worldEvents.active) do
+            oldActive[id] = true
+        end
+
         -- Clear old events
         for id, _ in pairs(g_MarketDynamics.worldEvents.active) do
             g_MarketDynamics.worldEvents:_expireEvent(id, true)
         end
         
         -- Load new events
+        local newEventNames = {}
         for _, e in ipairs(self.activeEvents) do
             g_MarketDynamics.worldEvents:loadActiveEvent(e.id, e.endsAt, e.intensity, e.extraData)
+            if g_MarketDynamics.worldEvents.isInitialized and not oldActive[e.id] then
+                local desc = g_MarketDynamics.worldEvents.registry[e.id]
+                local name = (desc and desc.nameKey and g_i18n:getText(desc.nameKey)) or (desc and desc.name) or e.id
+                table.insert(newEventNames, name)
+            end
+        end
+        
+        g_MarketDynamics.worldEvents.isInitialized = true
+
+        -- Show notification if we have new events (clients only)
+        if #newEventNames > 0 then
+            local names = table.concat(newEventNames, ", ")
+            g_MarketDynamics.pendingEventNotificationName = names
+            -- Add a short delay (e.g. 1s) to ensure we're not colliding with other sync dialogs
+            addTimer(1000, "showEventNotification", g_MarketDynamics)
         end
     end
     

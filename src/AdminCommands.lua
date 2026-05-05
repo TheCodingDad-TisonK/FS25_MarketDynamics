@@ -66,6 +66,10 @@ local function cmdEvent(self, eventId)
     local ok, err = g_MarketDynamics.worldEvents:forceFireEvent(eventId, 1.0)
     if ok then
         print("[MDM] Fired event '" .. eventId .. "' at full intensity")
+        -- Sync to clients (also triggers the event notification dialog on the host)
+        if MDMMarketSyncEvent then
+            MDMMarketSyncEvent.sendToClients()
+        end
     else
         print("[MDM] Failed: " .. (err or "unknown error"))
     end

@@ -423,6 +423,10 @@ function MDMEventSettingsDialog:_handleForce(rowIndex)
         MDMLog.info("MDMEventSettingsDialog: force-fired '" .. entry.id .. "'")
     end
 
+    if MDMMarketSyncEvent then
+        MDMMarketSyncEvent.sendToClients()
+    end
+
     self:_refreshEventRows()
 end
 

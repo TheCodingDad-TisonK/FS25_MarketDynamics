@@ -12,7 +12,7 @@
 		<text name="mdm_event_cold_snap" text="[EN] Cold Snap"/>
 		<text name="mdm_event_financial_panic" text="[EN] Financial Panic"/>
 		<text name="mdm_event_protein_premium" text="[EN] Protein Premium Surge"/>
-        <text name="mdm_hud_title" text="Markt kijken"/>
+        <text name="mdm_hud_title" text="Actief contract"/>
         <text name="mdm_hud_active_events" text="Actieve evenementen"/>
         <text name="mdm_hud_no_events" text="Markten stabiel"/>
         <text name="mdm_hud_event_mild" text="Mild"/>
@@ -28,16 +28,28 @@
         <text name="mdm_screen_tab_events" text="Evenementen"/>
         <text name="mdm_screen_tab_contracts" text="Contracten"/>
         <text name="mdm_screen_commodities" text="GRONDSTOFFEN"/>
+		<text name="mdm_screen_events_hdr" text="ACTIEVE EVENEMENTEN"/>
+		<text name="mdm_screen_contracts_hdr" text="TERMIJNCONTRACTEN"/>
+		<text name="mdm_screen_col_crop" text="Gewas"/>
+		<text name="mdm_screen_col_price" text="Prijs"/>
+		<text name="mdm_screen_col_change" text="Verschil"/>
+		<text name="mdm_screen_col_event" text="Evenement"/>
         <text name="mdm_screen_current_price" text="Huidige prijs"/>
         <text name="mdm_screen_base_price" text="Basisprijs"/>
+		<text name="mdm_screen_change" text="Verschil"/>
         <text name="mdm_screen_volatility" text="Wisselvalligheid"/>
         <text name="mdm_screen_modifiers" text="Actieve modificatoren"/>
         <text name="mdm_screen_session_trend" text="Sessieprijstrend"/>
         <text name="mdm_screen_collecting" text="Gegevens verzamelen..."/>
         <text name="mdm_screen_select_crop" text="Selecteer een artikel"/>
         <text name="mdm_screen_no_events" text="De markten zijn rustig. Geen actieve evenementen."/>
-		<text name="mdm_screen_col_intensity" text="[EN] Intensity"/>
-		<text name="mdm_screen_col_time_left" text="[EN] Time Left"/>
+		<text name="mdm_screen_col_intensity" text="Intensiteit"/>
+		<text name="mdm_screen_col_time_left" text="Resterende tijd"/>
+		<text name="mdm_screen_col_qty" text="Hoev."/>
+		<text name="mdm_screen_col_locked" text="Vast"/>
+		<text name="mdm_screen_col_delivered" text="Geleverd"/>
+		<text name="mdm_screen_col_deadline" text="Deadline"/>
+		<text name="mdm_screen_col_status" text="Status"/>
         <text name="mdm_screen_new_contract" text="Alt+F: Nieuw contract"/>
         <text name="mdm_screen_no_contracts" text="Nog geen contracten. Druk op Alt+F om er een te maken."/>
         <text name="mdm_screen_at_risk" text="IN RISICO"/>
@@ -49,12 +61,14 @@
         <text name="mdm_futures_fulfill" text="Vervuld"/>
         <text name="mdm_futures_defaulted" text="In gebreke gebleven"/>
         <text name="mdm_futures_active" text="Actief"/>
+		<text name="mdm_settled" text="[EN] Settled"/>
         <text name="mdm_futures_delivery_label" text="Levering"/>
         <text name="mdm_futures_locked_label" text="Vergrendelde prijs"/>
         <text name="mdm_futures_quantity_label" text="Hoeveelheid (L)"/>
         <text name="mdm_futures_bc_disabled" text="Futures uitgeschakeld — BetterContracts-modus actief"/>
         <text name="mdm_futures_created" text="Contract aangemaakt!"/>
         <text name="mdm_futures_no_contracts" text="Nog geen contracten"/>
+		<text name="mdm_futures_create" text="[EN] New Contract"/>
         <text name="mdm_dialog_summary" text="Contractsamenvatting"/>
         <text name="mdm_dialog_unit_label"    text="Time Unit" />
         <text name="mdm_unit_game_days"       text="In-Game Days" />
@@ -124,15 +138,27 @@
 		<text name="mdm_price_volatility_tooltip" text="[EN] How wildly prices swing intraday and day-to-day. Low=0.5x, Normal=1x, High=1.5x, Extreme=2x."/>
 		<text name="mdm_events_enabled" text="[EN] World Events"/>
 		<text name="mdm_events_enabled_tooltip" text="[EN] Enable or disable world events. Prices still fluctuate when events are off."/>
+		<text name="mdm_header_world_events" text="[EN] World Events"/>
 		<text name="mdm_event_frequency" text="[EN] Event Frequency"/>
 		<text name="mdm_event_frequency_tooltip" text="[EN] How often events occur. Rare=0.4x, Normal=1x, Frequent=2x the base probability per check."/>
 		<text name="mdm_header_futures" text="[EN] Futures Contracts"/>
 		<text name="mdm_default_penalty" text="[EN] Default Penalty"/>
 		<text name="mdm_default_penalty_tooltip" text="[EN] Penalty on the undelivered contract value when a deadline is missed."/>
+		<text name="mdm_penalty_low" text="[EN] Low (8%)"/>
+		<text name="mdm_penalty_normal" text="[EN] Normal (15%)"/>
+		<text name="mdm_penalty_high" text="[EN] High (25%)"/>
 		<text name="mdm_header_status" text="[EN] Status"/>
 		<text name="mdm_status_version" text="[EN] Version:             —"/>
-		<text name="mdm_status_events" text="[EN] Active Events:       —"/>
-		<text name="mdm_status_bc" text="[EN] FuturesMission:      —"/>
+
+		<!-- Interface -->
+		<text name="mdm_header_interface"           text="Interface" />
+		<text name="mdm_show_event_notifications"   text="Meldingen van evenementen" />
+		<text name="mdm_show_event_notifications_tooltip" text="Toon een bevestigingsvenster wanneer een nieuw wereldevenement begint." />
+		<text name="mdm_show_contract_hud"           text="Contract HUD" />
+		<text name="mdm_show_contract_hud_tooltip"   text="Toon een voortgangsmeter op het scherm voor je actieve termijncontract." />
+		<text name="mdm_msg_event_started"          text="Een nieuw wereldevenement is begonnen: %s&#10;&#10;Wilt u het marktscherm openen om de impact te zien?" />
+
+		<text name="mdm_status_events" text="[EN] Active Events:       —"/>		<text name="mdm_status_bc" text="[EN] FuturesMission:      —"/>
 		<text name="mdm_status_up" text="[EN] UsedPlus:            —"/>
 		<text name="mdm_header_debug" text="[EN] Debug"/>
 		<text name="mdm_debug_logging" text="[EN] Debug Logging"/>
