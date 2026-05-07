@@ -221,6 +221,8 @@
         <text name="mdm_header_futures"          text="Futures Contracts" />
         <text name="mdm_default_penalty"         text="Default Penalty" />
         <text name="mdm_default_penalty_tooltip" text="Penalty on the undelivered contract value when a deadline is missed." />
+        <text name="mdm_use_real_days"         text="Delivery Time Unit (Real Days)" />
+        <text name="mdm_use_real_days_tooltip"  text="Off = In-Game Days. On = Real Days (best-effort, tied to time scale at contract creation)." />
         <text name="mdm_penalty_low"             text="Low (8%)" />
         <text name="mdm_penalty_normal"          text="Normal (15%)" />
         <text name="mdm_penalty_high"            text="High (25%)" />

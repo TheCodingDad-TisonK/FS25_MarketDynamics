@@ -130,6 +130,7 @@ function MarketSerializer:save(coordinator)
         setXMLFloat(xmlFile, "marketDynamics.settings#futuresPenalty", s.futuresPenalty or 0.15)
         setXMLBool (xmlFile, "marketDynamics.settings#showEventNotifications", s.showEventNotifications ~= false)
         setXMLBool (xmlFile, "marketDynamics.settings#showContractHUD",       s.showContractHUD       ~= false)
+        setXMLBool (xmlFile, "marketDynamics.settings#useRealDays",           s.useRealDays           == true)
 
         -- Disabled events: { [eventId] = true }
         local de = s.disabledEvents or {}
@@ -319,6 +320,9 @@ function MarketSerializer:load(coordinator)
 
         local showContractHUD = getXMLBool(xmlFile, "marketDynamics.settings#showContractHUD")
         if showContractHUD ~= nil then s.showContractHUD = showContractHUD end
+
+        local useRealDays = getXMLBool(xmlFile, "marketDynamics.settings#useRealDays")
+        if useRealDays ~= nil then s.useRealDays = useRealDays end
 
         -- Disabled events
         s.disabledEvents = {}

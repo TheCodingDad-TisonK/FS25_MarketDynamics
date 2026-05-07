@@ -46,7 +46,8 @@ function MDMSettingsSyncEvent:writeStream(streamId, connection)
     streamWriteFloat32(streamId, s.futuresPenalty or 0.15)
     streamWriteBool(streamId, s.showEventNotifications ~= false)
     streamWriteBool(streamId, s.showContractHUD ~= false)
-    
+    streamWriteBool(streamId, s.useRealDays == true)
+
     -- Disabled events
     local de = s.disabledEvents or {}
     local deList = {}
@@ -82,6 +83,7 @@ function MDMSettingsSyncEvent:readStream(streamId, connection)
         futuresPenalty = streamReadFloat32(streamId),
         showEventNotifications = streamReadBool(streamId),
         showContractHUD = streamReadBool(streamId),
+        useRealDays = streamReadBool(streamId),
         disabledEvents = {},
         eventCustomFillTypes = {},
     }

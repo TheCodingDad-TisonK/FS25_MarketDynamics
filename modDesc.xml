@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <modDesc descVersion="106">
     <author>TisonK &amp; LeGrizzly</author>
-    <version>1.1.9.3</version>
+    <version>1.1.9.4</version>
     <title>
         <en>Market Dynamics</en>
     </title>
@@ -23,6 +23,7 @@
         <sourceFile filename="src/AdminCommands.lua" />
         <sourceFile filename="src/BCIntegration.lua" />
         <sourceFile filename="src/UPIntegration.lua" />
+        <sourceFile filename="src/RWEIntegration.lua" />
         <sourceFile filename="src/MDMEventConfig.lua" />
         <sourceFile filename="src/MDMHUD.lua" />
         <sourceFile filename="src/gui/SettingsUI.lua" />
