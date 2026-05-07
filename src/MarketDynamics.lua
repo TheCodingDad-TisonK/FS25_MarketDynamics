@@ -39,6 +39,7 @@ function MarketDynamics.new(modDir, modName)
         futuresPenalty       = 0.15,  -- Default penalty fraction on unfulfilled contracts
         showEventNotifications = true, -- Show YesNo dialog when a new event fires
         showContractHUD       = true,  -- Show custom HUD for active contracts
+        useRealDays          = false, -- When true, contract delivery windows track real-world time
         disabledEvents       = {},    -- { [eventId] = true } — events that won't roll
         eventCustomFillTypes = {},    -- { [eventId] = { fillTypeName, ... } }
     }
@@ -52,6 +53,8 @@ function MarketDynamics.new(modDir, modName)
     -- Expose BCIntegration so external mods (e.g. BetterContracts) can reach it via
     -- g_MarketDynamics.bcIntegration without depending on the global table name.
     self.bcIntegration = BCIntegration
+
+    self.rweIntegration = MDMRWEIntegration.new(self.marketEngine)
 
     local modInfo = g_modManager:getModByName(modName)
     MDMLog.info("MarketDynamics created — v" .. (modInfo and modInfo.version or "?"))
@@ -83,6 +86,9 @@ function MarketDynamics:onMissionLoaded(mission)
         MDMDialogLoader.register("MDMEventFillTypeDialog",   MDMEventFillTypeDialog,   "xml/gui/MDMEventFillTypeDialog.xml")
         MDMDialogLoader.register("MDMBrowseFillTypesDialog", MDMBrowseFillTypesDialog, "xml/gui/MDMBrowseFillTypesDialog.xml")
     end
+
+    -- Detect optional companion mods
+    self.rweIntegration:detect()
 
     MDMLog.info("MarketDynamics: mission loaded, system active")
 end
@@ -118,10 +124,12 @@ function MarketDynamics:update(dt)
     if not self.isActive then return end
     if g_currentMission and g_currentMission.time < 1000 then return end -- wait 1 second for session sync
 
-    self.marketEngine:update(dt)     -- intraday and daily price ticks
-    self.worldEvents:update(dt)      -- event expiry and probability rolls
-    self.futuresMarket:checkExpiry() -- settle contracts past delivery date
-    BCIntegration.update()           -- expire BC supply-spike modifiers
+    self.marketEngine:update(dt)              -- intraday and daily price ticks
+    self.worldEvents:update(dt)               -- event expiry and probability rolls
+    self.rweIntegration:update(dt)            -- sync RWE world events + CS stress → price modifiers
+    self.futuresMarket:checkExpiry()          -- settle contracts past delivery date
+    self.futuresMarket:checkTimeScaleDrift()  -- warn if timeScale changed mid real-day contract
+    BCIntegration.update()                    -- expire BC supply-spike modifiers
     
     if self.settingsPanel then
         self.settingsPanel:update(dt)
@@ -177,6 +185,7 @@ end
 
 function MarketDynamics:delete()
     self.isActive = false
+    self.rweIntegration:cleanup()
     MDMAdminCommands_remove()
     MDMDialogLoader.cleanup()
     if g_MDMHud then

@@ -700,13 +700,13 @@ function MDMMarketScreen:openContractDialog()
     MDMDialogLoader.show("MDMContractDialog", "setData", {
         commodities = self.commodities,
         selectedIdx = self.selectedCropIndex,
-        onConfirmed = function(crop, qty, delivDays)
-            self:_onContractConfirmed(crop, qty, delivDays)
+        onConfirmed = function(crop, qty, delivDays, isRealDays, createdTimeScale)
+            self:_onContractConfirmed(crop, qty, delivDays, isRealDays, createdTimeScale)
         end,
     })
 end
 
-function MDMMarketScreen:_onContractConfirmed(crop, qty, delivDays)
+function MDMMarketScreen:_onContractConfirmed(crop, qty, delivDays, isRealDays, createdTimeScale)
     if not g_MarketDynamics or not g_MarketDynamics.futuresMarket then return end
     if not g_localPlayer or not g_localPlayer.farmId then return end
 
@@ -714,12 +714,14 @@ function MDMMarketScreen:_onContractConfirmed(crop, qty, delivDays)
     local deliveryTimeMs = now + (delivDays * 24 * 60 * 60000)
 
     MDMContractRequestEvent.sendToServer(MDMContractRequestEvent.ACTION_CREATE, {
-        farmId         = g_localPlayer.farmId,
-        fillTypeIndex  = crop.idx,
-        fillTypeName   = crop.title,
-        quantity       = qty,
-        lockedPrice    = crop.current,
-        deliveryTimeMs = deliveryTimeMs,
+        farmId           = g_localPlayer.farmId,
+        fillTypeIndex    = crop.idx,
+        fillTypeName     = crop.title,
+        quantity         = qty,
+        lockedPrice      = crop.current,
+        deliveryTimeMs   = deliveryTimeMs,
+        isRealDays       = isRealDays or false,
+        createdTimeScale = createdTimeScale or 1,
     })
 
     MDMLog.info(string.format("MarketScreen: sent contract request — %s %dL @ $%.2f deliver in %dd",

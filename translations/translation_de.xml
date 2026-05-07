@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <l10n>
     <texts>
 
@@ -143,6 +143,8 @@
 		<text name="mdm_header_futures" text="[EN] Futures Contracts"/>
 		<text name="mdm_default_penalty" text="[EN] Default Penalty"/>
 		<text name="mdm_default_penalty_tooltip" text="[EN] Penalty on the undelivered contract value when a deadline is missed."/>
+		<text name="mdm_use_real_days"         text="[EN] Delivery Time Unit (Real Days)"/>
+		<text name="mdm_use_real_days_tooltip"  text="[EN] Off = In-Game Days. On = Real Days (best-effort, tied to time scale at contract creation)."/>
 		<text name="mdm_penalty_low" text="[EN] Low (8%)"/>
 		<text name="mdm_penalty_normal" text="[EN] Normal (15%)"/>
 		<text name="mdm_penalty_high" text="[EN] High (25%)"/>

@@ -56,10 +56,6 @@ function MDMContractDialog.new(target, custom_mt)
     self.qtyBtnTexts = {}
     self.delBtnTexts = {}
 
-    -- Time unit toggle (persistent across all delivery selections)
-    self.delUnitGameText = nil
-    self.delUnitRealText = nil
-
     return self
 end
 
@@ -75,7 +71,6 @@ function MDMContractDialog:setData(params)
     self.selectedDelivDays = 30
     self.isCustomQty       = false
     self.isCustomDel       = false
-    self.isCustomDelReal   = false
 end
 
 -- -----------------------------------------------------------------------
@@ -128,9 +123,6 @@ function MDMContractDialog:onGuiSetupFinished()
     self.delCustomBtn  = self:getDescendantById("dlgDelCustom")
     self.delCustomText = self:getDescendantById("dlgDelCustomText")
 
-    self.delUnitGameText = self:getDescendantById("dlgDelUnitGameText")
-    self.delUnitRealText = self:getDescendantById("dlgDelUnitRealText")
-
     self.qtyBtnTexts = {
         [500]   = self:getDescendantById("dlgQty500Text"),
         [1000]  = self:getDescendantById("dlgQty1000Text"),
@@ -165,7 +157,6 @@ function MDMContractDialog:onOpen()
 
     self:_updateSummary()
     self:_updateButtonStates()
-    self:_updateDelivUnitToggle()
 
     -- Explicit focus prevents FS25 from auto-traversing all focusable elements
     if self.confirmBtn then
@@ -209,18 +200,6 @@ function MDMContractDialog:onQtyCustomClick()
     })
 end
 
-function MDMContractDialog:onToggleGameDays()
-    self.isCustomDelReal = false
-    self:_updateDelivUnitToggle()
-    self:_updateSummary()
-end
-
-function MDMContractDialog:onToggleRealDays()
-    self.isCustomDelReal = true
-    self:_updateDelivUnitToggle()
-    self:_updateSummary()
-end
-
 function MDMContractDialog:onDelivClick(element)
     self.isCustomDel = false
     for days, btn in pairs(self.delBtns) do
@@ -234,13 +213,14 @@ function MDMContractDialog:onDelivClick(element)
 end
 
 function MDMContractDialog:onDelCustomClick()
+    local isRealDays = g_MarketDynamics and g_MarketDynamics.settings and g_MarketDynamics.settings.useRealDays
     MDMDialogLoader.show("MDMCustomInputDialog", "setData", {
         mode = "days",
         currentValue = self.selectedDelivDays,
         onConfirmed = function(val)
             self.isCustomDel = true
             self.selectedDelivDays = val
-            local suffix = self.isCustomDelReal and (g_i18n:getText("mdm_unit_real_days") or "Real Days") or (g_i18n:getText("mdm_unit_game_days") or "Game Days")
+            local suffix = isRealDays and (g_i18n:getText("mdm_unit_real_days") or "Real Days") or (g_i18n:getText("mdm_unit_game_days") or "Game Days")
             if self.delCustomText then self.delCustomText:setText(tostring(val) .. " " .. suffix) end
             self:_updateSummary()
             self:_updateButtonStates()
@@ -255,25 +235,21 @@ function MDMContractDialog:onConfirmClick()
     local cb = self._onConfirmed
     local qty = self.selectedQty
     local delivDays = self.selectedDelivDays
-    
-    -- If real days, we adjust delivDays here or just pass the flag?
-    -- MarketScreen's cb takes (crop, qty, delivDays). Let's adjust delivDays if it's real time.
-    if self.isCustomDelReal and g_currentMission then
-        -- 1 real day = g_currentMission.timeScale game days.
-        -- Wait, a "real day" is a constant amount of real time. The contract runs on Game Time ms.
-        -- So 1 real day = 24 * 60 * 60 * 1000 real ms.
-        -- In game ms, 1 real ms = timeScale game ms.
-        -- So 1 real day = 24 * 60 * 60 * 1000 * timeScale game ms.
-        -- MarketScreen does: deliveryTimeMs = now + (delivDays * 24 * 60 * 60000)
-        -- To make it match real days, we multiply the number of days by timeScale.
-        local ts = g_currentMission.timeScale or 1
+    local isRealDays = g_MarketDynamics and g_MarketDynamics.settings and g_MarketDynamics.settings.useRealDays
+    local ts = (g_currentMission and g_currentMission.timeScale) or 1
+
+    -- Real-days conversion: 1 real day = 86,400,000 real-ms.
+    -- Game time advances at timeScale × real speed, so 1 real day = timeScale game-days.
+    -- MarketScreen computes: deliveryTimeMs = now + (delivDays * 86,400,000 game-ms).
+    -- Multiplying delivDays by timeScale makes that equation anchor to real time.
+    if isRealDays then
         delivDays = delivDays * ts
     end
-    
+
     self:close()
-    
+
     if cb then
-        cb(crop, qty, delivDays)
+        cb(crop, qty, delivDays, isRealDays, ts)
     end
 end
 
@@ -284,15 +260,6 @@ end
 -- -----------------------------------------------------------------------
 -- Internal helpers
 -- -----------------------------------------------------------------------
-
-function MDMContractDialog:_updateDelivUnitToggle()
-    local SEL   = {0.0,  0.83, 0.49, 1.0}
-    local UNSEL = {0.75, 0.75, 0.75, 1.0}
-    local gameC = self.isCustomDelReal and UNSEL or SEL
-    local realC = self.isCustomDelReal and SEL   or UNSEL
-    if self.delUnitGameText then self.delUnitGameText:setTextColor(gameC[1], gameC[2], gameC[3], gameC[4]) end
-    if self.delUnitRealText then self.delUnitRealText:setTextColor(realC[1], realC[2], realC[3], realC[4]) end
-end
 
 function MDMContractDialog:_updateButtonStates()
     local SEL   = {0.0,  0.83, 0.49, 1.0}
@@ -380,9 +347,10 @@ function MDMContractDialog:_updateSummary()
         self.sumLocked:setText(string.format(fmt, lockedPrice * 1000)) 
     end
     if self.sumTotal   then self.sumTotal:setText((g_i18n:getText("mdm_summary_total") or "Total:  $") .. self:_fmtNum(totalValue)) end
-    if self.sumDeadline then 
-        local unit = self.isCustomDelReal and (g_i18n:getText("mdm_unit_real_days") or "real days") or (g_i18n:getText("mdm_unit_game_days") or "game days")
-        self.sumDeadline:setText((g_i18n:getText("mdm_deliver_in") or "Deliver in:   ") .. self.selectedDelivDays .. " " .. unit) 
+    if self.sumDeadline then
+        local isRealDays = g_MarketDynamics and g_MarketDynamics.settings and g_MarketDynamics.settings.useRealDays
+        local unit = isRealDays and (g_i18n:getText("mdm_unit_real_days") or "real days") or (g_i18n:getText("mdm_unit_game_days") or "game days")
+        self.sumDeadline:setText((g_i18n:getText("mdm_deliver_in") or "Deliver in:   ") .. self.selectedDelivDays .. " " .. unit)
     end
     if self.sumPenalty  then self.sumPenalty:setText(g_i18n:getText("mdm_default_penalty_hint") or "Default penalty: 15% on unfulfilled qty") end
 

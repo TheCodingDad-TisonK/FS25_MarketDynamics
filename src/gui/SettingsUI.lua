@@ -295,13 +295,19 @@ function MDMSettingsUI._addSettingsElements()
 
     _elem.futuresPenalty = MDMSettingsUI._addMulti(
         layout, "onMDMFuturesPenaltyChanged",
-        { 
+        {
             g_i18n:getText("mdm_penalty_low") or "Low (8%)",
             g_i18n:getText("mdm_penalty_normal") or "Normal (15%)",
             g_i18n:getText("mdm_penalty_high") or "High (25%)"
         },
         g_i18n:getText("mdm_default_penalty") or "Default Penalty",
         g_i18n:getText("mdm_default_penalty_tooltip") or "Penalty on the undelivered contract value when a deadline is missed."
+    )
+
+    _elem.useRealDays = MDMSettingsUI._addBinary(
+        layout, "onMDMUseRealDaysChanged",
+        g_i18n:getText("mdm_use_real_days") or "Delivery Time Unit",
+        g_i18n:getText("mdm_use_real_days_tooltip") or "Off = In-Game Days. On = Real Days (best-effort, tied to time scale at contract creation)."
     )
 
     -- ── Interface ─────────────────────────────────────────────────────────
@@ -401,6 +407,11 @@ function MDMSettingsUI._updateSettingsUI()
     if _elem.showContractHUD then
         _elem.showContractHUD:setIsChecked(mdm.settings.showContractHUD ~= false, false, false)
         -- Interface settings are personal, no admin check needed
+    end
+
+    if _elem.useRealDays then
+        _elem.useRealDays:setIsChecked(mdm.settings.useRealDays == true, false, false)
+        _elem.useRealDays:setDisabled(not isAdmin)
     end
 
     if _elem.debugMode then
@@ -524,6 +535,17 @@ function MDMSettingsUI:onMDMShowContractHUDChanged(state)
     if not g_MarketDynamics or not g_MarketDynamics.settings then return end
     g_MarketDynamics.settings.showContractHUD = (state == BinaryOptionElement.STATE_RIGHT)
     MDMLog.info("SettingsUI: showContractHUD = " .. tostring(g_MarketDynamics.settings.showContractHUD))
+    if g_server ~= nil then
+        MDMSettingsSyncEvent.sendToClients()
+    else
+        MDMSettingsSyncEvent.sendToServer()
+    end
+end
+
+function MDMSettingsUI:onMDMUseRealDaysChanged(state)
+    if not g_MarketDynamics or not g_MarketDynamics.settings then return end
+    g_MarketDynamics.settings.useRealDays = (state == BinaryOptionElement.STATE_RIGHT)
+    MDMLog.info("SettingsUI: useRealDays = " .. tostring(g_MarketDynamics.settings.useRealDays))
     if g_server ~= nil then
         MDMSettingsSyncEvent.sendToClients()
     else
