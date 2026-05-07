@@ -55,15 +55,18 @@ function MarketSerializer:save(coordinator)
     local i = 0
     for _, contract in pairs(contracts) do
         local base = "marketDynamics.futures.contract(" .. i .. ")"
-        setXMLInt   (xmlFile, base .. "#id",            contract.id)
-        setXMLInt   (xmlFile, base .. "#farmId",        contract.farmId)
-        setXMLInt   (xmlFile, base .. "#fillTypeIndex", contract.fillTypeIndex)
-        setXMLString(xmlFile, base .. "#fillTypeName",  contract.fillTypeName)
-        setXMLFloat (xmlFile, base .. "#quantity",      contract.quantity)
-        setXMLFloat (xmlFile, base .. "#lockedPrice",   contract.lockedPrice)
-        setXMLFloat (xmlFile, base .. "#deliveryTime",  contract.deliveryTime)
-        setXMLFloat (xmlFile, base .. "#delivered",     contract.delivered)
-        setXMLString(xmlFile, base .. "#status",        contract.status)
+        setXMLInt   (xmlFile, base .. "#id",                contract.id)
+        setXMLInt   (xmlFile, base .. "#farmId",            contract.farmId)
+        setXMLInt   (xmlFile, base .. "#fillTypeIndex",     contract.fillTypeIndex)
+        setXMLString(xmlFile, base .. "#fillTypeName",      contract.fillTypeName)
+        setXMLFloat (xmlFile, base .. "#quantity",          contract.quantity)
+        setXMLFloat (xmlFile, base .. "#lockedPrice",       contract.lockedPrice)
+        setXMLFloat (xmlFile, base .. "#deliveryTime",      contract.deliveryTime)
+        setXMLFloat (xmlFile, base .. "#deliveryStartTime", contract.deliveryStartTime or 0)
+        setXMLFloat (xmlFile, base .. "#delivered",         contract.delivered)
+        setXMLString(xmlFile, base .. "#status",            contract.status)
+        setXMLBool  (xmlFile, base .. "#isRealDays",        contract.isRealDays or false)
+        setXMLFloat (xmlFile, base .. "#createdTimeScale",  contract.createdTimeScale or 1)
         if contract.upDealId then
             setXMLInt(xmlFile, base .. "#upDealId", contract.upDealId)
         end
@@ -204,18 +207,20 @@ function MarketSerializer:load(coordinator)
         if not id then break end
 
         local contract = {
-            id            = id,
-            farmId        = getXMLInt   (xmlFile, base .. "#farmId"),
-            fillTypeIndex = getXMLInt   (xmlFile, base .. "#fillTypeIndex"),
-            fillTypeName  = getXMLString(xmlFile, base .. "#fillTypeName"),
-            quantity      = getXMLFloat (xmlFile, base .. "#quantity"),
-            lockedPrice   = getXMLFloat (xmlFile, base .. "#lockedPrice"),
-            deliveryTime  = getXMLFloat (xmlFile, base .. "#deliveryTime"),
-            deliveryStartTime = getXMLFloat(xmlFile, base .. "#deliveryStartTime") or 0,
-            bcManaged     = getXMLBool  (xmlFile, base .. "#bcManaged") or false,
-            delivered     = getXMLFloat (xmlFile, base .. "#delivered"),
-            status        = getXMLString(xmlFile, base .. "#status"),
-            upDealId      = getXMLInt  (xmlFile, base .. "#upDealId"),
+            id                = id,
+            farmId            = getXMLInt   (xmlFile, base .. "#farmId"),
+            fillTypeIndex     = getXMLInt   (xmlFile, base .. "#fillTypeIndex"),
+            fillTypeName      = getXMLString(xmlFile, base .. "#fillTypeName"),
+            quantity          = getXMLFloat (xmlFile, base .. "#quantity"),
+            lockedPrice       = getXMLFloat (xmlFile, base .. "#lockedPrice"),
+            deliveryTime      = getXMLFloat (xmlFile, base .. "#deliveryTime"),
+            deliveryStartTime = getXMLFloat (xmlFile, base .. "#deliveryStartTime") or 0,
+            bcManaged         = getXMLBool  (xmlFile, base .. "#bcManaged") or false,
+            delivered         = getXMLFloat (xmlFile, base .. "#delivered"),
+            status            = getXMLString(xmlFile, base .. "#status"),
+            upDealId          = getXMLInt   (xmlFile, base .. "#upDealId"),
+            isRealDays        = getXMLBool  (xmlFile, base .. "#isRealDays") or false,
+            createdTimeScale  = getXMLFloat (xmlFile, base .. "#createdTimeScale") or 1,
         }
 
         if coordinator.futuresMarket then

@@ -110,9 +110,10 @@
         <text name="mdm_dialog_qty_label"     text="Contract Quantity" />
         <text name="mdm_dialog_delivery_label" text="Delivery Window" />
         <text name="mdm_dialog_unit_label"    text="Time Unit" />
-        <text name="mdm_unit_game_days"       text="In-Game Days" />
-        <text name="mdm_unit_real_days"       text="Real Days" />
-        <text name="mdm_dialog_no_crops"      text="No market data available yet." />
+        <text name="mdm_unit_game_days"          text="In-Game Days" />
+        <text name="mdm_unit_real_days"          text="Real Days" />
+        <text name="mdm_timescale_drift_warning" text="Time scale changed — real-day contract deadlines may be affected." />
+        <text name="mdm_dialog_no_crops"         text="No market data available yet." />
         <text name="mdm_screen_new_contract_btn" text="New Contract [N]" />
 
         <!-- Contract admin dialog -->

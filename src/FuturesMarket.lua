@@ -26,6 +26,10 @@ function FuturesMarket.new()
     self.contracts  = {}
     self.nextId     = 1
 
+    -- Tracks the last known timeScale so we can detect mid-session changes that
+    -- affect real-days contract deadlines.
+    self._lastKnownTimeScale = nil
+
     MDMLog.info("FuturesMarket initialized")
     return self
 end
@@ -49,6 +53,8 @@ function FuturesMarket:createContract(params)
         deliveryStartTime = now,                   -- can start delivering immediately
         delivered         = 0,                     -- liters delivered so far
         status            = "active",              -- active | fulfilled | defaulted
+        isRealDays        = params.isRealDays or false,
+        createdTimeScale  = params.createdTimeScale or 1,
     }
 
     self.contracts[id] = contract
@@ -100,6 +106,34 @@ function FuturesMarket:checkExpiry()
             end
         end
     end
+end
+
+-- Warn once per timeScale change if any active real-days contracts exist.
+-- Called every frame from MarketDynamics:update(). A perfect fix is impossible
+-- since os.time() is unavailable in FS25 — this at least makes the drift visible.
+function FuturesMarket:checkTimeScaleDrift()
+    local ts = g_currentMission and g_currentMission.timeScale or 1
+    if self._lastKnownTimeScale == nil then
+        self._lastKnownTimeScale = ts
+        return
+    end
+    if ts == self._lastKnownTimeScale then return end
+
+    -- timeScale changed — check if any active real-days contracts are affected
+    for _, contract in pairs(self.contracts) do
+        if contract.status == "active" and contract.isRealDays then
+            MDMLog.warn(string.format(
+                "FuturesMarket: time scale changed (%.0f→%.0f) while real-day contracts are active — deadlines will drift",
+                self._lastKnownTimeScale, ts))
+            if g_localPlayer then
+                local msg = g_i18n:getText("mdm_timescale_drift_warning")
+                    or "Time scale changed — real-day contract deadlines may be affected."
+                g_currentMission:addIngameNotification(FSBaseMission.INGAME_NOTIFICATION_INFO, msg)
+            end
+            break
+        end
+    end
+    self._lastKnownTimeScale = ts
 end
 
 -- Called from the SellingStation delivery hook on every accepted crop sale.

@@ -38,6 +38,8 @@ function MDMContractRequestEvent:writeStream(streamId, connection)
         streamWriteFloat32(streamId, self.params.quantity)
         streamWriteFloat32(streamId, self.params.lockedPrice)
         streamWriteFloat32(streamId, self.params.deliveryTimeMs)
+        streamWriteBool(streamId, self.params.isRealDays or false)
+        streamWriteFloat32(streamId, self.params.createdTimeScale or 1)
     else
         streamWriteInt32(streamId, self.params.contractId)
     end
@@ -47,12 +49,14 @@ function MDMContractRequestEvent:readStream(streamId, connection)
     self.action = streamReadInt8(streamId)
     self.params = {}
     if self.action == MDMContractRequestEvent.ACTION_CREATE then
-        self.params.farmId = streamReadInt32(streamId)
-        self.params.fillTypeIndex = streamReadInt32(streamId)
-        self.params.fillTypeName = streamReadString(streamId)
-        self.params.quantity = streamReadFloat32(streamId)
-        self.params.lockedPrice = streamReadFloat32(streamId)
-        self.params.deliveryTimeMs = streamReadFloat32(streamId)
+        self.params.farmId           = streamReadInt32(streamId)
+        self.params.fillTypeIndex    = streamReadInt32(streamId)
+        self.params.fillTypeName     = streamReadString(streamId)
+        self.params.quantity         = streamReadFloat32(streamId)
+        self.params.lockedPrice      = streamReadFloat32(streamId)
+        self.params.deliveryTimeMs   = streamReadFloat32(streamId)
+        self.params.isRealDays       = streamReadBool(streamId)
+        self.params.createdTimeScale = streamReadFloat32(streamId)
     else
         self.params.contractId = streamReadInt32(streamId)
     end

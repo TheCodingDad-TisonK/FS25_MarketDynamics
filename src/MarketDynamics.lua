@@ -118,10 +118,11 @@ function MarketDynamics:update(dt)
     if not self.isActive then return end
     if g_currentMission and g_currentMission.time < 1000 then return end -- wait 1 second for session sync
 
-    self.marketEngine:update(dt)     -- intraday and daily price ticks
-    self.worldEvents:update(dt)      -- event expiry and probability rolls
-    self.futuresMarket:checkExpiry() -- settle contracts past delivery date
-    BCIntegration.update()           -- expire BC supply-spike modifiers
+    self.marketEngine:update(dt)              -- intraday and daily price ticks
+    self.worldEvents:update(dt)               -- event expiry and probability rolls
+    self.futuresMarket:checkExpiry()          -- settle contracts past delivery date
+    self.futuresMarket:checkTimeScaleDrift()  -- warn if timeScale changed mid real-day contract
+    BCIntegration.update()                    -- expire BC supply-spike modifiers
     
     if self.settingsPanel then
         self.settingsPanel:update(dt)

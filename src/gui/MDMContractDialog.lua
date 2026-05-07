@@ -255,25 +255,20 @@ function MDMContractDialog:onConfirmClick()
     local cb = self._onConfirmed
     local qty = self.selectedQty
     local delivDays = self.selectedDelivDays
-    
-    -- If real days, we adjust delivDays here or just pass the flag?
-    -- MarketScreen's cb takes (crop, qty, delivDays). Let's adjust delivDays if it's real time.
-    if self.isCustomDelReal and g_currentMission then
-        -- 1 real day = g_currentMission.timeScale game days.
-        -- Wait, a "real day" is a constant amount of real time. The contract runs on Game Time ms.
-        -- So 1 real day = 24 * 60 * 60 * 1000 real ms.
-        -- In game ms, 1 real ms = timeScale game ms.
-        -- So 1 real day = 24 * 60 * 60 * 1000 * timeScale game ms.
-        -- MarketScreen does: deliveryTimeMs = now + (delivDays * 24 * 60 * 60000)
-        -- To make it match real days, we multiply the number of days by timeScale.
-        local ts = g_currentMission.timeScale or 1
+    local ts = (g_currentMission and g_currentMission.timeScale) or 1
+
+    -- Real-days conversion: 1 real day = 86,400,000 real-ms.
+    -- Game time advances at timeScale × real speed, so 1 real day = timeScale game-days.
+    -- MarketScreen computes: deliveryTimeMs = now + (delivDays * 86,400,000 game-ms).
+    -- Multiplying delivDays by timeScale makes that equation anchor to real time.
+    if self.isCustomDelReal then
         delivDays = delivDays * ts
     end
-    
+
     self:close()
-    
+
     if cb then
-        cb(crop, qty, delivDays)
+        cb(crop, qty, delivDays, self.isCustomDelReal, ts)
     end
 end
 
