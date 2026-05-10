@@ -85,7 +85,7 @@ function MDMEventFillTypeDialog:onOpen()
     self:_refreshRows()
 
     -- Security: Disable buttons for non-admins
-    local isAdmin = g_currentMission:getIsServer() or g_currentMission.isAdmin
+    local isAdmin = g_currentMission:getIsServer() or g_currentMission.isAdmin or g_currentMission.isMasterUser
     if not isAdmin then
         if self.addBtn then self.addBtn:setDisabled(true) end
         for i = 0, MAX_ROWS - 1 do

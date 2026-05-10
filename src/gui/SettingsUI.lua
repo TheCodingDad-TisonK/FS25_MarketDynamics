@@ -369,7 +369,7 @@ function MDMSettingsUI._updateSettingsUI()
         end
     end
 
-    local isAdmin = g_currentMission:getIsServer() or g_currentMission.isAdmin
+    local isAdmin = g_currentMission:getIsServer() or g_currentMission.isAdmin or g_currentMission.isMasterUser
 
     if _elem.pricesEnabled then
         _elem.pricesEnabled:setIsChecked(mdm.settings.pricesEnabled ~= false, false, false)

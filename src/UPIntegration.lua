@@ -86,8 +86,9 @@ function UPIntegration.save(xmlFile, baseKey)
     local i = 0
     for contractId, upDealId in pairs(_dealIds) do
         local base = baseKey .. ".dealIds.entry(" .. i .. ")"
-        setXMLInt(xmlFile, base .. "#contractId", contractId)
-        setXMLInt(xmlFile, base .. "#upDealId",   upDealId)
+        -- Use modern XMLFile:setInt (v2.1+) and ensure numeric types
+        xmlFile:setInt(base .. "#contractId", tonumber(contractId) or 0)
+        xmlFile:setInt(base .. "#upDealId",   tonumber(upDealId) or 0)
         i = i + 1
     end
 end
@@ -97,11 +98,13 @@ function UPIntegration.load(xmlFile, baseKey)
     _dealIds = {}
     local i = 0
     while true do
-        local base       = baseKey .. ".dealIds.entry(" .. i .. ")"
-        local contractId = getXMLInt(xmlFile, base .. "#contractId")
-        if not contractId then break end
-        local upDealId   = getXMLInt(xmlFile, base .. "#upDealId")
-        if upDealId then
+        local base = baseKey .. ".dealIds.entry(" .. i .. ")"
+        if not xmlFile:hasProperty(base) then break end
+
+        local contractId = xmlFile:getInt(base .. "#contractId")
+        local upDealId   = xmlFile:getInt(base .. "#upDealId")
+        
+        if contractId and upDealId then
             _dealIds[contractId] = upDealId
         end
         i = i + 1

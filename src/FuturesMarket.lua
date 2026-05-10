@@ -98,11 +98,14 @@ function FuturesMarket:checkExpiry()
     local now = MDMUtil.getGameTime()
 
     for id, contract in pairs(self.contracts) do
-        if contract.status == "active" and now >= contract.deliveryTime then
-            if contract.delivered >= contract.quantity then
-                self:_fulfillContract(id)
-            else
-                self:_defaultContract(id)
+        -- Safety: ensure contract.deliveryTime exists and is not zero (corrupt load)
+        if contract.status == "active" and contract.deliveryTime and contract.deliveryTime > 0 then
+            if now >= contract.deliveryTime then
+                if contract.delivered >= contract.quantity then
+                    self:_fulfillContract(id)
+                else
+                    self:_defaultContract(id)
+                end
             end
         end
     end
@@ -314,6 +317,17 @@ function FuturesMarket:adminCancel(contractId)
     if g_server ~= nil then
         MDMContractSyncEvent.sendToClients(MDMContractSyncEvent.SYNC_REMOVE, {id = contractId})
     end
+end
+
+--- Player-initiated forfeit: immediately defaults the contract, applying
+--- the standard penalty rate to the unfulfilled portion.
+function FuturesMarket:playerForfeit(contractId)
+    local contract = self.contracts[contractId]
+    if not contract then return end
+    if contract.status ~= "active" then return end
+    
+    MDMLog.info("FuturesMarket: player forfeited contract #" .. contractId)
+    self:_defaultContract(contractId)
 end
 
 --- Remove a settled (fulfilled or defaulted) contract from the list.

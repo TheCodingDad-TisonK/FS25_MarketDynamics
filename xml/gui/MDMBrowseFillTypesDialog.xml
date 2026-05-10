@@ -16,7 +16,8 @@
             position="0px -64px" size="520px 40px"/>
 
       <!-- Scrollable Area -->
-      <ScrollingLayout profile="fs25_settingsLayout" id="scrollingLayout" position="0px -110px" size="520px 500px">
+      <Slider profile="fs25_slider" id="listSlider" dataElementId="scrollingLayout" position="510px -110px" size="10px 500px" />
+      <ScrollingLayout profile="fs25_settingsLayout" id="scrollingLayout" position="0px -110px" size="510px 500px">
           <!-- Elements added programmatically in Lua -->
       </ScrollingLayout>
 

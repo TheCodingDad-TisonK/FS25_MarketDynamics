@@ -457,18 +457,20 @@ end
 function MDMMarketScreen:onContractRowClick(element)
     if BCIntegration.isEnabled() then return end
 
-    -- Security: Only admins/host can open the admin dialog
-    local isAdmin = g_currentMission:getIsServer() or g_currentMission.isAdmin
-    if not isAdmin then
-        MDMLog.debug("MarketScreen: onContractRowClick ignored — player is not an admin")
-        return
-    end
-
     local index = self.selectedContractIndex
     if index <= 0 then return end
 
     local contract = self.contractData[index]
     if not contract then return end
+
+    -- Security: Allow if Admin OR if the player owns the farm associated with the contract
+    local isAdmin = g_currentMission:getIsServer() or g_currentMission.isAdmin or g_currentMission.isMasterUser
+    local isOwner = g_localPlayer and g_localPlayer.farmId == contract.farmId
+
+    if not isAdmin and not isOwner then
+        MDMLog.debug("MarketScreen: onContractRowClick ignored — player is not an admin or owner")
+        return
+    end
 
     MDMDialogLoader.show("MDMContractAdminDialog", "setData", {
         contract   = contract,

@@ -28,18 +28,22 @@ function MDMEventConfig.load(savegameDir)
     if not savegameDir or savegameDir == "" then return end
 
     local path    = savegameDir .. "/FS25_MarketDynamics_eventConfig.xml"
-    local xmlFile = loadXMLFile("MDMEventConfig", path)
-    if not xmlFile or xmlFile == 0 then return end
+    if not fileExists(path) then return end
+
+    local xmlFile = XMLFile.load("MDMEventConfig", path)
+    if not xmlFile then return end
 
     local settings = g_MarketDynamics and g_MarketDynamics.settings
-    if not settings then delete(xmlFile); return end
+    if not settings then xmlFile:delete(); return end
     settings.eventCustomFillTypes = settings.eventCustomFillTypes or {}
 
     local total = 0
     local i = 0
     while true do
-        local base    = "MDMEventConfig.event(" .. i .. ")"
-        local eventId = getXMLString(xmlFile, base .. "#id")
+        local base = "MDMEventConfig.event(" .. i .. ")"
+        if not xmlFile:hasProperty(base) then break end
+
+        local eventId = xmlFile:getString(base .. "#id")
         if not eventId then break end
 
         -- Only seed if the player hasn't yet configured this event via the UI
@@ -48,7 +52,9 @@ function MDMEventConfig.load(savegameDir)
             local j = 0
             while true do
                 local ftBase = base .. ".fillType(" .. j .. ")"
-                local name   = getXMLString(xmlFile, ftBase .. "#name")
+                if not xmlFile:hasProperty(ftBase) then break end
+
+                local name = xmlFile:getString(ftBase .. "#name")
                 if not name then break end
                 table.insert(settings.eventCustomFillTypes[eventId], name)
                 total = total + 1
@@ -59,7 +65,7 @@ function MDMEventConfig.load(savegameDir)
         i = i + 1
     end
 
-    delete(xmlFile)
+    xmlFile:delete()
     if total > 0 then
         MDMLog.info(string.format("MDMEventConfig: migrated %d fill type(s) from legacy XML config", total))
     end

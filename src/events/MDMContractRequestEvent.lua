@@ -9,6 +9,7 @@ MDMContractRequestEvent.ACTION_CREATE = 1
 MDMContractRequestEvent.ACTION_ADMIN_COMPLETE = 2
 MDMContractRequestEvent.ACTION_ADMIN_CANCEL = 3
 MDMContractRequestEvent.ACTION_ADMIN_DELETE = 4
+MDMContractRequestEvent.ACTION_PLAYER_FORFEIT = 5
 
 function MDMContractRequestEvent.emptyNew()
     return Event.new(MDMContractRequestEvent_mt)
@@ -75,6 +76,8 @@ function MDMContractRequestEvent.execute(action, params)
         fm:adminCancel(params.contractId)
     elseif action == MDMContractRequestEvent.ACTION_ADMIN_DELETE then
         fm:adminDelete(params.contractId)
+    elseif action == MDMContractRequestEvent.ACTION_PLAYER_FORFEIT then
+        fm:playerForfeit(params.contractId)
     end
 end
 
@@ -82,22 +85,28 @@ function MDMContractRequestEvent:run(connection)
     if connection:getIsServer() then return end
 
     local userId = g_currentMission.userManager:getUserIdByConnection(connection)
-    -- Intentionally reject if userId is nil (e.g. connection dropped mid-event)
     local farm = userId ~= nil and g_farmManager:getFarmByUserId(userId) or nil
     local isFarmManager = farm ~= nil and farm:isUserFarmManager(userId)
+    local isAdmin = g_currentMission.userManager:getIsUserAdmin(userId)
 
     if self.action == MDMContractRequestEvent.ACTION_CREATE then
         -- Security: Non-farm-managers can only create contracts for their own farm
-        if not isFarmManager then
+        if not isAdmin and not isFarmManager then
             if farm == nil or self.params.farmId ~= farm.farmId then
                 MDMLog.warn("MDMContractRequestEvent: unauthorized farmId in contract creation from client " .. tostring(userId))
                 return
             end
         end
     else
-        -- Security: Only farm managers can perform admin actions (Complete, Cancel, Delete)
-        if not isFarmManager then
-            MDMLog.warn("MDMContractRequestEvent: unauthorized admin action attempt from client " .. tostring(userId))
+        -- Security: Action on existing contract. 
+        -- Allow if user is Admin OR Farm Manager OR the contract belongs to their farm.
+        local fm = g_MarketDynamics and g_MarketDynamics.futuresMarket
+        local contract = fm and fm.contracts and fm.contracts[self.params.contractId]
+        
+        local isOwner = contract ~= nil and farm ~= nil and contract.farmId == farm.farmId
+
+        if not isAdmin and not isFarmManager and not isOwner then
+            MDMLog.warn("MDMContractRequestEvent: unauthorized action attempt from client " .. tostring(userId))
             return
         end
     end
