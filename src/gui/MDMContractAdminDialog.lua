@@ -96,6 +96,9 @@ function MDMContractAdminDialog:onOpen()
     MDMContractAdminDialog:superClass().onOpen(self)
     self.isOpen = true
     self._isPending = false  -- clear the synchronous pending flag
+
+    self.isAdmin = g_currentMission:getIsServer() or g_currentMission.isAdmin or g_currentMission.isMasterUser
+
     self:_populate()
     if self.admCloseBtn then
         FocusManager:setFocus(self.admCloseBtn)
@@ -115,6 +118,10 @@ end
 function MDMContractAdminDialog:onCompleteClick()
     local c = self.contract
     if not c or c.status ~= "active" then self:close(); return end
+    
+    -- Security: only admins can force complete
+    if not self.isAdmin then return end
+
     MDMContractRequestEvent.sendToServer(MDMContractRequestEvent.ACTION_ADMIN_COMPLETE, { contractId = c.id })
     if self._onComplete then self._onComplete(c.id) end
     self:close()
@@ -124,11 +131,19 @@ function MDMContractAdminDialog:onCancelContractClick()
     local c = self.contract
     if not c then self:close(); return end
     -- Both admCancelBtn (active) and admDeleteBtn (settled) route here.
-    -- Determine the correct network action from the actual contract status.
+    -- Determine the correct network action from the actual contract status and user role.
     if c.status == "active" then
-        MDMContractRequestEvent.sendToServer(MDMContractRequestEvent.ACTION_ADMIN_CANCEL, { contractId = c.id })
+        if self.isAdmin then
+            MDMContractRequestEvent.sendToServer(MDMContractRequestEvent.ACTION_ADMIN_CANCEL, { contractId = c.id })
+        else
+            -- Player initiated forfeit
+            MDMContractRequestEvent.sendToServer(MDMContractRequestEvent.ACTION_PLAYER_FORFEIT, { contractId = c.id })
+        end
     else
-        MDMContractRequestEvent.sendToServer(MDMContractRequestEvent.ACTION_ADMIN_DELETE, { contractId = c.id })
+        -- Only admins can delete settled contracts from the list
+        if self.isAdmin then
+            MDMContractRequestEvent.sendToServer(MDMContractRequestEvent.ACTION_ADMIN_DELETE, { contractId = c.id })
+        end
     end
     if self._onCancel then self._onCancel(c.id) end
     self:close()
@@ -150,6 +165,7 @@ function MDMContractAdminDialog:_populate()
     end
 
     local isActive = (c.status == "active")
+    local isAdmin  = self.isAdmin
 
     -- Left column details
     if self.admCropValue     then self.admCropValue:setText(c.fillTypeName or "?") end
@@ -218,25 +234,34 @@ function MDMContractAdminDialog:_populate()
         self.admSumProgress:setText(string.format(fmt, self:_fmt(delivValue), delivPct))
     end
 
-    -- Show/hide action buttons based on contract status.
-    -- Two separate buttons (Cancel for active, Delete for settled) avoid the
-    -- BoxLayout reflow bug that collapses adjacent buttons when setVisible(false)
-    -- is called on one slot inside fs25_dialogButtonBox.
+    -- Show/hide action buttons based on contract status and user role.
     if isActive then
-        -- Active contract: show Cancel + Complete, hide Delete
-        if self.admCancelBtn  then self.admCancelBtn:setVisible(true)  end
-        if self.admCancelSep  then self.admCancelSep:setVisible(true)  end
+        -- Active contract: show Cancel/Forfeit + Complete (if admin)
+        if self.admCancelBtn then 
+            self.admCancelBtn:setVisible(true)
+            local cancelText = isAdmin and (g_i18n:getText("mdm_adm_btn_cancel") or "Cancel (No Penalty)")
+                                     or (g_i18n:getText("mdm_adm_btn_forfeit") or "Forfeit (Penalty)")
+            self.admCancelBtn:setText(cancelText)
+        end
+        if self.admCancelSep then self.admCancelSep:setVisible(true) end
+        
         if self.admDeleteBtn  then self.admDeleteBtn:setVisible(false) end
         if self.admDeleteSep  then self.admDeleteSep:setVisible(false) end
-        if self.admCompleteBtn then self.admCompleteBtn:setVisible(true);  self.admCompleteBtn:setDisabled(false) end
-        if self.admCompleteSep then self.admCompleteSep:setVisible(true) end
+        
+        if self.admCompleteBtn then 
+            self.admCompleteBtn:setVisible(isAdmin)
+            self.admCompleteBtn:setDisabled(not isAdmin)
+        end
+        if self.admCompleteSep then self.admCompleteSep:setVisible(isAdmin) end
     else
-        -- Settled contract: show Delete only, hide Cancel + Complete
-        if self.admDeleteBtn  then self.admDeleteBtn:setVisible(true)  end
-        if self.admDeleteSep  then self.admDeleteSep:setVisible(true)  end
+        -- Settled contract: show Delete only (if admin)
+        if self.admDeleteBtn then self.admDeleteBtn:setVisible(isAdmin) end
+        if self.admDeleteSep then self.admDeleteSep:setVisible(isAdmin) end
+        
         if self.admCancelBtn  then self.admCancelBtn:setVisible(false) end
         if self.admCancelSep  then self.admCancelSep:setVisible(false) end
-        if self.admCompleteBtn then self.admCompleteBtn:setVisible(false); self.admCompleteBtn:setDisabled(true) end
+        
+        if self.admCompleteBtn then self.admCompleteBtn:setVisible(false) end
         if self.admCompleteSep then self.admCompleteSep:setVisible(false) end
     end
 
@@ -244,9 +269,14 @@ function MDMContractAdminDialog:_populate()
     if self.admActionHint then
         self.admActionHint:setVisible(isActive)
         if isActive then
-            local completeHint = g_i18n:getText("mdm_adm_hint_complete") or "Complete: force full payout now at locked price."
-            local cancelHint   = g_i18n:getText("mdm_adm_hint_cancel") or "Cancel: remove contract — no payout, no penalty."
-            self.admActionHint:setText(completeHint .. "\n\n" .. cancelHint)
+            if isAdmin then
+                local completeHint = g_i18n:getText("mdm_adm_hint_complete") or "Complete: force full payout now at locked price."
+                local cancelHint   = g_i18n:getText("mdm_adm_hint_cancel") or "Cancel: remove contract — no payout, no penalty."
+                self.admActionHint:setText(completeHint .. "\n\n" .. cancelHint)
+            else
+                local forfeitHint = g_i18n:getText("mdm_adm_hint_forfeit") or "Forfeit: terminate contract immediately. A penalty will be applied to the undelivered portion."
+                self.admActionHint:setText(forfeitHint)
+            end
         end
     end
     if self.admSettledNotice then

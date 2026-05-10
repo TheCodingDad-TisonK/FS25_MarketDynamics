@@ -122,7 +122,18 @@ end
 -- Per-frame tick. dt = in-game milliseconds from FSBaseMission.update.
 function MarketDynamics:update(dt)
     if not self.isActive then return end
-    if g_currentMission and g_currentMission.time < 1000 then return end -- wait 1 second for session sync
+    
+    -- Wait at least 1 second for session sync, and ensure environment is valid
+    if g_currentMission and g_currentMission.time < 1000 then return end
+    
+    local now = MDMUtil.getGameTime()
+    if now <= 0 then return end -- environment not yet initialized
+
+    -- Safety: If we just loaded, wait until 'now' has caught up to 'lastSavedGameTime'
+    -- This prevents immediate contract defaults if the day/time hasn't finished syncing.
+    if self.lastSavedGameTime and now < self.lastSavedGameTime then
+        return
+    end
 
     self.marketEngine:update(dt)              -- intraday and daily price ticks
     self.worldEvents:update(dt)               -- event expiry and probability rolls

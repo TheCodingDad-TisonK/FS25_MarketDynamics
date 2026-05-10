@@ -38,43 +38,43 @@
       <!-- Row 0 -->
       <Text   profile="mdmFt_rowName" id="evtFtName0"   text="" position="0px -164px"   size="350px 28px" visible="false"/>
       <Bitmap profile="mdmFt_remBg"   id="evtFtRemBg0"  position="360px -162px" size="130px 32px" visible="false"/>
-      <Button profile="mdmFt_btnHit"  id="evtFtRemBtn0" onClick="onRemove0" position="360px -162px" size="130px 32px" visible="false"/>
       <Text   profile="mdmFt_remTxt"  id="evtFtRemTxt0" text="$l10n_mdm_label_remove" position="360px -162px" size="130px 32px" visible="false"/>
+      <Button profile="mdmFt_btnHit"  id="evtFtRemBtn0" onClick="onRemove0" position="360px -162px" size="130px 32px" visible="false"/>
       <!-- Row 1 -->
       <Text   profile="mdmFt_rowName" id="evtFtName1"   text="" position="0px -198px"   size="350px 28px" visible="false"/>
       <Bitmap profile="mdmFt_remBg"   id="evtFtRemBg1"  position="360px -196px" size="130px 32px" visible="false"/>
-      <Button profile="mdmFt_btnHit"  id="evtFtRemBtn1" onClick="onRemove1" position="360px -196px" size="130px 32px" visible="false"/>
       <Text   profile="mdmFt_remTxt"  id="evtFtRemTxt1" text="$l10n_mdm_label_remove" position="360px -196px" size="130px 32px" visible="false"/>
+      <Button profile="mdmFt_btnHit"  id="evtFtRemBtn1" onClick="onRemove1" position="360px -196px" size="130px 32px" visible="false"/>
       <!-- Row 2 -->
       <Text   profile="mdmFt_rowName" id="evtFtName2"   text="" position="0px -232px"   size="350px 28px" visible="false"/>
       <Bitmap profile="mdmFt_remBg"   id="evtFtRemBg2"  position="360px -230px" size="130px 32px" visible="false"/>
-      <Button profile="mdmFt_btnHit"  id="evtFtRemBtn2" onClick="onRemove2" position="360px -230px" size="130px 32px" visible="false"/>
       <Text   profile="mdmFt_remTxt"  id="evtFtRemTxt2" text="$l10n_mdm_label_remove" position="360px -230px" size="130px 32px" visible="false"/>
+      <Button profile="mdmFt_btnHit"  id="evtFtRemBtn2" onClick="onRemove2" position="360px -230px" size="130px 32px" visible="false"/>
       <!-- Row 3 -->
       <Text   profile="mdmFt_rowName" id="evtFtName3"   text="" position="0px -266px"   size="350px 28px" visible="false"/>
       <Bitmap profile="mdmFt_remBg"   id="evtFtRemBg3"  position="360px -264px" size="130px 32px" visible="false"/>
-      <Button profile="mdmFt_btnHit"  id="evtFtRemBtn3" onClick="onRemove3" position="360px -264px" size="130px 32px" visible="false"/>
       <Text   profile="mdmFt_remTxt"  id="evtFtRemTxt3" text="$l10n_mdm_label_remove" position="360px -264px" size="130px 32px" visible="false"/>
+      <Button profile="mdmFt_btnHit"  id="evtFtRemBtn3" onClick="onRemove3" position="360px -264px" size="130px 32px" visible="false"/>
       <!-- Row 4 -->
       <Text   profile="mdmFt_rowName" id="evtFtName4"   text="" position="0px -300px"   size="350px 28px" visible="false"/>
       <Bitmap profile="mdmFt_remBg"   id="evtFtRemBg4"  position="360px -298px" size="130px 32px" visible="false"/>
-      <Button profile="mdmFt_btnHit"  id="evtFtRemBtn4" onClick="onRemove4" position="360px -298px" size="130px 32px" visible="false"/>
       <Text   profile="mdmFt_remTxt"  id="evtFtRemTxt4" text="$l10n_mdm_label_remove" position="360px -298px" size="130px 32px" visible="false"/>
+      <Button profile="mdmFt_btnHit"  id="evtFtRemBtn4" onClick="onRemove4" position="360px -298px" size="130px 32px" visible="false"/>
       <!-- Row 5 -->
       <Text   profile="mdmFt_rowName" id="evtFtName5"   text="" position="0px -334px"   size="350px 28px" visible="false"/>
       <Bitmap profile="mdmFt_remBg"   id="evtFtRemBg5"  position="360px -332px" size="130px 32px" visible="false"/>
-      <Button profile="mdmFt_btnHit"  id="evtFtRemBtn5" onClick="onRemove5" position="360px -332px" size="130px 32px" visible="false"/>
       <Text   profile="mdmFt_remTxt"  id="evtFtRemTxt5" text="$l10n_mdm_label_remove" position="360px -332px" size="130px 32px" visible="false"/>
+      <Button profile="mdmFt_btnHit"  id="evtFtRemBtn5" onClick="onRemove5" position="360px -332px" size="130px 32px" visible="false"/>
       <!-- Row 6 -->
       <Text   profile="mdmFt_rowName" id="evtFtName6"   text="" position="0px -368px"   size="350px 28px" visible="false"/>
       <Bitmap profile="mdmFt_remBg"   id="evtFtRemBg6"  position="360px -366px" size="130px 32px" visible="false"/>
-      <Button profile="mdmFt_btnHit"  id="evtFtRemBtn6" onClick="onRemove6" position="360px -366px" size="130px 32px" visible="false"/>
       <Text   profile="mdmFt_remTxt"  id="evtFtRemTxt6" text="$l10n_mdm_label_remove" position="360px -366px" size="130px 32px" visible="false"/>
+      <Button profile="mdmFt_btnHit"  id="evtFtRemBtn6" onClick="onRemove6" position="360px -366px" size="130px 32px" visible="false"/>
       <!-- Row 7 -->
       <Text   profile="mdmFt_rowName" id="evtFtName7"   text="" position="0px -402px"   size="350px 28px" visible="false"/>
       <Bitmap profile="mdmFt_remBg"   id="evtFtRemBg7"  position="360px -400px" size="130px 32px" visible="false"/>
-      <Button profile="mdmFt_btnHit"  id="evtFtRemBtn7" onClick="onRemove7" position="360px -400px" size="130px 32px" visible="false"/>
       <Text   profile="mdmFt_remTxt"  id="evtFtRemTxt7" text="$l10n_mdm_label_remove" position="360px -400px" size="130px 32px" visible="false"/>
+      <Button profile="mdmFt_btnHit"  id="evtFtRemBtn7" onClick="onRemove7" position="360px -400px" size="130px 32px" visible="false"/>
 
       <Bitmap profile="mdmFt_sep" position="0px -434px" size="520px 2px"/>
 
@@ -88,8 +88,8 @@
         <ThreePartBitmap profile="fs25_textInputBg" absoluteSizeOffset="0px 0px"/>
       </TextInput>
       <Bitmap profile="mdmFt_addBg"  id="evtFtAddBg"     position="360px -474px" size="130px 36px"/>
-      <Button profile="mdmFt_btnHit" id="evtFtAddBtn"    onClick="onAddClick"    position="360px -474px" size="130px 36px"/>
       <Text   profile="mdmFt_remTxt" id="evtFtAddBtnTxt" text="$l10n_mdm_label_add"              position="360px -474px" size="130px 36px"/>
+      <Button profile="mdmFt_btnHit" id="evtFtAddBtn"    onClick="onAddClick"    position="360px -474px" size="130px 36px"/>
 
     </GuiElement>
 

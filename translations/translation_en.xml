@@ -187,6 +187,9 @@
         <text name="mdm_delivered_value"         text="Delivered value:  $%s  (%d%%)" />
         <text name="mdm_adm_hint_complete"       text="Complete: force full payout now at locked price." />
         <text name="mdm_adm_hint_cancel"         text="Cancel: remove contract — no payout, no penalty." />
+        <text name="mdm_adm_btn_cancel"          text="Cancel (No Penalty)" />
+        <text name="mdm_adm_btn_forfeit"         text="Forfeit (Penalty)" />
+        <text name="mdm_adm_hint_forfeit"        text="Forfeit: terminate contract immediately. A penalty will be applied to the undelivered portion." />
         <text name="mdm_current_price_fmt"       text="Current price:  $%.0f / 1,000L" />
         <text name="mdm_change_from_base_fmt"    text="Change from base:  %s%.1f%%" />
         <text name="mdm_summary_crop"            text="Crop:          " />

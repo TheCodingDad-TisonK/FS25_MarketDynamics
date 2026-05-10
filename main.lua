@@ -149,5 +149,5 @@ FSBaseMission.update            = Utils.appendedFunction(FSBaseMission.update,  
 FSBaseMission.update            = Utils.appendedFunction(FSBaseMission.update,             ensureActionEvents)
 FSBaseMission.draw              = Utils.appendedFunction(FSBaseMission.draw,               onDraw)
 FSBaseMission.mouseEvent        = Utils.appendedFunction(FSBaseMission.mouseEvent,         onMouseEvent)
-FSCareerMissionInfo.saveToXMLFile = Utils.appendedFunction(FSCareerMissionInfo.saveToXMLFile, onSave)
+FSBaseMission.saveSavegame = Utils.appendedFunction(FSBaseMission.saveSavegame, onSave)
 FSBaseMission.delete            = Utils.appendedFunction(FSBaseMission.delete,             onDelete)
