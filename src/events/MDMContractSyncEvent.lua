@@ -60,6 +60,7 @@ function MDMContractSyncEvent:writeContract(streamId, c)
     streamWriteFloat64(streamId, c.deliveryStartTime or 0)
     streamWriteBool(streamId, c.bcManaged == true)
     streamWriteFloat32(streamId, c.delivered)
+    streamWriteFloat32(streamId, c.valueReceived or 0)
     streamWriteString(streamId, c.status)
 end
 
@@ -93,6 +94,7 @@ function MDMContractSyncEvent:readContract(streamId)
         deliveryStartTime = streamReadFloat64(streamId),
         bcManaged    = streamReadBool(streamId),
         delivered = streamReadFloat32(streamId),
+        valueReceived = streamReadFloat32(streamId),
         status = streamReadString(streamId)
     }
 end

@@ -52,6 +52,7 @@ function FuturesMarket:createContract(params)
         deliveryTime      = params.deliveryTimeMs, -- absolute game time (ms)
         deliveryStartTime = now,                   -- can start delivering immediately
         delivered         = 0,                     -- liters delivered so far
+        valueReceived     = 0,                     -- total money received during unloading at stations
         status            = "active",              -- active | fulfilled | defaulted
         isRealDays        = params.isRealDays or false,
         createdTimeScale  = params.createdTimeScale or 1,
@@ -74,11 +75,18 @@ end
 
 -- Record a partial or full delivery toward an active contract.
 -- Returns true if the contract is now fully fulfilled, false otherwise.
-function FuturesMarket:recordDelivery(contractId, liters)
+function FuturesMarket:recordDelivery(contractId, liters, pricePerLiter)
     local contract = self.contracts[contractId]
     if not contract or contract.status ~= "active" then return false end
 
     contract.delivered = contract.delivered + liters
+    
+    -- Track value already received by the player at the selling station so we can
+    -- subtract it from the final payout. This prevents "double pay" where the
+    -- player gets the market price PLUS the full contract price.
+    if pricePerLiter and pricePerLiter > 0 then
+        contract.valueReceived = (contract.valueReceived or 0) + (liters * pricePerLiter)
+    end
 
     if contract.delivered >= contract.quantity then
         self:_fulfillContract(contractId)
@@ -144,21 +152,37 @@ end
 -- Excess liters (beyond what contracts need) are silently ignored — normal selling.
 -- Deliveries before the contract's deliveryStartTime do not count toward the contract
 -- (the locked price applies to future production, not existing inventory).
-function FuturesMarket:onCropDelivered(farmId, fillTypeIndex, liters)
+function FuturesMarket:onCropDelivered(farmId, fillTypeIndex, liters, pricePerLiter)
     local now = MDMUtil.getGameTime()
     local remaining = liters
+    
+    MDMLog.debug(string.format("FuturesMarket:onCropDelivered(farmId=%s, ft=%s, liters=%.1f, price=%.4f) now=%s",
+        tostring(farmId), tostring(fillTypeIndex), liters, pricePerLiter or 0, tostring(now)))
+
+    local foundMatch = false
     for id, contract in pairs(self.contracts) do
         if remaining <= 0 then break end
-        if contract.status == "active"
-            and contract.farmId == farmId
-            and contract.fillTypeIndex == fillTypeIndex
-            and now >= (contract.deliveryStartTime or 0) then
-
+        
+        local timeMatch = now >= (contract.deliveryStartTime or 0)
+        local farmMatch = contract.farmId == farmId
+        local typeMatch = contract.fillTypeIndex == fillTypeIndex
+        local statusMatch = contract.status == "active"
+        
+        if statusMatch and farmMatch and typeMatch and timeMatch then
+            foundMatch = true
             local needed   = contract.quantity - contract.delivered
             local applying = math.min(remaining, needed)
-            self:recordDelivery(id, applying)
+            
+            MDMLog.debug(string.format("  -> Matching contract #%d: applying %.1fL (needed %.1fL)",
+                id, applying, needed))
+                
+            self:recordDelivery(id, applying, pricePerLiter)
             remaining = remaining - applying
         end
+    end
+    
+    if not foundMatch then
+        MDMLog.debug("  -> No matching active contract found for this delivery.")
     end
 end
 
@@ -197,21 +221,28 @@ function FuturesMarket:_fulfillContract(id)
         return
     end
 
-    local payout = contract.quantity * contract.lockedPrice
+    -- The player has already received some money during unloading (at market rates).
+    -- We only pay the remaining balance to reach exactly (quantity * lockedPrice).
+    local totalTarget = contract.quantity * contract.lockedPrice
+    local bonus = math.max(0, totalTarget - (contract.valueReceived or 0))
 
-    g_currentMission:addMoney(payout, contract.farmId, MoneyType.OTHER, true)
-    MDMLog.info("FuturesMarket: contract #" .. id .. " FULFILLED — payout $" .. payout)
+    if bonus > 0 then
+        g_currentMission:addMoney(bonus, contract.farmId, MoneyType.OTHER, true)
+    end
+    
+    MDMLog.info(string.format("FuturesMarket: contract #%d FULFILLED — target $%.2f, already received $%.2f, bonus $%.2f",
+        id, totalTarget, (contract.valueReceived or 0), bonus))
 
     -- HUD notification (only show to the owning farm's local player)
     if g_localPlayer and g_localPlayer.farmId == contract.farmId then
-        local msg = string.format("Contract fulfilled: %s — $%s paid out",
+        local msg = string.format("Contract fulfilled: %s — $%s bonus paid",
             contract.fillTypeName,
-            g_i18n:formatMoney(math.floor(payout), 0, true, false))
+            g_i18n:formatMoney(math.floor(bonus), 0, true, false))
         g_currentMission:addIngameNotification(FSBaseMission.INGAME_NOTIFICATION_OK, msg)
     end
 
     -- Notify UPIntegration for credit score reporting.
-    UPIntegration.onContractFulfilled(id, contract.farmId, payout)
+    UPIntegration.onContractFulfilled(id, contract.farmId, bonus)
 
     -- Broadcast fulfilled status to all connected clients.
     if g_server ~= nil then
@@ -247,7 +278,8 @@ function FuturesMarket:_defaultContract(id)
     local delivered   = contract.delivered
     local unfulfilled = contract.quantity - delivered
 
-    local partialPayout = delivered * contract.lockedPrice
+    -- Partial target is (delivered amount * locked price)
+    local partialTarget = delivered * contract.lockedPrice
 
     -- Base penalty comes from player settings; UP credit score may scale it further.
     local settings    = g_MarketDynamics and g_MarketDynamics.settings
@@ -255,27 +287,27 @@ function FuturesMarket:_defaultContract(id)
     local penaltyRate = basePenalty * UPIntegration.getPenaltyModifier(contract.farmId)
     local penalty     = unfulfilled * contract.lockedPrice * penaltyRate
 
-    -- Floor net at 0: never drain the player's account for a default.
-    local net = math.max(0, partialPayout - penalty)
+    -- Net bonus is what we owe them (partialTarget - penalty) minus what they already got.
+    local net = math.max(0, (partialTarget - penalty) - (contract.valueReceived or 0))
 
     if net > 0 then
         g_currentMission:addMoney(net, contract.farmId, MoneyType.OTHER, true)
     end
 
     MDMLog.warn(string.format(
-        "FuturesMarket: contract #%d DEFAULTED — delivered %dL/%dL  partial $%.2f  penalty -$%.2f  net $%.2f",
-        id, delivered, contract.quantity, partialPayout, penalty, net))
+        "FuturesMarket: contract #%d DEFAULTED — target $%.2f, penalty -$%.2f, already received $%.2f, net bonus $%.2f",
+        id, partialTarget, penalty, (contract.valueReceived or 0), net))
 
     -- HUD notification (only show to the owning farm's local player)
     if g_localPlayer and g_localPlayer.farmId == contract.farmId then
         local msg
         if net > 0 then
-            msg = string.format("Contract defaulted: %s — %dL/%dL delivered, $%s after penalty",
+            msg = string.format("Contract defaulted: %s — %dL/%dL delivered, $%s bonus after penalty",
                 contract.fillTypeName,
                 delivered, contract.quantity,
                 g_i18n:formatMoney(math.floor(net), 0, true, false))
         else
-            msg = string.format("Contract defaulted: %s — %dL/%dL delivered, no payout",
+            msg = string.format("Contract defaulted: %s — %dL/%dL delivered, no bonus payout",
                 contract.fillTypeName,
                 delivered, contract.quantity)
         end

@@ -60,6 +60,7 @@ function MarketSerializer:save(coordinator)
         xmlFile:setString(base .. "#deliveryTime",      tostring(contract.deliveryTime or 0))
         xmlFile:setString(base .. "#deliveryStartTime", tostring(contract.deliveryStartTime or 0))
         xmlFile:setFloat (base .. "#delivered",         contract.delivered or 0)
+        xmlFile:setFloat (base .. "#valueReceived",     contract.valueReceived or 0)
         xmlFile:setString(base .. "#status",            contract.status or "active")
         xmlFile:setBool  (base .. "#isRealDays",        contract.isRealDays or false)
         xmlFile:setFloat (base .. "#createdTimeScale",  contract.createdTimeScale or 1)
@@ -254,6 +255,7 @@ function MarketSerializer:load(coordinator)
                 deliveryStartTime = deliveryStartTime,
                 bcManaged         = xmlFile:getBool  (base .. "#bcManaged") or false,
                 delivered         = xmlFile:getFloat (base .. "#delivered") or 0,
+                valueReceived     = xmlFile:getFloat (base .. "#valueReceived") or 0,
                 status            = xmlFile:getString(base .. "#status") or "active",
                 upDealId          = upDealId,
                 isRealDays        = xmlFile:getBool  (base .. "#isRealDays") or false,
