@@ -38,7 +38,7 @@ function MDMContractRequestEvent:writeStream(streamId, connection)
         streamWriteString(streamId, self.params.fillTypeName)
         streamWriteFloat32(streamId, self.params.quantity)
         streamWriteFloat32(streamId, self.params.lockedPrice)
-        streamWriteFloat32(streamId, self.params.deliveryTimeMs)
+        streamWriteFloat64(streamId, self.params.deliveryTimeMs)
         streamWriteBool(streamId, self.params.isRealDays or false)
         streamWriteFloat32(streamId, self.params.createdTimeScale or 1)
     else
@@ -55,7 +55,7 @@ function MDMContractRequestEvent:readStream(streamId, connection)
         self.params.fillTypeName     = streamReadString(streamId)
         self.params.quantity         = streamReadFloat32(streamId)
         self.params.lockedPrice      = streamReadFloat32(streamId)
-        self.params.deliveryTimeMs   = streamReadFloat32(streamId)
+        self.params.deliveryTimeMs   = streamReadFloat64(streamId)
         self.params.isRealDays       = streamReadBool(streamId)
         self.params.createdTimeScale = streamReadFloat32(streamId)
     else
@@ -87,7 +87,8 @@ function MDMContractRequestEvent:run(connection)
     local userId = g_currentMission.userManager:getUserIdByConnection(connection)
     local farm = userId ~= nil and g_farmManager:getFarmByUserId(userId) or nil
     local isFarmManager = farm ~= nil and farm:isUserFarmManager(userId)
-    local isAdmin = g_currentMission.userManager:getIsUserAdmin(userId)
+    local user = userId ~= nil and g_currentMission.userManager:getUserByUserId(userId) or nil
+    local isAdmin = user ~= nil and (user.isMasterUser == true or user.isAdmin == true)
 
     if self.action == MDMContractRequestEvent.ACTION_CREATE then
         -- Security: Non-farm-managers can only create contracts for their own farm
