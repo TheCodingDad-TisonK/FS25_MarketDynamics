@@ -82,6 +82,7 @@
 		<text name="mdm_evt_force_fire" text="[EN] Force Fire"/>
 		<text name="mdm_browse_title" text="[EN] Available Fill Types"/>
 		<text name="mdm_browse_hint" text="[EN] Below are all fill types currently tracked by the market. Use these names in the event configuration."/>
+        <text name="mdm_browse_search"          text="Filter:" />
 		<text name="mdm_browse_types" text="[EN] Browse Types"/>
 		<text name="mdm_qty_500" text="[EN] 500 L"/>
 		<text name="mdm_qty_1000" text="[EN] 1,000 L"/>

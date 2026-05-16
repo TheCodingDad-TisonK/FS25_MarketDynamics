@@ -89,6 +89,7 @@
 		<text name="mdm_evt_stop" text="Arrêter l'événement"/>
 		<text name="mdm_browse_title" text="Types de remplissage disponibles"/>
 		<text name="mdm_browse_hint" text="Ci-dessous se trouvent tous les types de remplissage actuellement suivis par le marché. Utilisez ces noms dans la configuration des événements."/>
+        <text name="mdm_browse_search"          text="Filter:" />
 		<text name="mdm_browse_types" text="Parcourir les types"/>
 		<text name="mdm_qty_500" text="500 L"/>
 		<text name="mdm_qty_1000" text="1 000 L"/>
