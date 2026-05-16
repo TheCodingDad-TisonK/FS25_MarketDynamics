@@ -146,6 +146,7 @@
         <!-- Fill Type Browser -->
         <text name="mdm_browse_title"            text="Available Fill Types" />
         <text name="mdm_browse_hint"             text="Below are all fill types currently tracked by the market. Use these names in the event configuration." />
+        <text name="mdm_browse_search"          text="Filter:" />
         <text name="mdm_browse_types"            text="Browse Types" />
 
         <!-- Quantities & Durations -->

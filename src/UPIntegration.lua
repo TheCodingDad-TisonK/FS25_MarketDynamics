@@ -88,7 +88,7 @@ function UPIntegration.save(xmlFile, baseKey)
         local base = baseKey .. ".dealIds.entry(" .. i .. ")"
         -- Use modern XMLFile:setInt (v2.1+) and ensure numeric types
         xmlFile:setInt(base .. "#contractId", tonumber(contractId) or 0)
-        xmlFile:setInt(base .. "#upDealId",   tonumber(upDealId) or 0)
+        xmlFile:setString(base .. "#upDealId",   tostring(upDealId))
         i = i + 1
     end
 end
@@ -102,7 +102,13 @@ function UPIntegration.load(xmlFile, baseKey)
         if not xmlFile:hasProperty(base) then break end
 
         local contractId = xmlFile:getInt(base .. "#contractId")
-        local upDealId   = xmlFile:getInt(base .. "#upDealId")
+        local upDealId   = xmlFile:getString(base .. "#upDealId")
+        
+        -- Fallback for old savegames where upDealId was an Int
+        if not upDealId then
+            local oldId = xmlFile:getInt(base .. "#upDealId")
+            if oldId then upDealId = tostring(oldId) end
+        end
         
         if contractId and upDealId then
             _dealIds[contractId] = upDealId

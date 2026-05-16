@@ -48,7 +48,7 @@ function MarketDynamics.new(modDir, modName)
     self.marketEngine  = MarketEngine.new()
     self.worldEvents   = WorldEventSystem.new()
     self.futuresMarket = FuturesMarket.new()
-    self.serializer    = MarketSerializer.new()
+    self.serializer    = MarketSerializer
 
     -- Expose BCIntegration so external mods (e.g. BetterContracts) can reach it via
     -- g_MarketDynamics.bcIntegration without depending on the global table name.

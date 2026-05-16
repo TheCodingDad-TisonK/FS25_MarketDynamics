@@ -56,10 +56,11 @@ function MDMContractSyncEvent:writeContract(streamId, c)
     streamWriteString(streamId, c.fillTypeName)
     streamWriteFloat32(streamId, c.quantity)
     streamWriteFloat32(streamId, c.lockedPrice)
-    streamWriteFloat32(streamId, c.deliveryTime)
-    streamWriteFloat32(streamId, c.deliveryStartTime or 0)
+    streamWriteFloat64(streamId, c.deliveryTime)
+    streamWriteFloat64(streamId, c.deliveryStartTime or 0)
     streamWriteBool(streamId, c.bcManaged == true)
     streamWriteFloat32(streamId, c.delivered)
+    streamWriteFloat32(streamId, c.valueReceived or 0)
     streamWriteString(streamId, c.status)
 end
 
@@ -89,10 +90,11 @@ function MDMContractSyncEvent:readContract(streamId)
         fillTypeName = streamReadString(streamId),
         quantity = streamReadFloat32(streamId),
         lockedPrice = streamReadFloat32(streamId),
-        deliveryTime = streamReadFloat32(streamId),
-        deliveryStartTime = streamReadFloat32(streamId),
-        bcManaged = streamReadBool(streamId),
+        deliveryTime = streamReadFloat64(streamId),
+        deliveryStartTime = streamReadFloat64(streamId),
+        bcManaged    = streamReadBool(streamId),
         delivered = streamReadFloat32(streamId),
+        valueReceived = streamReadFloat32(streamId),
         status = streamReadString(streamId)
     }
 end

@@ -114,16 +114,20 @@ function MDMSettingsSyncEvent:run(connection)
 
     if g_server ~= nil and connection ~= nil then
         -- Received on server from a client: update local settings and broadcast to all others
-        -- Security: Only allow farm managers to change global settings
+        -- Security: Allow farm managers OR the dedicated-server master user (admin who may not be in a farm)
         local userId = g_currentMission.userManager:getUserIdByConnection(connection)
         local farm = userId ~= nil and g_farmManager:getFarmByUserId(userId) or nil
         local isFarmManager = farm ~= nil and farm:isUserFarmManager(userId)
-        if isFarmManager then
+        local masterUserId
+        pcall(function() masterUserId = g_currentMission.userManager:getMasterUserId() end)
+        local isMasterUser = masterUserId ~= nil and userId ~= nil and userId == masterUserId
+        local isAuthorized = isFarmManager or isMasterUser
+        if isAuthorized then
             g_MarketDynamics.settings = self.settings
             if g_MarketDynamics.marketEngine then
                 g_MarketDynamics.marketEngine.volatilityScale = self.volatilityScale
             end
-            MDMLog.info("MDMSettingsSyncEvent: server received settings update from authorized client")
+            MDMLog.info("MDMSettingsSyncEvent: server received settings update from authorized client (farmManager=" .. tostring(isFarmManager) .. " masterUser=" .. tostring(isMasterUser) .. ")")
             -- Broadcast to all other clients
             g_server:broadcastEvent(self, false, connection)
         else

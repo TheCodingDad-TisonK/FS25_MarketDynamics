@@ -1,42 +1,34 @@
 -- MarketSerializer.lua
--- Handles save/load of MDM market state to a per-savegame XML file.
---
--- Save path: <savegameDirectory>/FS25_MarketDynamics.xml
--- (v1.1.4.1+: no longer creates a modSettings subfolder inside the savegame
---  directory; dedicated servers cannot upload savegames with subfolders)
---
--- What is persisted (v2):
---   futures contracts  — active/settled contracts
---   event cooldowns    — lastFiredAt per event
---   active events      — currently running events (restored via loadActiveEvent)
---   market prices      — volatilityFactor per fillType
---   price history      — daily history samples per fillType
---   general settings   — pricesEnabled, debugMode, volatilityScale
---   UP deal IDs        — contractId → upDealId map for UsedPlus
+-- Persists and restores all market-related state to/from a dedicated XML file in the savegame.
+-- Handles: fill type prices, world event cooldowns, active events, futures contracts,
+-- and general mod settings.
 --
 -- Author: tison (dev-1)
 
 MarketSerializer = {}
-MarketSerializer.__index = MarketSerializer
 
-local SAVE_PATH_TEMPLATE     = "%sFS25_MarketDynamics.xml"
-local LEGACY_PATH_TEMPLATE   = "%smodSettings/FS25_MarketDynamics.xml"
+local SAVE_PATH_TEMPLATE = "%sFS25_MarketDynamics.xml"
 
-function MarketSerializer.new()
-    local self = setmetatable({}, MarketSerializer)
-    return self
-end
-
--- Persist current market state.
+-- Save all market state.
 function MarketSerializer:save(coordinator)
     if not g_currentMission or not g_currentMission.missionInfo then
-        MDMLog.warn("MarketSerializer: g_currentMission or missionInfo not available — cannot save")
+        MDMLog.info("MarketSerializer: g_currentMission or missionInfo not available — cannot save")
         return
     end
+
     local savegameDir = g_currentMission.missionInfo.savegameDirectory
-    if savegameDir == nil or savegameDir == "" then
-        MDMLog.warn("MarketSerializer: no savegame directory — cannot save")
-        return
+    if not savegameDir then
+        -- Workaround for dedi or cases where missionInfo doesn't have the path
+        savegameDir = ("%ssavegame%d"):format(getUserProfileAppPath(), g_currentMission.missionInfo.savegameIndex)
+        local legacyPath = SAVE_PATH_TEMPLATE:format(savegameDir .. "/")
+        if not fileExists(legacyPath) then
+            -- Check for 'tempsavegame' (standard in some FS25 setups)
+            savegameDir = ("%stempsavegame"):format(getUserProfileAppPath())
+            if not fileExists(SAVE_PATH_TEMPLATE:format(savegameDir .. "/")) then
+                MDMLog.info("MarketSerializer: savegame path not resolved — cannot save")
+                return
+            end
+        end
     end
 
     local path    = SAVE_PATH_TEMPLATE:format(savegameDir .. "/")
@@ -50,8 +42,9 @@ function MarketSerializer:save(coordinator)
     -- Schema version stamp
     xmlFile:setString("marketDynamics#version", "2")
     
-    -- Store absolute game time at save (v2.1+) to prevent immediate expiration on reload
-    xmlFile:setFloat("marketDynamics#lastGameTime", MDMUtil.getGameTime())
+    -- Store absolute game time at save (v2.1+) to prevent immediate expiration on reload.
+    -- Stored as string to prevent 32-bit float parsing truncation bugs in C++ engine.
+    xmlFile:setString("marketDynamics#lastGameTime", tostring(MDMUtil.getGameTime()))
 
     -- ── Futures contracts ────────────────────────────────────────────────
     local contracts = coordinator.futuresMarket and coordinator.futuresMarket.contracts or {}
@@ -64,14 +57,15 @@ function MarketSerializer:save(coordinator)
         xmlFile:setString(base .. "#fillTypeName",      contract.fillTypeName)
         xmlFile:setFloat (base .. "#quantity",          contract.quantity)
         xmlFile:setFloat (base .. "#lockedPrice",       contract.lockedPrice)
-        xmlFile:setFloat (base .. "#deliveryTime",      contract.deliveryTime or 0)
-        xmlFile:setFloat (base .. "#deliveryStartTime", contract.deliveryStartTime or 0)
+        xmlFile:setString(base .. "#deliveryTime",      tostring(contract.deliveryTime or 0))
+        xmlFile:setString(base .. "#deliveryStartTime", tostring(contract.deliveryStartTime or 0))
         xmlFile:setFloat (base .. "#delivered",         contract.delivered or 0)
+        xmlFile:setFloat (base .. "#valueReceived",     contract.valueReceived or 0)
         xmlFile:setString(base .. "#status",            contract.status or "active")
         xmlFile:setBool  (base .. "#isRealDays",        contract.isRealDays or false)
         xmlFile:setFloat (base .. "#createdTimeScale",  contract.createdTimeScale or 1)
         if contract.upDealId then
-            xmlFile:setInt(base .. "#upDealId", contract.upDealId)
+            xmlFile:setString(base .. "#upDealId", tostring(contract.upDealId))
         end
         i = i + 1
     end
@@ -82,25 +76,30 @@ function MarketSerializer:save(coordinator)
         for index, entry in pairs(coordinator.marketEngine.prices) do
             local base = "marketDynamics.prices.price(" .. k .. ")"
             xmlFile:setInt  (base .. "#index",  index)
-            xmlFile:setFloat(base .. "#factor", entry.volatilityFactor)
+            xmlFile:setFloat(base .. "#current", entry.current)
+            xmlFile:setFloat(base .. "#trend",   entry.trend or 0)
+            xmlFile:setFloat(base .. "#volatility", entry.volatility or 0)
             
-            for m, hist in ipairs(entry.history) do
-                local hBase = base .. ".history(" .. (m-1) .. ")"
-                xmlFile:setFloat(hBase .. "#price", hist.price)
-                xmlFile:setFloat(hBase .. "#time",  hist.time)
+            -- Save history
+            if entry.history and #entry.history > 0 then
+                for m, h in ipairs(entry.history) do
+                    local hBase = base .. ".history(" .. (m - 1) .. ")"
+                    xmlFile:setFloat(hBase .. "#price", h.price)
+                    xmlFile:setFloat(hBase .. "#time",  h.time)
+                end
             end
             k = k + 1
         end
     end
 
-    -- ── World Events (Cooldowns & Active) ───────────────────────────────
+    -- ── World Events (Cooldowns & Active) ────────────────────────────────
     if coordinator.worldEvents then
         -- Cooldowns
         local j = 0
         for id, event in pairs(coordinator.worldEvents.registry) do
             local base = "marketDynamics.events.event(" .. j .. ")"
             xmlFile:setString(base .. "#id",          id)
-            xmlFile:setFloat (base .. "#lastFiredAt", event.lastFiredAt)
+            xmlFile:setString(base .. "#lastFiredAt", tostring(event.lastFiredAt))
             j = j + 1
         end
 
@@ -109,7 +108,7 @@ function MarketSerializer:save(coordinator)
         for id, active in pairs(coordinator.worldEvents.active) do
             local base = "marketDynamics.activeEvents.event(" .. a .. ")"
             xmlFile:setString(base .. "#id",        id)
-            xmlFile:setFloat (base .. "#endsAt",    active.endsAt)
+            xmlFile:setString(base .. "#endsAt",    tostring(active.endsAt))
             xmlFile:setFloat (base .. "#intensity", active.intensity)
             -- Persist per-event extra state (e.g. which crops were affected)
             local desc = coordinator.worldEvents.registry[id]
@@ -178,26 +177,34 @@ function MarketSerializer:load(coordinator)
         MDMLog.info("MarketSerializer: g_currentMission or missionInfo not available — starting fresh")
         return
     end
-    local savegameDir = g_currentMission.missionInfo.savegameDirectory
-    if savegameDir == nil or savegameDir == "" then
-        MDMLog.info("MarketSerializer: no savegame directory yet — starting fresh")
-        return
-    end
 
-    local path    = SAVE_PATH_TEMPLATE:format(savegameDir .. "/")
+    local savegameDir = g_currentMission.missionInfo.savegameDirectory
     local xmlFile = nil
     
-    if fileExists(path) then
-        xmlFile = XMLFile.load("MDMLoad", path)
+    if savegameDir then
+        local path = SAVE_PATH_TEMPLATE:format(savegameDir .. "/")
+        if fileExists(path) then
+            xmlFile = XMLFile.load("MDMLoad", path)
+        end
     end
 
-    -- Migration: try old path (savegame/modSettings/) for saves from v1.1.4.0 and earlier
+    -- Fallback for dedi / manual profile path resolution
     if not xmlFile then
-        local legacyPath = LEGACY_PATH_TEMPLATE:format(savegameDir .. "/")
-        if fileExists(legacyPath) then
-            xmlFile = XMLFile.load("MDMLoad", legacyPath)
-            if xmlFile then
-                MDMLog.info("MarketSerializer: migrating from legacy path " .. legacyPath)
+        local profilePath = getUserProfileAppPath()
+        local index = g_currentMission.missionInfo.savegameIndex
+        
+        -- Check both standard savegame and tempsavegame
+        local searchPaths = {
+            ("%ssavegame%d/FS25_MarketDynamics.xml"):format(profilePath, index),
+            ("%stempsavegame/FS25_MarketDynamics.xml"):format(profilePath)
+        }
+        
+        for _, legacyPath in ipairs(searchPaths) do
+            if fileExists(legacyPath) then
+                xmlFile = XMLFile.load("MDMLoad", legacyPath)
+                if xmlFile then
+                    MDMLog.info("MarketSerializer: migrating from legacy path " .. legacyPath)
+                end
             end
         end
     end
@@ -211,7 +218,8 @@ function MarketSerializer:load(coordinator)
 
     -- Restore last saved game time
     if coordinator then
-        coordinator.lastSavedGameTime = xmlFile:getFloat("marketDynamics#lastGameTime") or 0
+        local gtStr = xmlFile:getString("marketDynamics#lastGameTime")
+        coordinator.lastSavedGameTime = gtStr and tonumber(gtStr) or (xmlFile:getFloat("marketDynamics#lastGameTime") or 0)
     end
 
     -- ── Restore futures contracts ─────────────────────────────────────────
@@ -221,9 +229,21 @@ function MarketSerializer:load(coordinator)
         if not xmlFile:hasProperty(base) then break end
 
         local id = xmlFile:getInt(base .. "#id")
-        local deliveryTime = xmlFile:getFloat(base .. "#deliveryTime")
-        
+
+        -- Load as string to bypass C++ float truncation, fallback to getFloat
+        local deliveryTimeStr = xmlFile:getString(base .. "#deliveryTime")
+        local deliveryTime = deliveryTimeStr and tonumber(deliveryTimeStr) or xmlFile:getFloat(base .. "#deliveryTime")
+
+        local deliveryStartTimeStr = xmlFile:getString(base .. "#deliveryStartTime")
+        local deliveryStartTime = deliveryStartTimeStr and tonumber(deliveryStartTimeStr) or (xmlFile:getFloat(base .. "#deliveryStartTime") or 0)
+
         if id and deliveryTime and deliveryTime > 0 then
+            local upDealId = xmlFile:getString(base .. "#upDealId")
+            if not upDealId then
+                local oldId = xmlFile:getInt(base .. "#upDealId")
+                if oldId then upDealId = tostring(oldId) end
+            end
+
             local contract = {
                 id                = id,
                 farmId            = xmlFile:getInt   (base .. "#farmId"),
@@ -232,15 +252,15 @@ function MarketSerializer:load(coordinator)
                 quantity          = xmlFile:getFloat (base .. "#quantity"),
                 lockedPrice       = xmlFile:getFloat (base .. "#lockedPrice"),
                 deliveryTime      = deliveryTime,
-                deliveryStartTime = xmlFile:getFloat (base .. "#deliveryStartTime") or 0,
+                deliveryStartTime = deliveryStartTime,
                 bcManaged         = xmlFile:getBool  (base .. "#bcManaged") or false,
                 delivered         = xmlFile:getFloat (base .. "#delivered") or 0,
+                valueReceived     = xmlFile:getFloat (base .. "#valueReceived") or 0,
                 status            = xmlFile:getString(base .. "#status") or "active",
-                upDealId          = xmlFile:getInt   (base .. "#upDealId"),
+                upDealId          = upDealId,
                 isRealDays        = xmlFile:getBool  (base .. "#isRealDays") or false,
                 createdTimeScale  = xmlFile:getFloat (base .. "#createdTimeScale") or 1,
             }
-
             if coordinator.futuresMarket then
                 coordinator.futuresMarket.contracts[id] = contract
                 if id >= coordinator.futuresMarket.nextId then
@@ -253,18 +273,20 @@ function MarketSerializer:load(coordinator)
         i = i + 1
     end
 
-    -- ── Restore Market Engine (Prices & History) ──────────────────────────
-    if coordinator.marketEngine and version >= 2 then
+    -- ── Restore prices ───────────────────────────────────────────────────
+    if coordinator.marketEngine then
         local k = 0
         while true do
-            local base  = "marketDynamics.prices.price(" .. k .. ")"
+            local base = "marketDynamics.prices.price(" .. k .. ")"
             if not xmlFile:hasProperty(base) then break end
 
             local index = xmlFile:getInt(base .. "#index")
             if index then
                 local entry = coordinator.marketEngine.prices[index]
                 if entry then
-                    entry.volatilityFactor = xmlFile:getFloat(base .. "#factor") or 1.0
+                    entry.current    = xmlFile:getFloat(base .. "#current") or entry.current
+                    entry.trend      = xmlFile:getFloat(base .. "#trend")   or 0
+                    entry.volatility = xmlFile:getFloat(base .. "#volatility") or 0
                     
                     -- Restore history
                     entry.history = {}
@@ -296,10 +318,11 @@ function MarketSerializer:load(coordinator)
         if not xmlFile:hasProperty(base) then break end
 
         local evId  = xmlFile:getString(base .. "#id")
-        local lastFired = xmlFile:getFloat(base .. "#lastFiredAt")
+        local lfStr = xmlFile:getString(base .. "#lastFiredAt")
+        local lastFired = lfStr and tonumber(lfStr) or (xmlFile:getFloat(base .. "#lastFiredAt") or -math.huge)
         
         if evId and coordinator.worldEvents and coordinator.worldEvents.registry[evId] then
-            coordinator.worldEvents.registry[evId].lastFiredAt = lastFired or -math.huge
+            coordinator.worldEvents.registry[evId].lastFiredAt = lastFired
         end
         j = j + 1
     end
@@ -313,7 +336,8 @@ function MarketSerializer:load(coordinator)
 
             local evId = xmlFile:getString(base .. "#id")
             if evId then
-                local endsAt    = xmlFile:getFloat (base .. "#endsAt")
+                local endsAtStr = xmlFile:getString(base .. "#endsAt")
+                local endsAt    = endsAtStr and tonumber(endsAtStr) or (xmlFile:getFloat(base .. "#endsAt") or 0)
                 local intensity = xmlFile:getFloat (base .. "#intensity")
                 local extraData = xmlFile:getString(base .. "#extraData") or ""
                 coordinator.worldEvents:loadActiveEvent(evId, endsAt, intensity, extraData)
@@ -359,7 +383,7 @@ function MarketSerializer:load(coordinator)
         while true do
             local base = "marketDynamics.disabledEvents.event(" .. di .. ")"
             if not xmlFile:hasProperty(base) then break end
-            local evId = xmlFile:getString(base .. "#id")
+            local evId = xmlFile:getString("marketDynamics.disabledEvents.event(" .. di .. ")#id")
             if evId then
                 s.disabledEvents[evId] = true
             end
